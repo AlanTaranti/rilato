@@ -28,5 +28,5 @@ if [ -f "${lang}.po.old" ]; then
     msgmerge -N "${lang}.po.old" "${lang}.po.new" > ${lang}.po
     rm "${lang}.po.old" "${lang}.po.new"
 fi
-
+sed -i 's/ASCII/UTF-8/' "${lang}.po"
 rm *.pot
