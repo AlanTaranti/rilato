@@ -27,6 +27,7 @@ contributors = '\n'.join([
 ])
 
 translators = '\n'.join([
+    'Polish: Michał Nowakowski &lt;nowakowski@offshore.rocks&gt;',
     'German: Onno Giesmann (Etamuk) &lt;nutzer3105@gmail.com&gt;',
     'Russian: Alessandra Gallia &lt;alessandragalliaaru@gmail.com&gt;',
     'Brazilian Portoguese: Gleisson Joaquim (gleissonjoaquim3) &lt;gleisscg2@gmail.com&gt;',
