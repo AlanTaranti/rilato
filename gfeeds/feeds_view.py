@@ -11,6 +11,7 @@ class FeedsViewAllListboxRow(Gtk.ListBoxRow):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.IS_ALL = True
+        self.IS_TAG = False
         self.feed = None
         self.label = Gtk.Label()
         self.label.set_markup(
@@ -29,7 +30,9 @@ class FeedsViewListboxRow(Gtk.ListBoxRow):
         super().__init__(**kwargs)
         self.confman = ConfManager()
         self.IS_ALL = False
+        self.IS_TAG = False
         self.feed = feed
+        self.title = feed.title
         self.builder = Gtk.Builder.new_from_resource(
             '/org/gabmus/gfeeds/ui/manage_feeds_listbox_row.glade'
         )
@@ -69,9 +72,46 @@ class FeedsViewListboxRow(Gtk.ListBoxRow):
             else Pango.EllipsizeMode.END
         )
 
+    def __repr__(self):
+        return f'<FeedsViewListboxRow - {self.title}>'
+
+
+class FeedsViewTagListboxRow(Gtk.ListBoxRow):
+    def __init__(self, tag, **kwargs):
+        super().__init__(**kwargs)
+        self.IS_TAG = True
+        self.IS_ALL = False
+        self.tag = tag
+        self.title = tag
+        self.feed = None
+        self.builder = Gtk.Builder.new_from_resource(
+            '/org/gabmus/gfeeds/ui/manage_feeds_listbox_row.glade'
+        )
+        self.hbox = self.builder.get_object('hbox')
+        self.checkbox = self.builder.get_object('check')
+        self.checkbox.set_no_show_all(True)
+        self.checkbox.hide()
+        self.icon_container = self.builder.get_object('icon_container')
+        self.icon = Gtk.Image.new_from_icon_name(
+            'tag-symbolic',
+            Gtk.IconSize.INVALID
+        )
+        self.icon.set_pixel_size(32)
+        self.icon_container.add(self.icon)
+
+        self.name_label = self.builder.get_object('title_label')
+        self.name_label.set_text(tag)
+        self.desc_label = self.builder.get_object('description_label')
+        self.desc_label.set_no_show_all(True)
+        self.desc_label.hide()
+        self.add(self.hbox)
+
+    def __repr__(self):
+        return f'<FeedsViewTagListboxRow - {self.title}>'
+
 
 class FeedsViewListbox(Gtk.ListBox):
-    def __init__(self, description=True, **kwargs):
+    def __init__(self, description=True, tags=False, **kwargs):
         super().__init__(**kwargs)
         self.description = description
         self.feedman = FeedsManager()
@@ -95,6 +135,19 @@ class FeedsViewListbox(Gtk.ListBox):
             self.on_feeds_pop
         )
 
+        if tags:
+            self.confman.connect(
+                'gfeeds_tags_append',
+                self.on_tags_append
+            )
+            self.confman.connect(
+                'gfeeds_tags_pop',
+                self.on_tags_pop
+            )
+
+            for tag in self.confman.conf['tags']:
+                self.on_tags_append(None, tag)
+
         self.set_sort_func(self.gfeeds_sort_func, None, False)
         self.set_header_func(separator_header_func)
 
@@ -103,6 +156,15 @@ class FeedsViewListbox(Gtk.ListBox):
 
     def on_feeds_append(self, caller, feed):
         self.add_feed(feed)
+
+    def on_tags_append(self, caller, tag):
+        self.add(FeedsViewTagListboxRow(tag))
+
+    def on_tags_pop(self, caller, tag):
+        for row in self.get_children():
+            if row.IS_TAG and row.tag == tag:
+                self.remove(row)
+                break
 
     def add_feed(self, feed):
         self.add(FeedsViewListboxRow(feed, self.description))
@@ -115,6 +177,9 @@ class FeedsViewListbox(Gtk.ListBox):
         if row.IS_ALL:
             self.confman.emit('gfeeds_filter_changed', None)
             return
+        if row.IS_TAG:
+            self.confman.emit('gfeeds_filter_changed', [row.tag])
+            return
         self.confman.emit('gfeeds_filter_changed', row.feed)
 
     def remove_feed(self, feed):
@@ -125,13 +190,10 @@ class FeedsViewListbox(Gtk.ListBox):
                     break
 
     def empty(self, *args):
-        while True:
-            row = self.get_row_at_index(1)
-            if row:
-                if not row.IS_ALL:
-                    self.remove(row)
-            else:
-                break
+        rows = self.get_children()
+        for row in rows:
+            if row and not row.IS_ALL and not row.IS_TAG:
+                self.remove(row)
 
     def row_all_activate(self, skip=False):
         if skip:
@@ -145,13 +207,17 @@ class FeedsViewListbox(Gtk.ListBox):
             return False
         if row2.IS_ALL:
             return True
-        return row1.feed.title.lower() > row2.feed.title.lower()
+        if row1.IS_TAG and not row2.IS_TAG:
+            return False
+        if row2.IS_TAG and not row1.IS_TAG:
+            return True
+        return row1.title.lower() > row2.title.lower()
 
 
 class FeedsViewScrolledWindow(Gtk.ScrolledWindow):
-    def __init__(self, description=True, **kwargs):
+    def __init__(self, description=True, tags=False, **kwargs):
         super().__init__(**kwargs)
-        self.listbox = FeedsViewListbox(description)
+        self.listbox = FeedsViewListbox(description, tags)
         self.all_row = FeedsViewAllListboxRow()
         self.listbox.add(self.all_row)
         self.listbox.select_row(self.all_row)
@@ -169,7 +235,10 @@ class FeedsViewScrolledWindow(Gtk.ScrolledWindow):
 class FeedsViewPopover(Gtk.Popover):
     def __init__(self, relative_to, **kwargs):
         super().__init__(**kwargs)
-        self.scrolled_win = FeedsViewScrolledWindow(description=False)
+        self.scrolled_win = FeedsViewScrolledWindow(
+            description=False,
+            tags=True
+        )
         self.add(self.scrolled_win)
         self.set_modal(True)
         self.set_relative_to(relative_to)

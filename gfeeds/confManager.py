@@ -53,6 +53,16 @@ class ConfManagerSignaler(GObject.Object):
             None,
             (str,)
         ),
+        'gfeeds_tags_append': (
+            GObject.SignalFlags.RUN_FIRST,
+            None,
+            (str,)
+        ),
+        'gfeeds_tags_pop': (
+            GObject.SignalFlags.RUN_FIRST,
+            None,
+            (str,)
+        ),
     }
 
 
@@ -172,6 +182,7 @@ class ConfManager(metaclass=Singleton):
         lowercase_tags = [t.lower() for t in self.conf['tags']]
         if tag.lower() not in lowercase_tags:
             self.conf['tags'].append(tag)
+            self.emit('gfeeds_tags_append', tag)
         for feed in target_feeds:
             if 'tags' not in self.conf['feeds'][feed].keys():
                 self.conf['feeds'][feed]['tags'] = []
@@ -182,6 +193,7 @@ class ConfManager(metaclass=Singleton):
     def delete_tag(self, tag: str):
         while tag in self.conf['tags']:
             self.conf['tags'].remove(tag)
+        self.emit('gfeeds_tags_pop', tag)
         print(self.conf['tags'])
         self.remove_tag(tag, self.conf['feeds'].keys())
         # self.save_conf()  # done by remove_tags

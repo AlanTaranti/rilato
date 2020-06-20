@@ -4,6 +4,7 @@ from gfeeds.confManager import ConfManager
 from gfeeds.feeds_manager import FeedsManager
 from gfeeds.sidebar_row import GFeedsSidebarRow
 from gfeeds.listbox_tools import separator_header_func
+from gfeeds.rss_parser import FakeFeed, FeedItem
 
 
 class GFeedsSidebarListBox(Gtk.ListBox):
@@ -18,7 +19,7 @@ class GFeedsSidebarListBox(Gtk.ListBox):
             'gfeeds_new_first_changed',
             self.set_sort_from_confman
         )
-        self.selected_feed = None
+        self.selected_feeds = []
         self.set_filter_func(self.gfeeds_sidebar_filter_func, None, False)
         self.confman.connect(
             'gfeeds_filter_changed',
@@ -62,15 +63,28 @@ class GFeedsSidebarListBox(Gtk.ListBox):
             self.on_right_click(event, event.x, event.y)
 
     def change_filter(self, caller, n_filter):
-        self.selected_feed = n_filter
+        if n_filter is None:
+            self.selected_feeds = []
+        elif isinstance(n_filter, list):
+            n_filter = n_filter[0]
+            # filter by tag
+            self.selected_feeds = [
+                f for f in self.confman.conf['feeds'].keys()
+                if 'tags' in self.confman.conf['feeds'][f].keys() and
+                n_filter in self.confman.conf['feeds'][f]['tags']
+            ]
+        else:
+            self.selected_feeds = [n_filter.rss_link]
         self.invalidate_filter()
 
     def gfeeds_sidebar_filter_func(self, row, data, notify_destroy):
         toret = False
-        if not self.selected_feed:
+        if isinstance(row.feeditem.parent_feed, FakeFeed):
+            toret = True
+        elif len(self.selected_feeds) <= 0:
             toret = True
         else:
-            toret = row.feeditem.parent_feed == self.selected_feed
+            toret = row.feeditem.parent_feed.rss_link in self.selected_feeds
         return row.is_selected() or (
             toret and (
                 self.confman.conf['show_read_items'] or
