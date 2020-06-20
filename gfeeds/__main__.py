@@ -225,23 +225,9 @@ class GFeedsApplication(Gtk.Application):
         self.add_window(self.window)
         stylecontext = Gtk.StyleContext()
         provider = Gtk.CssProvider()
-        provider.load_from_data('''
-            .notheaderbar {
-                border-radius: 0px;
-                background-color: @theme_bg_color;
-            }
-            infobar.warning {
-                background-color: #c64600;
-            }
-            .webview-filler-title {
-                font-weight: 300;
-                font-size: 24pt;
-                letter-spacing: 0.2rem;
-            }
-            .force-background {
-                background-color: @theme_bg_color;
-            }
-        '''.encode())
+        provider.load_from_resource(
+            '/org/gabmus/gfeeds/ui/gtk_style.css'
+        )
         stylecontext.add_provider_for_screen(
             Gdk.Screen.get_default(),
             provider,

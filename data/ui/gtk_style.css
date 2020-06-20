@@ -1,0 +1,15 @@
+.notheaderbar {
+    border-radius: 0px;
+    background-color: @theme_bg_color;
+}
+infobar.warning {
+    background-color: #c64600;
+}
+.webview-filler-title {
+    font-weight: 300;
+    font-size: 24pt;
+    letter-spacing: 0.2rem;
+}
+.force-background {
+    background-color: @theme_bg_color;
+}
