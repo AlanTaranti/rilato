@@ -1,5 +1,5 @@
 from gettext import gettext as _
-from gi.repository import Gtk, Gdk
+from gi.repository import Gtk, Gdk, GObject
 from xml.sax.saxutils import escape
 from gfeeds.confManager import ConfManager
 from gfeeds.feeds_manager import FeedsManager
@@ -8,10 +8,193 @@ from gfeeds.feeds_view import (
     FeedsViewListboxRow
 )
 from gfeeds.scrolled_message_dialog import ScrolledMessageDialog
+from functools import reduce
+from operator import or_
+
+
+class ManageTagsListboxRow(Gtk.ListBoxRow):
+    __gsignals__ = {
+        'tag_deleted': (
+            GObject.SignalFlags.RUN_FIRST,
+            None,
+            (str,)  # tag deleted
+        ),
+    }
+
+    def __init__(self, tag, active=True, **kwargs):
+        super().__init__(**kwargs)
+        self.builder = Gtk.Builder.new_from_resource(
+            '/org/gabmus/gfeeds/ui/manage_tags_listbox_row_content.glade'
+        )
+        self.tag = tag
+        self.main_box = self.builder.get_object('main_box')
+        self.label = self.builder.get_object('label')
+        self.checkbox = self.builder.get_object('checkbox')
+        self.delete_btn = self.builder.get_object('delete_btn')
+        self.checkbox.set_active(active)
+        self.label.set_text(self.tag)
+
+        self.checkbox_handler_id = self.checkbox.connect(
+            'toggled',
+            self.on_checkbox_toggled
+        )
+
+        self.delete_btn.connect(
+            'clicked',
+            lambda *args: self.emit('tag_deleted', self.tag)
+        )
+
+        self.add(self.main_box)
+
+    def on_checkbox_toggled(self, checkbox):
+        with checkbox.handler_block(self.checkbox_handler_id):
+            checkbox.set_inconsistent(False)
+            checkbox.set_active(not checkbox.get_active())
+        self.emit('activate')
+
+
+class ManageTagsPopover(Gtk.Popover):
+    __gsignals__ = {
+        'new_tag_added': (
+            GObject.SignalFlags.RUN_FIRST,
+            None,
+            (str,)  # tag added
+        ),
+        # removed or deleted?
+        # removed: removed from selected feeds
+        # deleted: deleted from the whole app
+        'tag_removed': (
+            GObject.SignalFlags.RUN_FIRST,
+            None,
+            (str,)  # tag removed
+        ),
+        'tag_deleted': (
+            GObject.SignalFlags.RUN_FIRST,
+            None,
+            (str,)  # tag deleted
+        ),
+    }
+
+    def __init__(self, relative_to, window, **kwargs):
+        super().__init__(**kwargs)
+        self.builder = Gtk.Builder.new_from_resource(
+            '/org/gabmus/gfeeds/ui/manage_tags_popover_content.glade'
+        )
+        self.confman = ConfManager()
+        self.relative_to = relative_to
+        self.window = window
+        self.set_relative_to(self.relative_to)
+        self.set_modal(True)
+        self.main_box = self.builder.get_object('main_box')
+        self.add_tag_btn = self.builder.get_object('add_tag_btn')
+        self.tags_entry = self.builder.get_object('tags_entry')
+        self.tags_listbox = self.builder.get_object('tags_listbox')
+
+        self.tags_listbox.connect(
+            'row-activated',
+            self.on_tags_listbox_row_activated
+        )
+
+        self.tags_entry.connect('changed', self.on_tags_entry_changed)
+        self.tags_entry.connect(
+            'activate',
+            lambda *args: self.on_add_new_tag(
+                self.tags_entry.get_text().strip()
+            )
+        )
+        self.add_tag_btn.connect(
+            'clicked',
+            lambda *args: self.on_add_new_tag(
+                self.tags_entry.get_text().strip()
+            )
+        )
+
+        self.add(self.main_box)
+        self.populate_listbox()
+
+    def populate_listbox(self):
+        while True:
+            row = self.tags_listbox.get_row_at_index(0)
+            if row:
+                self.remove(row)
+            else:
+                break
+        for tag in self.confman.conf['tags']:
+            self.tags_listbox_add_row(tag, False)
+        self.tags_listbox.show_all()
+
+    def on_tags_listbox_row_activated(self, listbox, row):
+        with row.checkbox.handler_block(row.checkbox_handler_id):
+            row.checkbox.set_inconsistent(False)
+            row.checkbox.set_active(not row.checkbox.get_active())
+        if row.checkbox.get_active():
+            self.on_add_new_tag(row.tag)
+        else:
+            self.emit('tag_removed', row.tag)
+
+    def tags_listbox_add_row(self, tag: str, show_all=True):
+        n_row = ManageTagsListboxRow(tag)
+        self.tags_listbox.add(n_row)
+        n_row.connect('tag_deleted', self.on_tag_deleted)
+        if show_all:
+            self.tags_listbox.show_all()
+
+    def tags_listbox_get_row_by_tag(self, tag):
+        for row in self.tags_listbox.get_children():
+            if row.tag == tag:
+                return row
+        return None
+
+    def on_add_new_tag(self, n_tag):
+        if n_tag == '':
+            return
+        self.tags_entry.set_text('')
+        self.emit('new_tag_added', n_tag)
+        if len(self.tags_listbox.get_children()) <= 0 or not reduce(or_, [
+                row.tag.lower() == n_tag.lower()
+                for row in self.tags_listbox.get_children()
+        ]):
+            self.tags_listbox_add_row(n_tag)
+
+    def on_tags_entry_changed(self, *args):
+        self.add_tag_btn.set_sensitive(
+            self.tags_entry.get_text().strip() != ''
+        )
+
+    def on_tag_deleted(self, caller, tag):
+        self.tags_listbox.remove(caller)
+        self.emit('tag_deleted', tag)
+
+    def popup(self, *args):
+        self.add_tag_btn.set_sensitive(False)
+        self.tags_entry.set_text('')
+        selected_feeds = [f.rss_link for f in self.window.get_selected_feeds()]
+        for tag in self.confman.conf['tags']:
+            all_have_tag = True
+            some_have_tag = False
+            for feed in selected_feeds:
+                if (
+                        'tags' in self.confman.conf['feeds'][feed].keys() and
+                        tag in self.confman.conf['feeds'][feed]['tags']
+                ):
+                    some_have_tag = True
+                else:
+                    all_have_tag = False
+            t_row = self.tags_listbox_get_row_by_tag(tag)
+            if t_row is not None:
+                with t_row.checkbox.handler_block(t_row.checkbox_handler_id):
+                    t_row.checkbox.set_inconsistent(False)
+                    if some_have_tag and not all_have_tag:
+                        t_row.checkbox.set_inconsistent(True)
+                    elif all_have_tag:
+                        t_row.checkbox.set_active(True)
+                    else:
+                        t_row.checkbox.set_active(False)
+        super().popup()
 
 
 class ManageFeedsHeaderbar(Gtk.HeaderBar):
-    def __init__(self, **kwargs):
+    def __init__(self, window, **kwargs):
         super().__init__(**kwargs)
         self.confman = ConfManager()
 
@@ -30,10 +213,31 @@ class ManageFeedsHeaderbar(Gtk.HeaderBar):
         )
         self.delete_btn.set_tooltip_text(_('Delete selected feeds'))
         self.delete_btn.get_style_context().add_class('destructive-action')
-        self.delete_btn.set_sensitive(False)
+
+        self.tags_btn = Gtk.Button.new_from_icon_name(
+            'tag-symbolic',
+            Gtk.IconSize.BUTTON
+        )
+        self.tags_btn.set_tooltip_text(_('Manage tags for selected feeds'))
 
         self.pack_end(self.delete_btn)
         self.pack_start(self.select_all_btn)
+        self.pack_start(self.tags_btn)
+
+        self.set_actions_sensitive(False)
+
+        self.manage_tags_popover = ManageTagsPopover(
+            self.tags_btn,
+            window
+        )
+        self.tags_btn.connect(
+            'clicked',
+            lambda *args: self.manage_tags_popover.popup()
+        )
+
+    def set_actions_sensitive(self, state):
+        for w in (self.delete_btn, self.tags_btn):
+            w.set_sensitive(state)
 
 
 class ManageFeedsListboxRow(FeedsViewListboxRow):
@@ -98,7 +302,7 @@ class GFeedsManageFeedsWindow(Gtk.Window):
         self.main_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
         self.scrolled_window = ManageFeedsScrolledWindow()
         self.listbox = self.scrolled_window.listbox
-        self.headerbar = ManageFeedsHeaderbar()
+        self.headerbar = ManageFeedsHeaderbar(self)
 
         self.headerbar.delete_btn.connect(
             'clicked',
@@ -132,21 +336,53 @@ class GFeedsManageFeedsWindow(Gtk.Window):
         self.set_modal(True)
         self.set_transient_for(self.appwindow)
 
+        self.headerbar.manage_tags_popover.connect(
+            'new_tag_added',
+            self.on_new_tag_added
+        )
+        self.headerbar.manage_tags_popover.connect(
+            'tag_removed',
+            self.on_tag_removed
+        )
+        self.headerbar.manage_tags_popover.connect(
+            'tag_deleted',
+            self.on_tag_deleted
+        )
+
+    def on_new_tag_added(self, caller, tag):
+        self.confman.add_tag(
+            tag,
+            [feed.rss_link for feed in self.get_selected_feeds()]
+        )
+
+    def on_tag_removed(self, caller, tag):
+        self.confman.remove_tag(
+            tag,
+            [feed.rss_link for feed in self.get_selected_feeds()]
+        )
+
+    def on_tag_deleted(self, caller, tag):
+        self.confman.delete_tag(tag)
+
     def present(self, *args, **kwargs):
         super().present(*args, **kwargs)
         self.show_all()
 
+    def get_selected_feeds(self):
+        return [
+            row.feed
+            for row in self.listbox.get_children()
+            if row.checkbox.get_active()
+        ]
+
     def on_delete_clicked(self, *args):
-        selected_feeds = []
-        for row in self.listbox.get_children():
-            if row.checkbox.get_active():
-                selected_feeds.append(row.feed)
+        selected_feeds = self.get_selected_feeds()
         dialog = DeleteFeedsConfirmMessageDialog(self, selected_feeds)
         res = dialog.run()
         dialog.close()
         if res == Gtk.ResponseType.YES:
             self.feedman.delete_feeds(selected_feeds)
-            self.headerbar.delete_btn.set_sensitive(False)
+            self.headerbar.set_actions_sensitive(False)
 
     def on_select_all_clicked(self, *args):
         unselect = True
@@ -161,6 +397,6 @@ class GFeedsManageFeedsWindow(Gtk.Window):
     def on_row_activated(self, listbox, activated_row):
         for row in listbox.get_children():
             if row.checkbox.get_active():
-                self.headerbar.delete_btn.set_sensitive(True)
+                self.headerbar.set_actions_sensitive(True)
                 return
-        self.headerbar.delete_btn.set_sensitive(False)
+        self.headerbar.set_actions_sensitive(False)

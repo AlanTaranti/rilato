@@ -21,6 +21,8 @@
     <file preprocess="xml-stripblanks">ui/webview_filler.glade</file>
     <file preprocess="xml-stripblanks">ui/webview_with_notification.glade</file>
     <file preprocess="xml-stripblanks">ui/scrolled_label.glade</file>
+    <file preprocess="xml-stripblanks">ui/manage_tags_popover_content.glade</file>
+    <file preprocess="xml-stripblanks">ui/manage_tags_listbox_row_content.glade</file>
 
     <file compressed="true">ui/gtk_style.css</file>
 
@@ -32,6 +34,7 @@
     <file preprocess="xml-stripblanks">icons/globe-alt-symbolic.svg</file>
     <file preprocess="xml-stripblanks">icons/org.gabmus.gfeeds-symbolic.svg</file>
     <file preprocess="xml-stripblanks">icons/org.gabmus.gfeeds.svg</file>
+    <file preprocess="xml-stripblanks">icons/tag-symbolic.svg</file>
 
   </gresource>
 </gresources>

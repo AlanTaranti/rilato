@@ -80,7 +80,8 @@ class ConfManager(metaclass=Singleton):
         'default_view': 'webview',
         'open_links_externally': True,
         'full_feed_name': False,
-        'refresh_on_startup': False
+        'refresh_on_startup': False,
+        'tags': []
     }
 
     def __init__(self):
@@ -166,6 +167,32 @@ class ConfManager(metaclass=Singleton):
     @property
     def max_article_age(self) -> timedelta:
         return timedelta(days=self.conf['max_article_age_days'])
+
+    def add_tag(self, tag: str, target_feeds=[]):
+        lowercase_tags = [t.lower() for t in self.conf['tags']]
+        if tag.lower() not in lowercase_tags:
+            self.conf['tags'].append(tag)
+        for feed in target_feeds:
+            if 'tags' not in self.conf['feeds'][feed].keys():
+                self.conf['feeds'][feed]['tags'] = []
+            if tag not in self.conf['feeds'][feed]['tags']:
+                self.conf['feeds'][feed]['tags'].append(tag)
+        self.save_conf()
+
+    def delete_tag(self, tag: str):
+        while tag in self.conf['tags']:
+            self.conf['tags'].remove(tag)
+        print(self.conf['tags'])
+        self.remove_tag(tag, self.conf['feeds'].keys())
+        # self.save_conf()  # done by remove_tags
+
+    def remove_tag(self, tag: str, target_feeds: list):
+        for feed in target_feeds:
+            if 'tags' not in self.conf['feeds'][feed].keys():
+                continue
+            if tag in self.conf['feeds'][feed]['tags']:
+                self.conf['feeds'][feed]['tags'].remove(tag)
+        self.save_conf()
 
     def dump_read_items_to_conf(self, *args):
         self.conf['read_items'] = self.read_feeds_items.get_list()

@@ -7,8 +7,12 @@ infobar.warning {
 }
 .webview-filler-title {
     font-weight: 300;
-    font-size: 24pt;
-    letter-spacing: 0.2rem;
+    font-size: 20pt;
+    letter-spacing: 0.1rem;
+}
+.manage-tags-filler-title {
+    font-weight: 300;
+    font-size: 18pt;
 }
 .force-background {
     background-color: @theme_bg_color;
