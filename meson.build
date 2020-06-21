@@ -52,13 +52,13 @@ subdir('po')
 
 meson.add_install_script('meson_post_install.py')
 
-envdata = environment()
-python_paths = [join_paths(meson.current_build_dir(), '..')]
-envdata.append('PYTHONPATH', python_paths)
-envdata.append('TESTS_BUILDDIR', meson.current_build_dir())
-test(
-  'unit-tests',
-  import('python').find_installation('python3'),
-  args: ['-m', 'unittest', 'tests'],
-  env: envdata
-)
+# envdata = environment()
+# python_paths = [join_paths(meson.current_build_dir(), '..')]
+# envdata.append('PYTHONPATH', python_paths)
+# envdata.append('TESTS_BUILDDIR', meson.current_build_dir())
+# test(
+#   'unit-tests',
+#   import('python').find_installation('python3'),
+#   args: ['-m', 'unittest', 'tests'],
+#   env: envdata
+# )
