@@ -121,7 +121,9 @@ class FakeFeed:
         return f'FakeFeed Object `{self.title}`'
 
 
-def parse_feed(feed_str: str) -> Optional[str]:
+def parse_feed(feed_str: str, no_preprocessing=False) -> Optional[str]:
+    if no_preprocessing:
+        return feedparser.parse(feed_str)
     udammit = UnicodeDammit(feed_str)
     feed_str = udammit.unicode_markup
     feed_str = feed_str.replace(
@@ -150,18 +152,19 @@ def parse_feed(feed_str: str) -> Optional[str]:
 
 
 class Feed:
-    def __init__(self, download_res):
+    def __init__(self, download_res, no_preprocessing=False):
         self.is_null = False
         self.error = None
         if download_res[0] is False:  # indicates failed download
             self.is_null = True
             self.error = download_res[1]
+            print(download_res)
             return
         feedpath = download_res[0]
         self.rss_link = download_res[1]
         with open(feedpath, 'r') as fd:
             feed_str = fd.read()
-        self.fp_feed = parse_feed(feed_str)
+        self.fp_feed = parse_feed(feed_str, no_preprocessing)
         if self.fp_feed is None:
             self.is_null = True
             self.error = _('Errors while parsing feed `{0}`').format(
@@ -172,6 +175,10 @@ class Feed:
         self.confman = ConfManager()
         self.init_time = pytz.UTC.localize(datetime.utcnow())
 
+        self.fp_feed['feed'] = self.fp_feed.get(
+            'feed',
+            self.fp_feed.get('channel', {})
+        )
         self.title = self.fp_feed.feed.get('title', '')
         self.link = self.fp_feed.feed.get('link', '')
         self.description = self.fp_feed.feed.get('subtitle', self.link)
@@ -202,6 +209,8 @@ class Feed:
             self.error = _(
                 '`{0}` may not be an RSS or Atom feed'
             ).format(self.rss_link)
+            if not no_preprocessing:
+                self.__init__(download_res, no_preprocessing=True)
             return
 
         if not self.title:
