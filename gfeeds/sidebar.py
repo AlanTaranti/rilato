@@ -4,7 +4,7 @@ from gfeeds.confManager import ConfManager
 from gfeeds.feeds_manager import FeedsManager
 from gfeeds.sidebar_row import GFeedsSidebarRow
 from gfeeds.listbox_tools import separator_header_func
-from gfeeds.rss_parser import FakeFeed, FeedItem
+from gfeeds.rss_parser import FakeFeed
 
 
 class GFeedsSidebarListBox(Gtk.ListBox):
