@@ -35,6 +35,7 @@ from gfeeds.opml_file_chooser import (
 from gfeeds.manage_feeds_window import GFeedsManageFeedsWindow
 from gfeeds.confirm_add_dialog import GFeedsConfirmAddDialog
 from gfeeds.shortcuts_window import show_shortcuts_window
+from gfeeds.rss_link_from_file import get_feed_link_from_file
 
 
 class GFeedsApplication(Gtk.Application):
@@ -249,14 +250,14 @@ class GFeedsApplication(Gtk.Application):
                             dialog.close()
                             if res == Gtk.ResponseType.YES:
                                 add_feeds_from_opml(abspath)
-                        elif (
-                                abspath[-4:].lower() in ('.rss', '.xml') or
-                                abspath[-5:].lower() == '.atom'
-                        ):
-                            print(
-                                'Adding single feeds from file not supported'
-                            )
-                elif (
+                        else:
+                            # why no check for extension here?
+                            # some websites have feeds without extension
+                            # dumb but that's what it is
+                            self.args.argurl = get_feed_link_from_file(
+                                abspath
+                            ) or ''
+                if (
                         self.args.argurl[:7].lower() == 'http://' or
                         self.args.argurl[:8].lower() == 'https://'
                 ):
@@ -269,6 +270,8 @@ class GFeedsApplication(Gtk.Application):
                     dialog.close()
                     if res == Gtk.ResponseType.YES:
                         self.feedman.add_feed(self.args.argurl)
+                else:
+                    print('This file is not supported')
 
     def do_command_line(self, args: list):
         """
