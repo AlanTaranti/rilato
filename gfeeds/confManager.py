@@ -210,9 +210,10 @@ class ConfManager(metaclass=Singleton):
         self.conf['read_items'] = self.read_feeds_items.get_list()
 
     def save_conf(self, *args):
-        with open(self.path, 'r') as fd:
-            if json.loads(fd.read()) == self.conf:
-                return
+        if isfile(self.path):
+            with open(self.path, 'r') as fd:
+                if json.loads(fd.read()) == self.conf:
+                    return
         with open(self.path, 'w') as fd:
             fd.write(json.dumps(self.conf))
 
