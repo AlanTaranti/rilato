@@ -13,6 +13,7 @@ from gfeeds.confManager import ConfManager
 from gfeeds.sha import shasum
 from PIL import Image
 from bs4 import UnicodeDammit
+from typing import Optional
 
 
 def get_encoding(in_str):
@@ -120,6 +121,34 @@ class FakeFeed:
         return f'FakeFeed Object `{self.title}`'
 
 
+def parse_feed(feed_str: str) -> Optional[str]:
+    udammit = UnicodeDammit(feed_str)
+    feed_str = udammit.unicode_markup
+    feed_str = feed_str.replace(
+        get_encoding(feed_str),
+        'utf-8'
+    )
+    forbidden_namespaces = [
+        'atom',
+        'openSearch',
+        'thr'
+    ]
+    for fns in forbidden_namespaces:
+        feed_str = feed_str.replace(
+            f'<{fns}:', '<'
+        )
+        feed_str = feed_str.replace(
+            f'</{fns}:', '</'
+        )
+    try:
+        fp_feed = feedparser.parse(feed_str)
+        return fp_feed
+    except Exception:
+        import traceback
+        traceback.print_exc()
+        return None
+
+
 class Feed:
     def __init__(self, download_res):
         self.is_null = False
@@ -129,37 +158,17 @@ class Feed:
             self.error = download_res[1]
             return
         feedpath = download_res[0]
+        self.rss_link = download_res[1]
         with open(feedpath, 'r') as fd:
             feed_str = fd.read()
-        udammit = UnicodeDammit(feed_str)
-        feed_str = udammit.unicode_markup
-        feed_str = feed_str.replace(
-            get_encoding(feed_str),
-            'utf-8'
-        )
-        forbidden_namespaces = [
-            'atom',
-            'openSearch',
-            'thr'
-        ]
-        for fns in forbidden_namespaces:
-            feed_str = feed_str.replace(
-                f'<{fns}:', '<'
-            )
-            feed_str = feed_str.replace(
-                f'</{fns}:', '</'
-            )
-        self.rss_link = download_res[1]
-        try:
-            self.fp_feed = feedparser.parse(feed_str)
-        except Exception:
-            import traceback
-            traceback.print_exc()
+        self.fp_feed = parse_feed(feed_str)
+        if self.fp_feed is None:
             self.is_null = True
             self.error = _('Errors while parsing feed `{0}`').format(
                 self.rss_link
             )
             return
+
         self.confman = ConfManager()
         self.init_time = pytz.UTC.localize(datetime.utcnow())
 
