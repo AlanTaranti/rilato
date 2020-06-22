@@ -95,6 +95,12 @@ class ManageTagsPopover(Gtk.Popover):
             self.on_tags_listbox_row_activated
         )
 
+        self.tags_listbox.set_sort_func(
+            self.tags_listbox_sorting_func,
+            None,
+            False
+        )
+
         self.tags_entry.connect('changed', self.on_tags_entry_changed)
         self.tags_entry.connect(
             'activate',
@@ -111,6 +117,9 @@ class ManageTagsPopover(Gtk.Popover):
 
         self.add(self.main_box)
         self.populate_listbox()
+
+    def tags_listbox_sorting_func(self, row1, row2, data, notify_destroy):
+        return row1.tag.lower() > row2.tag.lower()
 
     def populate_listbox(self):
         while True:
