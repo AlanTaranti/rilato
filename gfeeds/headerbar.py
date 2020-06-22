@@ -26,6 +26,7 @@ class AddFeedPopover(Gtk.Popover):
             self.on_confirm_btn_clicked
         )
         self.url_entry = self.builder.get_object('url_entry')
+        self.url_entry.connect('activate', self.on_url_entry_activate)
         self.already_subscribed_revealer = self.builder.get_object(
             'already_subscribed_revealer'
         )
@@ -36,6 +37,10 @@ class AddFeedPopover(Gtk.Popover):
             self.already_subscribed_revealer.set_reveal_child(False)
         )
         self.add(self.container_box)
+
+    def on_url_entry_activate(self, *args):
+        if self.confirm_btn.get_sensitive():
+            self.on_confirm_btn_clicked(self.confirm_btn)
 
     def on_relative_to_clicked(self, *args):
         self.popup()
