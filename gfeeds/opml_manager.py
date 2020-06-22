@@ -12,9 +12,15 @@ feedman = FeedsManager()
 
 
 def __add_feeds_from_opml_callback(n_feeds_urls_l):
-    for url in n_feeds_urls_l:
+    for tag in [t for f in n_feeds_urls_l for t in f['tags']]:
+        confman.add_tag(tag)
+    for f in n_feeds_urls_l:
+        url = f['feed']
         if url not in confman.conf['feeds'].keys():
-            confman.conf['feeds'][url] = {}
+            confman.conf['feeds'][url] = {
+                'tags': f['tags']
+            }
+    confman.save_conf()
     feedman.refresh()
 
 
@@ -37,7 +43,9 @@ def opml_to_rss_list(opml_path):
         return []
     try:
         lp_opml = listparser.parse(opml_path)
-        n_feeds_urls_l = [f['url'] for f in lp_opml['feeds']]
+        n_feeds_urls_l = [
+            {'feed': f['url'], 'tags': f['tags']} for f in lp_opml['feeds']
+        ]
         return n_feeds_urls_l
     except Exception:
         print(_('Error parsing OPML file `{0}`').format(opml_path))

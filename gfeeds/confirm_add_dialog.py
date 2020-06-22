@@ -21,7 +21,7 @@ class GFeedsConfirmAddDialog(ScrolledMessageDialog):
 
         if not http:
             self.format_secondary_markup(
-                escape(opml_to_rss_list(f_path))
+                escape([f['feed'] for f in opml_to_rss_list(f_path)])
             )
         else:
             self.format_secondary_markup(
