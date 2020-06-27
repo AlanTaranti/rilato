@@ -177,7 +177,11 @@ class GFeedsApplication(Gtk.Application):
 
     def set_all_read(self, *args):
         for row in self.window.sidebar.listbox.get_children():
-            row.popover.set_read(True)
+            # check if row is visible in listbox
+            if self.window.sidebar.listbox.gfeeds_sidebar_filter_func(
+                    row, None, None
+            ):
+                row.popover.set_read(True)
 
     def set_all_unread(self, *args):
         for row in self.window.sidebar.listbox.get_children():
