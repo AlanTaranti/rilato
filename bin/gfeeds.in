@@ -46,8 +46,14 @@ signal.signal(signal.SIGINT, signal.SIG_DFL)
 # they need locale
 # don't ask me, it's effin weird
 # I copied this from uberwriter
-locale.textdomain('gfeeds')
-locale.bindtextdomain('gfeeds', localedir)
+try:
+    locale.bindtextdomain('gfeeds', localedir)
+    locale.textdomain('gfeeds')
+except AttributeError as e:
+    # Python built without gettext support doesn't have bindtextdomain()
+    # and textdomain()
+    print("Couldn't bind the gettext translation domain. Some translations"
+    " won't work. Error: \n{}".format(e))
 gettext.textdomain('gfeeds')
 gettext.bindtextdomain('gfeeds', localedir)
 
