@@ -16,6 +16,12 @@
         "--talk-name=ca.desrt.dconf",
         "--env=DCONF_USER_CONFIG_DIR=.config/dconf"
     ],
+    "cleanup": [
+        "/usr/lib/python3.*/site-packages/httpretty*",
+        "/usr/lib/python3.*/site-packages/sure*",
+        "/usr/lib/python3.*/site-packages/mock*",
+        "/usr/lib/python3.*/site-packages/parameterized*"
+    ],
     "modules": [
         {
             "name": "libhandy",
@@ -679,6 +685,113 @@
                     "type": "archive",
                     "url": "https://files.pythonhosted.org/packages/52/ba/0e121661f529e7f456e903bf5c4d255b8051d8ce2b5e629c5212efe4c3f1/beautifulsoup4-4.8.2.tar.gz",
                     "sha256": "05fd825eb01c290877657a56df4c6e4c311b3965bda790c613a3d6fb01a5462a"
+                },
+                {
+                    "type": "shell",
+                    "commands": [
+                        "sed -i 's/if not platform_/if not dirs/' setup.py"
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "python-httpretty",
+            "buildsystem": "simple",
+            "ensure-writable": [
+                "/lib/python*/site-packages/easy-install.pth",
+                "/lib/python*/site-packages/setuptools.pth",
+                "/app/lib/python*/site-packages/easy-install.pth",
+                "/app/lib/python*/site-packages/setuptools.pth"
+            ],
+            "build-commands": [
+                "python3 setup.py install --prefix=/app --root=/"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/gabrielfalcao/HTTPretty",
+                    "tag": "1.0.2",
+                    "commit": "cd6559d8001bb21163c6d66436e482fc043131ce"
+                },
+                {
+                    "type": "shell",
+                    "commands": [
+                        "sed -i 's/if not platform_/if not dirs/' setup.py"
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "python-mock",
+            "buildsystem": "simple",
+            "ensure-writable": [
+                "/lib/python*/site-packages/easy-install.pth",
+                "/lib/python*/site-packages/setuptools.pth",
+                "/app/lib/python*/site-packages/easy-install.pth",
+                "/app/lib/python*/site-packages/setuptools.pth"
+            ],
+            "build-commands": [
+                "python3 setup.py install --prefix=/app --root=/"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://files.pythonhosted.org/packages/2e/35/594f501b2a0fb3732c8190ca885dfdf60af72d678cd5fa8169c358717567/mock-4.0.2.tar.gz",
+                    "sha256": "dd33eb70232b6118298d516bbcecd26704689c386594f0f3c4f13867b2c56f72"
+                },
+                {
+                    "type": "shell",
+                    "commands": [
+                        "sed -i 's/if not platform_/if not dirs/' setup.py"
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "python-sure",
+            "buildsystem": "simple",
+            "ensure-writable": [
+                "/lib/python*/site-packages/easy-install.pth",
+                "/lib/python*/site-packages/setuptools.pth",
+                "/app/lib/python*/site-packages/easy-install.pth",
+                "/app/lib/python*/site-packages/setuptools.pth"
+            ],
+            "build-commands": [
+                "python3 setup.py install --prefix=/app --root=/"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/gabrielfalcao/sure",
+                    "tag": "v1.4.7",
+                    "commit": "4370d1280127ee6afd15ea7485342249b47651af"
+                },
+                {
+                    "type": "shell",
+                    "commands": [
+                        "sed -i 's/if not platform_/if not dirs/' setup.py"
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "python-parameterized",
+            "buildsystem": "simple",
+            "ensure-writable": [
+                "/lib/python*/site-packages/easy-install.pth",
+                "/lib/python*/site-packages/setuptools.pth",
+                "/app/lib/python*/site-packages/easy-install.pth",
+                "/app/lib/python*/site-packages/setuptools.pth"
+            ],
+            "build-commands": [
+                "python3 setup.py install --prefix=/app --root=/"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/wolever/parameterized",
+                    "tag": "v0.7.4",
+                    "commit": "ff5a1dac3a704777100380229dce4ea149da8d41"
                 },
                 {
                     "type": "shell",
