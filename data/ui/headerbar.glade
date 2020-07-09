@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.22.1 -->
+<!-- Generated with glade 3.36.0 -->
 <interface>
   <requires lib="gtk+" version="3.20"/>
   <requires lib="libhandy" version="0.0"/>
-  <object class="GtkHeaderBar" id="left_headerbar">
+  <object class="HdyHeaderBar" id="left_headerbar">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>
@@ -20,6 +20,9 @@
           </object>
         </child>
       </object>
+      <packing>
+        <property name="position">1</property>
+      </packing>
     </child>
     <child>
       <object class="GtkBox" id="refresh_btn_box">
@@ -33,9 +36,6 @@
       <packing>
         <property name="position">1</property>
       </packing>
-    </child>
-    <child type="title">
-      <placeholder/>
     </child>
     <child>
       <object class="GtkButton" id="menu_btn">
@@ -97,9 +97,24 @@
       </packing>
     </child>
   </object>
-  <object class="GtkHeaderBar" id="right_headerbar">
+  <object class="GtkHeaderBar" id="right_headerbar_old">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
+    <child>
+      <placeholder/>
+    </child>
+  </object>
+  <object class="HdySqueezer" id="right_headerbar_squeezer">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <child>
+      <placeholder/>
+    </child>
+  </object>
+  <object class="HdyHeaderBar" id="right_headerbar">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="custom_title">right_headerbar_squeezer</property>
     <child>
       <object class="GtkButton" id="back_btn">
         <property name="can_focus">True</property>
@@ -115,6 +130,9 @@
           </object>
         </child>
       </object>
+      <packing>
+        <property name="position">1</property>
+      </packing>
     </child>
     <child>
       <object class="GtkButton" id="view_mode_menu_btn">
@@ -159,6 +177,9 @@
       </packing>
     </child>
     <child>
+      <placeholder/>
+    </child>
+    <child>
       <object class="GtkButton" id="share_btn">
         <property name="visible">True</property>
         <property name="sensitive">False</property>
@@ -175,17 +196,8 @@
         </child>
       </object>
       <packing>
-        <property name="position">6</property>
+        <property name="position">3</property>
       </packing>
-    </child>
-    <child type="title">
-      <object class="HdySqueezer" id="right_headerbar_squeezer">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <child>
-          <placeholder/>
-        </child>
-      </object>
     </child>
     <child>
       <object class="GtkButton" id="open_externally_btn">

@@ -13,7 +13,7 @@ from gfeeds.webview import GFeedsWebView
 from gfeeds.stack_with_empty_state import StackWithEmptyState
 
 
-class GFeedsAppWindow(Gtk.ApplicationWindow):
+class GFeedsAppWindow(Handy.ApplicationWindow):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.confman = ConfManager()
@@ -180,6 +180,9 @@ class GFeedsAppWindow(Gtk.ApplicationWindow):
         self.bottom_bar.set_reveal(squeezed)
 
     def set_headerbar_or_titlebar(self, *args):
+        self.main_box.pack_start(self.headerbar, False, False, 0)
+        self.headerbar.set_vexpand(False)
+        return
         if self.confman.conf['enable_csd']:
             if self.headerbar in self.main_box.get_children():
                 self.main_box.remove(self.headerbar)
@@ -189,9 +192,10 @@ class GFeedsAppWindow(Gtk.ApplicationWindow):
                         self.headerbar
                 ]:
                     h.get_style_context().remove_class('notheaderbar')
-            self.set_titlebar(self.headerbar)
+            # self.add(self.headerbar)
+            self.main_box.pack_start(self.headerbar, False, False, 0)
         else:
-            self.set_titlebar(None)
+            # self.set_titlebar(None)
             self.headerbar.set_vexpand(False)
             self.main_box.pack_start(self.headerbar, False, False, 0)
             for h in [
@@ -273,7 +277,7 @@ class GFeedsAppWindow(Gtk.ApplicationWindow):
             self.headerbar.squeezer.set_child_enabled(
                 self.headerbar.stack_switcher, False
             )
-        self.headerbar.headergroup.set_focus(target)
+        elf.headerbar.headergroup.set_focus(target)
 
     def on_back_button_clicked(self, *args):
         self.leaflet.set_visible_child(self.sidebar_box)
