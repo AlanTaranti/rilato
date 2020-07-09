@@ -258,7 +258,7 @@ class GFeedsAppWindow(Gtk.ApplicationWindow):
     def on_main_leaflet_folded(self, *args):
         target = None
         # other = None
-        if self.leaflet.get_fold() == Handy.Fold.FOLDED:
+        if self.leaflet.get_folded():
             target = self.headerbar.leaflet.get_visible_child()
             self.headerbar.back_button.show()
             self.headerbar.stack_switcher.set_no_show_all(False)

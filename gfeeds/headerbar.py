@@ -182,7 +182,7 @@ class GFeedHeaderbar(Handy.TitleBar):
         self.squeezer.set_hexpand(False)
         self.nobox = Gtk.Label()
         self.nobox.set_size_request(1, -1)
-        self.stack_switcher = Handy.ViewSwitcher()
+        self.stack_switcher = Handy.ViewSwitcherTitle()
         self.stack_switcher.set_policy(Handy.ViewSwitcherPolicy.WIDE)
         self.stack_switcher.set_margin_start(12)
         self.stack_switcher.set_margin_end(12)

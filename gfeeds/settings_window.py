@@ -39,7 +39,7 @@ class PreferencesButtonRow(Handy.ActionRow):
         if button_style_class:
             self.button.get_style_context().add_class(button_style_class)
         self.button.connect('clicked', self.on_button_clicked)
-        self.add_action(self.button)
+        self.add(self.button)
         # You need to press the actual button
         # Avoids accidental presses
         # self.set_activatable_widget(self.button)
@@ -86,7 +86,7 @@ class PreferencesSpinButtonRow(Handy.ActionRow):
         self.spin_button.set_adjustment(self.adjustment)
         self.spin_button.set_valign(Gtk.Align.CENTER)
         self.spin_button.connect('value-changed', self.on_value_changed)
-        self.add_action(self.spin_button)
+        self.add(self.spin_button)
         # You need to interact with the actual spin button
         # Avoids accidental presses
         # self.set_activatable_widget(self.button)
@@ -123,7 +123,7 @@ class PreferencesToggleRow(Handy.ActionRow):
         else:
             self.toggle.set_active(self.confman.conf[self.conf_key])
         self.toggle.connect('state-set', self.on_toggle_state_set)
-        self.add_action(self.toggle)
+        self.add(self.toggle)
         self.set_activatable_widget(self.toggle)
 
     def on_toggle_state_set(self, toggle, state):
@@ -305,7 +305,8 @@ class GFeedsSettingsWindow(Handy.PreferencesWindow):
         for p in self.pages:
             self.add(p)
         self.set_default_size(630, 700)
-        self.get_titlebar().set_show_close_button(True)
+        # Unneded for Handy 1?
+        # self.get_titlebar().set_show_close_button(True)
 
         self.accel_group = Gtk.AccelGroup()
         self.accel_group.connect(

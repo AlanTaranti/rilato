@@ -19,7 +19,7 @@ import sys
 import argparse
 from gettext import gettext as _
 from os.path import isfile
-from gi.repository import Gtk, Gdk, Gio, GLib
+from gi.repository import Gtk, Gdk, Gio, GLib, Handy
 from gfeeds.confManager import ConfManager
 from gfeeds.feeds_manager import FeedsManager
 from gfeeds.app_window import GFeedsAppWindow
@@ -53,6 +53,7 @@ class GFeedsApplication(Gtk.Application):
 
     def do_startup(self):
         Gtk.Application.do_startup(self)
+        Handy.init()
         self.feedman.refresh(
             get_cached=not self.confman.conf['refresh_on_startup'],
             is_startup=True
