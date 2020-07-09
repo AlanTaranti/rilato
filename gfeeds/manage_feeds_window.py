@@ -208,7 +208,7 @@ class ManageFeedsHeaderbar(Gtk.HeaderBar):
         self.confman = ConfManager()
 
         self.set_title(_('Manage Feeds'))
-        self.set_show_close_button(self.confman.conf['enable_csd'])
+        self.set_show_close_button(True)
 
         self.select_all_btn = Gtk.Button.new_from_icon_name(
             'edit-select-all-symbolic',
@@ -324,12 +324,7 @@ class GFeedsManageFeedsWindow(Gtk.Window):
         self.listbox.connect('row-activated', self.on_row_activated)
         self.set_title(_('Manage Feeds'))
 
-        if self.confman.conf['enable_csd']:
-            self.set_titlebar(self.headerbar)
-        else:
-            self.headerbar.set_title('')
-            self.headerbar.get_style_context().add_class('notheaderbar')
-            self.main_box.pack_start(self.headerbar, False, False, 0)
+        self.set_titlebar(self.headerbar)
 
         self.main_box.pack_start(self.scrolled_window, True, True, 0)
         self.add(self.main_box)

@@ -105,11 +105,7 @@ class GFeedsAppWindow(Handy.ApplicationWindow):
         self.bottom_bar.set_stack(self.sidebar)
         self.sidebar_box.pack_end(self.bottom_bar, False, False, 0)
 
-        self.set_headerbar_or_titlebar()
-        self.confman.connect(
-            'gfeeds_enable_csd_changed',
-            self.set_headerbar_or_titlebar
-        )
+        self.set_headerbar()
 
         # listening on the headerbar leaflet visible-child because of a bug in
         # libhandy that doesn't notify the correct child on the main leaflet
@@ -179,31 +175,9 @@ class GFeedsAppWindow(Handy.ApplicationWindow):
     def on_headerbar_squeeze(self, caller: GObject.Object, squeezed: bool):
         self.bottom_bar.set_reveal(squeezed)
 
-    def set_headerbar_or_titlebar(self, *args):
+    def set_headerbar(self, *args):
         self.main_box.pack_start(self.headerbar, False, False, 0)
         self.headerbar.set_vexpand(False)
-        return
-        if self.confman.conf['enable_csd']:
-            if self.headerbar in self.main_box.get_children():
-                self.main_box.remove(self.headerbar)
-                for h in [
-                        self.headerbar.left_headerbar,
-                        self.headerbar.right_headerbar,
-                        self.headerbar
-                ]:
-                    h.get_style_context().remove_class('notheaderbar')
-            # self.add(self.headerbar)
-            self.main_box.pack_start(self.headerbar, False, False, 0)
-        else:
-            # self.set_titlebar(None)
-            self.headerbar.set_vexpand(False)
-            self.main_box.pack_start(self.headerbar, False, False, 0)
-            for h in [
-                    self.headerbar.left_headerbar,
-                    self.headerbar.right_headerbar,
-                    self.headerbar
-            ]:
-                h.get_style_context().add_class('notheaderbar')
 
     def add_accelerator(self, shortcut: str, callback: Callable):
         if shortcut:

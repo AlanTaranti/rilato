@@ -27,11 +27,6 @@ class ConfManagerSignaler(GObject.Object):
             None,
             (str,)
         ),
-        'gfeeds_enable_csd_changed': (
-            GObject.SignalFlags.RUN_FIRST,
-            None,
-            (str,)
-        ),
         'gfeeds_show_read_changed': (
             GObject.SignalFlags.RUN_FIRST,
             None,
@@ -80,7 +75,6 @@ class ConfManager(metaclass=Singleton):
         },
         'max_article_age_days': 30,
         'enable_js': False,
-        'enable_csd': True,
         'max_refresh_threads': 2,
         'saved_items': {},
         'read_items': [],

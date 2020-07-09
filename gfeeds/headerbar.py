@@ -107,10 +107,6 @@ class GFeedHeaderbar(Handy.WindowHandle):
         self.leaflet.child_set_property(separator, 'allow-visible', False)
         self.add(self.leaflet)
         self.set_headerbar_controls()
-        self.confman.connect(
-            'gfeeds_enable_csd_changed',
-            self.set_headerbar_controls
-        )
         self.headergroup.set_focus(self.left_headerbar)
 
         self.back_button = self.builder.get_object(
@@ -254,12 +250,8 @@ class GFeedHeaderbar(Handy.WindowHandle):
         self.add_popover.url_entry.set_text('')
 
     def set_headerbar_controls(self, *args):
-        if self.confman.conf['enable_csd']:
-            self.right_headerbar.set_show_close_button(True)
-            self.left_headerbar.set_show_close_button(True)
-        else:
-            self.right_headerbar.set_show_close_button(False)
-            self.left_headerbar.set_show_close_button(False)
+        self.right_headerbar.set_show_close_button(True)
+        self.left_headerbar.set_show_close_button(True)
 
     def on_back_button_clicked(self, *args):
         self.leaflet.set_visible_child(self.left_headerbar)

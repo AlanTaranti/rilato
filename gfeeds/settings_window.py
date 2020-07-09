@@ -241,11 +241,6 @@ class ViewPreferencesPage(Handy.PreferencesPage):
                 'conf_key': 'enable_js',
                 'signal': 'gfeeds_webview_settings_changed'
             },
-            {
-                'title': _('Enable client side decoration'),
-                'conf_key': 'enable_csd',
-                'signal': 'gfeeds_enable_csd_changed'
-            },
         ]
         for s in toggle_settings:
             row = PreferencesToggleRow(s['title'], s['conf_key'], s['signal'])
@@ -292,10 +287,6 @@ class GFeedsSettingsWindow(Handy.PreferencesWindow):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.confman = ConfManager()
-        self.confman.connect(
-            'gfeeds_enable_csd_changed',
-            lambda *args: self.close()
-        )
 
         self.pages = [
             GeneralPreferencesPage(),
@@ -314,7 +305,3 @@ class GFeedsSettingsWindow(Handy.PreferencesWindow):
             lambda *args: self.close()
         )
         self.add_accel_group(self.accel_group)
-
-        if not self.confman.conf['enable_csd']:
-            self.set_title(_('Preferences'))
-            self.set_titlebar(None)
