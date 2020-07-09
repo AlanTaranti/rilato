@@ -1,5 +1,5 @@
 from gettext import gettext as _
-from gi.repository import Gtk, Gdk, GObject
+from gi.repository import Gtk, Gdk, GObject, Handy
 from xml.sax.saxutils import escape
 from gfeeds.confManager import ConfManager
 from gfeeds.feeds_manager import FeedsManager
@@ -302,7 +302,7 @@ class DeleteFeedsConfirmMessageDialog(ScrolledMessageDialog):
         )
 
 
-class GFeedsManageFeedsWindow(Gtk.Window):
+class GFeedsManageFeedsWindow(Handy.Window):
     def __init__(self, appwindow, **kwargs):
         super().__init__(**kwargs)
         self.appwindow = appwindow
@@ -324,7 +324,10 @@ class GFeedsManageFeedsWindow(Gtk.Window):
         self.listbox.connect('row-activated', self.on_row_activated)
         self.set_title(_('Manage Feeds'))
 
-        self.set_titlebar(self.headerbar)
+        self.window_handle = Handy.WindowHandle()
+        self.window_handle.add(self.headerbar)
+        self.main_box.pack_start(self.window_handle, False, False, 0)
+        self.window_handle.set_vexpand(False)
 
         self.main_box.pack_start(self.scrolled_window, True, True, 0)
         self.add(self.main_box)
