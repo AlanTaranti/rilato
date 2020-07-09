@@ -54,7 +54,7 @@ class AddFeedPopover(Gtk.Popover):
             self.already_subscribed_revealer.set_reveal_child(True)
 
 
-class GFeedHeaderbar(Handy.TitleBar):
+class GFeedHeaderbar(Handy.WindowHandle):
     __gsignals__ = {
         'gfeeds_headerbar_squeeze': (
             GObject.SignalFlags.RUN_FIRST,
