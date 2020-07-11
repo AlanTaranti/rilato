@@ -76,6 +76,10 @@ def feeds_list_to_opml(feeds):
                 type="rss"
                 xmlUrl="{escape(f.rss_link)}"
                 htmlUrl="{escape(f.link)}"
+                category="{escape(
+                    ','.join(confman.conf['feeds'][f.rss_link]['tags'])
+                ) if 'tags' in confman.conf['feeds'][f.rss_link].keys()
+                else ''}"
             />
         '''
     opml_out += OPML_SUFFIX
