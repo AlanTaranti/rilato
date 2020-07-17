@@ -351,9 +351,9 @@
             ],
             "sources": [
                 {
-                    "type": "git",
-                    "url": "https://github.com/psf/requests",
-                    "tag": "v2.24.0"
+                    "type": "archive",
+                    "url": "https://github.com/psf/requests/archive/v2.24.0.tar.gz",
+                    "sha256": "904e9a2bd22e98e444f5b23f80fa3fb8dda5d1e81d0f87d9ee56af2e15f73862"
                 },
                 {
                     "type": "shell",
