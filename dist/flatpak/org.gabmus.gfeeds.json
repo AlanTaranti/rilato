@@ -49,8 +49,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://files.pythonhosted.org/packages/d9/82/d01e767abb9c4a5c07a6a1e6f4d5a8dfce7369318d31f48a52374094372e/Cython-0.29.15.tar.gz",
-                    "sha256": "60d859e1efa5cc80436d58aecd3718ff2e74b987db0518376046adedba97ac30"
+                    "url": "https://files.pythonhosted.org/packages/6c/9f/f501ba9d178aeb1f5bf7da1ad5619b207c90ac235d9859961c11829d0160/Cython-0.29.21.tar.gz",
+                    "sha256": "e57acb89bd55943c8d8bf813763d20b9099cc7165c0f16b707631a7654be9cad"
                 }
             ]
         },
@@ -83,8 +83,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://files.pythonhosted.org/packages/82/c3/534ddba230bd4fbbd3b7a3d35f3341d014cca213f369a9940925e7e5f691/pytz-2019.3.tar.gz",
-                    "sha256": "b02c06db6cf09c12dd25137e563b31700d3b80fcc4ad23abb7a315f2789819be"
+                    "url": "https://files.pythonhosted.org/packages/f4/f6/94fee50f4d54f58637d4b9987a1b862aeb6cd969e73623e02c5c00755577/pytz-2020.1.tar.gz",
+                    "sha256": "c35965d010ce31b23eeb663ed3cc8c906275d6be1a34393a1d73a41febf4a048"
                 },
                 {
                     "type": "shell",
@@ -128,8 +128,7 @@
                 {
                     "type": "git",
                     "url": "https://github.com/pypa/setuptools_scm",
-                    "tag": "v3.5.0",
-                    "commit": "7b21089a545667f0ae7852e1039f8028be288f48"
+                    "tag": "v4.1.2"
                 },
                 {
                     "type": "shell",
@@ -197,8 +196,7 @@
                 {
                     "type": "git",
                     "url": "https://github.com/lxml/lxml",
-                    "tag": "lxml-4.5.0",
-                    "commit": "8d23c0caa4aee4f36ba553ad58bb506a14d2b33a"
+                    "tag": "lxml-4.5.2"
                 },
                 {
                     "type": "shell",
@@ -224,8 +222,7 @@
                 {
                     "type": "git",
                     "url": "https://github.com/kjd/idna",
-                    "tag": "v2.9",
-                    "commit": "1233a730bc26811b5ae65c9ca9d5cc9ded2bdf9b"
+                    "tag": "v2.10"
                 },
                 {
                     "type": "shell",
@@ -277,8 +274,7 @@
                 {
                     "type": "git",
                     "url": "https://github.com/certifi/python-certifi",
-                    "tag": "2019.11.28",
-                    "commit": "21abb9b9bbf4c0cfecf652fadafee3eb9615d553"
+                    "tag": "2020.06.20"
                 },
                 {
                     "type": "shell",
@@ -331,8 +327,7 @@
                 {
                     "type": "git",
                     "url": "https://github.com/urllib3/urllib3",
-                    "tag": "1.25.8",
-                    "commit": "2a57bc5758075a9248cc0d87f66a2ff678338478"
+                    "tag": "1.25.9"
                 },
                 {
                     "type": "shell",
@@ -356,9 +351,9 @@
             ],
             "sources": [
                 {
-                    "type": "archive",
-                    "url": "https://github.com/psf/requests/archive/v2.23.0.tar.gz",
-                    "sha256": "bf063ded6c5c3f238f89189a791df4a22270d1ccd88b1a21687ecb6a9c6b1335"
+                    "type": "git",
+                    "url": "https://github.com/psf/requests",
+                    "tag": "v2.24.0"
                 },
                 {
                     "type": "shell",
@@ -411,8 +406,7 @@
                 {
                     "type": "git",
                     "url": "https://github.com/html5lib/html5lib-python",
-                    "tag": "1.0.1",
-                    "commit": "93eb5c193892b7fdc5e08d28c2984249b43e0cd1"
+                    "tag": "1.1"
                 },
                 {
                     "type": "shell",
@@ -464,8 +458,7 @@
                 {
                     "type": "git",
                     "url": "https://github.com/python-pillow/Pillow",
-                    "tag": "7.0.0",
-                    "commit": "1cecf08d16509c20473766b4cdb7a65169844819"
+                    "tag": "7.2.0"
                 },
                 {
                     "type": "shell",
@@ -677,8 +670,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://files.pythonhosted.org/packages/52/ba/0e121661f529e7f456e903bf5c4d255b8051d8ce2b5e629c5212efe4c3f1/beautifulsoup4-4.8.2.tar.gz",
-                    "sha256": "05fd825eb01c290877657a56df4c6e4c311b3965bda790c613a3d6fb01a5462a"
+                    "url": "https://files.pythonhosted.org/packages/c6/62/8a2bef01214eeaa5a4489eca7104e152968729512ee33cb5fbbc37a896b7/beautifulsoup4-4.9.1.tar.gz",
+                    "sha256": "73cc4d115b96f79c7d77c1c7f7a0a8d4c57860d1041df407dd1aae7f07a77fd7"
                 },
                 {
                     "type": "shell",
