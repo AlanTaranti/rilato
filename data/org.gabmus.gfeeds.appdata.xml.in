@@ -54,6 +54,19 @@
     <url type="bugtracker">https://gitlab.com/gabmus/gnome-feeds/issues</url>
     <update_contact>gabmus@disroot.org</update_contact>
     <releases>
+        <release version="0.14" timestamp="1594969691">
+            <description>
+                <ul>
+                    <li>New tags feature! You can now categorize your feeds by creating custom tags</li>
+                    <li>RSS links can now be opened directly in Feeds to be imported</li>
+                    <li>Mark as read now only marks the currently visible feeds</li>
+                    <li>Added support for the latest version of libhandy</li>
+                    <li>Improved message dialogs</li>
+                    <li>Performance improvements when importing OPML files</li>
+                    <li>Removed option to disable client side decoration</li>
+                </ul>
+            </description>
+        </release>
         <release version="0.13.4" timestamp="1585301719">
             <description>
                 <ul>

@@ -692,7 +692,7 @@
                 {
                     "type": "git",
                     "url": "https://gitlab.gnome.org/World/gfeeds",
-                    "tag": "0.13.4"
+                    "tag": "0.14"
                 }
             ]
         }
