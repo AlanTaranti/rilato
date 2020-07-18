@@ -69,6 +69,7 @@ class GFeedHeaderbar(Handy.WindowHandle):
             size_group_right,
             back_btn_func,
             webview,
+            searchbar,
             **kwargs):
         super().__init__(**kwargs)
         self.builder = Gtk.Builder.new_from_resource(
@@ -79,6 +80,7 @@ class GFeedHeaderbar(Handy.WindowHandle):
         self.feedman = FeedsManager()
         self.back_btn_func = back_btn_func
         self.webview = webview
+        self.searchbar = searchbar
         self.webview.connect('gfeeds_webview_load_start', self.on_load_start)
         self.webview.connect('gfeeds_webview_load_end', self.on_load_end)
         self.headergroup = Handy.HeaderGroup()
@@ -237,8 +239,7 @@ class GFeedHeaderbar(Handy.WindowHandle):
         )
 
     def on_search_btn_toggled(self, togglebtn):
-        searchbar = self.get_parent().searchbar
-        searchbar.set_search_mode(togglebtn.get_active())
+        self.searchbar.set_search_mode(togglebtn.get_active())
 
     def on_new_feed_add_start(self, *args):
         self.refresh_btn.set_spinning(True)

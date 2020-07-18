@@ -87,7 +87,8 @@ class GFeedsAppWindow(Handy.ApplicationWindow):
             self.size_group_left,
             self.size_group_right,
             self.on_back_button_clicked,
-            self.webview
+            self.webview,
+            self.searchbar
         )
 
         self.swipe_group.add_swipeable(self.leaflet)
