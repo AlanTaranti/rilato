@@ -1,0 +1,519 @@
+# Dutch translations for gfeeds package.
+# Copyright (C) 2020 THE gfeeds'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the gfeeds package.
+# Heimen Stoffels <vistausss@outlook.com>, 2020.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gfeeds 0.14.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-07-19 19:42+0200\n"
+"PO-Revision-Date: 2020-07-20 13:57+0200\n"
+"Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
+"Language-Team: Dutch\n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 2.3.1\n"
+
+#: ../gfeeds/headerbar.py:170
+msgid "Add new feed"
+msgstr "Feed toevoegen"
+
+#: ../gfeeds/suggestion_bar.py:39
+msgid "There are some errors"
+msgstr "Er zijn fouten opgetreden"
+
+#: ../gfeeds/suggestion_bar.py:48
+msgid "Show"
+msgstr "Tonen"
+
+#: ../gfeeds/suggestion_bar.py:49
+msgid "Ignore"
+msgstr "Negeren"
+
+#: ../gfeeds/suggestion_bar.py:72
+msgid "There were problems with some feeds. Do you want to remove them?"
+msgstr "Er zijn problemen opgetreden met enkele feeds. Wilt u ze verwijderen?"
+
+#: ../gfeeds/suggestion_bar.py:92
+msgid "You are offline"
+msgstr "U heeft geen interverbinding"
+
+#: ../gfeeds/get_favicon.py:70
+#, python-brace-format
+msgid "Error downloading favicon for `{0}`"
+msgstr "De favicon van `{0}` kan niet worden opgehaald"
+
+#: ../gfeeds/__main__.py:293
+msgid "url"
+msgstr "URL"
+
+#: ../gfeeds/__main__.py:296
+msgid "opml file local url or rss remote url to import"
+msgstr "het te importeren opmlbestand, een lokale of rss-url"
+
+#: ../gfeeds/sidebar_row_popover.py:47 ../gfeeds/sidebar_row_popover.py:92
+msgid "Mark as unread"
+msgstr "Markeren als ongelezen"
+
+#: ../gfeeds/sidebar_row_popover.py:55 ../gfeeds/sidebar_row_popover.py:82
+msgid "Mark as read"
+msgstr "Markeren als gelezen"
+
+#: ../gfeeds/confirm_add_dialog.py:16
+msgid "Do you want to import these feeds?"
+msgstr "Wilt u deze feeds importeren?"
+
+#: ../gfeeds/confirm_add_dialog.py:17
+msgid "Do you want to import this feed?"
+msgstr "Wilt u deze feed importeren?"
+
+#: ../gfeeds/webview.py:75
+msgid "Web View"
+msgstr "Webweergave"
+
+#: ../gfeeds/webview.py:76
+msgid "Filler View"
+msgstr "Vullende weergave"
+
+#: ../gfeeds/webview.py:137
+msgid "RSS content or summary not available for this article"
+msgstr "Geen rss-inhoud of samenvatting beschikbaar bij dit artikel"
+
+#: ../gfeeds/rss_parser.py:62
+#, python-brace-format
+msgid "Error: unable to parse datetime {0} for feeditem {1}"
+msgstr "Fout: kan de datum en tijd {0} van feeditem {1} niet verwerken"
+
+#: ../gfeeds/rss_parser.py:170
+#, python-brace-format
+msgid "Errors while parsing feed `{0}`"
+msgstr "Fouten tijdens het verwerken van `{0}`"
+
+#: ../gfeeds/rss_parser.py:210
+#, python-brace-format
+msgid "`{0}` may not be an RSS or Atom feed"
+msgstr "`{0}` is mogelijk geen rss- of atom-feed"
+
+#: ../gfeeds/rss_parser.py:241
+#, python-brace-format
+msgid ""
+"Error resizing favicon for feed {0}. Probably not an image.\n"
+"Trying downloading favicon from an article."
+msgstr ""
+"De faviconafmetingen van {0} kunnen niet worden aangepast. Mogelijk is het "
+"geen afbeelding.\n"
+"Haal een favicon op bij een artikel."
+
+#: ../gfeeds/rss_parser.py:250
+#, python-brace-format
+msgid ""
+"Error resizing favicon from article for feed {0}.\n"
+"Deleting invalid favicon."
+msgstr ""
+"De faviconafmetingen van {0} kunnen niet worden aangepast.\n"
+"De favicon wordt verwijderd."
+
+#: ../gfeeds/spinner_button.py:16
+msgid "Refresh feeds"
+msgstr "Feeds verversen"
+
+#: ../gfeeds/build_reader_html.py:98
+msgid "Thumbnail"
+msgstr "Miniatuurvoorbeeld"
+
+#: ../gfeeds/sidebar.py:181
+msgid "Feed"
+msgstr "Feed"
+
+#: ../gfeeds/sidebar.py:187
+msgid "Saved"
+msgstr "Opgeslagen"
+
+#: ../gfeeds/feeds_view.py:19
+msgid "All feeds"
+msgstr "Alle feeds"
+
+#: ../gfeeds/opml_file_chooser.py:7
+msgid "Choose an OPML file to import"
+msgstr "Kies het te importeren OPML-bestand"
+
+#: ../gfeeds/opml_file_chooser.py:14 ../gfeeds/opml_file_chooser.py:31
+msgid "XML files"
+msgstr "XML-bestanden"
+
+#: ../gfeeds/opml_file_chooser.py:22
+msgid "Choose where to save the exported OPML file"
+msgstr "Kies een locatie voor het OPML-bestand"
+
+#: ../gfeeds/manage_feeds_window.py:210 ../gfeeds/manage_feeds_window.py:325
+msgid "Manage Feeds"
+msgstr "Feeds beheren"
+
+#: ../gfeeds/manage_feeds_window.py:217
+msgid "Select/Unselect all"
+msgstr "Alles/Niets selecteren"
+
+#: ../gfeeds/manage_feeds_window.py:223
+msgid "Delete selected feeds"
+msgstr "Geselecteerde feeds verwijderen"
+
+#: ../gfeeds/manage_feeds_window.py:230
+msgid "Manage tags for selected feeds"
+msgstr "Labels van geselecteerde feeds beheren"
+
+#: ../gfeeds/manage_feeds_window.py:296
+msgid "Do you want to delete these feeds?"
+msgstr "Weet u zeker dat u deze feeds wilt verwijderen?"
+
+#: ../gfeeds/feeds_manager.py:75
+#, python-brace-format
+msgid "Feed {0} exists already, skipping"
+msgstr "'{0}' bestaat al - deze wordt overgeslagen"
+
+#: ../gfeeds/settings_window.py:139
+msgid "General"
+msgstr "Algemeen"
+
+#: ../gfeeds/settings_window.py:143
+msgid "General Settings"
+msgstr "Algemene instellingen"
+
+#: ../gfeeds/settings_window.py:146
+msgid "Refresh articles on startup"
+msgstr "Artikelen verversen na opstarten"
+
+#: ../gfeeds/settings_window.py:151
+msgid "Show newer articles first"
+msgstr "Nieuwste artikelen bovenaan"
+
+#: ../gfeeds/settings_window.py:156
+msgid "Open links in your browser"
+msgstr "Links openen in webbrowser"
+
+#: ../gfeeds/settings_window.py:166
+msgid "Maximum article age"
+msgstr "Maximale artikelouderdom"
+
+#: ../gfeeds/settings_window.py:170
+msgid "In days"
+msgstr "In dagen"
+
+#: ../gfeeds/settings_window.py:176
+msgid "Cache"
+msgstr "Cache"
+
+#: ../gfeeds/settings_window.py:179
+msgid "Clear all caches"
+msgstr "Alle caches legen"
+
+#: ../gfeeds/settings_window.py:180
+msgid "Clear caches"
+msgstr "Caches legen"
+
+#: ../gfeeds/settings_window.py:218
+msgid "View"
+msgstr "Weergave"
+
+#: ../gfeeds/settings_window.py:222
+msgid "View Settings"
+msgstr "Weergave-instellingen"
+
+#: ../gfeeds/settings_window.py:225
+msgid "Show full articles titles"
+msgstr "Volledige artikelkoppen tonen"
+
+#: ../gfeeds/settings_window.py:230
+msgid "Show full feeds names"
+msgstr "Volledige feednamen tonen"
+
+#: ../gfeeds/settings_window.py:235
+msgid "Use dark theme for reader mode"
+msgstr "Donker thema gebruiken in leesmodus"
+
+#: ../gfeeds/settings_window.py:240
+msgid "Enable JavaScript"
+msgstr "JavaScript inschakelen"
+
+#: ../gfeeds/settings_window.py:256
+msgid "Advanced"
+msgstr "Geavanceerd"
+
+#: ../gfeeds/settings_window.py:260
+msgid "Advanced Settings"
+msgstr "Geavanceerde instellingen"
+
+#: ../gfeeds/settings_window.py:263
+msgid "Maximum refresh threads"
+msgstr "Maximumaantal verversprocessen"
+
+#: ../gfeeds/settings_window.py:268
+msgid "How many threads to refresh feeds"
+msgstr "Hoeveel processen mogen worden gebruikt om feeds te verversen"
+
+#: ../gfeeds/opml_manager.py:42
+msgid "Error: OPML path provided does not exist"
+msgstr "Fout: het opgegeven OPML-pad bestaat niet"
+
+#: ../gfeeds/opml_manager.py:51
+#, python-brace-format
+msgid "Error parsing OPML file `{0}`"
+msgstr "Fout tijdens verwerken van `{0}`"
+
+#: ../gfeeds/download_manager.py:87
+#, python-brace-format
+msgid "`{0}`: connection timed out"
+msgstr "`{0}`: verbinding verlopen"
+
+#: ../gfeeds/download_manager.py:89
+#, python-brace-format
+msgid "`{0}` is not an URL"
+msgstr "`{0}` is geen url"
+
+#: ../gfeeds/download_manager.py:114
+#, python-brace-format
+msgid "Error downloading `{0}`, code `{1}`"
+msgstr "Fout tijdens ophalen van `{0}` - code `{1}`"
+
+#: ../data/ui/shortcutsWindow.xml:13
+msgid "Open Keyboard Shortcuts"
+msgstr "Sneltoetsoverzicht tonen"
+
+#: ../data/ui/shortcutsWindow.xml:19
+msgid "Open Menu"
+msgstr "Menu openen"
+
+#: ../data/ui/shortcutsWindow.xml:25
+msgid "Open Preferences"
+msgstr "Voorkeuren openen"
+
+#: ../data/ui/shortcutsWindow.xml:31
+msgid "Quit"
+msgstr "Afsluiten"
+
+#: ../data/ui/shortcutsWindow.xml:37
+msgid "Refresh articles"
+msgstr "Artikelen verversen"
+
+#: ../data/ui/shortcutsWindow.xml:43
+msgid "Search articles"
+msgstr "Zoeken naar artikelen"
+
+#: ../data/ui/shortcutsWindow.xml:49
+msgid "Next article"
+msgstr "Volgend artikel"
+
+#: ../data/ui/shortcutsWindow.xml:55
+msgid "Previous article"
+msgstr "Vorig artikel"
+
+#: ../data/ui/shortcutsWindow.xml:61
+msgid "Show/Hide read articles"
+msgstr "Gelezen artikelen tonen/verbergen"
+
+#: ../data/ui/shortcutsWindow.xml:67
+msgid "Zoom in"
+msgstr "Inzoomen"
+
+#: ../data/ui/shortcutsWindow.xml:73
+msgid "Zoom out"
+msgstr "Uitzoomen"
+
+#: ../data/ui/shortcutsWindow.xml:79
+msgid "Reset zoom"
+msgstr "Standaard zoomniveau"
+
+#: ../data/ui/webview_filler.glade:42
+msgid "Select an article"
+msgstr "Selecteer een artikel"
+
+#: ../data/ui/webview_with_notification.glade:51
+msgid "Link copied to clipboard!"
+msgstr "De link is gekopieerd naar het klembord!"
+
+#: ../data/ui/menu.xml:6
+msgid "Show read articles"
+msgstr "Gelezen artikelen tonen"
+
+#: ../data/ui/menu.xml:10
+msgid "Mark all as read"
+msgstr "Alles markeren als gelezen"
+
+#: ../data/ui/menu.xml:14
+msgid "Mark all as unread"
+msgstr "Alles markeren als ongelezen"
+
+#: ../data/ui/menu.xml:24
+msgid "Import OPML"
+msgstr "OPML-bestand importeren"
+
+#: ../data/ui/menu.xml:28
+msgid "Export OPML"
+msgstr "OPML-bestand exporteren"
+
+#: ../data/ui/menu.xml:34
+msgid "Preferences"
+msgstr "Voorkeuren"
+
+#: ../data/ui/menu.xml:38
+msgid "Keyboard Shortcuts"
+msgstr "Sneltoetsen"
+
+#: ../data/ui/menu.xml:42
+msgid "About Feeds"
+msgstr "Over Feeds"
+
+#: ../data/ui/headerbar.glade:45
+msgid "Menu"
+msgstr "Menu"
+
+#: ../data/ui/headerbar.glade:65
+msgid "Filter by feed"
+msgstr "Filteren op feed"
+
+#: ../data/ui/headerbar.glade:84
+msgid "Search"
+msgstr "Zoeken"
+
+#: ../data/ui/headerbar.glade:108
+msgid "Back to articles"
+msgstr "Terug naar artikeloverzicht"
+
+#: ../data/ui/headerbar.glade:125
+msgid "Change view mode"
+msgstr "Weergavemodus aanpassen"
+
+#: ../data/ui/headerbar.glade:167
+msgid "Share"
+msgstr "Delen"
+
+#: ../data/ui/headerbar.glade:196
+msgid "Open externally"
+msgstr "Extern openen"
+
+#: ../data/ui/empty_state.glade:42
+msgid "Let's get started"
+msgstr "Aan de slag"
+
+#: ../data/ui/empty_state.glade:88
+msgid "Add new feeds via URL"
+msgstr "Feeds toevoegen middels url"
+
+#: ../data/ui/empty_state.glade:100
+msgid "Import an OPML file"
+msgstr "OPML-bestand importeren"
+
+#: ../data/ui/add_feed_box.glade:20
+msgid "Enter feed address to add"
+msgstr "Voer een feedadres in"
+
+#: ../data/ui/add_feed_box.glade:41
+msgid "https://..."
+msgstr "https://..."
+
+#: ../data/ui/add_feed_box.glade:61
+msgid "Add"
+msgstr "Toevoegen"
+
+#: ../data/ui/add_feed_box.glade:91
+msgid "You're already subscribed to that feed!"
+msgstr "U bent al geabonneerd op deze feed!"
+
+#: ../data/ui/extra_popover_menu.glade:19
+msgid "View mode"
+msgstr "Weergavemodus"
+
+#: ../data/ui/extra_popover_menu.glade:53
+msgid "Reader Mode"
+msgstr "Leesmodus"
+
+#: ../data/ui/extra_popover_menu.glade:68
+msgid "RSS Content"
+msgstr "RSS-inhoud"
+
+#: ../data/ui/scrolled_label.glade:21
+#: ../data/ui/manage_tags_listbox_row_content.glade:18
+msgid "label"
+msgstr "label"
+
+#: ../data/ui/manage_tags_popover_content.glade:24
+msgid "New tag name..."
+msgstr "Nieuwe labelnaam..."
+
+#: ../data/ui/manage_tags_popover_content.glade:37
+msgid "Add tag"
+msgstr "Label toekennen"
+
+#: ../data/ui/manage_tags_popover_content.glade:112
+msgid "There are no tags yet"
+msgstr "Er zijn nog geen labels toegekend"
+
+#: ../data/ui/manage_tags_popover_content.glade:128
+msgid "Add some using the entry above"
+msgstr "Voeg labels toe middels het vak hierboven"
+
+#: ../data/ui/spinner_button.glade:23
+msgid "page0"
+msgstr "pagina0"
+
+#: ../data/ui/spinner_button.glade:34
+msgid "page1"
+msgstr "pagina1"
+
+#: ../data/ui/article_right_click_popover_content.glade:48
+msgid "Save article"
+msgstr "Artikel opslaan"
+
+#: ../data/org.gabmus.gfeeds.desktop.in:5
+msgid "@prettyname@"
+msgstr "@prettyname@"
+
+#: ../data/org.gabmus.gfeeds.desktop.in:6
+msgid "News reader for GNOME"
+msgstr "Nieuwslezer voor GNOME"
+
+#: ../data/org.gabmus.gfeeds.desktop.in:8
+msgid "@appid@"
+msgstr "@appid@"
+
+#: ../data/org.gabmus.gfeeds.desktop.in:13
+msgid "rss;reader;feed;news;"
+msgstr "rss;lezer;feed;nieuws;"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:4
+msgid "Feeds"
+msgstr "Feeds"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:15
+msgid ""
+"Feeds is a minimal RSS/Atom feed reader built with speed and simplicity in "
+"mind."
+msgstr ""
+"Feeds is een minimale rss-/atom-feedlezer, gebouwd op de concepten snelheid "
+"en eenvoud."
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:16
+msgid ""
+"It offers a simple user interface that only shows the latest news from your "
+"subscriptions."
+msgstr ""
+"Feeds biedt een eenvoudige gebruiksomgeving die alleen het laatste nieuws "
+"van uw abonnementen toont."
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:17
+msgid ""
+"Articles are shown in a web view by default, with javascript disabled for a "
+"faster and less intrusive user experience. There's also a reader mode "
+"included, built from the one GNOME Web/Epiphany uses."
+msgstr ""
+"Artikelen worden standaard in webweergave getoond, waar JavaScript is "
+"uitgeschakeld. Dit versnelt de weergave en zorgt voor minder afleiding. "
+"Daarnaast is er een leesmodus beschikbaar, gebaseerd op die van GNOME Web/"
+"Epiphany."
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:18
+msgid "Feeds can be imported and exported via OPML."
+msgstr "U kunt feeds importeren uit en exporteren naar OPML."
