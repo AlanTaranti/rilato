@@ -32,7 +32,7 @@ translators = '\n'.join([
     'Russian: Alessandra Gallia &lt;alessandragalliaaru@gmail.com&gt;',
     'Brazilian Portoguese: Gleisson Joaquim (gleissonjoaquim3) &lt;gleisscg2@gmail.com&gt;',
     'Spanish: Juan Campos (juan.campos) &lt;juan.camposzambrana@gmail.com&gt;',
-    'Dutch: Heimen Stoffels (Vistaus)'
+    'Dutch: Heimen Stoffels (Vistaus)',
     'Italian: Gabriele Musco (GabMus) &lt;emaildigabry@gmail.com&gt;'
 ])
 

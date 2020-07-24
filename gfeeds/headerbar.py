@@ -109,7 +109,7 @@ class GFeedHeaderbar(Handy.WindowHandle):
         self.leaflet.child_set_property(separator, 'allow-visible', False)
         self.add(self.leaflet)
         self.set_headerbar_controls()
-        self.headergroup.set_focus(self.left_headerbar)
+        # self.headergroup.set_focus(self.left_headerbar)
 
         self.back_button = self.builder.get_object(
             'back_btn'
@@ -180,7 +180,7 @@ class GFeedHeaderbar(Handy.WindowHandle):
         self.squeezer.set_hexpand(False)
         self.nobox = Gtk.Label()
         self.nobox.set_size_request(1, -1)
-        self.stack_switcher = Handy.ViewSwitcherTitle()
+        self.stack_switcher = Handy.ViewSwitcher()
         self.stack_switcher.set_policy(Handy.ViewSwitcherPolicy.WIDE)
         self.stack_switcher.set_margin_start(12)
         self.stack_switcher.set_margin_end(12)

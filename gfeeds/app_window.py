@@ -252,7 +252,7 @@ class GFeedsAppWindow(Handy.ApplicationWindow):
             self.headerbar.squeezer.set_child_enabled(
                 self.headerbar.stack_switcher, False
             )
-        self.headerbar.headergroup.set_focus(target)
+        # self.headerbar.headergroup.set_focus(target)
 
     def on_back_button_clicked(self, *args):
         self.leaflet.set_visible_child(self.sidebar_box)
