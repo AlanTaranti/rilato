@@ -54,6 +54,14 @@
     <url type="bugtracker">https://gitlab.com/gabmus/gnome-feeds/issues</url>
     <update_contact>gabmus@disroot.org</update_contact>
     <releases>
+        <release version="0.15" timestamp="1600839902">
+            <description>
+                <ul>
+                    <li>Switched to the new libhandy Avatar widget</li>
+                    <li>Added Dutch translation courtesy of Heimen Stoffels</li>
+                </ul>
+            </description>
+        </release>
         <release version="0.14.1" timestamp="1595058263">
             <description>
                 <ul>

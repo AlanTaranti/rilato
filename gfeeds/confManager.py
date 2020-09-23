@@ -118,7 +118,7 @@ class ConfManager(metaclass=Singleton):
         self.saved_cache_path = f'{self.cache_path}/saved_articles'
 
         self.conf = None
-        if isfile(self.path):
+        if self.path.is_file():
             try:
                 with open(self.path) as fd:
                     self.conf = json.loads(fd.read())
@@ -149,8 +149,8 @@ class ConfManager(metaclass=Singleton):
                 self.thumbs_cache_path,
                 self.saved_cache_path
         ]:
-            if not isdir(p):
-                makedirs(p)
+            if not isdir(str(p)):
+                makedirs(str(p))
 
         self.read_feeds_items = SignalerList(self.conf['read_items'])
         self.read_feeds_items.connect(
@@ -167,6 +167,17 @@ class ConfManager(metaclass=Singleton):
             'maximize:' in bl or
             'minimize:' in bl
         )
+
+        # font_gsettings = Gio.Settings.new('org.gnome.destkop.interface')
+        # self.sans_font = font_gsettings.get_value(
+        #     'font-name'
+        # ).get_string()
+        # self.serif_font = font_gsettings.get_value(
+        #     'document-font-name'
+        # ).get_string()
+        # self.mono_font = font_gsettings.get_value(
+        #     'monospace-font-name'
+        # ).get_string()
 
     @property
     def max_article_age(self) -> timedelta:
@@ -204,7 +215,7 @@ class ConfManager(metaclass=Singleton):
         self.conf['read_items'] = self.read_feeds_items.get_list()
 
     def save_conf(self, *args):
-        if isfile(self.path):
+        if self.path.is_file():
             with open(self.path, 'r') as fd:
                 if json.loads(fd.read()) == self.conf:
                     return

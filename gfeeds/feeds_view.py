@@ -42,12 +42,10 @@ class FeedsViewListboxRow(Gtk.ListBoxRow):
         self.checkbox.hide()
 
         self.icon_container = self.builder.get_object('icon_container')
-        if isfile(self.feed.favicon_path):
-            self.icon = Gtk.Image.new_from_file(
-                self.feed.favicon_path
-            )
-        else:
-            self.icon = InitialsIcon(self.feed.title)
+        self.icon = InitialsIcon(
+            self.feed.title,
+            self.feed.favicon_path
+        )
         self.icon_container.add(self.icon)
 
         self.name_label = self.builder.get_object('title_label')

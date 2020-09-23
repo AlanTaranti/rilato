@@ -34,12 +34,10 @@ class GFeedsSidebarRow(Gtk.ListBoxRow):
         self.on_full_feed_name_changed()
 
         self.icon_container = self.builder.get_object('icon_container')
-        if isfile(self.feeditem.parent_feed.favicon_path):
-            self.icon = Gtk.Image.new_from_file(
-                self.feeditem.parent_feed.favicon_path
-            )
-        else:
-            self.icon = InitialsIcon(self.feeditem.parent_feed.title)
+        self.icon = InitialsIcon(
+            self.feeditem.parent_feed.title,
+            self.feeditem.parent_feed.favicon_path
+        )
         self.icon_container.add(self.icon)
 
         # Date & time stuff is long

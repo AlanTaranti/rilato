@@ -2,7 +2,7 @@
     "app-id": "org.gabmus.gfeeds",
     "command": "gfeeds",
     "runtime": "org.gnome.Platform",
-    "runtime-version": "3.36",
+    "runtime-version": "3.38",
     "sdk": "org.gnome.Sdk",
     "finish-args": [
         "--device=dri",
@@ -27,7 +27,7 @@
                 {
                     "type": "git",
                     "url": "https://gitlab.gnome.org/GNOME/libhandy",
-                    "tag": "0.84.0"
+                    "tag": "1.0.0"
                 }
             ]
         },
@@ -692,7 +692,7 @@
                 {
                     "type": "git",
                     "url": "https://gitlab.gnome.org/World/gfeeds",
-                    "tag": "0.14.1"
+                    "tag": "0.15"
                 }
             ]
         }
