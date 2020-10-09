@@ -1,8 +1,7 @@
-from subprocess import Popen
 from gettext import gettext as _
 import threading
 from feedparser import FeedParserDict
-from gi.repository import Gtk, GLib, WebKit2, GObject
+from gi.repository import Gtk, GLib, WebKit2, GObject, Gio
 from gfeeds.build_reader_html import build_reader_html
 from gfeeds.confManager import ConfManager
 from gfeeds.download_manager import download_text
@@ -187,7 +186,9 @@ class GFeedsWebView(Gtk.Stack):
 
     def open_externally(self, *args):
         if self.uri:
-            Popen(f'xdg-open {self.uri}'.split(' '))
+            Gio.AppInfo.launch_default_for_uri(
+                self.uri
+            )
 
     def on_load_start(self, *args):
         self.new_page_loaded = True
@@ -262,6 +263,6 @@ class GFeedsWebView(Gtk.Stack):
         ):
             decision.ignore()
             uri = decision.get_navigation_action().get_request().get_uri()
-            Popen(f'xdg-open {uri}'.split(' '))
+            Gio.AppInfo.launch_default_for_uri(uri)
             return True
         return False
