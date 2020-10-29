@@ -1,137 +1,168 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.22.1 -->
+<!-- Generated with glade 3.38.1 -->
 <interface>
   <requires lib="gtk+" version="3.20"/>
   <requires lib="libhandy" version="0.0"/>
   <object class="HdyHeaderBar" id="left_headerbar">
     <property name="visible">True</property>
-    <property name="can_focus">False</property>
+    <property name="can-focus">False</property>
+    <child type="title">
+      <placeholder/>
+    </child>
     <child>
-      <object class="GtkButton" id="add_btn">
+      <object class="GtkMenuButton" id="add_btn">
         <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="receives_default">True</property>
-        <property name="tooltip_text" translatable="yes">Add new feed</property>
+        <property name="can-focus">True</property>
+        <property name="focus-on-click">False</property>
+        <property name="receives-default">True</property>
+        <property name="tooltip-text" translatable="yes">Add new feed</property>
         <child>
           <object class="GtkImage">
             <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="icon_name">list-add-symbolic</property>
+            <property name="can-focus">False</property>
+            <property name="icon-name">list-add-symbolic</property>
           </object>
         </child>
       </object>
     </child>
     <child>
+      <object class="GtkMenuButton" id="menu_btn">
+        <property name="visible">True</property>
+        <property name="can-focus">True</property>
+        <property name="focus-on-click">False</property>
+        <property name="receives-default">True</property>
+        <property name="tooltip-text" translatable="yes">Menu</property>
+        <child>
+          <object class="GtkImage">
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="icon-name">open-menu-symbolic</property>
+          </object>
+        </child>
+      </object>
+      <packing>
+        <property name="pack-type">end</property>
+        <property name="position">1</property>
+      </packing>
+    </child>
+    <child>
       <object class="GtkBox" id="refresh_btn_box">
         <property name="visible">True</property>
-        <property name="can_focus">False</property>
+        <property name="can-focus">False</property>
         <property name="orientation">vertical</property>
         <child>
           <placeholder/>
         </child>
       </object>
       <packing>
-        <property name="position">1</property>
-      </packing>
-    </child>
-    <child type="title">
-      <placeholder/>
-    </child>
-    <child>
-      <object class="GtkButton" id="menu_btn">
-        <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="receives_default">True</property>
-        <property name="tooltip_text" translatable="yes">Menu</property>
-        <signal name="clicked" handler="on_menu_btn_clicked" swapped="no"/>
-        <child>
-          <object class="GtkImage">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="icon_name">open-menu-symbolic</property>
-          </object>
-        </child>
-      </object>
-      <packing>
-        <property name="pack_type">end</property>
-        <property name="position">1</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkButton" id="filter_btn">
-        <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="receives_default">True</property>
-        <property name="tooltip_text" translatable="yes">Filter by feed</property>
-        <child>
-          <object class="GtkImage">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="icon_name">view-list-symbolic</property>
-          </object>
-        </child>
-      </object>
-      <packing>
-        <property name="pack_type">end</property>
         <property name="position">2</property>
       </packing>
     </child>
     <child>
       <object class="GtkToggleButton" id="search_btn">
         <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="receives_default">True</property>
-        <property name="tooltip_text" translatable="yes">Search</property>
+        <property name="can-focus">True</property>
+        <property name="receives-default">True</property>
+        <property name="tooltip-text" translatable="yes">Search</property>
         <signal name="toggled" handler="on_search_btn_toggled" swapped="no"/>
         <child>
           <object class="GtkImage">
             <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="icon_name">system-search-symbolic</property>
+            <property name="can-focus">False</property>
+            <property name="icon-name">system-search-symbolic</property>
           </object>
         </child>
       </object>
       <packing>
-        <property name="pack_type">end</property>
+        <property name="pack-type">end</property>
         <property name="position">3</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkMenuButton" id="filter_btn">
+        <property name="visible">True</property>
+        <property name="can-focus">True</property>
+        <property name="focus-on-click">False</property>
+        <property name="receives-default">True</property>
+        <property name="tooltip-text" translatable="yes">Filter by feed</property>
+        <child>
+          <object class="GtkImage">
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="icon-name">view-list-symbolic</property>
+          </object>
+        </child>
+      </object>
+      <packing>
+        <property name="pack-type">end</property>
+        <property name="position">4</property>
       </packing>
     </child>
   </object>
   <object class="HdyHeaderBar" id="right_headerbar">
     <property name="visible">True</property>
-    <property name="can_focus">False</property>
+    <property name="can-focus">False</property>
+    <child type="title">
+      <object class="HdySqueezer" id="right_headerbar_squeezer">
+        <property name="visible">True</property>
+        <property name="can-focus">False</property>
+        <child>
+          <placeholder/>
+        </child>
+      </object>
+    </child>
     <child>
       <object class="GtkButton" id="back_btn">
-        <property name="can_focus">True</property>
-        <property name="receives_default">True</property>
-        <property name="no_show_all">True</property>
-        <property name="tooltip_text" translatable="yes">Back to articles</property>
+        <property name="can-focus">True</property>
+        <property name="receives-default">True</property>
+        <property name="no-show-all">True</property>
+        <property name="tooltip-text" translatable="yes">Back to articles</property>
         <signal name="clicked" handler="on_back_button_clicked" swapped="no"/>
         <child>
           <object class="GtkImage">
             <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="icon_name">go-previous-symbolic</property>
+            <property name="can-focus">False</property>
+            <property name="icon-name">go-previous-symbolic</property>
           </object>
         </child>
       </object>
     </child>
     <child>
+      <object class="GtkButton" id="open_externally_btn">
+        <property name="visible">True</property>
+        <property name="sensitive">False</property>
+        <property name="can-focus">True</property>
+        <property name="receives-default">True</property>
+        <property name="tooltip-text" translatable="yes">Open externally</property>
+        <child>
+          <object class="GtkImage">
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="icon-name">gfeeds-open-externally-symbolic</property>
+          </object>
+        </child>
+      </object>
+      <packing>
+        <property name="pack-type">end</property>
+        <property name="position">1</property>
+      </packing>
+    </child>
+    <child>
       <object class="GtkButton" id="view_mode_menu_btn">
         <property name="visible">True</property>
         <property name="sensitive">False</property>
-        <property name="can_focus">True</property>
-        <property name="receives_default">True</property>
-        <property name="tooltip_text" translatable="yes">Change view mode</property>
+        <property name="can-focus">True</property>
+        <property name="receives-default">True</property>
+        <property name="tooltip-text" translatable="yes">Change view mode</property>
         <child>
           <object class="GtkBox">
             <property name="visible">True</property>
-            <property name="can_focus">False</property>
+            <property name="can-focus">False</property>
             <property name="spacing">6</property>
             <child>
               <object class="GtkImage" id="view_mode_menu_btn_icon">
                 <property name="visible">True</property>
-                <property name="can_focus">False</property>
+                <property name="can-focus">False</property>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -142,8 +173,8 @@
             <child>
               <object class="GtkImage">
                 <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="icon_name">pan-down-symbolic</property>
+                <property name="can-focus">False</property>
+                <property name="icon-name">pan-down-symbolic</property>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -162,15 +193,15 @@
       <object class="GtkButton" id="share_btn">
         <property name="visible">True</property>
         <property name="sensitive">False</property>
-        <property name="can_focus">True</property>
-        <property name="receives_default">True</property>
-        <property name="tooltip_text" translatable="yes">Share</property>
+        <property name="can-focus">True</property>
+        <property name="receives-default">True</property>
+        <property name="tooltip-text" translatable="yes">Share</property>
         <signal name="clicked" handler="copy_article_uri" swapped="no"/>
         <child>
           <object class="GtkImage">
             <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="icon_name">emblem-shared-symbolic</property>
+            <property name="can-focus">False</property>
+            <property name="icon-name">emblem-shared-symbolic</property>
           </object>
         </child>
       </object>
@@ -178,54 +209,25 @@
         <property name="position">6</property>
       </packing>
     </child>
-    <child type="title">
-      <object class="HdySqueezer" id="right_headerbar_squeezer">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <child>
-          <placeholder/>
-        </child>
-      </object>
-    </child>
-    <child>
-      <object class="GtkButton" id="open_externally_btn">
-        <property name="visible">True</property>
-        <property name="sensitive">False</property>
-        <property name="can_focus">True</property>
-        <property name="receives_default">True</property>
-        <property name="tooltip_text" translatable="yes">Open externally</property>
-        <child>
-          <object class="GtkImage">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="icon_name">gfeeds-open-externally-symbolic</property>
-          </object>
-        </child>
-      </object>
-      <packing>
-        <property name="pack_type">end</property>
-        <property name="position">1</property>
-      </packing>
-    </child>
   </object>
   <object class="GtkScrolledWindow" id="right_headerbar_title_container">
-    <property name="width_request">100</property>
+    <property name="width-request">100</property>
     <property name="visible">True</property>
-    <property name="can_focus">True</property>
+    <property name="can-focus">True</property>
     <property name="hexpand">True</property>
     <child>
       <object class="GtkViewport">
         <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="shadow_type">none</property>
+        <property name="can-focus">False</property>
+        <property name="shadow-type">none</property>
         <child>
           <object class="GtkLabel" id="title_label">
             <property name="visible">True</property>
-            <property name="can_focus">False</property>
+            <property name="can-focus">False</property>
             <property name="halign">center</property>
             <property name="justify">center</property>
             <property name="ellipsize">end</property>
-            <property name="single_line_mode">True</property>
+            <property name="single-line-mode">True</property>
             <style>
               <class name="title"/>
             </style>

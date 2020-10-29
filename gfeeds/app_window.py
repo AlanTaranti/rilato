@@ -135,11 +135,7 @@ class GFeedsAppWindow(Handy.ApplicationWindow):
         shortcuts_l = [
             {
                 'combo': 'F10',
-                'cb': lambda *args: (
-                    self.headerbar.menu_popover.popup
-                    if not self.headerbar.menu_popover.is_visible()
-                    else self.headerbar.menu_popover.popdown
-                )()
+                'cb': lambda *args: self.headerbar.menu_btn.clicked()
             },
             {
                 'combo': '<Control>r',

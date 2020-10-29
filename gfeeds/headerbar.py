@@ -123,10 +123,6 @@ class GFeedHeaderbar(Handy.WindowHandle):
         self.set_view_mode_icon(self.confman.conf['default_view'])
         self.view_mode_menu = GFeedsViewModeMenu(self.view_mode_menu_btn)
         # low priority: low impact, happens rarely
-        self.view_mode_menu_btn.connect(
-            'clicked',
-            lambda *args: self.view_mode_menu.popup()
-        )
         self.open_externally_btn = self.builder.get_object(
             'open_externally_btn'
         )
@@ -146,14 +142,14 @@ class GFeedHeaderbar(Handy.WindowHandle):
         )
         self.menu = self.menu_builder.get_object('generalMenu')
         self.menu_popover.bind_model(self.menu)
-        self.menu_popover.set_relative_to(self.menu_btn)
-        self.menu_popover.set_modal(True)
+        self.menu_btn.set_popover(self.menu_popover)
 
         self.search_btn = self.builder.get_object('search_btn')
         self.filter_btn = self.builder.get_object(
             'filter_btn'
         )
         self.filter_popover = FeedsViewPopover(self.filter_btn)
+        self.filter_btn.set_popover(self.filter_popover)
         # this activates the "All" feed filter. while this works it's kinda
         # hacky and needs a proper function
         self.feedman.connect(
@@ -169,6 +165,7 @@ class GFeedHeaderbar(Handy.WindowHandle):
         )
         self.add_btn.set_tooltip_text(_('Add new feed'))
         self.add_popover = AddFeedPopover(self.add_btn)
+        self.add_btn.set_popover(self.add_popover)
 
         self.refresh_btn = RefreshSpinnerButton()
         self.refresh_btn.btn.connect('clicked', self.feedman.refresh)
@@ -257,9 +254,6 @@ class GFeedHeaderbar(Handy.WindowHandle):
     def on_back_button_clicked(self, *args):
         self.leaflet.set_visible_child(self.left_headerbar)
         self.back_btn_func()
-
-    def on_menu_btn_clicked(self, *args):
-        self.menu_popover.popup()
 
     def on_load_start(self, *args):
         self.view_mode_menu_btn.set_sensitive(False)
