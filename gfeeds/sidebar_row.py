@@ -1,4 +1,3 @@
-from os.path import isfile
 from gi.repository import Gtk, GLib, Pango
 from gfeeds.confManager import ConfManager
 from gfeeds.initials_icon import InitialsIcon

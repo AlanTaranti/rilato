@@ -1,5 +1,4 @@
 from gettext import gettext as _
-from os.path import isfile
 from gi.repository import Gtk, Pango
 from gfeeds.confManager import ConfManager
 from gfeeds.feeds_manager import FeedsManager
