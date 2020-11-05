@@ -10,3 +10,5 @@ Terminal=false
 StartupNotify=true
 MimeType=application/xml;text/xml;text/x-opml;
 Keywords=rss;reader;feed;news;
+# Translators: Do NOT translate or transliterate this text (these are enum types)!
+X-Purism-FormFactor=Workstation;Mobile;
