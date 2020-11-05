@@ -45,6 +45,8 @@ class GFeedsApplication(Gtk.Application):
             flags=Gio.ApplicationFlags.HANDLES_COMMAND_LINE,
             **kwargs
         )
+        GLib.set_application_name('Feeds')
+        GLib.set_prgname('org.gabmus.gfeeds')
         self.confman = ConfManager()
         self.feedman = FeedsManager()
         self.window = GFeedsAppWindow()
