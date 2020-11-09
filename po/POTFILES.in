@@ -5,7 +5,10 @@ data/ui/article_right_click_popover_content.glade
 data/ui/empty_state.glade
 data/ui/extra_popover_menu.glade
 data/ui/headerbar.glade
+data/ui/manage_tags_listbox_row_content.glade
+data/ui/manage_tags_popover_content.glade
 data/ui/menu.xml
+data/ui/scrolled_label.glade
 data/ui/shortcutsWindow.xml
 data/ui/spinner_button.glade
 data/ui/webview_filler.glade
@@ -24,6 +27,7 @@ gfeeds/opml_manager.py
 gfeeds/rss_parser.py
 gfeeds/settings_window.py
 gfeeds/sidebar.py
+gfeeds/sidebar_row_popover.py
 gfeeds/spinner_button.py
 gfeeds/suggestion_bar.py
 gfeeds/webview.py
