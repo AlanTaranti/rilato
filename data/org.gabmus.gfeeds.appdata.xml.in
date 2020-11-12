@@ -54,6 +54,14 @@
     <url type="bugtracker">https://gitlab.com/gabmus/gnome-feeds/issues</url>
     <update_contact>gabmus@disroot.org</update_contact>
     <releases>
+        <release version="0.16" timestamp="1605187000">
+            <description>
+                <ul>
+                    <li>UI improvements on phones</li>
+                </ul>
+            </description>
+        </release>
+
         <release version="0.15" timestamp="1600839902">
             <description>
                 <ul>

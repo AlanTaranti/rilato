@@ -295,7 +295,7 @@ class GFeedsSettingsWindow(Handy.PreferencesWindow):
         ]
         for p in self.pages:
             self.add(p)
-        self.set_default_size(630, 700)
+        self.set_default_size(360, 600)
         # Unneded for Handy 1?
         # self.get_titlebar().set_show_close_button(True)
 
