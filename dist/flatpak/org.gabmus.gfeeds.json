@@ -664,7 +664,7 @@
                 {
                     "type": "git",
                     "url": "https://gitlab.gnome.org/World/gfeeds",
-                    "tag": "0.16"
+                    "tag": "0.16.1"
                 }
             ]
         }
