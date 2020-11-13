@@ -24,7 +24,7 @@ def get_favicon(link, favicon_path):
         'size': -1
     }
     for e in favicon_els:
-        if candidate['size'] >= 32:
+        if candidate['size'] >= 100:
             break
         if 'rel' in e.attrib.keys():
             size = 0

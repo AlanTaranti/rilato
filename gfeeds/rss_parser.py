@@ -233,31 +233,6 @@ class Feed:
                         get_favicon(self.items[0].link, self.favicon_path)
                 except Exception:
                     print('No favicon')
-        if isfile(self.favicon_path):
-            try:
-                self._resize_favicon(self.favicon_path)
-            except Exception:
-                print(_(
-                    'Error resizing favicon for feed {0}. '
-                    'Probably not an image.\n'
-                    'Trying downloading favicon from an article.'
-                ).format(self.title))
-                try:
-                    get_favicon(self.items[0].link, self.favicon_path)
-                    self._resize_favicon(self.favicon_path)
-                except Exception:
-                    print(_(
-                        'Error resizing favicon from article for feed {0}.\n'
-                        'Deleting invalid favicon.'
-                    ).format(self.title))
-                    remove(self.favicon_path)
-
-    def _resize_favicon(self, img_path):
-        favicon = Image.open(img_path)
-        if favicon.width != 32:
-            favicon = favicon.resize((32, 32), Image.BILINEAR)
-            favicon.save(self.favicon_path, 'PNG')
-        favicon.close()
 
     def __repr__(self):
         return f'Feed Object `{self.title}`; {len(self.items)} items'

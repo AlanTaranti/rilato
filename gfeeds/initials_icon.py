@@ -13,14 +13,15 @@ def make_thumb(path, width: int, height: int = 1000) -> str:
         return None
     if not isinstance(path, Path):
         path = Path(path)
-    dest = thumbs_cache_path.joinpath(f'{width}x{height}_{path.name}')
+    dest = thumbs_cache_path.joinpath(f'{width}x{height}_{path.name}_v2')
     if dest.is_file():
         return str(dest)
     try:
         with Image.open(path) as thumb:
             thumb = Image.open(path)
-            thumb.thumbnail((width, height), Image.ANTIALIAS)
-            thumb.save(dest, 'PNG')
+            thumb.resize((width, height)).save(dest, 'PNG')
+            # thumb.thumbnail((width, height), Image.ANTIALIAS)
+            # thumb.save(dest, 'PNG')
         return str(dest)
     except IOError:
         print(f'Error creating thumbnail for image `{path}`')
