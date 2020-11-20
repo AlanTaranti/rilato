@@ -26,14 +26,14 @@
 
     <file compressed="true">ui/gtk_style.css</file>
 
-    <file preprocess="xml-stripblanks">icons/ephy-reader-mode-symbolic.svg</file>
-    <file preprocess="xml-stripblanks">icons/eye-not-looking-symbolic.svg</file>
-    <file preprocess="xml-stripblanks">icons/eye-open-negative-filled-symbolic.svg</file>
-    <file preprocess="xml-stripblanks">icons/gfeeds-open-externally-symbolic.svg</file>
-    <file preprocess="xml-stripblanks">icons/globe-alt-symbolic.svg</file>
-    <file preprocess="xml-stripblanks">icons/org.gabmus.gfeeds-symbolic.svg</file>
     <file preprocess="xml-stripblanks">icons/org.gabmus.gfeeds.svg</file>
-    <file preprocess="xml-stripblanks">icons/tag-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">icons/org.gabmus.gfeeds-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">icons/scalable/status/ephy-reader-mode-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">icons/scalable/status/eye-not-looking-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">icons/scalable/status/eye-open-negative-filled-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">icons/scalable/status/gfeeds-open-externally-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">icons/scalable/status/globe-alt-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">icons/scalable/status/tag-symbolic.svg</file>
 
   </gresource>
 </gresources>
