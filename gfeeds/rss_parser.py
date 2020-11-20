@@ -8,7 +8,6 @@ from gettext import gettext as _
 from gfeeds.download_manager import download_raw
 from gfeeds.get_favicon import get_favicon
 from os.path import isfile
-from os import remove
 from gfeeds.confManager import ConfManager
 from gfeeds.sha import shasum
 from PIL import Image
