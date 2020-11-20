@@ -75,7 +75,6 @@ class GFeedHeaderbar(Handy.WindowHandle):
         self.builder = Gtk.Builder.new_from_resource(
             '/org/gabmus/gfeeds/ui/headerbar.glade'
         )
-        self.builder.connect_signals(self)
         self.confman = ConfManager()
         self.feedman = FeedsManager()
         self.back_btn_func = back_btn_func
@@ -111,9 +110,8 @@ class GFeedHeaderbar(Handy.WindowHandle):
         self.set_headerbar_controls()
         # self.headergroup.set_focus(self.left_headerbar)
 
-        self.back_button = self.builder.get_object(
-            'back_btn'
-        )
+        self.back_button = self.builder.get_object('back_btn')
+        self.back_button.connect('clicked', self.on_back_button_clicked)
         self.view_mode_menu_btn = self.builder.get_object(
             'view_mode_menu_btn'
         )
@@ -126,12 +124,10 @@ class GFeedHeaderbar(Handy.WindowHandle):
             'open_externally_btn'
         )
         self.open_externally_btn.connect(
-            'clicked',
-            self.webview.open_externally
+            'clicked', self.webview.open_externally
         )
-        self.share_btn = self.builder.get_object(
-            'share_btn'
-        )
+        self.share_btn = self.builder.get_object('share_btn')
+        self.share_btn.connect('clicked', self.copy_article_uri)
         self.menu_btn = self.builder.get_object(
             'menu_btn'
         )
@@ -144,6 +140,7 @@ class GFeedHeaderbar(Handy.WindowHandle):
         self.menu_btn.set_popover(self.menu_popover)
 
         self.search_btn = self.builder.get_object('search_btn')
+        self.search_btn.connect('toggled', self.on_search_btn_toggled)
         self.filter_btn = self.builder.get_object(
             'filter_btn'
         )

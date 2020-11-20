@@ -64,7 +64,6 @@
         <property name="can-focus">True</property>
         <property name="receives-default">True</property>
         <property name="tooltip-text" translatable="yes">Search</property>
-        <signal name="toggled" handler="on_search_btn_toggled" swapped="no"/>
         <child>
           <object class="GtkImage">
             <property name="visible">True</property>
@@ -117,7 +116,6 @@
         <property name="receives-default">True</property>
         <property name="no-show-all">True</property>
         <property name="tooltip-text" translatable="yes">Back to articles</property>
-        <signal name="clicked" handler="on_back_button_clicked" swapped="no"/>
         <child>
           <object class="GtkImage">
             <property name="visible">True</property>
@@ -196,7 +194,6 @@
         <property name="can-focus">True</property>
         <property name="receives-default">True</property>
         <property name="tooltip-text" translatable="yes">Share</property>
-        <signal name="clicked" handler="copy_article_uri" swapped="no"/>
         <child>
           <object class="GtkImage">
             <property name="visible">True</property>
