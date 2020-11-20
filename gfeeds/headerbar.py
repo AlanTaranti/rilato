@@ -122,7 +122,6 @@ class GFeedHeaderbar(Handy.WindowHandle):
         )
         self.set_view_mode_icon(self.confman.conf['default_view'])
         self.view_mode_menu = GFeedsViewModeMenu(self.view_mode_menu_btn)
-        # low priority: low impact, happens rarely
         self.open_externally_btn = self.builder.get_object(
             'open_externally_btn'
         )
