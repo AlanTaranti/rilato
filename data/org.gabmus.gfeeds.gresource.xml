@@ -26,7 +26,6 @@
 
     <file compressed="true">ui/gtk_style.css</file>
 
-    <file preprocess="xml-stripblanks">icons/circle-filled-symbolic.svg</file>
     <file preprocess="xml-stripblanks">icons/ephy-reader-mode-symbolic.svg</file>
     <file preprocess="xml-stripblanks">icons/eye-not-looking-symbolic.svg</file>
     <file preprocess="xml-stripblanks">icons/eye-open-negative-filled-symbolic.svg</file>
