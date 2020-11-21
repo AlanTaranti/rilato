@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: gfeeds 0.11\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-11-21 12:24+0100\n"
-"PO-Revision-Date: 2020-11-21 12:33+0100\n"
+"PO-Revision-Date: 2020-11-21 13:13+0100\n"
 "Last-Translator: Óscar Fernández Díaz <oscfdezdz@tuta.io>\n"
 "Language-Team: Spanish\n"
 "Language: es\n"
@@ -73,7 +73,7 @@ msgstr "Añadir una nueva suscripción"
 
 #: ../gfeeds/manage_feeds_window.py:210 ../gfeeds/manage_feeds_window.py:325
 msgid "Manage Feeds"
-msgstr "Organizar Suscripciones"
+msgstr "Organizar suscripciones"
 
 #: ../gfeeds/manage_feeds_window.py:217
 msgid "Select/Unselect all"
@@ -133,7 +133,7 @@ msgstr "General"
 
 #: ../gfeeds/settings_window.py:143
 msgid "General Settings"
-msgstr "Propiedades Generales"
+msgstr "Configuración general"
 
 #: ../gfeeds/settings_window.py:146
 msgid "Refresh articles on startup"
@@ -149,7 +149,7 @@ msgstr "Abrir enlaces en tu navegador"
 
 #: ../gfeeds/settings_window.py:166
 msgid "Maximum article age"
-msgstr "Máxima edad del artículo"
+msgstr "Duración máxima del artículo"
 
 #: ../gfeeds/settings_window.py:170
 msgid "In days"
@@ -173,7 +173,7 @@ msgstr "Visualizacion"
 
 #: ../gfeeds/settings_window.py:222
 msgid "View Settings"
-msgstr "Propiedades de Visualización"
+msgstr "Configuración de visualización"
 
 #: ../gfeeds/settings_window.py:225
 msgid "Show full articles titles"
@@ -197,7 +197,7 @@ msgstr "Avanzado"
 
 #: ../gfeeds/settings_window.py:260
 msgid "Advanced Settings"
-msgstr "Propiedades Avanzadas"
+msgstr "Configuración avanzada"
 
 #: ../gfeeds/settings_window.py:263
 msgid "Maximum refresh threads"
@@ -249,11 +249,11 @@ msgstr "Está desconectado"
 
 #: ../gfeeds/webview.py:74
 msgid "Web View"
-msgstr "Visualización Web"
+msgstr "Visualización web"
 
 #: ../gfeeds/webview.py:75
 msgid "Filler View"
-msgstr "Visualización de Relleno"
+msgstr "Visualización de relleno"
 
 #: ../gfeeds/webview.py:136
 msgid "RSS content or summary not available for this article"
@@ -297,7 +297,7 @@ msgstr "Modo de visualización"
 
 #: ../data/ui/extra_popover_menu.glade:52
 msgid "Reader Mode"
-msgstr "Modo de Lectura"
+msgstr "Modo de lectura"
 
 #: ../data/ui/extra_popover_menu.glade:67
 msgid "RSS Content"
@@ -386,15 +386,15 @@ msgstr "Acerca de Feeds"
 
 #: ../data/ui/shortcutsWindow.xml:13
 msgid "Open Keyboard Shortcuts"
-msgstr "Abrir Atajos de Teclado"
+msgstr "Abrir atajos de teclado"
 
 #: ../data/ui/shortcutsWindow.xml:19
 msgid "Open Menu"
-msgstr "Abrir Menú"
+msgstr "Abrir menú"
 
 #: ../data/ui/shortcutsWindow.xml:25
 msgid "Open Preferences"
-msgstr "Abrir Preferencias"
+msgstr "Abrir preferencias"
 
 #: ../data/ui/shortcutsWindow.xml:31
 msgid "Quit"
