@@ -45,9 +45,9 @@ class GFeedsSidebarListBox(Gtk.ListBox):
         )
         self.set_header_func(separator_header_func)
 
-    def add(self, *args, **kwargs):
-        super().add(*args, **kwargs)
-        self.show_all()
+    def append(self, *args, **kwargs):
+        super().append(*args, **kwargs)
+        self.show()
 
     def on_show_read_changed(self, *args):
         self.invalidate_filter()
@@ -104,7 +104,7 @@ class GFeedsSidebarListBox(Gtk.ListBox):
     def add_new_items(self, feeditems_l):
         self.parent_stack.set_main_visible(True)
         for i in feeditems_l:
-            self.add(GFeedsSidebarRow(i))
+            self.append(GFeedsSidebarRow(i))
             self.show_all()
 
     def empty(self, *args):
@@ -136,7 +136,7 @@ class GFeedsSidebarScrolledWin(Gtk.ScrolledWindow):
         # self.set_size_request(360, 100)
 
         self.set_policy(Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC)
-        self.add(self.listbox)
+        self.set_child(self.listbox)
 
     def select_next_article(self, *args):
         target = None
@@ -232,7 +232,7 @@ class GFeedsSidebar(Gtk.Stack):
 
     def on_feeds_items_extend(self, caller, n_feeds_items_list):
         [
-            self.listbox.add(GFeedsSidebarRow(feed_item))
+            self.listbox.append(GFeedsSidebarRow(feed_item))
             for feed_item in n_feeds_items_list
         ]
 
@@ -270,12 +270,12 @@ class GFeedsSidebar(Gtk.Stack):
                 break
 
     def on_feeds_items_append(self, feeditem):
-        self.listbox.add(
+        self.listbox.append(
             GFeedsSidebarRow(feeditem)
         )
 
     def on_saved_feeds_items_append(self, feeditem):
-        self.saved_items_listbox.add(
+        self.saved_items_listbox.append(
             GFeedsSidebarRow(feeditem, is_saved=True)
         )
 

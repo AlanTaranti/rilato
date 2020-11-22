@@ -21,7 +21,7 @@ class FeedsViewAllListboxRow(Gtk.ListBoxRow):
         self.label.set_use_markup(True)
         self.label.set_margin_top(12)
         self.label.set_margin_bottom(12)
-        self.add(self.label)
+        self.set_child(self.label)
 
 
 class FeedsViewListboxRow(Gtk.ListBoxRow):
@@ -45,7 +45,7 @@ class FeedsViewListboxRow(Gtk.ListBoxRow):
             self.feed.title,
             self.feed.favicon_path
         )
-        self.icon_container.add(self.icon)
+        self.icon_container.append(self.icon)
 
         self.name_label = self.builder.get_object('title_label')
         self.name_label.set_text(self.feed.title)
@@ -60,7 +60,7 @@ class FeedsViewListboxRow(Gtk.ListBoxRow):
         else:
             self.desc_label.hide()
             self.name_label.set_ellipsize(Pango.EllipsizeMode.END)
-        self.add(self.hbox)
+        self.set_child(self.hbox)
         self.on_full_feed_name_changed()
 
     def on_full_feed_name_changed(self, *args):
@@ -94,14 +94,14 @@ class FeedsViewTagListboxRow(Gtk.ListBoxRow):
             Gtk.IconSize.INVALID
         )
         self.icon.set_pixel_size(32)
-        self.icon_container.add(self.icon)
+        self.icon_container.append(self.icon)
 
         self.name_label = self.builder.get_object('title_label')
         self.name_label.set_text(tag)
         self.desc_label = self.builder.get_object('description_label')
         self.desc_label.set_no_show_all(True)
         self.desc_label.hide()
-        self.add(self.hbox)
+        self.set_child(self.hbox)
 
     def __repr__(self):
         return f'<FeedsViewTagListboxRow - {self.title}>'
@@ -155,7 +155,7 @@ class FeedsViewListbox(Gtk.ListBox):
         self.add_feed(feed)
 
     def on_tags_append(self, caller, tag):
-        self.add(FeedsViewTagListboxRow(tag))
+        self.append(FeedsViewTagListboxRow(tag))
 
     def on_tags_pop(self, caller, tag):
         for row in self.get_children():
@@ -164,11 +164,7 @@ class FeedsViewListbox(Gtk.ListBox):
                 break
 
     def add_feed(self, feed):
-        self.add(FeedsViewListboxRow(feed, self.description))
-
-    def add(self, *args, **kwargs):
-        super().add(*args, **kwargs)
-        self.show_all()
+        self.append(FeedsViewListboxRow(feed, self.description))
 
     def on_row_activated(self, listbox, row):
         if row.IS_ALL:
@@ -216,11 +212,11 @@ class FeedsViewScrolledWindow(Gtk.ScrolledWindow):
         super().__init__(**kwargs)
         self.listbox = FeedsViewListbox(description, tags)
         self.all_row = FeedsViewAllListboxRow()
-        self.listbox.add(self.all_row)
+        self.listbox.append(self.all_row)
         self.listbox.select_row(self.all_row)
         # self.set_size_request(360, 500)
         self.set_policy(Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC)
-        self.add(self.listbox)
+        self.set_child(self.listbox)
         self.set_size_request(250, 400)
         self.get_style_context().add_class('frame')
         self.set_margin_top(6)
@@ -236,11 +232,10 @@ class FeedsViewPopover(Gtk.Popover):
             description=False,
             tags=True
         )
-        self.add(self.scrolled_win)
-        self.set_modal(True)
-        self.set_relative_to(relative_to)
+        self.set_child(self.scrolled_win)
+        self.set_autohide(True)
+        self.set_parent(relative_to)
         relative_to.connect('clicked', self.on_relative_to_clicked)
 
     def on_relative_to_clicked(self, *args):
         self.popup()
-        self.show_all()

@@ -1,7 +1,7 @@
 from gi.repository import Gtk, Handy
 
 
-class GFeedsSearchbar(Handy.SearchBar):
+class GFeedsSearchbar(Gtk.SearchBar):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.set_hexpand(False)
@@ -10,7 +10,7 @@ class GFeedsSearchbar(Handy.SearchBar):
             Gtk.EntryIconPosition.PRIMARY,
             'system-search-symbolic'
         )
-        self.add(self.entry)
+        self.set_child(self.entry)
         self.set_show_close_button(False)
         self.set_search_mode(False)
         self.connect_entry(self.entry)

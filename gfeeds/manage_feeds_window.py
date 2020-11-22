@@ -44,7 +44,7 @@ class ManageTagsListboxRow(Gtk.ListBoxRow):
             lambda *args: self.emit('tag_deleted', self.tag)
         )
 
-        self.add(self.main_box)
+        self.set_child(self.main_box)
 
     def on_checkbox_toggled(self, checkbox):
         with checkbox.handler_block(self.checkbox_handler_id):
@@ -83,8 +83,8 @@ class ManageTagsPopover(Gtk.Popover):
         self.confman = ConfManager()
         self.relative_to = relative_to
         self.window = window
-        self.set_relative_to(self.relative_to)
-        self.set_modal(True)
+        self.set_parent(self.relative_to)
+        self.set_autohide(True)
         self.main_box = self.builder.get_object('main_box')
         self.add_tag_btn = self.builder.get_object('add_tag_btn')
         self.tags_entry = self.builder.get_object('tags_entry')
@@ -115,7 +115,7 @@ class ManageTagsPopover(Gtk.Popover):
             )
         )
 
-        self.add(self.main_box)
+        self.set_child(self.main_box)
         self.populate_listbox()
 
     def tags_listbox_sorting_func(self, row1, row2, data, notify_destroy):
@@ -143,7 +143,7 @@ class ManageTagsPopover(Gtk.Popover):
 
     def tags_listbox_add_row(self, tag: str, show_all=True):
         n_row = ManageTagsListboxRow(tag)
-        self.tags_listbox.add(n_row)
+        self.tags_listbox.append(n_row)
         n_row.connect('tag_deleted', self.on_tag_deleted)
         if show_all:
             self.tags_listbox.show_all()
@@ -270,7 +270,7 @@ class ManageFeedsListbox(FeedsViewListbox):
         self.set_selection_mode(Gtk.SelectionMode.NONE)
 
     def add_feed(self, feed):
-        self.add(ManageFeedsListboxRow(feed))
+        self.append(ManageFeedsListboxRow(feed))
 
     def on_row_activated(self, listbox, row):
         with row.checkbox.handler_block(row.checkbox_handler_id):
@@ -283,7 +283,7 @@ class ManageFeedsScrolledWindow(Gtk.ScrolledWindow):
         self.listbox = ManageFeedsListbox()
         self.set_size_request(360, 500)
         self.set_policy(Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC)
-        self.add(self.listbox)
+        self.set_child(self.listbox)
 
 
 class DeleteFeedsConfirmMessageDialog(ScrolledMessageDialog):
@@ -324,13 +324,13 @@ class GFeedsManageFeedsWindow(Handy.Window):
         self.listbox.connect('row-activated', self.on_row_activated)
         self.set_title(_('Manage Feeds'))
 
-        self.window_handle = Handy.WindowHandle()
-        self.window_handle.add(self.headerbar)
+        self.window_handle = Gtk.WindowHandle()
+        self.window_handle.set_child(self.headerbar)
         self.main_box.pack_start(self.window_handle, False, False, 0)
         self.window_handle.set_vexpand(False)
 
         self.main_box.pack_start(self.scrolled_window, True, True, 0)
-        self.add(self.main_box)
+        self.set_child(self.main_box)
 
         self.accel_group = Gtk.AccelGroup()
         self.accel_group.connect(

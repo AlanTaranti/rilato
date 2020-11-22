@@ -16,9 +16,9 @@ class AddFeedPopover(Gtk.Popover):
         self.builder = Gtk.Builder.new_from_resource(
             '/org/gabmus/gfeeds/ui/add_feed_box.glade'
         )
-        self.set_modal(True)
-        self.set_relative_to(relative_to)
-        relative_to.connect('clicked', self.on_relative_to_clicked)
+        self.set_autohide(True)
+        self.set_parent(relative_to)
+        relative_to.connect('clicked', lambda *args: self.popup())
         self.container_box = self.builder.get_object('container_box')
         self.confirm_btn = self.builder.get_object('confirm_btn')
         self.confirm_btn.connect(
@@ -36,14 +36,11 @@ class AddFeedPopover(Gtk.Popover):
             lambda *args:
             self.already_subscribed_revealer.set_reveal_child(False)
         )
-        self.add(self.container_box)
+        self.set_child(self.container_box)
 
     def on_url_entry_activate(self, *args):
         if self.confirm_btn.get_sensitive():
             self.on_confirm_btn_clicked(self.confirm_btn)
-
-    def on_relative_to_clicked(self, *args):
-        self.popup()
 
     def on_confirm_btn_clicked(self, btn):
         res = self.feedman.add_feed(self.url_entry.get_text(), True)
@@ -54,7 +51,7 @@ class AddFeedPopover(Gtk.Popover):
             self.already_subscribed_revealer.set_reveal_child(True)
 
 
-class GFeedHeaderbar(Handy.WindowHandle):
+class GFeedHeaderbar(Gtk.WindowHandle):
     __gsignals__ = {
         'gfeeds_headerbar_squeeze': (
             GObject.SignalFlags.RUN_FIRST,
@@ -106,7 +103,7 @@ class GFeedHeaderbar(Handy.WindowHandle):
         self.leaflet.add(separator)
         self.leaflet.add(self.right_headerbar)
         self.leaflet.child_set_property(separator, 'allow-visible', False)
-        self.add(self.leaflet)
+        self.set_child(self.leaflet)
         self.set_headerbar_controls()
         # self.headergroup.set_focus(self.left_headerbar)
 
@@ -165,7 +162,7 @@ class GFeedHeaderbar(Handy.WindowHandle):
 
         self.refresh_btn = RefreshSpinnerButton()
         self.refresh_btn.btn.connect('clicked', self.feedman.refresh)
-        self.builder.get_object('refresh_btn_box').add(self.refresh_btn)
+        self.builder.get_object('refresh_btn_box').append(self.refresh_btn)
 
         self.squeezer = Handy.Squeezer(orientation=Gtk.Orientation.HORIZONTAL)
         self.squeezer.set_homogeneous(False)

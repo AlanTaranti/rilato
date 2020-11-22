@@ -2,7 +2,7 @@ from gettext import gettext as _
 from gi.repository import Gtk
 
 
-class RefreshSpinnerButton(Gtk.Bin):
+class RefreshSpinnerButton(Gtk.Box):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.builder = Gtk.Builder.new_from_resource(
@@ -14,7 +14,7 @@ class RefreshSpinnerButton(Gtk.Bin):
         self.icon = self.builder.get_object('icon')
 
         self.btn.set_tooltip_text(_('Refresh feeds'))
-        self.add(self.btn)
+        self.append(self.btn)
         self.stack.set_visible_child(self.icon)
 
     def set_spinning(self, state):

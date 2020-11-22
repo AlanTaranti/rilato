@@ -2,7 +2,7 @@
     "app-id": "org.gabmus.gfeeds",
     "command": "gfeeds",
     "runtime": "org.gnome.Platform",
-    "runtime-version": "3.38",
+    "runtime-version": "master",
     "sdk": "org.gnome.Sdk",
     "finish-args": [
         "--device=dri",
@@ -27,8 +27,32 @@
             "sources": [
                 {
                     "type": "git",
-                    "url": "https://gitlab.gnome.org/GNOME/libhandy",
-                    "tag": "1.0.2"
+                    "url": "https://gitlab.gnome.org/exalm/libhandy",
+                    "branch": "gtk4"
+                }
+            ]
+        },
+        {
+            "name": "webkit-gtk4",
+            "buildsystem": "cmake-ninja",
+            "config-opts": [
+                "-DUSE_GTK4=ON",
+                "-DPORT=GTK",
+                "-DCMAKE_BUILD_TYPE=Release",
+                "-DCMAKE_SKIP_RPATH=ON",
+                "-DENABLE_GAMEPAD=OFF",
+                "-DENABLE_GTKDOC=OFF",
+                "-DENABLE_INTROSPECTION=ON"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://s3-us-west-2.amazonaws.com/archives.webkit.org/WebKit-SVN-source.tar.bz2",
+                    "sha256": "5862aca520ae0723b6aa545a57c7469d2f8a7745bfc34a25f40316d9835fcc64"
+                },
+                {
+                    "type": "shell",
+                    "commands": ["sed -i 's/set(ENABLE_INTROSPECTION OFF)/set(ENABLE_INTROSPECTION ON)/g' Source/cmake/OptionsGTK.cmake"]
                 }
             ]
         },

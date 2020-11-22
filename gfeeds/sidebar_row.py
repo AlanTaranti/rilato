@@ -37,7 +37,7 @@ class GFeedsSidebarRow(Gtk.ListBoxRow):
             self.feeditem.parent_feed.title,
             self.feeditem.parent_feed.favicon_path
         )
-        self.icon_container.add(self.icon)
+        self.icon_container.append(self.icon)
 
         # Date & time stuff is long
         self.date_label = self.builder.get_object('date_label')
@@ -68,7 +68,7 @@ class GFeedsSidebarRow(Gtk.ListBoxRow):
 
         self.popover = RowPopover(self)
 
-        self.add(self.container_box)
+        self.set_child(self.container_box)
         self.set_read()
 
     def on_full_article_title_changed(self, *args):

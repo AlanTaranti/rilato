@@ -48,7 +48,7 @@ def set_avatar_func(icon: str, size: int) -> GdkPixbuf.Pixbuf:
     return pixbuf
 
 
-class InitialsIcon(Gtk.Bin):
+class InitialsIcon(Gtk.Box):
     def __init__(self, name, image_path, **kwargs):
         super().__init__(**kwargs)
         self.name = name
@@ -61,4 +61,4 @@ class InitialsIcon(Gtk.Bin):
         self.avatar.set_image_load_func(
             lambda size: set_avatar_func(self.image_path, size)
         )
-        self.add(self.avatar)
+        self.append(self.avatar)
