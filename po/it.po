@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-13 08:27+0100\n"
-"PO-Revision-Date: 2020-11-13 08:27+0100\n"
+"POT-Creation-Date: 2020-12-06 23:59+0100\n"
+"PO-Revision-Date: 2020-12-07 00:00+0100\n"
 "Last-Translator: Gabriele Musco <gabmus@disroot.org>\n"
 "Language-Team: Italian\n"
 "Language: it\n"
@@ -30,17 +30,17 @@ msgstr "File XML"
 msgid "Choose where to save the exported OPML file"
 msgstr "Scegli dove salvare il file OPML esportato"
 
-#: ../gfeeds/rss_parser.py:62
+#: ../gfeeds/rss_parser.py:61
 #, python-brace-format
 msgid "Error: unable to parse datetime {0} for feeditem {1}"
 msgstr "Errore: impossibile analizzare data e ora {0} per l'articolo {1}"
 
-#: ../gfeeds/rss_parser.py:170
+#: ../gfeeds/rss_parser.py:169
 #, python-brace-format
 msgid "Errors while parsing feed `{0}`"
 msgstr "Errori nell'analisi del feed `{0}`"
 
-#: ../gfeeds/rss_parser.py:210
+#: ../gfeeds/rss_parser.py:209
 #, python-brace-format
 msgid "`{0}` may not be an RSS or Atom feed"
 msgstr "`{0}` potrebbe non essere un feed RSS o Atom"
@@ -50,7 +50,7 @@ msgstr "`{0}` potrebbe non essere un feed RSS o Atom"
 msgid "Feed {0} exists already, skipping"
 msgstr "Il feed {0} esiste già, lo salto"
 
-#: ../gfeeds/headerbar.py:166
+#: ../gfeeds/headerbar.py:162
 msgid "Add new feed"
 msgstr "Aggiungi nuovo feed"
 
@@ -110,83 +110,95 @@ msgstr "`{0}` non è un URL"
 msgid "Error downloading `{0}`, code `{1}`"
 msgstr "Errore nel download di `{0}`, codice `{1}`"
 
-#: ../gfeeds/settings_window.py:139
+#: ../gfeeds/settings_window.py:179
 msgid "General"
 msgstr "Generale"
 
-#: ../gfeeds/settings_window.py:143
+#: ../gfeeds/settings_window.py:183
 msgid "General Settings"
 msgstr "Impostazioni Generali"
 
-#: ../gfeeds/settings_window.py:146
+#: ../gfeeds/settings_window.py:186
 msgid "Refresh articles on startup"
 msgstr "Aggiorna articoli all'avvio"
 
-#: ../gfeeds/settings_window.py:151
+#: ../gfeeds/settings_window.py:191
 msgid "Show newer articles first"
 msgstr "Mostra nuovi articoli per primi"
 
-#: ../gfeeds/settings_window.py:156
+#: ../gfeeds/settings_window.py:196
 msgid "Open links in your browser"
 msgstr "Apri link nel tuo browser"
 
-#: ../gfeeds/settings_window.py:166
+#: ../gfeeds/settings_window.py:201
+msgid "Open YouTube links via your video player"
+msgstr "Apri link di YouTube tramite il tuo riproduttore video"
+
+#: ../gfeeds/settings_window.py:204
+msgid "Great when paired with youtube-dl enabled players"
+msgstr "Ottima accoppiata con riproduttori con supporto per youtube-dl"
+
+#: ../gfeeds/settings_window.py:218
+msgid "Preferred media player"
+msgstr "Riproduttore multimediale preferito"
+
+#: ../gfeeds/settings_window.py:222
 msgid "Maximum article age"
 msgstr "Età massima degli articoli"
 
-#: ../gfeeds/settings_window.py:170
+#: ../gfeeds/settings_window.py:226
 msgid "In days"
 msgstr "In giorni"
 
-#: ../gfeeds/settings_window.py:176
+#: ../gfeeds/settings_window.py:232
 msgid "Cache"
 msgstr "Cache"
 
-#: ../gfeeds/settings_window.py:179
+#: ../gfeeds/settings_window.py:235
 msgid "Clear all caches"
 msgstr "Pulisci tutte le cache"
 
-#: ../gfeeds/settings_window.py:180
+#: ../gfeeds/settings_window.py:236
 msgid "Clear caches"
 msgstr "Pulisci le cache"
 
-#: ../gfeeds/settings_window.py:218
+#: ../gfeeds/settings_window.py:274
 msgid "View"
 msgstr "Vista"
 
-#: ../gfeeds/settings_window.py:222
+#: ../gfeeds/settings_window.py:278
 msgid "View Settings"
 msgstr "Impostazioni della Vista"
 
-#: ../gfeeds/settings_window.py:225
+#: ../gfeeds/settings_window.py:281
 msgid "Show full articles titles"
 msgstr "Mostra i titoli completi degli articoli"
 
-#: ../gfeeds/settings_window.py:230
+#: ../gfeeds/settings_window.py:286
 msgid "Show full feeds names"
 msgstr "Mostra nomi completi dei feed"
 
-#: ../gfeeds/settings_window.py:235
+#: ../gfeeds/settings_window.py:291
 msgid "Use dark theme for reader mode"
 msgstr "Usa tema scuro per la modalità lettura"
 
-#: ../gfeeds/settings_window.py:240
+#: ../gfeeds/settings_window.py:296
 msgid "Enable JavaScript"
 msgstr "Attiva JavaScript"
 
-#: ../gfeeds/settings_window.py:256
+#: ../gfeeds/settings_window.py:312
 msgid "Advanced"
 msgstr "Avanzate"
 
-#: ../gfeeds/settings_window.py:260
+#: ../gfeeds/settings_window.py:316
 msgid "Advanced Settings"
 msgstr "Impostazioni Avanzate"
 
-#: ../gfeeds/settings_window.py:263
+#: ../gfeeds/settings_window.py:319
 msgid "Maximum refresh threads"
 msgstr "Massimi thread per aggiornamento"
 
-#: ../gfeeds/settings_window.py:268
+#: ../gfeeds/settings_window.py:324
 msgid "How many threads to refresh feeds"
 msgstr "Quanti thread per aggiornare i feed"
 
@@ -399,23 +411,23 @@ msgstr "Menu"
 msgid "Search"
 msgstr "Cerca"
 
-#: ../data/ui/headerbar.glade:87
+#: ../data/ui/headerbar.glade:86
 msgid "Filter by feed"
 msgstr "Filtra per feed"
 
-#: ../data/ui/headerbar.glade:119
+#: ../data/ui/headerbar.glade:118
 msgid "Back to articles"
 msgstr "Indietro agli articoli"
 
-#: ../data/ui/headerbar.glade:136
+#: ../data/ui/headerbar.glade:134
 msgid "Open externally"
 msgstr "Apri esternamente"
 
-#: ../data/ui/headerbar.glade:156
+#: ../data/ui/headerbar.glade:154
 msgid "Change view mode"
 msgstr "Cambia modalità di visualizzazione"
 
-#: ../data/ui/headerbar.glade:198
+#: ../data/ui/headerbar.glade:196
 msgid "Share"
 msgstr "Condividi"
 
