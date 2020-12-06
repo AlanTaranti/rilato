@@ -85,7 +85,9 @@ class ConfManager(metaclass=Singleton):
         'open_links_externally': True,
         'full_feed_name': False,
         'refresh_on_startup': False,
-        'tags': []
+        'tags': [],
+        'open_youtube_externally': False,
+        'media_player': 'mpv'
     }
 
     def __init__(self):

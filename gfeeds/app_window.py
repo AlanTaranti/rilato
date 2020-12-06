@@ -11,6 +11,9 @@ from gfeeds.suggestion_bar import (
 )
 from gfeeds.webview import GFeedsWebView
 from gfeeds.stack_with_empty_state import StackWithEmptyState
+from functools import reduce
+from operator import or_
+from subprocess import Popen
 
 
 class GFeedsAppWindow(Handy.ApplicationWindow):
@@ -216,6 +219,28 @@ class GFeedsAppWindow(Handy.ApplicationWindow):
             if other_row.feeditem.link == row.feeditem.link:
                 other_row.popover.set_read(True)
                 break
+        if (
+                self.confman.conf['open_youtube_externally'] and
+                reduce(or_, [
+                    f'://{pfx}' in row.feeditem.link
+                    for pfx in [
+                        p + 'youtube.com'
+                        for p in ('', 'www.', 'm.')
+                    ]
+                ])
+        ):
+            cmd_parts = [
+                self.confman.conf["media_player"],
+                row.feeditem.link
+            ]
+            if self.confman.is_flatpak:
+                cmd_parts.insert(0, 'flatpak-spawn --host')
+            cmd = ' '.join(cmd_parts)
+            Popen(
+                cmd,
+                shell=True
+            )
+            return
         self.webview.load_feeditem(row.feeditem)
         self.headerbar.set_article_title(
             row.feeditem.title

@@ -106,9 +106,13 @@ class PreferencesToggleRow(Handy.ActionRow):
     signal: an optional signal to let ConfManager emit when the configuration
         is set
     """
-    def __init__(self, title, conf_key, signal=None, *args, **kwargs):
+    def __init__(self, title, conf_key, signal=None, subtitle=None,
+                 *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.title = title
+        self.subtitle = subtitle
+        if self.subtitle is not None:
+            self.set_subtitle(self.subtitle)
         self.confman = ConfManager()
         self.set_title(self.title)
         self.conf_key = conf_key
@@ -131,6 +135,42 @@ class PreferencesToggleRow(Handy.ActionRow):
         self.confman.save_conf()
         if self.signal:
             self.confman.emit(self.signal, '')
+
+
+class PreferencesEntryRow(Handy.ActionRow):
+    """
+    A preferences row with a title and a button
+    title: the title shown
+    conf_key: the key of the configuration dictionary/json in ConfManager
+    onchange: an optional function that will be called when the entry changes
+    subtitle: an optional subtitle to be shown
+    signal: an optional signal to let ConfManager emit when the entry changes
+    """
+    def __init__(self, title, conf_key, onchange=None, subtitle=None,
+                 signal=None, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.title = title
+        self.conf_key = conf_key
+        self.subtitle = subtitle
+        if self.subtitle is not None:
+            self.set_subtitle(self.subtitle)
+        self.confman = ConfManager()
+        self.set_title(self.title)
+        self.signal = signal
+        self.onchange = onchange
+
+        self.entry = Gtk.Entry()
+        self.entry.set_text(self.confman.conf[self.conf_key])
+        self.entry.connect('changed', self.on_entry_changed)
+        self.add(self.entry)
+
+    def on_entry_changed(self, *args):
+        self.confman.conf[self.conf_key] = self.entry.get_text().strip()
+        if self.onchange is not None:
+            self.onchange(self.confman)
+        if self.signal:
+            self.confman.emit(self.signal, '')
+        self.confman.save_conf()
 
 
 class GeneralPreferencesPage(Handy.PreferencesPage):
@@ -156,11 +196,27 @@ class GeneralPreferencesPage(Handy.PreferencesPage):
                 'title': _('Open links in your browser'),
                 'conf_key': 'open_links_externally',
                 'signal': None
+            },
+            {
+                'title': _('Open YouTube links via your video player'),
+                'conf_key': 'open_youtube_externally',
+                'subtitle': _(
+                    'Great when paired with youtube-dl enabled players'
+                ),
+                'signal': None
             }
         ]
         for s in toggle_settings:
-            row = PreferencesToggleRow(s['title'], s['conf_key'], s['signal'])
+            row = PreferencesToggleRow(
+                s['title'],
+                s['conf_key'],
+                s['signal'],
+                subtitle=s['subtitle'] if 'subtitle' in s.keys() else None
+            )
             self.general_preferences_group.add(row)
+        self.general_preferences_group.add(PreferencesEntryRow(
+            _('Preferred media player'), 'media_player'
+        ))
         self.general_preferences_group.add(
             PreferencesSpinButtonRow(
                 _('Maximum article age'),
