@@ -156,6 +156,7 @@ class GFeedsWebView(Gtk.Stack):
 
     def load_feeditem(self, feeditem, trigger_on_load_start=True,
                       *args, **kwargs):
+        self.webkitview.stop_loading()
         uri = feeditem.link
         if feeditem.is_saved:
             uri = (
