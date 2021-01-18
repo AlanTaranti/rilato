@@ -54,6 +54,16 @@
     <url type="bugtracker">https://gitlab.com/gabmus/gnome-feeds/issues</url>
     <update_contact>gabmus@disroot.org</update_contact>
     <releases>
+        <release version="0.16.2" timestamp="1610993645">
+            <description>
+                <ul>
+                    <li>Fixed view mode button</li>
+                    <li>Option to open YouTube links with an external media player</li>
+                    <li>Saved articles are no longer stored inside the cache directory, avoiding accidental deletion</li>
+                </ul>
+            </description>
+        </release>
+
         <release version="0.16.1" timestamp="1605252437">
             <description>
                 <ul>
