@@ -103,21 +103,22 @@ class ConfManager(metaclass=Singleton):
         )
 
         if self.is_flatpak:
-            self.path = Path(
-                f'{Env.get("XDG_CONFIG_HOME")}/org.gabmus.gfeeds.json'
-            )
+            self.conf_dir = Env.get("XDG_CONFIG_HOME")
             self.cache_path = Path(
                 f'{Env.get("XDG_CACHE_HOME")}/org.gabmus.gfeeds'
             )
         else:
-            self.path = Path(
-                f'{Env.get("HOME")}/.config/org.gabmus.gfeeds.json'
-            )
+            self.conf_dir = f'{Env.get("HOME")}/.config'
             self.cache_path = Path(
                 f'{Env.get("HOME")}/.cache/org.gabmus.gfeeds'
             )
+        self.path = Path(
+            f'{self.conf_dir}/org.gabmus.gfeeds.json'
+        )
         self.thumbs_cache_path = f'{self.cache_path}/thumbnails/'
-        self.saved_cache_path = f'{self.cache_path}/saved_articles'
+        old_saved_cache_path = f'{self.cache_path}/saved_articles'
+        self.saved_cache_path = \
+            f'{self.conf_dir}/org.gabmus.gfeeds.saved_articles'
 
         self.conf = None
         if self.path.is_file():
@@ -153,6 +154,16 @@ class ConfManager(metaclass=Singleton):
         ]:
             if not isdir(str(p)):
                 makedirs(str(p))
+        # TODO: remove down the road, old saved articles migration
+        if isdir(old_saved_cache_path):
+            from os import listdir, rmdir
+            from shutil import move
+            for f in listdir(old_saved_cache_path):
+                move(
+                    f'{old_saved_cache_path}/{f}',
+                    f'{self.saved_cache_path}/{f}'
+                )
+            rmdir(old_saved_cache_path)
 
         self.read_feeds_items = SignalerList(self.conf['read_items'])
         self.read_feeds_items.connect(
