@@ -47,8 +47,8 @@
             <image>https://gitlab.gnome.org/World/gfeeds/raw/website/static/screenshots/saved_articles.png</image>
         </screenshot>
     </screenshots>
-    <url type="homepage">https://gabmus.gitlab.io/gnome-feeds/</url>
-    <url type="bugtracker">https://gitlab.com/gabmus/gnome-feeds/issues</url>
+    <url type="homepage">https://gfeeds.gabmus.org</url>
+    <url type="bugtracker">https://gitlab.gnome.org/World/gfeeds/-/issues</url>
     <update_contact>gabmus@disroot.org</update_contact>
     <releases>
         <release version="0.16.2" timestamp="1610993645">
