@@ -49,6 +49,8 @@
     </screenshots>
     <url type="homepage">https://gfeeds.gabmus.org</url>
     <url type="bugtracker">https://gitlab.gnome.org/World/gfeeds/-/issues</url>
+    <url type="translate">https://gitlab.gnome.org/World/gfeeds/-/tree/master/po</url>
+    <url type="donation">https://liberapay.com/gabmus/donate</url>
     <update_contact>gabmus@disroot.org</update_contact>
     <releases>
         <release version="0.16.2" timestamp="1610993645">
