@@ -1,0 +1,515 @@
+# Swedish translations for gfeeds package.
+# Copyright (C) 2021 THE gfeeds'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the gfeeds package.
+# Åke Engelbrektson <eson@svenskasprakfiler.se>, 2021.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gfeeds 0.16.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-01-02 12:45+0100\n"
+"PO-Revision-Date: 2021-01-02 16:21+0100\n"
+"Last-Translator: Åke Engelbrektson <eson@svenskasprakfiler.se>\n"
+"Language-Team: Swedish\n"
+"Language: sv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 2.0.6\n"
+
+#: ../gfeeds/__main__.py:295
+msgid "url"
+msgstr "URL"
+
+#: ../gfeeds/__main__.py:298
+msgid "opml file local url or rss remote url to import"
+msgstr "OPML-fil, lokal URL eller RSS-URL för att importera"
+
+#: ../gfeeds/sidebar.py:181
+msgid "Feed"
+msgstr "Flöde"
+
+#: ../gfeeds/sidebar.py:187
+msgid "Saved"
+msgstr "Sparat"
+
+#: ../gfeeds/opml_manager.py:42
+msgid "Error: OPML path provided does not exist"
+msgstr "Fel: Angiven OPML-sökväg finns inte"
+
+#: ../gfeeds/opml_manager.py:51
+#, python-brace-format
+msgid "Error parsing OPML file `{0}`"
+msgstr "Kunde inte tolka OPML-fil \"{0}\""
+
+#: ../gfeeds/headerbar.py:162
+msgid "Add new feed"
+msgstr "Lägg till nytt flöde"
+
+#: ../gfeeds/webview.py:74
+msgid "Web View"
+msgstr "Webbvy"
+
+#: ../gfeeds/webview.py:75
+msgid "Filler View"
+msgstr "Fyllningsvy"
+
+#: ../gfeeds/webview.py:136
+msgid "RSS content or summary not available for this article"
+msgstr "RSS-innehåll eller sammandrag ej tillgängligt för den här artikeln"
+
+#: ../gfeeds/download_manager.py:87
+#, python-brace-format
+msgid "`{0}`: connection timed out"
+msgstr "\"{0}\": Anslutningen överskred tidsgränsen"
+
+#: ../gfeeds/download_manager.py:89
+#, python-brace-format
+msgid "`{0}` is not an URL"
+msgstr "\"{0}\" är inte en URL"
+
+#: ../gfeeds/download_manager.py:114
+#, python-brace-format
+msgid "Error downloading `{0}`, code `{1}`"
+msgstr "Kunde inte ladda ner \"{0}\", kod \"{1}\""
+
+#: ../gfeeds/confirm_add_dialog.py:16
+msgid "Do you want to import these feeds?"
+msgstr "Vill du importera dessa flöden?"
+
+#: ../gfeeds/confirm_add_dialog.py:17
+msgid "Do you want to import this feed?"
+msgstr "Vill du importera detta flöde?"
+
+#: ../gfeeds/feeds_view.py:18
+msgid "All feeds"
+msgstr "Alla flöden"
+
+#: ../gfeeds/opml_file_chooser.py:7
+msgid "Choose an OPML file to import"
+msgstr "Välj en OPML-fil att importera"
+
+#: ../gfeeds/opml_file_chooser.py:14 ../gfeeds/opml_file_chooser.py:31
+msgid "XML files"
+msgstr "XML-filer"
+
+#: ../gfeeds/opml_file_chooser.py:22
+msgid "Choose where to save the exported OPML file"
+msgstr "Välj var den exporterade OPML-filen skall sparas"
+
+#: ../gfeeds/manage_feeds_window.py:210 ../gfeeds/manage_feeds_window.py:325
+msgid "Manage Feeds"
+msgstr "Hantera flöden"
+
+#: ../gfeeds/manage_feeds_window.py:217
+msgid "Select/Unselect all"
+msgstr "Markera/Avmarkera alla"
+
+#: ../gfeeds/manage_feeds_window.py:223
+msgid "Delete selected feeds"
+msgstr "Ta bort markerade flöden"
+
+#: ../gfeeds/manage_feeds_window.py:230
+msgid "Manage tags for selected feeds"
+msgstr "Hantera taggar för markerade flöden"
+
+#: ../gfeeds/manage_feeds_window.py:296
+msgid "Do you want to delete these feeds?"
+msgstr "Vill du ta bort dessa flöden?"
+
+#: ../gfeeds/settings_window.py:179
+msgid "General"
+msgstr "Allmänt"
+
+#: ../gfeeds/settings_window.py:183
+msgid "General Settings"
+msgstr "Allmänna inställningar"
+
+#: ../gfeeds/settings_window.py:186
+msgid "Refresh articles on startup"
+msgstr "Uppdatera artiklar vid programstart"
+
+#: ../gfeeds/settings_window.py:191
+msgid "Show newer articles first"
+msgstr "Via nyare artiklar först"
+
+#: ../gfeeds/settings_window.py:196
+msgid "Open links in your browser"
+msgstr "Öppna länkar i webbläsaren"
+
+#: ../gfeeds/settings_window.py:201
+msgid "Open YouTube links via your video player"
+msgstr "Öppna YouTube-länkar i videospelaren"
+
+#: ../gfeeds/settings_window.py:204
+msgid "Great when paired with youtube-dl enabled players"
+msgstr "Bra om parade med youtube-dl-aktiverade spelare"
+
+#: ../gfeeds/settings_window.py:218
+msgid "Preferred media player"
+msgstr "Föredragen mediaspelare"
+
+#: ../gfeeds/settings_window.py:222
+msgid "Maximum article age"
+msgstr "Maximal artikelålder"
+
+#: ../gfeeds/settings_window.py:226
+msgid "In days"
+msgstr "I dagar"
+
+#: ../gfeeds/settings_window.py:232
+msgid "Cache"
+msgstr "Cache"
+
+#: ../gfeeds/settings_window.py:235
+msgid "Clear all caches"
+msgstr "Töm alla cache-lagringar"
+
+#: ../gfeeds/settings_window.py:236
+msgid "Clear caches"
+msgstr "Rensa cache-lagrat"
+
+#: ../gfeeds/settings_window.py:274
+msgid "View"
+msgstr "Visning"
+
+#: ../gfeeds/settings_window.py:278
+msgid "View Settings"
+msgstr "Visningsinställningar"
+
+#: ../gfeeds/settings_window.py:281
+msgid "Show full articles titles"
+msgstr "Visa fullständiga artikeltitlar"
+
+#: ../gfeeds/settings_window.py:286
+msgid "Show full feeds names"
+msgstr "Visa fullständiga flödesnamn"
+
+#: ../gfeeds/settings_window.py:291
+msgid "Use dark theme for reader mode"
+msgstr "Använd mörkt tema för läsläge"
+
+#: ../gfeeds/settings_window.py:296
+msgid "Enable JavaScript"
+msgstr "Aktivera JavaScript"
+
+#: ../gfeeds/settings_window.py:312
+msgid "Advanced"
+msgstr "Avancerat"
+
+#: ../gfeeds/settings_window.py:316
+msgid "Advanced Settings"
+msgstr "Avancerade inställningar"
+
+#: ../gfeeds/settings_window.py:319
+msgid "Maximum refresh threads"
+msgstr "Max antal uppdateringstrådar"
+
+#: ../gfeeds/settings_window.py:324
+msgid "How many threads to refresh feeds"
+msgstr "Hur många trådar för att uppdatera flöden"
+
+#: ../gfeeds/sidebar_row_popover.py:47 ../gfeeds/sidebar_row_popover.py:92
+msgid "Mark as unread"
+msgstr "Märk som oläst"
+
+#: ../gfeeds/sidebar_row_popover.py:55 ../gfeeds/sidebar_row_popover.py:82
+msgid "Mark as read"
+msgstr "Märk som läst"
+
+#: ../gfeeds/suggestion_bar.py:39
+msgid "There are some errors"
+msgstr "Något fel har inträffat"
+
+#: ../gfeeds/suggestion_bar.py:48
+msgid "Show"
+msgstr "Visa"
+
+#: ../gfeeds/suggestion_bar.py:49
+msgid "Ignore"
+msgstr "Ignorera"
+
+#: ../gfeeds/suggestion_bar.py:72
+msgid "There were problems with some feeds. Do you want to remove them?"
+msgstr "Det uppstod problem med några flöden. Vill du ta bort dem?"
+
+#: ../gfeeds/suggestion_bar.py:92
+msgid "You are offline"
+msgstr "Du är offline"
+
+#: ../gfeeds/rss_parser.py:61
+#, python-brace-format
+msgid "Error: unable to parse datetime {0} for feeditem {1}"
+msgstr "Fel: Kan inte tolka datumtid {0} för flödesobjekt {1}"
+
+#: ../gfeeds/rss_parser.py:169
+#, python-brace-format
+msgid "Errors while parsing feed `{0}`"
+msgstr "Fel vid tolkning av flödet \"{0}\""
+
+#: ../gfeeds/rss_parser.py:209
+#, python-brace-format
+msgid "`{0}` may not be an RSS or Atom feed"
+msgstr "\"{0}\" kanske inte är ett RSS- eller Atom-flöde"
+
+#: ../gfeeds/spinner_button.py:16
+msgid "Refresh feeds"
+msgstr "Uppdatera flöden"
+
+#: ../gfeeds/feeds_manager.py:75
+#, python-brace-format
+msgid "Feed {0} exists already, skipping"
+msgstr "Flödet {0} finns redan, hoppar över"
+
+#: ../gfeeds/build_reader_html.py:98
+msgid "Thumbnail"
+msgstr "Miniatyr"
+
+#: ../gfeeds/get_favicon.py:70
+#, python-brace-format
+msgid "Error downloading favicon for `{0}`"
+msgstr "Kunde inte ladda ner favikon för \"{0}\""
+
+#: ../data/ui/headerbar.glade:34
+msgid "Menu"
+msgstr "Meny"
+
+#: ../data/ui/headerbar.glade:66
+msgid "Search"
+msgstr "Sök"
+
+#: ../data/ui/headerbar.glade:86
+msgid "Filter by feed"
+msgstr "Filtrera efter flöde"
+
+#: ../data/ui/headerbar.glade:118
+msgid "Back to articles"
+msgstr "Tillbaka till artiklar"
+
+#: ../data/ui/headerbar.glade:134
+msgid "Open externally"
+msgstr "Öppna externt"
+
+#: ../data/ui/headerbar.glade:154
+msgid "Change view mode"
+msgstr "Ändra visningsläge"
+
+#: ../data/ui/headerbar.glade:196
+msgid "Share"
+msgstr "Dela"
+
+#: ../data/ui/manage_tags_popover_content.glade:24
+msgid "New tag name..."
+msgstr "Nytt taggnamn..."
+
+#: ../data/ui/manage_tags_popover_content.glade:37
+msgid "Add tag"
+msgstr "Lägg till tagg"
+
+#: ../data/ui/manage_tags_popover_content.glade:112
+msgid "There are no tags yet"
+msgstr "Det finns inga taggar ännu"
+
+#: ../data/ui/manage_tags_popover_content.glade:128
+msgid "Add some using the entry above"
+msgstr "Lägg till något vis ovanstående post"
+
+#: ../data/ui/article_right_click_popover_content.glade:48
+msgid "Save article"
+msgstr "Spara artikel"
+
+#: ../data/ui/webview_filler.glade:42
+msgid "Select an article"
+msgstr "Välj en artikel"
+
+#: ../data/ui/extra_popover_menu.glade:18
+msgid "View mode"
+msgstr "Visningsläge"
+
+#: ../data/ui/extra_popover_menu.glade:52
+msgid "Reader Mode"
+msgstr "Läsläge"
+
+#: ../data/ui/extra_popover_menu.glade:67
+msgid "RSS Content"
+msgstr "RSS-innehåll"
+
+#: ../data/ui/empty_state.glade:42
+msgid "Let's get started"
+msgstr "Komma igång"
+
+#: ../data/ui/empty_state.glade:88
+msgid "Add new feeds via URL"
+msgstr "Lägg till nya flöden via URL"
+
+#: ../data/ui/empty_state.glade:100
+msgid "Import an OPML file"
+msgstr "Importera en OPML-fil"
+
+#: ../data/ui/add_feed_box.glade:20
+msgid "Enter feed address to add"
+msgstr "Ange flödesadress för att lägga till"
+
+#: ../data/ui/add_feed_box.glade:41
+msgid "https://..."
+msgstr "https://..."
+
+#: ../data/ui/add_feed_box.glade:61
+msgid "Add"
+msgstr "Lägg till"
+
+#: ../data/ui/add_feed_box.glade:91
+msgid "You're already subscribed to that feed!"
+msgstr "Du prenumererar redan på det flödet!"
+
+#: ../data/ui/shortcutsWindow.xml:13
+msgid "Open Keyboard Shortcuts"
+msgstr "Öppna tangentbordsgenvägar"
+
+#: ../data/ui/shortcutsWindow.xml:19
+msgid "Open Menu"
+msgstr "Öppna meny"
+
+#: ../data/ui/shortcutsWindow.xml:25
+msgid "Open Preferences"
+msgstr "Öppna inställningar"
+
+#: ../data/ui/shortcutsWindow.xml:31
+msgid "Quit"
+msgstr "Avsluta"
+
+#: ../data/ui/shortcutsWindow.xml:37
+msgid "Refresh articles"
+msgstr "Uppdatera artiklar"
+
+#: ../data/ui/shortcutsWindow.xml:43
+msgid "Search articles"
+msgstr "Sök artikel"
+
+#: ../data/ui/shortcutsWindow.xml:49
+msgid "Next article"
+msgstr "Nästa artikel"
+
+#: ../data/ui/shortcutsWindow.xml:55
+msgid "Previous article"
+msgstr "Föregående artikel"
+
+#: ../data/ui/shortcutsWindow.xml:61
+msgid "Show/Hide read articles"
+msgstr "Visa/Dölj lästa artiklar"
+
+#: ../data/ui/shortcutsWindow.xml:67
+msgid "Zoom in"
+msgstr "Zooma In"
+
+#: ../data/ui/shortcutsWindow.xml:73
+msgid "Zoom out"
+msgstr "Zooma ut"
+
+#: ../data/ui/shortcutsWindow.xml:79
+msgid "Reset zoom"
+msgstr "Återställ zoom"
+
+#: ../data/ui/webview_with_notification.glade:51
+msgid "Link copied to clipboard!"
+msgstr "Länk kopierad till urklipp"
+
+#: ../data/ui/spinner_button.glade:23
+msgid "page0"
+msgstr "sida0"
+
+#: ../data/ui/spinner_button.glade:34
+msgid "page1"
+msgstr "sida1"
+
+#: ../data/ui/manage_tags_listbox_row_content.glade:18
+#: ../data/ui/scrolled_label.glade:21
+msgid "label"
+msgstr "etikett"
+
+#: ../data/ui/menu.xml:6
+msgid "Show read articles"
+msgstr "Visa lästa artiklar"
+
+#: ../data/ui/menu.xml:10
+msgid "Mark all as read"
+msgstr "Märk alla som lästa"
+
+#: ../data/ui/menu.xml:14
+msgid "Mark all as unread"
+msgstr "Märk alla som olästa"
+
+#: ../data/ui/menu.xml:24
+msgid "Import OPML"
+msgstr "Importera OPML"
+
+#: ../data/ui/menu.xml:28
+msgid "Export OPML"
+msgstr "Exportera OPML"
+
+#: ../data/ui/menu.xml:34
+msgid "Preferences"
+msgstr "Inställningar"
+
+#: ../data/ui/menu.xml:38
+msgid "Keyboard Shortcuts"
+msgstr "Tangenbordsgenvägar"
+
+#: ../data/ui/menu.xml:42
+msgid "About Feeds"
+msgstr "Om Feeds"
+
+#: ../data/org.gabmus.gfeeds.desktop.in:5
+msgid "@prettyname@"
+msgstr "@prettyname@"
+
+#: ../data/org.gabmus.gfeeds.desktop.in:6
+msgid "News reader for GNOME"
+msgstr "Nyhetsläsare för GNOME"
+
+#: ../data/org.gabmus.gfeeds.desktop.in:8
+msgid "@appid@"
+msgstr "@appid@"
+
+#: ../data/org.gabmus.gfeeds.desktop.in:13
+msgid "rss;reader;feed;news;"
+msgstr "rss;läsare;flöde;nyheter;"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:4
+msgid "Feeds"
+msgstr "Feeds"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:5
+msgid "Gabriele Musco"
+msgstr "Gabriele Musco"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:15
+msgid ""
+"Feeds is a minimal RSS/Atom feed reader built with speed and simplicity in "
+"mind."
+msgstr ""
+"Feeds är en minimal RSS-/Atom-flödesläsare byggd med hastighet och enkelhet "
+"i åtanke."
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:16
+msgid ""
+"It offers a simple user interface that only shows the latest news from your "
+"subscriptions."
+msgstr ""
+"Den erbjuder ett enkelt användargränssnitt som bara visar de senaste "
+"nyheterna från dina prenumerationer."
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:17
+msgid ""
+"Articles are shown in a web view by default, with javascript disabled for a "
+"faster and less intrusive user experience. There's also a reader mode "
+"included, built from the one GNOME Web/Epiphany uses."
+msgstr ""
+"Artiklar visas i en webbvy som standard, med javaskript aktiverat för en "
+"snabbare och mindre inkräktande användarupplevelse. Det finns också ett "
+"läsläge inkluderat, byggt på detsamma som GNOME Web/Epiphany använder."
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:18
+msgid "Feeds can be imported and exported via OPML."
+msgstr "Flöden kan importeras och exporteras via OPML"
