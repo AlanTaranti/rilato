@@ -142,7 +142,7 @@ class ConfManager(metaclass=Singleton):
                     self.save_conf()
             except Exception:
                 self.conf = ConfManager.BASE_SCHEMA.copy()
-                self.save_conf()
+                self.save_conf(force_overwrite=True)
         else:
             self.conf = ConfManager.BASE_SCHEMA.copy()
             self.save_conf()
@@ -227,8 +227,8 @@ class ConfManager(metaclass=Singleton):
     def dump_read_items_to_conf(self, *args):
         self.conf['read_items'] = self.read_feeds_items.get_list()
 
-    def save_conf(self, *args):
-        if self.path.is_file():
+    def save_conf(self, *args, force_overwrite=False):
+        if self.path.is_file() and not force_overwrite:
             with open(self.path, 'r') as fd:
                 if json.loads(fd.read()) == self.conf:
                     return
