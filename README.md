@@ -67,3 +67,19 @@ meson configure -Dprefix=$PWD/testdir # use this line if you want to avoid insta
 ninja
 ninja install
 ```
+
+## Building on Fedora
+
+```bash
+sudo dnf install appstream python3-html5lib webkit2gtk3 python3-lxml python3-requests python3-pip python3-feedparser python3-beautifulsoup4
+sudo pip install listparser
+
+git clone https://gitlab.gnome.org/World/gfeeds
+cd gfeeds
+mkdir build
+cd build
+meson ..
+meson configure -Dprefix=$PWD/testdir # use this line if you want to avoid installing system wide
+ninja
+ninja install
+```
