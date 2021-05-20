@@ -1,5 +1,5 @@
 from gettext import gettext as _
-from gi.repository import Gtk, Gdk, Handy, GObject
+from gi.repository import Gtk, Gdk, Adw, GObject
 from gfeeds.confManager import ConfManager
 from gfeeds.feeds_manager import FeedsManager
 from gfeeds.spinner_button import RefreshSpinnerButton
@@ -79,7 +79,7 @@ class GFeedHeaderbar(Gtk.WindowHandle):
         self.searchbar = searchbar
         self.webview.connect('gfeeds_webview_load_start', self.on_load_start)
         self.webview.connect('gfeeds_webview_load_end', self.on_load_end)
-        self.headergroup = Handy.HeaderGroup()
+        self.headergroup = Adw.HeaderGroup()
         leaflet_builder = Gtk.Builder.new_from_resource(
             '/org/gabmus/gfeeds/ui/gfeeds_leaflet.glade'
         )
@@ -164,14 +164,14 @@ class GFeedHeaderbar(Gtk.WindowHandle):
         self.refresh_btn.btn.connect('clicked', self.feedman.refresh)
         self.builder.get_object('refresh_btn_box').append(self.refresh_btn)
 
-        self.squeezer = Handy.Squeezer(orientation=Gtk.Orientation.HORIZONTAL)
+        self.squeezer = Adw.Squeezer(orientation=Gtk.Orientation.HORIZONTAL)
         self.squeezer.set_homogeneous(False)
         self.squeezer.set_interpolate_size(False)
         self.squeezer.set_hexpand(False)
         self.nobox = Gtk.Label()
         self.nobox.set_size_request(1, -1)
-        self.stack_switcher = Handy.ViewSwitcher()
-        self.stack_switcher.set_policy(Handy.ViewSwitcherPolicy.WIDE)
+        self.stack_switcher = Adw.ViewSwitcher()
+        self.stack_switcher.set_policy(Adw.ViewSwitcherPolicy.WIDE)
         self.stack_switcher.set_margin_start(12)
         self.stack_switcher.set_margin_end(12)
         self.squeezer.add(self.stack_switcher)

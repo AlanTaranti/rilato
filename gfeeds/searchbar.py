@@ -1,4 +1,4 @@
-from gi.repository import Gtk, Handy
+from gi.repository import Gtk, Adw
 
 
 class GFeedsSearchbar(Gtk.SearchBar):

@@ -1,5 +1,5 @@
 from gettext import gettext as _
-from gi.repository import Gtk, Gdk, GObject, Handy
+from gi.repository import Gtk, Gdk, GObject, Adw
 from xml.sax.saxutils import escape
 from gfeeds.confManager import ConfManager
 from gfeeds.feeds_manager import FeedsManager
@@ -302,7 +302,7 @@ class DeleteFeedsConfirmMessageDialog(ScrolledMessageDialog):
         )
 
 
-class GFeedsManageFeedsWindow(Handy.Window):
+class GFeedsManageFeedsWindow(Adw.Window):
     def __init__(self, appwindow, **kwargs):
         super().__init__(**kwargs)
         self.appwindow = appwindow

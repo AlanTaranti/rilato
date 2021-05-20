@@ -1,4 +1,4 @@
-from gi.repository import Gtk, Handy, GdkPixbuf
+from gi.repository import Gtk, Adw, GdkPixbuf
 from gfeeds.confManager import ConfManager
 from pathlib import Path
 from PIL import Image
@@ -53,7 +53,7 @@ class InitialsIcon(Gtk.Box):
         super().__init__(**kwargs)
         self.name = name
         self.image_path = image_path
-        self.avatar = Handy.Avatar.new(
+        self.avatar = Adw.Avatar.new(
             32,
             self.name,
             True

@@ -1,7 +1,7 @@
 from os import remove, listdir
 from os.path import isfile, abspath, join
 from gettext import gettext as _
-from gi.repository import Gtk, Handy
+from gi.repository import Gtk, Adw
 from gfeeds.confManager import ConfManager
 
 
@@ -12,7 +12,7 @@ def show_settings_window(parent_win, *args):
     settings_win.present()
 
 
-class PreferencesButtonRow(Handy.ActionRow):
+class PreferencesButtonRow(Adw.ActionRow):
     """
     A preferences row with a title and a button
     title: the title shown
@@ -51,7 +51,7 @@ class PreferencesButtonRow(Handy.ActionRow):
         self.confman.save_conf()
 
 
-class PreferencesSpinButtonRow(Handy.ActionRow):
+class PreferencesSpinButtonRow(Adw.ActionRow):
     """
     A preferences row with a title and a spin button
     title: the title shown
@@ -98,7 +98,7 @@ class PreferencesSpinButtonRow(Handy.ActionRow):
         self.confman.save_conf()
 
 
-class PreferencesToggleRow(Handy.ActionRow):
+class PreferencesToggleRow(Adw.ActionRow):
     """
     A preferences row with a title and a toggle
     title: the title shown
@@ -137,7 +137,7 @@ class PreferencesToggleRow(Handy.ActionRow):
             self.confman.emit(self.signal, '')
 
 
-class PreferencesEntryRow(Handy.ActionRow):
+class PreferencesEntryRow(Adw.ActionRow):
     """
     A preferences row with a title and a button
     title: the title shown
@@ -173,13 +173,13 @@ class PreferencesEntryRow(Handy.ActionRow):
         self.confman.save_conf()
 
 
-class GeneralPreferencesPage(Handy.PreferencesPage):
+class GeneralPreferencesPage(Adw.PreferencesPage):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.set_title(_('General'))
         self.set_icon_name('preferences-other-symbolic')
 
-        self.general_preferences_group = Handy.PreferencesGroup()
+        self.general_preferences_group = Adw.PreferencesGroup()
         self.general_preferences_group.set_title(_('General Settings'))
         toggle_settings = [
             {
@@ -228,7 +228,7 @@ class GeneralPreferencesPage(Handy.PreferencesPage):
         )
         self.add(self.general_preferences_group)
 
-        self.cache_preferences_group = Handy.PreferencesGroup()
+        self.cache_preferences_group = Adw.PreferencesGroup()
         self.cache_preferences_group.set_title(_('Cache'))
         button_settings = [
             {
@@ -268,13 +268,13 @@ class GeneralPreferencesPage(Handy.PreferencesPage):
         confman.save_conf()
 
 
-class ViewPreferencesPage(Handy.PreferencesPage):
+class ViewPreferencesPage(Adw.PreferencesPage):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.set_title(_('View'))
         self.set_icon_name('applications-graphics-symbolic')
 
-        self.view_preferences_group = Handy.PreferencesGroup()
+        self.view_preferences_group = Adw.PreferencesGroup()
         self.view_preferences_group.set_title(_('View Settings'))
         toggle_settings = [
             {
@@ -306,13 +306,13 @@ class ViewPreferencesPage(Handy.PreferencesPage):
         self.show_all()
 
 
-class AdvancedPreferencesPage(Handy.PreferencesPage):
+class AdvancedPreferencesPage(Adw.PreferencesPage):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.set_title(_('Advanced'))
         self.set_icon_name('system-run-symbolic')
 
-        self.advanced_preferences_group = Handy.PreferencesGroup()
+        self.advanced_preferences_group = Adw.PreferencesGroup()
         self.advanced_preferences_group.set_title(_('Advanced Settings'))
         spinbtn_settings = [
             {
@@ -339,7 +339,7 @@ class AdvancedPreferencesPage(Handy.PreferencesPage):
         self.show_all()
 
 
-class GFeedsSettingsWindow(Handy.PreferencesWindow):
+class GFeedsSettingsWindow(Adw.PreferencesWindow):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.confman = ConfManager()
@@ -352,7 +352,7 @@ class GFeedsSettingsWindow(Handy.PreferencesWindow):
         for p in self.pages:
             self.add(p)
         self.set_default_size(360, 600)
-        # Unneded for Handy 1?
+        # Unneded for Adw 1?
         # self.get_titlebar().set_show_close_button(True)
 
         self.accel_group = Gtk.AccelGroup()

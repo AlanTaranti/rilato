@@ -1,4 +1,4 @@
-from gi.repository import Gtk, Handy, GObject
+from gi.repository import Gtk, Adw, GObject
 from typing import Callable
 from gfeeds.confManager import ConfManager
 from gfeeds.feeds_manager import FeedsManager
@@ -16,7 +16,7 @@ from operator import or_
 from subprocess import Popen
 
 
-class GFeedsAppWindow(Handy.ApplicationWindow):
+class GFeedsAppWindow(Adw.ApplicationWindow):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.confman = ConfManager()
@@ -76,7 +76,7 @@ class GFeedsAppWindow(Handy.ApplicationWindow):
         self.leaflet.child_set_property(separator, 'allow-visible', False)
         self.leaflet.connect('notify::folded', self.on_main_leaflet_folded)
 
-        self.swipe_group = Handy.SwipeGroup()
+        self.swipe_group = Adw.SwipeGroup()
 
         self.size_group_left = Gtk.SizeGroup(
             mode=Gtk.SizeGroupMode.HORIZONTAL
@@ -105,7 +105,7 @@ class GFeedsAppWindow(Handy.ApplicationWindow):
 
         self.main_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
 
-        self.bottom_bar = Handy.ViewSwitcherBar()
+        self.bottom_bar = Adw.ViewSwitcherBar()
         self.bottom_bar.set_stack(self.sidebar)
         self.sidebar_box.pack_end(self.bottom_bar, False, False, 0)
 
