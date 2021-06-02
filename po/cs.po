@@ -1,0 +1,755 @@
+# Czech translations for Feeds package.
+# Copyright (C) 2019 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the GNOME Feeds package.
+# Translate-SW <super-vik1@protonmail.com>, 2021.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-10-27 22:15+0100\n"
+"PO-Revision-Date: 2020-10-27 23:18+0100\n"
+"Last-Translator: Translate-SW <super-vik1@protonmail.com>\n"
+"Language-Team: \n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 2.4.1\n"
+
+#: ../gfeeds/opml_manager.py:42
+msgid "Error: OPML path provided does not exist"
+msgstr "Chyba: Umíštění OPML neexistuje."
+
+#: ../gfeeds/opml_manager.py:51
+#, python-brace-format
+msgid "Error parsing OPML file `{0}`"
+msgstr "Chyba při zpracování souboru OPML `{0}"
+
+#: ../gfeeds/webview.py:74
+msgid "Web View"
+msgstr "Web View"
+
+#: ../gfeeds/webview.py:75
+msgid "Filler View"
+msgstr "Zobrazení výplně"
+
+#: ../gfeeds/webview.py:136
+msgid "RSS content or summary not available for this article"
+msgstr "Obsah RSS nebo shrnutí není pro tento článek k dispozici"
+
+#: ../gfeeds/rss_parser.py:62
+#, python-brace-format
+msgid "Error: unable to parse datetime {0} for feeditem {1}"
+msgstr "Chyba: nelze analyzovat datum {0} pro feeditem {1}"
+
+#: ../gfeeds/rss_parser.py:170
+#, python-brace-format
+msgid "Errors while parsing feed `{0}`"
+msgstr "Chyby při parsování feedu `{0}`"
+
+#: ../gfeeds/rss_parser.py:210
+#, python-brace-format
+msgid "`{0}` nemusí být RSS nebo Atom feed".
+msgstr "`{0}` nesmí být RSS nebo Atom feed."
+
+#: ../gfeeds/rss_parser.py:241
+#, python-brace-format
+msgid ""
+"Chyba při změně velikosti favikony pro kanál {0}. Pravděpodobně se nejedná o obrázek.\n"
+"Pokus o stažení favikony z článku."
+msgstr ""
+"Chyba při změně velikosti favikony pro {0}. Pravděpodobně se jedná o "
+"ne grafika.\n"
+"Pokus o načtení favikony z článku."
+
+#: ../gfeeds/rss_parser.py:250
+#, python-brace-format
+msgid ""
+"Chyba při změně velikosti favicon z článku pro feed {0}.\n"
+"Odstranění neplatné favikony."
+msgstr ""
+"Chyba při změně velikosti favicon z článku pro feed {0}.\n"
+"Odstranění neplatné favikony."
+
+#: ../gfeeds/build_reader_html.py:98
+msgid "thumbnail"
+msgstr "náhled"
+
+#: ../gfeeds/spinner_button.py:16
+msgid "Refresh feeds"
+msgstr "Obnovit kanály"
+
+#: ../gfeeds/suggestion_bar.py:39
+msgid "There are some errors"
+msgstr "Vyskytly se nějaké chyby"
+
+#: ../gfeeds/suggestion_bar.py:48
+msgid "Zobrazit"
+msgstr "Zobrazit"
+
+#: ../gfeeds/suggestion_bar.py:49
+msgid "Ignorovat"
+msgstr "Ignorovat"
+
+#: ../gfeeds/suggestion_bar.py:72
+msgid "S některými kanály byly problémy. Chcete je odstranit?"
+msgstr "S některými kanály byly problémy. Chcete je odstranit?"
+
+#: ../gfeeds/suggestion_bar.py:92
+msgid "Jste offline"
+msgstr "Nemáte připojení k internetu."
+
+#: ../gfeeds/settings_window.py:139
+msgid "General"
+msgstr "Obecné"
+
+#: ../gfeeds/settings_window.py:143
+msgid "General Settings"
+msgstr "Obecná nastavení"
+
+#: ../gfeeds/settings_window.py:146
+msgid "Obnovit články při spuštění"
+msgstr "Obnovit články při spuštění"
+
+#: ../gfeeds/settings_window.py:151
+msgid "Zobrazit nejprve novější články"
+msgstr "Nejprve zobrazit novější články"
+
+#: ../gfeeds/settings_window.py:156
+msgid "Otevřít odkazy v prohlížeči"
+msgstr "Otevřít odkazy v prohlížeči"
+
+#: ../gfeeds/settings_window.py:166
+msgid "Maximální věk článku"
+msgstr "Maximální věk článků"
+
+#: ../gfeeds/settings_window.py:170
+msgid "Ve dnech"
+msgstr "Ve dnech"
+
+#: ../gfeeds/settings_window.py:176
+msgid "Cache"
+msgstr "Cache"
+
+#: ../gfeeds/settings_window.py:179
+msgid "Vymazat všechny mezipaměti"
+msgstr "Vymazat mezipaměť"
+
+#: ../gfeeds/settings_window.py:180
+msgid "Vymazat mezipaměť"
+msgstr "Vymazat"
+
+#: ../gfeeds/settings_window.py:218
+msgid "View"
+msgstr "Zobrazit"
+
+#: ../gfeeds/settings_window.py:222
+msgid "View Settings"
+msgstr "Nastavení zobrazení"
+
+#: ../gfeeds/settings_window.py:225
+msgid "Zobrazit úplné názvy článků"
+msgstr "Zobrazit celé názvy článků"
+
+#: ../gfeeds/settings_window.py:230
+msgid "Show full feeds names"
+msgstr "Zobrazit úplné názvy kanálů"
+
+#: ../gfeeds/settings_window.py:235
+msgid "Použít tmavé téma pro režim čtečky"
+msgstr "Použít tmavé téma pro zobrazení čtečky"
+
+#: ../gfeeds/settings_window.py:240
+msgid "Enable JavaScript"
+msgstr "Povolit JavaScript"
+
+#: ../gfeeds/settings_window.py:256
+msgid "Advanced"
+msgstr "Pokročilé"
+
+#: ../gfeeds/settings_window.py:260
+msgid "Advanced Settings"
+msgstr "Rozšířená nastavení"
+
+#: ../gfeeds/settings_window.py:263
+msgid "Maximum refresh threads"
+msgstr "Maximum refresh threads"
+
+#: ../gfeeds/settings_window.py:268
+msgid "Kolik vláken se má obnovit"
+msgstr "Počet vláken pro obnovení kanálů"
+
+#: ../gfeeds/headerbar.py:170
+msgid "Add new feed"
+msgstr "Přidat nový zdroj"
+
+#: ../gfeeds/opml_file_chooser.py:7
+msgid "Choose an OPML file to import"
+msgstr "Choose an OPML file to import."
+
+#: ../gfeeds/opml_file_chooser.py:14 ../gfeeds/opml_file_chooser.py:31
+msgid "Soubory XML"
+msgstr "Soubory XML"
+
+#: ../gfeeds/opml_file_chooser.py:22
+msgid "Choose where to save the exported OPML file"
+msgstr "Vyberte umístění pro uložení exportovaného souboru OPML"
+
+#: ../gfeeds/sidebar.py:181
+msgid "Feed"
+msgstr "feed"
+
+#: ../gfeeds/sidebar.py:187
+msgid "Saved"
+msgstr "Uloženo"
+
+#: ../gfeeds/sidebar_row_popover.py:47 ../gfeeds/sidebar_row_popover.py:92
+msgid "Označit jako nepřečtený"
+msgstr "Označit jako nepřečtené"
+
+#: ../gfeeds/sidebar_row_popover.py:55 ../gfeeds/sidebar_row_popover.py:82
+msgid "Označit jako přečtený"
+msgstr "Označit jako přečtené"
+
+#: ../gfeeds/manage_feeds_window.py:210 ../gfeeds/manage_feeds_window.py:325
+msgid "Spravovat kanály"
+msgstr "Spravovat kanály"
+
+#: ../gfeeds/manage_feeds_window.py:217
+msgid "Vybrat/zrušit vše"
+msgstr "Vybrat/zrušit výběr všech"
+
+#: ../gfeeds/manage_feeds_window.py:223
+msgid "Smazat vybrané kanály"
+msgstr "Smazat vybrané kanály"
+
+#: ../gfeeds/manage_feeds_window.py:230
+msgid "Spravovat značky pro vybrané kanály"
+msgstr "Spravovat značky pro vybrané kanály"
+
+#: ../gfeeds/manage_feeds_window.py:296
+msgid "Chcete odstranit tyto kanály?"
+msgstr "Chcete odstranit tyto kanály?"
+
+#: ../gfeeds/__main__.py:293
+msgid "url"
+msgstr "URL"
+
+# Zatím nelze přeložit. Musí to vidět v další verzi, co to znamená
+#: ../gfeeds/__main__.py:296
+msgid "opml file local url or rss remote url to import"
+msgstr ""
+
+#: ../gfeeds/feeds_view.py:19
+msgid "Všechny kanály"
+msgstr "Všechny kanály"
+
+#: ../gfeeds/get_favicon.py:70
+#, python-brace-format
+msgid "Error downloading favicon for `{0}`"
+msgstr "Chyba při stahování favicon pro `{0}`"
+
+#: ../gfeeds/confirm_add_dialog.py:16
+msgid "Chcete importovat tyto kanály?"
+msgstr "Chcete importovat tyto kanály?"
+
+#: ../gfeeds/confirm_add_dialog.py:17
+msgid "Chcete importovat tento kanál?"
+msgstr "Chcete importovat tento kanál?"
+
+#: ../gfeeds/download_manager.py:87
+#, python-brace-format
+msgid "`{0}`: spojení vypršelo"
+msgstr "`{0}`: spojení vypršelo"
+
+#: ../gfeeds/download_manager.py:89
+#, python-brace-format
+msgid "`{0}` není adresa URL"
+msgstr "`{0}` není adresa URL"
+
+#: ../gfeeds/download_manager.py:114
+#, python-brace-format
+msgid "Chyba při stahování `{0}`, kód `{1}`"
+msgstr "Chyba při stahování `{0}`, kód `{1}`"
+
+#: ../gfeeds/feeds_manager.py:75
+#, python-brace-format
+msgid "Feed {0} již existuje, přeskočíme"
+msgstr "Feed {0} již existuje, přeskočíme"
+
+#: ../data/ui/empty_state.glade:42
+msgid "Začněme."
+msgstr "Začněme"
+
+#: ../data/ui/empty_state.glade:88
+msgid "Add new feeds via URL"
+msgstr "Přidat nové kanály přes URL"
+
+#: ../data/ui/empty_state.glade:100
+msgid "Importovat soubor OPML"
+msgstr "Importovat soubor OPML"
+
+#: ../data/ui/article_right_click_popover_content.glade:48
+msgid "Uložit článek"
+msgstr "Uložit článek"
+
+#: ../data/ui/webview_filler.glade:42
+msgid "Select an article"
+msgstr "Vybrat článek"
+
+#: ../data/ui/spinner_button.glade:23
+msgid "page0"
+msgstr "page0"
+
+#: ../data/ui/spinner_button.glade:34
+msgid "page1"
+msgstr "page1"
+
+#: ../data/ui/webview_with_notification.glade:51
+msgid "Odkaz zkopírován do schránky!"
+msgstr "Odkaz zkopírován do schránky!"
+
+#: ../data/ui/headerbar.glade:45
+msgid "Menu"
+msgstr "menu"
+
+#: ../data/ui/headerbar.glade:65
+msgid "Filtrovat podle kanálu"
+msgstr "Filtrovat podle kanálu"
+
+#: ../data/ui/headerbar.glade:84
+msgid "Search"
+msgstr "Hledat"
+
+#: ../data/ui/headerbar.glade:108
+msgid "Zpět na články"
+msgstr "Zpět na články"
+
+#: ../data/ui/headerbar.glade:125
+msgid "Změnit režim zobrazení"
+msgstr "Změnit režim zobrazení"
+
+#: ../data/ui/headerbar.glade:167
+msgid "Share"
+msgstr "Sdílet"
+
+#: ../data/ui/headerbar.glade:196
+msgid "Otevřít externě"
+msgstr "Otevřít externě"
+
+#: ../data/ui/manage_tags_popover_content.glade:24
+msgid "New tag name..."
+msgstr "Název nové značky..."
+
+#: ../data/ui/manage_tags_popover_content.glade:37
+msgid "Add tag"
+msgstr "Přidat značku."
+
+#: ../data/ui/manage_tags_popover_content.glade:112
+msgid "There are no tags yet"
+msgstr "Zatím žádné značky"
+
+#: ../data/ui/manage_tags_popover_content.glade:128
+msgid "Add some using the entry above"
+msgstr "Přidat pomocí výše uvedeného pole"
+
+#: ../data/ui/add_feed_box.glade:20
+msgid "Enter feed address to add"
+msgstr "Zadejte adresu kanálu, který chcete přidat."
+
+#: ../data/ui/add_feed_box.glade:41
+msgid "https://..."
+msgstr "https://..."
+
+#: ../data/ui/add_feed_box.glade:61
+msgid "Add"
+msgstr "Přidat."
+
+#: ../data/ui/add_feed_box.glade:91
+msgid "Již jste se přihlásili k odběru tohoto kanálu!"
+msgstr "Již jste se přihlásili k odběru tohoto kanálu!"
+
+#: ../data/ui/scrolled_label.glade:21
+#: ../data/ui/manage_tags_listbox_row_content.glade:18
+msgid "label"
+msgstr "popisek"
+
+#: ../data/ui/menu.xml:6
+msgid "zobrazit přečtené články"
+msgstr "Zobrazit přečtené články"
+
+#: ../data/ui/menu.xml:10
+msgid "Označit vše jako přečtené"
+msgstr "Označit vše jako přečtené"
+
+#: ../data/ui/menu.xml:14
+msgid "Označit vše jako nepřečtené"
+msgstr "Označit vše jako nepřečtené"
+
+#: ../data/ui/menu.xml:24
+msgid "Importovat OPML"
+msgstr "Importovat OPML"
+
+#: ../data/ui/menu.xml:28
+msgid "Exportovat OPML"
+msgstr "Export OPML"
+
+#: ../data/ui/menu.xml:34
+msgid "Preferences"
+msgstr "Předvolby"
+
+#: ../data/ui/menu.xml:38
+msgid "Keybord shortcuts"
+msgstr "Klávesové zkratky"
+
+#: ../data/ui/menu.xml:42
+msgid "About Feeds"
+msgstr "O Feedech"
+
+#: ../data/ui/extra_popover_menu.glade:18
+msgid "Post"
+msgstr "Režim zobrazení"
+
+#: ../data/ui/extra_popover_menu.glade:52
+msgid "Reader Mode"
+msgstr "Čtecí režim"
+
+#: ../data/ui/extra_popover_menu.glade:67
+msgid " RSS Content"
+msgstr "Obsah RSS"
+
+#: ../data/ui/shortcutsWindow.xml:13
+msgid "Open Keybord Shorcuts"
+msgstr "Načíst klávesové zkratky"
+
+#: ../data/ui/shortcutsWindow.xml:19
+msgid "Open Menu"
+msgstr "Otevřít nabídku"
+
+#: ../data/ui/shortcutsWindow.xml:25
+msgid "Open Preferences"
+msgstr "Předvolby..."
+
+#: ../data/ui/shortcutsWindow.xml:31
+msgid "Quit"
+msgstr "Odejít"
+
+#: ../data/ui/shortcutsWindow.xml:37
+msgid "Refresh articles"
+msgstr "Aktualizovat články"
+
+#: ../data/ui/shortcutsWindow.xml:43
+msgid "Search articles"
+msgstr "Hledejte články..."
+
+#: ../data/ui/shortcutsWindow.xml:49
+msgid "Next article"
+msgstr "Následující článek"
+
+#: ../data/ui/shortcutsWindow.xml:55
+msgid "Previous article"
+msgstr "Předchozí článek"
+
+#: ../data/ui/shortcutsWindow.xml:61
+msgid "Show/Hide read articles"
+msgstr "Zobrazit/skrýt články"
+
+#: ../data/ui/shortcutsWindow.xml:67
+msgid "Zoom in"
+msgstr "Přiblížizt"
+
+#: ../data/ui/shortcutsWindow.xml:73
+msgid "Zoom out"
+msgstr "Oddálit"
+
+#: ../data/ui/shortcutsWindow.xml:79
+msgid "Reset zoom"
+msgstr "Resetovat přiblížení"
+
+#: ../data/org.gabmus.gfeeds.desktop.in:5
+msgid "@prettyname@"
+msgstr "@prettyname@"
+
+#: ../data/org.gabmus.gfeeds.desktop.in:6
+msgid "News reader for GNOME"
+msgstr "Nová RSS čtečka pro GNOME"
+
+#: ../data/org.gabmus.gfeeds.desktop.in:13
+msgid "rss;reader;feed;news;"
+msgstr "rss;reader;feed;news;"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:4
+msgid "Feeds"
+msgstr "Feedy"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:5
+msgid "Gabriele Musco"
+msgstr "Gabriele Musco"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:15
+msgid ""
+"Feeds is a minimal RSS/Atom feed reader built with speed and simplicity in "
+"mind."
+msgstr ""
+"Feeds je minimalistický prohlížeč kanálů RSS/Atom, který si cení "
+"na rychlosti a jednoduchosti."
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:16
+msgid ""
+"It offers a simple user interface that only shows the latest news from your "
+"subscriptions."
+msgstr ""
+"Má jednoduché uživatelské rozhraní, které zobrazuje pouze nejnovější "
+"zprávy z vašich odběrů."
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:17
+msgid ""
+"Articles are shown in a web view by default, with javascript disabled for a "
+"faster and less intrusive user experience. There's also a reader mode "
+"included, built from the one GNOME Web/Epiphany uses."
+msgstr ""
+" se ve výchozím nastavení zobrazují ve webovém zobrazení s "
+" Javascript je vypnut, aby byl rychlejší a méně matoucí "
+"uživatelská zkušenost. K dispozici je také režim čtení založený na "
+"na základě funkcí používaných v prostředí GNOME Web / Epiphany."
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:18
+msgid "Feeds can be imported and exported via OPML."
+msgstr ""
+"Feeds können mithilfe von OPML-Dateien importiert und exportiert werden."
+
+#~ msgid "Reader mode unavailable for this site"
+#~ msgstr "Leseansicht für diese Seite nicht verfügbar"
+
+#~ msgid "Show colored border"
+#~ msgstr "Farbigen Rand anzeigen"
+
+#~ msgid "Enable client side decoration"
+#~ msgstr "Fensterdekoration aktivieren"
+
+#~ msgid "There were problems with some feeds"
+#~ msgstr "Es gab Probleme mit einigen Feeds"
+
+#~ msgid "@appid@"
+#~ msgstr "@appid@"
+
+#~ msgid "Added loading progress bar"
+#~ msgstr "Anzeige für Ladefortschritt hinzugefügt"
+
+#~ msgid "Added Spanish translation"
+#~ msgstr "Spanische Übersetzung hinzugefügt"
+
+#~ msgid "Various UI improvements"
+#~ msgstr "Verschiedene Verbesserungen in der Benutzeroberfläche"
+
+#~ msgid "Performance improvements"
+#~ msgstr "Performance-Verbesserungen"
+
+#~ msgid "Various bug fixes"
+#~ msgstr "Verschiedene Fehlerbehebungen"
+
+#~ msgid "Load cached articles on startup"
+#~ msgstr "Zwischengespeicherte Artikel beim Starten laden"
+
+#~ msgid "Added new view mode menu"
+#~ msgstr "Neuer Ansichtenmodus hinzugefügt"
+
+#~ msgid "Added Brazilian Portuguese translation"
+#~ msgstr "Brasilianische Übersetzung hinzugefügt"
+
+#~ msgid "Added Russian translation"
+#~ msgstr "Russische Übersetzung hinzugefügt"
+
+#~ msgid "Added a search function"
+#~ msgstr "Suchfunktion hinzugefügt"
+
+#~ msgid "Updated dependencies"
+#~ msgstr "Abhängigkeiten aktualisiert"
+
+#~ msgid "Errors with feeds are now shown in the UI"
+#~ msgstr "Fehler mit Feeds werden jetzt auf der Benutzeroberfläche angezeigt"
+
+#~ msgid "Big UI overhaul"
+#~ msgstr "Gründliche Überarbeitung der Benutzeroberfläche"
+
+#~ msgid "Updated translations"
+#~ msgstr "Übersetzungen aktualisiert"
+
+#~ msgid "OPML file association"
+#~ msgstr "OPML-Dateizuordnung"
+
+#~ msgid "Changed left headerbar button order"
+#~ msgstr "Reihenfolge der linken Symbolleiste geändert"
+
+#~ msgid "Optimization for updating feeds"
+#~ msgstr "Aktualisieren von Feeds optimiert"
+
+#~ msgid "Redesigned right click/longpress menu"
+#~ msgstr "Überarbeitetes Menü bei Rechtsklick oder langem Drücken"
+
+#~ msgid "Option to show/hide read articles"
+#~ msgstr "Option für gelesene Artikel anzeigen/ausblenden"
+
+#~ msgid "Reworked suggestion bar"
+#~ msgstr "Überarbeitete Vorschlagsleiste"
+
+#~ msgid "Changed name to Feeds"
+#~ msgstr "Name zu Feeds geändert"
+
+#~ msgid "Improved CPU utilization"
+#~ msgstr "Verbesserte CPU-Auslastung"
+
+#~ msgid "New right click or longpress menu for articles"
+#~ msgstr "Neues Menü bei Rechtsklick oder langem Druck auf Artikel"
+
+#~ msgid "You can now save articles offline"
+#~ msgstr ""
+#~ "Sie können jetzt Artikel speichern, um sie später ohne Internetverbindung "
+#~ "zu lesen"
+
+#~ msgid "Initial suggestion to add feeds is now less intrusive"
+#~ msgstr ""
+#~ "Der zu Beginn erscheinende Vorschlag, neue Feeds hinzuzufügen, ist jetzt "
+#~ "weniger aufdringlich"
+
+#~ msgid "Read articles are now greyed out"
+#~ msgstr "Gelesene Artikel werden nun grau dargestellt"
+
+#~ msgid "Concurrent feeds refresh, with customizable thread count"
+#~ msgstr ""
+#~ "Gleichzeitige Aktualisierung mehrerer Feeds; mit einer einstellbaren "
+#~ "Anzahl von Threads"
+
+#~ msgid "Added German translation (thanks @Etamuk)"
+#~ msgstr "Deutsche Übersetzung hinzugefügt (Danke @Etamuk)"
+
+#~ msgid "Fix bugs in reader mode"
+#~ msgstr "Einige Fehler in Leseansicht behoben"
+
+#~ msgid "Minor bug fix"
+#~ msgstr "Kleinere Fehlerbehebung"
+
+#~ msgid "Improved date and time parsing and display"
+#~ msgstr "Verbesserte Analyse und Anzeige von Datum und Uhrzeit"
+
+#~ msgid "Reader mode can now work on websites without an article tag"
+#~ msgstr ""
+#~ "Der Lesemodus kann jetzt auf Webseiten ohne Artikel-Tag verwendet werden"
+
+#~ msgid "Slight improvements to the icon"
+#~ msgstr "Leichte Verbesserungen am Symbol"
+
+#~ msgid "New feature to filter articles by feed"
+#~ msgstr "Neue Funktion zum Filtern der Artikel nach Feed"
+
+#~ msgid "Improved favicon download"
+#~ msgstr "Verbessertes Herunterladen des Favicon"
+
+#~ msgid "Fixed refresh duplicating articles"
+#~ msgstr "Das Aktualisieren von doppelten Artikeln wurde korrigiert"
+
+#~ msgid "Added option to disable client side decoration"
+#~ msgstr "Option hinzugefügt, die Fensterdekoration abzuschalten"
+
+#~ msgid "Brought primary menu in line with GNOME HIG"
+#~ msgstr "Hauptmenü so gestaltet, dass es den GNOME-Richtlinien entspricht"
+
+#~ msgid "Added placeholder icon for feeds without an icon"
+#~ msgstr "Platzhalter für Feeds ohne Symbol hinzugefügt"
+
+#~ msgid "Migrated some widgets to Glade templates"
+#~ msgstr "Einige Widgets wurden zu Glade-Vorlagen verlegt"
+
+#~ msgid "Option to use reader mode by default"
+#~ msgstr "Option zum standardmäßigen Verwenden der Leseansicht"
+
+#~ msgid "Option to show article content from the feed"
+#~ msgstr "Option zum Zeigen des Artikelinhaltes aus dem Feed"
+
+#~ msgid "Fixed labels alignment"
+#~ msgstr "Ausrichtung der Beschreibung verbessert"
+
+#~ msgid "Changed app name to Feeds"
+#~ msgstr "Name der Anwendung zu Feeds geändert"
+
+#~ msgid "Added separators for the two sections of the app"
+#~ msgstr "Trenner zwischen den beiden Bereichen der App hinzugefügt"
+
+#~ msgid "Using links as feed titles when there is no title"
+#~ msgstr "Benutze die Links als Feed-Titel, wenn kein Titel verfügbar ist"
+
+#~ msgid "Added preference for maximum article age"
+#~ msgstr "Einstellung zum Festlegen des maximalen Artikelalters hinzugefügt"
+
+#~ msgid "Added zoom keyboard shortcuts"
+#~ msgstr "Tastaturkürzel für Zoomen hinzugefügt"
+
+#~ msgid "Added preference to enable JavaScript"
+#~ msgstr "Einstellung zum Aktivieren von JavaScript hinzugefügt"
+
+#~ msgid "Fix window control positions when they are on the left"
+#~ msgstr ""
+#~ "Fehler mit Schaltflächenposition für Fenstersteuerung behoben, wenn diese "
+#~ "auf der linken Seite sind"
+
+#~ msgid "Feeds for websites without favicons will now work"
+#~ msgstr "Feeds für Webseiten ohne Favicons werden jetzt funktionieren"
+
+#~ msgid "Fixed bug with adding new feeds"
+#~ msgstr "Fehler beim Hinzufügen neuer Feeds behoben"
+
+#~ msgid "Switched to native file chooser"
+#~ msgstr "Wechsel zum nativen Dateiwähler"
+
+#~ msgid "Added empty state initial screen for sidebar"
+#~ msgstr "Leeren Anfangsbildschirm für Seitenleiste hinzugefügt"
+
+#~ msgid "Added italian translation"
+#~ msgstr "Italienische Übersetzung hinzugefügt"
+
+#~ msgid "First release"
+#~ msgstr "Erste Veröffentlichung"
+
+#~ msgid "Use reader mode by default"
+#~ msgstr "Verwende standardmäßig die Leseansicht"
+
+#~ msgid "Use content from the RSS feed"
+#~ msgstr "Inhalt aus dem RSS-Feed verwenden"
+
+#~ msgid "Reader mode"
+#~ msgstr "Leseansicht"
+
+#~ msgid "Load RSS content"
+#~ msgstr "Lade RSS-Inhalt"
+
+#~ msgid "<big>New feed URL</big>"
+#~ msgstr "<big>URL des neuen Feed</big>"
+
+#~ msgid "Add a feed or import an OPML file"
+#~ msgstr "Einen Feed hinzufügen oder eine OPML-Datei importieren"
+
+#~ msgid "<big>Select an article</big>"
+#~ msgstr "<big>Wählen Sie einen Artikel aus</big>"
+
+#~ msgid "GNOME Feeds"
+#~ msgstr "GNOME Feeds"
+
+#~ msgid ""
+#~ "GNOME Feeds is a minimal RSS/Atom feed reader built with speed and "
+#~ "simplicity in mind."
+#~ msgstr ""
+#~ "GNOME Feeds ist ein minimalistischer Betrachter für RSS/Atom-Feeds, der "
+#~ "auf Geschwindigkeit und Einfachheit ausgelegt ist."
+
+#, fuzzy
+#~| msgid "Do you want to delete these feeds?"
+#~ msgid "Do you want to import this file?"
+#~ msgstr "Wollen Sie diese Feeds wirklich löschen?"
+
+#~ msgid "<big>Add a feed or import an OPML file</big>"
+#~ msgstr "<big>Einen Feed hinzufügen oder eine OPML-Datei importieren</big>"
+
+#~ msgid "This does nothing"
+#~ msgstr "Das bringt nichts"
