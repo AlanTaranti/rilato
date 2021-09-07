@@ -6,23 +6,23 @@
     <file compressed="true">reader_mode_style.css</file>
     <file compressed="true">reader_mode_dark_style.css</file>
 
-    <file preprocess="xml-stripblanks">aboutdialog.glade</file>
-    <file preprocess="xml-stripblanks">ui/add_feed_box.glade</file>
-    <file preprocess="xml-stripblanks">ui/article_right_click_popover_content.glade</file>
-    <file preprocess="xml-stripblanks">ui/empty_state.glade</file>
-    <file preprocess="xml-stripblanks">ui/extra_popover_menu.glade</file>
-    <file preprocess="xml-stripblanks">ui/gfeeds_leaflet.glade</file>
-    <file preprocess="xml-stripblanks">ui/headerbar.glade</file>
-    <file preprocess="xml-stripblanks">ui/manage_feeds_listbox_row.glade</file>
-    <file preprocess="xml-stripblanks">ui/menu.xml</file>
-    <file preprocess="xml-stripblanks">ui/shortcutsWindow.xml</file>
-    <file preprocess="xml-stripblanks">ui/sidebar_listbox_row.glade</file>
-    <file preprocess="xml-stripblanks">ui/spinner_button.glade</file>
-    <file preprocess="xml-stripblanks">ui/webview_filler.glade</file>
-    <file preprocess="xml-stripblanks">ui/webview_with_notification.glade</file>
-    <file preprocess="xml-stripblanks">ui/scrolled_label.glade</file>
-    <file preprocess="xml-stripblanks">ui/manage_tags_popover_content.glade</file>
-    <file preprocess="xml-stripblanks">ui/manage_tags_listbox_row_content.glade</file>
+    <file preprocess="xml-stripblanks">aboutdialog.ui</file>
+    <file preprocess="xml-stripblanks">ui/add_feed_box.ui</file>
+    <file preprocess="xml-stripblanks">ui/article_right_click_popover_content.ui</file>
+    <file preprocess="xml-stripblanks">ui/empty_state.ui</file>
+    <file preprocess="xml-stripblanks">ui/extra_popover_menu.ui</file>
+    <file preprocess="xml-stripblanks">ui/gfeeds_leaflet.ui</file>
+    <file preprocess="xml-stripblanks">ui/headerbar.ui</file>
+    <file preprocess="xml-stripblanks">ui/manage_feeds_listbox_row.ui</file>
+    <file preprocess="xml-stripblanks">ui/menu.ui</file>
+    <file preprocess="xml-stripblanks">ui/shortcutsWindow.ui</file>
+    <file preprocess="xml-stripblanks">ui/sidebar_listbox_row.ui</file>
+    <file preprocess="xml-stripblanks">ui/spinner_button.ui</file>
+    <file preprocess="xml-stripblanks">ui/webview_filler.ui</file>
+    <file preprocess="xml-stripblanks">ui/webview_with_notification.ui</file>
+    <file preprocess="xml-stripblanks">ui/scrolled_label.ui</file>
+    <file preprocess="xml-stripblanks">ui/manage_tags_popover_content.ui</file>
+    <file preprocess="xml-stripblanks">ui/manage_tags_listbox_row_content.ui</file>
 
     <file compressed="true">ui/gtk_style.css</file>
 
