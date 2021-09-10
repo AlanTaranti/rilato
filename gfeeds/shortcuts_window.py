@@ -9,4 +9,3 @@ def show_shortcuts_window(parent_win, *args):
     shortcuts_win.set_transient_for(parent_win)
     shortcuts_win.set_modal(True)
     shortcuts_win.present()
-    shortcuts_win.show_all()
