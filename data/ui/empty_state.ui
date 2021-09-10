@@ -6,6 +6,8 @@
     <child type="center">
       <object class="GtkBox">
         <property name="halign">center</property>
+        <property name="valign">center</property>
+        <property name="vexpand">True</property>
         <property name="orientation">vertical</property>
         <property name="spacing">24</property>
         <child>

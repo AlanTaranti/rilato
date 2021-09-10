@@ -32,6 +32,7 @@ class StackWithEmptyState(Gtk.Stack):
             Gtk.StackTransitionType.CROSSFADE
         )
 
+        self.on_feeds_pop()
         # self.set_size_request(360, 100)
 
     def on_feeds_pop(self, *args):
