@@ -114,13 +114,26 @@ class FeedsManager(metaclass=Singleton):
         )
         self.errors = []
         self.problematic_feeds = []
-        if is_online():
-            self.emit('feedmanager_online_changed', True)
-        else:
-            self.emit('feedmanager_online_changed', False)
-            get_cached = True
-            # self.emit('feedmanager_refresh_end', '')
-            # return
+
+        # TODO IMPORTANT remove
+        self.emit('feedmanager_online_changed', True)
+        return self.continue_refresh(False)
+
+        def cb(res):
+            print('cb')
+            get_cached = False
+            if res:
+                self.emit('feedmanager_online_changed', True)
+            else:
+                self.emit('feedmanager_online_changed', False)
+                get_cached = True
+                # self.emit('feedmanager_refresh_end', '')
+                # return
+            self.continue_refresh(get_cached)
+
+        is_online(cb)
+
+    def continue_refresh(self, get_cached):
         self.populate_saved_feeds_items()
         self.feeds.empty()
         self.feeds_items.empty()

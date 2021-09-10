@@ -1,4 +1,5 @@
 from gettext import gettext as _
+from gfeeds.accel_manager import add_accelerators
 from gi.repository import Gtk, Gdk, GObject, Adw
 from xml.sax.saxutils import escape
 from gfeeds.confManager import ConfManager
@@ -24,7 +25,7 @@ class ManageTagsListboxRow(Gtk.ListBoxRow):
     def __init__(self, tag, active=True, **kwargs):
         super().__init__(**kwargs)
         self.builder = Gtk.Builder.new_from_resource(
-            '/org/gabmus/gfeeds/ui/manage_tags_listbox_row_content.glade'
+            '/org/gabmus/gfeeds/ui/manage_tags_listbox_row_content.ui'
         )
         self.tag = tag
         self.main_box = self.builder.get_object('main_box')
@@ -78,7 +79,7 @@ class ManageTagsPopover(Gtk.Popover):
     def __init__(self, relative_to, window, **kwargs):
         super().__init__(**kwargs)
         self.builder = Gtk.Builder.new_from_resource(
-            '/org/gabmus/gfeeds/ui/manage_tags_popover_content.glade'
+            '/org/gabmus/gfeeds/ui/manage_tags_popover_content.ui'
         )
         self.confman = ConfManager()
         self.relative_to = relative_to
@@ -130,7 +131,7 @@ class ManageTagsPopover(Gtk.Popover):
                 break
         for tag in self.confman.conf['tags']:
             self.tags_listbox_add_row(tag, False)
-        self.tags_listbox.show_all()
+        self.tags_listbox.show()
 
     def on_tags_listbox_row_activated(self, listbox, row):
         with row.checkbox.handler_block(row.checkbox_handler_id):
@@ -204,28 +205,26 @@ class ManageTagsPopover(Gtk.Popover):
 
 class ManageFeedsHeaderbar(Gtk.HeaderBar):
     def __init__(self, window, **kwargs):
-        super().__init__(**kwargs)
+        super().__init__(
+            title_widget=Gtk.Label(label=_('Manage Feeds')),
+            show_title_buttons=True,
+            **kwargs
+        )
         self.confman = ConfManager()
 
-        self.set_title(_('Manage Feeds'))
-        self.set_show_close_button(True)
-
         self.select_all_btn = Gtk.Button.new_from_icon_name(
-            'edit-select-all-symbolic',
-            Gtk.IconSize.BUTTON
+            'edit-select-all-symbolic'
         )
         self.select_all_btn.set_tooltip_text(_('Select/Unselect all'))
 
         self.delete_btn = Gtk.Button.new_from_icon_name(
-            'user-trash-symbolic',
-            Gtk.IconSize.BUTTON
+            'user-trash-symbolic'
         )
         self.delete_btn.set_tooltip_text(_('Delete selected feeds'))
         self.delete_btn.get_style_context().add_class('destructive-action')
 
         self.tags_btn = Gtk.Button.new_from_icon_name(
-            'tag-symbolic',
-            Gtk.IconSize.BUTTON
+            'tag-symbolic'
         )
         self.tags_btn.set_tooltip_text(_('Manage tags for selected feeds'))
 
@@ -252,7 +251,7 @@ class ManageFeedsHeaderbar(Gtk.HeaderBar):
 class ManageFeedsListboxRow(FeedsViewListboxRow):
     def __init__(self, feed, **kwargs):
         super().__init__(feed, **kwargs)
-        self.checkbox.set_no_show_all(False)
+        self.checkbox.set_visible(True)
         self.checkbox_handler_id = self.checkbox.connect(
             'toggled',
             self.on_checkbox_toggled
@@ -265,9 +264,10 @@ class ManageFeedsListboxRow(FeedsViewListboxRow):
 
 
 class ManageFeedsListbox(FeedsViewListbox):
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        self.set_selection_mode(Gtk.SelectionMode.NONE)
+    def __init__(self):
+        super().__init__(
+            selection_mode = Gtk.SelectionMode.NONE
+        )
 
     def add_feed(self, feed):
         self.append(ManageFeedsListboxRow(feed))
@@ -278,23 +278,25 @@ class ManageFeedsListbox(FeedsViewListbox):
 
 
 class ManageFeedsScrolledWindow(Gtk.ScrolledWindow):
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
+    def __init__(self):
+        super().__init__(
+            vexpand=True,
+            hscrollbar_policy=Gtk.PolicyType.NEVER,
+            vscrollbar_policy=Gtk.PolicyType.AUTOMATIC
+        )
         self.listbox = ManageFeedsListbox()
         self.set_size_request(360, 500)
-        self.set_policy(Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC)
         self.set_child(self.listbox)
 
 
 class DeleteFeedsConfirmMessageDialog(ScrolledMessageDialog):
-    def __init__(self, parent, selected_feeds, **kwargs):
+    def __init__(self, parent, selected_feeds):
         super().__init__(
             parent,
             Gtk.DialogFlags.MODAL | Gtk.DialogFlags.DESTROY_WITH_PARENT,
             Gtk.MessageType.QUESTION,
             Gtk.ButtonsType.YES_NO,
-            _('Do you want to delete these feeds?'),
-            **kwargs
+            _('Do you want to delete these feeds?')
         )
 
         self.format_secondary_markup(
@@ -304,7 +306,11 @@ class DeleteFeedsConfirmMessageDialog(ScrolledMessageDialog):
 
 class GFeedsManageFeedsWindow(Adw.Window):
     def __init__(self, appwindow, **kwargs):
-        super().__init__(**kwargs)
+        super().__init__(
+            modal=True,
+            transient_for=appwindow,
+            **kwargs
+        )
         self.appwindow = appwindow
         self.confman = ConfManager()
         self.feedman = FeedsManager()
@@ -326,22 +332,19 @@ class GFeedsManageFeedsWindow(Adw.Window):
 
         self.window_handle = Gtk.WindowHandle()
         self.window_handle.set_child(self.headerbar)
-        self.main_box.pack_start(self.window_handle, False, False, 0)
+        self.main_box.append(self.window_handle)
         self.window_handle.set_vexpand(False)
 
-        self.main_box.pack_start(self.scrolled_window, True, True, 0)
+        self.main_box.append(self.scrolled_window)
         self.set_child(self.main_box)
 
-        self.accel_group = Gtk.AccelGroup()
-        self.accel_group.connect(
-            *Gtk.accelerator_parse('Escape'), Gtk.AccelFlags.VISIBLE,
-            lambda *args: self.close()
+        add_accelerators(
+            self,
+            [{
+                'combo': 'Escape',
+                'cb': lambda *args: self.close()
+            },]
         )
-        self.add_accel_group(self.accel_group)
-
-        self.set_type_hint(Gdk.WindowTypeHint.DIALOG)
-        self.set_modal(True)
-        self.set_transient_for(self.appwindow)
 
         self.headerbar.manage_tags_popover.connect(
             'new_tag_added',
@@ -370,10 +373,6 @@ class GFeedsManageFeedsWindow(Adw.Window):
 
     def on_tag_deleted(self, caller, tag):
         self.confman.delete_tag(tag)
-
-    def present(self, *args, **kwargs):
-        super().present(*args, **kwargs)
-        self.show_all()
 
     def get_selected_feeds(self):
         return [

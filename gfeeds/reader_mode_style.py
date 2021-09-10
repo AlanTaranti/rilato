@@ -103,10 +103,10 @@ CSS = f'''@font-face {{
   font-display: block;
 }}
 ''' + Gio.resources_lookup_data(
-    '/org/gabmus/gfeeds/reader_mode_style.css',
+    '/org/gabmus/gfeeds/ui/reader_mode_style.css',
     Gio.ResourceLookupFlags.NONE
 ).get_data().decode()
 DARK_MODE_CSS = Gio.resources_lookup_data(
-    '/org/gabmus/gfeeds/reader_mode_dark_style.css',
+    '/org/gabmus/gfeeds/ui/reader_mode_dark_style.css',
     Gio.ResourceLookupFlags.NONE
 ).get_data().decode()

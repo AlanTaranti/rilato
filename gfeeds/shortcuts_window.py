@@ -3,7 +3,7 @@ from gi.repository import Gtk
 
 def show_shortcuts_window(parent_win, *args):
     shortcuts_win = Gtk.Builder.new_from_resource(
-        '/org/gabmus/gfeeds/ui/shortcutsWindow.xml'
+        '/org/gabmus/gfeeds/ui/shortcutsWindow.ui'
     ).get_object('shortcuts-gfeeds')
     shortcuts_win.props.section_name = 'shortcuts'
     shortcuts_win.set_transient_for(parent_win)

@@ -8,11 +8,11 @@ from gfeeds.scrolled_message_dialog import ScrolledMessageDialog
 class GFeedsConfirmAddDialog(ScrolledMessageDialog):
     def __init__(self, parent, f_path, http=False, **kwargs):
         super().__init__(
-            parent,
-            Gtk.DialogFlags.MODAL | Gtk.DialogFlags.DESTROY_WITH_PARENT,
-            Gtk.MessageType.QUESTION,
-            Gtk.ButtonsType.YES_NO,
-            (
+            transient_for=parent,
+            modal=True,
+            message_type=Gtk.MessageType.QUESTION,
+            buttons=Gtk.ButtonsType.YES_NO,
+            text=(
                 _('Do you want to import these feeds?') if not http
                 else _('Do you want to import this feed?')
             ),

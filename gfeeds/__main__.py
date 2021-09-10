@@ -49,9 +49,6 @@ class GFeedsApplication(Gtk.Application):
         GLib.set_prgname('org.gabmus.gfeeds')
         self.confman = ConfManager()
         self.feedman = FeedsManager()
-        self.window = GFeedsAppWindow()
-        self.confman.window = self.window
-        self.window.connect('destroy', self.on_destroy_window)
 
     def do_startup(self):
         Gtk.Application.do_startup(self)
@@ -167,7 +164,7 @@ class GFeedsApplication(Gtk.Application):
         target_s = str(target).strip("'")
         if target_s not in ['webview', 'reader', 'rsscont']:
             target_s = 'webview'
-        self.window.headerbar.on_view_mode_change(target_s)
+        self.window.right_headerbar.on_view_mode_change(target_s)
         self.confman.conf['default_view'] = target_s
         self.confman.save_conf()
 
@@ -218,7 +215,7 @@ class GFeedsApplication(Gtk.Application):
 
     def show_about_dialog(self, *args):
         about_builder = Gtk.Builder.new_from_resource(
-            '/org/gabmus/gfeeds/aboutdialog.glade'
+            '/org/gabmus/gfeeds/aboutdialog.ui'
         )
         dialog = about_builder.get_object('aboutdialog')
         dialog.set_modal(True)
@@ -230,19 +227,20 @@ class GFeedsApplication(Gtk.Application):
         self.quit()
 
     def do_activate(self):
+        self.window = GFeedsAppWindow()
+        self.confman.window = self.window
+        self.window.connect('destroy', self.on_destroy_window)
         self.add_window(self.window)
-        stylecontext = Gtk.StyleContext()
         provider = Gtk.CssProvider()
         provider.load_from_resource(
             '/org/gabmus/gfeeds/ui/gtk_style.css'
         )
-        stylecontext.add_provider_for_screen(
-            Gdk.Screen.get_default(),
+        Gtk.StyleContext.add_provider_for_display(
+            Gdk.Display.get_default(),
             provider,
             Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
         )
         self.window.present()
-        self.window.show_all()
         # self.feedman.refresh(get_cached=True)
         if self.args:
             if self.args.argurl:

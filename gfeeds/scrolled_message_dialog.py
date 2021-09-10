@@ -5,7 +5,7 @@ class ScrolledMessageDialog(Gtk.MessageDialog):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.builder = Gtk.Builder.new_from_resource(
-            '/org/gabmus/gfeeds/ui/scrolled_label.glade'
+            '/org/gabmus/gfeeds/ui/scrolled_label.ui'
         )
         self.scrolled_win = self.builder.get_object('scrolled_win')
         self.label = self.builder.get_object('label')

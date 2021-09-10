@@ -14,11 +14,12 @@ class AddFeedPopover(Gtk.Popover):
         self.feedman = FeedsManager()
 
         self.builder = Gtk.Builder.new_from_resource(
-            '/org/gabmus/gfeeds/ui/add_feed_box.glade'
+            '/org/gabmus/gfeeds/ui/add_feed_box.ui'
         )
         self.set_autohide(True)
-        self.set_parent(relative_to)
-        relative_to.connect('clicked', lambda *args: self.popup())
+        # self.set_parent(relative_to)
+        relative_to.set_popover(self)
+        # relative_to.connect('clicked', lambda *args: self.popup())
         self.container_box = self.builder.get_object('container_box')
         self.confirm_btn = self.builder.get_object('confirm_btn')
         self.confirm_btn.connect(
@@ -50,65 +51,20 @@ class AddFeedPopover(Gtk.Popover):
         else:
             self.already_subscribed_revealer.set_reveal_child(True)
 
-
-class GFeedHeaderbar(Gtk.WindowHandle):
-    __gsignals__ = {
-        'gfeeds_headerbar_squeeze': (
-            GObject.SignalFlags.RUN_FIRST,
-            None,
-            (bool,)
-        )
-    }
-
-    def __init__(
-            self,
-            size_group_left,
-            size_group_right,
-            back_btn_func,
-            webview,
-            searchbar,
-            **kwargs):
-        super().__init__(**kwargs)
+class GFeedsHeaderbarRight(Gtk.WindowHandle):
+    def __init__(self, webview):
+        super().__init__(vexpand=False, hexpand=True)
         self.builder = Gtk.Builder.new_from_resource(
-            '/org/gabmus/gfeeds/ui/headerbar.glade'
+            '/org/gabmus/gfeeds/ui/headerbar.ui'
         )
         self.confman = ConfManager()
-        self.feedman = FeedsManager()
-        self.back_btn_func = back_btn_func
         self.webview = webview
-        self.searchbar = searchbar
         self.webview.connect('gfeeds_webview_load_start', self.on_load_start)
         self.webview.connect('gfeeds_webview_load_end', self.on_load_end)
-        self.headergroup = Adw.HeaderGroup()
-        leaflet_builder = Gtk.Builder.new_from_resource(
-            '/org/gabmus/gfeeds/ui/gfeeds_leaflet.glade'
-        )
-        self.leaflet = leaflet_builder.get_object('leaflet')
-        self.leaflet.set_can_swipe_back(False)
-        self.left_headerbar = self.builder.get_object(
-            'left_headerbar'
-        )
         self.right_headerbar = self.builder.get_object(
             'right_headerbar'
         )
-        self.right_headerbar.set_hexpand(True)
-        size_group_left.add_widget(self.left_headerbar)
-        size_group_right.add_widget(self.right_headerbar)
-        self.headergroup.add_header_bar(self.left_headerbar)
-        self.headergroup.add_header_bar(self.right_headerbar)
-        separator = Gtk.Separator()
-        separator.get_style_context().add_class('sidebar')
-
-        self.leaflet.add(self.left_headerbar)
-        self.leaflet.add(separator)
-        self.leaflet.add(self.right_headerbar)
-        self.leaflet.child_set_property(separator, 'allow-visible', False)
-        self.set_child(self.leaflet)
-        self.set_headerbar_controls()
-        # self.headergroup.set_focus(self.left_headerbar)
-
-        self.back_button = self.builder.get_object('back_btn')
-        self.back_button.connect('clicked', self.on_back_button_clicked)
+        self.set_child(self.right_headerbar)
         self.view_mode_menu_btn = self.builder.get_object(
             'view_mode_menu_btn'
         )
@@ -125,15 +81,91 @@ class GFeedHeaderbar(Gtk.WindowHandle):
         )
         self.share_btn = self.builder.get_object('share_btn')
         self.share_btn.connect('clicked', self.copy_article_uri)
+
+        self.title_squeezer = self.builder.get_object(
+            'right_headerbar_squeezer'
+        )
+        self.right_title_container = self.builder.get_object(
+            'right_headerbar_title_container'
+        )
+        self.title_label = self.builder.get_object('title_label')
+        self.title_squeezer.add(self.right_title_container)
+        self.title_squeezer.add(Gtk.Label(label=''))
+
+    def set_view_mode_icon(self, mode):
+        self.view_mode_menu_btn_icon.set_from_icon_name(
+            {
+                'webview': 'globe-alt-symbolic',
+                'reader': 'ephy-reader-mode-symbolic',
+                'rsscont': 'application-rss+xml-symbolic'
+            }[mode]
+        )
+
+    def on_view_mode_change(self, target):
+        self.view_mode_menu.popdown()
+        if target == 'webview':
+            self.webview.set_enable_reader_mode(False)
+        elif target == 'reader':
+            self.webview.set_enable_reader_mode(True)
+        elif target == 'rsscont':
+            self.webview.set_enable_rss_content(True)
+        self.set_view_mode_icon(target)
+
+    def set_article_title(self, title):
+        self.title_label.set_text(title)
+
+    def on_load_start(self, *args):
+        self.view_mode_menu_btn.set_sensitive(False)
+
+    def on_load_end(self, *args):
+        self.view_mode_menu_btn.set_sensitive(True)
+
+    def set_headerbar_controls(self, *args):
+        self.right_headerbar.set_show_title_buttons(True)
+
+    def copy_article_uri(self, *args):
+        Gdk.Display.get_default().get_clipboard().set(self.webview.uri)
+        self.webview.show_notif()
+
+
+class GFeedsHeaderbarLeft(Gtk.WindowHandle):
+    __gsignals__ = {
+        'gfeeds_headerbar_squeeze': (
+            GObject.SignalFlags.RUN_FIRST,
+            None,
+            (bool,)
+        )
+    }
+
+    def __init__(
+            self,
+            back_btn_func,
+            searchbar):
+        super().__init__(vexpand=False, hexpand=True)
+        self.builder = Gtk.Builder.new_from_resource(
+            '/org/gabmus/gfeeds/ui/headerbar.ui'
+        )
+        self.confman = ConfManager()
+        self.feedman = FeedsManager()
+        self.back_btn_func = back_btn_func
+        self.searchbar = searchbar
+        self.left_headerbar = self.builder.get_object(
+            'left_headerbar'
+        )
+        self.set_child(self.left_headerbar)
+        self.set_headerbar_controls()
+
+        self.back_button = self.builder.get_object('back_btn')
+        self.back_button.connect('clicked', self.on_back_button_clicked)
         self.menu_btn = self.builder.get_object(
             'menu_btn'
         )
         self.menu_popover = Gtk.PopoverMenu()
         self.menu_builder = Gtk.Builder.new_from_resource(
-            '/org/gabmus/gfeeds/ui/menu.xml'
+            '/org/gabmus/gfeeds/ui/menu.ui'
         )
         self.menu = self.menu_builder.get_object('generalMenu')
-        self.menu_popover.bind_model(self.menu)
+        self.menu_popover.set_menu_model(self.menu)
         self.menu_btn.set_popover(self.menu_popover)
 
         self.search_btn = self.builder.get_object('search_btn')
@@ -177,9 +209,7 @@ class GFeedHeaderbar(Gtk.WindowHandle):
         self.squeezer.add(self.stack_switcher)
         self.squeezer.add(self.nobox)
         self.squeezer.connect('notify::visible-child', self.on_squeeze)
-        self.left_headerbar.set_custom_title(self.squeezer)
-
-        self.clipboard = Gtk.Clipboard.get(Gdk.SELECTION_CLIPBOARD)
+        self.left_headerbar.set_title_widget(self.squeezer)
 
         self.feedman.connect(
             'feedmanager_refresh_start',
@@ -189,38 +219,6 @@ class GFeedHeaderbar(Gtk.WindowHandle):
             'feedmanager_refresh_end',
             self.on_new_feed_add_end
         )
-        self.title_squeezer = self.builder.get_object(
-            'right_headerbar_squeezer'
-        )
-        self.right_title_container = self.builder.get_object(
-            'right_headerbar_title_container'
-        )
-        self.title_label = self.builder.get_object('title_label')
-        self.title_squeezer.add(self.right_title_container)
-        self.title_squeezer.add(Gtk.Label(label=''))
-
-    def set_view_mode_icon(self, mode):
-        self.view_mode_menu_btn_icon.set_from_icon_name(
-            {
-                'webview': 'globe-alt-symbolic',
-                'reader': 'ephy-reader-mode-symbolic',
-                'rsscont': 'application-rss+xml-symbolic'
-            }[mode],
-            Gtk.IconSize.BUTTON
-        )
-
-    def on_view_mode_change(self, target):
-        self.view_mode_menu.popdown()
-        if target == 'webview':
-            self.webview.set_enable_reader_mode(False)
-        elif target == 'reader':
-            self.webview.set_enable_reader_mode(True)
-        elif target == 'rsscont':
-            self.webview.set_enable_rss_content(True)
-        self.set_view_mode_icon(target)
-
-    def set_article_title(self, title):
-        self.title_label.set_text(title)
 
     def on_squeeze(self, *args):
         self.emit(
@@ -241,20 +239,7 @@ class GFeedHeaderbar(Gtk.WindowHandle):
         self.add_popover.url_entry.set_text('')
 
     def set_headerbar_controls(self, *args):
-        self.right_headerbar.set_show_close_button(True)
-        self.left_headerbar.set_show_close_button(True)
+        self.left_headerbar.set_show_title_buttons(True)
 
     def on_back_button_clicked(self, *args):
-        self.leaflet.set_visible_child(self.left_headerbar)
         self.back_btn_func()
-
-    def on_load_start(self, *args):
-        self.view_mode_menu_btn.set_sensitive(False)
-
-    def on_load_end(self, *args):
-        self.view_mode_menu_btn.set_sensitive(True)
-
-    def copy_article_uri(self, *args):
-        self.clipboard.set_text(self.webview.uri, -1)
-        self.clipboard.store()
-        self.webview.show_notif()

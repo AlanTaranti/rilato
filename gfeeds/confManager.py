@@ -58,6 +58,11 @@ class ConfManagerSignaler(GObject.Object):
             None,
             (str,)
         ),
+        'gfeeds_dark_mode_changed': (
+            GObject.SignalFlags.RUN_FIRST,
+            None,
+            (str,)
+        ),
     }
 
 
@@ -67,6 +72,7 @@ class ConfManager(metaclass=Singleton):
 
     BASE_SCHEMA = {
         'feeds': {},
+        'dark_mode': False,
         'dark_reader': False,
         'new_first': True,
         'windowsize': {
@@ -96,31 +102,32 @@ class ConfManager(metaclass=Singleton):
         self.emit = self.signaler.emit
         self.connect = self.signaler.connect
 
-        # check if inside flatpak sandbox
-        self.is_flatpak = (
-            'XDG_RUNTIME_DIR' in Env.keys() and
-            isfile(f'{Env["XDG_RUNTIME_DIR"]}/flatpak-info')
+        self.conf_dir = Env.get("XDG_CONFIG_HOME")
+        self.cache_path = Path(
+            f'{Env.get("XDG_CACHE_HOME")}/org.gabmus.gfeeds'
         )
-
-        if self.is_flatpak:
-            self.conf_dir = Env.get("XDG_CONFIG_HOME")
-            self.cache_path = Path(
-                f'{Env.get("XDG_CACHE_HOME")}/org.gabmus.gfeeds'
-            )
-        else:
+        if self.conf_dir is None:
             self.conf_dir = f'{Env.get("HOME")}/.config'
+        if self.cache_path is None:
             self.cache_path = Path(
                 f'{Env.get("HOME")}/.cache/org.gabmus.gfeeds'
             )
-        self.path = Path(
-            f'{self.conf_dir}/org.gabmus.gfeeds.json'
-        )
         self.thumbs_cache_path = f'{self.cache_path}/thumbnails/'
         old_saved_cache_path = f'{self.cache_path}/saved_articles'
         self.saved_cache_path = \
             f'{self.conf_dir}/org.gabmus.gfeeds.saved_articles'
+        for p in [
+                self.conf_dir,
+                self.cache_path,
+                self.thumbs_cache_path,
+                self.saved_cache_path
+        ]:
+            if not isdir(str(p)):
+                makedirs(str(p))
+        self.path = Path(
+            f'{self.conf_dir}/org.gabmus.gfeeds.json'
+        )
 
-        self.conf = None
         if self.path.is_file():
             try:
                 with open(self.path) as fd:
@@ -147,13 +154,6 @@ class ConfManager(metaclass=Singleton):
             self.conf = ConfManager.BASE_SCHEMA.copy()
             self.save_conf()
 
-        for p in [
-                self.cache_path,
-                self.thumbs_cache_path,
-                self.saved_cache_path
-        ]:
-            if not isdir(str(p)):
-                makedirs(str(p))
         # TODO: remove down the road, old saved articles migration
         if isdir(old_saved_cache_path):
             from os import listdir, rmdir

@@ -33,11 +33,11 @@ class FeedsViewListboxRow(Gtk.ListBoxRow):
         self.feed = feed
         self.title = feed.title
         self.builder = Gtk.Builder.new_from_resource(
-            '/org/gabmus/gfeeds/ui/manage_feeds_listbox_row.glade'
+            '/org/gabmus/gfeeds/ui/manage_feeds_listbox_row.ui'
         )
         self.hbox = self.builder.get_object('hbox')
         self.checkbox = self.builder.get_object('check')
-        self.checkbox.set_no_show_all(True)
+        self.checkbox.set_visible(False)
         self.checkbox.hide()
 
         self.icon_container = self.builder.get_object('icon_container')
@@ -54,7 +54,7 @@ class FeedsViewListboxRow(Gtk.ListBoxRow):
             self.on_full_feed_name_changed
         )
         self.desc_label = self.builder.get_object('description_label')
-        self.desc_label.set_no_show_all(not description)
+        self.desc_label.set_visible(description)
         if description:
             self.desc_label.set_text(self.feed.description)
         else:
@@ -82,16 +82,15 @@ class FeedsViewTagListboxRow(Gtk.ListBoxRow):
         self.title = tag
         self.feed = None
         self.builder = Gtk.Builder.new_from_resource(
-            '/org/gabmus/gfeeds/ui/manage_feeds_listbox_row.glade'
+            '/org/gabmus/gfeeds/ui/manage_feeds_listbox_row.ui'
         )
         self.hbox = self.builder.get_object('hbox')
         self.checkbox = self.builder.get_object('check')
-        self.checkbox.set_no_show_all(True)
+        self.checkbox.set_visible(False)
         self.checkbox.hide()
         self.icon_container = self.builder.get_object('icon_container')
         self.icon = Gtk.Image.new_from_icon_name(
-            'tag-symbolic',
-            Gtk.IconSize.INVALID
+            'tag-symbolic'
         )
         self.icon.set_pixel_size(32)
         self.icon_container.append(self.icon)
@@ -99,7 +98,7 @@ class FeedsViewTagListboxRow(Gtk.ListBoxRow):
         self.name_label = self.builder.get_object('title_label')
         self.name_label.set_text(tag)
         self.desc_label = self.builder.get_object('description_label')
-        self.desc_label.set_no_show_all(True)
+        self.desc_label.set_visible(False)
         self.desc_label.hide()
         self.set_child(self.hbox)
 
@@ -176,17 +175,25 @@ class FeedsViewListbox(Gtk.ListBox):
         self.confman.emit('gfeeds_filter_changed', row.feed)
 
     def remove_feed(self, feed):
-        for row in self.get_children():
+        row = self.get_row_at_index(0)
+        index = 0
+        while row:
             if not row.IS_ALL:
                 if row.feed == feed:
                     self.remove(row)
                     break
+                index += 1
+            row = self.get_row_at_index(index)
 
     def empty(self, *args):
-        rows = self.get_children()
-        for row in rows:
+        row = self.get_row_at_index(0)
+        index = 0
+        while row:
             if row and not row.IS_ALL and not row.IS_TAG:
                 self.remove(row)
+            else:
+                index += 1
+            row = self.get_row_at_index(index)
 
     def row_all_activate(self, skip=False):
         if skip:
@@ -234,8 +241,9 @@ class FeedsViewPopover(Gtk.Popover):
         )
         self.set_child(self.scrolled_win)
         self.set_autohide(True)
-        self.set_parent(relative_to)
-        relative_to.connect('clicked', self.on_relative_to_clicked)
+        # self.set_parent(relative_to)
+        relative_to.set_popover(self)
+        # relative_to.connect('clicked', self.on_relative_to_clicked)
 
-    def on_relative_to_clicked(self, *args):
-        self.popup()
+    # def on_relative_to_clicked(self, *args):
+    #     self.popup()

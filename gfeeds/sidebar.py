@@ -1,15 +1,16 @@
-from gi.repository import Gtk, Gdk, GLib
+from gi.repository import Gtk, Gdk, GLib, Adw
 from gettext import gettext as _
 from gfeeds.confManager import ConfManager
 from gfeeds.feeds_manager import FeedsManager
 from gfeeds.sidebar_row import GFeedsSidebarRow
 from gfeeds.listbox_tools import separator_header_func
 from gfeeds.rss_parser import FakeFeed
+from gfeeds.accel_manager import add_mouse_button_accel, add_longpress_accel
 
 
 class GFeedsSidebarListBox(Gtk.ListBox):
     def __init__(self, parent_stack, **kwargs):
-        super().__init__(**kwargs)
+        super().__init__(vexpand=True, **kwargs)
         self.search_terms = ''
         self.confman = ConfManager()
         self.parent_stack = parent_stack
@@ -31,17 +32,15 @@ class GFeedsSidebarListBox(Gtk.ListBox):
         )
 
         # longpress & right click
-        self.longpress = Gtk.GestureLongPress.new(self)
-        self.longpress.set_propagation_phase(Gtk.PropagationPhase.TARGET)
-        self.longpress.set_touch_only(False)
-        self.longpress.connect(
-            'pressed',
-            self.on_right_click,
-            self
+        self.longpress = add_longpress_accel(
+            self, self.on_right_click
         )
-        self.connect(
-            'button-press-event',
-            self.on_key_press_event
+        self.rightclick = add_mouse_button_accel(
+            self,
+            lambda gesture, _, x, y:
+                self.on_right_click(gesture, x, y)
+                if gesture.get_current_button() == 3  # 3 is right click
+                else None
         )
         self.set_header_func(separator_header_func)
 
@@ -164,11 +163,10 @@ class GFeedsSidebarScrolledWin(Gtk.ScrolledWindow):
             self.listbox.emit('row-activated', target)
 
 
-class GFeedsSidebar(Gtk.Stack):
+class GFeedsSidebar(Adw.ViewStack):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.feedman = FeedsManager()
-        self.set_transition_type(Gtk.StackTransitionType.CROSSFADE)
 
         self.scrolled_win = GFeedsSidebarScrolledWin(self)
         self.listbox = self.scrolled_win.listbox
@@ -178,18 +176,12 @@ class GFeedsSidebar(Gtk.Stack):
         self.saved_items_scrolled_win = GFeedsSidebarScrolledWin(self)
         self.saved_items_listbox = self.saved_items_scrolled_win.listbox
 
-        self.add_titled(self.scrolled_win, 'Feed', _('Feed'))
-        self.child_set_property(
-            self.scrolled_win,
-            'icon-name',
-            'application-rss+xml-symbolic'
-        )
-        self.add_titled(self.saved_items_scrolled_win, 'Saved', _('Saved'))
-        self.child_set_property(
-            self.saved_items_scrolled_win,
-            'icon-name',
-            'emblem-favorite-symbolic'
-        )
+        self.add_titled(
+            self.scrolled_win, 'Feed', _('Feed')
+        ).set_icon_name('application-rss+xml-symbolic')
+        self.add_titled(
+            self.saved_items_scrolled_win, 'Saved', _('Saved')
+        ).set_icon_name('emblem-favorite-symbolic')
         # self.set_size_request(360, 100)
 
         self.feedman.feeds_items.connect(

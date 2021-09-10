@@ -14,7 +14,7 @@ class GFeedsSidebarRow(Gtk.ListBoxRow):
         self.confman = ConfManager()
 
         self.builder = Gtk.Builder.new_from_resource(
-            '/org/gabmus/gfeeds/ui/sidebar_listbox_row.glade'
+            '/org/gabmus/gfeeds/ui/sidebar_listbox_row.ui'
         )
         self.container_box = self.builder.get_object('container_box')
         self.title_label = self.builder.get_object('title_label')

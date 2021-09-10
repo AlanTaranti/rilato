@@ -1,67 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.22.1 -->
 <interface>
-  <requires lib="gtk+" version="3.20"/>
+  <requires lib="gtk" version="4.0"/>
   <object class="GtkOverlay" id="overlay1">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
     <property name="hexpand">True</property>
     <property name="vexpand">True</property>
     <child>
       <object class="GtkBox" id="box1">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
         <property name="hexpand">True</property>
         <property name="vexpand">True</property>
         <property name="orientation">vertical</property>
-        <child>
-          <placeholder/>
-        </child>
       </object>
-      <packing>
-        <property name="index">-1</property>
-      </packing>
     </child>
     <child type="overlay">
       <object class="GtkOverlay" id="overlay2">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
         <property name="valign">start</property>
         <child>
           <object class="GtkRevealer" id="revealer">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
             <property name="halign">center</property>
             <child>
               <object class="GtkFrame" id="frame2">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
                 <property name="label_xalign">0</property>
-                <property name="shadow_type">none</property>
                 <child>
                   <object class="GtkBox" id="box2">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
                     <property name="spacing">20</property>
                     <child>
                       <object class="GtkLabel" id="label2">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="margin_left">22</property>
+                        <property name="margin_start">22</property>
                         <property name="label" translatable="yes">Link copied to clipboard!</property>
                       </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">0</property>
-                      </packing>
                     </child>
                     <child>
                       <object class="GtkButton" id="notif_close_btn">
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="receives_default">True</property>
-                        <property name="relief">none</property>
                         <child>
                           <object class="GtkImage" id="image2">
                             <property name="visible">True</property>
@@ -73,16 +42,8 @@
                           <class name="image-button"/>
                         </style>
                       </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">1</property>
-                      </packing>
                     </child>
                   </object>
-                </child>
-                <child type="label_item">
-                  <placeholder/>
                 </child>
                 <style>
                   <class name="app-notification"/>
@@ -90,10 +51,6 @@
               </object>
             </child>
           </object>
-          <packing>
-            <property name="pass_through">True</property>
-            <property name="index">-1</property>
-          </packing>
         </child>
       </object>
     </child>

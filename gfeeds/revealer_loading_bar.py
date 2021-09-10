@@ -6,6 +6,6 @@ class RevealerLoadingBar(Gtk.Revealer):
         super().__init__(*args, **kwargs)
 
         self.progress_bar = Gtk.ProgressBar()
-        self.add(self.progress_bar)
+        self.set_child(self.progress_bar)
         self.set_fraction = self.progress_bar.set_fraction
         self.set_reveal_child(True)

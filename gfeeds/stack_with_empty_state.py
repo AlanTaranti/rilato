@@ -4,13 +4,13 @@ from gfeeds.feeds_manager import FeedsManager
 
 class StackWithEmptyState(Gtk.Stack):
     def __init__(self, main_widget, *args, **kwargs):
-        super().__init__(*args, **kwargs)
+        super().__init__(*args, vexpand=True, **kwargs)
         self.feedman = FeedsManager()
         self.main_widget = main_widget
         self.empty_state = Gtk.Builder.new_from_resource(
-            '/org/gabmus/gfeeds/ui/empty_state.glade'
+            '/org/gabmus/gfeeds/ui/empty_state.ui'
         ).get_object('empty_state_box')
-        self.main_widget.show_all()
+        self.main_widget.show()
         self.add_named(self.main_widget, 'main_widget')
         self.add_named(self.empty_state, 'empty_state')
         self.set_visible_child(self.main_widget)

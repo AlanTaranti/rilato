@@ -30,20 +30,20 @@ class GFeedsWebView(Gtk.Stack):
         self.set_size_request(360, 500)
 
         self.filler_builder = Gtk.Builder.new_from_resource(
-            '/org/gabmus/gfeeds/ui/webview_filler.glade'
+            '/org/gabmus/gfeeds/ui/webview_filler.ui'
         )
         self.webview_notif_builder = Gtk.Builder.new_from_resource(
-            '/org/gabmus/gfeeds/ui/webview_with_notification.glade'
+            '/org/gabmus/gfeeds/ui/webview_with_notification.ui'
         )
 
-        self.webkitview = WebKit2.WebView()
+        self.webkitview = WebKit2.WebView(hexpand=True, vexpand=True)
         self.loading_bar = RevealerLoadingBar()
         self.webview_notif_builder.get_object(
             'box1'
-        ).pack_start(self.loading_bar, False, False, 0)
+        ).prepend(self.loading_bar)
         self.webview_notif_builder.get_object(
             'box1'
-        ).pack_end(self.webkitview, True, True, 0)
+        ).append(self.webkitview)
         self.overlay_container = self.webview_notif_builder.get_object(
             'overlay1'
         )
@@ -62,7 +62,7 @@ class GFeedsWebView(Gtk.Stack):
         )
 
         self.webkitview.connect('load-changed', self.on_load_changed)
-        self.webkitview.connect("decide-policy", self.on_decide_policy)
+        self.webkitview.connect('decide-policy', self.on_decide_policy)
 
         self.fillerview = self.filler_builder.get_object('webview_filler_box')
 

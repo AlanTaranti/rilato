@@ -1,28 +1,22 @@
 import threading
 import requests
-from gi.repository import Gtk
+from gi.repository import Gtk, GLib
 
 
-def __is_online_async_worker(ret_value_l):
+def __is_online_async_worker(callback):
     TEST_URL = 'http://httpbin.org/robots.txt'
     EXPECTED_STATUS = 405
     try:
         res = requests.post(TEST_URL)
-        ret_value_l[0] = res.status_code == EXPECTED_STATUS
+        print('>>>')
+        GLib.idle_add(callback, res.status_code == EXPECTED_STATUS)
     except requests.exceptions.ConnectionError:
-        ret_value_l[0] = False
+        GLib.idle_add(callback, False)
 
 
-def is_online():
-    t_ret = [False]
-    t = threading.Thread(
-        group=None,
+def is_online(callback):
+    threading.Thread(
         target=__is_online_async_worker,
-        name=None,
-        args=(t_ret,)
-    )
-    t.start()
-    while t.is_alive():
-        while Gtk.events_pending():
-            Gtk.main_iteration()
-    return t_ret[0]
+        args=(callback,),
+        daemon=True
+    ).start()

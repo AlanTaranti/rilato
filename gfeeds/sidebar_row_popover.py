@@ -13,7 +13,7 @@ class RowPopover(Gtk.Popover):
         self.confman = ConfManager()
         self.feedman = FeedsManager()
         self.builder = Gtk.Builder.new_from_resource(
-            '/org/gabmus/gfeeds/ui/article_right_click_popover_content.glade'
+            '/org/gabmus/gfeeds/ui/article_right_click_popover_content.ui'
         )
         self.container_box = self.builder.get_object('container_box')
         # self.set_size_request(270, 150)
@@ -40,34 +40,33 @@ class RowPopover(Gtk.Popover):
         self.set_child(self.container_box)
         if self.parent_w.feeditem.read:
             self.read_unread_img.set_from_icon_name(
-                'eye-not-looking-symbolic',
-                Gtk.IconSize.BUTTON
+                'eye-not-looking-symbolic'
             )
             self.read_unread_label.set_text(_(
                 'Mark as unread'
             ))
         else:
             self.read_unread_img.set_from_icon_name(
-                'eye-open-negative-filled-symbolic',
-                Gtk.IconSize.BUTTON
+                'eye-open-negative-filled-symbolic'
             )
             self.read_unread_label.set_text(_(
                 'Mark as read'
             ))
 
     def set_read(self, read):
-        parent_stack = self.parent_w.get_parent().get_parent(
-        ).get_parent().get_parent()
+        parent_stack = self.parent_w.get_root().sidebar
         other_list = (
             parent_stack.listbox
             if self.parent_w.get_parent() == parent_stack.saved_items_listbox
             else parent_stack.saved_items_listbox
         )
-        other_row = None
-        for row in other_list.get_children():
-            if row.feeditem.link == self.parent_w.feeditem.link:
-                other_row = row
+        other_row = other_list.get_row_at_index(0)
+        index = 0
+        while other_row:
+            if other_row.feeditem.link == self.parent_w.feeditem.link:
                 break
+            index += 1
+            other_row = other_list.get_row_at_index(index)
         rows = [self.parent_w, ]
         if other_row:
             rows.append(other_row)
@@ -75,8 +74,7 @@ class RowPopover(Gtk.Popover):
             for r in rows:
                 r.set_read(False)
                 r.popover.read_unread_img.set_from_icon_name(
-                    'eye-open-negative-filled-symbolic',
-                    Gtk.IconSize.BUTTON
+                    'eye-open-negative-filled-symbolic'
                 )
                 r.popover.read_unread_label.set_text(_(
                     'Mark as read'
@@ -85,8 +83,7 @@ class RowPopover(Gtk.Popover):
             for r in rows:
                 r.set_read(True)
                 r.popover.read_unread_img.set_from_icon_name(
-                    'eye-not-looking-symbolic',
-                    Gtk.IconSize.BUTTON
+                    'eye-not-looking-symbolic'
                 )
                 r.popover.read_unread_label.set_text(_(
                     'Mark as unread'

@@ -1,3 +1,4 @@
+from gfeeds.accel_manager import add_accelerators
 from os import remove, listdir
 from os.path import isfile, abspath, join
 from gettext import gettext as _
@@ -39,7 +40,7 @@ class PreferencesButtonRow(Adw.ActionRow):
         if button_style_class:
             self.button.get_style_context().add_class(button_style_class)
         self.button.connect('clicked', self.on_button_clicked)
-        self.add(self.button)
+        self.add_suffix(self.button)
         # You need to press the actual button
         # Avoids accidental presses
         # self.set_activatable_widget(self.button)
@@ -73,7 +74,7 @@ class PreferencesSpinButtonRow(Adw.ActionRow):
         self.signal = signal
         self.conf_key = conf_key
 
-        self.adjustment = Gtk.Adjustment(
+        self.adjustment = Gtk.Adjustment.new(
             self.confman.conf[self.conf_key],  # initial value
             min_v,  # minimum value
             max_v,  # maximum value
@@ -86,7 +87,7 @@ class PreferencesSpinButtonRow(Adw.ActionRow):
         self.spin_button.set_adjustment(self.adjustment)
         self.spin_button.set_valign(Gtk.Align.CENTER)
         self.spin_button.connect('value-changed', self.on_value_changed)
-        self.add(self.spin_button)
+        self.add_suffix(self.spin_button)
         # You need to interact with the actual spin button
         # Avoids accidental presses
         # self.set_activatable_widget(self.button)
@@ -94,7 +95,7 @@ class PreferencesSpinButtonRow(Adw.ActionRow):
     def on_value_changed(self, *args):
         self.confman.conf[self.conf_key] = self.spin_button.get_value_as_int()
         if self.signal:
-            self.confman.emit(self.signal, '')
+            self.confman.emit(self.signal, self.confman.conf[self.conf_key])
         self.confman.save_conf()
 
 
@@ -106,12 +107,12 @@ class PreferencesToggleRow(Adw.ActionRow):
     signal: an optional signal to let ConfManager emit when the configuration
         is set
     """
-    def __init__(self, title, conf_key, signal=None, subtitle=None,
-                 *args, **kwargs):
+    def __init__(self, title, conf_key, signal=None,
+                 subtitle=None, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.title = title
-        self.subtitle = subtitle
-        if self.subtitle is not None:
+        if subtitle:
+            self.subtitle = subtitle
             self.set_subtitle(self.subtitle)
         self.confman = ConfManager()
         self.set_title(self.title)
@@ -127,13 +128,13 @@ class PreferencesToggleRow(Adw.ActionRow):
         else:
             self.toggle.set_active(self.confman.conf[self.conf_key])
         self.toggle.connect('state-set', self.on_toggle_state_set)
-        self.add(self.toggle)
+        self.add_suffix(self.toggle)
         self.set_activatable_widget(self.toggle)
 
     def on_toggle_state_set(self, toggle, state):
         self.confman.conf[self.conf_key] = state
         self.confman.save_conf()
-        if self.signal:
+        if self.signal is not None:
             self.confman.emit(self.signal, '')
 
 
@@ -162,7 +163,7 @@ class PreferencesEntryRow(Adw.ActionRow):
         self.entry = Gtk.Entry()
         self.entry.set_text(self.confman.conf[self.conf_key])
         self.entry.connect('changed', self.on_entry_changed)
-        self.add(self.entry)
+        self.add_suffix(self.entry)
 
     def on_entry_changed(self, *args):
         self.confman.conf[self.conf_key] = self.entry.get_text().strip()
@@ -250,8 +251,6 @@ class GeneralPreferencesPage(Adw.PreferencesPage):
             self.cache_preferences_group.add(row)
         self.add(self.cache_preferences_group)
 
-        self.show_all()
-
     def clear_caches(self, confman, *args):
         for p in [
                 confman.cache_path,
@@ -288,6 +287,11 @@ class ViewPreferencesPage(Adw.PreferencesPage):
                 'signal': 'gfeeds_full_feed_name_changed'
             },
             {
+                'title': _('Dark mode'),
+                'conf_key': 'dark_mode',
+                'signal': 'gfeeds_dark_mode_changed'
+            },
+            {
                 'title': _('Use dark theme for reader mode'),
                 'conf_key': 'dark_reader',
                 'signal': None
@@ -302,8 +306,6 @@ class ViewPreferencesPage(Adw.PreferencesPage):
             row = PreferencesToggleRow(s['title'], s['conf_key'], s['signal'])
             self.view_preferences_group.add(row)
         self.add(self.view_preferences_group)
-
-        self.show_all()
 
 
 class AdvancedPreferencesPage(Adw.PreferencesPage):
@@ -336,8 +338,6 @@ class AdvancedPreferencesPage(Adw.PreferencesPage):
             self.advanced_preferences_group.add(row)
         self.add(self.advanced_preferences_group)
 
-        self.show_all()
-
 
 class GFeedsSettingsWindow(Adw.PreferencesWindow):
     def __init__(self, *args, **kwargs):
@@ -355,9 +355,10 @@ class GFeedsSettingsWindow(Adw.PreferencesWindow):
         # Unneded for Adw 1?
         # self.get_titlebar().set_show_close_button(True)
 
-        self.accel_group = Gtk.AccelGroup()
-        self.accel_group.connect(
-            *Gtk.accelerator_parse('Escape'), Gtk.AccelFlags.VISIBLE,
-            lambda *args: self.close()
+        add_accelerators(
+            self,
+            [{
+                'combo': 'Escape',
+                'cb': lambda *args: self.close()
+            }]
         )
-        self.add_accel_group(self.accel_group)

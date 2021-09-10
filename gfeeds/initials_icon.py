@@ -1,4 +1,5 @@
-from gi.repository import Gtk, Adw, GdkPixbuf
+from gi.repository import Gtk, Adw, GLib, Gdk, Gio
+from threading import Thread
 from gfeeds.confManager import ConfManager
 from pathlib import Path
 from PIL import Image
@@ -28,37 +29,43 @@ def make_thumb(path, width: int, height: int = 1000) -> str:
         return None
 
 
-avatar_cache = dict()
+_textures_cache = dict()
 
 
-def set_avatar_func(icon: str, size: int) -> GdkPixbuf.Pixbuf:
-    if icon is None:
-        return None
-    key = f'{icon}__{size}'
-    if key in avatar_cache.keys():
-        return avatar_cache[key]
-    pixbuf = None
-    try:
-        pixbuf = GdkPixbuf.Pixbuf.new_from_file(
-            make_thumb(icon, size, size)
-        )
-    except Exception:
-        print(f'Error creating pixbuf for icon `{icon}`')
-    avatar_cache[key] = pixbuf
-    return pixbuf
+class SimpleAvatar(Adw.Bin):
+    def __init__(self, size: int, title: str, get_image_func):
+        super().__init__(hexpand=False, vexpand=False, halign=Gtk.Align.CENTER)
+        self.avatar = Adw.Avatar.new(size, title, True)
+        self.set_child(self.avatar)
+        self.get_image_func = get_image_func
+        self.load_avatar()
+
+    def load_avatar(self, title=None, n_image_func=None):
+        if title is not None:
+            self.avatar.set_text(title)
+        self.avatar.set_custom_image(None)
+
+        def af():
+            if n_image_func is not None:
+                self.get_image_func = n_image_func
+            icon = self.get_image_func()
+            if icon is None:
+                return
+            GLib.idle_add(cb, icon)
+
+        def cb(icon):
+            texture = _textures_cache.get(
+                icon, Gdk.Texture.new_from_file(
+                    Gio.File.new_for_path(icon)
+                )
+            )
+            if icon not in _textures_cache.keys():
+                _textures_cache[icon] = texture
+            self.avatar.set_custom_image(texture)
+
+        Thread(target=af, daemon=True).start()
 
 
-class InitialsIcon(Gtk.Box):
-    def __init__(self, name, image_path, **kwargs):
-        super().__init__(**kwargs)
-        self.name = name
-        self.image_path = image_path
-        self.avatar = Adw.Avatar.new(
-            32,
-            self.name,
-            True
-        )
-        self.avatar.set_image_load_func(
-            lambda size: set_avatar_func(self.image_path, size)
-        )
-        self.append(self.avatar)
+class InitialsIcon(SimpleAvatar):
+    def __init__(self, name: str, image_path):
+        super().__init__(32, name, lambda: make_thumb(image_path, 32, 32))

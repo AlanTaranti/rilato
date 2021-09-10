@@ -84,8 +84,8 @@ app_resources = gnome.compile_resources(app_id,
     app_id + '.gresource.xml',
     gresource_bundle: true,
     dependencies: configure_file(
-        input: 'ui/aboutdialog.glade.in',
-        output: 'aboutdialog.glade',
+        input: 'ui/aboutdialog.ui.in',
+        output: 'aboutdialog.ui',
         configuration: glade_conf
     ),
     install: true,
