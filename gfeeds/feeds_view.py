@@ -198,9 +198,14 @@ class FeedsViewListbox(Gtk.ListBox):
     def row_all_activate(self, skip=False):
         if skip:
             return
-        for row in self.get_children():
+        row = self.get_row_at_index(0)
+        index = 0
+        while row:
             if row.IS_ALL:
                 row.activate()
+                break
+            index += 1
+            row = self.get_row_at_index(index)
 
     def gfeeds_sort_func(self, row1, row2, data, notify_destroy):
         if row1.IS_ALL:
