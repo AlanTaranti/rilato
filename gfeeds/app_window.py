@@ -65,10 +65,9 @@ class GFeedsAppWindow(Adw.ApplicationWindow):
                 self.left_headerbar.search_btn.set_active(caller.get_search_mode())
         )
         self.left_headerbar = GFeedsHeaderbarLeft(
-            self.on_back_button_clicked,
-            self.searchbar
+            self.on_back_button_clicked, self.searchbar, self.leaflet
         )
-        self.right_headerbar = GFeedsHeaderbarRight(self.webview)
+        self.right_headerbar = GFeedsHeaderbarRight(self.webview, self.leaflet)
         self.left_headerbar.stack_switcher.set_stack(self.sidebar)
         self.left_headerbar.connect(
             'gfeeds_headerbar_squeeze',

@@ -52,13 +52,14 @@ class AddFeedPopover(Gtk.Popover):
             self.already_subscribed_revealer.set_reveal_child(True)
 
 class GFeedsHeaderbarRight(Gtk.WindowHandle):
-    def __init__(self, webview):
+    def __init__(self, webview, leaflet):
         super().__init__(vexpand=False, hexpand=True)
         self.builder = Gtk.Builder.new_from_resource(
             '/org/gabmus/gfeeds/ui/headerbar.ui'
         )
         self.confman = ConfManager()
         self.webview = webview
+        self.leaflet = leaflet
         self.webview.connect('gfeeds_webview_load_start', self.on_load_start)
         self.webview.connect('gfeeds_webview_load_end', self.on_load_end)
         self.right_headerbar = self.builder.get_object(
@@ -92,6 +93,8 @@ class GFeedsHeaderbarRight(Gtk.WindowHandle):
         self.title_squeezer.add(self.right_title_container)
         self.title_squeezer.add(Gtk.Label(label=''))
 
+        self.leaflet.connect('notify::folded', self.set_headerbar_controls)
+
     def set_view_mode_icon(self, mode):
         self.view_mode_menu_btn_icon.set_from_icon_name(
             {
@@ -121,7 +124,12 @@ class GFeedsHeaderbarRight(Gtk.WindowHandle):
         self.view_mode_menu_btn.set_sensitive(True)
 
     def set_headerbar_controls(self, *args):
-        self.right_headerbar.set_show_title_buttons(True)
+        if self.leaflet.get_folded():
+            self.right_headerbar.set_show_title_buttons(True)
+        else:
+            self.right_headerbar.set_show_title_buttons(
+                not self.confman.wm_decoration_on_left
+            )
 
     def copy_article_uri(self, *args):
         Gdk.Display.get_default().get_clipboard().set(self.webview.uri)
@@ -137,10 +145,7 @@ class GFeedsHeaderbarLeft(Gtk.WindowHandle):
         )
     }
 
-    def __init__(
-            self,
-            back_btn_func,
-            searchbar):
+    def __init__(self, back_btn_func, searchbar, leaflet):
         super().__init__(vexpand=False, hexpand=True)
         self.builder = Gtk.Builder.new_from_resource(
             '/org/gabmus/gfeeds/ui/headerbar.ui'
@@ -149,6 +154,7 @@ class GFeedsHeaderbarLeft(Gtk.WindowHandle):
         self.feedman = FeedsManager()
         self.back_btn_func = back_btn_func
         self.searchbar = searchbar
+        self.leaflet = leaflet
         self.left_headerbar = self.builder.get_object(
             'left_headerbar'
         )
@@ -220,6 +226,8 @@ class GFeedsHeaderbarLeft(Gtk.WindowHandle):
             self.on_new_feed_add_end
         )
 
+        self.leaflet.connect('notify::folded', self.set_headerbar_controls)
+
     def on_squeeze(self, *args):
         self.emit(
             'gfeeds_headerbar_squeeze',
@@ -239,7 +247,12 @@ class GFeedsHeaderbarLeft(Gtk.WindowHandle):
         self.add_popover.url_entry.set_text('')
 
     def set_headerbar_controls(self, *args):
-        self.left_headerbar.set_show_title_buttons(True)
+        if self.leaflet.get_folded():
+            self.left_headerbar.set_show_title_buttons(True)
+        else:
+            self.left_headerbar.set_show_title_buttons(
+                self.confman.wm_decoration_on_left
+            )
 
     def on_back_button_clicked(self, *args):
         self.back_btn_func()
