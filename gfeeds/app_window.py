@@ -75,6 +75,7 @@ class GFeedsAppWindow(Adw.ApplicationWindow):
             self.on_headerbar_squeeze
         )
         self.sidebar_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
+        self.sidebar_box.get_style_context().add_class('sidebar')
         self.sidebar_box.set_size_request(360, 100)
         self.sidebar_box.append(self.left_headerbar)
         self.sidebar_box.append(self.searchbar)
@@ -121,7 +122,10 @@ class GFeedsAppWindow(Adw.ApplicationWindow):
             [
                 {
                     'combo': 'F10',
-                    'cb': lambda *args: self.left_headerbar.menu_btn.clicked()
+                    'cb': lambda *args:
+                        self.left_headerbar.menu_btn.podown()
+                        if self.left_headerbar.menu_popover.get_visible()
+                        else self.left_headerbar.menu_btn.popup()
                 },
                 {
                     'combo': '<Control>r',
