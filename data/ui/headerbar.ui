@@ -2,9 +2,6 @@
 <interface>
   <requires lib="gtk" version="4.0"/>
   <object class="GtkHeaderBar" id="left_headerbar">
-    <!--child type="title">
-      <placeholder/>
-    </child-->
     <child>
       <object class="GtkMenuButton" id="add_btn">
         <property name="tooltip-text" translatable="yes">Add new feed</property>
