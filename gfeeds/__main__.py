@@ -36,6 +36,7 @@ from gfeeds.manage_feeds_window import GFeedsManageFeedsWindow
 from gfeeds.confirm_add_dialog import GFeedsConfirmAddDialog
 from gfeeds.shortcuts_window import show_shortcuts_window
 from gfeeds.rss_link_from_file import get_feed_link_from_file
+from gfeeds.get_children import get_children
 
 
 class GFeedsApplication(Gtk.Application):
@@ -176,7 +177,7 @@ class GFeedsApplication(Gtk.Application):
         self.confman.emit('gfeeds_show_read_changed', '')
 
     def set_all_read(self, *args):
-        for row in self.window.sidebar.listbox.get_children():
+        for row in get_children(self.window.sidebar.listbox):
             # check if row is visible in listbox
             if self.window.sidebar.listbox.gfeeds_sidebar_filter_func(
                     row, None, None
@@ -184,7 +185,7 @@ class GFeedsApplication(Gtk.Application):
                 row.popover.set_read(True)
 
     def set_all_unread(self, *args):
-        for row in self.window.sidebar.listbox.get_children():
+        for row in get_children(self.window.sidebar.listbox):
             row.popover.set_read(False)
 
     def manage_feeds(self, *args):

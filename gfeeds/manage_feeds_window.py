@@ -9,6 +9,7 @@ from gfeeds.feeds_view import (
     FeedsViewListboxRow
 )
 from gfeeds.scrolled_message_dialog import ScrolledMessageDialog
+from gfeeds.get_children import get_children
 from functools import reduce
 from operator import or_
 
@@ -123,12 +124,8 @@ class ManageTagsPopover(Gtk.Popover):
         return row1.tag.lower() > row2.tag.lower()
 
     def populate_listbox(self):
-        while True:
-            row = self.tags_listbox.get_row_at_index(0)
-            if row:
-                self.remove(row)
-            else:
-                break
+        for row in get_children(self.tags_listbox):
+            self.tags_listbox.remove(row)
         for tag in self.confman.conf['tags']:
             self.tags_listbox_add_row(tag, False)
         self.tags_listbox.show()
@@ -146,11 +143,9 @@ class ManageTagsPopover(Gtk.Popover):
         n_row = ManageTagsListboxRow(tag)
         self.tags_listbox.append(n_row)
         n_row.connect('tag_deleted', self.on_tag_deleted)
-        if show_all:
-            self.tags_listbox.show_all()
 
     def tags_listbox_get_row_by_tag(self, tag):
-        for row in self.tags_listbox.get_children():
+        for row in get_children(self.tags_listbox):
             if row.tag == tag:
                 return row
         return None
@@ -160,9 +155,10 @@ class ManageTagsPopover(Gtk.Popover):
             return
         self.tags_entry.set_text('')
         self.emit('new_tag_added', n_tag)
-        if len(self.tags_listbox.get_children()) <= 0 or not reduce(or_, [
+        rows = get_children(self.tags_listbox)
+        if len(rows) == 0 or not reduce(or_, [
                 row.tag.lower() == n_tag.lower()
-                for row in self.tags_listbox.get_children()
+                for row in rows
         ]):
             self.tags_listbox_add_row(n_tag)
 
@@ -377,7 +373,7 @@ class GFeedsManageFeedsWindow(Adw.Window):
     def get_selected_feeds(self):
         return [
             row.feed
-            for row in self.listbox.get_children()
+            for row in get_children(self.listbox)
             if row.checkbox.get_active()
         ]
 
@@ -392,16 +388,16 @@ class GFeedsManageFeedsWindow(Adw.Window):
 
     def on_select_all_clicked(self, *args):
         unselect = True
-        for row in self.listbox.get_children():
+        for row in get_children(self.listbox):
             if not row.checkbox.get_active():
                 unselect = False
                 row.emit('activate')
         if unselect:
-            for row in self.listbox.get_children():
+            for row in get_children(self.listbox):
                 row.emit('activate')
 
     def on_row_activated(self, listbox, activated_row):
-        for row in listbox.get_children():
+        for row in get_children(listbox):
             if row.checkbox.get_active():
                 self.headerbar.set_actions_sensitive(True)
                 return

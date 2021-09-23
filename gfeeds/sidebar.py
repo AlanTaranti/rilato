@@ -6,6 +6,7 @@ from gfeeds.sidebar_row import GFeedsSidebarRow
 from gfeeds.listbox_tools import separator_header_func
 from gfeeds.rss_parser import FakeFeed
 from gfeeds.accel_manager import add_mouse_button_accel, add_longpress_accel
+from gfeeds.get_children import get_children
 
 
 class GFeedsSidebarListBox(Gtk.ListBox):
@@ -239,7 +240,7 @@ class GFeedsSidebar(Adw.ViewStack):
             lb.invalidate_filter()
 
     def on_saved_item_deleted(self, deleted_link):
-        for row in self.listbox.get_children():
+        for row in get_children(self.listbox):
             if row.feeditem.link == deleted_link:
                 with row.popover.save_btn.handler_block(
                         row.popover.save_btn_handler_id
@@ -256,7 +257,7 @@ class GFeedsSidebar(Adw.ViewStack):
         visible_child.select_prev_article()
 
     def on_feeds_items_pop(self, feeditem):
-        for row in self.listbox.get_children():
+        for row in get_children(self.listbox):
             if row.feeditem == feeditem:
                 self.listbox.remove(row)
                 break
@@ -272,7 +273,7 @@ class GFeedsSidebar(Adw.ViewStack):
         )
 
     def on_saved_feeds_items_pop(self, feeditem):
-        for row in self.saved_items_listbox.get_children():
+        for row in get_children(self.saved_items_listbox):
             if row.feeditem == feeditem:
                 self.listbox.remove(row)
                 break

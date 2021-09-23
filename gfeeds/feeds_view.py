@@ -4,6 +4,7 @@ from gfeeds.confManager import ConfManager
 from gfeeds.feeds_manager import FeedsManager
 from gfeeds.initials_icon import InitialsIcon
 from gfeeds.listbox_tools import separator_header_func
+from gfeeds.get_children import get_children
 
 
 class FeedsViewAllListboxRow(Gtk.ListBoxRow):
@@ -157,7 +158,7 @@ class FeedsViewListbox(Gtk.ListBox):
         self.append(FeedsViewTagListboxRow(tag))
 
     def on_tags_pop(self, caller, tag):
-        for row in self.get_children():
+        for row in get_children(self):
             if row.IS_TAG and row.tag == tag:
                 self.remove(row)
                 break
@@ -175,37 +176,24 @@ class FeedsViewListbox(Gtk.ListBox):
         self.confman.emit('gfeeds_filter_changed', row.feed)
 
     def remove_feed(self, feed):
-        row = self.get_row_at_index(0)
-        index = 0
-        while row:
+        for row in get_children(self):
             if not row.IS_ALL:
                 if row.feed == feed:
                     self.remove(row)
                     break
-                index += 1
-            row = self.get_row_at_index(index)
 
     def empty(self, *args):
-        row = self.get_row_at_index(0)
-        index = 0
-        while row:
+        for row in get_children(self):
             if row and not row.IS_ALL and not row.IS_TAG:
                 self.remove(row)
-            else:
-                index += 1
-            row = self.get_row_at_index(index)
 
     def row_all_activate(self, skip=False):
         if skip:
             return
-        row = self.get_row_at_index(0)
-        index = 0
-        while row:
+        for row in get_children(self):
             if row.IS_ALL:
                 row.activate()
                 break
-            index += 1
-            row = self.get_row_at_index(index)
 
     def gfeeds_sort_func(self, row1, row2, data, notify_destroy):
         if row1.IS_ALL:
