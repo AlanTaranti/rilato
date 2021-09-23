@@ -105,7 +105,6 @@ class GFeedsSidebarListBox(Gtk.ListBox):
         self.parent_stack.set_main_visible(True)
         for i in feeditems_l:
             self.append(GFeedsSidebarRow(i))
-            self.show_all()
 
     def empty(self, *args):
         while True:
