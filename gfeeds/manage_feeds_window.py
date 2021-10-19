@@ -201,8 +201,10 @@ class ManageTagsPopover(Gtk.Popover):
 
 class ManageFeedsHeaderbar(Gtk.HeaderBar):
     def __init__(self, window, **kwargs):
+        _title_widget = Gtk.Label(label=_('Manage Feeds'))
+        _title_widget.get_style_context().add_class('title')
         super().__init__(
-            title_widget=Gtk.Label(label=_('Manage Feeds')),
+            title_widget=_title_widget,
             show_title_buttons=True,
             **kwargs
         )
