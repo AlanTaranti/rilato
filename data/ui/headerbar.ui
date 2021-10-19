@@ -131,6 +131,7 @@
       <object class="GtkMenuButton" id="view_mode_menu_btn">
         <property name="sensitive">False</property>
         <property name="tooltip-text" translatable="yes">Change view mode</property>
+        <style><class name="image-button" /></style>
         <child>
           <object class="GtkBox">
             <property name="spacing">6</property>
