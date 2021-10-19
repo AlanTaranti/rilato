@@ -290,11 +290,11 @@ class ManageFeedsScrolledWindow(Gtk.ScrolledWindow):
 class DeleteFeedsConfirmMessageDialog(ScrolledMessageDialog):
     def __init__(self, parent, selected_feeds):
         super().__init__(
-            parent,
-            Gtk.DialogFlags.MODAL | Gtk.DialogFlags.DESTROY_WITH_PARENT,
-            Gtk.MessageType.QUESTION,
-            Gtk.ButtonsType.YES_NO,
-            _('Do you want to delete these feeds?')
+            transient_for=parent,
+            modal=True,
+            message_type=Gtk.MessageType.QUESTION,
+            buttons=Gtk.ButtonsType.YES_NO,
+            text=_('Do you want to delete these feeds?')
         )
 
         self.format_secondary_markup(
@@ -382,11 +382,15 @@ class GFeedsManageFeedsWindow(Adw.Window):
     def on_delete_clicked(self, *args):
         selected_feeds = self.get_selected_feeds()
         dialog = DeleteFeedsConfirmMessageDialog(self, selected_feeds)
-        res = dialog.run()
-        dialog.close()
-        if res == Gtk.ResponseType.YES:
-            self.feedman.delete_feeds(selected_feeds)
-            self.headerbar.set_actions_sensitive(False)
+        
+        def on_response(_dialog, res):
+            _dialog.close()
+            if res == Gtk.ResponseType.YES:
+                self.feedman.delete_feeds(selected_feeds)
+                self.headerbar.set_actions_sensitive(False)
+
+        dialog.connect('response', on_response)
+        dialog.present()
 
     def on_select_all_clicked(self, *args):
         unselect = True

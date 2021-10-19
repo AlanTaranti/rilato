@@ -229,8 +229,11 @@ class GFeedsSidebar(Adw.ViewStack):
         ]
 
     def on_feeds_pop(self, obj):
-        if obj == self.listbox.selected_feed:
-            self.listbox.selected_feed = None
+        print(obj.rss_link)
+        if obj.rss_link in self.listbox.selected_feeds:
+            self.listbox.selected_feeds.pop(
+                self.listbox.selected_feeds.index(obj.rss_link)
+            )
             self.listbox.invalidate_filter()
 
     def set_search(self, search_terms):
