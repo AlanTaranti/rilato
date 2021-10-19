@@ -94,6 +94,38 @@
             ]
         },
         {
+            "name": "gtk",
+            "buildsystem": "meson",
+            "config-opts": [
+                "-Dtests=false",
+                "-Ddebug=true"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://gitlab.gnome.org/GNOME/gtk",
+                    "branch": "master",
+                    "//tag": "4.4.0"
+                }
+            ],
+            "modules": [
+                {
+                    "name": "wayland-protocols",
+                    "buildsystem": "meson",
+                    "config-opts": [
+                        "-Dtests=false"
+                    ],
+                    "sources": [
+                        {
+                            "type": "git",
+                            "url": "https://gitlab.freedesktop.org/wayland/wayland-protocols",
+                            "tag": "1.21"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
             "name" : "pygobject",
             "buildsystem": "meson",
             "config-opts" : [
@@ -124,7 +156,78 @@
                 {
                     "type": "git",
                     "url": "https://gitlab.gnome.org/GNOME/libadwaita.git",
-                    "tag": "1.0.0-alpha.2"
+                    "tag": "1.0.0.alpha.3"
+                }
+            ]
+        },
+        {
+            "name": "python-cffi",
+            "buildsystem": "simple",
+            "build-commands": [
+                "python3 setup.py install --prefix=/app --root=/"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://files.pythonhosted.org/packages/00/9e/92de7e1217ccc3d5f352ba21e52398372525765b2e0c4530e6eb2ba9282a/cffi-1.15.0.tar.gz",
+                    "sha256": "920f0d66a896c2d99f0adbb391f990a84091179542c205fa53ce5787aff87954"
+                }
+            ]
+        },
+        {
+            "name": "python-pycparser",
+            "buildsystem": "simple",
+            "build-commands": [
+                "python3 setup.py install --prefix=/app --root=/"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/eliben/pycparser",
+                    "tag": "release_v2.20"
+                }
+            ]
+        },
+        {
+            "name": "python-brotlipy",
+            "buildsystem": "simple",
+            "build-commands": [
+                "python3 setup.py install --prefix=/app --root=/"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/python-hyper/brotlipy",
+                    "tag": "v1.0.9.2"
+                }
+            ]
+        },
+        {
+            "name": "python-readability",
+            "buildsystem": "simple",
+            "build-commands": [
+                "python3 setup.py install --prefix=/app --root=/"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/buriy/python-readability",
+                    "tag": "v0.8.1"
+                }
+            ]
+        },
+        {
+            "name": "python-pygments",
+            "buildsystem": "simple",
+            "build-commands": [
+                "python3 setup.py install --prefix=/app --root=/"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/pygments/pygments",
+                    "tag": "2.6.1",
+                    "commit": "d2eae8580d7e363bca03554e3b516d0fd77b25cb"
                 }
             ]
         },
@@ -144,20 +247,163 @@
             ]
         },
         {
-            "name": "webkitgtk",
-            "buildsystem": "cmake-ninja",
-            "config-opts": [
-                "-DCMAKE_BUILD_TYPE=Release",
-                "-DUSE_GTK4=ON",
-                "-DPORT=GTK",
-                "-DUSE_SOUP2=OFF",
-                "-DENABLE_GAMEPAD=OFF"
+            "name": "python-cssselect",
+            "buildsystem": "simple",
+            "build-commands": [
+                "python3 setup.py install --prefix=/app --root=/"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/scrapy/cssselect",
+                    "tag": "v1.1.0"
+                }
+            ]
+        },
+        {
+            "name": "python-pillow",
+            "buildsystem": "simple",
+            "build-commands": [
+                "python3 setup.py install --prefix=/app --root=/"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/python-pillow/Pillow",
+                    "tag": "8.4.0"
+                }
+            ]
+        },
+        {
+            "name": "python-feedparser",
+            "buildsystem": "simple",
+            "build-commands": [
+                "#cp src/feedparser feedparser",
+                "python3 feedparser-setup.py install --prefix=/app --root=/"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/kurtmckee/feedparser",
+                    "branch": "develop",
+                    "commit": "727ee7f08f77d8f0a0f085ec3dfbc58e09f69a4b"
+                },
+                {
+                    "type": "file",
+                    "path": "feedparser-setup.py",
+                    "sha256": "6234215cd53affca9ea0ae494aac30c0063894039248dce11116e19ecfffa802"
+                }
+            ]
+        },
+        {
+            "name": "python-markupsafe",
+            "buildsystem": "simple",
+            "build-commands": [
+                "python3 setup.py install --prefix=/app --root=/"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/pallets/markupsafe",
+                    "tag": "1.1.1",
+                    "commit": "22c946de28c2f5916f8c88a983a3e48e1cdbd2fd"
+                }
+            ]
+        },
+        {
+            "name": "python-beautifulsoup",
+            "buildsystem": "simple",
+            "build-commands": [
+                "python3 setup.py install --prefix=/app --root=/"
             ],
             "sources": [
                 {
                     "type": "archive",
-                    "path": "WebKit-main.zip",
-                    "sha256": "bff19c2e5bd7998c2be1fa77a2d163bb7d3ecb1f88033006f8ff426128019cf7"
+                    "url": "https://files.pythonhosted.org/packages/6b/c3/d31704ae558dcca862e4ee8e8388f357af6c9d9acb0cad4ba0fbbd350d9a/beautifulsoup4-4.9.3.tar.gz",
+                    "sha256": "84729e322ad1d5b4d25f805bfa05b902dd96450f43842c4e99067d5e1369eb25"
+                }
+            ]
+        },
+        {
+            "name": "python-listparser",
+            "buildsystem": "simple",
+            "build-commands": [
+                "cp -r src/listparser listparser",
+                "python3 listparser-setup.py install --prefix=/app --root=/"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/kurtmckee/listparser",
+                    "branch": "develop",
+                    "commit": "81e04f2f837085409f91c351dc3975fd438e40ec"
+                },
+                {
+                    "type": "file",
+                    "path": "listparser-setup.py",
+                    "sha256": "e33c4b185de59b09e45cf84ad23c99280169f4fdd9d805b0f65f2957eca40ecb"
+                }
+            ]
+        },
+        {
+            "name": "libsoup",
+            "buildsystem": "meson",
+            "config-opts": [
+                "-Dtests=false"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://gitlab.gnome.org/GNOME/libsoup",
+                    "tag": "3.0.1"
+                }
+            ]
+        },
+        {
+            "name": "bubblewrap",
+            "buildsystem": "autotools",
+            "config-opts": [],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/containers/bubblewrap",
+                    "tag": "v0.5.0"
+                }
+            ]
+        },
+        {
+            "name": "xdg-dbus-proxy",
+            "buildsystem": "autotools",
+            "config-opts": [],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/flatpak/xdg-dbus-proxy",
+                    "tag": "0.1.2"
+                }
+            ]
+        },
+        {
+            "name": "webkitgtk",
+            "//buildsystem": "cmake",
+            "buildsystem": "cmake-ninja",
+            "//disabled-opts": [
+                "-DENABLE_BUBBLEWRAP_SANDBOX=OFF",
+                "-DCMAKE_BUILD_TYPE=Debug"
+            ],
+            "config-opts": [
+                "-DCMAKE_BUILD_TYPE=Release",
+                "-DPORT=GTK",
+                "-DUSE_GTK4=ON",
+                "-DUSE_SOUP2=OFF",
+                "-DENABLE_GAMEPAD=OFF",
+                "-DLIB_INSTALL_DIR=/app/lib"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "path": "WebKit-main.tar.gz",
+                    "sha256": "efc690a2070f635735fd52653860336ddc6c4419e1b33991b3aa05368a5f6a67"
                 }
             ]
         },
@@ -336,179 +582,6 @@
                     "type": "archive",
                     "url": "https://files.pythonhosted.org/packages/9e/bd/3704a8c3e0942d711c1299ebf7b9091930adae6675d7c8f476a7ce48653c/sgmllib3k-1.0.0.tar.gz",
                     "sha256": "7868fb1c8bfa764c1ac563d3cf369c381d1325d36124933a726f29fcdaa812e9"
-                }
-            ]
-        },
-        {
-            "name": "python-cffi",
-            "buildsystem": "simple",
-            "build-commands": [
-                "python3 setup.py install --prefix=/app --root=/"
-            ],
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://files.pythonhosted.org/packages/2e/92/87bb61538d7e60da8a7ec247dc048f7671afe17016cd0008b3b710012804/cffi-1.14.6.tar.gz",
-                    "sha256": "c9a875ce9d7fe32887784274dd533c57909b7b1dcadcc128a2ac21331a9765dd"
-                }
-            ]
-        },
-        {
-            "name": "python-markupsafe",
-            "buildsystem": "simple",
-            "build-commands": [
-                "python3 setup.py install --prefix=/app --root=/"
-            ],
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://github.com/pallets/markupsafe",
-                    "tag": "1.1.1",
-                    "commit": "22c946de28c2f5916f8c88a983a3e48e1cdbd2fd"
-                }
-            ]
-        },
-        {
-            "name": "python-beautifulsoup",
-            "buildsystem": "simple",
-            "build-commands": [
-                "python3 setup.py install --prefix=/app --root=/"
-            ],
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://files.pythonhosted.org/packages/6b/c3/d31704ae558dcca862e4ee8e8388f357af6c9d9acb0cad4ba0fbbd350d9a/beautifulsoup4-4.9.3.tar.gz",
-                    "sha256": "84729e322ad1d5b4d25f805bfa05b902dd96450f43842c4e99067d5e1369eb25"
-                }
-            ]
-        },
-        {
-            "name": "python-listparser",
-            "buildsystem": "simple",
-            "build-commands": [
-                "cp -r src/listparser listparser",
-                "python3 listparser-setup.py install --prefix=/app --root=/"
-            ],
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://github.com/kurtmckee/listparser",
-                    "branch": "develop",
-                    "commit": "81e04f2f837085409f91c351dc3975fd438e40ec"
-                },
-                {
-                    "type": "file",
-                    "path": "listparser-setup.py",
-                    "sha256": "e33c4b185de59b09e45cf84ad23c99280169f4fdd9d805b0f65f2957eca40ecb"
-                }
-            ]
-        },
-        {
-            "name": "python-feedparser",
-            "buildsystem": "simple",
-            "build-commands": [
-                "#cp src/feedparser feedparser",
-                "python3 feedparser-setup.py install --prefix=/app --root=/"
-            ],
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://github.com/kurtmckee/feedparser",
-                    "branch": "develop",
-                    "commit": "727ee7f08f77d8f0a0f085ec3dfbc58e09f69a4b"
-                },
-                {
-                    "type": "file",
-                    "path": "feedparser-setup.py",
-                    "sha256": "6234215cd53affca9ea0ae494aac30c0063894039248dce11116e19ecfffa802"
-                }
-            ]
-        },
-        {
-            "name": "python-pillow",
-            "buildsystem": "simple",
-            "build-commands": [
-                "python3 setup.py install --prefix=/app --root=/"
-            ],
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://github.com/python-pillow/Pillow",
-                    "tag": "7.2.0"
-                }
-            ]
-        },
-        {
-            "name": "python-pycparser",
-            "buildsystem": "simple",
-            "build-commands": [
-                "python3 setup.py install --prefix=/app --root=/"
-            ],
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://github.com/eliben/pycparser",
-                    "tag": "release_v2.20",
-                    "sha256": "0055facfb5b5289ce8ef2ef12b18e34a223f9d20"
-                }
-            ]
-        },
-        {
-            "name": "python-brotlipy",
-            "buildsystem": "simple",
-            "build-commands": [
-                "python3 setup.py install --prefix=/app --root=/"
-            ],
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://github.com/python-hyper/brotlipy",
-                    "tag": "v0.7.0",
-                    "commit": "da3be6051386791ea7f5372230caecc2328262ff"
-                }
-            ]
-        },
-        {
-            "name": "python-cssselect",
-            "buildsystem": "simple",
-            "build-commands": [
-                "python3 setup.py install --prefix=/app --root=/"
-            ],
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://github.com/scrapy/cssselect",
-                    "tag": "v1.1.0",
-                    "commit": "518e3e1babcc3db38ab8afe948c05a4799693108"
-                }
-            ]
-        },
-        {
-            "name": "python-readability",
-            "buildsystem": "simple",
-            "build-commands": [
-                "python3 setup.py install --prefix=/app --root=/"
-            ],
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://github.com/buriy/python-readability",
-                    "tag": "v0.8.1"
-                }
-            ]
-        },
-        {
-            "name": "python-pygments",
-            "buildsystem": "simple",
-            "build-commands": [
-                "python3 setup.py install --prefix=/app --root=/"
-            ],
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://github.com/pygments/pygments",
-                    "tag": "2.6.1",
-                    "commit": "d2eae8580d7e363bca03554e3b516d0fd77b25cb"
                 }
             ]
         },

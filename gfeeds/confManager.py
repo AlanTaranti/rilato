@@ -58,7 +58,7 @@ class ConfManagerSignaler(GObject.Object):
             None,
             (str,)
         ),
-        'gfeeds_dark_mode_changed': (
+        'dark_mode_changed': (
             GObject.SignalFlags.RUN_FIRST,
             None,
             (str,)

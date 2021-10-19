@@ -17,6 +17,51 @@
       <object class="GtkMenuButton" id="menu_btn">
         <property name="tooltip-text" translatable="yes">Menu</property>
         <property name="icon-name">open-menu-symbolic</property>
+        <property name="menu-model">generalMenu</property>
+        <menu id="generalMenu">
+          <section>
+            <item>
+              <attribute name="label" translatable="yes">Show read articles</attribute>
+              <attribute name="action">app.show_read_items</attribute>
+            </item>
+            <item>
+              <attribute name="label" translatable="yes">Mark all as read</attribute>
+              <attribute name="action">app.set_all_read</attribute>
+            </item>
+            <item>
+              <attribute name="label" translatable="yes">Mark all as unread</attribute>
+              <attribute name="action">app.set_all_unread</attribute>
+            </item>
+          </section>
+          <section>
+            <item>
+              <attribute name="label" translatable="yes">Manage Feeds</attribute>
+              <attribute name="action">app.manage_feeds</attribute>
+            </item>
+            <item>
+              <attribute name="label" translatable="yes">Import OPML</attribute>
+              <attribute name="action">app.import_opml</attribute>
+            </item>
+            <item>
+              <attribute name="label" translatable="yes">Export OPML</attribute>
+              <attribute name="action">app.export_opml</attribute>
+            </item>
+          </section>
+          <section>
+            <item>
+              <attribute name="label" translatable="yes">Preferences</attribute>
+              <attribute name="action">app.settings</attribute>
+            </item>
+            <item>
+              <attribute name="label" translatable="yes">Keyboard Shortcuts</attribute>
+              <attribute name="action">app.shortcuts</attribute>
+            </item>
+            <item>
+              <attribute name="label" translatable="yes">About Feeds</attribute>
+              <attribute name="action">app.about</attribute>
+            </item>
+          </section>
+        </menu>
       </object>
     </child>
     <child type="end">
@@ -36,6 +81,36 @@
     <property name="hexpand">True</property>
     <child type="title">
       <object class="AdwSqueezer" id="right_headerbar_squeezer">
+        <property name="visible-child">right_headerbar_title_container</property>
+        <property name="hexpand">1</property>
+        <child>
+          <object class="GtkScrolledWindow" id="right_headerbar_title_container">
+            <property name="width-request">100</property>
+            <property name="hexpand">1</property>
+            <child>
+              <object class="GtkViewport">
+                <property name="hexpand">1</property>
+                <child>
+                  <object class="GtkLabel" id="title_label">
+                    <property name="halign">center</property>
+                    <property name="hexpand">1</property>
+                    <property name="justify">center</property>
+                    <property name="ellipsize">end</property>
+                    <property name="single-line-mode">True</property>
+                    <style>
+                      <class name="title"/>
+                    </style>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkLabel">
+            <property name="label"></property>
+          </object>
+        </child>
       </object>
     </child>
     <child>
@@ -58,13 +133,9 @@
         <property name="tooltip-text" translatable="yes">Change view mode</property>
         <child>
           <object class="GtkBox">
-            <property name="visible">True</property>
-            <property name="can-focus">False</property>
             <property name="spacing">6</property>
             <child>
               <object class="GtkImage" id="view_mode_menu_btn_icon">
-                <property name="visible">True</property>
-                <property name="can-focus">False</property>
               </object>
             </child>
             <child>
@@ -78,31 +149,10 @@
     </child>
     <child>
       <object class="GtkButton" id="share_btn">
-        <property name="visible">True</property>
         <property name="sensitive">False</property>
-        <property name="can-focus">True</property>
         <property name="receives-default">True</property>
         <property name="tooltip-text" translatable="yes">Share</property>
         <property name="icon-name">emblem-shared-symbolic</property>
-      </object>
-    </child>
-  </object>
-  <object class="GtkScrolledWindow" id="right_headerbar_title_container">
-    <property name="width-request">100</property>
-    <property name="hexpand">True</property>
-    <child>
-      <object class="GtkViewport">
-        <child>
-          <object class="GtkLabel" id="title_label">
-            <property name="halign">center</property>
-            <property name="justify">center</property>
-            <property name="ellipsize">end</property>
-            <property name="single-line-mode">True</property>
-            <style>
-              <class name="title"/>
-            </style>
-          </object>
-        </child>
       </object>
     </child>
   </object>

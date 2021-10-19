@@ -177,6 +177,8 @@ class FeedsViewListbox(Gtk.ListBox):
 
     def remove_feed(self, feed):
         for row in get_children(self):
+            if not hasattr(row, 'IS_ALL'):
+                continue
             if not row.IS_ALL:
                 if row.feed == feed:
                     self.remove(row)

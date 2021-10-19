@@ -289,7 +289,7 @@ class ViewPreferencesPage(Adw.PreferencesPage):
             {
                 'title': _('Dark mode'),
                 'conf_key': 'dark_mode',
-                'signal': 'gfeeds_dark_mode_changed'
+                'signal': 'dark_mode_changed'
             },
             {
                 'title': _('Use dark theme for reader mode'),

@@ -332,7 +332,7 @@ class GFeedsManageFeedsWindow(Adw.Window):
         self.window_handle.set_vexpand(False)
 
         self.main_box.append(self.scrolled_window)
-        self.set_child(self.main_box)
+        self.set_content(self.main_box)
 
         add_accelerators(
             self,

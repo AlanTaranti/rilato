@@ -14,7 +14,7 @@ class GFeedsInfoBar(Gtk.InfoBar):
         self.text = text
         self.container_box = Gtk.Box(
             orientation=Gtk.Orientation.VERTICAL, spacing=6, margin_top=6,
-            margin_bottom=6, halign=Gtk.Align.CENTER
+            margin_bottom=6, halign=Gtk.Align.CENTER, hexpand=True
         )
         self.label = Gtk.Label(
             label=self.text, wrap=True, wrap_mode=Pango.WrapMode.WORD_CHAR
@@ -62,11 +62,11 @@ class GFeedsErrorsBar(GFeedsInfoBar):
 
     def show_errors(self, *args):
         dialog = ScrolledMessageDialog(
-            self.parent_win,
-            Gtk.DialogFlags.MODAL | Gtk.DialogFlags.DESTROY_WITH_PARENT,
-            Gtk.MessageType.QUESTION,
-            Gtk.ButtonsType.YES_NO,
-            _(
+            transient_for=self.parent_win,
+            modal=True,
+            message_type=Gtk.MessageType.QUESTION,
+            buttons=Gtk.ButtonsType.YES_NO,
+            text=_(
                 'There were problems with some feeds. '
                 'Do you want to remove them?'
             )
@@ -74,14 +74,21 @@ class GFeedsErrorsBar(GFeedsInfoBar):
         dialog.format_secondary_markup(
             escape('\n'.join(self.errors))
         )
-        if (dialog.run() == Gtk.ResponseType.YES):
-            for pf in self.problematic_feeds:
-                if pf in self.confman.conf['feeds'].keys():
-                    self.confman.conf['feeds'].pop(pf)
-            self.set_revealed(False)
-        else:
-            self.set_revealed(True)
-        dialog.close()
+        
+        def on_response(_dialog, res):
+            _dialog.close()
+            if (res == Gtk.ResponseType.YES):
+                for pf in self.problematic_feeds:
+                    if pf in self.confman.conf['feeds'].keys():
+                        self.confman.conf['feeds'].pop(pf)
+                        self.confman.save_conf()
+                self.set_revealed(False)
+            else:
+                self.set_revealed(True)
+            dialog.close()
+
+        dialog.connect('response', on_response)
+        dialog.present()
 
 
 class GFeedsConnectionBar(GFeedsInfoBar):

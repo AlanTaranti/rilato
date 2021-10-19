@@ -1,20 +1,3 @@
-# __main__.py
-#
-# Copyright (C) 2019 GabMus
-#
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
 import sys
 import argparse
 from gettext import gettext as _
@@ -37,123 +20,111 @@ from gfeeds.confirm_add_dialog import GFeedsConfirmAddDialog
 from gfeeds.shortcuts_window import show_shortcuts_window
 from gfeeds.rss_link_from_file import get_feed_link_from_file
 from gfeeds.get_children import get_children
+from gfeeds.base_app import BaseApp, AppAction
 
 
-class GFeedsApplication(Gtk.Application):
+from gi.repository import WebKit2
+class GFeedsApplicationTest(Gtk.Application):
     def __init__(self, **kwargs):
         super().__init__(
             application_id='org.gabmus.gfeeds',
-            flags=Gio.ApplicationFlags.HANDLES_COMMAND_LINE,
             **kwargs
         )
         GLib.set_application_name('Feeds')
         GLib.set_prgname('org.gabmus.gfeeds')
-        self.confman = ConfManager()
-        self.feedman = FeedsManager()
 
     def do_startup(self):
         Gtk.Application.do_startup(self)
         Adw.init()
+
+    def do_activate(self):
+        self.window = Gtk.ApplicationWindow()
+        self.websett = WebKit2.Settings()
+        self.websett.set_hardware_acceleration_policy(
+            WebKit2.HardwareAccelerationPolicy.ALWAYS
+        )
+        self.websett.set_enable_developer_extras(True)
+        self.websett.set_enable_webgl(True)
+        self.websett.set_enable_accelerated_2d_canvas(True)
+        self.webview = WebKit2.WebView(settings=self.websett)
+        self.window.set_child(self.webview)
+        self.add_window(self.window)
+        self.window.present()
+
+
+class GFeedsApplication(BaseApp):
+    def __init__(self):
+        self.confman = ConfManager()
+        super().__init__(
+            app_id='org.gabmus.gfeeds',
+            app_name='Feeds',
+            app_actions=[
+                AppAction(
+                    name='show_read_items',
+                    func=self.show_read_items,
+                    accel='<Control>h',
+                    stateful=True,
+                    state_type=AppAction.StateType.BOOL,
+                    state_default=self.confman.conf['show_read_items']
+                ),
+                AppAction(
+                    name='view_mode_change',
+                    func=self.view_mode_change,
+                    stateful=True,
+                    state_type=AppAction.StateType.RADIO,
+                    state_default=self.confman.conf['default_view']
+                ),
+                AppAction(
+                    name='set_all_read',
+                    func=self.set_all_read
+                ),
+                AppAction(
+                    name='set_all_unread',
+                    func=self.set_all_unread
+                ),
+                AppAction(
+                    name='manage_feeds',
+                    func=self.manage_feeds
+                ),
+                AppAction(
+                    name='import_opml',
+                    func=self.import_opml
+                ),
+                AppAction(
+                    name='export_opml',
+                    func=self.export_opml
+                ),
+                AppAction(
+                    name='settings',
+                    func=lambda *args: show_settings_window(self.window),
+                    accel='<Primary>comma'
+                ),
+                AppAction(
+                    name='shortcuts',
+                    func=lambda *args: show_shortcuts_window(self.window),
+                    accel='<Primary>question'
+                ),
+                AppAction(
+                    name='about',
+                    func=self.show_about_dialog
+                ),
+                AppAction(
+                    name='quit',
+                    func=self.on_destroy_window,
+                    accel='<Primary>q'
+                )
+            ],
+            flags=Gio.ApplicationFlags.HANDLES_COMMAND_LINE,
+            css_resource='/org/gabmus/gfeeds/ui/gtk_style.css'
+        )
+        self.feedman = FeedsManager()
+
+    def do_startup(self):
+        super().do_startup()
         self.feedman.refresh(
             get_cached=not self.confman.conf['refresh_on_startup'],
             is_startup=True
         )
-
-        stateful_actions = [
-            {
-                'name': 'show_read_items',
-                'func': self.show_read_items,
-                'type': 'bool',
-                'accel': '<Control>h',
-                'confman_key': 'show_read_items'
-            },
-            {
-                'name': 'view_mode_change',
-                'func': self.view_mode_change,
-                'type': 'radio',
-                'confman_key': 'default_view'
-            }
-        ]
-
-        actions = [
-            {
-                'name': 'set_all_read',
-                'func': self.set_all_read
-            },
-            {
-                'name': 'set_all_unread',
-                'func': self.set_all_unread
-            },
-            {
-                'name': 'manage_feeds',
-                'func': self.manage_feeds
-            },
-            {
-                'name': 'import_opml',
-                'func': self.import_opml
-            },
-            {
-                'name': 'export_opml',
-                'func': self.export_opml
-            },
-            {
-                'name': 'settings',
-                'func': lambda *args: show_settings_window(self.window),
-                'accel': '<Primary>comma'
-            },
-            {
-                'name': 'shortcuts',
-                'func': lambda *args: show_shortcuts_window(self.window),
-                'accel': '<Primary>question'
-            },
-            {
-                'name': 'about',
-                'func': self.show_about_dialog
-            },
-            {
-                'name': 'quit',
-                'func': self.on_destroy_window,
-                'accel': '<Primary>q'
-            }
-        ]
-
-        for sa in stateful_actions:
-            c_action = None
-            if sa['type'] == 'bool':
-                c_action = Gio.SimpleAction.new_stateful(
-                    sa['name'],
-                    None,
-                    GLib.Variant.new_boolean(
-                        self.confman.conf[sa['confman_key']]
-                    )
-                )
-            elif sa['type'] == 'radio':
-                c_action = Gio.SimpleAction.new_stateful(
-                    sa['name'],
-                    GLib.VariantType.new('s'),
-                    GLib.Variant('s', self.confman.conf[sa['confman_key']])
-                )
-            else:
-                raise ValueError(
-                    f'Stateful Action: unsupported type `{sa["type"]}`'
-                )
-            c_action.connect('activate', sa['func'])
-            self.add_action(c_action)
-            if 'accel' in sa.keys():
-                self.set_accels_for_action(
-                    f'app.{sa["name"]}',
-                    [sa['accel']]
-                )
-
-        for a in actions:
-            c_action = Gio.SimpleAction.new(a['name'], None)
-            c_action.connect('activate', a['func'])
-            self.add_action(c_action)
-            if 'accel' in a.keys():
-                self.set_accels_for_action(
-                    f'app.{a["name"]}',
-                    [a['accel']]
-                )
 
     def view_mode_change(
             self,
@@ -228,19 +199,11 @@ class GFeedsApplication(Gtk.Application):
         self.quit()
 
     def do_activate(self):
+        super().do_activate()
         self.window = GFeedsAppWindow()
         self.confman.window = self.window
         self.window.connect('destroy', self.on_destroy_window)
         self.add_window(self.window)
-        provider = Gtk.CssProvider()
-        provider.load_from_resource(
-            '/org/gabmus/gfeeds/ui/gtk_style.css'
-        )
-        Gtk.StyleContext.add_provider_for_display(
-            Gdk.Display.get_default(),
-            provider,
-            Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
-        )
         self.window.present()
         # self.feedman.refresh(get_cached=True)
         if self.args:

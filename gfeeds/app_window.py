@@ -11,20 +11,16 @@ from gfeeds.suggestion_bar import (
 )
 from gfeeds.webview import GFeedsWebView
 from gfeeds.stack_with_empty_state import StackWithEmptyState
-from gfeeds.accel_manager import add_accelerators
 from functools import reduce
 from operator import or_
 from subprocess import Popen
+from gfeeds.base_app import BaseWindow, AppShortcut
 
 
-class GFeedsAppWindow(Adw.ApplicationWindow):
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
+class GFeedsAppWindow(BaseWindow):
+    def __init__(self):
         self.confman = ConfManager()
         self.feedman = FeedsManager()
-
-        self.set_title('Feeds')
-        self.set_icon_name('org.gabmus.gfeeds')
 
         self.sidebar = GFeedsSidebar()
         self.sidebar.listbox.connect(
@@ -37,6 +33,69 @@ class GFeedsAppWindow(Adw.ApplicationWindow):
         )
 
         self.webview = GFeedsWebView()
+
+        super().__init__(
+            app_name='Feeds',
+            icon_name='org.gabmus.gfeeds',
+            shortcuts=[
+                AppShortcut(
+                    'F10', lambda *args: self.left_headerbar.menu_btn.popup()
+                ),
+                AppShortcut(
+                    '<Control>r', self.feedman.refresh
+                ),
+                AppShortcut(
+                    '<Control>f', lambda *args:
+                        self.left_headerbar.search_btn.set_active(True)
+                ),
+                AppShortcut(
+                    '<Control>j', self.sidebar.select_next_article
+                ),
+                AppShortcut(
+                    '<Control>k', self.sidebar.select_prev_article
+                ),
+                AppShortcut(
+                    '<Control>plus', self.webview.key_zoom_in
+                ),
+                AppShortcut(
+                    '<Control>minus', self.webview.key_zoom_out
+                ),
+                AppShortcut(
+                    '<Control>equal', self.webview.key_zoom_reset
+                )
+            ]
+        )
+        super().__init__(
+            app_name='Feeds',
+            icon_name='org.gabmus.gfeeds',
+            shortcuts=[
+                AppShortcut(
+                    'F10', lambda *args: self.left_headerbar.menu_btn.popup()
+                ),
+                AppShortcut(
+                    '<Control>r', self.feedman.refresh
+                ),
+                AppShortcut(
+                    '<Control>f', lambda *args:
+                        self.left_headerbar.search_btn.set_active(True)
+                ),
+                AppShortcut(
+                    '<Control>j', self.sidebar.select_next_article
+                ),
+                AppShortcut(
+                    '<Control>k', self.sidebar.select_prev_article
+                ),
+                AppShortcut(
+                    '<Control>plus', self.webview.key_zoom_in
+                ),
+                AppShortcut(
+                    '<Control>minus', self.webview.key_zoom_out
+                ),
+                AppShortcut(
+                    '<Control>equal', self.webview.key_zoom_reset
+                )
+            ]
+        )
 
         # separator = Gtk.Separator()
         # separator.get_style_context().add_class('sidebar')
@@ -61,26 +120,30 @@ class GFeedsAppWindow(Adw.ApplicationWindow):
         )
         self.searchbar.connect(
             'notify::search-mode-enabled',
-            lambda caller, enabled:
-                self.left_headerbar.search_btn.set_active(caller.get_search_mode())
+            lambda caller, enabled: self.left_headerbar.search_btn.set_active(
+                caller.get_search_mode()
+            )
         )
         self.left_headerbar = GFeedsHeaderbarLeft(
-            self.on_back_button_clicked, self.searchbar, self.leaflet
+            self.searchbar, self.leaflet
         )
-        self.right_headerbar = GFeedsHeaderbarRight(self.webview, self.leaflet)
+        self.right_headerbar = GFeedsHeaderbarRight(
+            self.webview, self.leaflet, self.on_back_button_clicked
+        )
         self.left_headerbar.stack_switcher.set_stack(self.sidebar)
-        self.left_headerbar.connect(
-            'gfeeds_headerbar_squeeze',
-            self.on_headerbar_squeeze
+        self.left_headerbar.connect('squeeze', self.on_headerbar_squeeze)
+        self.sidebar_box = Gtk.Box(
+            orientation=Gtk.Orientation.VERTICAL, hexpand=False
         )
-        self.sidebar_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
         self.sidebar_box.get_style_context().add_class('sidebar')
         self.sidebar_box.set_size_request(360, 100)
         self.sidebar_box.append(self.left_headerbar)
         self.sidebar_box.append(self.searchbar)
         self.sidebar_box.append(self.connection_bar)
         self.sidebar_box.append(self.errors_bar)
-        self.webview_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
+        self.webview_box = Gtk.Box(
+            orientation=Gtk.Orientation.VERTICAL, hexpand=True
+        )
         self.webview_box.append(self.right_headerbar)
         self.webview_box.append(self.webview)
         self.stack_with_empty_state = StackWithEmptyState(self.sidebar)
@@ -90,10 +153,6 @@ class GFeedsAppWindow(Adw.ApplicationWindow):
         self.leaflet.append(self.webview_box)
         # self.leaflet.child_set_property(separator, 'allow-visible', False)
         self.leaflet.connect('notify::folded', self.on_main_leaflet_folded)
-
-        self.main_box = Gtk.Box(
-            orientation=Gtk.Orientation.VERTICAL, hexpand=True, vexpand=True
-        )
 
         self.bottom_bar = Adw.ViewSwitcherBar()
         self.bottom_bar.set_stack(self.sidebar)
@@ -106,8 +165,7 @@ class GFeedsAppWindow(Adw.ApplicationWindow):
             'notify::visible-child', self.on_main_leaflet_folded
         )
 
-        self.main_box.append(self.leaflet)
-        self.set_child(self.main_box)
+        self.append(self.leaflet)
 
         self.set_default_size(
             self.confman.conf['windowsize']['width'],
@@ -116,58 +174,11 @@ class GFeedsAppWindow(Adw.ApplicationWindow):
         self.size_allocation = self.get_allocation()
         self.on_main_leaflet_folded()
 
-        add_accelerators(
-            self,
-            [
-                {
-                    'combo': 'F10',
-                    'cb': lambda *args:
-                        self.left_headerbar.menu_btn.podown()
-                        if self.left_headerbar.menu_popover.get_visible()
-                        else self.left_headerbar.menu_btn.popup()
-                },
-                {
-                    'combo': '<Control>r',
-                    'cb': self.feedman.refresh
-                },
-                {
-                    'combo': '<Control>f',
-                    'cb': lambda *args: self.left_headerbar.search_btn.set_active(True)
-                },
-                {
-                    'combo': '<Control>j',
-                    'cb': self.sidebar.select_next_article
-                },
-                {
-                    'combo': '<Control>k',
-                    'cb': self.sidebar.select_prev_article
-                },
-                {
-                    'combo': '<Control>plus',
-                    'cb': self.webview.key_zoom_in
-                },
-                {
-                    'combo': '<Control>minus',
-                    'cb': self.webview.key_zoom_out
-                },
-                {
-                    'combo': '<Control>equal',
-                    'cb': self.webview.key_zoom_reset
-                }
-            ]
+        self.confman.connect(
+            'dark_mode_changed',
+            lambda *args: self.set_dark_mode(self.confman.conf['dark_mode'])
         )
-
-        self.confman.connect('gfeeds_dark_mode_changed', self.on_dark_mode_changed)
-
-    def present(self, *args, **kwargs):
-        super().present(*args, **kwargs)
-        self.on_dark_mode_changed()
-
-    def on_dark_mode_changed(self, *args):
-        Gtk.Settings.get_default().set_property(
-            'gtk-application-prefer-dark-theme',
-            self.confman.conf['dark_mode']
-        )
+        self.set_dark_mode(self.confman.conf['dark_mode'])
 
     def on_headerbar_squeeze(self, caller: GObject.Object, squeezed: bool):
         self.bottom_bar.set_reveal(squeezed)
@@ -239,28 +250,16 @@ class GFeedsAppWindow(Adw.ApplicationWindow):
         listbox.invalidate_filter()
         other_listbox.invalidate_filter()
 
-    def on_main_leaflet_folded(self, *args):
-        # target = None
-        # other = None
-        if self.leaflet.get_folded():
-            # target = self.headerbar.leaflet.get_visible_child()
-            self.left_headerbar.back_button.show()
-            self.left_headerbar.stack_switcher.set_visible(True)
-            self.left_headerbar.stack_switcher.show()
-            # self.left_headerbar.squeezer.set_child_enabled(
-            #     self.left_headerbar.stack_switcher, True
-            # )
-        else:
-            self.left_headerbar.back_button.hide()
-            self.left_headerbar.stack_switcher.set_visible(False)
-            self.left_headerbar.stack_switcher.hide()
-            # self.left_headerbar.squeezer.set_child_enabled(
-            #     self.left_headerbar.stack_switcher, False
-            # )
-        # self.headerbar.headergroup.set_focus(target)
-
     def on_back_button_clicked(self, *args):
         self.leaflet.set_visible_child(self.sidebar_box)
         self.on_main_leaflet_folded()
         self.sidebar.listbox.select_row(None)
         self.sidebar.saved_items_listbox.select_row(None)
+
+    def on_main_leaflet_folded(self, *args):
+        if self.leaflet.get_folded():
+            self.right_headerbar.back_button.set_visible(True)
+            self.left_headerbar.stack_switcher.set_visible(True)
+        else:
+            self.right_headerbar.back_button.set_visible(False)
+            self.left_headerbar.stack_switcher.set_visible(False)

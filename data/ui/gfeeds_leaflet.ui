@@ -2,8 +2,10 @@
 <interface>
   <requires lib="gtk" version="4.0"/>
   <object class="AdwLeaflet" id="leaflet">
-    <property name="can-swipe-back">True</property>
+    <property name="can-swipe-back">1</property>
     <property name="transition-type">over</property>
-    <property name="vexpand">True</property>
+    <property name="homogeneous">0</property>
+    <property name="vexpand">1</property>
+    <property name="width-request">350</property>
   </object>
 </interface>

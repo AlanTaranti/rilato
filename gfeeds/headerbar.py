@@ -52,7 +52,7 @@ class AddFeedPopover(Gtk.Popover):
             self.already_subscribed_revealer.set_reveal_child(True)
 
 class GFeedsHeaderbarRight(Gtk.WindowHandle):
-    def __init__(self, webview, leaflet):
+    def __init__(self, webview, leaflet, back_btn_func):
         super().__init__(vexpand=False, hexpand=True)
         self.builder = Gtk.Builder.new_from_resource(
             '/org/gabmus/gfeeds/ui/headerbar.ui'
@@ -60,6 +60,7 @@ class GFeedsHeaderbarRight(Gtk.WindowHandle):
         self.confman = ConfManager()
         self.webview = webview
         self.leaflet = leaflet
+        self.back_btn_func = back_btn_func
         self.webview.connect('gfeeds_webview_load_start', self.on_load_start)
         self.webview.connect('gfeeds_webview_load_end', self.on_load_end)
         self.right_headerbar = self.builder.get_object(
@@ -90,10 +91,11 @@ class GFeedsHeaderbarRight(Gtk.WindowHandle):
             'right_headerbar_title_container'
         )
         self.title_label = self.builder.get_object('title_label')
-        self.title_squeezer.add(self.right_title_container)
-        self.title_squeezer.add(Gtk.Label(label=''))
 
         self.leaflet.connect('notify::folded', self.set_headerbar_controls)
+
+        self.back_button = self.builder.get_object('back_btn')
+        self.back_button.connect('clicked', lambda *args: self.back_btn_func())
 
     def set_view_mode_icon(self, mode):
         self.view_mode_menu_btn_icon.set_from_icon_name(
@@ -138,21 +140,20 @@ class GFeedsHeaderbarRight(Gtk.WindowHandle):
 
 class GFeedsHeaderbarLeft(Gtk.WindowHandle):
     __gsignals__ = {
-        'gfeeds_headerbar_squeeze': (
+        'squeeze': (
             GObject.SignalFlags.RUN_FIRST,
             None,
             (bool,)
         )
     }
 
-    def __init__(self, back_btn_func, searchbar, leaflet):
+    def __init__(self, searchbar, leaflet):
         super().__init__(vexpand=False, hexpand=True)
         self.builder = Gtk.Builder.new_from_resource(
             '/org/gabmus/gfeeds/ui/headerbar.ui'
         )
         self.confman = ConfManager()
         self.feedman = FeedsManager()
-        self.back_btn_func = back_btn_func
         self.searchbar = searchbar
         self.leaflet = leaflet
         self.left_headerbar = self.builder.get_object(
@@ -160,19 +161,9 @@ class GFeedsHeaderbarLeft(Gtk.WindowHandle):
         )
         self.set_child(self.left_headerbar)
         self.set_headerbar_controls()
-
-        self.back_button = self.builder.get_object('back_btn')
-        self.back_button.connect('clicked', self.on_back_button_clicked)
         self.menu_btn = self.builder.get_object(
             'menu_btn'
         )
-        self.menu_popover = Gtk.PopoverMenu()
-        self.menu_builder = Gtk.Builder.new_from_resource(
-            '/org/gabmus/gfeeds/ui/menu.ui'
-        )
-        self.menu = self.menu_builder.get_object('generalMenu')
-        self.menu_popover.set_menu_model(self.menu)
-        self.menu_btn.set_popover(self.menu_popover)
 
         self.search_btn = self.builder.get_object('search_btn')
         self.search_btn.connect('toggled', self.on_search_btn_toggled)
@@ -208,10 +199,10 @@ class GFeedsHeaderbarLeft(Gtk.WindowHandle):
         self.squeezer.set_hexpand(False)
         self.nobox = Gtk.Label()
         self.nobox.set_size_request(1, -1)
-        self.stack_switcher = Adw.ViewSwitcher()
-        self.stack_switcher.set_policy(Adw.ViewSwitcherPolicy.WIDE)
-        self.stack_switcher.set_margin_start(12)
-        self.stack_switcher.set_margin_end(12)
+        self.stack_switcher = Adw.ViewSwitcher(
+            policy=Adw.ViewSwitcherPolicy.WIDE,
+            margin_start=12, margin_end=12
+        )
         self.squeezer.add(self.stack_switcher)
         self.squeezer.add(self.nobox)
         self.squeezer.connect('notify::visible-child', self.on_squeeze)
@@ -230,7 +221,7 @@ class GFeedsHeaderbarLeft(Gtk.WindowHandle):
 
     def on_squeeze(self, *args):
         self.emit(
-            'gfeeds_headerbar_squeeze',
+            'squeeze',
             self.squeezer.get_visible_child() == self.nobox
         )
 
@@ -253,6 +244,3 @@ class GFeedsHeaderbarLeft(Gtk.WindowHandle):
             self.left_headerbar.set_show_title_buttons(
                 self.confman.wm_decoration_on_left
             )
-
-    def on_back_button_clicked(self, *args):
-        self.back_btn_func()

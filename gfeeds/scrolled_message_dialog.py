@@ -23,5 +23,4 @@ class ScrolledMessageDialog(Gtk.MessageDialog):
         self.secondary_label.set_visible(False)
 
     def format_secondary_markup(self, message):
-        super().format_secondary_markup(' ')
         self.label.set_markup(message)
