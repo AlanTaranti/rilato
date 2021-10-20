@@ -8,7 +8,6 @@ def __is_online_async_worker(callback):
     EXPECTED_STATUS = 405
     try:
         res = requests.post(TEST_URL)
-        print('>>>')
         GLib.idle_add(callback, res.status_code == EXPECTED_STATUS)
     except requests.exceptions.ConnectionError:
         GLib.idle_add(callback, False)
