@@ -10,6 +10,7 @@ from gfeeds.suggestion_bar import (
 )
 from gfeeds.webview import GFeedsWebView
 from gfeeds.stack_with_empty_state import StackWithEmptyState
+from gfeeds.get_children import get_children
 from functools import reduce
 from operator import or_
 from subprocess import Popen
@@ -212,7 +213,7 @@ class GFeedsAppWindow(BaseWindow):
             if listbox == self.sidebar.saved_items_listbox
             else self.sidebar.saved_items_listbox
         )
-        for other_row in other_listbox:
+        for other_row in get_children(other_listbox):
             if other_row.feeditem.link == row.feeditem.link:
                 other_row.popover.set_read(True)
                 break
