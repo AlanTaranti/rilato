@@ -278,7 +278,7 @@
             "name": "python-feedparser",
             "buildsystem": "simple",
             "build-commands": [
-                "#cp src/feedparser feedparser",
+                "python3 feedparser-setup.py build",
                 "python3 feedparser-setup.py install --prefix=/app --root=/"
             ],
             "sources": [
@@ -286,12 +286,12 @@
                     "type": "git",
                     "url": "https://github.com/kurtmckee/feedparser",
                     "branch": "develop",
-                    "commit": "727ee7f08f77d8f0a0f085ec3dfbc58e09f69a4b"
+                    "commit": "8a2a71b72d5b1454d456759d6270fa1dd18dfc4f"
                 },
                 {
                     "type": "file",
                     "path": "feedparser-setup.py",
-                    "sha256": "6234215cd53affca9ea0ae494aac30c0063894039248dce11116e19ecfffa802"
+                    "sha256": "6dcc11e71d9a9c78d91fb7407063b7a41301d5b9c5f16787404cf10ff33cca62"
                 }
             ]
         },
@@ -328,7 +328,7 @@
             "name": "python-listparser",
             "buildsystem": "simple",
             "build-commands": [
-                "cp -r src/listparser listparser",
+                "python3 listparser-setup.py build",
                 "python3 listparser-setup.py install --prefix=/app --root=/"
             ],
             "sources": [
@@ -336,12 +336,12 @@
                     "type": "git",
                     "url": "https://github.com/kurtmckee/listparser",
                     "branch": "develop",
-                    "commit": "81e04f2f837085409f91c351dc3975fd438e40ec"
+                    "commit": "09eb891f77ed9f8da71dfbfad78e9e60ee7e565d"
                 },
                 {
                     "type": "file",
                     "path": "listparser-setup.py",
-                    "sha256": "e33c4b185de59b09e45cf84ad23c99280169f4fdd9d805b0f65f2957eca40ecb"
+                    "sha256": "5150576d663d488928a56f9673a44c3b36b63ed508d9dbe8e19cfa25c8e18550"
                 }
             ]
         },
