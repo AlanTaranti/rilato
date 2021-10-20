@@ -2,7 +2,6 @@ from gettext import gettext as _
 from gi.repository import Gtk, Gdk, Adw, GObject
 from gfeeds.confManager import ConfManager
 from gfeeds.feeds_manager import FeedsManager
-from gfeeds.spinner_button import RefreshSpinnerButton
 from gfeeds.feeds_view import FeedsViewPopover
 from gfeeds.view_mode_menu import GFeedsViewModeMenu
 
@@ -190,9 +189,8 @@ class GFeedsHeaderbarLeft(Gtk.WindowHandle):
         self.add_popover = AddFeedPopover(self.add_btn)
         self.add_btn.set_popover(self.add_popover)
 
-        self.refresh_btn = RefreshSpinnerButton()
-        self.refresh_btn.btn.connect('clicked', self.feedman.refresh)
-        self.builder.get_object('refresh_btn_box').append(self.refresh_btn)
+        self.refresh_btn = self.builder.get_object('refresh_btn')
+        self.refresh_btn.connect('clicked', self.feedman.refresh)
 
         self.squeezer = Adw.Squeezer(orientation=Gtk.Orientation.HORIZONTAL)
         self.squeezer.set_homogeneous(False)
@@ -231,11 +229,11 @@ class GFeedsHeaderbarLeft(Gtk.WindowHandle):
         self.searchbar.set_search_mode(togglebtn.get_active())
 
     def on_new_feed_add_start(self, *args):
-        self.refresh_btn.set_spinning(True)
+        self.refresh_btn.set_sensitive(False)
         self.add_popover.confirm_btn.set_sensitive(False)
 
     def on_new_feed_add_end(self, *args):
-        self.refresh_btn.set_spinning(False)
+        self.refresh_btn.set_sensitive(True)
         self.add_popover.confirm_btn.set_sensitive(True)
         self.add_popover.url_entry.set_text('')
 

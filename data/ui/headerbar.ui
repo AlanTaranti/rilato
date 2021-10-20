@@ -9,8 +9,9 @@
       </object>
     </child>
     <child>
-      <object class="GtkBox" id="refresh_btn_box">
-        <property name="orientation">vertical</property>
+      <object class="GtkButton" id="refresh_btn">
+        <property name="tooltip-text" translatable="yes">Refresh</property>
+        <property name="icon-name">view-refresh-symbolic</property>
       </object>
     </child>
     <child type="end">
