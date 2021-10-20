@@ -207,7 +207,7 @@ class GFeedsWebView(Gtk.Stack):
             self.loading_bar.set_fraction(.75)
         elif self.new_page_loaded and event == WebKit2.LoadEvent.FINISHED:
             self.loading_bar.set_fraction(1.0)
-            # waits 3 seconds async then hides the loading bar
+            # waits 1 seconds async then hides the loading bar
             GLib.timeout_add_seconds(
                 1,
                 self.loading_bar.set_reveal_child, False

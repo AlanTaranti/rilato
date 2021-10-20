@@ -217,6 +217,7 @@ class GFeedsHeaderbarLeft(Gtk.WindowHandle):
             'feedmanager_refresh_end',
             self.on_new_feed_add_end
         )
+        self.on_new_feed_add_start()
 
         self.leaflet.connect('notify::folded', self.set_headerbar_controls)
 
