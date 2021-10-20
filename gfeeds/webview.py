@@ -209,7 +209,7 @@ class GFeedsWebView(Gtk.Stack):
             self.loading_bar.set_fraction(1.0)
             # waits 3 seconds async then hides the loading bar
             GLib.timeout_add_seconds(
-                3,
+                1,
                 self.loading_bar.set_reveal_child, False
             )
             self.new_page_loaded = False
