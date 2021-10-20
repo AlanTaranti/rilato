@@ -16,9 +16,7 @@ class AddFeedPopover(Gtk.Popover):
             '/org/gabmus/gfeeds/ui/add_feed_box.ui'
         )
         self.set_autohide(True)
-        # self.set_parent(relative_to)
         relative_to.set_popover(self)
-        # relative_to.connect('clicked', lambda *args: self.popup())
         self.container_box = self.builder.get_object('container_box')
         self.confirm_btn = self.builder.get_object('confirm_btn')
         self.confirm_btn.connect(
@@ -30,7 +28,6 @@ class AddFeedPopover(Gtk.Popover):
         self.already_subscribed_revealer = self.builder.get_object(
             'already_subscribed_revealer'
         )
-        # about this lambda: low impact, happens rarely
         self.url_entry.connect(
             'changed',
             lambda *args:
