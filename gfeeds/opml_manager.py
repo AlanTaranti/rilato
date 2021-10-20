@@ -11,24 +11,24 @@ confman = ConfManager()
 feedman = FeedsManager()
 
 
-def __add_feeds_from_opml_callback(n_feeds_urls_l):
-    for tag in [t for f in n_feeds_urls_l for t in f['tags']]:
-        confman.add_tag(tag)
-    for f in n_feeds_urls_l:
-        url = f['feed']
-        if url not in confman.conf['feeds'].keys():
-            confman.conf['feeds'][url] = {
-                'tags': f['tags']
-            }
-    confman.save_conf()
+def __add_feeds_from_opml_callback():
     feedman.refresh()
 
 
 def __add_feeds_from_opml_worker(opml_path):
     n_feeds_urls_l = opml_to_rss_list(opml_path)
+    for tag in [t for f in n_feeds_urls_l for t in f['tags']]:
+        confman.add_tag(tag)
+    for f in n_feeds_urls_l:
+        url = f['feed']
+        print(url)
+        if url not in confman.conf['feeds'].keys():
+            confman.conf['feeds'][url] = {
+                'tags': f['tags']
+            }
+    confman.save_conf()
     GLib.idle_add(
-        __add_feeds_from_opml_callback,
-        n_feeds_urls_l
+        __add_feeds_from_opml_callback
     )
 
 
@@ -38,18 +38,19 @@ def add_feeds_from_opml(opml_path):
 
 
 def opml_to_rss_list(opml_path):
+    res = []
     if not isfile(opml_path):
         print(_('Error: OPML path provided does not exist'))
-        return []
+        return res
     try:
-        lp_opml = listparser.parse(opml_path)
-        n_feeds_urls_l = [
-            {'feed': f['url'], 'tags': f['tags']} for f in lp_opml['feeds']
-        ]
-        return n_feeds_urls_l
+        with open(opml_path, 'r') as fd:
+            lp_opml = listparser.parse(fd.read())
+            res = [
+                {'feed': f['url'], 'tags': f['tags']} for f in lp_opml['feeds']
+            ]
     except Exception:
         print(_('Error parsing OPML file `{0}`').format(opml_path))
-        return []
+    return res
 
 
 OPML_PREFIX = '''<?xml version="1.0" encoding="UTF-8"?>

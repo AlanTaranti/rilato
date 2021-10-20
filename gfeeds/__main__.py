@@ -23,35 +23,6 @@ from gfeeds.get_children import get_children
 from gfeeds.base_app import BaseApp, AppAction
 
 
-from gi.repository import WebKit2
-class GFeedsApplicationTest(Gtk.Application):
-    def __init__(self, **kwargs):
-        super().__init__(
-            application_id='org.gabmus.gfeeds',
-            **kwargs
-        )
-        GLib.set_application_name('Feeds')
-        GLib.set_prgname('org.gabmus.gfeeds')
-
-    def do_startup(self):
-        Gtk.Application.do_startup(self)
-        Adw.init()
-
-    def do_activate(self):
-        self.window = Gtk.ApplicationWindow()
-        self.websett = WebKit2.Settings()
-        self.websett.set_hardware_acceleration_policy(
-            WebKit2.HardwareAccelerationPolicy.ALWAYS
-        )
-        self.websett.set_enable_developer_extras(True)
-        self.websett.set_enable_webgl(True)
-        self.websett.set_enable_accelerated_2d_canvas(True)
-        self.webview = WebKit2.WebView(settings=self.websett)
-        self.window.set_child(self.webview)
-        self.add_window(self.window)
-        self.window.present()
-
-
 class GFeedsApplication(BaseApp):
     def __init__(self):
         self.confman = ConfManager()
@@ -167,23 +138,29 @@ class GFeedsApplication(BaseApp):
 
     def import_opml(self, *args):
         dialog = GFeedsOpmlFileChooserDialog(self.window)
-        res = dialog.run()
-        # dialog.close()
-        if res == Gtk.ResponseType.ACCEPT:
-            add_feeds_from_opml(dialog.get_filename())
+
+        def on_response(_dialog, res):
+            if res == Gtk.ResponseType.ACCEPT:
+                add_feeds_from_opml(dialog.get_file().get_path())
+
+        dialog.connect('response', on_response)
+        dialog.show()
 
     def export_opml(self, *args):
         dialog = GFeedsOpmlSavePathChooserDialog(self.window)
-        res = dialog.run()
-        # dialog.close()
-        if res == Gtk.ResponseType.ACCEPT:
-            save_path = dialog.get_filename()
-            if save_path[-5:].lower() != '.opml':
-                save_path += '.opml'
-            opml_out = feeds_list_to_opml(self.feedman.feeds)
-            with open(save_path, 'w') as fd:
-                fd.write(opml_out)
-                fd.close()
+
+        def on_response(_dialog, res):
+            if res == Gtk.ResponseType.ACCEPT:
+                save_path = dialog.get_file().get_path()
+                if save_path[-5:].lower() != '.opml':
+                    save_path += '.opml'
+                opml_out = feeds_list_to_opml(self.feedman.feeds)
+                with open(save_path, 'w') as fd:
+                    fd.write(opml_out)
+                    fd.close()
+
+        dialog.connect('response', on_response)
+        dialog.show()
 
     def show_about_dialog(self, *args):
         about_builder = Gtk.Builder.new_from_resource(
