@@ -172,6 +172,7 @@ class GFeedsWebView(Gtk.Stack):
                 group=None,
                 target=self._load_reader_async,
                 name=None,
+                daemon=True
                 # args = (uri,)
             )
             if trigger_on_load_start:
@@ -240,7 +241,8 @@ class GFeedsWebView(Gtk.Stack):
                     name=None,
                     args=(
                         self._set_enable_reader_mode_async_callback,
-                    )
+                    ),
+                    daemon=True
                 )
                 t.start()
             else:

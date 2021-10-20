@@ -107,7 +107,8 @@ class RowPopover(Gtk.Popover):
                 args=(
                     fi_dict['link'],
                     self.confman.saved_cache_path + '/' + fi_dict['linkhash']
-                )
+                ),
+                daemon=True
             )
             t.start()
             self.confman.conf[

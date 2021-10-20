@@ -18,7 +18,8 @@ class ThreadPool:
                     group=None,
                     target=self._pool_worker,
                     name=None,
-                    args=(*args_tuple,)
+                    args=(*args_tuple,),
+                    daemon=True
                 )
             )
 

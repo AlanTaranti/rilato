@@ -33,7 +33,9 @@ def __add_feeds_from_opml_worker(opml_path):
 
 
 def add_feeds_from_opml(opml_path):
-    t = Thread(target=__add_feeds_from_opml_worker, args=(opml_path,))
+    t = Thread(
+        target=__add_feeds_from_opml_worker, args=(opml_path,), daemon=True
+    )
     t.start()
 
 

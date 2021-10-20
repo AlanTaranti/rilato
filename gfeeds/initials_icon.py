@@ -3,13 +3,14 @@ from threading import Thread
 from gfeeds.confManager import ConfManager
 from pathlib import Path
 from PIL import Image
+from typing import Union
 
 
 confman = ConfManager()
 thumbs_cache_path = Path(confman.thumbs_cache_path)
 
 
-def make_thumb(path, width: int, height: int = 1000) -> str:
+def make_thumb(path, width: int, height: int = 1000) -> Union[str, None]:
     if not path:
         return None
     if not isinstance(path, Path):
