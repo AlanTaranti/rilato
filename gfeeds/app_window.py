@@ -1,5 +1,4 @@
 from gi.repository import Gtk, Adw, GObject
-from typing import Callable
 from gfeeds.confManager import ConfManager
 from gfeeds.feeds_manager import FeedsManager
 from gfeeds.sidebar import GFeedsSidebar

@@ -1,5 +1,5 @@
 from gi.repository import Adw, Gtk, GLib, Gio, Gdk
-from typing import Callable, Optional, List
+from typing import Callable, Optional, List, Any
 from enum import Enum, auto
 
 
@@ -15,7 +15,7 @@ class AppAction:
             accel: Optional[str] = None,
             stateful: bool = False,
             state_type: Optional[StateType] = None,
-            state_default = None
+            state_default: Any = None
     ):
         self.name = name
         self.func = func
@@ -34,7 +34,7 @@ class AppAction:
             if self.state_type == AppAction.StateType.BOOL:
                 variant = GLib.Variant.new_boolean(self.state_default)
             elif self.state_type == AppAction.StateType.RADIO:
-                parameter_type = GLib.VariantType.new('s') 
+                parameter_type = GLib.VariantType.new('s')
                 variant = GLib.Variant('s', self.state_default)
             action = Gio.SimpleAction.new_stateful(
                 self.name, parameter_type, variant

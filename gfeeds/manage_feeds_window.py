@@ -1,6 +1,6 @@
 from gettext import gettext as _
 from gfeeds.accel_manager import add_accelerators
-from gi.repository import Gtk, Gdk, GObject, Adw
+from gi.repository import Gtk, GObject, Adw
 from xml.sax.saxutils import escape
 from gfeeds.confManager import ConfManager
 from gfeeds.feeds_manager import FeedsManager
@@ -264,7 +264,7 @@ class ManageFeedsListboxRow(FeedsViewListboxRow):
 class ManageFeedsListbox(FeedsViewListbox):
     def __init__(self):
         super().__init__(
-            selection_mode = Gtk.SelectionMode.NONE
+            selection_mode=Gtk.SelectionMode.NONE
         )
 
     def add_feed(self, feed):
@@ -341,7 +341,7 @@ class GFeedsManageFeedsWindow(Adw.Window):
             [{
                 'combo': 'Escape',
                 'cb': lambda *args: self.close()
-            },]
+            }]
         )
 
         self.headerbar.manage_tags_popover.connect(
@@ -382,7 +382,7 @@ class GFeedsManageFeedsWindow(Adw.Window):
     def on_delete_clicked(self, *args):
         selected_feeds = self.get_selected_feeds()
         dialog = DeleteFeedsConfirmMessageDialog(self, selected_feeds)
-        
+
         def on_response(_dialog, res):
             _dialog.close()
             if res == Gtk.ResponseType.YES:

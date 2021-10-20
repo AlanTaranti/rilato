@@ -1,13 +1,21 @@
 from gi.repository import Gtk
 
 
+def __is_valid_true(c: Gtk.Widget):
+    return True
+
+
+def __is_valid_listbox(c: Gtk.Widget):
+    return isinstance(c, Gtk.ListBoxRow)
+
+
 def get_children(container):
-    is_valid = lambda _: True
+    is_valid = __is_valid_true
     first_child = container.get_first_child()
     if first_child is None:
         return []
     if isinstance(container, Gtk.ListBox):
-        is_valid = lambda c: isinstance(c, Gtk.ListBoxRow)
+        is_valid = __is_valid_listbox
     res = []
     if is_valid(first_child):
         res.append(first_child)

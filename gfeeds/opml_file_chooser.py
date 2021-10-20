@@ -1,6 +1,7 @@
 from gettext import gettext as _
 from gi.repository import Gtk
 
+
 def get_xml_filter():
     filter = Gtk.FileFilter()
     filter.set_name(_('XML files'))
@@ -18,6 +19,7 @@ def GFeedsOpmlFileChooserDialog(parent_window):
         cancel_label=_('Cancel'),
         filter=get_xml_filter()
     )
+
 
 def GFeedsOpmlSavePathChooserDialog(parent_window):
     dialog = Gtk.FileChooserNative(

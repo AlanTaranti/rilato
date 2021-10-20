@@ -1,5 +1,5 @@
 from pathlib import Path
-from os.path import isfile, isdir
+from os.path import isdir
 from os import makedirs
 from os import environ as Env
 import json

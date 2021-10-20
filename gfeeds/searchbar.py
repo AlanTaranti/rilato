@@ -1,4 +1,4 @@
-from gi.repository import Gtk, Adw
+from gi.repository import Gtk
 
 
 class GFeedsSearchbar(Gtk.SearchBar):
@@ -14,4 +14,3 @@ class GFeedsSearchbar(Gtk.SearchBar):
         self.set_show_close_button(False)
         self.set_search_mode(False)
         self.connect_entry(self.entry)
-        # self.set_size_request(360, -1)

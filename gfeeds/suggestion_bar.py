@@ -74,7 +74,7 @@ class GFeedsErrorsBar(GFeedsInfoBar):
         dialog.format_secondary_markup(
             escape('\n'.join(self.errors))
         )
-        
+
         def on_response(_dialog, res):
             _dialog.close()
             if (res == Gtk.ResponseType.YES):

@@ -2,7 +2,7 @@ import sys
 import argparse
 from gettext import gettext as _
 from os.path import isfile
-from gi.repository import Gtk, Gdk, Gio, GLib, Adw
+from gi.repository import Gtk, Gio, GLib
 from gfeeds.confManager import ConfManager
 from gfeeds.feeds_manager import FeedsManager
 from gfeeds.app_window import GFeedsAppWindow

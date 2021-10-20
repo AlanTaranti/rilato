@@ -1,6 +1,6 @@
 import threading
 import requests
-from gi.repository import Gtk, GLib
+from gi.repository import GLib
 
 
 def __is_online_async_worker(callback):

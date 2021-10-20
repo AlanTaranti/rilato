@@ -51,6 +51,7 @@ class AddFeedPopover(Gtk.Popover):
         else:
             self.already_subscribed_revealer.set_reveal_child(True)
 
+
 class GFeedsHeaderbarRight(Gtk.WindowHandle):
     def __init__(self, webview, leaflet, back_btn_func):
         super().__init__(vexpand=False, hexpand=True)
