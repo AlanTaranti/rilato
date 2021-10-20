@@ -213,25 +213,32 @@ class Feed:
             return
 
         if not self.title:
-            self.title = self.link
-            if not self.title:
-                self.title = self.rss_link
+            self.title = self.link or self.rss_link
 
-        self.favicon_path = self.confman.thumbs_cache_path+'/' + \
-            shasum(self.link)+'.png'
+        self.favicon_path = (
+            self.confman.thumbs_cache_path + '/' +
+            shasum(self.rss_link)+'.png'
+        )
         if not isfile(self.favicon_path):
             if self.image_url:
                 try:
                     download_raw(self.image_url, self.favicon_path)
                 except Exception:
+                    print('Invalid image url for feed `{0}` ({1})'.format(
+                        self.rss_link, self.image_url
+                    ))
                     self.image_url = None
             if not self.image_url:
                 try:
-                    get_favicon(self.link, self.favicon_path)
+                    get_favicon(self.rss_link, self.favicon_path)
                     if not isfile(self.favicon_path):
-                        get_favicon(self.items[0].link, self.favicon_path)
+                        get_favicon(
+                            self.link or self.items[0].link,
+                            self.favicon_path
+                        )
                 except Exception:
-                    print('No favicon')
+                    print(f'No favicon for feed `{self.rss_link}`')
+                    self.favicon_path = None
 
     def __repr__(self):
         return f'Feed Object `{self.title}`; {len(self.items)} items'
