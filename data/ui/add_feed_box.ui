@@ -3,12 +3,8 @@
   <requires lib="gtk" version="4.0"/>
   <object class="GtkBox" id="container_box">
     <property name="width_request">290</property>
-    <property name="margin_start">12</property>
-    <property name="margin_end">12</property>
-    <property name="margin_top">12</property>
-    <property name="margin_bottom">12</property>
     <property name="orientation">vertical</property>
-    <property name="spacing">12</property>
+    <property name="spacing">6</property>
     <child>
       <object class="GtkLabel">
         <property name="halign">start</property>
@@ -35,17 +31,8 @@
         <child>
           <object class="GtkButton" id="confirm_btn">
             <property name="receives_default">True</property>
-            <child>
-              <object class="GtkLabel">
-                <property name="can_focus">False</property>
-                <property name="margin_start">12</property>
-                <property name="margin_end">12</property>
-                <property name="label" translatable="yes">Add</property>
-              </object>
-            </child>
-            <style>
-              <class name="suggested-action"/>
-            </style>
+            <property name="label" translatable="yes">Add</property>
+            <style><class name="suggested-action"/></style>
           </object>
         </child>
       </object>
