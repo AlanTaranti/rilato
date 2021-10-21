@@ -1,0 +1,912 @@
+# Turkish translations for gfeeds package.
+# Copyright (C) 2021 THE gfeeds'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the gfeeds package.
+# Veli Tasalı <me@velitasali.com>, 2021.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gfeeds 0.16.2\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-10-21 15:16+0300\n"
+"PO-Revision-Date: 2021-10-21 15:17+0300\n"
+"Last-Translator: Veli Tasalı <me@velitasali.com>\n"
+"Language-Team: Turkish <contact@monora.org>\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=0\n"
+"X-Generator: Gtranslator 40.0\n"
+
+#: ../gfeeds/sidebar_row_popover.py:46 ../gfeeds/sidebar_row_popover.py:89
+msgid "Mark as unread"
+msgstr "Okunmadı olarak işaretle"
+
+#: ../gfeeds/sidebar_row_popover.py:53 ../gfeeds/sidebar_row_popover.py:80
+msgid "Mark as read"
+msgstr "Okundu olarak işaretle"
+
+#: ../gfeeds/feeds_view.py:19
+msgid "All feeds"
+msgstr "Tüm beslemeler"
+
+#: ../gfeeds/download_manager.py:87
+#, python-brace-format
+msgid "`{0}`: connection timed out"
+msgstr "`{0}`: zaman aşımına uğradı"
+
+#: ../gfeeds/download_manager.py:89
+#, python-brace-format
+msgid "`{0}` is not an URL"
+msgstr "`{0}` bir URL değil"
+
+#: ../gfeeds/download_manager.py:114
+#, python-brace-format
+msgid "Error downloading `{0}`, code `{1}`"
+msgstr "`{0}` indirilirken hata, kod `{1}`"
+
+#: ../gfeeds/get_favicon.py:70
+#, python-brace-format
+msgid "Error downloading favicon for `{0}`"
+msgstr "`{0}` için simge indirilirken hata "
+
+#: ../gfeeds/rss_parser.py:61
+#, python-brace-format
+msgid "Error: unable to parse datetime {0} for feeditem {1}"
+msgstr "Hata: feeditem {1} için datetime verisi {0} ayrıştırılamadı"
+
+#: ../gfeeds/rss_parser.py:169
+#, python-brace-format
+msgid "Errors while parsing feed `{0}`"
+msgstr "`{0}` beslemesi ayrıştırılırken hata meydana geldi"
+
+#: ../gfeeds/rss_parser.py:209
+#, python-brace-format
+msgid "`{0}` may not be an RSS or Atom feed"
+msgstr "`{0}` bir RSS veya Atom beslemesi olmayabilir"
+
+#: ../gfeeds/feeds_manager.py:75
+#, python-brace-format
+msgid "Feed {0} exists already, skipping"
+msgstr "Besleme {0} halihazırda mevcut, atlanıyor"
+
+#: ../gfeeds/manage_feeds_window.py:204 ../gfeeds/manage_feeds_window.py:329
+msgid "Manage Feeds"
+msgstr "Beslemeleri Yönet"
+
+#: ../gfeeds/manage_feeds_window.py:216
+msgid "Select/Unselect all"
+msgstr "Hepsini seç/Seçimi kaldır"
+
+#: ../gfeeds/manage_feeds_window.py:221
+msgid "Delete selected feeds"
+msgstr "Seçili beslemeleri sil"
+
+#: ../gfeeds/manage_feeds_window.py:227
+msgid "Manage tags for selected feeds"
+msgstr "Seçili beslemeler için etiketleri yönet"
+
+#: ../gfeeds/manage_feeds_window.py:297
+msgid "Do you want to delete these feeds?"
+msgstr "Bu beslemeleri silmek istiyor musunuz?"
+
+#: ../gfeeds/opml_manager.py:45
+msgid "Error: OPML path provided does not exist"
+msgstr "Hata: Verilen OPML yolu mevcut değil"
+
+#: ../gfeeds/opml_manager.py:54
+#, python-brace-format
+msgid "Error parsing OPML file `{0}`"
+msgstr "`{0}` OPML dosyası ayrıştırılırken hata oluştu"
+
+#: ../gfeeds/opml_file_chooser.py:7
+msgid "XML files"
+msgstr "XML dosyları"
+
+#: ../gfeeds/opml_file_chooser.py:14
+msgid "Choose an OPML file to import"
+msgstr "İçeri aktarmak için bir OPML dosyası seçin"
+
+#: ../gfeeds/opml_file_chooser.py:18
+msgid "Open"
+msgstr "Aç"
+
+#: ../gfeeds/opml_file_chooser.py:19 ../gfeeds/opml_file_chooser.py:31
+msgid "Cancel"
+msgstr "İptal Et"
+
+#: ../gfeeds/opml_file_chooser.py:26
+msgid "Choose where to save the exported OPML file"
+msgstr "Dışarı aktarılan OPML dosyasının nereye kaydedileceğini seçin"
+
+#: ../gfeeds/opml_file_chooser.py:30
+msgid "Save"
+msgstr "Kaydet"
+
+#: ../gfeeds/settings_window.py:180
+msgid "General"
+msgstr "Genel"
+
+#: ../gfeeds/settings_window.py:184
+msgid "General Settings"
+msgstr "Genel Ayarlar"
+
+#: ../gfeeds/settings_window.py:187
+msgid "Refresh articles on startup"
+msgstr "Başlangıçta makaleleri yenile"
+
+#: ../gfeeds/settings_window.py:192
+msgid "Show newer articles first"
+msgstr "Daha yeni makaleleri önce göster"
+
+#: ../gfeeds/settings_window.py:197
+msgid "Open links in your browser"
+msgstr "Bağlantıları tarayıcınızda açın"
+
+#: ../gfeeds/settings_window.py:202
+msgid "Open YouTube links via your video player"
+msgstr "YouTube bağlantılarını video oynatıcınızla açın"
+
+#: ../gfeeds/settings_window.py:205
+msgid "Great when paired with youtube-dl enabled players"
+msgstr ""
+"youtube-dl destekli oynatıcılarla kullanıldığında en iyi bir deneyimi sağlar"
+
+#: ../gfeeds/settings_window.py:219
+msgid "Preferred media player"
+msgstr "Tercih edilen medya oynatıcısı"
+
+#: ../gfeeds/settings_window.py:223
+msgid "Maximum article age"
+msgstr "En eski makale yaşı "
+
+#: ../gfeeds/settings_window.py:227
+msgid "In days"
+msgstr "Gün olarak"
+
+#: ../gfeeds/settings_window.py:233
+msgid "Cache"
+msgstr "Önbellek"
+
+#: ../gfeeds/settings_window.py:236
+msgid "Clear all caches"
+msgstr "Tüm önbellekleri temizle"
+
+#: ../gfeeds/settings_window.py:237
+msgid "Clear caches"
+msgstr "Önbellekleri temizle"
+
+#: ../gfeeds/settings_window.py:273
+msgid "View"
+msgstr "Görüntüleme"
+
+#: ../gfeeds/settings_window.py:277
+msgid "View Settings"
+msgstr "Görüntüleme Ayarları"
+
+#: ../gfeeds/settings_window.py:280
+msgid "Show full articles titles"
+msgstr "Makalelerin başlıklarını tümüyle göster"
+
+#: ../gfeeds/settings_window.py:285
+msgid "Show full feeds names"
+msgstr "Beslemelerin isimlerini tümüyle göster"
+
+#: ../gfeeds/settings_window.py:290
+msgid "Dark mode"
+msgstr "Karanlık modu"
+
+#: ../gfeeds/settings_window.py:295
+msgid "Use dark theme for reader mode"
+msgstr "Okuma modundayken karanlık temayı kullan"
+
+#: ../gfeeds/settings_window.py:300
+msgid "Enable JavaScript"
+msgstr "JavaScript'i etkinleştir"
+
+#: ../gfeeds/settings_window.py:314
+msgid "Advanced"
+msgstr "Gelişmiş"
+
+#: ../gfeeds/settings_window.py:318
+msgid "Advanced Settings"
+msgstr "Gelişmiş Ayarlar"
+
+#: ../gfeeds/settings_window.py:321
+msgid "Maximum refresh threads"
+msgstr "Eş zamanlı yenileme sınırı"
+
+#: ../gfeeds/settings_window.py:326
+msgid "How many threads to refresh feeds"
+msgstr "Beslemeleri güncellerken kaç adet işlemin yürütüleceğini belirler"
+
+#: ../gfeeds/sidebar.py:180
+msgid "Feed"
+msgstr "Besleme"
+
+#: ../gfeeds/sidebar.py:183
+msgid "Saved"
+msgstr "Kaydedildi"
+
+#: ../gfeeds/confirm_add_dialog.py:16
+msgid "Do you want to import these feeds?"
+msgstr "Bu beslemeleri içeri aktarmak istiyor musunuz?"
+
+#: ../gfeeds/confirm_add_dialog.py:17
+msgid "Do you want to import this feed?"
+msgstr "Bu beslemeyi içeri aktarmak istiyor musunuz?"
+
+#: ../gfeeds/__main__.py:234
+msgid "url"
+msgstr "url"
+
+#: ../gfeeds/__main__.py:237
+msgid "opml file local url or rss remote url to import"
+msgstr "içeri aktarılacak yerel ompl dosyası url'si veya uzak rss url'si"
+
+#: ../gfeeds/headerbar.py:185
+msgid "Add new feed"
+msgstr "Yeni besleme ekle"
+
+#: ../gfeeds/suggestion_bar.py:37
+msgid "There are some errors"
+msgstr "Bazı hatalar var"
+
+#: ../gfeeds/suggestion_bar.py:46
+msgid "Show"
+msgstr "Göster"
+
+#: ../gfeeds/suggestion_bar.py:47
+msgid "Ignore"
+msgstr "Atla"
+
+#: ../gfeeds/suggestion_bar.py:70
+msgid "There were problems with some feeds. Do you want to remove them?"
+msgstr "Bazı beslemelerde sorun var. Hatalı olanları kaldırmak ister misiniz?"
+
+#: ../gfeeds/suggestion_bar.py:97
+msgid "You are offline"
+msgstr "Çevrimdışısınız"
+
+#: ../gfeeds/build_reader_html.py:98
+msgid "Thumbnail"
+msgstr "Önizleme"
+
+#: ../gfeeds/webview.py:74
+msgid "Web View"
+msgstr "Web Görünümü"
+
+#: ../gfeeds/webview.py:75
+msgid "Filler View"
+msgstr "Dolgu Görünümü"
+
+#: ../gfeeds/webview.py:136
+msgid "RSS content or summary not available for this article"
+msgstr "Bu makale için RSS içeriği veya açıklaması kullanılabilir değil"
+
+#: ../data/ui/manage_tags_popover_content.ui:18
+msgid "New tag name..."
+msgstr "Yeni etiket adı..."
+
+#: ../data/ui/manage_tags_popover_content.ui:25
+msgid "Add tag"
+msgstr "Etiket ekle"
+
+#: ../data/ui/manage_tags_popover_content.ui:65
+msgid "There are no tags yet"
+msgstr "Henüz etiket yok"
+
+#: ../data/ui/manage_tags_popover_content.ui:74
+msgid "Add some using the entry above"
+msgstr "Yukarıdaki girdiyi kullanarak birkaç tane ekleyin"
+
+#: ../data/ui/add_feed_box.ui:15
+msgid "Enter feed address to add"
+msgstr "Eklemek için besleme adresi girin"
+
+#: ../data/ui/add_feed_box.ui:30
+msgid "https://..."
+msgstr "https://..."
+
+#: ../data/ui/add_feed_box.ui:43
+msgid "Add"
+msgstr "Ekle"
+
+#: ../data/ui/add_feed_box.ui:61
+msgid "You're already subscribed to that feed!"
+msgstr "Beslemeye halihazırda abonesiniz!"
+
+#: ../data/ui/webview_with_notification.ui:29
+msgid "Link copied to clipboard!"
+msgstr "Bağlantı panoya kopyalandı!"
+
+#: ../data/ui/manage_tags_listbox_row_content.ui:14
+#: ../data/ui/scrolled_label.ui:16
+msgid "label"
+msgstr "etiket"
+
+#: ../data/ui/shortcutsWindow.ui:14
+msgid "Open Keyboard Shortcuts"
+msgstr "Klavye Kısayolları'nı Aç"
+
+#: ../data/ui/shortcutsWindow.ui:20
+msgid "Open Menu"
+msgstr "Menü'yü Aç"
+
+#: ../data/ui/shortcutsWindow.ui:26
+msgid "Open Preferences"
+msgstr "Tercihler'i Aç"
+
+#: ../data/ui/shortcutsWindow.ui:32
+msgid "Quit"
+msgstr "Çıkış"
+
+#: ../data/ui/shortcutsWindow.ui:38
+msgid "Refresh articles"
+msgstr "Makaleleri yenile"
+
+#: ../data/ui/shortcutsWindow.ui:44
+msgid "Search articles"
+msgstr "Makale ara"
+
+#: ../data/ui/shortcutsWindow.ui:50
+msgid "Next article"
+msgstr "Sonraki makale"
+
+#: ../data/ui/shortcutsWindow.ui:56
+msgid "Previous article"
+msgstr "Önceki makale"
+
+#: ../data/ui/shortcutsWindow.ui:62
+msgid "Show/Hide read articles"
+msgstr "Okunmuş makaleleri göster/gizle"
+
+#: ../data/ui/shortcutsWindow.ui:68
+msgid "Zoom in"
+msgstr "Yakınlaştır"
+
+#: ../data/ui/shortcutsWindow.ui:74
+msgid "Zoom out"
+msgstr "Uzaklaştır"
+
+#: ../data/ui/shortcutsWindow.ui:80
+msgid "Reset zoom"
+msgstr "Yakınlaştırmayı sıfırla"
+
+#: ../data/ui/empty_state.ui:26
+msgid "Let's get started"
+msgstr "Hadi başlayalım"
+
+#: ../data/ui/empty_state.ui:59
+msgid "Add new feeds via URL"
+msgstr "URL kullanarak beslemek ekleyin"
+
+#: ../data/ui/empty_state.ui:69
+msgid "Import an OPML file"
+msgstr "Bir OPML dosyası içeri aktarın"
+
+#: ../data/ui/webview_filler.ui:27
+msgid "Select an article"
+msgstr "Bir makale seç"
+
+#: ../data/ui/extra_popover_menu.ui:15
+msgid "View mode"
+msgstr "Görüntüleme modu"
+
+#: ../data/ui/extra_popover_menu.ui:33
+msgid "Reader Mode"
+msgstr "Okuma Modu"
+
+#: ../data/ui/extra_popover_menu.ui:40
+msgid "RSS Content"
+msgstr "RSS İçeriği"
+
+#: ../data/ui/headerbar.ui:13
+msgid "Refresh"
+msgstr "Yenile"
+
+#: ../data/ui/headerbar.ui:19
+msgid "Menu"
+msgstr "Menü"
+
+#: ../data/ui/headerbar.ui:25
+msgid "Show read articles"
+msgstr "Okunmuş makaleleri göster"
+
+#: ../data/ui/headerbar.ui:29
+msgid "Mark all as read"
+msgstr "Hepsini okundu olarak işaretle"
+
+#: ../data/ui/headerbar.ui:33
+msgid "Mark all as unread"
+msgstr "Hepsini okunmadı olarak işaretle"
+
+#: ../data/ui/headerbar.ui:43
+msgid "Import OPML"
+msgstr "OPML içeri aktar"
+
+#: ../data/ui/headerbar.ui:47
+msgid "Export OPML"
+msgstr "OPML dışarı aktar"
+
+#: ../data/ui/headerbar.ui:53
+msgid "Preferences"
+msgstr "Tercihler"
+
+#: ../data/ui/headerbar.ui:57
+msgid "Keyboard Shortcuts"
+msgstr "Klavye Kısayolları"
+
+#: ../data/ui/headerbar.ui:61
+msgid "About Feeds"
+msgstr "Beslemeler Hakkında"
+
+#: ../data/ui/headerbar.ui:70
+msgid "Filter by feed"
+msgstr "Besleme ile filtrele"
+
+#: ../data/ui/headerbar.ui:76
+msgid "Search"
+msgstr "Ara"
+
+#: ../data/ui/headerbar.ui:119
+msgid "Back to articles"
+msgstr "Makalelere geri dön"
+
+#: ../data/ui/headerbar.ui:126
+msgid "Open externally"
+msgstr "Harici bir uygulamayla aç"
+
+#: ../data/ui/headerbar.ui:133
+msgid "Change view mode"
+msgstr "Görüntüleme modunu değiştir"
+
+#: ../data/ui/headerbar.ui:155
+msgid "Share"
+msgstr "Paylaş"
+
+#: ../data/ui/article_right_click_popover_content.ui:27
+msgid "Save article"
+msgstr "Makaleyi kaydet"
+
+#: ../data/org.gabmus.gfeeds.desktop.in:5
+msgid "@prettyname@"
+msgstr "@prettyname@"
+
+#: ../data/org.gabmus.gfeeds.desktop.in:6
+msgid "News reader for GNOME"
+msgstr "GNOME için haber okuyucusu"
+
+# Should these be translated? Aren't these standards that should be left as they are?
+#: ../data/org.gabmus.gfeeds.desktop.in:13
+msgid "rss;reader;feed;news;"
+msgstr "rss;reader;feed;news;"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:4
+msgid "Feeds"
+msgstr "Beslemeler"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:5
+msgid "Gabriele Musco"
+msgstr "Gabriele Musco"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:15
+msgid ""
+"Feeds is a minimal RSS/Atom feed reader built with speed and simplicity in "
+"mind."
+msgstr ""
+"Beslemeler, hız ve basitlik göz önünde bulundurularak oluşturulmuş minimal "
+"bir RSS/Atom besleme okuyucusudur."
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:16
+msgid ""
+"It offers a simple user interface that only shows the latest news from your "
+"subscriptions."
+msgstr ""
+"Aboneliklerinizden en son haberleri gösteren basit bir kullanıcı arayüzü "
+"sunar."
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:17
+msgid ""
+"Articles are shown in a web view by default, with javascript disabled for a "
+"faster and less intrusive user experience. There's also a reader mode "
+"included, built from the one GNOME Web/Epiphany uses."
+msgstr ""
+"Makaleler, daha hızlı ve daha az müdahaleci bir kullanıcı deneyimi için "
+"varsayılan olarak web görünümünde javascript devre dışı bırakılmış "
+"halleriyle gösterilir. Ayrıca GNOME Web/Epiphany uygulamasını baz alarak "
+"oluşturulmuş bir okuyucu modu da vardır."
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:18
+msgid "Feeds can be imported and exported via OPML."
+msgstr "Beslemeler OPML kullanılarak içeri veya dışarı aktarılabilirler."
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:59
+msgid "Fixed view mode button"
+msgstr "Görüntüleme modu düğmesi düzeltildi"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:60
+msgid "Option to open YouTube links with an external media player"
+msgstr "YouTube bağlantılarını harici bir medya oynatıcıyla açma seçeneği"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:61
+msgid ""
+"Saved articles are no longer stored inside the cache directory, avoiding "
+"accidental deletion"
+msgstr ""
+"Kazara silinmeleri öncellemek için kaydedilmiş makaleler artık önbellek "
+"dizininde depolanmıyorlar"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:69
+msgid "Feed icons improvements for high DPI screens"
+msgstr "Yüksek DPI ekranlar için besleme simgeleri iyileştirmeleri"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:77
+msgid "UI improvements on phones"
+msgstr "Telefonlar için UI iyileştirmeleri"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:85
+msgid "Switched to the new libhandy Avatar widget"
+msgstr "Yeni libhandy avatar widget'ına geçildi"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:86
+msgid "Added Dutch translation courtesy of Heimen Stoffels"
+msgstr "Heimen Stoffels tarafından Hollandaca'ya çevrildi"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:93
+msgid "Fixed searchbar"
+msgstr "Arama çubuğu düzeltildi"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:101
+msgid ""
+"New tags feature! You can now categorize your feeds by creating custom tags"
+msgstr ""
+"Yeni etiketler özelliği! Artık özel etiketler oluşturarak yayınlarınızı "
+"kategorilere ayırabilirsiniz"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:102
+msgid "RSS links can now be opened directly in Feeds to be imported"
+msgstr ""
+"Artık RSS bağlantıları içeri aktarmak için doğrudan Beslemeler'le açılabilir"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:103
+msgid "Mark as read now only marks the currently visible feeds"
+msgstr "Okundu olarak işaretle yalnızca şu anda görünen beslemeleri işaretler "
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:104
+msgid "Added support for the latest version of libhandy"
+msgstr "Libhandy'nin en son sürümü için destek eklendi"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:105
+msgid "Improved message dialogs"
+msgstr "İletişim kutuları iyileştirildi"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:106
+msgid "Performance improvements when importing OPML files"
+msgstr "OPML dosyalarını içe aktarırken performans iyileştirmeleri"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:107
+msgid "Removed option to disable client side decoration"
+msgstr "İstemci tarafı dekorasyonunu devre dışı bırakma seçeneği kaldırıldı"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:114
+msgid ""
+"Don't remove feeds automatically if they have errors, instead ask the user "
+"what to do"
+msgstr ""
+"Beslemelerin hataları olmaları durumunda onları otomatik olarak kaldırmak "
+"yerine kullanıcıya ne yapılacağını sor"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:115
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:137
+msgid "Updated Italian translation"
+msgstr "Güncellenmiş İtalyanca çevirisi"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:122
+msgid "Updated French translation"
+msgstr "Güncellenmiş Fransızca çevirisi"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:129
+msgid "Bug fixes"
+msgstr "Hata düzeltmeleri"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:136
+msgid "Updated version number"
+msgstr "Güncellenmiş sürüm numarası"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:144
+msgid "You can now add some feeds by just using the website URL"
+msgstr ""
+"Artık sadece web sitesi URL'sini kullanarak beslemeler ekleyebilirsiniz."
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:145
+msgid "New generated placeholder icon for feeds without one"
+msgstr ""
+"Bir simgeye sahip olmayan beslemeler için varsayılan olarak bir tane oluştur"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:146
+msgid "Improved reader mode"
+msgstr "İyileştirilmiş okuyucu modu"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:147
+msgid "Swipe left on your touchscreen to move back from an article"
+msgstr "Bir makaleden geri gitmek için dokunmatik ekranınızda sola kaydırın"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:148
+msgid "Code blocks in articles now have syntax highlighting"
+msgstr "Makalelerdeki kod bloklarında artık sözdizimi vurgulaması var"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:149
+msgid "Added French translation"
+msgstr "Fransızca çevirisi eklendi"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:150
+msgid "Removed the colored border left of the articles"
+msgstr "Makalelerin solundaki renkli kenarlık kaldırıldı"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:151
+msgid "More keyboard shortcuts"
+msgstr "Daha fazla klavye kısayolları"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:152
+msgid "Added option to refresh articles on startup"
+msgstr "Başlangıçta makaleleri yenileme seçeneği eklendi"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:153
+msgid "Updated to the GNOME 3.36 runtime"
+msgstr "GNOME 3.36 çalışma zamanına güncellendi"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:154
+msgid "Various improvements and bug fixes"
+msgstr "Çeşitli iyileştirmeler ve hata düzeltmeleri"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:161
+msgid "Added loading progress bar"
+msgstr "Yükleme ilerleme çubuğu eklendi"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:162
+msgid "Added Spanish translation"
+msgstr "İspanyolca çevirisi eklendi"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:163
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:174
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:188
+msgid "Various UI improvements"
+msgstr "Çeşitli kullanıcı arayüzü iyileştirmeleri"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:164
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:175
+msgid "Performance improvements"
+msgstr "Performans iyileştirmeleri"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:165
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:176
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:189
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:199
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:214
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:225
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:278
+msgid "Various bug fixes"
+msgstr "Çeşitli hata düzeltmeleri"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:172
+msgid "Load cached articles on startup"
+msgstr "Önbelleğe alınmış makaleleri başlangıçta yükle"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:173
+msgid "Added new view mode menu"
+msgstr "Yeni görünüm modu menüsü eklendi"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:177
+msgid "Added Brazilian Portuguese translation"
+msgstr "Brezilya Portekizcesi çevirisi eklendi"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:178
+msgid "Added Russian translation"
+msgstr "Rusça çevirisi eklendi"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:185
+msgid "Option to ellipsize article titles for a more compact view"
+msgstr "Daha kompakt bir görünüm için makale başlıklarını kısaltma seçeneği"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:186
+msgid "Added a search function"
+msgstr "Arama işlevi eklendi"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:187
+msgid "Updated dependencies"
+msgstr "Güncellenmiş bağımlılıklar"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:196
+msgid "Errors with feeds are now shown in the UI"
+msgstr "Beslemelerle ilgili hatalar artık kullanıcı arayüzünde gösterilir"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:197
+msgid "Big UI overhaul"
+msgstr "Büyük kullanıcı arayüzü revizyonu "
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:198
+msgid "Updated translations"
+msgstr "Çeviriler güncellendi"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:206
+msgid "OPML file association"
+msgstr "OPML dosya ilişkilendirmesi"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:207
+msgid "Changed left headerbar button order"
+msgstr "Sol başlık çubuğu düğme sırası değiştirildi"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:208
+msgid "Optimization for updating feeds"
+msgstr "Beslemeleri güncelleme iyileştirmeleri"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:209
+msgid "Redesigned right click/longpress menu"
+msgstr "Sağ tıklama/uzun basma menüsü yeniden tasarlandı"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:210
+msgid "Option to show/hide read articles"
+msgstr "Okunan makaleleri gösterme/gizleme seçeneği"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:211
+msgid "Reworked suggestion bar"
+msgstr "Gözden geçirilmiş öneri çubuğu"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:212
+msgid "Changed name to Feeds"
+msgstr "Uygulamala ismi Beslemeler olarak değiştirildi"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:213
+msgid "Improved CPU utilization"
+msgstr "İyileştirilmiş CPU kullanımı"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:221
+msgid "New right click or longpress menu for articles"
+msgstr "Makaleler için yeni sağ tıklama veya uzun basma menüsü"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:222
+msgid "You can now save articles offline"
+msgstr "Artık makaleleri çevrimdışı okuma için kaydedebilirsiniz"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:223
+msgid "Initial suggestion to add feeds is now less intrusive"
+msgstr ""
+"İlk kez çalıştırıldığında gösterilen besleme ekleme önerisi artık daha "
+"kullanıcı dostu"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:224
+msgid "Read articles are now greyed out"
+msgstr "Okuma makaleleri artık gri renkte gösterilir"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:232
+msgid "Concurrent feeds refresh, with customizable thread count"
+msgstr ""
+"özelleştirilebilir iş parçacığı sayısıyla beslemeleri eşzamanlı yenileme "
+"özelleği"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:233
+msgid "Added German translation (thanks @Etamuk)"
+msgstr "Almanca çevirisi eklendi (teşekkürler @Etamuk)"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:240
+msgid "Fix bugs in reader mode"
+msgstr "Okuyucu modundaki hatalar düzeltildi"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:247
+msgid "Minor bug fix"
+msgstr "Küçük hata düzeltmesi"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:254
+msgid "Improved date and time parsing and display"
+msgstr "Geliştirilmiş tarih ve saat ayrıştırma ve görüntüleme"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:255
+msgid "Reader mode can now work on websites without an article tag"
+msgstr "Okuyucu modu artık article etiketi olmayan web sitelerinde çalışabilir"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:256
+msgid "Slight improvements to the icon"
+msgstr "Simgede küçük iyileştirmeler"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:257
+msgid "New feature to filter articles by feed"
+msgstr "Makaleleri feed'e göre filtrelemek özelliği"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:264
+msgid "Improved favicon download"
+msgstr "İyileştirilmiş site simgesi indirme"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:265
+msgid "Fixed refresh duplicating articles"
+msgstr ""
+"Yenileme sonrasında birden fazla kez listenen makaleler sorunu düzeltildi"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:272
+msgid "Added option to disable client side decoration"
+msgstr "İstemci tarafı dekorasyonunu devre dışı bırakma seçeneği eklendi"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:273
+msgid "Brought primary menu in line with GNOME HIG"
+msgstr "GNOME HIG ile uyumlu birincil menü getirildi"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:274
+msgid "Added placeholder icon for feeds without an icon"
+msgstr "Simgesiz beslemeler için yer tutucu simge eklendi"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:275
+msgid "Migrated some widgets to Glade templates"
+msgstr "Bazı widget'ları Glade şablonlarına taşındı"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:276
+msgid "Option to use reader mode by default"
+msgstr "Varsayılan olarak okuyucu modunu kullanma seçeneği"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:277
+msgid "Option to show article content from the feed"
+msgstr "Beslemeden makale içeriğini gösterme seçeneği"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:285
+msgid "Fixed labels alignment"
+msgstr "Etiket hizalaması düzeltildi"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:286
+msgid "Changed app name to Feeds"
+msgstr "Uygulama adı Beslemeler olarak değiştirildi"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:287
+msgid "Added separators for the two sections of the app"
+msgstr "Uygulamanın iki bölümü için ayırıcılar eklendi"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:288
+msgid "Using links as feed titles when there is no title"
+msgstr "Başlık olmadığında bağlantıları besleme başlığı olarak kullanma"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:289
+msgid "Added preference for maximum article age"
+msgstr "Maksimum makale yaşı için tercih eklendi"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:290
+msgid "Added zoom keyboard shortcuts"
+msgstr "Yakınlaştırma klavye kısayolları eklendi"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:291
+msgid "Added preference to enable JavaScript"
+msgstr "JavaScript'i etkinleştirmek için tercih eklendi"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:292
+msgid "Fix window control positions when they are on the left"
+msgstr "Pencere kontrol konumlarını soldayken oluşan sorun düzeltildi"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:299
+msgid "Feeds for websites without favicons will now work"
+msgstr "Favori simgesi olmayan web siteleri için beslemeler artık çalışacak"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:306
+msgid "Fixed bug with adding new feeds"
+msgstr "Yeni beslemelerin eklenmesiyle ilgili hata düzeltildi"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:313
+msgid "Switched to native file chooser"
+msgstr "Yerel dosya seçiciye geçildi"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:314
+msgid "Added empty state initial screen for sidebar"
+msgstr "Kenar çubuğu için boş durum başlangıç ekranı eklendi"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:315
+msgid "Added italian translation"
+msgstr "İtalyanca çevirisi eklendi"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:322
+msgid "First release"
+msgstr "İlk sürüm"
+
+#~ msgid "Refresh feeds"
+#~ msgstr "Beslemeleri güncelle"
+
+#~ msgid "page0"
+#~ msgstr "page0"
+
+#~ msgid "page1"
+#~ msgstr "page1"
