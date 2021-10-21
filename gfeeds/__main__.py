@@ -179,7 +179,7 @@ class GFeedsApplication(BaseApp):
         super().do_activate()
         self.window = GFeedsAppWindow()
         self.confman.window = self.window
-        self.window.connect('destroy', self.on_destroy_window)
+        self.window.connect('close-request', self.on_destroy_window)
         self.add_window(self.window)
         self.window.present()
         # self.feedman.refresh(get_cached=True)
