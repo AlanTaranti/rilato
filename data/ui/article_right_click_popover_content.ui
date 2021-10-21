@@ -2,12 +2,7 @@
 <interface>
   <requires lib="gtk" version="4.0"/>
   <object class="GtkBox" id="container_box">
-    <property name="margin_start">6</property>
-    <property name="margin_end">6</property>
-    <property name="margin_top">6</property>
-    <property name="margin_bottom">6</property>
     <property name="orientation">vertical</property>
-    <property name="spacing">6</property>
     <property name="homogeneous">True</property>
     <child>
       <object class="GtkToggleButton" id="save_btn">
