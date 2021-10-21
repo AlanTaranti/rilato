@@ -3,15 +3,15 @@
   <requires lib="gtk" version="4.0"/>
   <object class="GtkHeaderBar" id="left_headerbar">
     <child>
-      <object class="GtkMenuButton" id="add_btn">
-        <property name="tooltip-text" translatable="yes">Add new feed</property>
-        <property name="icon-name">list-add-symbolic</property>
+      <object class="GtkToggleButton" id="filter_btn">
+        <property name="tooltip-text" translatable="yes">Filter by feed</property>
+        <property name="icon-name">funnel-symbolic</property>
       </object>
     </child>
     <child>
-      <object class="GtkButton" id="refresh_btn">
-        <property name="tooltip-text" translatable="yes">Refresh</property>
-        <property name="icon-name">view-refresh-symbolic</property>
+      <object class="GtkMenuButton" id="add_btn">
+        <property name="tooltip-text" translatable="yes">Add new feed</property>
+        <property name="icon-name">list-add-symbolic</property>
       </object>
     </child>
     <child type="end">
@@ -66,15 +66,15 @@
       </object>
     </child>
     <child type="end">
-      <object class="GtkMenuButton" id="filter_btn">
-        <property name="tooltip-text" translatable="yes">Filter by feed</property>
-        <property name="icon-name">view-list-symbolic</property>
-      </object>
-    </child>
-    <child type="end">
       <object class="GtkToggleButton" id="search_btn">
         <property name="tooltip-text" translatable="yes">Search</property>
         <property name="icon-name">system-search-symbolic</property>
+      </object>
+    </child>
+    <child type="end">
+      <object class="GtkButton" id="refresh_btn">
+        <property name="tooltip-text" translatable="yes">Refresh</property>
+        <property name="icon-name">view-refresh-symbolic</property>
       </object>
     </child>
   </object>
@@ -97,9 +97,7 @@
                     <property name="justify">center</property>
                     <property name="ellipsize">end</property>
                     <property name="single-line-mode">True</property>
-                    <style>
-                      <class name="title"/>
-                    </style>
+                    <style><class name="title"/></style>
                   </object>
                 </child>
               </object>

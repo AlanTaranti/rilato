@@ -210,21 +210,20 @@ class FeedsViewListbox(Gtk.ListBox):
 
 
 class FeedsViewScrolledWindow(Gtk.ScrolledWindow):
-    def __init__(self, description=True, tags=False, **kwargs):
-        super().__init__(**kwargs)
+    def __init__(self, description=True, tags=False):
+        super().__init__(
+            hscrollbar_policy=Gtk.PolicyType.NEVER,
+            vscrollbar_policy=Gtk.PolicyType.AUTOMATIC,
+            hexpand=False, vexpand=True
+        )
         self.listbox = FeedsViewListbox(description, tags)
         self.all_row = FeedsViewAllListboxRow()
         self.listbox.append(self.all_row)
         self.listbox.select_row(self.all_row)
         # self.set_size_request(360, 500)
-        self.set_policy(Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC)
         self.set_child(self.listbox)
-        self.set_size_request(250, 400)
+        self.set_size_request(250, -1)
         self.get_style_context().add_class('frame')
-        self.set_margin_top(6)
-        self.set_margin_end(6)
-        self.set_margin_bottom(6)
-        self.set_margin_start(6)
 
 
 class FeedsViewPopover(Gtk.Popover):

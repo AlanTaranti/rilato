@@ -3,8 +3,8 @@ from gfeeds.feeds_manager import FeedsManager
 
 
 class StackWithEmptyState(Gtk.Stack):
-    def __init__(self, main_widget, *args, **kwargs):
-        super().__init__(*args, vexpand=True, **kwargs)
+    def __init__(self, main_widget):
+        super().__init__(vexpand=True, hexpand=True)
         self.feedman = FeedsManager()
         self.main_widget = main_widget
         self.empty_state = Gtk.Builder.new_from_resource(

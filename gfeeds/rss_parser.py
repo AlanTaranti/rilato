@@ -120,11 +120,13 @@ class FakeFeed:
         return f'FakeFeed Object `{self.title}`'
 
 
-def parse_feed(feed_str: str, no_preprocessing=False) -> Optional[str]:
+def parse_feed(
+        feed_str: str, no_preprocessing: bool = False
+) -> Optional[feedparser.FeedParserDict]:
     if no_preprocessing:
         return feedparser.parse(feed_str)
     udammit = UnicodeDammit(feed_str)
-    feed_str = udammit.unicode_markup
+    feed_str = udammit.unicode_markup or feed_str
     feed_str = feed_str.replace(
         get_encoding(feed_str),
         'utf-8'
@@ -137,21 +139,20 @@ def parse_feed(feed_str: str, no_preprocessing=False) -> Optional[str]:
     for fns in forbidden_namespaces:
         feed_str = feed_str.replace(
             f'<{fns}:', '<'
-        )
-        feed_str = feed_str.replace(
+        ).replace(
             f'</{fns}:', '</'
         )
+    fp_feed = None
     try:
         fp_feed = feedparser.parse(feed_str)
-        return fp_feed
     except Exception:
         import traceback
         traceback.print_exc()
-        return None
+    return fp_feed
 
 
 class Feed:
-    def __init__(self, download_res, no_preprocessing=False):
+    def __init__(self, download_res, no_preprocessing: bool = False):
         self.is_null = False
         self.error = None
         if download_res[0] is False:  # indicates failed download

@@ -1,3 +1,4 @@
+from gfeeds.feeds_view import FeedsViewScrolledWindow
 from gi.repository import Gtk, Adw, GObject
 from gfeeds.confManager import ConfManager
 from gfeeds.feeds_manager import FeedsManager
@@ -135,7 +136,7 @@ class GFeedsAppWindow(BaseWindow):
         self.sidebar_box = Gtk.Box(
             orientation=Gtk.Orientation.VERTICAL, hexpand=False
         )
-        self.sidebar_box.get_style_context().add_class('sidebar')
+        # self.sidebar_box.get_style_context().add_class('sidebar')
         self.sidebar_box.set_size_request(360, 100)
         self.sidebar_box.append(self.left_headerbar)
         self.sidebar_box.append(self.searchbar)
@@ -146,16 +147,48 @@ class GFeedsAppWindow(BaseWindow):
         )
         self.webview_box.append(self.right_headerbar)
         self.webview_box.append(self.webview)
+
         self.stack_with_empty_state = StackWithEmptyState(self.sidebar)
-        self.sidebar_box.append(self.stack_with_empty_state)
+
+        self.filter_flap = Adw.Flap(
+            flap_position=Gtk.PackType.START,
+            fold_policy=Adw.FlapFoldPolicy.ALWAYS,
+            modal=True,
+            reveal_flap=False,
+            swipe_to_open=True, swipe_to_close=True
+        )
+        self.filter_sw = FeedsViewScrolledWindow(description=False, tags=True)
+        self.filter_flap.get_style_context().add_class('background')
+        self.stack_with_empty_state.get_style_context().add_class('sidebar')
+        self.filter_flap.set_content(self.stack_with_empty_state)
+        self.filter_flap.set_flap(self.filter_sw)
+        # this activates the "All" feed filter. while this works it's kinda
+        # hacky and needs a proper function
+        self.feedman.connect(
+            'feedmanager_refresh_start',
+            lambda caller, msg:
+            self.filter_sw.listbox.row_all_activate(
+                skip=(msg == 'startup')
+            )
+        )
+        self.left_headerbar.filter_btn.connect(
+            'toggled', lambda btn:
+                self.filter_flap.set_reveal_flap(btn.get_active())
+        )
+        self.filter_flap.connect(
+            'notify::reveal-flap', lambda *args:
+                self.left_headerbar.filter_btn.set_active(
+                    self.filter_flap.get_reveal_flap()
+                )
+        )
+
+        self.sidebar_box.append(self.filter_flap)
         self.leaflet.append(self.sidebar_box)
-        # self.leaflet.append(separator)
         self.leaflet.append(self.webview_box)
-        # self.leaflet.child_set_property(separator, 'allow-visible', False)
         self.leaflet.connect('notify::folded', self.on_main_leaflet_folded)
 
-        self.bottom_bar = Adw.ViewSwitcherBar()
-        self.bottom_bar.set_stack(self.sidebar)
+        self.bottom_bar = Adw.ViewSwitcherBar(stack=self.sidebar)
+        self.bottom_bar.get_style_context().add_class('sidebar')
         self.sidebar_box.append(self.bottom_bar)
 
         # NOTE: this comment is deprecated

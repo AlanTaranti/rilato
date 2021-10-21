@@ -146,6 +146,7 @@ class GFeedsHeaderbarLeft(Gtk.WindowHandle):
 
     def __init__(self, searchbar, leaflet):
         super().__init__(vexpand=False, hexpand=True)
+        self.get_style_context().add_class('sidebar')
         self.builder = Gtk.Builder.new_from_resource(
             '/org/gabmus/gfeeds/ui/headerbar.ui'
         )
@@ -164,20 +165,7 @@ class GFeedsHeaderbarLeft(Gtk.WindowHandle):
 
         self.search_btn = self.builder.get_object('search_btn')
         self.search_btn.connect('toggled', self.on_search_btn_toggled)
-        self.filter_btn = self.builder.get_object(
-            'filter_btn'
-        )
-        self.filter_popover = FeedsViewPopover(self.filter_btn)
-        self.filter_btn.set_popover(self.filter_popover)
-        # this activates the "All" feed filter. while this works it's kinda
-        # hacky and needs a proper function
-        self.feedman.connect(
-            'feedmanager_refresh_start',
-            lambda caller, msg:
-            self.filter_popover.scrolled_win.listbox.row_all_activate(
-                skip=(msg == 'startup')
-            )
-        )
+        self.filter_btn = self.builder.get_object('filter_btn')
 
         self.add_btn = self.builder.get_object(
             'add_btn'
