@@ -14,7 +14,7 @@
           <object class="GtkImage">
             <property name="halign">center</property>
             <property name="pixel_size">128</property>
-            <property name="icon_name">web-browser-symbolic</property>
+            <property name="icon_name">webview-filler-symbolic</property>
             <property name="icon_size">0</property>
             <style>
               <class name="dim-label"/>

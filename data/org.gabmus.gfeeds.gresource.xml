@@ -34,6 +34,7 @@
     <file preprocess="xml-stripblanks">icons/scalable/status/globe-alt-symbolic.svg</file>
     <file preprocess="xml-stripblanks">icons/scalable/status/tag-symbolic.svg</file>
     <file preprocess="xml-stripblanks">icons/scalable/status/funnel-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">icons/scalable/status/webview-filler-symbolic.svg</file>
 
   </gresource>
 </gresources>
