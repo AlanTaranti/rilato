@@ -2,7 +2,6 @@ from gettext import gettext as _
 from gi.repository import Gtk, Gdk, Adw, GObject
 from gfeeds.confManager import ConfManager
 from gfeeds.feeds_manager import FeedsManager
-from gfeeds.feeds_view import FeedsViewPopover
 from gfeeds.view_mode_menu import GFeedsViewModeMenu
 
 

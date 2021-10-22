@@ -224,20 +224,3 @@ class FeedsViewScrolledWindow(Gtk.ScrolledWindow):
         self.set_child(self.listbox)
         self.set_size_request(250, -1)
         self.get_style_context().add_class('frame')
-
-
-class FeedsViewPopover(Gtk.Popover):
-    def __init__(self, relative_to, **kwargs):
-        super().__init__(**kwargs)
-        self.scrolled_win = FeedsViewScrolledWindow(
-            description=False,
-            tags=True
-        )
-        self.set_child(self.scrolled_win)
-        self.set_autohide(True)
-        # self.set_parent(relative_to)
-        relative_to.set_popover(self)
-        # relative_to.connect('clicked', self.on_relative_to_clicked)
-
-    # def on_relative_to_clicked(self, *args):
-    #     self.popup()
