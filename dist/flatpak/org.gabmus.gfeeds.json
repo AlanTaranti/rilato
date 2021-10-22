@@ -2,10 +2,8 @@
     "app-id": "org.gabmus.gfeeds",
     "command": "gfeeds",
     "runtime": "org.gnome.Platform",
-    "//runtime": "org.webkit.Platform",
-    "runtime-version": "41",
+    "runtime-version": "master",
     "sdk": "org.gnome.Sdk",
-    "//sdk": "org.webkit.Sdk",
     "finish-args": [
         "--device=dri",
         "--share=ipc",
