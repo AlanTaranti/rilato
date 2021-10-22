@@ -199,12 +199,6 @@ class GFeedsAppWindow(BaseWindow):
         )
 
         self.append(self.leaflet)
-
-        self.set_default_size(
-            self.confman.conf['windowsize']['width'],
-            self.confman.conf['windowsize']['height']
-        )
-        self.size_allocation = self.get_allocation()
         self.on_main_leaflet_folded()
 
         self.confman.connect(
@@ -213,6 +207,13 @@ class GFeedsAppWindow(BaseWindow):
         )
         self.set_dark_mode(self.confman.conf['dark_mode'])
 
+    def present(self):
+        super().present()
+        self.set_default_size(
+            self.confman.conf['windowsize']['width'],
+            self.confman.conf['windowsize']['height']
+        )
+
     def on_headerbar_squeeze(self, caller: GObject.Object, squeezed: bool):
         self.bottom_bar.set_reveal(squeezed)
 
@@ -220,10 +221,9 @@ class GFeedsAppWindow(BaseWindow):
         self.emit('destroy')
 
     def on_destroy(self, *args):
-        alloc = self.get_allocation()
         self.confman.conf['windowsize'] = {
-            'width': alloc.width,
-            'height': alloc.height
+            'width': self.get_width(),
+            'height': self.get_height()
         }
         # cleanup old read items
         feeds_items_links = [fi.link for fi in self.feedman.feeds_items]
