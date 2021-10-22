@@ -66,6 +66,9 @@ class GFeedsHeaderbarRight(Gtk.WindowHandle):
         self.view_mode_menu_btn = self.builder.get_object(
             'view_mode_menu_btn'
         )
+        self.view_mode_menu_btn.get_first_child().set_child(
+            self.builder.get_object('view_mode_btn_content')
+        )
         self.view_mode_menu_btn_icon = self.builder.get_object(
             'view_mode_menu_btn_icon'
         )

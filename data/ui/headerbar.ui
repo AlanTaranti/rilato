@@ -1,6 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <requires lib="gtk" version="4.0"/>
+  <menu id="generalMenu">
+    <section>
+      <item>
+        <attribute name="label" translatable="yes">Show read articles</attribute>
+        <attribute name="action">app.show_read_items</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">Mark all as read</attribute>
+        <attribute name="action">app.set_all_read</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">Mark all as unread</attribute>
+        <attribute name="action">app.set_all_unread</attribute>
+      </item>
+    </section>
+    <section>
+      <item>
+        <attribute name="label" translatable="yes">Manage Feeds</attribute>
+        <attribute name="action">app.manage_feeds</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">Import OPML</attribute>
+        <attribute name="action">app.import_opml</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">Export OPML</attribute>
+        <attribute name="action">app.export_opml</attribute>
+      </item>
+    </section>
+    <section>
+      <item>
+        <attribute name="label" translatable="yes">Preferences</attribute>
+        <attribute name="action">app.settings</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">Keyboard Shortcuts</attribute>
+        <attribute name="action">app.shortcuts</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">About Feeds</attribute>
+        <attribute name="action">app.about</attribute>
+      </item>
+    </section>
+  </menu>
   <object class="GtkHeaderBar" id="left_headerbar">
     <child>
       <object class="GtkToggleButton" id="filter_btn">
@@ -19,50 +63,6 @@
         <property name="tooltip-text" translatable="yes">Menu</property>
         <property name="icon-name">open-menu-symbolic</property>
         <property name="menu-model">generalMenu</property>
-        <menu id="generalMenu">
-          <section>
-            <item>
-              <attribute name="label" translatable="yes">Show read articles</attribute>
-              <attribute name="action">app.show_read_items</attribute>
-            </item>
-            <item>
-              <attribute name="label" translatable="yes">Mark all as read</attribute>
-              <attribute name="action">app.set_all_read</attribute>
-            </item>
-            <item>
-              <attribute name="label" translatable="yes">Mark all as unread</attribute>
-              <attribute name="action">app.set_all_unread</attribute>
-            </item>
-          </section>
-          <section>
-            <item>
-              <attribute name="label" translatable="yes">Manage Feeds</attribute>
-              <attribute name="action">app.manage_feeds</attribute>
-            </item>
-            <item>
-              <attribute name="label" translatable="yes">Import OPML</attribute>
-              <attribute name="action">app.import_opml</attribute>
-            </item>
-            <item>
-              <attribute name="label" translatable="yes">Export OPML</attribute>
-              <attribute name="action">app.export_opml</attribute>
-            </item>
-          </section>
-          <section>
-            <item>
-              <attribute name="label" translatable="yes">Preferences</attribute>
-              <attribute name="action">app.settings</attribute>
-            </item>
-            <item>
-              <attribute name="label" translatable="yes">Keyboard Shortcuts</attribute>
-              <attribute name="action">app.shortcuts</attribute>
-            </item>
-            <item>
-              <attribute name="label" translatable="yes">About Feeds</attribute>
-              <attribute name="action">app.about</attribute>
-            </item>
-          </section>
-        </menu>
       </object>
     </child>
     <child type="end">
@@ -130,20 +130,6 @@
         <property name="sensitive">False</property>
         <property name="tooltip-text" translatable="yes">Change view mode</property>
         <style><class name="image-button" /></style>
-        <child>
-          <object class="GtkBox">
-            <property name="spacing">6</property>
-            <child>
-              <object class="GtkImage" id="view_mode_menu_btn_icon">
-              </object>
-            </child>
-            <child>
-              <object class="GtkImage">
-                <property name="icon-name">pan-down-symbolic</property>
-              </object>
-            </child>
-          </object>
-        </child>
       </object>
     </child>
     <child>
@@ -152,6 +138,19 @@
         <property name="receives-default">True</property>
         <property name="tooltip-text" translatable="yes">Share</property>
         <property name="icon-name">emblem-shared-symbolic</property>
+      </object>
+    </child>
+  </object>
+  <object class="GtkBox" id="view_mode_btn_content">
+    <property name="orientation">horizontal</property>
+    <property name="spacing">6</property>
+    <child>
+      <object class="GtkImage" id="view_mode_menu_btn_icon">
+      </object>
+    </child>
+    <child>
+      <object class="GtkImage">
+        <property name="icon-name">pan-down-symbolic</property>
       </object>
     </child>
   </object>
