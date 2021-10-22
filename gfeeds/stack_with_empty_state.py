@@ -1,11 +1,13 @@
 from gi.repository import Gtk
 from gfeeds.feeds_manager import FeedsManager
+from gfeeds.confManager import ConfManager
 
 
 class StackWithEmptyState(Gtk.Stack):
     def __init__(self, main_widget):
         super().__init__(vexpand=True, hexpand=True)
         self.feedman = FeedsManager()
+        self.confman = ConfManager()
         self.main_widget = main_widget
         self.empty_state = Gtk.Builder.new_from_resource(
             '/org/gabmus/gfeeds/ui/empty_state.ui'
@@ -13,7 +15,10 @@ class StackWithEmptyState(Gtk.Stack):
         self.main_widget.show()
         self.add_named(self.main_widget, 'main_widget')
         self.add_named(self.empty_state, 'empty_state')
-        self.set_visible_child(self.main_widget)
+        self.set_visible_child(
+            self.main_widget if len(self.confman.conf['feeds']) > 0
+            else self.empty_state
+        )
 
         self.feedman.feeds.connect(
             'pop',
@@ -32,7 +37,6 @@ class StackWithEmptyState(Gtk.Stack):
             Gtk.StackTransitionType.CROSSFADE
         )
 
-        self.on_feeds_pop()
         # self.set_size_request(360, 100)
 
     def on_feeds_pop(self, *args):
