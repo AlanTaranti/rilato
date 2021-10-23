@@ -54,10 +54,7 @@ def get_favicon(link, favicon_path):
     if p[-4:].lower() == '.ico':
         needs_convert = True
     if not candidate['is_absolute']:
-        if p[0:2] == '//':
-            p = p[2:]
-        elif p[0] == '/':
-            p = p[1:]
+        p = p.lstrip('/')
         up = urlparse(link)
         url = f'{up.scheme or "http"}://{up.hostname}/{p}'
         try:

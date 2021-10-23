@@ -478,7 +478,7 @@
                 {
                     "type": "git",
                     "url": "https://github.com/lxml/lxml",
-                    "tag": "lxml-4.5.2"
+                    "tag": "lxml-4.6.3"
                 }
             ]
         },

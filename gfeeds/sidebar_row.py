@@ -90,13 +90,15 @@ class GFeedsSidebarRow(Gtk.ListBoxRow):
                 del self.picture_view
                 self.picture_view = None
             return
-        if self.feeditem.image_url is None:
-            return
 
         def af():
+            if self.feeditem.image_url is None:
+                self.feeditem.set_thumb_from_link()
+            if self.feeditem.image_url is None:
+                return
             ext = self.feeditem.image_url.split('.')[-1].lower()
-            if ext not in ('png', 'jpg'):
-                ext = 'png'
+            if ext not in ('png', 'jpg', 'gif'):
+                return
             dest = (
                 self.confman.thumbs_cache_path + '/' +
                 shasum(self.feeditem.image_url) + '.' + ext

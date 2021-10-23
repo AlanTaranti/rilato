@@ -13,6 +13,7 @@ from gfeeds.sha import shasum
 from PIL import Image
 from bs4 import UnicodeDammit
 from typing import Optional
+from gfeeds.get_thumb import get_thumb
 
 
 def get_encoding(in_str):
@@ -67,10 +68,15 @@ class FeedItem:
         if enclosure is not None:
             if 'image/' in enclosure.get('type', ''):
                 self.image_url = enclosure.get('url', None)
-        else:
+        if self.image_url is None:
             thumbnail = self.fp_item.get('thumbnail', None)
             if thumbnail is not None:
                 self.image_url = thumbnail.get('url', None)
+        # sidebar row will try to async get an image from html if all of the
+        # above fail
+
+    def set_thumb_from_link(self):
+        self.image_url = get_thumb(self.link)
 
     def set_read(self, read):
         if read == self.read:  # how could this happen?
