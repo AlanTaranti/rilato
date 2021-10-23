@@ -1,5 +1,6 @@
-from gi.repository import Gtk, Gdk, Gio, Graphene
+from gi.repository import Gtk, Gdk, Gio
 from gfeeds.confManager import ConfManager
+
 
 class PictureView(Gtk.Widget):
     def __init__(self, path):
