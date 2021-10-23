@@ -1,3 +1,8 @@
+from threading import Thread
+from gfeeds.picture_view import PictureView
+from os.path import isfile
+from gfeeds.sha import shasum
+from gfeeds.download_manager import download_raw
 from gi.repository import Gtk, GLib, Pango
 from gfeeds.confManager import ConfManager
 from gfeeds.initials_icon import InitialsIcon
@@ -66,10 +71,39 @@ class GFeedsSidebarRow(Gtk.ListBoxRow):
             self.datestr
         )
 
+        self.picture_view_container = self.builder.get_object(
+            'picture_view_container'
+        )
+        self.picture_view = None
+        self.set_article_image()
+
         self.popover = RowPopover(self)
 
         self.set_child(self.container_box)
         self.set_read()
+
+    def set_article_image(self):
+        if self.feeditem.image_url is None:
+            return
+
+        def af():
+            ext = self.feeditem.image_url.split('.')[-1].lower()
+            if ext not in ('png', 'jpg'):
+                ext = 'png'
+            dest = (
+                self.confman.thumbs_cache_path + '/' +
+                shasum(self.feeditem.image_url) + '.' + ext
+            )
+            if not isfile(dest):
+                download_raw(self.feeditem.image_url, dest)
+            if isfile(dest):
+                GLib.idle_add(cb, dest)
+
+        def cb(img):
+            self.picture_view = PictureView(img)
+            self.picture_view_container.append(self.picture_view)
+
+        Thread(target=af, daemon=True).start()
 
     def on_full_article_title_changed(self, *args):
         self.title_label.set_ellipsize(

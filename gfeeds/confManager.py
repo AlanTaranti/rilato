@@ -63,6 +63,11 @@ class ConfManagerSignaler(GObject.Object):
             None,
             (str,)
         ),
+        'on_max_picture_height_changed': (
+            GObject.SignalFlags.RUN_LAST,
+            None,
+            (str,)
+        )
     }
 
 
@@ -93,7 +98,8 @@ class ConfManager(metaclass=Singleton):
         'refresh_on_startup': False,
         'tags': [],
         'open_youtube_externally': False,
-        'media_player': 'mpv'
+        'media_player': 'mpv',
+        'max_picture_height': 600
     }
 
     def __init__(self):

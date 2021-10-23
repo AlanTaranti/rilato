@@ -13,3 +13,7 @@ infobar.warning {
 .force-background {
     background-color: @theme_bg_color;
 }
+
+.picture-rounded {
+    border-radius: 8px;
+}

@@ -61,6 +61,17 @@ class FeedItem:
                 'Error: unable to parse datetime {0} for feeditem {1}'
             ).format(self.pub_date_str, self))
 
+        # various ways to get an article image
+        self.image_url = None
+        enclosure = self.fp_item.get('enclosure', None)
+        if enclosure is not None:
+            if 'image/' in enclosure.get('type', ''):
+                self.image_url = enclosure.get('url', None)
+        else:
+            thumbnail = self.fp_item.get('thumbnail', None)
+            if thumbnail is not None:
+                self.image_url = thumbnail.get('url', None)
+
     def set_read(self, read):
         if read == self.read:  # how could this happen?
             return
@@ -134,7 +145,8 @@ def parse_feed(
     forbidden_namespaces = [
         'atom',
         'openSearch',
-        'thr'
+        'thr',
+        'media'
     ]
     for fns in forbidden_namespaces:
         feed_str = feed_str.replace(
