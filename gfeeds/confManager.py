@@ -67,6 +67,11 @@ class ConfManagerSignaler(GObject.Object):
             GObject.SignalFlags.RUN_LAST,
             None,
             (str,)
+        ),
+        'show_thumbnails_changed': (
+            GObject.SignalFlags.RUN_LAST,
+            None,
+            (str,)
         )
     }
 
@@ -99,7 +104,8 @@ class ConfManager(metaclass=Singleton):
         'tags': [],
         'open_youtube_externally': False,
         'media_player': 'mpv',
-        'max_picture_height': 600
+        'max_picture_height': 600,
+        'show_thumbnails': True
     }
 
     def __init__(self):

@@ -301,10 +301,19 @@ class ViewPreferencesPage(Adw.PreferencesPage):
                 'conf_key': 'enable_js',
                 'signal': 'gfeeds_webview_settings_changed'
             },
+            {
+                'title': _('Show article thumbnails'),
+                'conf_key': 'show_thumbnails',
+                'signal': 'show_thumbnails_changed'
+            }
         ]
         for s in toggle_settings:
             row = PreferencesToggleRow(s['title'], s['conf_key'], s['signal'])
             self.view_preferences_group.add(row)
+        self.view_preferences_group.add(PreferencesSpinButtonRow(
+            _('Maximum thumbnail height'), 100, 1200, 'max_picture_height',
+            'on_max_picture_height_changed'
+        ))
         self.add(self.view_preferences_group)
 
 

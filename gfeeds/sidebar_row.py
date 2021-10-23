@@ -75,6 +75,7 @@ class GFeedsSidebarRow(Gtk.ListBoxRow):
             'picture_view_container'
         )
         self.picture_view = None
+        self.confman.connect('show_thumbnails_changed', self.set_article_image)
         self.set_article_image()
 
         self.popover = RowPopover(self)
@@ -82,7 +83,13 @@ class GFeedsSidebarRow(Gtk.ListBoxRow):
         self.set_child(self.container_box)
         self.set_read()
 
-    def set_article_image(self):
+    def set_article_image(self, *args):
+        if not self.confman.conf['show_thumbnails']:
+            if self.picture_view is not None:
+                self.picture_view_container.remove(self.picture_view)
+                del self.picture_view
+                self.picture_view = None
+            return
         if self.feeditem.image_url is None:
             return
 
