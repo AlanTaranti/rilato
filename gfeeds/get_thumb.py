@@ -17,7 +17,7 @@ def get_thumb(link):
     for e in meta_els:
         if 'property' in e.attrib.keys() and 'content' in e.attrib.keys():
             if e.attrib['property'] in ('og:image', 'image'):
-                res = e.attrib['content']
+                res = e.attrib['content'].strip()
                 break
     if res is None:
         return None

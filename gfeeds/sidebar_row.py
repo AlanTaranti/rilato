@@ -101,7 +101,8 @@ class GFeedsSidebarRow(Gtk.ListBoxRow):
                         self.feeditem.set_thumb_from_link()
                     if self.feeditem.image_url is None:
                         return
-                    ext = self.feeditem.image_url.split('.')[-1].lower()
+                    ext = \
+                        self.feeditem.image_url.split('.')[-1].lower().strip()
                     if ext not in ('png', 'jpg', 'gif'):
                         return
                     dest = (
