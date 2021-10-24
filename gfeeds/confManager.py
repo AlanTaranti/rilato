@@ -1,5 +1,5 @@
 from pathlib import Path
-from os.path import isdir
+from os.path import isdir, isfile
 from os import makedirs
 from os import environ as Env
 import json
@@ -203,6 +203,20 @@ class ConfManager(metaclass=Singleton):
         # self.mono_font = font_gsettings.get_value(
         #     'monospace-font-name'
         # ).get_string()
+
+        self.article_thumb_cache_path = (
+            self.thumbs_cache_path + '/article_thumb_cache.json'
+        )
+        if not isfile(self.article_thumb_cache_path):
+            self.article_thumb_cache = dict()
+            self.save_article_thumb_cache()
+        else:
+            with open(self.article_thumb_cache_path, 'r') as fd:
+                self.article_thumb_cache = json.loads(fd.read())
+
+    def save_article_thumb_cache(self):
+        with open(self.article_thumb_cache_path, 'w') as fd:
+            fd.write(json.dumps(self.article_thumb_cache))
 
     @property
     def max_article_age(self) -> timedelta:

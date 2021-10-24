@@ -11,8 +11,6 @@ def get_thumb(link):
             namespaceHTMLElements=False
         )
     except Exception:
-        import traceback
-        traceback.print_exc()
         return None
     meta_els = root.findall('.//head/meta')
     res = None

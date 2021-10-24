@@ -19,25 +19,11 @@ class PictureView(Gtk.Widget):
         self.texture = None
         self.set_file(path)
 
-    def get_texture(self):
-        if self.texture is None:
-            self.texture = Gdk.Texture.new_from_file(
-                Gio.File.new_for_path(self.path)
-            )
-        return self.texture
-
-    def drop_cache(self):
-        if self.texture:
-            del self.texture
-            self.texture = None
-
-    def open_image(self, *args):
-        if self.open_media_func is not None:
-            self.open_media_func()
-
     def set_file(self, path):
         self.path = path
-        self.texture = self.get_texture()
+        self.texture = Gdk.Texture.new_from_file(
+            Gio.File.new_for_path(self.path)
+        )
         self.aspect_ratio = self.texture.get_intrinsic_aspect_ratio()
         self.queue_draw()
         self.queue_resize()
@@ -46,13 +32,14 @@ class PictureView(Gtk.Widget):
         return Gtk.SizeRequestMode.HEIGHT_FOR_WIDTH
 
     def do_snapshot(self, snapshot):
+        if self.texture is None:
+            return
         width = self.get_width()
         height = width / self.aspect_ratio
-        self.get_texture().snapshot(
+        self.texture.snapshot(
             snapshot,
             width, height
         )
-        self.drop_cache()
 
     def get_real_size(self, w, h):
         meas_w = self.measure(Gtk.Orientation.HORIZONTAL, h)

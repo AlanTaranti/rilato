@@ -234,6 +234,7 @@ class GFeedsAppWindow(BaseWindow):
         for ri in to_rm:
             self.confman.conf['read_items'].remove(ri)
         self.confman.save_conf()
+        self.confman.save_article_thumb_cache()
 
     def on_sidebar_row_activated(
             self,

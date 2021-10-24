@@ -92,19 +92,27 @@ class GFeedsSidebarRow(Gtk.ListBoxRow):
             return
 
         def af():
-            if self.feeditem.image_url is None:
-                self.feeditem.set_thumb_from_link()
-            if self.feeditem.image_url is None:
-                return
-            ext = self.feeditem.image_url.split('.')[-1].lower()
-            if ext not in ('png', 'jpg', 'gif'):
-                return
-            dest = (
-                self.confman.thumbs_cache_path + '/' +
-                shasum(self.feeditem.image_url) + '.' + ext
-            )
-            if not isfile(dest):
-                download_raw(self.feeditem.image_url, dest)
+            dest = None
+            if self.feeditem.link in self.confman.article_thumb_cache.keys():
+                dest = self.confman.article_thumb_cache[self.feeditem.link]
+            else:
+                try:
+                    if self.feeditem.image_url is None:
+                        self.feeditem.set_thumb_from_link()
+                    if self.feeditem.image_url is None:
+                        return
+                    ext = self.feeditem.image_url.split('.')[-1].lower()
+                    if ext not in ('png', 'jpg', 'gif'):
+                        return
+                    dest = (
+                        self.confman.thumbs_cache_path + '/' +
+                        shasum(self.feeditem.image_url) + '.' + ext
+                    )
+                    if not isfile(dest):
+                        download_raw(self.feeditem.image_url, dest)
+                    self.confman.article_thumb_cache[self.feeditem.link] = dest
+                except Exception:
+                    return
             if isfile(dest):
                 GLib.idle_add(cb, dest)
 
