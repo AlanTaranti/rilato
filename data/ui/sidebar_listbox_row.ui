@@ -31,9 +31,7 @@
             <property name="label">_article_title</property>
             <property name="wrap">True</property>
             <property name="xalign">0</property>
-            <attributes>
-              <attribute name="weight" value="semibold"/>
-            </attributes>
+            <style><class name="article-title" /></style>
           </object>
         </child>
         <child>
@@ -55,6 +53,7 @@
                 <property name="hexpand">1</property>
                 <style>
                   <class name="dim-label"/>
+                  <class name="smaller-label"/>
                 </style>
               </object>
             </child>
@@ -67,6 +66,7 @@
                 <property name="xalign">1</property>
                 <style>
                   <class name="dim-label"/>
+                  <class name="smaller-label"/>
                 </style>
               </object>
             </child>

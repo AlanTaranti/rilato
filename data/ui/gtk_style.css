@@ -17,3 +17,11 @@ infobar.warning {
 .picture-rounded {
     border-radius: 8px;
 }
+
+.article-title {
+    font-weight: 600;
+}
+
+.smaller-label {
+    font-size: .9rem;
+}
