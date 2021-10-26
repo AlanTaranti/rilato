@@ -66,37 +66,6 @@ class GFeedsAppWindow(BaseWindow):
                 )
             ]
         )
-        super().__init__(
-            app_name='Feeds',
-            icon_name='org.gabmus.gfeeds',
-            shortcuts=[
-                AppShortcut(
-                    'F10', lambda *args: self.left_headerbar.menu_btn.popup()
-                ),
-                AppShortcut(
-                    '<Control>r', self.feedman.refresh
-                ),
-                AppShortcut(
-                    '<Control>f', lambda *args:
-                        self.left_headerbar.search_btn.set_active(True)
-                ),
-                AppShortcut(
-                    '<Control>j', self.sidebar.select_next_article
-                ),
-                AppShortcut(
-                    '<Control>k', self.sidebar.select_prev_article
-                ),
-                AppShortcut(
-                    '<Control>plus', self.webview.key_zoom_in
-                ),
-                AppShortcut(
-                    '<Control>minus', self.webview.key_zoom_out
-                ),
-                AppShortcut(
-                    '<Control>equal', self.webview.key_zoom_reset
-                )
-            ]
-        )
 
         # separator = Gtk.Separator()
         # separator.get_style_context().add_class('sidebar')
