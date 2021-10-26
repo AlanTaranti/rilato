@@ -33,17 +33,6 @@ i18n.merge_file(
     install_dir: join_paths(datadir, 'applications')
 )
 
-message('Looking for dependencies')
-python_bin = python.find_python()
-if not python_bin.found()
-    error('No valid python3 binary found')
-else
-    message('Found python3 binary')
-endif
-dependency('glib-2.0')
-dependency('gobject-introspection-1.0', version: '>=1.35.9')
-dependency('gtk+-3.0', version :'>=3.20')
-
 dbus_conf = configuration_data()
 dbus_conf.set('bindir', join_paths(prefix, bindir))
 dbus_conf.set('appid', app_id)

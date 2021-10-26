@@ -1,6 +1,6 @@
 project('gfeeds',
     version: '0.16.2',
-    meson_version: '>= 0.50.0',
+    meson_version: '>= 0.58.0',
     license: 'GPL3'
 )
 
@@ -36,17 +36,27 @@ translators = '\n'.join([
     'Italian: Gabriele Musco (GabMus) &lt;emaildigabry@gmail.com&gt;'
 ])
 
+message('Looking for dependencies')
+dependency('glib-2.0')
+dependency('gobject-introspection-1.0', version: '>=1.35.9')
+dependency('gtk4', version :'>=4.3.1')
+dependency('libadwaita-1', version :'>=1.0.0.alpha.3')
+
 i18n = import('i18n')
-python = import('python3')
+python = import('python')
+py_installation = python.find_installation('python3')
+if not py_installation.found()
+    error('No valid python3 binary found')
+endif
 gnome = import('gnome')
 prefix = get_option('prefix') # should be /usr
 bindir = get_option('bindir') # should be bin
 datadir = get_option('datadir') # should be /usr/share
 pkgdatadir = join_paths(prefix, datadir, meson.project_name())
-pythondir = join_paths(prefix, python.sysconfig_path('purelib'))
+pythondir = py_installation.get_install_dir()
 localedir = join_paths(prefix, get_option('localedir'))
 
-install_subdir('gfeeds', install_dir: pythondir)
+install_subdir(meson.project_name(), install_dir: pythondir)
 subdir('data')
 subdir('bin')
 subdir('po')
