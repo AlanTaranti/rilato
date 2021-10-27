@@ -1,5 +1,6 @@
-from gi.repository import Gtk, Gdk, Gio
+from gi.repository import Gtk, Gdk, Gio, GLib
 from gfeeds.confManager import ConfManager
+from threading import Thread
 
 
 class PictureView(Gtk.Widget):
@@ -17,22 +18,31 @@ class PictureView(Gtk.Widget):
             lambda *args: self.queue_resize()
         )
         self.texture = None
+        self.aspect_ratio = None
         self.set_file(path)
 
     def set_file(self, path):
         self.path = path
-        self.texture = Gdk.Texture.new_from_file(
-            Gio.File.new_for_path(self.path)
-        )
-        self.aspect_ratio = self.texture.get_intrinsic_aspect_ratio()
-        self.queue_draw()
-        self.queue_resize()
+        gio_file = Gio.File.new_for_path(self.path)
+
+        def af():
+            self.texture = Gdk.Texture.new_from_file(gio_file)
+            GLib.idle_add(cb)
+
+        def cb():
+            if self.texture is None:
+                return
+            self.aspect_ratio = self.texture.get_intrinsic_aspect_ratio()
+            self.queue_draw()
+            self.queue_resize()
+
+        Thread(target=af, daemon=True).start()
 
     def do_get_request_mode(self, *args):
         return Gtk.SizeRequestMode.HEIGHT_FOR_WIDTH
 
     def do_snapshot(self, snapshot):
-        if self.texture is None:
+        if self.texture is None or self.aspect_ratio is None:
             return
         width = self.get_width()
         height = width / self.aspect_ratio
@@ -48,6 +58,8 @@ class PictureView(Gtk.Widget):
         return w, h
 
     def do_measure(self, orientation, for_size):
+        if self.aspect_ratio is None:
+            return (0, 0, -1, -1)
         if orientation == Gtk.Orientation.VERTICAL:
             # max prevents the height to be lower than the minimum
             # that I defined
