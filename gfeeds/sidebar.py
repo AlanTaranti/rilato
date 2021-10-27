@@ -3,15 +3,14 @@ from gettext import gettext as _
 from gfeeds.confManager import ConfManager
 from gfeeds.feeds_manager import FeedsManager
 from gfeeds.sidebar_row import GFeedsSidebarRow
-from gfeeds.listbox_tools import separator_header_func
 from gfeeds.rss_parser import FakeFeed
 from gfeeds.accel_manager import add_mouse_button_accel, add_longpress_accel
 from gfeeds.get_children import get_children
 
 
 class GFeedsSidebarListBox(Gtk.ListBox):
-    def __init__(self, parent_stack, **kwargs):
-        super().__init__(vexpand=True, **kwargs)
+    def __init__(self, parent_stack):
+        super().__init__(vexpand=True, show_separators=True)
         self.search_terms = ''
         self.confman = ConfManager()
         self.parent_stack = parent_stack
@@ -43,7 +42,6 @@ class GFeedsSidebarListBox(Gtk.ListBox):
                 if gesture.get_current_button() == 3  # 3 is right click
                 else None
         )
-        self.set_header_func(separator_header_func)
 
     def append(self, *args, **kwargs):
         super().append(*args, **kwargs)
@@ -126,15 +124,16 @@ class GFeedsSidebarListBox(Gtk.ListBox):
 
 
 class GFeedsSidebarScrolledWin(Gtk.ScrolledWindow):
-    def __init__(self, parent_stack, **kwargs):
-        super().__init__(**kwargs)
+    def __init__(self, parent_stack):
+        super().__init__(
+            hscrollbar_policy=Gtk.PolicyType.NEVER,
+            vscrollbar_policy=Gtk.PolicyType.AUTOMATIC
+        )
         self.parent_stack = parent_stack
         self.listbox = GFeedsSidebarListBox(self.parent_stack)
         self.empty = self.listbox.empty
         self.populate = self.listbox.populate
         # self.set_size_request(360, 100)
-
-        self.set_policy(Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC)
         self.set_child(self.listbox)
 
     def select_next_article(self, *args):

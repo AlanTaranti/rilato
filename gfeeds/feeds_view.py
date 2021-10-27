@@ -3,7 +3,6 @@ from gi.repository import Gtk, Pango
 from gfeeds.confManager import ConfManager
 from gfeeds.feeds_manager import FeedsManager
 from gfeeds.initials_icon import InitialsIcon
-from gfeeds.listbox_tools import separator_header_func
 from gfeeds.get_children import get_children
 
 
@@ -108,8 +107,9 @@ class FeedsViewTagListboxRow(Gtk.ListBoxRow):
 
 
 class FeedsViewListbox(Gtk.ListBox):
+    # here kwargs is actually being used
     def __init__(self, description=True, tags=False, **kwargs):
-        super().__init__(**kwargs)
+        super().__init__(show_separators=True, **kwargs)
         self.description = description
         self.feedman = FeedsManager()
         self.confman = ConfManager()
@@ -146,7 +146,6 @@ class FeedsViewListbox(Gtk.ListBox):
                 self.on_tags_append(None, tag)
 
         self.set_sort_func(self.gfeeds_sort_func, None, False)
-        self.set_header_func(separator_header_func)
 
     def on_feeds_pop(self, caller, feed):
         self.remove_feed(feed)
