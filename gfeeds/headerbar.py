@@ -138,14 +138,6 @@ class GFeedsHeaderbarRight(Gtk.WindowHandle):
 
 
 class GFeedsHeaderbarLeft(Gtk.WindowHandle):
-    __gsignals__ = {
-        'squeeze': (
-            GObject.SignalFlags.RUN_FIRST,
-            None,
-            (bool,)
-        )
-    }
-
     def __init__(self, searchbar, leaflet):
         super().__init__(vexpand=False, hexpand=True)
         self.get_style_context().add_class('sidebar')
@@ -179,21 +171,6 @@ class GFeedsHeaderbarLeft(Gtk.WindowHandle):
         self.refresh_btn = self.builder.get_object('refresh_btn')
         self.refresh_btn.connect('clicked', self.feedman.refresh)
 
-        self.squeezer = Adw.Squeezer(orientation=Gtk.Orientation.HORIZONTAL)
-        self.squeezer.set_homogeneous(False)
-        self.squeezer.set_interpolate_size(False)
-        self.squeezer.set_hexpand(False)
-        self.nobox = Gtk.Label()
-        self.nobox.set_size_request(1, -1)
-        self.stack_switcher = Adw.ViewSwitcher(
-            policy=Adw.ViewSwitcherPolicy.WIDE,
-            margin_start=12, margin_end=12
-        )
-        self.squeezer.add(self.stack_switcher)
-        self.squeezer.add(self.nobox)
-        self.squeezer.connect('notify::visible-child', self.on_squeeze)
-        self.left_headerbar.set_title_widget(self.squeezer)
-
         self.feedman.connect(
             'feedmanager_refresh_start',
             self.on_new_feed_add_start
@@ -205,12 +182,6 @@ class GFeedsHeaderbarLeft(Gtk.WindowHandle):
         self.on_new_feed_add_start()
 
         self.leaflet.connect('notify::folded', self.set_headerbar_controls)
-
-    def on_squeeze(self, *args):
-        self.emit(
-            'squeeze',
-            self.squeezer.get_visible_child() == self.nobox
-        )
 
     def on_search_btn_toggled(self, togglebtn):
         self.searchbar.set_search_mode(togglebtn.get_active())

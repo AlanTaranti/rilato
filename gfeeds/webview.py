@@ -1,6 +1,5 @@
 from gettext import gettext as _
 import threading
-from feedparser import FeedParserDict
 from gi.repository import Gtk, GLib, WebKit2, GObject, Gio
 from gfeeds.build_reader_html import build_reader_html
 from gfeeds.confManager import ConfManager
@@ -123,25 +122,14 @@ class GFeedsWebView(Gtk.Stack):
             )
 
     def _load_rss_content(self, feeditem):
-        if feeditem.is_saved:
-            self.set_enable_reader_mode(True, False)
-            return
         self.set_visible_child(self.overlay_container)
         self.feeditem = feeditem
         self.uri = feeditem.link
-        content = feeditem.fp_item.get(
-            'content', feeditem.fp_item.get('summary', None)
-        )
+        content = feeditem.sd_item.get_content()
         if not content:
             content = '<h1><i>'+_(
                 'RSS content or summary not available for this article'
                 )+'</i></h1>'
-        elif not isinstance(content, str):
-            if isinstance(content, list):
-                content = content[0]
-            if isinstance(content, (dict, FeedParserDict)):
-                if 'value' in content.keys():
-                    content = content['value']
         self.html = '<!-- GFEEDS RSS CONTENT --><article>{0}</article>'.format(
             content if '</' in content else content.replace('\n', '<br>')
         )
@@ -159,12 +147,6 @@ class GFeedsWebView(Gtk.Stack):
                       *args, **kwargs):
         self.webkitview.stop_loading()
         uri = feeditem.link
-        if feeditem.is_saved:
-            uri = (
-                'file://' +
-                self.confman.saved_cache_path + '/' +
-                feeditem.fp_item['linkhash']
-            )
         self.feeditem = feeditem
         self.uri = uri
         self.set_visible_child(self.overlay_container)
@@ -222,7 +204,7 @@ class GFeedsWebView(Gtk.Stack):
         self.webkitview.load_html(build_reader_html(
             self.html,
             self.confman.conf['dark_reader'],
-            self.feeditem.fp_item
+            self.feeditem.sd_item
         ), self.uri)
 
     def set_enable_reader_mode(self, state=True, is_rss_content=False):

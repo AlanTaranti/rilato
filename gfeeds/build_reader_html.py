@@ -85,28 +85,12 @@ def build_syntax_highlight_from_raw_html(raw_html) -> Tuple[str, HtmlElement]:
     )
 
 
-def build_reader_html(og_html, dark_mode: bool = False, fp_item=None) -> str:
+def build_reader_html(og_html, dark_mode: bool = False, sd_item=None) -> str:
     def build_media_block():
-        if not fp_item:
+        if not sd_item:
             return ''
-        media_s = '<hr />'
-        for el in fp_item:
-            if el[:6].lower() == 'media_':
-                try:
-                    if el.lower() == 'media_thumbnail':
-                        media_s += _build_media_img(
-                            _('Thumbnail'),
-                            fp_item["media_thumbnail"][0]["url"]
-                        )
-                    else:
-                        for subel in fp_item[el]:
-                            media_s += _build_media_text(
-                                subel.capitalize(),
-                                fp_item[el][subel]
-                            )
-                except Exception:
-                    continue
-        return media_s if media_s != '<hr />' else ''
+        img_url = sd_item.get_img_url()
+        return '<hr />' + img_url if img_url else ''
 
     doc = readability.Document(og_html)
     content = doc.summary(True)
@@ -135,7 +119,7 @@ def build_reader_html(og_html, dark_mode: bool = False, fp_item=None) -> str:
         </head>
         <body>
             <article>
-                <h1>{doc.short_title() or fp_item["title"]}</h1>
+                <h1>{doc.short_title() or sd_item.get_title()}</h1>
                 {content}
             </article>
         </body>

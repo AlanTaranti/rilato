@@ -1,5 +1,4 @@
 import json
-import feedparser
 import pytz
 from datetime import datetime, timezone
 from dateutil.parser import parse as dateparse
@@ -14,6 +13,7 @@ from PIL import Image
 from bs4 import UnicodeDammit
 from typing import Optional
 from gfeeds.get_thumb import get_thumb
+from SyndicationDomination import Feed as SynDomFeed
 
 
 def get_encoding(in_str):
@@ -28,18 +28,13 @@ def get_encoding(in_str):
 
 
 class FeedItem:
-    def __init__(self, fp_item, parent_feed):
+    def __init__(self, sd_item, parent_feed):
         self.confman = ConfManager()
-        self.fp_item = fp_item
-        self.is_saved = 'linkhash' in self.fp_item.keys()
-        self.title = self.fp_item.get('title', '')
-        self.link = self.fp_item.get('link', '')
+        self.sd_item = sd_item
+        self.title = self.sd_item.get_title()
+        self.link = self.sd_item.get_url()
         self.read = self.link in self.confman.read_feeds_items
-        # self.description = self.fp_item.get('description', '')
-        self.pub_date_str = self.fp_item.get(
-            'published',
-            self.fp_item.get('updated', '')
-        )
+        self.pub_date_str = self.sd_item.get_pub_date()
         self.pub_date = datetime.now(timezone.utc)  # fallback to avoid errors
         self.parent_feed = parent_feed
 
@@ -63,15 +58,7 @@ class FeedItem:
             ).format(self.pub_date_str, self))
 
         # various ways to get an article image
-        self.image_url = None
-        enclosure = self.fp_item.get('enclosure', None)
-        if enclosure is not None:
-            if 'image/' in enclosure.get('type', ''):
-                self.image_url = enclosure.get('url', None)
-        if self.image_url is None:
-            thumbnail = self.fp_item.get('thumbnail', None)
-            if thumbnail is not None:
-                self.image_url = thumbnail.get('url', None)
+        self.image_url = sd_item.get_img_url()
         # sidebar row will try to async get an image from html if all of the
         # above fail
 
@@ -93,81 +80,6 @@ class FeedItem:
             self.parent_feed.title
         )
 
-    def to_dict(self):
-        return {
-            'title': self.title,
-            'link': self.link,
-            'linkhash': shasum(self.link),
-            'published': str(self.pub_date),
-            'parent_feed': {
-                'title': self.parent_feed.title,
-                'link': self.parent_feed.link,
-                'favicon_path': self.parent_feed.favicon_path
-            }
-        }
-
-    def to_json(self):
-        return json.dumps(self.to_dict())
-
-    @classmethod
-    def new_from_dict(cls, n_fi_dict):
-        return cls(
-            n_fi_dict,
-            FakeFeed(n_fi_dict['parent_feed'])
-        )
-
-    @classmethod
-    def new_from_json(cls, fi_json):
-        return cls.new_from_dict(json.loads(fi_json))
-
-
-class FakeFeed:
-    def __init__(self, f_dict):
-        self.title = f_dict.get('title', '')
-        self.link = f_dict.get('link', '')
-        self.favicon_path = f_dict.get('favicon_path', '')
-        if isfile(self.favicon_path):
-            favicon = Image.open(self.favicon_path)
-            if favicon.width != 32:
-                favicon = favicon.resize((32, 32), Image.BILINEAR)
-                favicon.save(self.favicon_path, 'PNG')
-            favicon.close()
-
-    def __repr__(self):
-        return f'FakeFeed Object `{self.title}`'
-
-
-def parse_feed(
-        feed_str: str, no_preprocessing: bool = False
-) -> Optional[feedparser.FeedParserDict]:
-    if no_preprocessing:
-        return feedparser.parse(feed_str)
-    udammit = UnicodeDammit(feed_str)
-    feed_str = udammit.unicode_markup or feed_str
-    feed_str = feed_str.replace(
-        get_encoding(feed_str),
-        'utf-8'
-    )
-    forbidden_namespaces = [
-        'atom',
-        'openSearch',
-        'thr',
-        'media'
-    ]
-    for fns in forbidden_namespaces:
-        feed_str = feed_str.replace(
-            f'<{fns}:', '<'
-        ).replace(
-            f'</{fns}:', '</'
-        )
-    fp_feed = None
-    try:
-        fp_feed = feedparser.parse(feed_str)
-    except Exception:
-        import traceback
-        traceback.print_exc()
-    return fp_feed
-
 
 class Feed:
     def __init__(self, download_res, no_preprocessing: bool = False):
@@ -179,35 +91,32 @@ class Feed:
             print(download_res)
             return
         feedpath = download_res[0]
-        self.rss_link = download_res[1]
-        with open(feedpath, 'r') as fd:
-            feed_str = fd.read()
-        self.fp_feed = parse_feed(feed_str, no_preprocessing)
-        if self.fp_feed is None:
+        try:
+            self.sd_feed = SynDomFeed(str(feedpath))
+        except Exception:
+            self.sd_feed = None
+            print("Error parsing feed")
+            import traceback
+            traceback.print_exc()
+        # with open(feedpath, 'r') as fd:
+        #     feed_str = fd.read()
+        # self.fp_feed = parse_feed(feed_str, no_preprocessing)
+        if self.sd_feed is None:
             self.is_null = True
             self.error = _('Errors while parsing feed `{0}`').format(
-                self.rss_link
+                feedpath
             )
             return
+        self.rss_link = download_res[1] or self.sd_feed.get_rss_url()
 
         self.confman = ConfManager()
         self.init_time = pytz.UTC.localize(datetime.utcnow())
-
-        self.fp_feed['feed'] = self.fp_feed.get(
-            'feed',
-            self.fp_feed.get('channel', {})
-        )
-        self.title = self.fp_feed.feed.get('title', '')
-        self.link = self.fp_feed.feed.get('link', '')
-        self.description = self.fp_feed.feed.get('subtitle', self.link)
-        # self.language = self.fp_feed.get('', '')
-        image_tag = self.fp_feed.get('feed', {}).get('image', {})
-        self.image_url = image_tag.get(
-            'href',
-            image_tag.get('url', '')
-        )
+        self.title = self.sd_feed.get_title()
+        self.link = self.sd_feed.get_url()
+        self.description = self.sd_feed.get_description()
+        self.image_url = self.sd_feed.get_img_url()
         self.items = []
-        raw_entries = self.fp_feed.get('entries', [])
+        raw_entries = self.sd_feed.get_items()
         for entry in raw_entries:
             n_item = FeedItem(entry, self)
             item_age = self.init_time - n_item.pub_date
@@ -215,7 +124,6 @@ class Feed:
                 self.items.append(n_item)
             elif n_item.read:
                 self.confman.read_feeds_items.remove(n_item.link)
-        self.color = [0.0, 0.0, 0.0]
 
         if (
                 not self.title and
@@ -227,8 +135,6 @@ class Feed:
             self.error = _(
                 '`{0}` may not be an RSS or Atom feed'
             ).format(self.rss_link)
-            if not no_preprocessing:
-                self.__init__(download_res, no_preprocessing=True)
             return
 
         if not self.title:

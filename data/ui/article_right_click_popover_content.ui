@@ -3,37 +3,10 @@
   <requires lib="gtk" version="4.0"/>
   <object class="GtkBox" id="container_box">
     <property name="orientation">vertical</property>
-    <property name="homogeneous">True</property>
-    <child>
-      <object class="GtkToggleButton" id="save_btn">
-        <property name="hexpand">True</property>
-        <child>
-          <object class="GtkBox">
-            <property name="spacing">6</property>
-            <property name="orientation">horizontal</property>
-            <child>
-              <object class="GtkImage">
-                <property name="icon_name">emblem-favorite-symbolic</property>
-              </object>
-            </child>
-            <child>
-              <object class="GtkLabel">
-                <property name="halign">start</property>
-                <property name="label" translatable="yes">Save article</property>
-                <property name="xalign">0</property>
-                <property name="hexpand">True</property>
-              </object>
-            </child>
-          </object>
-        </child>
-        <style>
-          <class name="flat"/>
-        </style>
-      </object>
-    </child>
     <child>
       <object class="GtkButton" id="read_unread_btn">
         <property name="hexpand">True</property>
+        <style><class name="flat"/></style>
         <child>
           <object class="GtkBox">
             <property name="spacing">6</property>
@@ -53,9 +26,6 @@
             </child>
           </object>
         </child>
-        <style>
-          <class name="flat"/>
-        </style>
       </object>
     </child>
   </object>

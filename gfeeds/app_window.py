@@ -28,10 +28,6 @@ class GFeedsAppWindow(BaseWindow):
             'row-activated',
             self.on_sidebar_row_activated
         )
-        self.sidebar.saved_items_listbox.connect(
-            'row-activated',
-            self.on_sidebar_row_activated
-        )
 
         self.webview = GFeedsWebView()
 
@@ -100,8 +96,6 @@ class GFeedsAppWindow(BaseWindow):
         self.right_headerbar = GFeedsHeaderbarRight(
             self.webview, self.leaflet, self.on_back_button_clicked
         )
-        self.left_headerbar.stack_switcher.set_stack(self.sidebar)
-        self.left_headerbar.connect('squeeze', self.on_headerbar_squeeze)
         self.sidebar_box = Gtk.Box(
             orientation=Gtk.Orientation.VERTICAL, hexpand=False
         )
@@ -156,10 +150,6 @@ class GFeedsAppWindow(BaseWindow):
         self.leaflet.append(self.webview_box)
         self.leaflet.connect('notify::folded', self.on_main_leaflet_folded)
 
-        self.bottom_bar = Adw.ViewSwitcherBar(stack=self.sidebar)
-        self.bottom_bar.get_style_context().add_class('sidebar')
-        self.sidebar_box.append(self.bottom_bar)
-
         # NOTE: this comment is deprecated
         # listening on the headerbar leaflet visible-child because of a bug in
         # libhandy that doesn't notify the correct child on the main leaflet
@@ -182,9 +172,6 @@ class GFeedsAppWindow(BaseWindow):
             self.confman.conf['windowsize']['width'],
             self.confman.conf['windowsize']['height']
         )
-
-    def on_headerbar_squeeze(self, caller: GObject.Object, squeezed: bool):
-        self.bottom_bar.set_reveal(squeezed)
 
     def emit_destroy(self, *args):
         self.emit('destroy')
@@ -211,15 +198,6 @@ class GFeedsAppWindow(BaseWindow):
             row: Gtk.ListBoxRow
     ):
         row.popover.set_read(True)
-        other_listbox = (
-            self.sidebar.listbox
-            if listbox == self.sidebar.saved_items_listbox
-            else self.sidebar.saved_items_listbox
-        )
-        for other_row in get_children(other_listbox):
-            if other_row.feeditem.link == row.feeditem.link:
-                other_row.popover.set_read(True)
-                break
         if (
                 self.confman.conf['open_youtube_externally'] and
                 reduce(or_, [
@@ -251,18 +229,14 @@ class GFeedsAppWindow(BaseWindow):
         self.leaflet.set_visible_child(self.webview_box)
         self.on_main_leaflet_folded()
         listbox.invalidate_filter()
-        other_listbox.invalidate_filter()
 
     def on_back_button_clicked(self, *args):
         self.leaflet.set_visible_child(self.sidebar_box)
         self.on_main_leaflet_folded()
         self.sidebar.listbox.select_row(None)
-        self.sidebar.saved_items_listbox.select_row(None)
 
     def on_main_leaflet_folded(self, *args):
         if self.leaflet.get_folded():
             self.right_headerbar.back_button.set_visible(True)
-            self.left_headerbar.stack_switcher.set_visible(True)
         else:
             self.right_headerbar.back_button.set_visible(False)
-            self.left_headerbar.stack_switcher.set_visible(False)

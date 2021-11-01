@@ -4,7 +4,7 @@ from os import makedirs
 from os import environ as Env
 import json
 from datetime import timedelta
-from gi.repository import Gtk, GObject, Gio
+from gi.repository import GObject, Gio
 from gfeeds.singleton import Singleton
 from gfeeds.signaler_list import SignalerList
 
@@ -92,7 +92,6 @@ class ConfManager(metaclass=Singleton):
         'max_article_age_days': 30,
         'enable_js': False,
         'max_refresh_threads': 2,
-        'saved_items': {},
         'read_items': [],
         'show_read_items': True,
         'full_article_title': True,
@@ -109,10 +108,11 @@ class ConfManager(metaclass=Singleton):
     }
 
     def __init__(self):
-        self.window = None
         self.signaler = ConfManagerSignaler()
         self.emit = self.signaler.emit
         self.connect = self.signaler.connect
+
+        self.is_flatpak = isfile('/.flatpak-info')
 
         self.conf_dir = Env.get("XDG_CONFIG_HOME")
         self.cache_path = Path(
@@ -125,14 +125,10 @@ class ConfManager(metaclass=Singleton):
                 f'{Env.get("HOME")}/.cache/org.gabmus.gfeeds'
             )
         self.thumbs_cache_path = f'{self.cache_path}/thumbnails/'
-        old_saved_cache_path = f'{self.cache_path}/saved_articles'
-        self.saved_cache_path = \
-            f'{self.conf_dir}/org.gabmus.gfeeds.saved_articles'
         for p in [
                 self.conf_dir,
                 self.cache_path,
                 self.thumbs_cache_path,
-                self.saved_cache_path
         ]:
             if not isdir(str(p)):
                 makedirs(str(p))
@@ -165,17 +161,6 @@ class ConfManager(metaclass=Singleton):
         else:
             self.conf = ConfManager.BASE_SCHEMA.copy()
             self.save_conf()
-
-        # TODO: remove down the road, old saved articles migration
-        if isdir(old_saved_cache_path):
-            from os import listdir, rmdir
-            from shutil import move
-            for f in listdir(old_saved_cache_path):
-                move(
-                    f'{old_saved_cache_path}/{f}',
-                    f'{self.saved_cache_path}/{f}'
-                )
-            rmdir(old_saved_cache_path)
 
         self.read_feeds_items = SignalerList(self.conf['read_items'])
         self.read_feeds_items.connect(
@@ -260,16 +245,3 @@ class ConfManager(metaclass=Singleton):
                     return
         with open(self.path, 'w') as fd:
             fd.write(json.dumps(self.conf))
-
-    def get_background_color(self) -> str:
-        if ConfManager._background_color is not None:
-            return ConfManager._background_color
-        if not self.window:
-            return "000000"
-        gc = self.window.get_style_context(
-                ).get_background_color(Gtk.StateFlags.NORMAL)
-        color = ''
-        for channel in (gc.red, gc.green, gc.blue):
-            color += '%02x' % int(channel*255)
-        ConfManager._background_color = color
-        return color

@@ -46,7 +46,6 @@ class FeedsManager(metaclass=Singleton):
 
         self.feeds = SignalerList()
         self.feeds_items = SignalerList()
-        self.saved_feeds_items = SignalerList()
 
         self.errors = []
         self.problematic_feeds = []
@@ -54,13 +53,6 @@ class FeedsManager(metaclass=Singleton):
             'feedmanager_refresh_end',
             lambda *args: self.confman.save_conf()
         )
-
-    def populate_saved_feeds_items(self):
-        self.saved_feeds_items.empty()
-        for si in self.confman.conf['saved_items'].values():
-            self.saved_feeds_items.append(
-                FeedItem.new_from_dict(si)
-            )
 
     def _add_feed_async_worker(
             self,
@@ -129,7 +121,6 @@ class FeedsManager(metaclass=Singleton):
         is_online(cb)
 
     def continue_refresh(self, get_cached):
-        self.populate_saved_feeds_items()
         self.feeds.empty()
         self.feeds_items.empty()
         tp = ThreadPool(

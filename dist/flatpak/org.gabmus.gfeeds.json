@@ -102,8 +102,8 @@
                 {
                     "type": "git",
                     "url": "https://gitlab.gnome.org/GNOME/gtk",
-                    "//branch": "master",
-                    "tag": "4.4.0"
+                    "branch": "master",
+                    "//tag": "4.4.0"
                 }
             ],
             "modules": [
@@ -118,6 +118,20 @@
                             "type": "git",
                             "url": "https://gitlab.freedesktop.org/wayland/wayland-protocols",
                             "tag": "1.23"
+                        }
+                    ]
+                },
+                {
+                    "name": "pango",
+                    "buildsystem": "meson",
+                    "config-opts": [
+                        "-Dtests=false"
+                    ],
+                    "sources": [
+                        {
+                            "type": "git",
+                            "url": "https://gitlab.gnome.org/GNOME/pango.git",
+                            "branch": "main"
                         }
                     ]
                 }
@@ -143,9 +157,9 @@
             ]
         },
         {
-            "name" : "libadwaita",
+            "name": "libadwaita",
             "buildsystem": "meson",
-            "config-opts" : [
+            "config-opts": [
                 "-Dexamples=false",
                 "-Dtests=false",
                 "-Dgtk_doc=false"
@@ -154,7 +168,8 @@
                 {
                     "type": "git",
                     "url": "https://gitlab.gnome.org/GNOME/libadwaita.git",
-                    "tag": "1.0.0.alpha.3"
+                    "//tag": "1.0.0.alpha.3",
+                    "branch": "main"
                 }
             ]
         },
@@ -273,23 +288,60 @@
             ]
         },
         {
-            "name": "python-feedparser",
+            "name": "pybind11",
+            "buildsystem": "cmake",
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/pybind/pybind11/",
+                    "tag": "v2.8.1"
+                },
+                {
+                    "type": "patch",
+                    "path": "pybind11_flatpak_fix.patch",
+                    "sha256": "6c16ce22e230064fedd15b7b68d2bed8a4ecae69f544acaa2f01b43428a4d968"
+                }
+            ]
+        },
+        {
+            "name": "python-pybind11",
             "buildsystem": "simple",
             "build-commands": [
-                "python3 feedparser-setup.py build",
-                "python3 feedparser-setup.py install --prefix=/app --root=/"
+                "python3 setup.py build",
+                "python3 setup.py install --prefix=/app --root=/"
             ],
             "sources": [
                 {
                     "type": "git",
-                    "url": "https://github.com/kurtmckee/feedparser",
-                    "branch": "develop",
-                    "commit": "8a2a71b72d5b1454d456759d6270fa1dd18dfc4f"
+                    "url": "https://github.com/pybind/pybind11/",
+                    "tag": "v2.8.1"
                 },
                 {
-                    "type": "file",
-                    "path": "feedparser-setup.py",
-                    "sha256": "6dcc11e71d9a9c78d91fb7407063b7a41301d5b9c5f16787404cf10ff33cca62"
+                    "type": "patch",
+                    "path": "pybind11_flatpak_fix.patch",
+                    "sha256": "6c16ce22e230064fedd15b7b68d2bed8a4ecae69f544acaa2f01b43428a4d968"
+                }
+            ]
+        },
+        {
+            "name": "pugixml",
+            "buildsystem": "cmake",
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/zeux/pugixml",
+                    "tag": "v1.11.4"
+                }
+            ]
+        },
+        {
+            "name": "python-syndicationdomination",
+            "buildsystem": "meson",
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://gitlab.com/gabmus/syndication-domination",
+                    "branch": "master"
                 }
             ]
         },
@@ -326,7 +378,6 @@
             "name": "python-listparser",
             "buildsystem": "simple",
             "build-commands": [
-                "python3 listparser-setup.py build",
                 "python3 listparser-setup.py install --prefix=/app --root=/"
             ],
             "sources": [
@@ -401,7 +452,7 @@
                 {
                     "type": "archive",
                     "path": "WebKit-main.tar.gz",
-                    "sha256": "efc690a2070f635735fd52653860336ddc6c4419e1b33991b3aa05368a5f6a67"
+                    "sha256": "3e6026123e3c745c6ae8a543f921540135ac23a9b8ea6cb25ca0d24db1021f30"
                 }
             ]
         },

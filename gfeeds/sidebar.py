@@ -3,7 +3,6 @@ from gettext import gettext as _
 from gfeeds.confManager import ConfManager
 from gfeeds.feeds_manager import FeedsManager
 from gfeeds.sidebar_row import GFeedsSidebarRow
-from gfeeds.rss_parser import FakeFeed
 from gfeeds.accel_manager import add_mouse_button_accel, add_longpress_accel
 from gfeeds.get_children import get_children
 
@@ -77,9 +76,7 @@ class GFeedsSidebarListBox(Gtk.ListBox):
 
     def gfeeds_sidebar_filter_func(self, row, data, notify_destroy):
         toret = False
-        if isinstance(row.feeditem.parent_feed, FakeFeed):
-            toret = True
-        elif len(self.selected_feeds) <= 0:
+        if len(self.selected_feeds) <= 0:
             toret = True
         else:
             toret = row.feeditem.parent_feed.rss_link in self.selected_feeds
@@ -162,7 +159,7 @@ class GFeedsSidebarScrolledWin(Gtk.ScrolledWindow):
             self.listbox.emit('row-activated', target)
 
 
-class GFeedsSidebar(Adw.ViewStack):
+class GFeedsSidebar(Adw.Bin):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.feedman = FeedsManager()
@@ -172,16 +169,7 @@ class GFeedsSidebar(Adw.ViewStack):
         self.empty = self.scrolled_win.listbox.empty
         self.populate = self.scrolled_win.listbox.populate
 
-        self.saved_items_scrolled_win = GFeedsSidebarScrolledWin(self)
-        self.saved_items_listbox = self.saved_items_scrolled_win.listbox
-
-        self.add_titled(
-            self.scrolled_win, 'Feed', _('Feed')
-        ).set_icon_name('application-rss+xml-symbolic')
-        self.add_titled(
-            self.saved_items_scrolled_win, 'Saved', _('Saved')
-        ).set_icon_name('emblem-favorite-symbolic')
-        # self.set_size_request(360, 100)
+        self.set_child(self.scrolled_win)
 
         self.feedman.feeds_items.connect(
             'pop',
@@ -207,14 +195,6 @@ class GFeedsSidebar(Adw.ViewStack):
             'empty',
             lambda *args: self.listbox.empty()
         )
-        self.feedman.saved_feeds_items.connect(
-            'empty',
-            lambda *args: self.saved_items_listbox.empty()
-        )
-        self.feedman.saved_feeds_items.connect(
-            'append',
-            lambda caller, obj: self.on_saved_feeds_items_append(obj)
-        )
 
         self.feedman.feeds.connect(
             'pop',
@@ -236,18 +216,8 @@ class GFeedsSidebar(Adw.ViewStack):
             self.listbox.invalidate_filter()
 
     def set_search(self, search_terms):
-        for lb in [self.listbox, self.saved_items_listbox]:
-            lb.search_terms = search_terms
-            lb.invalidate_filter()
-
-    def on_saved_item_deleted(self, deleted_link):
-        for row in get_children(self.listbox):
-            if row.feeditem.link == deleted_link:
-                with row.popover.save_btn.handler_block(
-                        row.popover.save_btn_handler_id
-                ):
-                    row.popover.save_btn.set_active(False)
-                break
+        self.listbox.search_terms = search_terms
+        self.listbox.invalidate_filter()
 
     def select_next_article(self, *args):
         visible_child = self.get_visible_child()
@@ -267,14 +237,3 @@ class GFeedsSidebar(Adw.ViewStack):
         self.listbox.append(
             GFeedsSidebarRow(feeditem)
         )
-
-    def on_saved_feeds_items_append(self, feeditem):
-        self.saved_items_listbox.append(
-            GFeedsSidebarRow(feeditem, is_saved=True)
-        )
-
-    def on_saved_feeds_items_pop(self, feeditem):
-        for row in get_children(self.saved_items_listbox):
-            if row.feeditem == feeditem:
-                self.listbox.remove(row)
-                break
