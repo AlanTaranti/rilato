@@ -5,7 +5,7 @@ from gfeeds.sha import shasum
 from gfeeds.download_manager import download_raw
 from gi.repository import Gtk, GLib, Pango, Adw
 from gfeeds.confManager import ConfManager
-from gfeeds.initials_icon import InitialsIcon
+from gfeeds.simple_avatar import SimpleAvatar
 from gfeeds.relative_day_formatter import get_date_format
 from gfeeds.sidebar_row_popover import RowPopover
 
@@ -14,6 +14,8 @@ class SidebarRow(Adw.Bin):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # self.get_style_context().add_class('activatable')
+        self.feed_item_wrapper = None
+        self.feed_item_changed_signal_id = None
         self.feed_item = None
         self.confman = ConfManager()
 
@@ -35,7 +37,8 @@ class SidebarRow(Adw.Bin):
         self.on_full_feed_name_changed()
 
         self.icon_container = self.builder.get_object('icon_container')
-        self.icon = None
+        self.icon = SimpleAvatar()
+        self.icon_container.append(self.icon)
 
         # Date & time stuff is long
         self.date_label = self.builder.get_object('date_label')
@@ -51,8 +54,27 @@ class SidebarRow(Adw.Bin):
 
         self.set_child(self.container_box)
 
-    def set_feed_item(self, feed_item):
-        self.feed_item = feed_item
+    def set_feed_item(self, feed_item_wrapper, just_refresh=False):
+        if not feed_item_wrapper:
+            return
+
+        if (
+                self.feed_item_changed_signal_id is not None and
+                self.feed_item_wrapper is not None and
+                not just_refresh
+        ):
+            self.feed_item_wrapper.disconnect(self.feed_item_changed_signal_id)
+            self.feed_item_changed_signal_id = None
+
+        if not just_refresh:
+            self.feed_item_wrapper = feed_item_wrapper
+            self.feed_item = feed_item_wrapper.feed_item
+            self.feed_item_changed_signal_id = self.feed_item_wrapper.connect(
+                'changed', lambda *args: self.set_feed_item(
+                    self.feed_item_wrapper, True
+                )
+            )
+
         self.origin_label.set_text(self.feed_item.parent_feed.title)
         self.title_label.set_text(self.feed_item.title)
         tz_sec_offset = self.feed_item.pub_date.utcoffset().total_seconds()
@@ -79,15 +101,10 @@ class SidebarRow(Adw.Bin):
         self.date_label.set_text(
             self.datestr
         )
-
-        if self.icon is not None:
-            self.icon_container.remove(self.icon)
-            self.icon = None
-        self.icon = InitialsIcon(
+        self.icon.set_image(
             self.feed_item.parent_feed.title,
             self.feed_item.parent_feed.favicon_path
         )
-        self.icon_container.append(self.icon)
         self.set_article_image()
         self.set_read()
         self.popover.on_feed_item_set()

@@ -34,22 +34,18 @@ _textures_cache = dict()
 
 
 class SimpleAvatar(Adw.Bin):
-    def __init__(self, size: int, title: str, get_image_func):
-        super().__init__(hexpand=False, vexpand=False, halign=Gtk.Align.CENTER)
-        self.avatar = Adw.Avatar.new(size, title, True)
+    def __init__(self):
+        super().__init__()
+        self.avatar = Adw.Avatar(size=32, show_initials=True)
         self.set_child(self.avatar)
-        self.get_image_func = get_image_func
-        self.load_avatar()
 
-    def load_avatar(self, title=None, n_image_func=None):
-        if title is not None:
-            self.avatar.set_text(title)
-        self.avatar.set_custom_image(None)
+    def set_image(self, title, image=None):
+        self.avatar.set_text(title)
 
         def af():
-            if n_image_func is not None:
-                self.get_image_func = n_image_func
-            icon = self.get_image_func()
+            if image is None:
+                return
+            icon = make_thumb(image, 32, 32)
             if icon is None:
                 return
             GLib.idle_add(cb, icon)
@@ -65,8 +61,3 @@ class SimpleAvatar(Adw.Bin):
             self.avatar.set_custom_image(texture)
 
         Thread(target=af, daemon=True).start()
-
-
-class InitialsIcon(SimpleAvatar):
-    def __init__(self, name: str, image_path):
-        super().__init__(32, name, lambda: make_thumb(image_path, 32, 32))

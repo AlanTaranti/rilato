@@ -24,7 +24,7 @@ class GFeedsAppWindow(BaseWindow):
         self.feedman = FeedsManager()
 
         self.sidebar = GFeedsSidebar()
-        self.sidebar.listview.list_view.connect(
+        self.sidebar.listview_sw.list_view.connect(
             'activate',
             self.on_sidebar_row_activated
         )
@@ -197,13 +197,15 @@ class GFeedsAppWindow(BaseWindow):
             listview: Gtk.ListView,
             row_index: int
     ):
-        row = self.sidebar.listview.get_selected()
-        return  # TODO: fix
-        row.popover.set_read(True)
+        feed_item_wrapper = self.sidebar.listview_sw.get_selected_item()
+        if not feed_item_wrapper:
+            return
+        feed_item = feed_item_wrapper.feed_item
+        feed_item.set_read(True)
         if (
                 self.confman.conf['open_youtube_externally'] and
                 reduce(or_, [
-                    f'://{pfx}' in row.feeditem.link
+                    f'://{pfx}' in feed_item.link
                     for pfx in [
                         p + 'youtube.com'
                         for p in ('', 'www.', 'm.')
@@ -212,7 +214,7 @@ class GFeedsAppWindow(BaseWindow):
         ):
             cmd_parts = [
                 self.confman.conf["media_player"],
-                row.feeditem.link
+                feed_item.link
             ]
             if self.confman.is_flatpak:
                 cmd_parts.insert(0, 'flatpak-spawn --host')
@@ -222,20 +224,22 @@ class GFeedsAppWindow(BaseWindow):
                 shell=True
             )
             return
-        self.webview.load_feeditem(row.feeditem)
+        self.webview.load_feeditem(feed_item)
         self.right_headerbar.set_article_title(
-            row.feeditem.title
+            feed_item.title
         )
         self.right_headerbar.share_btn.set_sensitive(True)
         self.right_headerbar.open_externally_btn.set_sensitive(True)
         self.leaflet.set_visible_child(self.webview_box)
         self.on_main_leaflet_folded()
-        listview.invalidate_filter()
+        self.sidebar.listview_sw.invalidate_filter()
+        feed_item_wrapper.emit_changed()
 
     def on_back_button_clicked(self, *args):
         self.leaflet.set_visible_child(self.sidebar_box)
         self.on_main_leaflet_folded()
-        self.sidebar.listview.select_row(None)
+        # TODO maybe remove? vvv
+        self.sidebar.listview_sw.select_row(None)
 
     def on_main_leaflet_folded(self, *args):
         if self.leaflet.get_folded():

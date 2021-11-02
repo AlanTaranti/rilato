@@ -120,43 +120,16 @@ class GFeedsSidebarListBox(Gtk.ListBox):
         return row1.feeditem.pub_date > row2.feeditem.pub_date
 
 
-class GFeedsSidebarScrolledWin(Gtk.ScrolledWindow):
-    def __init__(self, parent_stack):
-        super().__init__(
-            hscrollbar_policy=Gtk.PolicyType.NEVER,
-            vscrollbar_policy=Gtk.PolicyType.AUTOMATIC
-        )
-        self.parent_stack = parent_stack
-        self.listview = ArticlesListView()
-        self.empty = self.listview.empty
-        self.populate = self.listview.populate
-        # self.set_size_request(360, 100)
-        self.set_child(self.listview)
-
-    def select_next_article(self, *args):
-        index = self.listview.get_selected()
-        if index == Gtk.INVALID_LIST_POSITION:
-            return
-        self.listview.select_row(index+1)
-
-    def select_prev_article(self, *args):
-        index = self.listview.get_selected()
-        if index == Gtk.INVALID_LIST_POSITION:
-            return
-        self.listview.select_row(index-1)
-
-
 class GFeedsSidebar(Adw.Bin):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.feedman = FeedsManager()
 
-        self.scrolled_win = GFeedsSidebarScrolledWin(self)
-        self.listview = self.scrolled_win.listview
-        self.empty = self.scrolled_win.listview.empty
-        self.populate = self.scrolled_win.listview.populate
+        self.listview_sw = ArticlesListView()
+        self.empty = self.listview_sw.empty
+        self.populate = self.listview_sw.populate
 
-        self.set_child(self.scrolled_win)
+        self.set_child(self.listview_sw)
 
         self.feedman.feeds_items.connect(
             'pop',
@@ -180,7 +153,7 @@ class GFeedsSidebar(Adw.Bin):
         )
         self.feedman.feeds_items.connect(
             'empty',
-            lambda *args: self.listview.empty()
+            lambda *args: self.listview_sw.empty()
         )
 
         self.feedman.feeds.connect(
@@ -189,26 +162,26 @@ class GFeedsSidebar(Adw.Bin):
         )
 
     def on_feeds_items_extend(self, caller, n_feeds_items_list):
-        self.listview.add_new_items(n_feeds_items_list)
+        self.listview_sw.add_new_items(n_feeds_items_list)
 
     def on_feeds_pop(self, obj):
-        if obj.rss_link in self.listview.selected_feeds:
-            n_selected_feeds = self.listview.selected_feeds
+        if obj.rss_link in self.listview_sw.selected_feeds:
+            n_selected_feeds = self.listview_sw.selected_feeds
             n_selected_feeds.remove(obj.rss_link)
-            self.listview.set_selected_feeds(n_selected_feeds)
-        self.listview.remove_items(obj.items)
+            self.listview_sw.set_selected_feeds(n_selected_feeds)
+        self.listview_sw.remove_items(obj.items)
 
     def set_search(self, search_term):
-        self.listview.set_search_term(search_term)
+        self.listview_sw.set_search_term(search_term)
 
     def select_next_article(self, *args):
-        self.scrolled_win.select_next_article()
+        self.listview_sw.select_next()
 
     def select_prev_article(self, *args):
-        self.scrolled_win.select_prev_article()
+        self.listview_sw.select_prev()
 
     def on_feeds_items_pop(self, feed_item):
-        self.listview.remove_items([feed_item])
+        self.listview_sw.remove_items([feed_item])
 
     def on_feeds_items_append(self, feed_item):
-        self.listview.add_new_items([feed_item])
+        self.listview_sw.add_new_items([feed_item])

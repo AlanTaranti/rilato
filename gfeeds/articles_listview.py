@@ -1,18 +1,30 @@
-from gi.repository import Gtk, Adw, GObject, Gio
+from gi.repository import Gtk, GObject, Gio
 from gfeeds.rss_parser import FeedItem
 from gfeeds.confManager import ConfManager
 from gfeeds.sidebar_row import SidebarRow
 
 
 class FeedItemWrapper(GObject.Object):
+    __gsignals__ = {
+        'changed': (
+            GObject.SignalFlags.RUN_FIRST, None, (str,)
+        )
+    }
+
     def __init__(self, feed_item: FeedItem):
         super().__init__()
         self.feed_item = feed_item
 
+    def emit_changed(self):
+        self.emit('changed', '')
 
-class ArticlesListView(Adw.Bin):
+
+class ArticlesListView(Gtk.ScrolledWindow):
     def __init__(self):
-        super().__init__()
+        super().__init__(
+            hscrollbar_policy=Gtk.PolicyType.NEVER,
+            vscrollbar_policy=Gtk.PolicyType.AUTOMATIC
+        )
         self.confman = ConfManager()
 
         # self.parent_stack = parent_stack
@@ -40,6 +52,7 @@ class ArticlesListView(Adw.Bin):
         self.factory.connect('setup', self.on_setup_listitem)
         self.factory.connect('bind', self.on_bind_listitem)
         self.selection = Gtk.SingleSelection.new(self.sort_store)
+        self.selection.set_autoselect(True)
         self.list_view = Gtk.ListView.new(self.selection, self.factory)
 
         self.list_view.get_style_context().add_class('sidebar')
@@ -56,6 +69,25 @@ class ArticlesListView(Adw.Bin):
         self.confman.connect(
             'gfeeds_new_first_changed', lambda *args: self.invalidate_sort()
         )
+        self.confman.connect(
+            'gfeeds_filter_changed',
+            self.change_filter
+        )
+
+    def change_filter(self, caller, n_filter):
+        if n_filter is None:
+            self.selected_feeds = []
+        elif isinstance(n_filter, list):
+            n_filter = n_filter[0]
+            # filter by tag
+            self.selected_feeds = [
+                f for f in self.confman.conf['feeds'].keys()
+                if 'tags' in self.confman.conf['feeds'][f].keys() and
+                n_filter in self.confman.conf['feeds'][f]['tags']
+            ]
+        else:
+            self.selected_feeds = [n_filter.rss_link]
+        self.invalidate_filter()
 
     def set_search_term(self, term):
         self.__search_term = term.strip().lower()
@@ -74,13 +106,12 @@ class ArticlesListView(Adw.Bin):
     def filter_func(self, item: FeedItemWrapper, *args) -> bool:
         res = True
         if len(self.selected_feeds) > 0:
-            res = item.feed_item.parent_feed in self.selected_feeds
+            res = item.feed_item.parent_feed.rss_link in self.selected_feeds
         if not self.confman.conf['show_read_items']:
             res = res and (not item.feed_item.read)
         if self.__search_term:
             res = res and (
-                self.__search_term in item.feed_item.title.lower() or
-                self.__search_term in item.feed_item.content.lower()
+                self.__search_term in item.feed_item.title.lower()
             )
         return res
 
@@ -103,13 +134,31 @@ class ArticlesListView(Adw.Bin):
     def empty(self):
         self.list_store.remove_all()
 
-    def get_selected(self):
+    def get_selected(self) -> int:
         return self.selection.get_selected()
+
+    def get_selected_item(self) -> FeedItemWrapper:
+        return self.sort_store.get_item(self.get_selected())
 
     def select_row(self, index):
         self.selection.select_item(index, True)
-        # TODO: is this vvv necessary?
-        # self.on_activate(self.list_view, index)
+        self.list_view.emit('activate', index)
+
+    def select_next(self, *args):
+        index = self.get_selected()
+        if index == Gtk.INVALID_LIST_POSITION:
+            return self.select_row(0)
+        # if index > ??? num_rows?:
+        #     return
+        self.select_row(index+1)
+
+    def select_prev(self, *args):
+        index = self.get_selected()
+        if index == Gtk.INVALID_LIST_POSITION:
+            return self.select_row(0)
+        if index == 0:
+            return
+        self.select_row(index-1)
 
     def add_new_items(self, feeditems_l):
         # self.parent_stack.set_main_visible(True)
@@ -130,7 +179,7 @@ class ArticlesListView(Adw.Bin):
         self.add_new_items(feeditems_l)
 
     def on_activate(self, lv, row_index):
-        feed_item = self.list_store.get_item(row_index).feed_item
+        feed_item = self.sort_store.get_item(row_index).feed_item
         feed_item.set_read(True)
         # self.invalidate_filter() # maybe?
         # TODO
@@ -139,8 +188,9 @@ class ArticlesListView(Adw.Bin):
                           list_item: Gtk.ListItem):
         row_w = SidebarRow()
         list_item.set_child(row_w)
-        list_item.row_w = row_w
+        list_item.row_w = row_w  # otherwise it gets garbage collected
 
     def on_bind_listitem(self, factory: Gtk.ListItemFactory,
                          list_item: Gtk.ListItem):
-        list_item.get_child().set_feed_item(list_item.get_item().feed_item)
+        row_w = list_item.get_child()
+        row_w.set_feed_item(list_item.get_item())

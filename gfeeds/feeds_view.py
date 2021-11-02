@@ -2,7 +2,7 @@ from gettext import gettext as _
 from gi.repository import Gtk, Pango
 from gfeeds.confManager import ConfManager
 from gfeeds.feeds_manager import FeedsManager
-from gfeeds.initials_icon import InitialsIcon
+from gfeeds.simple_avatar import SimpleAvatar
 from gfeeds.get_children import get_children
 
 
@@ -41,7 +41,8 @@ class FeedsViewListboxRow(Gtk.ListBoxRow):
         self.checkbox.hide()
 
         self.icon_container = self.builder.get_object('icon_container')
-        self.icon = InitialsIcon(
+        self.icon = SimpleAvatar()
+        self.icon.set_image(
             self.feed.title,
             self.feed.favicon_path
         )
