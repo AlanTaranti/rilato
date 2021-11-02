@@ -24,8 +24,8 @@ class GFeedsAppWindow(BaseWindow):
         self.feedman = FeedsManager()
 
         self.sidebar = GFeedsSidebar()
-        self.sidebar.listbox.connect(
-            'row-activated',
+        self.sidebar.listview.list_view.connect(
+            'activate',
             self.on_sidebar_row_activated
         )
 
@@ -194,9 +194,11 @@ class GFeedsAppWindow(BaseWindow):
 
     def on_sidebar_row_activated(
             self,
-            listbox: Gtk.ListBox,
-            row: Gtk.ListBoxRow
+            listview: Gtk.ListView,
+            row_index: int
     ):
+        row = listview.get_selected()
+        return  # TODO: fix
         row.popover.set_read(True)
         if (
                 self.confman.conf['open_youtube_externally'] and
@@ -228,12 +230,12 @@ class GFeedsAppWindow(BaseWindow):
         self.right_headerbar.open_externally_btn.set_sensitive(True)
         self.leaflet.set_visible_child(self.webview_box)
         self.on_main_leaflet_folded()
-        listbox.invalidate_filter()
+        listview.invalidate_filter()
 
     def on_back_button_clicked(self, *args):
         self.leaflet.set_visible_child(self.sidebar_box)
         self.on_main_leaflet_folded()
-        self.sidebar.listbox.select_row(None)
+        self.sidebar.listview.select_row(None)
 
     def on_main_leaflet_folded(self, *args):
         if self.leaflet.get_folded():

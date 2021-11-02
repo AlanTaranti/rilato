@@ -57,10 +57,8 @@ class FeedItem:
                 'Error: unable to parse datetime {0} for feeditem {1}'
             ).format(self.pub_date_str, self))
 
-        # various ways to get an article image
         self.image_url = sd_item.get_img_url()
-        # sidebar row will try to async get an image from html if all of the
-        # above fail
+        # sidebar row will try to async get an image from html if above failed
 
     def set_thumb_from_link(self):
         self.image_url = get_thumb(self.link)

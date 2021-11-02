@@ -5,6 +5,7 @@ from gfeeds.feeds_manager import FeedsManager
 from gfeeds.sidebar_row import GFeedsSidebarRow
 from gfeeds.accel_manager import add_mouse_button_accel, add_longpress_accel
 from gfeeds.get_children import get_children
+from gfeeds.articles_listview import ArticlesListView
 
 
 class GFeedsSidebarListBox(Gtk.ListBox):
@@ -127,36 +128,23 @@ class GFeedsSidebarScrolledWin(Gtk.ScrolledWindow):
             vscrollbar_policy=Gtk.PolicyType.AUTOMATIC
         )
         self.parent_stack = parent_stack
-        self.listbox = GFeedsSidebarListBox(self.parent_stack)
-        self.empty = self.listbox.empty
-        self.populate = self.listbox.populate
+        self.listview = ArticlesListView()
+        self.empty = self.listview.empty
+        self.populate = self.listview.populate
         # self.set_size_request(360, 100)
-        self.set_child(self.listbox)
+        self.set_child(self.listview)
 
     def select_next_article(self, *args):
-        target = None
-        current_row = self.listbox.get_selected_row()
-        if not current_row:
-            target = self.listbox.get_row_at_index(0)
-        else:
-            target = self.listbox.get_row_at_index(
-                current_row.get_index()+1
-            )
-        if target:
-            self.listbox.select_row(target)
-            self.listbox.emit('row-activated', target)
+        index = self.listview.get_selected()
+        if index == Gtk.INVALID_LIST_POSITION:
+            return
+        self.listview.select_row(index+1)
 
     def select_prev_article(self, *args):
-        target = None
-        current_row = self.listbox.get_selected_row()
-        if not current_row:
+        index = self.listview.get_selected()
+        if index == Gtk.INVALID_LIST_POSITION:
             return
-        target = self.listbox.get_row_at_index(
-            current_row.get_index()-1
-        )
-        if target:
-            self.listbox.select_row(target)
-            self.listbox.emit('row-activated', target)
+        self.listview.select_row(index-1)
 
 
 class GFeedsSidebar(Adw.Bin):
@@ -165,9 +153,9 @@ class GFeedsSidebar(Adw.Bin):
         self.feedman = FeedsManager()
 
         self.scrolled_win = GFeedsSidebarScrolledWin(self)
-        self.listbox = self.scrolled_win.listbox
-        self.empty = self.scrolled_win.listbox.empty
-        self.populate = self.scrolled_win.listbox.populate
+        self.listview = self.scrolled_win.listview
+        self.empty = self.scrolled_win.listview.empty
+        self.populate = self.scrolled_win.listview.populate
 
         self.set_child(self.scrolled_win)
 
@@ -193,7 +181,7 @@ class GFeedsSidebar(Adw.Bin):
         )
         self.feedman.feeds_items.connect(
             'empty',
-            lambda *args: self.listbox.empty()
+            lambda *args: self.listview.empty()
         )
 
         self.feedman.feeds.connect(
@@ -202,38 +190,26 @@ class GFeedsSidebar(Adw.Bin):
         )
 
     def on_feeds_items_extend(self, caller, n_feeds_items_list):
-        [
-            self.listbox.append(GFeedsSidebarRow(feed_item))
-            for feed_item in n_feeds_items_list
-        ]
+        self.listview.add_new_items(n_feeds_items_list)
 
     def on_feeds_pop(self, obj):
-        print(obj.rss_link)
-        if obj.rss_link in self.listbox.selected_feeds:
-            self.listbox.selected_feeds.pop(
-                self.listbox.selected_feeds.index(obj.rss_link)
-            )
-            self.listbox.invalidate_filter()
+        if obj.rss_link in self.listview.selected_feeds:
+            n_selected_feeds = self.listview.selected_feeds
+            n_selected_feeds.remove(obj.rss_link)
+            self.listview.set_selected_feeds(n_selected_feeds)
+        self.listview.remove_items(obj.items)
 
-    def set_search(self, search_terms):
-        self.listbox.search_terms = search_terms
-        self.listbox.invalidate_filter()
+    def set_search(self, search_term):
+        self.listview.set_search_term(search_term)
 
     def select_next_article(self, *args):
-        visible_child = self.get_visible_child()
-        visible_child.select_next_article()
+        self.scrolled_win.select_next_article()
 
     def select_prev_article(self, *args):
-        visible_child = self.get_visible_child()
-        visible_child.select_prev_article()
+        self.scrolled_win.select_prev_article()
 
-    def on_feeds_items_pop(self, feeditem):
-        for row in get_children(self.listbox):
-            if row.feeditem == feeditem:
-                self.listbox.remove(row)
-                break
+    def on_feeds_items_pop(self, feed_item):
+        self.listview.remove_items([feed_item])
 
-    def on_feeds_items_append(self, feeditem):
-        self.listbox.append(
-            GFeedsSidebarRow(feeditem)
-        )
+    def on_feeds_items_append(self, feed_item):
+        self.listview.add_new_items([feed_item])
