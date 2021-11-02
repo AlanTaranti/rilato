@@ -337,6 +337,10 @@
         {
             "name": "python-syndicationdomination",
             "buildsystem": "meson",
+            "config-opts" : [
+                "-Dto_json_binary=false",
+                "-Dpython_bindings=true"
+            ],
             "sources": [
                 {
                     "type": "git",
