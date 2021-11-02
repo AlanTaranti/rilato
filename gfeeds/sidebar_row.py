@@ -3,19 +3,18 @@ from gfeeds.picture_view import PictureView
 from os.path import isfile
 from gfeeds.sha import shasum
 from gfeeds.download_manager import download_raw
-from gi.repository import Gtk, GLib, Pango
+from gi.repository import Gtk, GLib, Pango, Adw
 from gfeeds.confManager import ConfManager
 from gfeeds.initials_icon import InitialsIcon
 from gfeeds.relative_day_formatter import get_date_format
 from gfeeds.sidebar_row_popover import RowPopover
 
 
-class GFeedsSidebarRow(Gtk.ListBoxRow):
-    def __init__(self, feeditem, is_saved=False, **kwargs):
+class SidebarRow(Adw.Bin):
+    def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.is_saved = is_saved
-        self.get_style_context().add_class('activatable')
-        self.feeditem = feeditem
+        # self.get_style_context().add_class('activatable')
+        self.feed_item = None
         self.confman = ConfManager()
 
         self.builder = Gtk.Builder.new_from_resource(
@@ -23,14 +22,12 @@ class GFeedsSidebarRow(Gtk.ListBoxRow):
         )
         self.container_box = self.builder.get_object('container_box')
         self.title_label = self.builder.get_object('title_label')
-        self.title_label.set_text(self.feeditem.title)
         self.confman.connect(
             'gfeeds_full_article_title_changed',
             self.on_full_article_title_changed
         )
         self.on_full_article_title_changed()
         self.origin_label = self.builder.get_object('origin_label')
-        self.origin_label.set_text(self.feeditem.parent_feed.title)
         self.confman.connect(
             'gfeeds_full_feed_name_changed',
             self.on_full_feed_name_changed
@@ -38,15 +35,27 @@ class GFeedsSidebarRow(Gtk.ListBoxRow):
         self.on_full_feed_name_changed()
 
         self.icon_container = self.builder.get_object('icon_container')
-        self.icon = InitialsIcon(
-            self.feeditem.parent_feed.title,
-            self.feeditem.parent_feed.favicon_path
-        )
-        self.icon_container.append(self.icon)
+        self.icon = None
 
         # Date & time stuff is long
         self.date_label = self.builder.get_object('date_label')
-        tz_sec_offset = self.feeditem.pub_date.utcoffset().total_seconds()
+        self.datestr = ''
+
+        self.picture_view_container = self.builder.get_object(
+            'picture_view_container'
+        )
+        self.picture_view = None
+        self.confman.connect('show_thumbnails_changed', self.set_article_image)
+
+        self.popover = RowPopover(self)
+
+        self.set_child(self.container_box)
+
+    def set_feed_item(self, feed_item):
+        self.feed_item = feed_item
+        self.origin_label.set_text(self.feed_item.parent_feed.title)
+        self.title_label.set_text(self.feed_item.title)
+        tz_sec_offset = self.feed_item.pub_date.utcoffset().total_seconds()
         glibtz = GLib.TimeZone(
             (
                 '{0}{1}:{2}'.format(
@@ -60,58 +69,58 @@ class GFeedsSidebarRow(Gtk.ListBoxRow):
         )
         self.datestr = GLib.DateTime(
             glibtz,
-            self.feeditem.pub_date.year,
-            self.feeditem.pub_date.month,
-            self.feeditem.pub_date.day,
-            self.feeditem.pub_date.hour,
-            self.feeditem.pub_date.minute,
-            self.feeditem.pub_date.second
-        ).to_local().format(get_date_format(self.feeditem.pub_date))
+            self.feed_item.pub_date.year,
+            self.feed_item.pub_date.month,
+            self.feed_item.pub_date.day,
+            self.feed_item.pub_date.hour,
+            self.feed_item.pub_date.minute,
+            self.feed_item.pub_date.second
+        ).to_local().format(get_date_format(self.feed_item.pub_date))
         self.date_label.set_text(
             self.datestr
         )
 
-        self.picture_view_container = self.builder.get_object(
-            'picture_view_container'
+        if self.icon is not None:
+            self.icon_container.remove(self.icon)
+            self.icon = None
+        self.icon = InitialsIcon(
+            self.feed_item.parent_feed.title,
+            self.feed_item.parent_feed.favicon_path
         )
-        self.picture_view = None
-        self.confman.connect('show_thumbnails_changed', self.set_article_image)
+        self.icon_container.append(self.icon)
         self.set_article_image()
-
-        self.popover = RowPopover(self)
-
-        self.set_child(self.container_box)
         self.set_read()
+        self.popover.on_feed_item_set()
 
     def set_article_image(self, *args):
-        if not self.confman.conf['show_thumbnails']:
-            if self.picture_view is not None:
-                self.picture_view_container.remove(self.picture_view)
-                del self.picture_view
-                self.picture_view = None
+        if self.picture_view is not None:
+            self.picture_view_container.remove(self.picture_view)
+            del self.picture_view
+            self.picture_view = None
+        if not self.confman.conf['show_thumbnails'] or self.feed_item is None:
             return
 
         def af():
             dest = None
-            if self.feeditem.link in self.confman.article_thumb_cache.keys():
-                dest = self.confman.article_thumb_cache[self.feeditem.link]
+            if self.feed_item.link in self.confman.article_thumb_cache.keys():
+                dest = self.confman.article_thumb_cache[self.feed_item.link]
             else:
                 try:
-                    if self.feeditem.image_url is None:
-                        self.feeditem.set_thumb_from_link()
-                    if self.feeditem.image_url is None:
+                    if self.feed_item.image_url is None:
+                        self.feedi_tem.set_thumb_from_link()
+                    if self.feed_item.image_url is None:
                         return
                     ext = \
-                        self.feeditem.image_url.split('.')[-1].lower().strip()
-                    if ext not in ('png', 'jpg', 'gif'):
+                        self.feed_item.image_url.split('.')[-1].lower().strip()
+                    if ext not in ('png', 'jpg', 'gif', 'svg'):
                         return
                     dest = (
                         self.confman.thumbs_cache_path + '/' +
-                        shasum(self.feeditem.image_url) + '.' + ext
+                        shasum(self.feed_item.image_url) + '.' + ext
                     )
                     if not isfile(dest):
-                        download_raw(self.feeditem.image_url, dest)
-                    self.confman.article_thumb_cache[self.feeditem.link] = dest
+                        download_raw(self.feed_item.image_url, dest)
+                    self.confman.article_thumb_cache[self.feed_item.link] = dest
                 except Exception:
                     return
             if isfile(dest):
@@ -136,9 +145,11 @@ class GFeedsSidebarRow(Gtk.ListBoxRow):
         )
 
     def set_read(self, read=None):
+        if self.feed_item is None:
+            return
         if read is not None:
-            self.feeditem.set_read(read)
-        if self.feeditem.read:
+            self.feed_item.set_read(read)
+        if self.feed_item.read:
             self.set_dim(True)
         else:
             self.set_dim(False)

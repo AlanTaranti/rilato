@@ -16,11 +16,7 @@ class RowPopover(Gtk.Popover):
             '/org/gabmus/gfeeds/ui/article_right_click_popover_content.ui'
         )
         self.container_box = self.builder.get_object('container_box')
-        # self.set_size_request(270, 150)
         self.parent_w = parent
-
-        # self.title_label = self.builder.get_object('title_label')
-        # self.title_label.set_text(self.parent_w.feeditem.title)
 
         self.read_unread_btn = self.builder.get_object('read_unread_btn')
         self.read_unread_btn.connect('clicked', self.on_read_unread_clicked)
@@ -30,7 +26,11 @@ class RowPopover(Gtk.Popover):
         self.set_autohide(True)
         self.set_parent(self.parent_w)
         self.set_child(self.container_box)
-        if self.parent_w.feeditem.read:
+
+    def on_feed_item_set(self):
+        if self.parent_w.feed_item is None:
+            return
+        if self.parent_w.feed_item.read:
             self.read_unread_img.set_from_icon_name(
                 'eye-not-looking-symbolic'
             )
@@ -68,4 +68,4 @@ class RowPopover(Gtk.Popover):
 
     def on_read_unread_clicked(self, btn):
         self.popdown()
-        self.set_read(not self.parent_w.feeditem.read)
+        self.set_read(not self.parent_w.feed_item.read)

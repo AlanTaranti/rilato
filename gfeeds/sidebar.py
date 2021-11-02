@@ -2,7 +2,6 @@ from gi.repository import Gtk, Gdk, GLib, Adw
 from gettext import gettext as _
 from gfeeds.confManager import ConfManager
 from gfeeds.feeds_manager import FeedsManager
-from gfeeds.sidebar_row import GFeedsSidebarRow
 from gfeeds.accel_manager import add_mouse_button_accel, add_longpress_accel
 from gfeeds.get_children import get_children
 from gfeeds.articles_listview import ArticlesListView

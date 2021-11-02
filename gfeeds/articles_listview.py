@@ -1,6 +1,7 @@
 from gi.repository import Gtk, Adw, GObject, Gio
 from gfeeds.rss_parser import FeedItem
 from gfeeds.confManager import ConfManager
+from gfeeds.sidebar_row import SidebarRow
 
 
 class FeedItemWrapper(GObject.Object):
@@ -136,10 +137,10 @@ class ArticlesListView(Adw.Bin):
 
     def on_setup_listitem(self, factory: Gtk.ListItemFactory,
                           list_item: Gtk.ListItem):
-        # TODO: create proper row widget
-        row_w = Gtk.Label()
+        row_w = SidebarRow()
         list_item.set_child(row_w)
+        list_item.row_w = row_w
 
     def on_bind_listitem(self, factory: Gtk.ListItemFactory,
                          list_item: Gtk.ListItem):
-        list_item.get_child().set_label(list_item.get_item().feed_item.title)
+        list_item.get_child().set_feed_item(list_item.get_item().feed_item)

@@ -197,7 +197,7 @@ class GFeedsAppWindow(BaseWindow):
             listview: Gtk.ListView,
             row_index: int
     ):
-        row = listview.get_selected()
+        row = self.sidebar.listview.get_selected()
         return  # TODO: fix
         row.popover.set_read(True)
         if (
