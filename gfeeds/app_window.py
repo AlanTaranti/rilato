@@ -1,5 +1,5 @@
 from gfeeds.feeds_view import FeedsViewScrolledWindow
-from gi.repository import Gtk, Adw, GObject
+from gi.repository import Gtk, Adw
 from gfeeds.confManager import ConfManager
 from gfeeds.feeds_manager import FeedsManager
 from gfeeds.sidebar import GFeedsSidebar
@@ -11,7 +11,6 @@ from gfeeds.suggestion_bar import (
 )
 from gfeeds.webview import GFeedsWebView
 from gfeeds.stack_with_empty_state import StackWithEmptyState
-from gfeeds.get_children import get_children
 from functools import reduce
 from operator import or_
 from subprocess import Popen

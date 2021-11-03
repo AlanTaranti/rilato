@@ -19,7 +19,6 @@ from gfeeds.manage_feeds_window import GFeedsManageFeedsWindow
 from gfeeds.confirm_add_dialog import GFeedsConfirmAddDialog
 from gfeeds.shortcuts_window import show_shortcuts_window
 from gfeeds.rss_link_from_file import get_feed_link_from_file
-from gfeeds.get_children import get_children
 from gfeeds.base_app import BaseApp, AppAction
 
 

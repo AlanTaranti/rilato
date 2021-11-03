@@ -1,5 +1,4 @@
 from typing import Tuple
-from gettext import gettext as _
 import readability
 import pygments
 import pygments.lexers

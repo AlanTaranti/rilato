@@ -24,9 +24,9 @@ class ArticlesListModel(Gtk.SortListModel):
         self.selected_feeds = []
         self.__search_term = ''
 
-        ## this is a chain: list_store contains the raw data,
-        ## filter_store filters it and sort_store sorts it, then the listview
-        ## is fed the last link in the chain via the selection object
+        # this is a chain: list_store contains the raw data,
+        # filter_store filters it and sort_store sorts it, then the listview
+        # is fed the last link in the chain via the selection object
         self.filter = Gtk.CustomFilter()
         self.filter.set_filter_func(self._filter_func)
         self.sorter = Gtk.CustomSorter()
@@ -206,14 +206,16 @@ class ArticlesListView(Gtk.ScrolledWindow):
         # self.invalidate_filter() # maybe?
         # TODO
 
-    def _on_setup_listitem(self, factory: Gtk.ListItemFactory,
-                          list_item: Gtk.ListItem):
+    def _on_setup_listitem(
+            self, factory: Gtk.ListItemFactory, list_item: Gtk.ListItem
+    ):
         row_w = SidebarRow()
         list_item.set_child(row_w)
         list_item.row_w = row_w  # otherwise it gets garbage collected
 
-    def _on_bind_listitem(self, factory: Gtk.ListItemFactory,
-                         list_item: Gtk.ListItem):
+    def _on_bind_listitem(
+            self, factory: Gtk.ListItemFactory, list_item: Gtk.ListItem
+    ):
         row_w = list_item.get_child()
         row_w.set_feed_item(list_item.get_item())
 
@@ -255,7 +257,9 @@ class ArticlesListBox(Gtk.ScrolledWindow):
                 if row else func(None)
         )
 
-    def _create_row(self, feed_item_wrapper: FeedItemWrapper, *args) -> Gtk.Widget:
+    def _create_row(
+            self, feed_item_wrapper: FeedItemWrapper, *args
+    ) -> Gtk.Widget:
         row_w = SidebarRow()
         row_w.set_feed_item(feed_item_wrapper)
         return row_w

@@ -3,7 +3,7 @@ from gettext import gettext as _
 from gi.repository import GLib, GObject
 from gfeeds.singleton import Singleton
 from gfeeds.confManager import ConfManager
-from gfeeds.rss_parser import Feed, FeedItem
+from gfeeds.rss_parser import Feed
 from gfeeds.download_manager import (
     download_feed,
     extract_feed_url_from_html

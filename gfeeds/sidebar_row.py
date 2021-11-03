@@ -135,7 +135,9 @@ class SidebarRow(Adw.Bin):
                     )
                     if not isfile(dest):
                         download_raw(self.feed_item.image_url, dest)
-                    self.confman.article_thumb_cache[self.feed_item.link] = dest
+                    self.confman.article_thumb_cache[
+                        self.feed_item.link
+                    ] = dest
                 except Exception:
                     GLib.idle_add(cb, None)
             if isfile(dest):
@@ -148,8 +150,10 @@ class SidebarRow(Adw.Bin):
             else:
                 self.picture_view_container.set_visible(True)
                 self.picture_view.set_file(img)
-                GLib.timeout_add(100, lambda *args:
-                    self.picture_view_container.set_visible(True)
+                GLib.timeout_add(
+                    100,
+                    lambda *args:
+                        self.picture_view_container.set_visible(True)
                 )
                 # self.picture_view.set_filename(img)
 

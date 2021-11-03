@@ -1,4 +1,3 @@
-import json
 import pytz
 from datetime import datetime, timezone
 from dateutil.parser import parse as dateparse
@@ -9,9 +8,7 @@ from gfeeds.get_favicon import get_favicon
 from os.path import isfile
 from gfeeds.confManager import ConfManager
 from gfeeds.sha import shasum
-from PIL import Image
-from bs4 import UnicodeDammit
-from typing import Optional
+# from bs4 import UnicodeDammit  # TODO: reimplement it!
 from gfeeds.get_thumb import get_thumb
 from SyndicationDomination import Feed as SynDomFeed
 

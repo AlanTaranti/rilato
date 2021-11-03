@@ -1,9 +1,6 @@
-import threading
-from os import remove
 from gettext import gettext as _
 from gi.repository import Gtk
 from gfeeds.confManager import ConfManager
-from gfeeds.download_manager import download_raw
 from gfeeds.feeds_manager import FeedsManager
 
 

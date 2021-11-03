@@ -1,4 +1,4 @@
-from gi.repository import Gtk, Adw, GLib, Gdk, Gio
+from gi.repository import Adw, GLib, Gdk, Gio
 from threading import Thread
 from gfeeds.confManager import ConfManager
 from pathlib import Path

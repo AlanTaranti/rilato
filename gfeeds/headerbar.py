@@ -1,5 +1,5 @@
 from gettext import gettext as _
-from gi.repository import Gtk, Gdk, Adw, GObject
+from gi.repository import Gtk, Gdk
 from gfeeds.confManager import ConfManager
 from gfeeds.feeds_manager import FeedsManager
 from gfeeds.view_mode_menu import GFeedsViewModeMenu
