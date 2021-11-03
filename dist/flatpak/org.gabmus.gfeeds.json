@@ -483,6 +483,7 @@
             ],
             "sources": [
                 {
+                    "//comment": "Needs to be archive, git doesn't include .mo files needed for localization",
                     "type": "archive",
                     "url": "https://files.pythonhosted.org/packages/4f/95/e097e65913e9b5ce68a576cf3ea364eb240973cc15c6a8184047a3571290/humanize-3.12.0.tar.gz",
                     "sha256": "5ec1a66e230a3e31fb3f184aab9436ea13d4e37c168e0ffc345ae5bb57e58be6"
