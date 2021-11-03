@@ -456,7 +456,7 @@
                 {
                     "type": "archive",
                     "path": "WebKit-main.tar.gz",
-                    "sha256": "3e6026123e3c745c6ae8a543f921540135ac23a9b8ea6cb25ca0d24db1021f30"
+                    "sha256": "60f7bebb572301a3f832b1cf9105cf627b9313dcf3e6f3b58b753027234e18af"
                 }
             ]
         },
@@ -466,14 +466,26 @@
             "build-commands": [
                 "python3 setup.py install --prefix=/app --root=/"
             ],
-            "config-opts": [
-                "--buildtype=release"
-            ],
             "sources": [
                 {
                     "type": "archive",
                     "url": "https://files.pythonhosted.org/packages/d9/cd/0d2d90b27219c07f68f1c25bcc7b02dd27639d2180add9d4b73e70945869/Cython-0.29.23.tar.gz",
                     "sha256": "6a0d31452f0245daacb14c979c77e093eb1a546c760816b5eed0047686baad8e"
+                }
+            ]
+        },
+        {
+            "name": "python-humanize",
+            "buildsystem": "simple",
+            "build-commands": [
+                "python3 setup.py build",
+                "python3 setup.py install --prefix=/app --root=/ --optimize=1 --skip-build"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://files.pythonhosted.org/packages/4f/95/e097e65913e9b5ce68a576cf3ea364eb240973cc15c6a8184047a3571290/humanize-3.12.0.tar.gz",
+                    "sha256": "5ec1a66e230a3e31fb3f184aab9436ea13d4e37c168e0ffc345ae5bb57e58be6"
                 }
             ]
         },

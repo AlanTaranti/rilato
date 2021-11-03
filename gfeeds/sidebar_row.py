@@ -6,7 +6,7 @@ from gfeeds.download_manager import download_raw
 from gi.repository import Gtk, GLib, Pango, Adw
 from gfeeds.confManager import ConfManager
 from gfeeds.simple_avatar import SimpleAvatar
-from gfeeds.relative_day_formatter import get_date_format
+from gfeeds.relative_day_formatter import humanize_datetime
 from gfeeds.sidebar_row_popover import RowPopover
 from gfeeds.accel_manager import add_mouse_button_accel, add_longpress_accel
 
@@ -95,27 +95,7 @@ class SidebarRow(Adw.Bin):
 
         self.origin_label.set_text(self.feed_item.parent_feed.title)
         self.title_label.set_text(self.feed_item.title)
-        tz_sec_offset = self.feed_item.pub_date.utcoffset().total_seconds()
-        glibtz = GLib.TimeZone(
-            (
-                '{0}{1}:{2}'.format(
-                    '+' if tz_sec_offset >= 0 else '',
-                    format(int(tz_sec_offset/3600), '02'),
-                    format(int(
-                        (tz_sec_offset - (int(tz_sec_offset/3600)*3600))/60
-                    ), '02'),
-                )
-            ) or '+00:00'
-        )
-        self.datestr = GLib.DateTime(
-            glibtz,
-            self.feed_item.pub_date.year,
-            self.feed_item.pub_date.month,
-            self.feed_item.pub_date.day,
-            self.feed_item.pub_date.hour,
-            self.feed_item.pub_date.minute,
-            self.feed_item.pub_date.second
-        ).to_local().format(get_date_format(self.feed_item.pub_date))
+        self.datestr = humanize_datetime(self.feed_item.pub_date)
         self.date_label.set_text(
             self.datestr
         )
