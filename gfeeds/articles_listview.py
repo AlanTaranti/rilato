@@ -48,6 +48,12 @@ class ArticlesListModel(Gtk.SortListModel):
             'gfeeds_filter_changed', self._change_filter
         )
 
+    def set_all_read_state(self, state: bool):
+        for i in range(self.get_n_items()):
+            feed_item_wrapper = self.get_item(i)
+            feed_item_wrapper.feed_item.set_read(state)
+            feed_item_wrapper.emit_changed()
+
     def _change_filter(self, caller, n_filter):
         if n_filter is None:
             self.selected_feeds = []
@@ -159,6 +165,7 @@ class ArticlesListView(Gtk.ScrolledWindow):
         self.set_selected_feeds = self.articles_store.selected_feeds
         self.add_new_items = self.articles_store.add_new_items
         self.remove_items = self.articles_store.remove_items
+        self.set_all_read_state = self.articles_store.set_all_read_state
 
     def connect_activate(self, func):
         self.list_view.connect(
@@ -238,6 +245,7 @@ class ArticlesListBox(Gtk.ScrolledWindow):
         self.set_selected_feeds = self.articles_store.selected_feeds
         self.add_new_items = self.articles_store.add_new_items
         self.remove_items = self.articles_store.remove_items
+        self.set_all_read_state = self.articles_store.set_all_read_state
 
     def connect_activate(self, func):
         self.listbox.connect(

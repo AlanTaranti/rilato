@@ -119,16 +119,10 @@ class GFeedsApplication(BaseApp):
         self.confman.emit('gfeeds_show_read_changed', '')
 
     def set_all_read(self, *args):
-        for row in get_children(self.window.sidebar.listbox):
-            # check if row is visible in listbox
-            if self.window.sidebar.listbox.gfeeds_sidebar_filter_func(
-                    row, None, None
-            ):
-                row.popover.set_read(True)
+        self.window.sidebar.listview_sw.set_all_read_state(True)
 
     def set_all_unread(self, *args):
-        for row in get_children(self.window.sidebar.listbox):
-            row.popover.set_read(False)
+        self.window.sidebar.listview_sw.set_all_read_state(False)
 
     def manage_feeds(self, *args):
         mf_win = GFeedsManageFeedsWindow(
