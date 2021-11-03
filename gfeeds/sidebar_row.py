@@ -8,6 +8,7 @@ from gfeeds.confManager import ConfManager
 from gfeeds.simple_avatar import SimpleAvatar
 from gfeeds.relative_day_formatter import get_date_format
 from gfeeds.sidebar_row_popover import RowPopover
+from gfeeds.accel_manager import add_mouse_button_accel, add_longpress_accel
 
 
 class SidebarRow(Adw.Bin):
@@ -47,33 +48,50 @@ class SidebarRow(Adw.Bin):
         self.picture_view_container = self.builder.get_object(
             'picture_view_container'
         )
-        self.picture_view = None
+        # self.picture_view = Gtk.Picture(
+        #     width_request=200, height_request=200, can_shrink=True
+        # )
+        self.picture_view = PictureView(None)
+        self.picture_view_container.append(self.picture_view)
+        self.picture_view_container.set_visible(False)
+
         self.confman.connect('show_thumbnails_changed', self.set_article_image)
 
         self.popover = RowPopover(self)
 
         self.set_child(self.container_box)
 
-    def set_feed_item(self, feed_item_wrapper, just_refresh=False):
-        if not feed_item_wrapper:
+        # longpress & right click
+        self.longpress = add_longpress_accel(
+            self, lambda *args: self.popover.popup()
+        )
+        self.rightclick = add_mouse_button_accel(
+            self,
+            lambda gesture, *args:
+                self.popover.popup()
+                if gesture.get_current_button() == 3  # 3 is right click
+                else None
+        )
+
+    def set_feed_item(self, feed_item_wrapper):
+        if (
+                not feed_item_wrapper or
+                self.feed_item_wrapper == feed_item_wrapper
+        ):
             return
 
         if (
                 self.feed_item_changed_signal_id is not None and
-                self.feed_item_wrapper is not None and
-                not just_refresh
+                self.feed_item_wrapper is not None
         ):
             self.feed_item_wrapper.disconnect(self.feed_item_changed_signal_id)
             self.feed_item_changed_signal_id = None
 
-        if not just_refresh:
-            self.feed_item_wrapper = feed_item_wrapper
-            self.feed_item = feed_item_wrapper.feed_item
-            self.feed_item_changed_signal_id = self.feed_item_wrapper.connect(
-                'changed', lambda *args: self.set_feed_item(
-                    self.feed_item_wrapper, True
-                )
-            )
+        self.feed_item_wrapper = feed_item_wrapper
+        self.feed_item = feed_item_wrapper.feed_item
+        self.feed_item_changed_signal_id = self.feed_item_wrapper.connect(
+            'changed', self.on_feed_item_changed
+        )
 
         self.origin_label.set_text(self.feed_item.parent_feed.title)
         self.title_label.set_text(self.feed_item.title)
@@ -106,15 +124,15 @@ class SidebarRow(Adw.Bin):
             self.feed_item.parent_feed.favicon_path
         )
         self.set_article_image()
+        self.on_feed_item_changed()
+
+    def on_feed_item_changed(self, *args):
         self.set_read()
         self.popover.on_feed_item_set()
 
     def set_article_image(self, *args):
-        if self.picture_view is not None:
-            self.picture_view_container.remove(self.picture_view)
-            del self.picture_view
-            self.picture_view = None
         if not self.confman.conf['show_thumbnails'] or self.feed_item is None:
+            self.picture_view_container.set_visible(False)
             return
 
         def af():
@@ -139,13 +157,21 @@ class SidebarRow(Adw.Bin):
                         download_raw(self.feed_item.image_url, dest)
                     self.confman.article_thumb_cache[self.feed_item.link] = dest
                 except Exception:
-                    return
+                    GLib.idle_add(cb, None)
             if isfile(dest):
                 GLib.idle_add(cb, dest)
+            GLib.idle_add(cb, None)
 
         def cb(img):
-            self.picture_view = PictureView(img)
-            self.picture_view_container.append(self.picture_view)
+            if img is None:
+                self.picture_view_container.set_visible(False)
+            else:
+                self.picture_view_container.set_visible(True)
+                self.picture_view.set_file(img)
+                GLib.timeout_add(100, lambda *args:
+                    self.picture_view_container.set_visible(True)
+                )
+                # self.picture_view.set_filename(img)
 
         Thread(target=af, daemon=True).start()
 

@@ -46,7 +46,7 @@ class RowPopover(Gtk.Popover):
             ))
 
     def set_read(self, read):
-        parent_stack = self.parent_w.get_root().sidebar
+        sidebar = self.parent_w.get_root().sidebar
         row = self.parent_w
         if not read:
             row.set_read(False)
@@ -64,7 +64,7 @@ class RowPopover(Gtk.Popover):
             row.popover.read_unread_label.set_text(_(
                 'Mark as unread'
             ))
-        parent_stack.listbox.invalidate_filter()
+        sidebar.listview_sw.invalidate_filter()
 
     def on_read_unread_clicked(self, btn):
         self.popdown()

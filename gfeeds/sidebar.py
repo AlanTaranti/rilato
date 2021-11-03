@@ -4,128 +4,20 @@ from gfeeds.confManager import ConfManager
 from gfeeds.feeds_manager import FeedsManager
 from gfeeds.accel_manager import add_mouse_button_accel, add_longpress_accel
 from gfeeds.get_children import get_children
-from gfeeds.articles_listview import ArticlesListView
-
-
-class GFeedsSidebarListBox(Gtk.ListBox):
-    def __init__(self, parent_stack):
-        super().__init__(vexpand=True, show_separators=True)
-        self.search_terms = ''
-        self.confman = ConfManager()
-        self.parent_stack = parent_stack
-
-        self.set_sort_from_confman()
-        self.confman.connect(
-            'gfeeds_new_first_changed',
-            self.set_sort_from_confman
-        )
-        self.selected_feeds = []
-        self.set_filter_func(self.gfeeds_sidebar_filter_func, None, False)
-        self.confman.connect(
-            'gfeeds_filter_changed',
-            self.change_filter
-        )
-        self.confman.connect(
-            'gfeeds_show_read_changed',
-            self.on_show_read_changed
-        )
-
-        # longpress & right click
-        self.longpress = add_longpress_accel(
-            self, self.on_right_click
-        )
-        self.rightclick = add_mouse_button_accel(
-            self,
-            lambda gesture, _, x, y:
-                self.on_right_click(gesture, x, y)
-                if gesture.get_current_button() == 3  # 3 is right click
-                else None
-        )
-
-    def append(self, *args, **kwargs):
-        super().append(*args, **kwargs)
-        self.show()
-
-    def on_show_read_changed(self, *args):
-        self.invalidate_filter()
-
-    def on_right_click(self, e_or_g, x, y, *args):
-        row = self.get_row_at_y(y)
-        if row:
-            row.popover.popup()
-
-    def on_key_press_event(self, what, event):
-        # right click
-        if event.type == Gdk.EventType.BUTTON_PRESS and event.button == 3:
-            self.on_right_click(event, event.x, event.y)
-
-    def change_filter(self, caller, n_filter):
-        if n_filter is None:
-            self.selected_feeds = []
-        elif isinstance(n_filter, list):
-            n_filter = n_filter[0]
-            # filter by tag
-            self.selected_feeds = [
-                f for f in self.confman.conf['feeds'].keys()
-                if 'tags' in self.confman.conf['feeds'][f].keys() and
-                n_filter in self.confman.conf['feeds'][f]['tags']
-            ]
-        else:
-            self.selected_feeds = [n_filter.rss_link]
-        self.invalidate_filter()
-
-    def gfeeds_sidebar_filter_func(self, row, data, notify_destroy):
-        toret = False
-        if len(self.selected_feeds) <= 0:
-            toret = True
-        else:
-            toret = row.feeditem.parent_feed.rss_link in self.selected_feeds
-        return row.is_selected() or (
-            toret and (
-                self.confman.conf['show_read_items'] or
-                not row.feeditem.read
-            ) and (
-                not self.search_terms or
-                self.search_terms.lower() in row.feeditem.title.lower()
-            )
-        )
-
-    def set_sort_from_confman(self, *args):
-        if self.confman.conf['new_first']:
-            self.set_sort_func(self.gfeeds_sort_new_first_func, None, False)
-        else:
-            self.set_sort_func(self.gfeeds_sort_old_first_func, None, False)
-
-    def add_new_items(self, feeditems_l):
-        self.parent_stack.set_main_visible(True)
-        for i in feeditems_l:
-            self.append(GFeedsSidebarRow(i))
-
-    def empty(self, *args):
-        while True:
-            row = self.get_row_at_index(0)
-            if row:
-                self.remove(row)
-            else:
-                break
-
-    def populate(self, feeditems_l):
-        self.empty()
-        self.add_new_items(feeditems_l)
-
-    def gfeeds_sort_new_first_func(self, row1, row2, data, notify_destroy):
-        return row1.feeditem.pub_date < row2.feeditem.pub_date
-
-    def gfeeds_sort_old_first_func(self, row1, row2, data, notify_destroy):
-        return row1.feeditem.pub_date > row2.feeditem.pub_date
+from gfeeds.articles_listview import ArticlesListView, ArticlesListBox
 
 
 class GFeedsSidebar(Adw.Bin):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        self.confman = ConfManager()
         self.feedman = FeedsManager()
 
-        self.listview_sw = ArticlesListView()
+        self.listview_sw = (
+            ArticlesListView()
+            if self.confman.conf['use_experimental_listview']
+            else ArticlesListBox()
+        )
         self.empty = self.listview_sw.empty
         self.populate = self.listview_sw.populate
 

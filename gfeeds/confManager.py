@@ -104,7 +104,8 @@ class ConfManager(metaclass=Singleton):
         'open_youtube_externally': False,
         'media_player': 'mpv',
         'max_picture_height': 600,
-        'show_thumbnails': True
+        'show_thumbnails': True,
+        'use_experimental_listview': False
     }
 
     def __init__(self):

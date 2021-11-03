@@ -12,6 +12,9 @@ class StackWithEmptyState(Gtk.Stack):
         self.empty_state = Gtk.Builder.new_from_resource(
             '/org/gabmus/gfeeds/ui/empty_state.ui'
         ).get_object('empty_state_box')
+        self.empty_state.get_style_context().add_class(
+            'navigation-sidebar'
+        )
         self.main_widget.show()
         self.add_named(self.main_widget, 'main_widget')
         self.add_named(self.empty_state, 'empty_state')

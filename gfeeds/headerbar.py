@@ -140,7 +140,7 @@ class GFeedsHeaderbarRight(Gtk.WindowHandle):
 class GFeedsHeaderbarLeft(Gtk.WindowHandle):
     def __init__(self, searchbar, leaflet):
         super().__init__(vexpand=False, hexpand=True)
-        self.get_style_context().add_class('sidebar')
+        # self.get_style_context().add_class('navigation-sidebar')
         self.builder = Gtk.Builder.new_from_resource(
             '/org/gabmus/gfeeds/ui/headerbar.ui'
         )

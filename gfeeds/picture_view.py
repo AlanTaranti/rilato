@@ -23,6 +23,10 @@ class PictureView(Gtk.Widget):
 
     def set_file(self, path):
         self.path = path
+        if self.path is None:
+            self.texture = None
+            self.aspect_ratio = None
+            return
         gio_file = Gio.File.new_for_path(self.path)
 
         def af():

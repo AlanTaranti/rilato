@@ -333,7 +333,7 @@ class AdvancedPreferencesPage(Adw.PreferencesPage):
                 'conf_key': 'max_refresh_threads',
                 'signal': None,
                 'subtitle': _('How many threads to refresh feeds')
-            },
+            }
         ]
         for s in spinbtn_settings:
             row = PreferencesSpinButtonRow(
@@ -345,6 +345,14 @@ class AdvancedPreferencesPage(Adw.PreferencesPage):
                 s['subtitle']
             )
             self.advanced_preferences_group.add(row)
+        self.advanced_preferences_group.add(
+            PreferencesToggleRow(
+                title=_('Experimental GtkListView for articles list'),
+                subtitle=_('Requires app restart'),
+                conf_key='use_experimental_listview',
+                signal=None
+            )
+        )
         self.add(self.advanced_preferences_group)
 
 

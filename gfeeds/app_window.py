@@ -24,8 +24,7 @@ class GFeedsAppWindow(BaseWindow):
         self.feedman = FeedsManager()
 
         self.sidebar = GFeedsSidebar()
-        self.sidebar.listview_sw.list_view.connect(
-            'activate',
+        self.sidebar.listview_sw.connect_activate(
             self.on_sidebar_row_activated
         )
 
@@ -63,9 +62,6 @@ class GFeedsAppWindow(BaseWindow):
             ]
         )
 
-        # separator = Gtk.Separator()
-        # separator.get_style_context().add_class('sidebar')
-
         leaflet_builder = Gtk.Builder.new_from_resource(
             '/org/gabmus/gfeeds/ui/gfeeds_leaflet.ui'
         )
@@ -99,7 +95,6 @@ class GFeedsAppWindow(BaseWindow):
         self.sidebar_box = Gtk.Box(
             orientation=Gtk.Orientation.VERTICAL, hexpand=False
         )
-        # self.sidebar_box.get_style_context().add_class('sidebar')
         self.sidebar_box.set_size_request(360, 100)
         self.sidebar_box.append(self.left_headerbar)
         self.sidebar_box.append(self.searchbar)
@@ -122,7 +117,6 @@ class GFeedsAppWindow(BaseWindow):
         )
         self.filter_sw = FeedsViewScrolledWindow(description=False, tags=True)
         self.filter_flap.get_style_context().add_class('background')
-        self.stack_with_empty_state.get_style_context().add_class('sidebar')
         self.filter_flap.set_content(self.stack_with_empty_state)
         self.filter_flap.set_flap(self.filter_sw)
         # this activates the "All" feed filter. while this works it's kinda
@@ -147,6 +141,9 @@ class GFeedsAppWindow(BaseWindow):
 
         self.sidebar_box.append(self.filter_flap)
         self.leaflet.append(self.sidebar_box)
+        self.leaflet.append(
+            Gtk.Separator(orientation=Gtk.Orientation.VERTICAL)
+        )
         self.leaflet.append(self.webview_box)
         self.leaflet.connect('notify::folded', self.on_main_leaflet_folded)
 
@@ -192,12 +189,7 @@ class GFeedsAppWindow(BaseWindow):
         self.confman.save_conf()
         self.confman.save_article_thumb_cache()
 
-    def on_sidebar_row_activated(
-            self,
-            listview: Gtk.ListView,
-            row_index: int
-    ):
-        feed_item_wrapper = self.sidebar.listview_sw.get_selected_item()
+    def on_sidebar_row_activated(self, feed_item_wrapper):
         if not feed_item_wrapper:
             return
         feed_item = feed_item_wrapper.feed_item
@@ -239,7 +231,7 @@ class GFeedsAppWindow(BaseWindow):
         self.leaflet.set_visible_child(self.sidebar_box)
         self.on_main_leaflet_folded()
         # TODO maybe remove? vvv
-        self.sidebar.listview_sw.select_row(None)
+        # self.sidebar.listview_sw.select_row(None)
 
     def on_main_leaflet_folded(self, *args):
         if self.leaflet.get_folded():
