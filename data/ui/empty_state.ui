@@ -1,84 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <requires lib="gtk" version="4.0"/>
-  <object class="GtkBox" id="empty_state_box">
-    <property name="orientation">vertical</property>
-    <child type="center">
-      <object class="GtkBox">
+  <object class="AdwStatusPage" id="empty_state_box">
+    <property name="title" translatable="yes">Let's get started</property>
+    <property name="icon_name">org.gabmus.gfeeds-symbolic</property>
+    <child>
+      <object class="GtkGrid">
         <property name="halign">center</property>
-        <property name="valign">center</property>
-        <property name="vexpand">True</property>
-        <property name="orientation">vertical</property>
-        <property name="spacing">24</property>
+        <property name="row_spacing">12</property>
+        <property name="column_spacing">12</property>
         <child>
           <object class="GtkImage">
-            <property name="halign">center</property>
-            <property name="pixel_size">128</property>
-            <property name="icon_name">org.gabmus.gfeeds-symbolic</property>
-            <style>
-              <class name="dim-label"/>
-            </style>
+            <property name="icon_name">list-add-symbolic</property>
+            <layout>
+              <property name="column">0</property>
+              <property name="row">0</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="GtkImage">
+            <property name="icon_name">open-menu-symbolic</property>
+            <layout>
+              <property name="column">0</property>
+              <property name="row">1</property>
+            </layout>
           </object>
         </child>
         <child>
           <object class="GtkLabel">
-            <property name="halign">center</property>
-            <property name="label" translatable="yes">Let's get started</property>
-            <property name="justify">center</property>
-            <style>
-              <class name="webview-filler-title"/>
-            </style>
+            <property name="halign">start</property>
+            <property name="label" translatable="yes">Add new feeds via URL</property>
+            <layout>
+              <property name="column">1</property>
+              <property name="row">0</property>
+            </layout>
           </object>
         </child>
         <child>
-          <object class="GtkGrid">
-            <property name="halign">center</property>
-            <property name="row_spacing">24</property>
-            <property name="column_spacing">12</property>
-            <child>
-              <object class="GtkImage">
-                <property name="icon_name">list-add-symbolic</property>
-                <layout>
-                  <property name="column">0</property>
-                  <property name="row">0</property>
-                </layout>
-              </object>
-            </child>
-            <child>
-              <object class="GtkImage">
-                <property name="icon_name">open-menu-symbolic</property>
-                <layout>
-                  <property name="column">0</property>
-                  <property name="row">1</property>
-                </layout>
-              </object>
-            </child>
-            <child>
-              <object class="GtkLabel">
-                <property name="halign">start</property>
-                <property name="label" translatable="yes">Add new feeds via URL</property>
-                <layout>
-                  <property name="column">1</property>
-                  <property name="row">0</property>
-                </layout>
-              </object>
-            </child>
-            <child>
-              <object class="GtkLabel">
-                <property name="halign">start</property>
-                <property name="label" translatable="yes">Import an OPML file</property>
-                <layout>
-                  <property name="column">1</property>
-                  <property name="row">1</property>
-                </layout>
-              </object>
-            </child>
+          <object class="GtkLabel">
+            <property name="halign">start</property>
+            <property name="label" translatable="yes">Import an OPML file</property>
+            <layout>
+              <property name="column">1</property>
+              <property name="row">1</property>
+            </layout>
           </object>
         </child>
       </object>
     </child>
-    <style>
-      <class name="force-background"/>
-    </style>
   </object>
 </interface>

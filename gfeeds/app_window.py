@@ -115,9 +115,11 @@ class GFeedsAppWindow(BaseWindow):
             swipe_to_open=True, swipe_to_close=True
         )
         self.filter_sw = FeedsViewScrolledWindow(description=False, tags=True)
-        self.filter_flap.get_style_context().add_class('background')
         self.filter_flap.set_content(self.stack_with_empty_state)
-        self.filter_flap.set_flap(self.filter_sw)
+        self.filter_sw_bin = Adw.Bin()
+        self.filter_sw_bin.set_child(self.filter_sw)
+        self.filter_sw_bin.get_style_context().add_class('background')
+        self.filter_flap.set_flap(self.filter_sw_bin)
         # this activates the "All" feed filter. while this works it's kinda
         # hacky and needs a proper function
         self.feedman.connect(

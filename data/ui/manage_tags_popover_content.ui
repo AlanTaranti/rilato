@@ -32,6 +32,11 @@
       </object>
     </child>
     <child>
+      <object class="GtkSeparator">
+        <property name="orientation">horizontal</property>
+      </object>
+    </child>
+    <child>
       <object class="GtkScrolledWindow">
         <property name="hscrollbar_policy">never</property>
         <property name="vexpand">True</property>
@@ -40,6 +45,7 @@
             <child>
               <object class="GtkListBox" id="tags_listbox">
                 <property name="selection_mode">none</property>
+                <style><class name="navigation-sidebar" /></style>
                 <child type="placeholder">
                   <object class="GtkBox">
                     <property name="valign">center</property>

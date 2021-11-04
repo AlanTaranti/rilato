@@ -1,36 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <requires lib="gtk" version="4.0"/>
-  <object class="GtkBox" id="webview_filler_box">
-    <property name="orientation">vertical</property>
-    <child type="center">
-      <object class="GtkBox">
-        <property name="halign">center</property>
-        <property name="valign">center</property>
-        <property name="vexpand">True</property>
-        <property name="orientation">vertical</property>
-        <property name="spacing">24</property>
-        <child>
-          <object class="GtkImage">
-            <property name="halign">center</property>
-            <property name="pixel_size">128</property>
-            <property name="icon_name">webview-filler-symbolic</property>
-            <property name="icon_size">0</property>
-            <style>
-              <class name="dim-label"/>
-            </style>
-          </object>
-        </child>
-        <child>
-          <object class="GtkLabel">
-            <property name="halign">center</property>
-            <property name="label" translatable="yes">Select an article</property>
-            <style>
-              <class name="webview-filler-title"/>
-            </style>
-          </object>
-        </child>
-      </object>
-    </child>
+  <object class="AdwStatusPage" id="webview_filler_box">
+    <property name="title" translatable="yes">Select an article</property>
+    <property name="icon_name">webview-filler-symbolic</property>
   </object>
 </interface>

@@ -110,7 +110,9 @@ class FeedsViewTagListboxRow(Gtk.ListBoxRow):
 class FeedsViewListbox(Gtk.ListBox):
     # here kwargs is actually being used
     def __init__(self, description=True, tags=False, **kwargs):
-        super().__init__(show_separators=True, **kwargs)
+        super().__init__(**kwargs)
+        self.get_style_context().add_class('navigation-sidebar')
+        self.get_style_context().add_class('background')
         self.description = description
         self.feedman = FeedsManager()
         self.confman = ConfManager()
@@ -223,4 +225,4 @@ class FeedsViewScrolledWindow(Gtk.ScrolledWindow):
         # self.set_size_request(360, 500)
         self.set_child(self.listbox)
         self.set_size_request(250, -1)
-        self.get_style_context().add_class('frame')
+        # self.get_style_context().add_class('frame')
