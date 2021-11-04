@@ -20,7 +20,7 @@
     <file preprocess="xml-stripblanks">ui/webview_filler.ui</file>
     <file preprocess="xml-stripblanks">ui/webview_with_notification.ui</file>
     <file preprocess="xml-stripblanks">ui/scrolled_label.ui</file>
-    <file preprocess="xml-stripblanks">ui/manage_tags_popover_content.ui</file>
+    <file preprocess="xml-stripblanks">ui/manage_tags_content.ui</file>
     <file preprocess="xml-stripblanks">ui/manage_tags_listbox_row_content.ui</file>
 
     <file compressed="true">ui/gtk_style.css</file>

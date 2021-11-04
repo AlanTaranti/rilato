@@ -55,7 +55,7 @@ class ManageTagsListboxRow(Gtk.ListBoxRow):
         self.emit('activate')
 
 
-class ManageTagsPopover(Gtk.Popover):
+class ManageTagsContent(Adw.Bin):
     __gsignals__ = {
         'new_tag_added': (
             GObject.SignalFlags.RUN_FIRST,
@@ -77,16 +77,15 @@ class ManageTagsPopover(Gtk.Popover):
         ),
     }
 
-    def __init__(self, relative_to, window, **kwargs):
-        super().__init__(**kwargs)
+    def __init__(self, flap, window, **kwargs):
+        super().__init__(width_request=280, **kwargs)
+        self.get_style_context().add_class('background')
         self.builder = Gtk.Builder.new_from_resource(
-            '/org/gabmus/gfeeds/ui/manage_tags_popover_content.ui'
+            '/org/gabmus/gfeeds/ui/manage_tags_content.ui'
         )
         self.confman = ConfManager()
-        self.relative_to = relative_to
+        self.flap = flap
         self.window = window
-        self.set_parent(self.relative_to)
-        self.set_autohide(True)
         self.main_box = self.builder.get_object('main_box')
         self.add_tag_btn = self.builder.get_object('add_tag_btn')
         self.tags_entry = self.builder.get_object('tags_entry')
@@ -171,7 +170,9 @@ class ManageTagsPopover(Gtk.Popover):
         self.tags_listbox.remove(caller)
         self.emit('tag_deleted', tag)
 
-    def popup(self, *args):
+    def set_reveal(self, reveal: bool):
+        if not reveal:
+            return self.flap.set_reveal_flap(False)
         self.add_tag_btn.set_sensitive(False)
         self.tags_entry.set_text('')
         selected_feeds = [f.rss_link for f in self.window.get_selected_feeds()]
@@ -196,19 +197,18 @@ class ManageTagsPopover(Gtk.Popover):
                         t_row.checkbox.set_active(True)
                     else:
                         t_row.checkbox.set_active(False)
-        super().popup()
+        self.flap.set_reveal_flap(True)
 
 
 class ManageFeedsHeaderbar(Gtk.HeaderBar):
-    def __init__(self, window, **kwargs):
-        _title_widget = Gtk.Label(label=_('Manage Feeds'))
-        _title_widget.get_style_context().add_class('title')
+    def __init__(self, flap, **kwargs):
         super().__init__(
-            title_widget=_title_widget,
+            title_widget=Adw.WindowTitle(title=_('Manage Feeds')),
             show_title_buttons=True,
             **kwargs
         )
         self.confman = ConfManager()
+        self.flap=flap
 
         self.select_all_btn = Gtk.Button.new_from_icon_name(
             'edit-select-all-symbolic'
@@ -221,29 +221,19 @@ class ManageFeedsHeaderbar(Gtk.HeaderBar):
         self.delete_btn.set_tooltip_text(_('Delete selected feeds'))
         self.delete_btn.get_style_context().add_class('destructive-action')
 
-        self.tags_btn = Gtk.Button.new_from_icon_name(
-            'tag-symbolic'
-        )
+        self.tags_btn = Gtk.ToggleButton(icon_name='tag-symbolic')
         self.tags_btn.set_tooltip_text(_('Manage tags for selected feeds'))
 
         self.pack_end(self.delete_btn)
-        self.pack_start(self.select_all_btn)
         self.pack_start(self.tags_btn)
+        self.pack_start(self.select_all_btn)
 
         self.set_actions_sensitive(False)
-
-        self.manage_tags_popover = ManageTagsPopover(
-            self.tags_btn,
-            window
-        )
-        self.tags_btn.connect(
-            'clicked',
-            lambda *args: self.manage_tags_popover.popup()
-        )
 
     def set_actions_sensitive(self, state):
         for w in (self.delete_btn, self.tags_btn):
             w.set_sensitive(state)
+        self.flap.set_swipe_to_open(state)
 
 
 class ManageFeedsListboxRow(FeedsViewListboxRow):
@@ -315,7 +305,27 @@ class GFeedsManageFeedsWindow(Adw.Window):
         self.main_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
         self.scrolled_window = ManageFeedsScrolledWindow()
         self.listbox = self.scrolled_window.listbox
-        self.headerbar = ManageFeedsHeaderbar(self)
+        self.flap = Adw.Flap(
+            flap_position=Gtk.PackType.START,
+            fold_policy=Adw.FlapFoldPolicy.ALWAYS,
+            modal=True,
+            reveal_flap=False,
+            swipe_to_open=True, swipe_to_close=True
+        )
+        self.tags_flap = ManageTagsContent(self.flap, self)
+        self.flap.set_content(self.scrolled_window)
+        self.flap.set_flap(self.tags_flap)
+        self.headerbar = ManageFeedsHeaderbar(self.flap)
+        self.headerbar.tags_btn.connect(
+            'toggled', lambda btn:
+                self.tags_flap.set_reveal(btn.get_active())
+        )
+        self.flap.connect(
+            'notify::reveal-flap', lambda *args:
+                self.headerbar.tags_btn.set_active(
+                    self.flap.get_reveal_flap()
+                )
+        )
 
         self.headerbar.delete_btn.connect(
             'clicked',
@@ -333,7 +343,7 @@ class GFeedsManageFeedsWindow(Adw.Window):
         self.main_box.append(self.window_handle)
         self.window_handle.set_vexpand(False)
 
-        self.main_box.append(self.scrolled_window)
+        self.main_box.append(self.flap)
         self.set_content(self.main_box)
 
         add_accelerators(
@@ -344,15 +354,15 @@ class GFeedsManageFeedsWindow(Adw.Window):
             }]
         )
 
-        self.headerbar.manage_tags_popover.connect(
+        self.tags_flap.connect(
             'new_tag_added',
             self.on_new_tag_added
         )
-        self.headerbar.manage_tags_popover.connect(
+        self.tags_flap.connect(
             'tag_removed',
             self.on_tag_removed
         )
-        self.headerbar.manage_tags_popover.connect(
+        self.tags_flap.connect(
             'tag_deleted',
             self.on_tag_deleted
         )
