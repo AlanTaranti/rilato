@@ -1,6 +1,6 @@
 from gettext import gettext as _
 import threading
-from gi.repository import Gtk, GLib, WebKit2, GObject, Gio
+from gi.repository import Gtk, GLib, WebKit2, GObject, Gio, Adw
 from gfeeds.build_reader_html import build_reader_html
 from gfeeds.confManager import ConfManager
 from gfeeds.download_manager import download_text
@@ -32,26 +32,21 @@ class GFeedsWebView(Gtk.Stack):
             '/org/gabmus/gfeeds/ui/webview_filler.ui'
         )
         self.webview_notif_builder = Gtk.Builder.new_from_resource(
-            '/org/gabmus/gfeeds/ui/webview_with_notification.ui'
+            '/org/gabmus/gfeeds/ui/toast_webview.ui'
         )
 
-        self.webkitview = WebKit2.WebView(hexpand=True, vexpand=True)
+        self.webkitview = WebKit2.WebView(
+            hexpand=True, vexpand=True, width_request=360, height_request=500
+        )
         self.loading_bar = RevealerLoadingBar()
         self.webview_notif_builder.get_object(
-            'box1'
-        ).prepend(self.loading_bar)
-        self.webview_notif_builder.get_object(
-            'box1'
-        ).append(self.webkitview)
-        self.overlay_container = self.webview_notif_builder.get_object(
-            'overlay1'
+            'loading_bar_container'
+        ).set_child(self.loading_bar)
+        self.main_view = self.webview_notif_builder.get_object('container_box')
+        self.toast_overlay = self.webview_notif_builder.get_object(
+            'toast_overlay'
         )
-        self.notif_revealer = self.webview_notif_builder.get_object(
-            'revealer'
-        )
-        self.webview_notif_builder.get_object(
-            'notif_close_btn'
-        ).connect('clicked', self.hide_notif)
+        self.toast_overlay.set_child(self.webkitview)
 
         self.webkitview_settings = WebKit2.Settings()
         self.apply_webview_settings()
@@ -65,12 +60,7 @@ class GFeedsWebView(Gtk.Stack):
 
         self.fillerview = self.filler_builder.get_object('webview_filler_box')
 
-        self.webkitview.set_hexpand(True)
-        self.fillerview.set_hexpand(True)
-        self.webkitview.set_size_request(360, 500)
-        self.fillerview.set_size_request(360, 500)
-
-        self.add_titled(self.overlay_container, 'Web View', _('Web View'))
+        self.add_titled(self.main_view, 'Web View', _('Web View'))
         self.add_titled(self.fillerview, 'Filler View', _('Filler View'))
         self.set_visible_child(self.fillerview)
 
@@ -103,11 +93,8 @@ class GFeedsWebView(Gtk.Stack):
         self.webkitview.set_zoom_level(1.0)
 
     def show_notif(self, *args):
-        self.notif_revealer.set_reveal_child(True)
-        GLib.timeout_add_seconds(5, self.hide_notif)
-
-    def hide_notif(self, *args):
-        self.notif_revealer.set_reveal_child(False)
+        toast = Adw.Toast(title=_('Link copied to clipboard!'))
+        self.toast_overlay.add_toast(toast)
 
     def set_enable_rss_content(self, state=True, feeditem=None):
         if feeditem:
@@ -122,7 +109,7 @@ class GFeedsWebView(Gtk.Stack):
             )
 
     def _load_rss_content(self, feeditem):
-        self.set_visible_child(self.overlay_container)
+        self.set_visible_child(self.main_view)
         self.feeditem = feeditem
         self.uri = feeditem.link
         content = feeditem.sd_item.get_content()
@@ -149,7 +136,7 @@ class GFeedsWebView(Gtk.Stack):
         uri = feeditem.link
         self.feeditem = feeditem
         self.uri = uri
-        self.set_visible_child(self.overlay_container)
+        self.set_visible_child(self.main_view)
         if self.confman.conf['default_view'] == 'reader':
             t = threading.Thread(
                 group=None,

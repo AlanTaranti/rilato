@@ -18,7 +18,7 @@
     <file preprocess="xml-stripblanks">ui/sidebar_listbox_row.ui</file>
     <file preprocess="xml-stripblanks">ui/spinner_button.ui</file>
     <file preprocess="xml-stripblanks">ui/webview_filler.ui</file>
-    <file preprocess="xml-stripblanks">ui/webview_with_notification.ui</file>
+    <file preprocess="xml-stripblanks">ui/toast_webview.ui</file>
     <file preprocess="xml-stripblanks">ui/scrolled_label.ui</file>
     <file preprocess="xml-stripblanks">ui/manage_tags_content.ui</file>
     <file preprocess="xml-stripblanks">ui/manage_tags_listbox_row_content.ui</file>
