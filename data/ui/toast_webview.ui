@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <requires lib="gtk" version="4.0"/>
-  <object class="GtkBox" id="container_box">
-    <property name="orientation">vertical</property>
+  <object class="GtkOverlay" id="container_box">
     <property name="vexpand">1</property>
     <property name="hexpand">1</property>
-    <child>
+    <child type="overlay">
       <object class="AdwBin" id="loading_bar_container"></object>
     </child>
     <child>
