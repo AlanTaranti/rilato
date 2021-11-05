@@ -117,9 +117,11 @@ class ArticlesListModel(Gtk.SortListModel):
 
     def remove_items(self, to_remove_l):
         for i in to_remove_l:
+            tfiw = FeedItemWrapper(i)
             found, pos = self.list_store.find_with_equal_func(
-                FeedItemWrapper(i),
+                tfiw,
                 lambda a, b: a.feed_item.link == b.feed_item.link
+                    if a and b else None
             )
             if found:
                 self.list_store.remove(pos)
