@@ -288,68 +288,6 @@
             ]
         },
         {
-            "name": "pybind11",
-            "buildsystem": "cmake",
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://github.com/pybind/pybind11/",
-                    "tag": "v2.8.1"
-                },
-                {
-                    "type": "patch",
-                    "path": "pybind11_flatpak_fix.patch",
-                    "sha256": "6c16ce22e230064fedd15b7b68d2bed8a4ecae69f544acaa2f01b43428a4d968"
-                }
-            ]
-        },
-        {
-            "name": "python-pybind11",
-            "buildsystem": "simple",
-            "build-commands": [
-                "python3 setup.py build",
-                "python3 setup.py install --prefix=/app --root=/"
-            ],
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://github.com/pybind/pybind11/",
-                    "tag": "v2.8.1"
-                },
-                {
-                    "type": "patch",
-                    "path": "pybind11_flatpak_fix.patch",
-                    "sha256": "6c16ce22e230064fedd15b7b68d2bed8a4ecae69f544acaa2f01b43428a4d968"
-                }
-            ]
-        },
-        {
-            "name": "pugixml",
-            "buildsystem": "cmake",
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://github.com/zeux/pugixml",
-                    "tag": "v1.11.4"
-                }
-            ]
-        },
-        {
-            "name": "python-syndicationdomination",
-            "buildsystem": "meson",
-            "config-opts" : [
-                "-Dto_json_binary=false",
-                "-Dpython_bindings=true"
-            ],
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://gitlab.com/gabmus/syndication-domination",
-                    "branch": "master"
-                }
-            ]
-        },
-        {
             "name": "python-markupsafe",
             "buildsystem": "simple",
             "build-commands": [
@@ -375,26 +313,6 @@
                     "type": "archive",
                     "url": "https://files.pythonhosted.org/packages/a1/69/daeee6d8f22c997e522cdbeb59641c4d31ab120aba0f2c799500f7456b7e/beautifulsoup4-4.10.0.tar.gz",
                     "sha256": "c23ad23c521d818955a4151a67d81580319d4bf548d3d49f4223ae041ff98891"
-                }
-            ]
-        },
-        {
-            "name": "python-listparser",
-            "buildsystem": "simple",
-            "build-commands": [
-                "python3 listparser-setup.py install --prefix=/app --root=/"
-            ],
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://github.com/kurtmckee/listparser",
-                    "branch": "develop",
-                    "commit": "09eb891f77ed9f8da71dfbfad78e9e60ee7e565d"
-                },
-                {
-                    "type": "file",
-                    "path": "listparser-setup.py",
-                    "sha256": "5150576d663d488928a56f9673a44c3b36b63ed508d9dbe8e19cfa25c8e18550"
                 }
             ]
         },
@@ -648,6 +566,68 @@
                     "type": "archive",
                     "url": "https://files.pythonhosted.org/packages/9e/bd/3704a8c3e0942d711c1299ebf7b9091930adae6675d7c8f476a7ce48653c/sgmllib3k-1.0.0.tar.gz",
                     "sha256": "7868fb1c8bfa764c1ac563d3cf369c381d1325d36124933a726f29fcdaa812e9"
+                }
+            ]
+        },
+        {
+            "name": "pybind11",
+            "buildsystem": "cmake",
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/pybind/pybind11/",
+                    "tag": "v2.8.1"
+                },
+                {
+                    "type": "patch",
+                    "path": "pybind11_flatpak_fix.patch",
+                    "sha256": "6c16ce22e230064fedd15b7b68d2bed8a4ecae69f544acaa2f01b43428a4d968"
+                }
+            ]
+        },
+        {
+            "name": "python-pybind11",
+            "buildsystem": "simple",
+            "build-commands": [
+                "python3 setup.py build",
+                "python3 setup.py install --prefix=/app --root=/"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/pybind/pybind11/",
+                    "tag": "v2.8.1"
+                },
+                {
+                    "type": "patch",
+                    "path": "pybind11_flatpak_fix.patch",
+                    "sha256": "6c16ce22e230064fedd15b7b68d2bed8a4ecae69f544acaa2f01b43428a4d968"
+                }
+            ]
+        },
+        {
+            "name": "pugixml",
+            "buildsystem": "cmake",
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/zeux/pugixml",
+                    "tag": "v1.11.4"
+                }
+            ]
+        },
+        {
+            "name": "python-syndicationdomination",
+            "buildsystem": "meson",
+            "config-opts" : [
+                "-Dto_json_binary=false",
+                "-Dpython_bindings=true"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://gitlab.com/gabmus/syndication-domination",
+                    "branch": "master"
                 }
             ]
         },

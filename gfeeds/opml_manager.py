@@ -1,11 +1,11 @@
 from gi.repository import GLib
 from gettext import gettext as _
-import listparser
 from threading import Thread
 from os.path import isfile
 from xml.sax.saxutils import escape
 from gfeeds.confManager import ConfManager
 from gfeeds.feeds_manager import FeedsManager
+from SyndicationDomination import Opml
 
 confman = ConfManager()
 feedman = FeedsManager()
@@ -45,12 +45,14 @@ def opml_to_rss_list(opml_path):
         print(_('Error: OPML path provided does not exist'))
         return res
     try:
-        with open(opml_path, 'r') as fd:
-            lp_opml = listparser.parse(fd.read())
-            res = [
-                {'feed': f['url'], 'tags': f['tags']} for f in lp_opml['feeds']
-            ]
+        sd_opml = Opml(opml_path, True)
+        res = [
+            {'feed': item.get_feed_url(), 'tags': item.get_categories()}
+            for item in sd_opml.get_items()
+        ]
     except Exception:
+        import traceback
+        traceback.print_exc()
         print(_('Error parsing OPML file `{0}`').format(opml_path))
     return res
 
