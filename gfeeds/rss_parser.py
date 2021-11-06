@@ -10,7 +10,7 @@ from gfeeds.confManager import ConfManager
 from gfeeds.sha import shasum
 # from bs4 import UnicodeDammit  # TODO: reimplement it!
 from gfeeds.get_thumb import get_thumb
-from SyndicationDomination import Feed as SynDomFeed
+from syndom import Feed as SynDomFeed
 
 
 def get_encoding(in_str):

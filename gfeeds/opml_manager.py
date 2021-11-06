@@ -5,7 +5,7 @@ from os.path import isfile
 from xml.sax.saxutils import escape
 from gfeeds.confManager import ConfManager
 from gfeeds.feeds_manager import FeedsManager
-from SyndicationDomination import Opml
+from syndom import Opml
 
 confman = ConfManager()
 feedman = FeedsManager()
