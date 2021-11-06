@@ -97,8 +97,8 @@ def download_feed(link: str, get_cached: bool = False):
                 'last-modified' in confman.conf['feeds'][link].keys()
         ):
             confman.conf['feeds'][link].pop('last-modified')
-        with open(dest_path, 'w') as fd:
-            fd.write(res.text)
+        with open(dest_path, 'wb') as fd:
+            fd.write(res.content)  # res.text is str, res.content is bytes
         return (dest_path, link)
 
     def handle_304(): return (dest_path, link)
