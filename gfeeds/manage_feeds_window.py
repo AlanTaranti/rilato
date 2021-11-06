@@ -215,10 +215,10 @@ class ManageFeedsHeaderbar(Gtk.HeaderBar):
         )
         self.select_all_btn.set_tooltip_text(_('Select/Unselect all'))
 
-        self.delete_btn = Gtk.Button.new_from_icon_name(
-            'user-trash-symbolic'
+        self.delete_btn = Gtk.Button(
+            icon_name='user-trash-symbolic',
+            tooltip_text=_('Delete selected feeds')
         )
-        self.delete_btn.set_tooltip_text(_('Delete selected feeds'))
         self.delete_btn.get_style_context().add_class('destructive-action')
 
         self.tags_btn = Gtk.ToggleButton(icon_name='tag-symbolic')
