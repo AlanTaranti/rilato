@@ -138,6 +138,68 @@
             ]
         },
         {
+            "name": "libsoup",
+            "buildsystem": "meson",
+            "config-opts": [
+                "-Dtests=false"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://gitlab.gnome.org/GNOME/libsoup",
+                    "tag": "3.0.1"
+                }
+            ]
+        },
+        {
+            "name": "bubblewrap",
+            "buildsystem": "autotools",
+            "config-opts": [],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/containers/bubblewrap",
+                    "tag": "v0.5.0"
+                }
+            ]
+        },
+        {
+            "name": "xdg-dbus-proxy",
+            "buildsystem": "autotools",
+            "config-opts": [],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/flatpak/xdg-dbus-proxy",
+                    "tag": "0.1.2"
+                }
+            ]
+        },
+        {
+            "name": "webkitgtk",
+            "//buildsystem": "cmake",
+            "buildsystem": "cmake-ninja",
+            "//disabled-opts": [
+                "-DENABLE_BUBBLEWRAP_SANDBOX=OFF",
+                "-DCMAKE_BUILD_TYPE=Debug"
+            ],
+            "config-opts": [
+                "-DCMAKE_BUILD_TYPE=Release",
+                "-DPORT=GTK",
+                "-DUSE_GTK4=ON",
+                "-DUSE_SOUP2=OFF",
+                "-DENABLE_GAMEPAD=OFF",
+                "-DLIB_INSTALL_DIR=/app/lib"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "path": "WebKit-main.tar.gz",
+                    "sha256": "60f7bebb572301a3f832b1cf9105cf627b9313dcf3e6f3b58b753027234e18af"
+                }
+            ]
+        },
+        {
             "name" : "pygobject",
             "buildsystem": "meson",
             "config-opts" : [
@@ -315,68 +377,6 @@
                     "type": "archive",
                     "url": "https://files.pythonhosted.org/packages/a1/69/daeee6d8f22c997e522cdbeb59641c4d31ab120aba0f2c799500f7456b7e/beautifulsoup4-4.10.0.tar.gz",
                     "sha256": "c23ad23c521d818955a4151a67d81580319d4bf548d3d49f4223ae041ff98891"
-                }
-            ]
-        },
-        {
-            "name": "libsoup",
-            "buildsystem": "meson",
-            "config-opts": [
-                "-Dtests=false"
-            ],
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://gitlab.gnome.org/GNOME/libsoup",
-                    "tag": "3.0.1"
-                }
-            ]
-        },
-        {
-            "name": "bubblewrap",
-            "buildsystem": "autotools",
-            "config-opts": [],
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://github.com/containers/bubblewrap",
-                    "tag": "v0.5.0"
-                }
-            ]
-        },
-        {
-            "name": "xdg-dbus-proxy",
-            "buildsystem": "autotools",
-            "config-opts": [],
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://github.com/flatpak/xdg-dbus-proxy",
-                    "tag": "0.1.2"
-                }
-            ]
-        },
-        {
-            "name": "webkitgtk",
-            "//buildsystem": "cmake",
-            "buildsystem": "cmake-ninja",
-            "//disabled-opts": [
-                "-DENABLE_BUBBLEWRAP_SANDBOX=OFF",
-                "-DCMAKE_BUILD_TYPE=Debug"
-            ],
-            "config-opts": [
-                "-DCMAKE_BUILD_TYPE=Release",
-                "-DPORT=GTK",
-                "-DUSE_GTK4=ON",
-                "-DUSE_SOUP2=OFF",
-                "-DENABLE_GAMEPAD=OFF",
-                "-DLIB_INSTALL_DIR=/app/lib"
-            ],
-            "sources": [
-                {
-                    "type": "archive",
-                    "path": "WebKit-main.tar.gz",
-                    "sha256": "60f7bebb572301a3f832b1cf9105cf627b9313dcf3e6f3b58b753027234e18af"
                 }
             ]
         },
