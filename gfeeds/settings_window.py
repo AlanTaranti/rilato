@@ -255,7 +255,6 @@ class GeneralPreferencesPage(Adw.PreferencesPage):
         for p in [
                 confman.cache_path,
                 confman.thumbs_cache_path,
-                confman.saved_cache_path
         ]:
             files = [
                 abspath(join(p, f)) for f in listdir(p)
