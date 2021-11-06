@@ -116,15 +116,15 @@ class ArticlesListModel(Gtk.SortListModel):
         self.add_new_items(feeditems_l)
 
     def remove_items(self, to_remove_l):
-        for i in to_remove_l:
-            tfiw = FeedItemWrapper(i)
-            found, pos = self.list_store.find_with_equal_func(
-                tfiw,
-                lambda a, b: a.feed_item.link == b.feed_item.link
-                    if a and b else None
-            )
-            if found:
-                self.list_store.remove(pos)
+        num_items = self.list_store.get_n_items()
+        target_links = [fi.link for fi in to_remove_l]
+        for i in range(num_items):
+            if len(target_links) <= 0:
+                break
+            item = self.list_store.get_item(i)
+            if item.feed_item.link in target_links:
+                target_links.remove(item.feed_item.link)
+                self.list_store.remove(i)
 
     def set_search_term(self, term):
         self.__search_term = term.strip().lower()
