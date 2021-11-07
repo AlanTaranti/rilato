@@ -208,7 +208,7 @@ class ManageFeedsHeaderbar(Gtk.HeaderBar):
             **kwargs
         )
         self.confman = ConfManager()
-        self.flap=flap
+        self.flap = flap
 
         self.select_all_btn = Gtk.Button.new_from_icon_name(
             'edit-select-all-symbolic'
