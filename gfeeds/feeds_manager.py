@@ -108,15 +108,15 @@ class FeedsManager(metaclass=Singleton):
         self.problematic_feeds = []
 
         def cb(res):
-            get_cached = False
+            _get_cached = get_cached
             if res:
                 self.emit('feedmanager_online_changed', True)
             else:
                 self.emit('feedmanager_online_changed', False)
-                get_cached = True
+                _get_cached = True
                 # self.emit('feedmanager_refresh_end', '')
                 # return
-            self.continue_refresh(get_cached)
+            self.continue_refresh(_get_cached)
 
         is_online(cb)
 
