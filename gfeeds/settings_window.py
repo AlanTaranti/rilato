@@ -204,10 +204,10 @@ class GeneralPreferencesPage(Adw.PreferencesPage):
                 'signal': None
             },
             {
-                'title': _('Open YouTube links via your video player'),
+                'title': _('Use external video player for YouTube'),
                 'conf_key': 'open_youtube_externally',
                 'subtitle': _(
-                    'Requires youtube-dl and a compatible media player'
+                    'Requires youtube-dl and a compatible video player'
                 ),
                 'signal': None
             }
