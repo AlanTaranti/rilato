@@ -5,6 +5,9 @@ from gfeeds.build_reader_html import build_reader_html
 from gfeeds.confManager import ConfManager
 from gfeeds.download_manager import download_text
 from gfeeds.revealer_loading_bar import RevealerLoadingBar
+from functools import reduce
+from operator import or_
+from subprocess import Popen
 
 
 class GFeedsWebView(Gtk.Stack):
@@ -236,6 +239,24 @@ class GFeedsWebView(Gtk.Stack):
         ):
             decision.ignore()
             uri = decision.get_navigation_action().get_request().get_uri()
-            Gio.AppInfo.launch_default_for_uri(uri)
+            if (
+                    self.confman.conf['open_youtube_externally'] and
+                    reduce(or_, [
+                        f'://{pfx}' in uri
+                        for pfx in [
+                            p + 'youtube.com'
+                            for p in ('', 'www.', 'm.')
+                        ]
+                    ])
+            ):
+                cmd_parts = [
+                    self.confman.conf['media_player'], f'"{uri}"'
+                ]
+                if self.confman.is_flatpak:
+                    cmd_parts.insert(0, 'flatpak-spawn --host')
+                cmd = ' '.join(cmd_parts)
+                Popen(cmd, shell=True)
+            else:
+                Gio.AppInfo.launch_default_for_uri(uri)
             return True
         return False

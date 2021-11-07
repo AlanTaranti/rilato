@@ -206,16 +206,12 @@ class GFeedsAppWindow(BaseWindow):
                 ])
         ):
             cmd_parts = [
-                self.confman.conf["media_player"],
-                feed_item.link
+                self.confman.conf['media_player'], f'"{feed_item.link}"'
             ]
             if self.confman.is_flatpak:
                 cmd_parts.insert(0, 'flatpak-spawn --host')
             cmd = ' '.join(cmd_parts)
-            Popen(
-                cmd,
-                shell=True
-            )
+            Popen(cmd, shell=True)
             return
         self.webview.load_feeditem(feed_item)
         self.right_headerbar.set_article_title(
