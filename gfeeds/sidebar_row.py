@@ -9,6 +9,7 @@ from gfeeds.simple_avatar import SimpleAvatar
 from gfeeds.relative_day_formatter import humanize_datetime
 from gfeeds.sidebar_row_popover import RowPopover
 from gfeeds.accel_manager import add_mouse_button_accel, add_longpress_accel
+from bs4 import BeautifulSoup
 
 
 class SidebarRow(Adw.Bin):
@@ -94,7 +95,10 @@ class SidebarRow(Adw.Bin):
         )
 
         self.origin_label.set_text(self.feed_item.parent_feed.title)
-        self.title_label.set_text(self.feed_item.title)
+        self.title_label.set_text(
+            BeautifulSoup(self.feed_item.title).text
+            if '</' in self.feed_item.title else self.feed_item.title
+        )
         self.datestr = humanize_datetime(self.feed_item.pub_date)
         self.date_label.set_text(
             self.datestr
