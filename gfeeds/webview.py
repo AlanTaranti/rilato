@@ -227,8 +227,6 @@ class GFeedsWebView(Gtk.Stack):
         self.html = resource.get_data_finish(result)
 
     def on_decide_policy(self, webView, decision, decisionType):
-        if not self.confman.conf['open_links_externally']:
-            return False
         if (
                 decisionType in
                 (
@@ -257,6 +255,8 @@ class GFeedsWebView(Gtk.Stack):
                 cmd = ' '.join(cmd_parts)
                 Popen(cmd, shell=True)
             else:
+                if not self.confman.conf['open_links_externally']:
+                    return False
                 Gio.AppInfo.launch_default_for_uri(uri)
             return True
         return False
