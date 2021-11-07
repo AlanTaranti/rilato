@@ -13,7 +13,12 @@ def show_settings_window(parent_win, *args):
     settings_win.present()
 
 
-class PreferencesButtonRow(Adw.ActionRow):
+class MActionRow(Adw.ActionRow):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs, title_lines=0, subtitle_lines=0)
+
+
+class PreferencesButtonRow(MActionRow):
     """
     A preferences row with a title and a button
     title: the title shown
@@ -52,7 +57,7 @@ class PreferencesButtonRow(Adw.ActionRow):
         self.confman.save_conf()
 
 
-class PreferencesSpinButtonRow(Adw.ActionRow):
+class PreferencesSpinButtonRow(MActionRow):
     """
     A preferences row with a title and a spin button
     title: the title shown
@@ -99,7 +104,7 @@ class PreferencesSpinButtonRow(Adw.ActionRow):
         self.confman.save_conf()
 
 
-class PreferencesToggleRow(Adw.ActionRow):
+class PreferencesToggleRow(MActionRow):
     """
     A preferences row with a title and a toggle
     title: the title shown
@@ -138,7 +143,7 @@ class PreferencesToggleRow(Adw.ActionRow):
             self.confman.emit(self.signal, '')
 
 
-class PreferencesEntryRow(Adw.ActionRow):
+class PreferencesEntryRow(MActionRow):
     """
     A preferences row with a title and a button
     title: the title shown
@@ -202,7 +207,7 @@ class GeneralPreferencesPage(Adw.PreferencesPage):
                 'title': _('Open YouTube links via your video player'),
                 'conf_key': 'open_youtube_externally',
                 'subtitle': _(
-                    'Great when paired with youtube-dl enabled players'
+                    'Requires youtube-dl and a compatible media player'
                 ),
                 'signal': None
             }
