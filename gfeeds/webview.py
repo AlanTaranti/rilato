@@ -235,7 +235,6 @@ class GFeedsWebView(Gtk.Stack):
                 ) and
                 decision.get_navigation_action().get_mouse_button() != 0
         ):
-            decision.ignore()
             uri = decision.get_navigation_action().get_request().get_uri()
             if (
                     self.confman.conf['open_youtube_externally'] and
@@ -247,6 +246,7 @@ class GFeedsWebView(Gtk.Stack):
                         ]
                     ])
             ):
+                decision.ignore()
                 cmd_parts = [
                     self.confman.conf['media_player'], f'"{uri}"'
                 ]
@@ -257,6 +257,7 @@ class GFeedsWebView(Gtk.Stack):
             else:
                 if not self.confman.conf['open_links_externally']:
                     return False
+                decision.ignore()
                 Gio.AppInfo.launch_default_for_uri(uri)
             return True
         return False
