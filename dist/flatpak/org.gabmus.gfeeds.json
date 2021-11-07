@@ -102,8 +102,9 @@
                 {
                     "type": "git",
                     "url": "https://gitlab.gnome.org/GNOME/gtk",
-                    "branch": "master",
-                    "//tag": "4.4.0"
+                    "//branch": "master",
+                    "//commit": "37cbd0662e3cbbb7abff7bfc765884fb19eba71d",
+                    "tag": "4.5.0"
                 }
             ],
             "modules": [
@@ -229,11 +230,8 @@
             "sources" : [
                 {
                     "type": "git",
-                    "//url": "https://gitlab.gnome.org/GNOME/libadwaita.git",
-                    "url": "https://gitlab.gnome.org/msandova/libadwaita",
-                    "branch": "adw-notifications",
-                    "//tag": "1.0.0.alpha.3",
-                    "//branch": "main"
+                    "url": "https://gitlab.gnome.org/GNOME/libadwaita.git",
+                    "branch": "main"
                 }
             ]
         },
@@ -619,7 +617,7 @@
             ]
         },
         {
-            "name": "python-syndicationdomination",
+            "name": "python-syndom",
             "buildsystem": "meson",
             "config-opts" : [
                 "-Dto_json_binary=false",
@@ -627,6 +625,8 @@
             ],
             "sources": [
                 {
+                    "//type": "dir",
+                    "//path": "/home/gabmus/git/syndication-domination",
                     "type": "git",
                     "url": "https://gitlab.com/gabmus/syndication-domination",
                     "branch": "master"
