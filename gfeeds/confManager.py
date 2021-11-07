@@ -115,27 +115,22 @@ class ConfManager(metaclass=Singleton):
 
         self.is_flatpak = isfile('/.flatpak-info')
 
-        self.conf_dir = Env.get("XDG_CONFIG_HOME")
-        self.cache_path = Path(
-            f'{Env.get("XDG_CACHE_HOME")}/org.gabmus.gfeeds'
+        self.conf_dir = Path(
+            Env.get('XDG_CONFIG_HOME') or f'{Env.get("HOME")}/.config'
         )
-        if self.conf_dir is None:
-            self.conf_dir = f'{Env.get("HOME")}/.config'
-        if self.cache_path is None:
-            self.cache_path = Path(
-                f'{Env.get("HOME")}/.cache/org.gabmus.gfeeds'
-            )
-        self.thumbs_cache_path = f'{self.cache_path}/thumbnails/'
+        self.cache_home = Path(
+            Env.get('XDG_CACHE_HOME') or f'{Env.get("HOME")}/.cache'
+        )
+        self.cache_path = self.cache_home.joinpath('org.gabmus.gfeeds')
+        self.thumbs_cache_path = self.cache_path.joinpath('thumbnails')
         for p in [
                 self.conf_dir,
                 self.cache_path,
                 self.thumbs_cache_path,
         ]:
-            if not isdir(str(p)):
-                makedirs(str(p))
-        self.path = Path(
-            f'{self.conf_dir}/org.gabmus.gfeeds.json'
-        )
+            if not p.is_dir():
+                p.mkdir(parents=True)
+        self.path = self.conf_dir.joinpath('org.gabmus.gfeeds.json')
 
         if self.path.is_file():
             try:
@@ -190,10 +185,10 @@ class ConfManager(metaclass=Singleton):
         #     'monospace-font-name'
         # ).get_string()
 
-        self.article_thumb_cache_path = (
-            self.thumbs_cache_path + '/article_thumb_cache.json'
+        self.article_thumb_cache_path = self.thumbs_cache_path.joinpath(
+            '/article_thumb_cache.json'
         )
-        if not isfile(self.article_thumb_cache_path):
+        if not self.article_thumb_cache_path.is_file():
             self.article_thumb_cache = dict()
             self.save_article_thumb_cache()
         else:

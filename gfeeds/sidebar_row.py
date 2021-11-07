@@ -129,10 +129,9 @@ class SidebarRow(Adw.Bin):
                         self.feed_item.image_url.split('.')[-1].lower().strip()
                     if ext not in ('png', 'jpg', 'gif', 'svg'):
                         return
-                    dest = (
-                        self.confman.thumbs_cache_path + '/' +
+                    dest = str(self.confman.thumbs_cache_path.joinpath(
                         shasum(self.feed_item.image_url) + '.' + ext
-                    )
+                    ))
                     if not isfile(dest):
                         download_raw(self.feed_item.image_url, dest)
                     self.confman.article_thumb_cache[

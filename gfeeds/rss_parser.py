@@ -135,10 +135,9 @@ class Feed:
         if not self.title:
             self.title = self.link or self.rss_link
 
-        self.favicon_path = (
-            self.confman.thumbs_cache_path + '/' +
+        self.favicon_path = str(self.confman.thumbs_cache_path.joinpath(
             shasum(self.rss_link)+'.png'
-        )
+        ))
         if not isfile(self.favicon_path):
             if self.image_url:
                 try:
