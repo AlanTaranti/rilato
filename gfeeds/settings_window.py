@@ -239,8 +239,10 @@ class GeneralPreferencesPage(Adw.PreferencesPage):
             title=_('Refresh')
         )
         self.autorefresh_preferences_group.add(
-            title=_('New articles notification'),
-            conf_key='notify_new_articles'
+            PreferencesToggleRow(
+                title=_('New articles notification'),
+                conf_key='notify_new_articles'
+            )
         )
         self.autorefresh_preferences_group.add(
             PreferencesToggleRow(
