@@ -86,7 +86,9 @@ def download_feed(link: str, get_cached: bool = False):
     except requests.exceptions.ConnectTimeout:
         return (False, _('`{0}`: connection timed out').format(link))
     except Exception:
-        return (False, _('`{0}` is not an URL').format(link))
+        import traceback
+        traceback.print_exc()
+        return (False, _('`{0}` might not be a valid address').format(link))
     if 'last-modified' in res.headers.keys():
         confman.conf['feeds'][link]['last-modified'] = \
             res.headers['last-modified']

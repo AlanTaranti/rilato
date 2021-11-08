@@ -1,5 +1,6 @@
+from gettext import ngettext
 from gfeeds.feeds_view import FeedsViewScrolledWindow
-from gi.repository import Gtk, Adw
+from gi.repository import Gtk, Adw, Gio
 from gfeeds.confManager import ConfManager
 from gfeeds.feeds_manager import FeedsManager
 from gfeeds.sidebar import GFeedsSidebar
@@ -15,12 +16,14 @@ from functools import reduce
 from operator import or_
 from subprocess import Popen
 from gfeeds.base_app import BaseWindow, AppShortcut
+from datetime import datetime
 
 
 class GFeedsAppWindow(BaseWindow):
-    def __init__(self):
+    def __init__(self, application):
         self.confman = ConfManager()
         self.feedman = FeedsManager()
+        self.app = application
 
         self.sidebar = GFeedsSidebar()
         self.sidebar.listview_sw.connect_activate(
@@ -68,11 +71,7 @@ class GFeedsAppWindow(BaseWindow):
         self.connection_bar = GFeedsConnectionBar()
         self.errors_bar = GFeedsErrorsBar(self)
         self.feedman.connect(
-            'feedmanager_refresh_end',
-            lambda *args: self.errors_bar.engage(
-                self.feedman.errors,
-                self.feedman.problematic_feeds
-            )
+            'feedmanager_refresh_end', self.on_refresh_end
         )
         self.searchbar = GFeedsSearchbar()
         self.searchbar.entry.connect(
@@ -122,13 +121,14 @@ class GFeedsAppWindow(BaseWindow):
         self.filter_flap.set_flap(self.filter_sw_bin)
         # this activates the "All" feed filter. while this works it's kinda
         # hacky and needs a proper function
-        self.feedman.connect(
-            'feedmanager_refresh_start',
-            lambda caller, msg:
-            self.filter_sw.listbox.row_all_activate(
-                skip=(msg == 'startup')
-            )
-        )
+        # NOTE: unneeded because refresh doesn't remove old items now
+        # self.feedman.connect(
+        #     'feedmanager_refresh_start',
+        #     lambda caller, msg:
+        #     self.filter_sw.listbox.row_all_activate(
+        #         skip=(msg == 'startup')
+        #     )
+        # )
         self.left_headerbar.filter_btn.connect(
             'toggled', lambda btn:
                 self.filter_flap.set_reveal_flap(btn.get_active())
@@ -164,8 +164,28 @@ class GFeedsAppWindow(BaseWindow):
         )
         self.set_dark_mode(self.confman.conf['dark_mode'])
 
+    def on_refresh_end(self, *args):
+        self.errors_bar.engage(
+            self.feedman.errors,
+            self.feedman.problematic_feeds
+        )
+        if (
+                self.confman.conf['notify_new_articles'] and
+                not self.is_active() and  # window is not focused
+                self.feedman.new_items_num > 0
+        ):
+            notif_text = ngettext(
+                '{0} new article', '{0} new articles',
+                self.feedman.new_items_num
+            ).format(self.feedman.new_items_num)
+            notif = Gio.Notification.new(notif_text)
+            notif.set_icon(Gio.ThemedIcon.new(
+                'org.gabmus.gfeeds-symbolic'
+            ))
+            self.app.send_notification('new_articles', notif)
+
     def present(self):
-        super().present()
+        super().present_with_time(int(datetime.now().timestamp()))
         self.set_default_size(
             self.confman.conf['windowsize']['width'],
             self.confman.conf['windowsize']['height']

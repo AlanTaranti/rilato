@@ -91,6 +91,9 @@ class GFeedsApplication(BaseApp):
 
     def do_startup(self):
         super().do_startup()
+        self.window = GFeedsAppWindow(self)
+        self.window.connect('close-request', self.on_destroy_window)
+        self.add_window(self.window)
         self.feedman.refresh(
             get_cached=not self.confman.conf['refresh_on_startup'],
             is_startup=True
@@ -170,10 +173,6 @@ class GFeedsApplication(BaseApp):
 
     def do_activate(self):
         super().do_activate()
-        self.window = GFeedsAppWindow()
-        self.confman.window = self.window
-        self.window.connect('close-request', self.on_destroy_window)
-        self.add_window(self.window)
         self.window.present()
         # self.feedman.refresh(get_cached=True)
         if self.args:
@@ -211,6 +210,7 @@ class GFeedsApplication(BaseApp):
                         self.feedman.add_feed(self.args.argurl)
                 else:
                     print('This file is not supported')
+            self.args = None
 
     def do_command_line(self, args: list):
         """

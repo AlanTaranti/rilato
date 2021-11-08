@@ -1,6 +1,5 @@
 from pathlib import Path
-from os.path import isdir, isfile
-from os import makedirs
+from os.path import isfile
 from os import environ as Env
 import json
 from datetime import timedelta
@@ -105,7 +104,10 @@ class ConfManager(metaclass=Singleton):
         'media_player': 'mpv',
         'max_picture_height': 600,
         'show_thumbnails': True,
-        'use_experimental_listview': False
+        'use_experimental_listview': False,
+        'auto_refresh_enabled': False,
+        'notify_new_articles': True,
+        'auto_refresh_time_seconds': 300
     }
 
     def __init__(self):

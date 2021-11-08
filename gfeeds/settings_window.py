@@ -185,8 +185,9 @@ class GeneralPreferencesPage(Adw.PreferencesPage):
         self.set_title(_('General'))
         self.set_icon_name('preferences-other-symbolic')
 
-        self.general_preferences_group = Adw.PreferencesGroup()
-        self.general_preferences_group.set_title(_('General Settings'))
+        self.general_preferences_group = Adw.PreferencesGroup(
+            title=_('General')
+        )
         toggle_settings = [
             {
                 'title': _('Refresh articles on startup'),
@@ -234,8 +235,31 @@ class GeneralPreferencesPage(Adw.PreferencesPage):
         )
         self.add(self.general_preferences_group)
 
-        self.cache_preferences_group = Adw.PreferencesGroup()
-        self.cache_preferences_group.set_title(_('Cache'))
+        self.autorefresh_preferences_group = Adw.PreferencesGroup(
+            title=_('Refresh')
+        )
+        self.autorefresh_preferences_group.add(
+            title=_('New articles notification'),
+            conf_key='notify_new_articles'
+        )
+        self.autorefresh_preferences_group.add(
+            PreferencesToggleRow(
+                title=_('Enable auto-refresh'),
+                conf_key='auto_refresh_enabled'
+            )
+        )
+        self.autorefresh_preferences_group.add(
+            PreferencesSpinButtonRow(
+                title=_('Auto-refresh interval'),
+                subtitle=_('In seconds'),
+                conf_key='auto_refresh_time_seconds',
+                min_v=60, max_v=86400  # 1 min to 24 hours
+            )
+        )
+
+        self.cache_preferences_group = Adw.PreferencesGroup(
+            title=_('Cache')
+        )
         button_settings = [
             {
                 'title': _('Clear all caches'),

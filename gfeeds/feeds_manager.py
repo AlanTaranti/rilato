@@ -1,4 +1,4 @@
-import threading
+from threading import Thread, Event
 from gettext import gettext as _
 from gi.repository import GLib, GObject
 from gfeeds.singleton import Singleton
@@ -51,10 +51,24 @@ class FeedsManager(metaclass=Singleton):
 
         self.errors = []
         self.problematic_feeds = []
+        self.new_items_num = 0  # for the notification, resets on refresh
+
+        self.__auto_refresh_event = Event()
+        self.auto_refresh_thread = None
         self.connect(
             'feedmanager_refresh_end',
-            lambda *args: self.confman.save_conf()
+            self.on_refresh_end
         )
+
+    def on_refresh_end(self, *args):
+        self.confman.save_conf()
+        # new articles notified in app_window
+        self.start_auto_refresh()
+
+    def __increment_new_items_num(self):
+        # dumb thing to have in a function, it's because it's to be called
+        # from the main thread and lambdas apparently can't do it
+        self.new_items_num += 1
 
     def _add_feed_async_worker(
             self,
@@ -100,6 +114,8 @@ class FeedsManager(metaclass=Singleton):
                         fi,
                         priority=GLib.PRIORITY_LOW
                     )
+                    if not get_cached:
+                        GLib.idle_add(self.__increment_new_items_num)
         if not refresh:
             GLib.idle_add(
                 self.emit, 'feedmanager_refresh_end', ''
@@ -117,6 +133,7 @@ class FeedsManager(metaclass=Singleton):
         )
         self.errors = []
         self.problematic_feeds = []
+        self.new_items_num = 0
 
         def cb(res):
             _get_cached = get_cached
@@ -154,12 +171,39 @@ class FeedsManager(metaclass=Singleton):
             if item_age > self.confman.max_article_age:
                 self.feeds_items.remove(item)
 
+    def start_auto_refresh(self):
+        if self.auto_refresh_thread is not None:
+            if self.auto_refresh_thread.is_alive():
+                self.__auto_refresh_event.set()
+                self.auto_refresh_thread.join()
+        self.__auto_refresh_event.clear()
+        if self.confman.conf['auto_refresh_enabled']:
+            self.auto_refresh_thread = Thread(
+                target=self._auto_refresh_worker, daemon=True
+            ).start()
+
+    def _auto_refresh_worker(self):
+        if not self.confman.conf['auto_refresh_enabled']:
+            self.__auto_refresh_event.clear()
+            return
+        # when event.wait returns True the flag has been manually set, so in
+        # case, it means a manual refresh occurred, so we can terminate the
+        # auto-refresh for now
+        if self.__auto_refresh_event.wait(
+                self.confman.conf['auto_refresh_time_seconds']
+        ):
+            self.__auto_refresh_event.clear()
+            return
+        # if False, the timeout has been reached, so we do the auto refresh
+        self.__auto_refresh_event.clear()
+        GLib.idle_add(self.refresh)
+
     def add_feed(self, uri: str, is_new: bool = False) -> bool:
         if is_new and uri in self.confman.conf['feeds'].keys():
             return False
         self.emit('feedmanager_refresh_start', '')
         self.errors = []
-        t = threading.Thread(
+        t = Thread(
             group=None,
             target=self._add_feed_async_worker,
             name=None,
