@@ -1,23 +1,22 @@
-import threading
-import requests
-from gi.repository import GLib, Gio
+from gi.repository import Gio
 
 __HOSTNAME = 'gnome.org'
 
-def __is_online_async_worker(callback):
-    res = False
-    try:
-        res = Gio.NetworkMonitor.get_default().can_reach(
-            Gio.NetworkAddress(hostname=__HOSTNAME)
-        )
-    except Exception:
-        pass
-    GLib.idle_add(callback, res)
-
-
 def is_online(callback):
-    threading.Thread(
-        target=__is_online_async_worker,
-        args=(callback,),
-        daemon=True
-    ).start()
+
+    def __async_cb(src, a_res, data):
+        res = False
+        try:
+            res = Gio.NetworkMonitor.get_default().can_reach_finish(a_res)
+        except Exception:
+            import traceback
+            traceback.print_exc()
+            pass
+        callback(res)
+        
+    Gio.NetworkMonitor.get_default().can_reach_async(
+        Gio.NetworkAddress(hostname=__HOSTNAME),
+        None,
+        __async_cb, 
+        None
+    )
