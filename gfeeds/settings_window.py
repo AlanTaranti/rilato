@@ -258,6 +258,7 @@ class GeneralPreferencesPage(Adw.PreferencesPage):
                 min_v=60, max_v=86400  # 1 min to 24 hours
             )
         )
+        self.add(self.autorefresh_preferences_group)
 
         self.cache_preferences_group = Adw.PreferencesGroup(
             title=_('Cache')
