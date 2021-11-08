@@ -99,10 +99,6 @@ class SidebarRow(Adw.Bin):
             BeautifulSoup(self.feed_item.title).text
             if '</' in self.feed_item.title else self.feed_item.title
         )
-        self.datestr = humanize_datetime(self.feed_item.pub_date)
-        self.date_label.set_text(
-            self.datestr
-        )
         self.icon.set_image(
             self.feed_item.parent_feed.title,
             self.feed_item.parent_feed.favicon_path
@@ -111,7 +107,11 @@ class SidebarRow(Adw.Bin):
         self.on_feed_item_changed()
 
     def on_feed_item_changed(self, *args):
+        if self.feed_item is None:
+            return
         self.set_read()
+        self.datestr = humanize_datetime(self.feed_item.pub_date)
+        self.date_label.set_text(self.datestr)
         self.popover.on_feed_item_set()
 
     def set_article_image(self, *args):

@@ -169,6 +169,7 @@ class GFeedsAppWindow(BaseWindow):
             self.feedman.errors,
             self.feedman.problematic_feeds
         )
+        self.sidebar.listview_sw.all_items_changed()
         if (
                 self.confman.conf['notify_new_articles'] and
                 not self.is_active() and  # window is not focused

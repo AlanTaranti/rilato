@@ -115,6 +115,10 @@ class ArticlesListModel(Gtk.SortListModel):
         self.empty()  # TODO: review this API, doesn't make too much sense
         self.add_new_items(feeditems_l)
 
+    def all_items_changed(self):
+        for i in range(self.list_store.get_n_items()):
+            self.list_store.get_item(i).emit_changed()
+
     def remove_items(self, to_remove_l):
         num_items = self.list_store.get_n_items()
         target_links = [fi.link for fi in to_remove_l]
@@ -168,6 +172,7 @@ class ArticlesListView(Gtk.ScrolledWindow):
         self.add_new_items = self.articles_store.add_new_items
         self.remove_items = self.articles_store.remove_items
         self.set_all_read_state = self.articles_store.set_all_read_state
+        self.all_items_changed = self.articles_store.all_items_changed
 
     def connect_activate(self, func):
         self.list_view.connect(
@@ -250,6 +255,7 @@ class ArticlesListBox(Gtk.ScrolledWindow):
         self.add_new_items = self.articles_store.add_new_items
         self.remove_items = self.articles_store.remove_items
         self.set_all_read_state = self.articles_store.set_all_read_state
+        self.all_items_changed = self.articles_store.all_items_changed
 
     def connect_activate(self, func):
         self.listbox.connect(
