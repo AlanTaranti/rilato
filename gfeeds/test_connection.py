@@ -1,16 +1,18 @@
 import threading
 import requests
-from gi.repository import GLib
+from gi.repository import GLib, Gio
 
+__HOSTNAME = 'gnome.org'
 
 def __is_online_async_worker(callback):
-    TEST_URL = 'http://httpbin.org/robots.txt'
-    EXPECTED_STATUS = 405
+    res = False
     try:
-        res = requests.post(TEST_URL)
-        GLib.idle_add(callback, res.status_code == EXPECTED_STATUS)
-    except requests.exceptions.ConnectionError:
-        GLib.idle_add(callback, False)
+        res = Gio.NetworkMonitor.get_default().can_reach(
+            Gio.NetworkAddress(hostname=__HOSTNAME)
+        )
+    except Exception:
+        pass
+    GLib.idle_add(callback, res)
 
 
 def is_online(callback):
