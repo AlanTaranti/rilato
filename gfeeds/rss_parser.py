@@ -115,7 +115,7 @@ class Feed:
         for entry in raw_entries:
             n_item = FeedItem(entry, self)
             item_age = self.init_time - n_item.pub_date
-            if item_age < self.confman.max_article_age:
+            if item_age <= self.confman.max_article_age:
                 self.items.append(n_item)
             elif n_item.read:
                 self.confman.read_feeds_items.remove(n_item.link)

@@ -11,6 +11,8 @@ from gfeeds.download_manager import (
 from gfeeds.signaler_list import SignalerList
 from gfeeds.test_connection import is_online
 from gfeeds.thread_pool import ThreadPool
+import pytz
+from datetime import datetime
 
 
 class FeedsManagerSignaler(GObject.Object):
@@ -81,14 +83,23 @@ class FeedsManager(metaclass=Singleton):
             self.errors.append(n_feed.error)
             self.problematic_feeds.append(uri)
         else:
-            GLib.idle_add(
-                self.feeds.append, n_feed, priority=GLib.PRIORITY_LOW
-            )
-            GLib.idle_add(
-                self.feeds_items.extend,
-                n_feed.items,
-                priority=GLib.PRIORITY_LOW
-            )
+            if (
+                    n_feed.rss_link+n_feed.title not in
+                    [f.rss_link+f.title for f in self.feeds]
+            ):
+                GLib.idle_add(
+                    self.feeds.append, n_feed, priority=GLib.PRIORITY_LOW
+                )
+            for fi in n_feed.items:
+                if (
+                        fi.link+fi.title not in
+                        [ofi.link+ofi.title for ofi in self.feeds_items]
+                ):
+                    GLib.idle_add(
+                        self.feeds_items.append,
+                        fi,
+                        priority=GLib.PRIORITY_LOW
+                    )
         if not refresh:
             GLib.idle_add(
                 self.emit, 'feedmanager_refresh_end', ''
@@ -121,8 +132,9 @@ class FeedsManager(metaclass=Singleton):
         is_online(cb)
 
     def continue_refresh(self, get_cached):
-        self.feeds.empty()
-        self.feeds_items.empty()
+        # self.feeds.empty()
+        # self.feeds_items.empty()
+        self.trim_feeds_items_by_age()
         tp = ThreadPool(
             self.confman.conf['max_refresh_threads'],
             self._add_feed_async_worker,
@@ -134,6 +146,13 @@ class FeedsManager(metaclass=Singleton):
             ('feedmanager_refresh_end', '')
         )
         tp.start()
+
+    def trim_feeds_items_by_age(self):
+        now = pytz.UTC.localize(datetime.utcnow())
+        for item in self.feeds_items:
+            item_age = now - item.pub_date
+            if item_age > self.confman.max_article_age:
+                self.feeds_items.remove(item)
 
     def add_feed(self, uri: str, is_new: bool = False) -> bool:
         if is_new and uri in self.confman.conf['feeds'].keys():
