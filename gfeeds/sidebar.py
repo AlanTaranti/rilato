@@ -1,10 +1,37 @@
-from gi.repository import GLib, Adw
+from gettext import gettext as _
+from gi.repository import GLib, Gtk
 from gfeeds.confManager import ConfManager
 from gfeeds.feeds_manager import FeedsManager
 from gfeeds.articles_listview import ArticlesListView, ArticlesListBox
 
 
-class GFeedsSidebar(Adw.Bin):
+class LoadingRevealer(Gtk.Revealer):
+    def __init__(self):
+        super().__init__(
+            transition_type=Gtk.RevealerTransitionType.SLIDE_DOWN,
+            reveal_child=False, vexpand=False, hexpand=True,
+            valign=Gtk.Align.START, halign=Gtk.Align.CENTER
+        )
+        self.main_box = Gtk.Box(
+            orientation=Gtk.Orientation.HORIZONTAL, spacing=12,
+            vexpand=False, hexpand=True
+        )
+        self.main_box.get_style_context().add_class('osd')
+        self.main_box.get_style_context().add_class('app-notification')
+        self.label = Gtk.Label(
+            label=_('Loading feeds...'), hexpand=True, vexpand=False,
+            halign=Gtk.Align.CENTER
+        )
+        self.spinner = Gtk.Spinner(spinning=True)
+        self.main_box.append(self.label)
+        self.main_box.append(self.spinner)
+        self.set_child(self.main_box)
+
+    def set_running(self, state):
+        self.set_reveal_child(state)
+
+
+class GFeedsSidebar(Gtk.Overlay):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.confman = ConfManager()
@@ -17,8 +44,10 @@ class GFeedsSidebar(Adw.Bin):
         )
         self.empty = self.listview_sw.empty
         self.populate = self.listview_sw.populate
+        self.loading_revealer = LoadingRevealer()
 
         self.set_child(self.listview_sw)
+        self.add_overlay(self.loading_revealer)
 
         self.feedman.feeds_items.connect(
             'pop',
@@ -49,6 +78,21 @@ class GFeedsSidebar(Adw.Bin):
             'pop',
             lambda caller, obj: self.on_feeds_pop(obj)
         )
+        self.feedman.connect(
+            'feedmanager_refresh_start',
+            self.on_refresh_start
+        )
+        self.feedman.connect(
+            'feedmanager_refresh_end',
+            self.on_refresh_end
+        )
+
+    def on_refresh_start(self, *args):
+        self.loading_revealer.set_running(True)
+
+    def on_refresh_end(self, *args):
+        self.listview_sw.all_items_changed()
+        self.loading_revealer.set_running(False)
 
     def on_feeds_items_extend(self, caller, n_feeds_items_list):
         self.listview_sw.add_new_items(n_feeds_items_list)
