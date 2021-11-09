@@ -7,8 +7,7 @@ from gfeeds.sidebar import GFeedsSidebar
 from gfeeds.headerbar import GFeedsHeaderbarLeft, GFeedsHeaderbarRight
 from gfeeds.searchbar import GFeedsSearchbar
 from gfeeds.suggestion_bar import (
-    GFeedsConnectionBar,
-    GFeedsErrorsBar
+    GFeedsConnectionBar
 )
 from gfeeds.webview import GFeedsWebView
 from gfeeds.stack_with_empty_state import StackWithEmptyState
