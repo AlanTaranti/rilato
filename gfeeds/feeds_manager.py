@@ -106,8 +106,11 @@ class FeedsManager(metaclass=Singleton):
                 )
             for fi in n_feed.items:
                 if (
-                        fi.link+fi.title not in
-                        [ofi.link+ofi.title for ofi in self.feeds_items]
+                        n_feed.rss_link+fi.link+fi.title not in
+                        [
+                            n_feed.rss_link+ofi.link+ofi.title
+                            for ofi in self.feeds_items
+                        ]
                 ):
                     GLib.idle_add(
                         self.feeds_items.append,
