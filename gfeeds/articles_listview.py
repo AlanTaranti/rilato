@@ -138,6 +138,20 @@ class ArticlesListModel(Gtk.SortListModel):
         self.selected_feeds = n_feeds_l
         self.invalidate_filter()
 
+    def _bind_api(self, target):
+        target.empty = self.empty
+        target.populate = self.populate
+        target.selected_feeds = self.selected_feeds
+        target.invalidate_filter = self.invalidate_filter
+        target.invalidate_sort = self.invalidate_sort
+        target.set_search_term = self.set_search_term
+        target.set_selected_feeds = self.set_selected_feeds
+        target.selected_feeds = self.selected_feeds
+        target.add_new_items = self.add_new_items
+        target.remove_items = self.remove_items
+        target.set_all_read_state = self.set_all_read_state
+        target.all_items_changed = self.all_items_changed
+
 
 class ArticlesListView(Gtk.ScrolledWindow):
     def __init__(self):
@@ -162,17 +176,7 @@ class ArticlesListView(Gtk.ScrolledWindow):
         self.list_view.connect('activate', self.on_activate)
 
         # API bindings
-        self.empty = self.articles_store.empty
-        self.populate = self.articles_store.populate
-        self.selected_feeds = self.articles_store.selected_feeds
-        self.invalidate_filter = self.articles_store.invalidate_filter
-        self.invalidate_sort = self.articles_store.invalidate_sort
-        self.set_search_term = self.articles_store.set_search_term
-        self.set_selected_feeds = self.articles_store.selected_feeds
-        self.add_new_items = self.articles_store.add_new_items
-        self.remove_items = self.articles_store.remove_items
-        self.set_all_read_state = self.articles_store.set_all_read_state
-        self.all_items_changed = self.articles_store.all_items_changed
+        self.articles_store._bind_api(self)
 
     def connect_activate(self, func):
         self.list_view.connect(
@@ -245,17 +249,7 @@ class ArticlesListBox(Gtk.ScrolledWindow):
         self.set_child(self.listbox)
 
         # API bindings
-        self.empty = self.articles_store.empty
-        self.populate = self.articles_store.populate
-        self.selected_feeds = self.articles_store.selected_feeds
-        self.invalidate_filter = self.articles_store.invalidate_filter
-        self.invalidate_sort = self.articles_store.invalidate_sort
-        self.set_search_term = self.articles_store.set_search_term
-        self.set_selected_feeds = self.articles_store.selected_feeds
-        self.add_new_items = self.articles_store.add_new_items
-        self.remove_items = self.articles_store.remove_items
-        self.set_all_read_state = self.articles_store.set_all_read_state
-        self.all_items_changed = self.articles_store.all_items_changed
+        self.articles_store._bind_api(self)
 
     def connect_activate(self, func):
         self.listbox.connect(
