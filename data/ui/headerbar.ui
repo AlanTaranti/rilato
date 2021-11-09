@@ -46,6 +46,9 @@
     </section>
   </menu>
   <object class="GtkHeaderBar" id="left_headerbar">
+    <child type="title">
+      <object class="AdwBin"></object>
+    </child>
     <child>
       <object class="GtkToggleButton" id="filter_btn">
         <property name="tooltip-text" translatable="yes">Filter by feed</property>
@@ -75,6 +78,13 @@
       <object class="GtkButton" id="refresh_btn">
         <property name="tooltip-text" translatable="yes">Refresh</property>
         <property name="icon-name">view-refresh-symbolic</property>
+      </object>
+    </child>
+    <child type="end">
+      <object class="GtkButton" id="errors_btn">
+        <property name="tooltip-text" translatable="yes">There are errors</property>
+        <property name="icon-name">dialog-warning-symbolic</property>
+        <property name="visible">0</property>
       </object>
     </child>
   </object>

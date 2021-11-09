@@ -3,6 +3,8 @@ from gi.repository import Gtk, Gdk
 from gfeeds.confManager import ConfManager
 from gfeeds.feeds_manager import FeedsManager
 from gfeeds.view_mode_menu import GFeedsViewModeMenu
+from gfeeds.scrolled_message_dialog import ScrolledMessageDialog
+from xml.sax.saxutils import escape
 
 
 class AddFeedPopover(Gtk.Popover):
@@ -171,6 +173,9 @@ class GFeedsHeaderbarLeft(Gtk.WindowHandle):
         self.refresh_btn = self.builder.get_object('refresh_btn')
         self.refresh_btn.connect('clicked', self.feedman.refresh)
 
+        self.errors_btn = self.builder.get_object('errors_btn')
+        self.errors_btn.connect('clicked', self.show_errors_dialog)
+
         self.feedman.connect(
             'feedmanager_refresh_start',
             self.on_new_feed_add_start
@@ -182,6 +187,36 @@ class GFeedsHeaderbarLeft(Gtk.WindowHandle):
         self.on_new_feed_add_start()
 
         self.leaflet.connect('notify::folded', self.set_headerbar_controls)
+
+    def show_errors_dialog(self, *args):
+        dialog = ScrolledMessageDialog(
+            transient_for=self.get_root(),
+            modal=True,
+            message_type=Gtk.MessageType.QUESTION,
+            buttons=Gtk.ButtonsType.YES_NO,
+            text=_(
+                'There were problems with some feeds.\n'
+                'Do you want to remove them?'
+            )
+        )
+        dialog.format_secondary_markup(
+            escape('\n'.join(self.feedman.errors))
+        )
+
+        def on_response(_dialog, res):
+            _dialog.close()
+            if (res == Gtk.ResponseType.YES):
+                for pf in self.feedman.problematic_feeds:
+                    if pf in self.confman.conf['feeds'].keys():
+                        self.confman.conf['feeds'].pop(pf)
+                        self.confman.save_conf()
+                self.errors_btn.set_visible(False)
+            else:
+                self.errors_btn.set_visible(True)
+            dialog.close()
+
+        dialog.connect('response', on_response)
+        dialog.present()
 
     def on_search_btn_toggled(self, togglebtn):
         self.searchbar.set_search_mode(togglebtn.get_active())

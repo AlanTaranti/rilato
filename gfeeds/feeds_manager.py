@@ -213,15 +213,19 @@ class FeedsManager(metaclass=Singleton):
         return True
 
     def delete_feeds(self, targets, *args):
-        if type(targets) != list:
-            if type(targets) == Feed:
+        if not isinstance(targets, list):
+            if isinstance(targets, Feed):
                 targets = [targets]
             else:
                 raise TypeError('delete_feed: targets must be list or Feed')
         for f in targets:
-            for fi in f.items:
-                self.feeds_items.remove(fi)
-            self.feeds.remove(f)
+            identifiers = [fi.link+fi.title for fi in f.items]
+            for fi in self.feeds_items:
+                if fi.link+fi.title in identifiers:
+                    self.feeds_items.remove(fi)
+            for feed in self.feeds:
+                if feed.title+feed.rss_link == f.title+f.rss_link:
+                    self.feeds.remove(feed)
             self.confman.conf['feeds'].pop(
                 f.rss_link
             )

@@ -69,7 +69,7 @@ class GFeedsAppWindow(BaseWindow):
         )
         self.leaflet = leaflet_builder.get_object('leaflet')
         self.connection_bar = GFeedsConnectionBar()
-        self.errors_bar = GFeedsErrorsBar(self)
+        # self.errors_bar = GFeedsErrorsBar(self)
         self.feedman.connect(
             'feedmanager_refresh_end', self.on_refresh_end
         )
@@ -97,7 +97,7 @@ class GFeedsAppWindow(BaseWindow):
         self.sidebar_box.append(self.left_headerbar)
         self.sidebar_box.append(self.searchbar)
         self.sidebar_box.append(self.connection_bar)
-        self.sidebar_box.append(self.errors_bar)
+        # self.sidebar_box.append(self.errors_bar)
         self.webview_box = Gtk.Box(
             orientation=Gtk.Orientation.VERTICAL, hexpand=True
         )
@@ -165,9 +165,12 @@ class GFeedsAppWindow(BaseWindow):
         self.set_dark_mode(self.confman.conf['dark_mode'])
 
     def on_refresh_end(self, *args):
-        self.errors_bar.engage(
-            self.feedman.errors,
-            self.feedman.problematic_feeds
+        # self.errors_bar.engage(
+        #     self.feedman.errors,
+        #     self.feedman.problematic_feeds
+        # )
+        self.left_headerbar.errors_btn.set_visible(
+            len(self.feedman.errors) > 0
         )
         self.sidebar.listview_sw.all_items_changed()
         self.sidebar.loading_revealer.set_running(False)
