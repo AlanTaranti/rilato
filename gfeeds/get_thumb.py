@@ -11,6 +11,7 @@ def get_thumb(link):
             namespaceHTMLElements=False
         )
     except Exception:
+        print('Error parsing HTML')
         return None
     meta_els = root.findall('.//head/meta')
     res = None

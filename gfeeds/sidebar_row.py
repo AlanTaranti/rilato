@@ -127,9 +127,9 @@ class SidebarRow(Adw.Bin):
                 dest = self.confman.article_thumb_cache[self.feed_item.link]
             else:
                 try:
-                    if self.feed_item.image_url is None:
+                    if not self.feed_item.image_url:
                         self.feed_item.set_thumb_from_link()
-                    if self.feed_item.image_url is None:
+                    if not self.feed_item.image_url:
                         return
                     ext = \
                         self.feed_item.image_url.split('.')[-1].lower().strip()
