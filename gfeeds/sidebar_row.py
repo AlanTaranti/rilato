@@ -120,13 +120,15 @@ class SidebarRow(Adw.Bin):
             return
 
         def af():
+            if self.feed_item is None:
+                return
             dest = None
             if self.feed_item.link in self.confman.article_thumb_cache.keys():
                 dest = self.confman.article_thumb_cache[self.feed_item.link]
             else:
                 try:
                     if self.feed_item.image_url is None:
-                        self.feedi_tem.set_thumb_from_link()
+                        self.feed_item.set_thumb_from_link()
                     if self.feed_item.image_url is None:
                         return
                     ext = \
@@ -143,7 +145,7 @@ class SidebarRow(Adw.Bin):
                     ] = dest
                 except Exception:
                     GLib.idle_add(cb, None)
-            if isfile(dest):
+            if dest and isfile(dest):
                 GLib.idle_add(cb, dest)
             GLib.idle_add(cb, None)
 

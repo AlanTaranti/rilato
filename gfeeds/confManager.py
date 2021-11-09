@@ -188,7 +188,7 @@ class ConfManager(metaclass=Singleton):
         # ).get_string()
 
         self.article_thumb_cache_path = self.thumbs_cache_path.joinpath(
-            '/article_thumb_cache.json'
+            'article_thumb_cache.json'
         )
         if not self.article_thumb_cache_path.is_file():
             self.article_thumb_cache = dict()
@@ -221,7 +221,6 @@ class ConfManager(metaclass=Singleton):
         while tag in self.conf['tags']:
             self.conf['tags'].remove(tag)
         self.emit('gfeeds_tags_pop', tag)
-        print(self.conf['tags'])
         self.remove_tag(tag, self.conf['feeds'].keys())
         # self.save_conf()  # done by remove_tags
 
