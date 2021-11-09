@@ -16,7 +16,6 @@ class LoadingRevealer(Gtk.Revealer):
             orientation=Gtk.Orientation.HORIZONTAL, spacing=12,
             vexpand=False, hexpand=True
         )
-        self.main_box.get_style_context().add_class('osd')
         self.main_box.get_style_context().add_class('app-notification')
         self.label = Gtk.Label(
             label=_('Loading feeds...'), hexpand=True, vexpand=False,
