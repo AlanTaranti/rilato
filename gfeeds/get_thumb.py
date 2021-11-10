@@ -8,7 +8,8 @@ def get_thumb(link):
         html = download_text(link)
         root = parse(
             html if isinstance(html, str) else html.decode(),
-            namespaceHTMLElements=False
+            namespaceHTMLElements=False,
+            treebuilder='lxml'
         )
     except Exception:
         print('Error parsing HTML')
