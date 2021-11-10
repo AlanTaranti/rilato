@@ -1,4 +1,3 @@
-from threading import Thread
 from gfeeds.picture_view import PictureView
 from os.path import isfile
 from gfeeds.sha import shasum
