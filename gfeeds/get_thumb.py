@@ -1,27 +1,27 @@
 from urllib.parse import urlparse
-from html5lib import parse
-from gfeeds.download_manager import download_text
+from syndom import Html
+from gfeeds.download_manager import download_raw
+from gfeeds.sha import shasum
+from gfeeds.confManager import ConfManager
+from os.path import isfile
+
+
+confman = ConfManager()
 
 
 def get_thumb(link):
+    dest = str(
+        confman.cache_path.joinpath(shasum(link)+'.html')
+    )
     try:
-        html = download_text(link)
-        root = parse(
-            html if isinstance(html, str) else html.decode(),
-            namespaceHTMLElements=False,
-            treebuilder='lxml'
-        )
+        if not isfile(dest):
+            download_raw(link, dest)
+        sd_html = Html(dest)
     except Exception:
         print('Error parsing HTML')
         return None
-    meta_els = root.findall('.//head/meta')
-    res = None
-    for e in meta_els:
-        if 'property' in e.attrib.keys() and 'content' in e.attrib.keys():
-            if e.attrib['property'] in ('og:image', 'image'):
-                res = e.attrib['content'].strip()
-                break
-    if res is None:
+    res = sd_html.image
+    if not res:
         return None
     if 'http://' in res or 'https://' in res:
         return res

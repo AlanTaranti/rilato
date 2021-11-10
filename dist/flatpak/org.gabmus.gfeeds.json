@@ -617,11 +617,23 @@
             ]
         },
         {
+            "name": "tidy",
+            "buildsystem": "cmake",
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/htacg/tidy-html5",
+                    "tag": "5.8.0"
+                }
+            ]
+        },
+        {
             "name": "python-syndom",
             "buildsystem": "meson",
             "config-opts" : [
-                "-Dto_json_binary=false",
-                "-Dpython_bindings=true"
+                "-DTO_JSON_BINARY=false",
+                "-DPYTHON_BINDINGS=true",
+                "-DHTML_SUPPORT=true"
             ],
             "sources": [
                 {
