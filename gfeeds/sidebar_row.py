@@ -13,9 +13,10 @@ from bs4 import BeautifulSoup
 
 
 class SidebarRow(Adw.Bin):
-    def __init__(self, **kwargs):
+    def __init__(self, fetch_image_thread_pool, **kwargs):
         super().__init__(**kwargs)
         # self.get_style_context().add_class('activatable')
+        self.fetch_image_thread_pool = fetch_image_thread_pool
         self.feed_item_wrapper = None
         self.feed_item_changed_signal_id = None
         self.feed_item = None
@@ -119,36 +120,6 @@ class SidebarRow(Adw.Bin):
             self.picture_view_container.set_visible(False)
             return
 
-        def af():
-            if self.feed_item is None:
-                return
-            dest = None
-            if self.feed_item.link in self.confman.article_thumb_cache.keys():
-                dest = self.confman.article_thumb_cache[self.feed_item.link]
-            else:
-                try:
-                    if not self.feed_item.image_url:
-                        self.feed_item.set_thumb_from_link()
-                    if not self.feed_item.image_url:
-                        return
-                    ext = \
-                        self.feed_item.image_url.split('.')[-1].lower().strip()
-                    if ext not in ('png', 'jpg', 'gif', 'svg'):
-                        return
-                    dest = str(self.confman.thumbs_cache_path.joinpath(
-                        shasum(self.feed_item.image_url) + '.' + ext
-                    ))
-                    if not isfile(dest):
-                        download_raw(self.feed_item.image_url, dest)
-                    self.confman.article_thumb_cache[
-                        self.feed_item.link
-                    ] = dest
-                except Exception:
-                    GLib.idle_add(cb, None)
-            if dest and isfile(dest):
-                GLib.idle_add(cb, dest)
-            GLib.idle_add(cb, None)
-
         def cb(img):
             if img is None:
                 self.picture_view_container.set_visible(False)
@@ -162,7 +133,46 @@ class SidebarRow(Adw.Bin):
                 )
                 # self.picture_view.set_filename(img)
 
-        Thread(target=af, daemon=True).start()
+        def af():
+            if self.feed_item is None:
+                return
+            dest = None
+            if self.feed_item.link in self.confman.article_thumb_cache.keys():
+                dest = self.confman.article_thumb_cache[self.feed_item.link]
+                GLib.idle_add(cb, dest if dest and isfile(dest) else None)
+                return
+            else:
+                try:
+                    if not self.feed_item.image_url:
+                        self.feed_item.set_thumb_from_link()
+                    if not self.feed_item.image_url:
+                        raise Exception()
+                    ext = \
+                        self.feed_item.image_url.split('.')[-1].lower().strip()
+                    if '?' in ext:
+                        ext = ext.split('?')[0]
+                    if ext not in ('png', 'jpg', 'gif', 'svg'):
+                        raise Exception()
+                    dest = str(self.confman.thumbs_cache_path.joinpath(
+                        shasum(self.feed_item.image_url) + '.' + ext
+                    ))
+                    if not isfile(dest):
+                        download_raw(self.feed_item.image_url, dest)
+                    self.confman.article_thumb_cache[
+                        self.feed_item.link
+                    ] = dest
+                    self.confman.save_article_thumb_cache()
+                except Exception:
+                    pass
+            if dest and isfile(dest):
+                GLib.idle_add(cb, dest)
+                return
+            else:
+                self.confman.article_thumb_cache[self.feed_item.link] = ''
+                self.confman.save_article_thumb_cache()
+            GLib.idle_add(cb, None)
+
+        self.fetch_image_thread_pool.submit(af)
 
     def on_full_article_title_changed(self, *args):
         self.title_label.set_ellipsize(

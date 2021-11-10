@@ -1,4 +1,5 @@
 from gi.repository import Gtk, GObject, Gio
+from concurrent.futures import ThreadPoolExecutor
 from gfeeds.rss_parser import FeedItem
 from gfeeds.confManager import ConfManager
 from gfeeds.sidebar_row import SidebarRow
@@ -153,7 +154,7 @@ class ArticlesListModel(Gtk.SortListModel):
         target.all_items_changed = self.all_items_changed
 
 
-class ArticlesListView(Gtk.ScrolledWindow):
+class CommonListScrolledWin(Gtk.ScrolledWindow):
     def __init__(self):
         super().__init__(
             hscrollbar_policy=Gtk.PolicyType.NEVER,
@@ -161,6 +162,27 @@ class ArticlesListView(Gtk.ScrolledWindow):
         )
 
         self.articles_store = ArticlesListModel()
+
+        self.fetch_image_thread_pool = ThreadPoolExecutor(
+            max_workers=self.articles_store.confman.conf[
+                'max_refresh_threads'
+            ]
+        )
+
+        # API bindings
+        self.articles_store._bind_api(self)
+
+    def shutdown_thread_pool(self):
+        self.fetch_image_thread_pool.shutdown(wait=False, cancel_futures=True)
+
+    def __del__(self):
+        self.shutdown_thread_pool()
+        super().__del__()
+
+
+class ArticlesListView(CommonListScrolledWin):
+    def __init__(self):
+        super().__init__()
 
         # listview and factory
         self.factory = Gtk.SignalListItemFactory()
@@ -174,9 +196,6 @@ class ArticlesListView(Gtk.ScrolledWindow):
         self.list_view.set_single_click_activate(True)
         self.set_child(self.list_view)
         self.list_view.connect('activate', self.on_activate)
-
-        # API bindings
-        self.articles_store._bind_api(self)
 
     def connect_activate(self, func):
         self.list_view.connect(
@@ -220,7 +239,7 @@ class ArticlesListView(Gtk.ScrolledWindow):
     def _on_setup_listitem(
             self, factory: Gtk.ListItemFactory, list_item: Gtk.ListItem
     ):
-        row_w = SidebarRow()
+        row_w = SidebarRow(self.fetch_image_thread_pool)
         list_item.set_child(row_w)
         list_item.row_w = row_w  # otherwise it gets garbage collected
 
@@ -231,14 +250,9 @@ class ArticlesListView(Gtk.ScrolledWindow):
         row_w.set_feed_item(list_item.get_item())
 
 
-class ArticlesListBox(Gtk.ScrolledWindow):
+class ArticlesListBox(CommonListScrolledWin):
     def __init__(self):
-        super().__init__(
-            hscrollbar_policy=Gtk.PolicyType.NEVER,
-            vscrollbar_policy=Gtk.PolicyType.AUTOMATIC
-        )
-
-        self.articles_store = ArticlesListModel()
+        super().__init__()
 
         self.listbox = Gtk.ListBox(
             vexpand=True, selection_mode=Gtk.SelectionMode.SINGLE,
@@ -247,9 +261,6 @@ class ArticlesListBox(Gtk.ScrolledWindow):
         self.listbox.get_style_context().add_class('navigation-sidebar')
         self.listbox.bind_model(self.articles_store, self._create_row, None)
         self.set_child(self.listbox)
-
-        # API bindings
-        self.articles_store._bind_api(self)
 
     def connect_activate(self, func):
         self.listbox.connect(
@@ -262,7 +273,7 @@ class ArticlesListBox(Gtk.ScrolledWindow):
     def _create_row(
             self, feed_item_wrapper: FeedItemWrapper, *args
     ) -> Gtk.Widget:
-        row_w = SidebarRow()
+        row_w = SidebarRow(self.fetch_image_thread_pool)
         row_w.set_feed_item(feed_item_wrapper)
         return row_w
 

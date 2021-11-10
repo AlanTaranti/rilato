@@ -199,6 +199,7 @@ class GFeedsAppWindow(BaseWindow):
         self.emit('destroy')
 
     def on_destroy(self, *args):
+        self.sidebar.listview_sw.shutdown_thread_pool()
         self.confman.conf['windowsize'] = {
             'width': self.get_width(),
             'height': self.get_height()

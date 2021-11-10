@@ -26,7 +26,7 @@ def download_text(link: str) -> str:
     res = requests.get(link, headers=GET_HEADERS, timeout=TIMEOUT)
     if 200 <= res.status_code <= 299:
         res.encoding = 'utf-8'
-        return res.text
+        return res.text  # TODO: this can break weird encodings!
     else:
         print(f'response code {res.status_code}')
         raise requests.HTTPError(f'response code {res.status_code}')
