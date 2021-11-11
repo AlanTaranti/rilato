@@ -8,6 +8,7 @@ from gfeeds.confManager import ConfManager
 from syndom import Html
 
 confman = ConfManager()
+VALID_ICON_FORMATS = ['.png', '.jpg', '.svg', '.gif']
 
 
 def get_favicon(link, favicon_path):
@@ -26,7 +27,10 @@ def get_favicon(link, favicon_path):
     p = url
     if '?' in p:
         p = p.split('?')[0]
-    needs_convert = p[-4:].lower() == '.ico'
+    needs_convert = (
+        p[-4:].lower() not in VALID_ICON_FORMATS and
+        not p[-5:].lower() == '.jpeg'
+    )
     if not ('http://' in url or 'https://' in url):
         target = url.lstrip('/')
         up = urlparse(link)

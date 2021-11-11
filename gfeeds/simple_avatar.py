@@ -2,6 +2,7 @@ from gi.repository import Adw, GLib, Gdk, Gio
 from threading import Thread
 from gfeeds.confManager import ConfManager
 from pathlib import Path
+from os.path import isfile
 from PIL import Image
 from typing import Union
 
@@ -41,23 +42,34 @@ class SimpleAvatar(Adw.Bin):
 
     def set_image(self, title, image=None):
         self.avatar.set_text(title)
+        if not image:
+            return
+        if not isfile(image):
+            _textures_cache[image] = None
+
+        def cb(texture, add_to_cache=False):
+            if add_to_cache:
+                _textures_cache[image] = texture
+            self.avatar.set_custom_image(texture)
+
+        if image in _textures_cache.keys():
+            cached = _textures_cache[image]
+            if not cached:
+                return
+            GLib.idle_add(cb, cached)
+        gio_file = Gio.File.new_for_path(image)
 
         def af():
-            if image is None:
-                return
-            icon = make_thumb(image, 32, 32)
-            if icon is None:
-                return
-            GLib.idle_add(cb, icon)
-
-        def cb(icon):
-            texture = _textures_cache.get(
-                icon, Gdk.Texture.new_from_file(
-                    Gio.File.new_for_path(icon)
+            try:
+                texture = Gdk.Texture.new_from_file(gio_file)
+            except Exception:
+                print(
+                    'SimpleAvatar: '
+                    'Error creating texture for `{0}` (title `{1}`)'.format(
+                        image, title
+                    )
                 )
-            )
-            if icon not in _textures_cache.keys():
-                _textures_cache[icon] = texture
-            self.avatar.set_custom_image(texture)
+                texture = None
+            GLib.idle_add(cb, texture, True)
 
         Thread(target=af, daemon=True).start()

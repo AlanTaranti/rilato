@@ -30,7 +30,13 @@ class PictureView(Gtk.Widget):
         gio_file = Gio.File.new_for_path(self.path)
 
         def af():
-            self.texture = Gdk.Texture.new_from_file(gio_file)
+            try:
+                self.texture = Gdk.Texture.new_from_file(gio_file)
+            except Exception:
+                print(
+                    f'PictureView: Error creating texture for `{self.path}`'
+                )
+                self.texture = None
             GLib.idle_add(cb)
 
         def cb():
