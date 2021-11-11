@@ -20,7 +20,7 @@ def get_thumb(link):
     except Exception:
         print('Error parsing HTML')
         return None
-    res = sd_html.image
+    res = sd_html.img_url
     if not res:
         return None
     if 'http://' in res or 'https://' in res:

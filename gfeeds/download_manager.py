@@ -1,10 +1,11 @@
 from gettext import gettext as _
 from os.path import isfile
 import requests
-from lxml.html import html5parser
 from gfeeds.confManager import ConfManager
 from gfeeds.sha import shasum
 from gfeeds.url_sanitizer import sanitize
+from syndom import Html
+from typing import Optional
 
 confman = ConfManager()
 
@@ -32,7 +33,7 @@ def download_text(link: str) -> str:
         raise requests.HTTPError(f'response code {res.status_code}')
 
 
-def download_raw(link: str, dest: str):
+def download_raw(link: str, dest: str) -> None:
     res = requests.get(link, headers=GET_HEADERS, timeout=TIMEOUT)
     if res.status_code == 200:
         with open(dest, 'wb') as fd:
@@ -44,26 +45,18 @@ def download_raw(link: str, dest: str):
         )
 
 
-def extract_feed_url_from_html(link: str) -> str:
+def extract_feed_url_from_html(link: str) -> Optional[str]:
+    dest = str(
+        confman.cache_path.joinpath(shasum(link)+'.html')
+    )
     try:
-        html = download_text(link)
-        root = html5parser.fromstring(
-            html if type(html) == str else html.decode()
-        )
-        link_els = root.xpath(
-            '//x:link',
-            namespaces={'x': 'http://www.w3.org/1999/xhtml'}
-        )
-        for el in link_els:
-            if (
-                el.attrib.get('rel', '') == 'alternate' and
-                el.attrib.get('type', '') in (
-                    'application/atom+xml', 'application/rss+xml'
-                ) and 'href' in el.attrib.keys()
-            ):
-                return sanitize(link, el.attrib['href'])
+        if not isfile(dest):
+            download_raw(link, dest)
+        sd_html = Html(dest)
+        return sd_html.rss_url or None
+        # maybe sanitize(sd_html.rss_url) ?
     except Exception:
-        print('exception in `extract_feed_from_html`')
+        print('Error extracting feed from HTML')
     return None
 
 
