@@ -464,7 +464,7 @@
                 {
                     "type": "git",
                     "url": "https://github.com/lxml/lxml",
-                    "tag": "lxml-4.6.3"
+                    "tag": "lxml-4.6.4-5"
                 }
             ]
         },
@@ -570,64 +570,6 @@
             ]
         },
         {
-            "name": "pybind11",
-            "buildsystem": "cmake",
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://github.com/pybind/pybind11/",
-                    "tag": "v2.8.1"
-                },
-                {
-                    "type": "patch",
-                    "path": "pybind11_flatpak_fix.patch",
-                    "sha256": "6c16ce22e230064fedd15b7b68d2bed8a4ecae69f544acaa2f01b43428a4d968"
-                }
-            ]
-        },
-        {
-            "name": "python-pybind11",
-            "buildsystem": "simple",
-            "build-commands": [
-                "python3 setup.py build",
-                "python3 setup.py install --prefix=/app --root=/"
-            ],
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://github.com/pybind/pybind11/",
-                    "tag": "v2.8.1"
-                },
-                {
-                    "type": "patch",
-                    "path": "pybind11_flatpak_fix.patch",
-                    "sha256": "6c16ce22e230064fedd15b7b68d2bed8a4ecae69f544acaa2f01b43428a4d968"
-                }
-            ]
-        },
-        {
-            "name": "pugixml",
-            "buildsystem": "cmake",
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://github.com/zeux/pugixml",
-                    "tag": "v1.11.4"
-                }
-            ]
-        },
-        {
-            "name": "tidy",
-            "buildsystem": "cmake",
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://github.com/htacg/tidy-html5",
-                    "tag": "5.8.0"
-                }
-            ]
-        },
-        {
             "name": "python-syndom",
             "buildsystem": "meson",
             "config-opts" : [
@@ -642,6 +584,66 @@
                     "type": "git",
                     "url": "https://gitlab.com/gabmus/syndication-domination",
                     "branch": "master"
+                }
+            ],
+            "modules": [
+                {
+                    "name": "pybind11",
+                    "buildsystem": "cmake",
+                    "sources": [
+                        {
+                            "type": "git",
+                            "url": "https://github.com/pybind/pybind11/",
+                            "tag": "v2.8.1"
+                        },
+                        {
+                            "type": "patch",
+                            "path": "pybind11_flatpak_fix.patch",
+                            "sha256": "6c16ce22e230064fedd15b7b68d2bed8a4ecae69f544acaa2f01b43428a4d968"
+                        }
+                    ]
+                },
+                {
+                    "name": "python-pybind11",
+                    "buildsystem": "simple",
+                    "build-commands": [
+                        "python3 setup.py build",
+                        "python3 setup.py install --prefix=/app --root=/"
+                    ],
+                    "sources": [
+                        {
+                            "type": "git",
+                            "url": "https://github.com/pybind/pybind11/",
+                            "tag": "v2.8.1"
+                        },
+                        {
+                            "type": "patch",
+                            "path": "pybind11_flatpak_fix.patch",
+                            "sha256": "6c16ce22e230064fedd15b7b68d2bed8a4ecae69f544acaa2f01b43428a4d968"
+                        }
+                    ]
+                },
+                {
+                    "name": "pugixml",
+                    "buildsystem": "cmake",
+                    "sources": [
+                        {
+                            "type": "git",
+                            "url": "https://github.com/zeux/pugixml",
+                            "tag": "v1.11.4"
+                        }
+                    ]
+                },
+                {
+                    "name": "tidy",
+                    "buildsystem": "cmake",
+                    "sources": [
+                        {
+                            "type": "git",
+                            "url": "https://github.com/htacg/tidy-html5",
+                            "tag": "5.8.0"
+                        }
+                    ]
                 }
             ]
         },
