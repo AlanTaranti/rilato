@@ -101,7 +101,7 @@ def build_reader_html(og_html, dark_mode: bool = False, sd_item=None) -> str:
     content += build_media_block()
     return f'''<html>
         <head>
-            <meta charset="UTF-8">
+            <meta charset="UTF-8" />
             <style>
                 {CSS}
                 {DARK_MODE_CSS if dark_mode else ""}
@@ -112,6 +112,10 @@ def build_reader_html(og_html, dark_mode: bool = False, sd_item=None) -> str:
         <body>
             <article>
                 <h1>{doc.short_title() or sd_item.title}</h1>
+                {
+                    f'<img src="{sd_item.img_url}" /> <hr />'
+                    if sd_item.img_url else ''
+                }
                 {content}
             </article>
         </body>
