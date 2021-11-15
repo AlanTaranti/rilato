@@ -1,5 +1,5 @@
 from typing import Tuple
-import readability
+from gfeeds.readability_wrapper import RDoc
 import pygments
 import pygments.lexers
 from lxml.html import (
@@ -9,6 +9,7 @@ from lxml.html import (
 )
 from pygments.formatters import HtmlFormatter
 from gfeeds.reader_mode_style import CSS, DARK_MODE_CSS
+from syndom import Html
 
 
 # Thanks to Eloi Rivard (azmeuk) for the contribution on the media block
@@ -91,20 +92,12 @@ def build_reader_html(og_html, dark_mode: bool = False, sd_item=None) -> str:
         img_url = sd_item.get_img_url()
         return '<hr />' + img_url if img_url else ''
 
-    doc = readability.Document(og_html)
-    content = doc.summary(True)
+    doc = RDoc(og_html)
+    content = doc.summary(html_partial=True)
     syntax_highlight_css, root = build_syntax_highlight_from_raw_html(content)
     content = html_tostring(
         root, encoding='utf-8'
-    ).decode().replace(
-        '</p><a ', '<a '
-    ).replace(
-        '</a><p>', '</a>'
-    ).replace(
-        '</p><em>', '<em>'
-    ).replace(
-        '</em><p>', '</em>'
-    )
+    ).decode()
     content += build_media_block()
     return f'''<html>
         <head>
@@ -114,11 +107,11 @@ def build_reader_html(og_html, dark_mode: bool = False, sd_item=None) -> str:
                 {DARK_MODE_CSS if dark_mode else ""}
                 {syntax_highlight_css}
             </style>
-            <title>{doc.short_title()}</title>
+            <title>{doc.short_title() or sd_item.title}</title>
         </head>
         <body>
             <article>
-                <h1>{doc.short_title() or sd_item.get_title()}</h1>
+                <h1>{doc.short_title() or sd_item.title}</h1>
                 {content}
             </article>
         </body>

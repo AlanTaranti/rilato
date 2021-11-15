@@ -388,8 +388,8 @@ class AdvancedPreferencesPage(Adw.PreferencesPage):
 
 
 class GFeedsSettingsWindow(Adw.PreferencesWindow):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
+    def __init__(self):
+        super().__init__(default_width=360, default_height=600)
         self.confman = ConfManager()
 
         self.pages = [
@@ -399,9 +399,6 @@ class GFeedsSettingsWindow(Adw.PreferencesWindow):
         ]
         for p in self.pages:
             self.add(p)
-        self.set_default_size(360, 600)
-        # Unneded for Adw 1?
-        # self.get_titlebar().set_show_close_button(True)
 
         add_accelerators(
             self,

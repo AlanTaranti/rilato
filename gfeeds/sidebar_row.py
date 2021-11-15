@@ -12,8 +12,8 @@ from bs4 import BeautifulSoup
 
 
 class SidebarRow(Adw.Bin):
-    def __init__(self, fetch_image_thread_pool, **kwargs):
-        super().__init__(**kwargs)
+    def __init__(self, fetch_image_thread_pool):
+        super().__init__()
         # self.get_style_context().add_class('activatable')
         self.fetch_image_thread_pool = fetch_image_thread_pool
         self.feed_item_wrapper = None

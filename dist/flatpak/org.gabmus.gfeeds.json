@@ -19,79 +19,6 @@
     ],
     "modules": [
         {
-            "name": "apr",
-            "buildsystem": "autotools",
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://dlcdn.apache.org//apr/apr-1.7.0.tar.bz2",
-                    "sha256": "e2e148f0b2e99b8e5c6caa09f6d4fb4dd3e83f744aa72a952f94f5a14436f7ea"
-                }
-            ]
-        },
-        {
-            "name": "apr-util",
-            "buildsystem": "autotools",
-            "config-opts": [
-                "--with-apr=/app"
-            ],
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://dlcdn.apache.org//apr/apr-util-1.6.1.tar.bz2",
-                    "sha256": "d3e12f7b6ad12687572a3a39475545a072608f4ba03a6ce8a3778f607dd0035b"
-                }
-            ]
-        },
-        {
-            "name": "subversion",
-            "buildsystem": "autotools",
-            "config-opts": [
-                "--with-utf8proc=internal"
-            ],
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://www.apache.org/dist/subversion/subversion-1.14.1.tar.bz2",
-                    "sha256": "2c5da93c255d2e5569fa91d92457fdb65396b0666fad4fd59b22e154d986e1a9"
-                }
-            ]
-        },
-        {
-            "name": "sassc",
-            "cleanup": [ "*" ],
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://github.com/sass/sassc.git",
-                    "tag": "3.6.1"
-                },
-                {
-                    "type": "script",
-                    "dest-filename": "autogen.sh",
-                    "commands": [ "autoreconf -si" ]
-                }
-            ],
-            "modules": [
-                {
-                    "name": "libsass",
-                    "cleanup": [ "*" ],
-                    "sources": [
-                        {
-                            "type": "git",
-                            "url": "https://github.com/sass/libsass.git",
-                            "tag": "3.6.4"
-                        },
-                        {
-                            "type": "script",
-                            "dest-filename": "autogen.sh",
-                            "commands": [ "autoreconf -si" ]
-                        }
-                    ]
-                }
-            ]
-        },
-        {
             "name": "gtk",
             "buildsystem": "meson",
             "config-opts": [
@@ -103,8 +30,8 @@
                     "type": "git",
                     "url": "https://gitlab.gnome.org/GNOME/gtk",
                     "//branch": "master",
-                    "//commit": "37cbd0662e3cbbb7abff7bfc765884fb19eba71d",
-                    "tag": "4.5.0"
+                    "commit": "e0c97e6fccc1f66dabddc21a6e8821347429e157",
+                    "//tag": "4.5.0"
                 }
             ],
             "modules": [
@@ -123,6 +50,40 @@
                     ]
                 },
                 {
+                    "name": "sassc",
+                    "cleanup": [ "*" ],
+                    "sources": [
+                        {
+                            "type": "git",
+                            "url": "https://github.com/sass/sassc.git",
+                            "tag": "3.6.1"
+                        },
+                        {
+                            "type": "script",
+                            "dest-filename": "autogen.sh",
+                            "commands": [ "autoreconf -si" ]
+                        }
+                    ],
+                    "modules": [
+                        {
+                            "name": "libsass",
+                            "cleanup": [ "*" ],
+                            "sources": [
+                                {
+                                    "type": "git",
+                                    "url": "https://github.com/sass/libsass.git",
+                                    "tag": "3.6.4"
+                                },
+                                {
+                                    "type": "script",
+                                    "dest-filename": "autogen.sh",
+                                    "commands": [ "autoreconf -si" ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
                     "name": "pango",
                     "buildsystem": "meson",
                     "config-opts": [
@@ -132,35 +93,10 @@
                         {
                             "type": "git",
                             "url": "https://gitlab.gnome.org/GNOME/pango.git",
-                            "branch": "main"
+                            "//branch": "main",
+                            "commit": "0c80c6d0b80cce4443e9a18fad2b4bccabaf4325"
                         }
                     ]
-                }
-            ]
-        },
-        {
-            "name": "libsoup",
-            "buildsystem": "meson",
-            "config-opts": [
-                "-Dtests=false"
-            ],
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://gitlab.gnome.org/GNOME/libsoup",
-                    "tag": "3.0.1"
-                }
-            ]
-        },
-        {
-            "name": "bubblewrap",
-            "buildsystem": "autotools",
-            "config-opts": [],
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://github.com/containers/bubblewrap",
-                    "tag": "v0.5.0"
                 }
             ]
         },
@@ -178,12 +114,7 @@
         },
         {
             "name": "webkitgtk",
-            "//buildsystem": "cmake",
             "buildsystem": "cmake-ninja",
-            "//disabled-opts": [
-                "-DENABLE_BUBBLEWRAP_SANDBOX=OFF",
-                "-DCMAKE_BUILD_TYPE=Debug"
-            ],
             "config-opts": [
                 "-DCMAKE_BUILD_TYPE=Release",
                 "-DPORT=GTK",
@@ -197,6 +128,73 @@
                     "type": "archive",
                     "path": "WebKit-main.tar.gz",
                     "sha256": "60f7bebb572301a3f832b1cf9105cf627b9313dcf3e6f3b58b753027234e18af"
+                }
+            ],
+            "modules": [
+                {
+                    "name": "libsoup",
+                    "buildsystem": "meson",
+                    "config-opts": [
+                        "-Dtests=false"
+                    ],
+                    "sources": [
+                        {
+                            "type": "git",
+                            "url": "https://gitlab.gnome.org/GNOME/libsoup",
+                            "tag": "3.0.1"
+                        }
+                    ]
+                },
+                {
+                    "name": "bubblewrap",
+                    "buildsystem": "autotools",
+                    "config-opts": [],
+                    "sources": [
+                        {
+                            "type": "git",
+                            "url": "https://github.com/containers/bubblewrap",
+                            "tag": "v0.5.0"
+                        }
+                    ]
+                },
+                {
+                    "name": "apr",
+                    "buildsystem": "autotools",
+                    "sources": [
+                        {
+                            "type": "archive",
+                            "url": "https://dlcdn.apache.org//apr/apr-1.7.0.tar.bz2",
+                            "sha256": "e2e148f0b2e99b8e5c6caa09f6d4fb4dd3e83f744aa72a952f94f5a14436f7ea"
+                        }
+                    ]
+                },
+                {
+                    "name": "apr-util",
+                    "buildsystem": "autotools",
+                    "config-opts": [
+                        "--with-apr=/app"
+                    ],
+                    "sources": [
+                        {
+                            "type": "archive",
+                            "url": "https://dlcdn.apache.org//apr/apr-util-1.6.1.tar.bz2",
+                            "sha256": "d3e12f7b6ad12687572a3a39475545a072608f4ba03a6ce8a3778f607dd0035b"
+                        }
+                    ]
+                },
+                {
+                    "name": "subversion",
+                    "buildsystem": "autotools",
+                    "config-opts": [
+                        "--with-utf8proc=internal"
+                    ],
+                    "sources": [
+                        {
+                            "type": "archive",
+                            "url": "https://www.apache.org/dist/subversion/subversion-1.14.1.tar.bz2",
+                            "sha256": "2c5da93c255d2e5569fa91d92457fdb65396b0666fad4fd59b22e154d986e1a9"
+                        }
+                    ]
                 }
             ]
         },
@@ -439,21 +437,6 @@
             ]
         },
         {
-            "name": "python-dateutil",
-            "buildsystem": "simple",
-            "build-commands": [
-                "python3 setup.py install --prefix=/app --root=/ --optimize=1"
-            ],
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://github.com/dateutil/dateutil",
-                    "tag": "2.8.1",
-                    "commit": "fc9b1625ebc729f01e449879b6b140abd12ae621"
-                }
-            ]
-        },
-        {
             "name": "python-lxml",
             "buildsystem": "simple",
             "build-commands": [
@@ -463,8 +446,23 @@
             "sources": [
                 {
                     "type": "git",
-                    "url": "https://github.com/lxml/lxml",
-                    "tag": "lxml-4.6.4-5"
+                    "url": "https://github.com/lxml/lxml.git",
+                    "tag": "lxml-4.6.4-5",
+                    "commmit": "24a459910130afc8a16bdecdde35ca9d5aa47f1d"
+                }
+            ]
+        },
+        {
+            "name": "python-dateutil",
+            "buildsystem": "simple",
+            "build-commands": [
+                "python3 setup.py install --prefix=/app --root=/ --optimize=1"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/dateutil/dateutil",
+                    "tag": "2.8.2"
                 }
             ]
         },
@@ -478,8 +476,7 @@
                 {
                     "type": "git",
                     "url": "https://github.com/kjd/idna",
-                    "tag": "v3.1",
-                    "commit": "8ba8151b72ea62cff3e37d431779063332678ade"
+                    "tag": "v3.3"
                 }
             ]
         },

@@ -141,9 +141,11 @@ class GFeedsAppWindow(BaseWindow):
 
         self.sidebar_box.append(self.filter_flap)
         self.leaflet.append(self.sidebar_box)
-        self.leaflet.append(
-            Gtk.Separator(orientation=Gtk.Orientation.VERTICAL)
+        self.__leaflet_separator = Gtk.Separator(
+            orientation=Gtk.Orientation.VERTICAL
         )
+        self.leaflet.append(self.__leaflet_separator)
+        self.leaflet.get_page(self.__leaflet_separator).set_navigatable(False)
         self.leaflet.append(self.webview_box)
         self.leaflet.connect('notify::folded', self.on_main_leaflet_folded)
 
