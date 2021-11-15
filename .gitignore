@@ -1,5 +1,7 @@
 /build
 __pycache__
+*.tar.*
+*.zip
 *.glade\~
 *.glade\#
 *.o
