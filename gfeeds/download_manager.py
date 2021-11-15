@@ -3,7 +3,6 @@ from os.path import isfile
 import requests
 from gfeeds.confManager import ConfManager
 from gfeeds.sha import shasum
-from gfeeds.url_sanitizer import sanitize
 from syndom import Html
 from typing import Optional
 

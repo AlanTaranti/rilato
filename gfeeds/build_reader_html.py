@@ -9,7 +9,6 @@ from lxml.html import (
 )
 from pygments.formatters import HtmlFormatter
 from gfeeds.reader_mode_style import CSS, DARK_MODE_CSS
-from syndom import Html
 
 
 # Thanks to Eloi Rivard (azmeuk) for the contribution on the media block
