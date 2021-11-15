@@ -72,7 +72,7 @@
                                 {
                                     "type": "git",
                                     "url": "https://github.com/sass/libsass.git",
-                                    "tag": "3.6.4"
+                                    "tag": "3.6.5"
                                 },
                                 {
                                     "type": "script",
@@ -314,8 +314,7 @@
                 {
                     "type": "git",
                     "url": "https://github.com/certifi/python-certifi",
-                    "tag": "2021.05.30",
-                    "commit": "8110050d8441d363c8057d5ad187c8ad5a862fc2"
+                    "tag": "2021.05.30"
                 }
             ]
         },
