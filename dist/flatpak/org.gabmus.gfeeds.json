@@ -11,10 +11,6 @@
         "--share=network",
         "--socket=wayland",
         "--socket=pulseaudio",
-        "--filesystem=xdg-run/dconf",
-        "--filesystem=~/.config/dconf:ro",
-        "--talk-name=ca.desrt.dconf",
-        "--env=DCONF_USER_CONFIG_DIR=.config/dconf",
         "--talk-name=org.freedesktop.Flatpak"
     ],
     "modules": [
@@ -504,7 +500,7 @@
                 {
                     "type": "git",
                     "url": "https://github.com/urllib3/urllib3",
-                    "tag": "1.26.6"
+                    "tag": "1.26.7"
                 }
             ]
         },
@@ -517,8 +513,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/psf/requests/archive/v2.25.1.tar.gz",
-                    "sha256": "03b192fad682a33964df331d35f90918b1940c89f6c5bcb10060be688ba50315"
+                    "url": "https://github.com/psf/requests/archive/v2.26.0.tar.gz",
+                    "sha256": "e88b61425a0b4f1316e7ab8f6c11d7abbc99b464e418786681d59fef9f9d6421"
                 }
             ]
         },
