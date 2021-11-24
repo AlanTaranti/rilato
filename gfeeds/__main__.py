@@ -66,7 +66,7 @@ class GFeedsApplication(BaseApp):
                 ),
                 AppAction(
                     name='settings',
-                    func=lambda *args: show_settings_window(self.window),
+                    func=lambda *args: show_preferences_window(self.window),
                     accel='<Primary>comma'
                 ),
                 AppAction(
