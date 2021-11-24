@@ -212,7 +212,7 @@ class PreferencesComboRow(Adw.ComboRow):
         self.subtitle = subtitle
 
         super().__init__(
-            model=self.list_store, factory=self.factory, title=title,
+            model=self.list_store, factory=self.factory, title=title
         )
         if self.subtitle:
             self.set_subtitle(self.subtitle)
