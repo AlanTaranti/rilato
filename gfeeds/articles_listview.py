@@ -189,19 +189,18 @@ class ArticlesListView(CommonListScrolledWin):
         self.factory.connect('setup', self._on_setup_listitem)
         self.factory.connect('bind', self._on_bind_listitem)
         self.selection = Gtk.SingleSelection.new(self.articles_store)
-        self.selection.set_autoselect(True)
+        self.selection.set_autoselect(False)
         self.list_view = Gtk.ListView.new(self.selection, self.factory)
 
         self.list_view.get_style_context().add_class('navigation-sidebar')
-        self.list_view.set_single_click_activate(True)
         self.set_child(self.list_view)
-        self.list_view.connect('activate', self.on_activate)
+        self.selection.connect('notify::selected-item', self.on_activate)
 
     def connect_activate(self, func):
-        self.list_view.connect(
-            'activate',
-            lambda lv, index, *args:
-                func(self.articles_store.get_item(index))
+        self.selection.connect(
+            'notify::selected-item',
+            lambda caller, feed_item_wrapper, *args:
+                func(self.selection.get_selected_item())
         )
 
     def get_selected(self) -> int:
@@ -212,7 +211,6 @@ class ArticlesListView(CommonListScrolledWin):
 
     def select_row(self, index):
         self.selection.select_item(index, True)
-        self.list_view.emit('activate', index)
 
     def select_next(self, *args):
         index = self.get_selected()
@@ -230,11 +228,11 @@ class ArticlesListView(CommonListScrolledWin):
             return
         self.select_row(index-1)
 
-    def on_activate(self, lv, row_index):
-        feed_item = self.articles_store.get_item(row_index).feed_item
-        feed_item.set_read(True)
-        # self.invalidate_filter() # maybe?
-        # TODO
+    def on_activate(self, *args):
+        feed_item_wrapper = self.selection.get_selected_item()
+        if not feed_item_wrapper:
+            return
+        feed_item_wrapper.feed_item.set_read(True)
 
     def _on_setup_listitem(
             self, factory: Gtk.ListItemFactory, list_item: Gtk.ListItem
