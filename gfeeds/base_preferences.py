@@ -67,7 +67,7 @@ class PreferencesEntryRow(MActionRow):
     """
     def __init__(
             self, title: str, conf_key: str, subtitle: Optional[str] = None,
-            onchange:Optional[Callable] = None, signal: Optional[str] = None
+            onchange: Optional[Callable] = None, signal: Optional[str] = None
     ):
         super().__init__(title, subtitle)
         self.conf_key = conf_key
@@ -213,8 +213,9 @@ class PreferencesComboRow(Adw.ComboRow):
 
         super().__init__(
             model=self.list_store, factory=self.factory, title=title,
-            subtitle = self.subtitle or ''
         )
+        if self.subtitle:
+            self.set_subtitle(self.subtitle)
 
         self.set_selected(values.index(self.confman.conf[self.conf_key]))
 
