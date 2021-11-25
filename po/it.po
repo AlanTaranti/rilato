@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-08 10:26+0100\n"
-"PO-Revision-Date: 2021-11-08 10:30+0100\n"
+"POT-Creation-Date: 2021-11-25 11:08+0100\n"
+"PO-Revision-Date: 2021-11-25 11:07+0100\n"
 "Last-Translator: Gabriele Musco <gabmus@disroot.org>\n"
 "Language-Team: Italian\n"
 "Language: it\n"
@@ -62,16 +62,24 @@ msgstr "`{0}` potrebbe non essere un feed RSS o Atom"
 msgid "Feed {0} exists already, skipping"
 msgstr "Il feed {0} esiste già, lo salto"
 
-#: ../gfeeds/headerbar.py:167
+#: ../gfeeds/headerbar.py:169
 msgid "Add new feed"
 msgstr "Aggiungi nuovo feed"
 
-#: ../gfeeds/get_favicon.py:67
+#: ../gfeeds/headerbar.py:198
+msgid ""
+"There were problems with some feeds.\n"
+"Do you want to remove them?"
+msgstr ""
+"C'è qualche problema con alcuni feed.\n"
+"Vuoi rimuoverli?"
+
+#: ../gfeeds/get_favicon.py:45
 #, python-brace-format
 msgid "Error downloading favicon for `{0}`"
 msgstr "Errore nel download della favicon per `{0}`"
 
-#: ../gfeeds/app_window.py:177
+#: ../gfeeds/app_window.py:184
 #, python-brace-format
 msgid "{0} new article"
 msgid_plural "{0} new articles"
@@ -95,8 +103,140 @@ msgid "Link copied to clipboard!"
 msgstr "Link copiato negli appunti!"
 
 #: ../gfeeds/webview.py:121
-msgid "RSS content or summary not available for this article"
-msgstr "Contenuto o riassunto dell'RSS non disponibile per questo articolo"
+msgid "RSS content not available for this article"
+msgstr "Contenuto RSS non disponibile per questo articolo"
+
+#: ../gfeeds/preferences_window.py:21
+msgid "General"
+msgstr "Generale"
+
+#: ../gfeeds/preferences_window.py:24
+msgid "General preferences"
+msgstr "Preferenze generali"
+
+#: ../gfeeds/preferences_window.py:26
+msgid "Show newer articles first"
+msgstr "Mostra nuovi articoli per primi"
+
+#: ../gfeeds/preferences_window.py:31
+msgid "Open links in your browser"
+msgstr "Apri link nel tuo browser"
+
+#: ../gfeeds/preferences_window.py:35
+msgid "Use external video player for YouTube"
+msgstr "Usa un riproduttore video esterno per YouTube"
+
+#: ../gfeeds/preferences_window.py:37
+msgid "Requires youtube-dl and a compatible video player"
+msgstr "Richiede youtube-dl ed un riproduttore video compatibile"
+
+#: ../gfeeds/preferences_window.py:43
+msgid "Preferred video player"
+msgstr "Riproduttore video preferito"
+
+#: ../gfeeds/preferences_window.py:47
+msgid "Maximum article age"
+msgstr "Età massima degli articoli"
+
+#: ../gfeeds/preferences_window.py:48
+msgid "In days"
+msgstr "In giorni"
+
+#: ../gfeeds/preferences_window.py:55
+msgid "Refresh preferences"
+msgstr "Preferenze di aggiornamento"
+
+#: ../gfeeds/preferences_window.py:57
+msgid "Refresh articles on startup"
+msgstr "Aggiorna articoli all'avvio"
+
+#: ../gfeeds/preferences_window.py:61
+msgid "New articles notification"
+msgstr "Notifiche per nuovi articoli"
+
+#: ../gfeeds/preferences_window.py:65
+msgid "Enable auto-refresh"
+msgstr "Attiva ricarica automatica"
+
+#: ../gfeeds/preferences_window.py:69
+msgid "Auto-refresh interval"
+msgstr "Intervallo per la ricarica automatica"
+
+#: ../gfeeds/preferences_window.py:70
+msgid "In seconds"
+msgstr "In secondi"
+
+#: ../gfeeds/preferences_window.py:77
+msgid "Cache"
+msgstr "Cache"
+
+#: ../gfeeds/preferences_window.py:79
+msgid "Clear caches"
+msgstr "Pulisci le cache"
+
+#: ../gfeeds/preferences_window.py:108
+msgid "Appearance"
+msgstr "Aspetto"
+
+#: ../gfeeds/preferences_window.py:111
+msgid "Appearance preferences"
+msgstr "Preferenze dell'aspetto"
+
+#: ../gfeeds/preferences_window.py:113
+msgid "Dark mode"
+msgstr "Modalità scura"
+
+#: ../gfeeds/preferences_window.py:117
+msgid "Use dark theme for reader mode"
+msgstr "Usa tema scuro per la modalità lettura"
+
+#: ../gfeeds/preferences_window.py:121
+msgid "Show article thumbnails"
+msgstr "Mostra miniature per gli articoli"
+
+#: ../gfeeds/preferences_window.py:126
+msgid "Maximum thumbnail height"
+msgstr "Massima altezza delle miniature"
+
+#: ../gfeeds/preferences_window.py:132
+msgid "Enable JavaScript"
+msgstr "Attiva JavaScript"
+
+#: ../gfeeds/preferences_window.py:137
+msgid "Show full articles titles"
+msgstr "Mostra i titoli completi degli articoli"
+
+#: ../gfeeds/preferences_window.py:142
+msgid "Show full feeds names"
+msgstr "Mostra nomi completi dei feed"
+
+#: ../gfeeds/preferences_window.py:155
+msgid "Advanced"
+msgstr "Avanzate"
+
+#: ../gfeeds/preferences_window.py:158
+msgid "Advanced preferences"
+msgstr "Preferenze avanzate"
+
+#: ../gfeeds/preferences_window.py:160
+msgid "Maximum refresh threads"
+msgstr "Massimi thread per aggiornamento"
+
+#: ../gfeeds/preferences_window.py:162
+msgid "How many threads to use for feeds refresh"
+msgstr "Quanti thread usare per aggiornare i feed"
+
+#: ../gfeeds/preferences_window.py:169
+msgid "Experimental GtkListView for articles list"
+msgstr "GtkListView sperimentale per la lista degli articoli"
+
+#: ../gfeeds/preferences_window.py:171
+msgid "Requires app restart"
+msgstr "Richiede un riavvio dell'app"
+
+#: ../gfeeds/sidebar.py:21
+msgid "Loading feeds..."
+msgstr "Caricamento feed..."
 
 #: ../gfeeds/__main__.py:227
 msgid "url"
@@ -106,148 +246,20 @@ msgstr "url"
 msgid "opml file local url or rss remote url to import"
 msgstr "url locale del file opml o url rss remota da importare"
 
-#: ../gfeeds/download_manager.py:87
+#: ../gfeeds/download_manager.py:79
 #, python-brace-format
 msgid "`{0}`: connection timed out"
 msgstr "`{0}`: timeout connessione"
 
-#: ../gfeeds/download_manager.py:91
+#: ../gfeeds/download_manager.py:83
 #, python-brace-format
 msgid "`{0}` might not be a valid address"
 msgstr "`{0}` potrebbe non essere un indirizzo valido"
 
-#: ../gfeeds/download_manager.py:116
+#: ../gfeeds/download_manager.py:108
 #, python-brace-format
 msgid "Error downloading `{0}`, code `{1}`"
 msgstr "Errore nel download di `{0}`, codice `{1}`"
-
-#: ../gfeeds/settings_window.py:185 ../gfeeds/settings_window.py:189
-msgid "General"
-msgstr "Generale"
-
-#: ../gfeeds/settings_window.py:193
-msgid "Refresh articles on startup"
-msgstr "Aggiorna articoli all'avvio"
-
-#: ../gfeeds/settings_window.py:198
-msgid "Show newer articles first"
-msgstr "Mostra nuovi articoli per primi"
-
-#: ../gfeeds/settings_window.py:203
-msgid "Open links in your browser"
-msgstr "Apri link nel tuo browser"
-
-#: ../gfeeds/settings_window.py:208
-msgid "Use external video player for YouTube"
-msgstr "Usa un riproduttore video esterno per YouTube"
-
-#: ../gfeeds/settings_window.py:211
-msgid "Requires youtube-dl and a compatible video player"
-msgstr "Richiede youtube-dl ed un riproduttore video compatibile"
-
-#: ../gfeeds/settings_window.py:225
-msgid "Preferred media player"
-msgstr "Riproduttore multimediale preferito"
-
-#: ../gfeeds/settings_window.py:229
-msgid "Maximum article age"
-msgstr "Età massima degli articoli"
-
-#: ../gfeeds/settings_window.py:233
-msgid "In days"
-msgstr "In giorni"
-
-#: ../gfeeds/settings_window.py:239
-msgid "Refresh"
-msgstr "Ricarica"
-
-#: ../gfeeds/settings_window.py:242
-msgid "New articles notification"
-msgstr "Notifiche per nuovi articoli"
-
-#: ../gfeeds/settings_window.py:247
-msgid "Enable auto-refresh"
-msgstr "Attiva ricarica automatica"
-
-#: ../gfeeds/settings_window.py:253
-msgid "Auto-refresh interval"
-msgstr "Intervallo per la ricarica automatica"
-
-#: ../gfeeds/settings_window.py:254
-msgid "In seconds"
-msgstr "In secondi"
-
-#: ../gfeeds/settings_window.py:261
-msgid "Cache"
-msgstr "Cache"
-
-#: ../gfeeds/settings_window.py:265
-msgid "Clear all caches"
-msgstr "Pulisci tutte le cache"
-
-#: ../gfeeds/settings_window.py:266
-msgid "Clear caches"
-msgstr "Pulisci le cache"
-
-#: ../gfeeds/settings_window.py:301
-msgid "View"
-msgstr "Vista"
-
-#: ../gfeeds/settings_window.py:305
-msgid "View Settings"
-msgstr "Impostazioni della Vista"
-
-#: ../gfeeds/settings_window.py:308
-msgid "Show full articles titles"
-msgstr "Mostra i titoli completi degli articoli"
-
-#: ../gfeeds/settings_window.py:313
-msgid "Show full feeds names"
-msgstr "Mostra nomi completi dei feed"
-
-#: ../gfeeds/settings_window.py:318
-msgid "Dark mode"
-msgstr "Modalità scura"
-
-#: ../gfeeds/settings_window.py:323
-msgid "Use dark theme for reader mode"
-msgstr "Usa tema scuro per la modalità lettura"
-
-#: ../gfeeds/settings_window.py:328
-msgid "Enable JavaScript"
-msgstr "Attiva JavaScript"
-
-#: ../gfeeds/settings_window.py:333
-msgid "Show article thumbnails"
-msgstr "Mostra miniature per gli articoli"
-
-#: ../gfeeds/settings_window.py:342
-msgid "Maximum thumbnail height"
-msgstr "Massima altezza delle miniature"
-
-#: ../gfeeds/settings_window.py:351
-msgid "Advanced"
-msgstr "Avanzate"
-
-#: ../gfeeds/settings_window.py:355
-msgid "Advanced Settings"
-msgstr "Impostazioni Avanzate"
-
-#: ../gfeeds/settings_window.py:358
-msgid "Maximum refresh threads"
-msgstr "Massimi thread per aggiornamento"
-
-#: ../gfeeds/settings_window.py:363
-msgid "How many threads to refresh feeds"
-msgstr "Quanti thread per aggiornare i feed"
-
-#: ../gfeeds/settings_window.py:378
-msgid "Experimental GtkListView for articles list"
-msgstr "GtkListView sperimentale per la lista degli articoli"
-
-#: ../gfeeds/settings_window.py:379
-msgid "Requires app restart"
-msgstr "Richiede un riavvio dell'app"
 
 #: ../gfeeds/manage_feeds_window.py:206 ../gfeeds/manage_feeds_window.py:339
 msgid "Manage Feeds"
@@ -313,6 +325,10 @@ msgstr "Segna come non letto"
 #: ../gfeeds/sidebar_row_popover.py:42 ../gfeeds/sidebar_row_popover.py:54
 msgid "Mark as read"
 msgstr "Segna come letto"
+
+#: ../gfeeds/base_preferences.py:106
+msgid "Choose a folder"
+msgstr "Scegli una cartella"
 
 #: ../data/ui/manage_tags_content.ui:18
 msgid "New tag name..."
@@ -394,11 +410,6 @@ msgstr "Aggiungi"
 msgid "You're already subscribed to that feed!"
 msgstr "Sei già iscritto a questo feed!"
 
-#: ../data/ui/scrolled_label.ui:16
-#: ../data/ui/manage_tags_listbox_row_content.ui:14
-msgid "label"
-msgstr ""
-
 #: ../data/ui/webview_filler.ui:5
 msgid "Select an article"
 msgstr "Seleziona un articolo"
@@ -447,31 +458,39 @@ msgstr "Scorciatoie da tastiera"
 msgid "About Feeds"
 msgstr "Informazioni su Feeds"
 
-#: ../data/ui/headerbar.ui:51
+#: ../data/ui/headerbar.ui:54
 msgid "Filter by feed"
 msgstr "Filtra per feed"
 
-#: ../data/ui/headerbar.ui:63
+#: ../data/ui/headerbar.ui:66
 msgid "Menu"
 msgstr "Menu"
 
-#: ../data/ui/headerbar.ui:70
+#: ../data/ui/headerbar.ui:73
 msgid "Search"
 msgstr "Cerca"
 
-#: ../data/ui/headerbar.ui:119
+#: ../data/ui/headerbar.ui:79
+msgid "Refresh"
+msgstr "Ricarica"
+
+#: ../data/ui/headerbar.ui:85
+msgid "There are errors"
+msgstr "C'è qualche errore"
+
+#: ../data/ui/headerbar.ui:129
 msgid "Back to articles"
 msgstr "Indietro agli articoli"
 
-#: ../data/ui/headerbar.ui:126
+#: ../data/ui/headerbar.ui:136
 msgid "Open externally"
 msgstr "Apri esternamente"
 
-#: ../data/ui/headerbar.ui:133
+#: ../data/ui/headerbar.ui:143
 msgid "Change view mode"
 msgstr "Cambia modalità di visualizzazione"
 
-#: ../data/ui/headerbar.ui:141
+#: ../data/ui/headerbar.ui:151
 msgid "Share"
 msgstr "Condividi"
 
@@ -487,15 +506,15 @@ msgstr "Modalità lettura"
 msgid "RSS Content"
 msgstr "Contenuto RSS"
 
-#: ../data/org.gabmus.gfeeds.desktop.in:5
+#: ../data/org.gabmus.gfeeds.desktop.in:6
 msgid "@prettyname@"
 msgstr ""
 
-#: ../data/org.gabmus.gfeeds.desktop.in:6
+#: ../data/org.gabmus.gfeeds.desktop.in:7
 msgid "News reader for GNOME"
 msgstr "Lettore di notizie per GNOME"
 
-#: ../data/org.gabmus.gfeeds.desktop.in:13
+#: ../data/org.gabmus.gfeeds.desktop.in:14
 msgid "rss;reader;feed;news;"
 msgstr "rss;reader;feed;news;lettore;notizie;"
 
@@ -920,6 +939,27 @@ msgstr "Aggiunta traduzione italiana"
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:322
 msgid "First release"
 msgstr "Prima release"
+
+#~ msgid "RSS content or summary not available for this article"
+#~ msgstr "Contenuto o riassunto dell'RSS non disponibile per questo articolo"
+
+#~ msgid "Preferred media player"
+#~ msgstr "Riproduttore multimediale preferito"
+
+#~ msgid "Clear all caches"
+#~ msgstr "Pulisci tutte le cache"
+
+#~ msgid "View"
+#~ msgstr "Vista"
+
+#~ msgid "View Settings"
+#~ msgstr "Impostazioni della Vista"
+
+#~ msgid "Advanced Settings"
+#~ msgstr "Impostazioni Avanzate"
+
+#~ msgid "How many threads to refresh feeds"
+#~ msgstr "Quanti thread per aggiornare i feed"
 
 #~ msgid "Thumbnail"
 #~ msgstr "Anteprima"

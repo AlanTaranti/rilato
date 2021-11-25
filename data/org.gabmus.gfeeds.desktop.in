@@ -1,6 +1,7 @@
 [Desktop Entry]
 Version=1.0
 Type=Application
+# Translators: Do NOT translate this
 Name=@prettyname@
 Comment=News reader for GNOME
 Categories=Network;Feed;GTK;GNOME;

@@ -5,11 +5,10 @@ data/ui/empty_state.ui
 data/ui/extra_popover_menu.ui
 data/ui/headerbar.ui
 data/ui/manage_tags_content.ui
-data/ui/manage_tags_listbox_row_content.ui
-data/ui/scrolled_label.ui
 data/ui/shortcutsWindow.ui
 data/ui/webview_filler.ui
 gfeeds/app_window.py
+gfeeds/base_preferences.py
 gfeeds/confirm_add_dialog.py
 gfeeds/download_manager.py
 gfeeds/feeds_manager.py
@@ -20,8 +19,9 @@ gfeeds/__main__.py
 gfeeds/manage_feeds_window.py
 gfeeds/opml_file_chooser.py
 gfeeds/opml_manager.py
+gfeeds/preferences_window.py
 gfeeds/rss_parser.py
-gfeeds/settings_window.py
+gfeeds/sidebar.py
 gfeeds/sidebar_row_popover.py
 gfeeds/suggestion_bar.py
 gfeeds/webview.py
