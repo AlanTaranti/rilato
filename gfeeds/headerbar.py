@@ -60,7 +60,6 @@ class GFeedsHeaderbarRight(Gtk.WindowHandle):
         self.leaflet = leaflet
         self.back_btn_func = back_btn_func
         self.webview.connect('gfeeds_webview_load_start', self.on_load_start)
-        self.webview.connect('gfeeds_webview_load_end', self.on_load_end)
         self.right_headerbar = self.builder.get_object(
             'right_headerbar'
         )
@@ -121,9 +120,6 @@ class GFeedsHeaderbarRight(Gtk.WindowHandle):
         self.title_label.set_text(title)
 
     def on_load_start(self, *args):
-        self.view_mode_menu_btn.set_sensitive(False)
-
-    def on_load_end(self, *args):
         self.view_mode_menu_btn.set_sensitive(True)
 
     def set_headerbar_controls(self, *args):

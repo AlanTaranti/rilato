@@ -12,11 +12,6 @@ from subprocess import Popen
 
 class GFeedsWebView(Gtk.Stack):
     __gsignals__ = {
-        'gfeeds_webview_load_end': (
-            GObject.SignalFlags.RUN_LAST,
-            None,
-            (str,)
-        ),
         'gfeeds_webview_load_start': (
             GObject.SignalFlags.RUN_FIRST,
             None,
@@ -177,9 +172,8 @@ class GFeedsWebView(Gtk.Stack):
         elif event == WebKit2.LoadEvent.REDIRECTED:
             self.loading_bar.set_fraction(.50)
         elif event == WebKit2.LoadEvent.COMMITTED:
-            self.emit('gfeeds_webview_load_end', '')
             self.loading_bar.set_fraction(.75)
-        elif self.new_page_loaded and event == WebKit2.LoadEvent.FINISHED:
+        elif event == WebKit2.LoadEvent.FINISHED:
             self.loading_bar.set_fraction(1.0)
             # waits 1 seconds async then hides the loading bar
             GLib.timeout_add_seconds(
