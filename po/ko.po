@@ -1,0 +1,922 @@
+# Korean translations for gfeeds package.
+# Copyright (C) 2021 THE gfeeds'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the gfeeds package.
+# 風間ちえる <kmj10727@gmail.com>, 2021.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gfeeds 0.16.2\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-11-26 14:20+0900\n"
+"PO-Revision-Date: 2021-11-26 14:55+0900\n"
+"Last-Translator: kmj10727@gmail.com\n"
+"Language-Team: Korean <translation-team-ko@googlegroups.com>\n"
+"Language: ko\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 3.0\n"
+
+#: ../gfeeds/opml_file_chooser.py:7
+msgid "XML files"
+msgstr "XML 파일"
+
+#: ../gfeeds/opml_file_chooser.py:14
+msgid "Choose an OPML file to import"
+msgstr "불러올 OPML 파일 선택"
+
+#: ../gfeeds/opml_file_chooser.py:18
+msgid "Open"
+msgstr "열기"
+
+#: ../gfeeds/opml_file_chooser.py:19 ../gfeeds/opml_file_chooser.py:31
+msgid "Cancel"
+msgstr "취소"
+
+#: ../gfeeds/opml_file_chooser.py:26
+msgid "Choose where to save the exported OPML file"
+msgstr "내보낸 OPML 파일을 저장할 위치 선택"
+
+#: ../gfeeds/opml_file_chooser.py:30
+msgid "Save"
+msgstr "저장"
+
+#: ../gfeeds/sidebar_row_popover.py:35 ../gfeeds/sidebar_row_popover.py:62
+msgid "Mark as unread"
+msgstr "읽지 않음으로 표시"
+
+#: ../gfeeds/sidebar_row_popover.py:42 ../gfeeds/sidebar_row_popover.py:54
+msgid "Mark as read"
+msgstr "읽음으로 표시"
+
+#: ../gfeeds/webview.py:61
+msgid "Web View"
+msgstr "웹 표시"
+
+#: ../gfeeds/webview.py:62
+msgid "Filler View"
+msgstr "필터 보기"
+
+#: ../gfeeds/webview.py:94
+msgid "Link copied to clipboard!"
+msgstr "링크가 클립보드로 복사되었습니다!"
+
+#: ../gfeeds/webview.py:116
+msgid "RSS content not available for this article"
+msgstr "이 기사는 RSS 컨텐츠 및 요약을 지원하지 않습니다"
+
+#: ../gfeeds/preferences_window.py:21
+msgid "General"
+msgstr "일반"
+
+#: ../gfeeds/preferences_window.py:24
+msgid "General preferences"
+msgstr "일반 설정"
+
+#: ../gfeeds/preferences_window.py:26
+msgid "Show newer articles first"
+msgstr "새 기사 먼저 보기"
+
+#: ../gfeeds/preferences_window.py:31
+msgid "Open links in your browser"
+msgstr "브라우저에서 링크 열기"
+
+#: ../gfeeds/preferences_window.py:35
+msgid "Use external video player for YouTube"
+msgstr "비디오 플레이어로 유튜브 링크 열기"
+
+#: ../gfeeds/preferences_window.py:37
+msgid "Requires youtube-dl and a compatible video player"
+msgstr "youtube-dl과 호환되는 비디오 플레이어가 필요합니다"
+
+#: ../gfeeds/preferences_window.py:43
+msgid "Preferred video player"
+msgstr "선호하는 미디어 재생기"
+
+#: ../gfeeds/preferences_window.py:47
+msgid "Maximum article age"
+msgstr "최대 기사 수"
+
+#: ../gfeeds/preferences_window.py:48
+msgid "In days"
+msgstr "매일"
+
+#: ../gfeeds/preferences_window.py:55
+msgid "Refresh preferences"
+msgstr "기본 설정 새로고침"
+
+#: ../gfeeds/preferences_window.py:57
+msgid "Refresh articles on startup"
+msgstr "시작 시 기사 새로고침"
+
+#: ../gfeeds/preferences_window.py:61
+msgid "New articles notification"
+msgstr "새 기사 알림"
+
+#: ../gfeeds/preferences_window.py:65
+msgid "Enable auto-refresh"
+msgstr "자동 새로고침 활성화"
+
+#: ../gfeeds/preferences_window.py:69
+msgid "Auto-refresh interval"
+msgstr "자동 새로고침 간격"
+
+#: ../gfeeds/preferences_window.py:70
+msgid "In seconds"
+msgstr "매 초마다"
+
+#: ../gfeeds/preferences_window.py:77
+msgid "Cache"
+msgstr "캐시"
+
+#: ../gfeeds/preferences_window.py:79
+msgid "Clear caches"
+msgstr "캐시 삭제"
+
+#: ../gfeeds/preferences_window.py:108
+msgid "Appearance"
+msgstr "모양"
+
+#: ../gfeeds/preferences_window.py:111
+msgid "Appearance preferences"
+msgstr "모양 설정"
+
+#: ../gfeeds/preferences_window.py:113
+msgid "Dark mode"
+msgstr "다크 모드"
+
+#: ../gfeeds/preferences_window.py:117
+msgid "Use dark theme for reader mode"
+msgstr "읽기 모드에서 어두운 테마 사용"
+
+#: ../gfeeds/preferences_window.py:121
+msgid "Show article thumbnails"
+msgstr "기사 섬네일 표시"
+
+#: ../gfeeds/preferences_window.py:126
+msgid "Maximum thumbnail height"
+msgstr "섬네일 최대 크기"
+
+#: ../gfeeds/preferences_window.py:132
+msgid "Enable JavaScript"
+msgstr "JavaScript 활성화"
+
+#: ../gfeeds/preferences_window.py:137
+msgid "Show full articles titles"
+msgstr "기사의 전체 이름 보기"
+
+#: ../gfeeds/preferences_window.py:142
+msgid "Show full feeds names"
+msgstr "피드의 전체 이름 보기"
+
+#: ../gfeeds/preferences_window.py:155
+msgid "Advanced"
+msgstr "고급"
+
+#: ../gfeeds/preferences_window.py:158
+msgid "Advanced preferences"
+msgstr "고급 설정"
+
+#: ../gfeeds/preferences_window.py:160
+msgid "Maximum refresh threads"
+msgstr "최대 새로고침 스레드"
+
+#: ../gfeeds/preferences_window.py:162
+msgid "How many threads to use for feeds refresh"
+msgstr "피드를 새로 고칠 스레드 수"
+
+#: ../gfeeds/preferences_window.py:169
+msgid "Experimental GtkListView for articles list"
+msgstr "기사 목록에 실험적 GtkListView 사용"
+
+#: ../gfeeds/preferences_window.py:171
+msgid "Requires app restart"
+msgstr "프로그램을 다시 시작해야 합니다"
+
+#: ../gfeeds/rss_parser.py:54
+#, python-brace-format
+msgid "Error: unable to parse datetime {0} for feeditem {1}"
+msgstr "오류: {0}에 있는 항목 {1}의 시간을 파싱할 수 없음"
+
+#: ../gfeeds/rss_parser.py:101
+#, python-brace-format
+msgid "Errors while parsing feed `{0}`"
+msgstr "피드 '{0}'을 파싱하는 중 오류가 발생했습니다"
+
+#: ../gfeeds/rss_parser.py:131
+#, python-brace-format
+msgid "`{0}` may not be an RSS or Atom feed"
+msgstr "'{0}'은 RSS 및 아톰 피드가 아닐 수 있습니다"
+
+#: ../gfeeds/confirm_add_dialog.py:16
+msgid "Do you want to import these feeds?"
+msgstr "이 피드들을 불러오겠습니까?"
+
+#: ../gfeeds/confirm_add_dialog.py:17
+msgid "Do you want to import this feed?"
+msgstr "이 피드를 불러오겠습니까?"
+
+#: ../gfeeds/app_window.py:184
+#, python-brace-format
+msgid "{0} new article"
+msgid_plural "{0} new articles"
+msgstr[0] "새 기사 {0}개"
+
+#: ../gfeeds/download_manager.py:79
+#, python-brace-format
+msgid "`{0}`: connection timed out"
+msgstr "`{0}`: 연결 시간이 초과되었습니다"
+
+#: ../gfeeds/download_manager.py:83
+#, python-brace-format
+msgid "`{0}` might not be a valid address"
+msgstr "'{0}'은 올바른 주소가 아닙니다"
+
+#: ../gfeeds/download_manager.py:108
+#, python-brace-format
+msgid "Error downloading `{0}`, code `{1}`"
+msgstr "다운로드 오류 `{0}`, 코드 `{1}`"
+
+#: ../gfeeds/opml_manager.py:45
+msgid "Error: OPML path provided does not exist"
+msgstr "오류: OPML 경로가 없습니다"
+
+#: ../gfeeds/opml_manager.py:56
+#, python-brace-format
+msgid "Error parsing OPML file `{0}`"
+msgstr "OPML 파일 '{0}'을 파싱하는 중 오류가 발생했습니다"
+
+#: ../gfeeds/get_favicon.py:45
+#, python-brace-format
+msgid "Error downloading favicon for `{0}`"
+msgstr "'{0}'의 파비콘을 받아오는 중 오류가 발생했습니다"
+
+#: ../gfeeds/manage_feeds_window.py:206 ../gfeeds/manage_feeds_window.py:339
+msgid "Manage Feeds"
+msgstr "피드 관리"
+
+#: ../gfeeds/manage_feeds_window.py:216
+msgid "Select/Unselect all"
+msgstr "모두 선택/해제"
+
+#: ../gfeeds/manage_feeds_window.py:220
+msgid "Delete selected feeds"
+msgstr "선택된 피드 삭제"
+
+#: ../gfeeds/manage_feeds_window.py:225
+msgid "Manage tags for selected feeds"
+msgstr "선택된 피드의 태그 관리"
+
+#: ../gfeeds/manage_feeds_window.py:287
+msgid "Do you want to delete these feeds?"
+msgstr "이 피드를 삭제하시겠습니까?"
+
+#: ../gfeeds/headerbar.py:165
+msgid "Add new feed"
+msgstr "새 피드 추가"
+
+#: ../gfeeds/headerbar.py:194
+msgid ""
+"There were problems with some feeds.\n"
+"Do you want to remove them?"
+msgstr ""
+"몇몇 피드에 문제가 있는 거 같습니다.\n"
+"삭제하시겠습니까?"
+
+#: ../gfeeds/feeds_view.py:18
+msgid "All feeds"
+msgstr "모든 피드"
+
+#: ../gfeeds/feeds_manager.py:83
+#, python-brace-format
+msgid "Feed {0} exists already, skipping"
+msgstr "피드 {0}이 이미 존재함, 건너뜀"
+
+#: ../gfeeds/sidebar.py:21
+msgid "Loading feeds..."
+msgstr "피드를 불러오는 중..."
+
+#: ../gfeeds/suggestion_bar.py:37
+msgid "There are some errors"
+msgstr "몇몇 오류가 있습니다"
+
+#: ../gfeeds/suggestion_bar.py:46
+msgid "Show"
+msgstr "보기"
+
+#: ../gfeeds/suggestion_bar.py:47
+msgid "Ignore"
+msgstr "무시"
+
+#: ../gfeeds/suggestion_bar.py:70
+msgid "There were problems with some feeds. Do you want to remove them?"
+msgstr ""
+"몇몇 피드에 문제가 있는 거 같습니다.\n"
+"삭제하시겠습니까?"
+
+#: ../gfeeds/suggestion_bar.py:97
+msgid "You are offline"
+msgstr "오프라인 상태입니다"
+
+#: ../gfeeds/__main__.py:227
+msgid "url"
+msgstr "url"
+
+#: ../gfeeds/__main__.py:230
+msgid "opml file local url or rss remote url to import"
+msgstr "로컬 URL 또는 RSS 원격 URL이 담긴 OPML 파일을 불러오기"
+
+#: ../gfeeds/base_preferences.py:106
+msgid "Choose a folder"
+msgstr "폴더 선택"
+
+#: ../data/ui/extra_popover_menu.ui:15
+msgid "View mode"
+msgstr "보기 모드"
+
+#: ../data/ui/extra_popover_menu.ui:33
+msgid "Reader Mode"
+msgstr "읽기 모드"
+
+#: ../data/ui/extra_popover_menu.ui:40
+msgid "RSS Content"
+msgstr "RSS 피드"
+
+#: ../data/ui/manage_tags_content.ui:18
+msgid "New tag name..."
+msgstr "새 태그 이름..."
+
+#: ../data/ui/manage_tags_content.ui:25
+msgid "Add tag"
+msgstr "태그 추가"
+
+#: ../data/ui/manage_tags_content.ui:71
+msgid "There are no tags yet"
+msgstr "태그가 없습니다"
+
+#: ../data/ui/manage_tags_content.ui:80
+msgid "Add some using the entry above"
+msgstr ""
+
+#: ../data/ui/empty_state.ui:5
+msgid "Let's get started"
+msgstr "시작해보기"
+
+#: ../data/ui/empty_state.ui:33
+msgid "Add new feeds via URL"
+msgstr "URL로 새 피드 추가하기"
+
+#: ../data/ui/empty_state.ui:43
+msgid "Import an OPML file"
+msgstr "OPML 파일로 불러오기"
+
+#: ../data/ui/webview_filler.ui:5
+msgid "Select an article"
+msgstr "기사를 선택하십시오"
+
+#: ../data/ui/add_feed_box.ui:11
+msgid "Enter feed address to add"
+msgstr "추가할 피드의 주소 입력"
+
+#: ../data/ui/add_feed_box.ui:26
+msgid "https://..."
+msgstr "https://..."
+
+#: ../data/ui/add_feed_box.ui:34
+msgid "Add"
+msgstr "추가"
+
+#: ../data/ui/add_feed_box.ui:48
+msgid "You're already subscribed to that feed!"
+msgstr "이미 구독된 피드입니다!"
+
+#: ../data/ui/headerbar.ui:7
+msgid "Show read articles"
+msgstr "읽은 기사 표시"
+
+#: ../data/ui/headerbar.ui:11
+msgid "Mark all as read"
+msgstr "모두 읽음으로 표시"
+
+#: ../data/ui/headerbar.ui:15
+msgid "Mark all as unread"
+msgstr "모두 읽지 않음으로 표시"
+
+#: ../data/ui/headerbar.ui:25
+msgid "Import OPML"
+msgstr "OPML 파일 불러오기"
+
+#: ../data/ui/headerbar.ui:29
+msgid "Export OPML"
+msgstr "OPML 파일로 내보내기"
+
+#: ../data/ui/headerbar.ui:35
+msgid "Preferences"
+msgstr "기본 설정"
+
+#: ../data/ui/headerbar.ui:39
+msgid "Keyboard Shortcuts"
+msgstr "키보드 바로 가기"
+
+#: ../data/ui/headerbar.ui:43
+msgid "About Feeds"
+msgstr "피드 정보"
+
+#: ../data/ui/headerbar.ui:54
+msgid "Filter by feed"
+msgstr "피드별로 필터링"
+
+#: ../data/ui/headerbar.ui:66
+msgid "Menu"
+msgstr "메뉴"
+
+#: ../data/ui/headerbar.ui:73
+msgid "Search"
+msgstr "검색"
+
+#: ../data/ui/headerbar.ui:79
+msgid "Refresh"
+msgstr "새로고침"
+
+#: ../data/ui/headerbar.ui:85
+msgid "There are errors"
+msgstr "오류 발생"
+
+#: ../data/ui/headerbar.ui:129
+msgid "Back to articles"
+msgstr "기사로 돌아가기"
+
+#: ../data/ui/headerbar.ui:136
+msgid "Open externally"
+msgstr "외부에서 열기"
+
+#: ../data/ui/headerbar.ui:143
+msgid "Change view mode"
+msgstr "보기 모드 변경"
+
+#: ../data/ui/headerbar.ui:151
+msgid "Share"
+msgstr "공유"
+
+#: ../data/ui/shortcutsWindow.ui:14
+msgid "Open Keyboard Shortcuts"
+msgstr "키보드 바로 가기 열기"
+
+#: ../data/ui/shortcutsWindow.ui:20
+msgid "Open Menu"
+msgstr "메뉴 열기"
+
+#: ../data/ui/shortcutsWindow.ui:26
+msgid "Open Preferences"
+msgstr "기본 설정 열기"
+
+#: ../data/ui/shortcutsWindow.ui:32
+msgid "Quit"
+msgstr "종료"
+
+#: ../data/ui/shortcutsWindow.ui:38
+msgid "Refresh articles"
+msgstr "기사 새로고침"
+
+#: ../data/ui/shortcutsWindow.ui:44
+msgid "Search articles"
+msgstr "기사 검색"
+
+#: ../data/ui/shortcutsWindow.ui:50
+msgid "Next article"
+msgstr "다음 기사"
+
+#: ../data/ui/shortcutsWindow.ui:56
+msgid "Previous article"
+msgstr "이전 기사"
+
+#: ../data/ui/shortcutsWindow.ui:62
+msgid "Show/Hide read articles"
+msgstr "읽은 기사 보이기/숨기기"
+
+#: ../data/ui/shortcutsWindow.ui:68
+msgid "Zoom in"
+msgstr "확대"
+
+#: ../data/ui/shortcutsWindow.ui:74
+msgid "Zoom out"
+msgstr "축소"
+
+#: ../data/ui/shortcutsWindow.ui:80
+msgid "Reset zoom"
+msgstr "확대 초기화"
+
+#: ../data/org.gabmus.gfeeds.desktop.in:6
+msgid "@prettyname@"
+msgstr "@prettyname@"
+
+#: ../data/org.gabmus.gfeeds.desktop.in:7
+msgid "News reader for GNOME"
+msgstr "그놈 데스크톱을 위한 뉴스 리더 프로그램"
+
+#: ../data/org.gabmus.gfeeds.desktop.in:14
+msgid "rss;reader;feed;news;"
+msgstr "rss;reader;feed;news;"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:4
+msgid "Feeds"
+msgstr "피드"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:5
+msgid "Gabriele Musco"
+msgstr "Gabriele Musco"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:15
+msgid ""
+"Feeds is a minimal RSS/Atom feed reader built with speed and simplicity in "
+"mind."
+msgstr "피드는 빠르고 심플하고 가벼운 RSS/Atom 피드 리더기입니다."
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:16
+msgid ""
+"It offers a simple user interface that only shows the latest news from your "
+"subscriptions."
+msgstr ""
+"사용자가 구독한 피드의 최근 소식만 보여주는 간단한 인터페이스를 제공합니다."
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:17
+msgid ""
+"Articles are shown in a web view by default, with javascript disabled for a "
+"faster and less intrusive user experience. There's also a reader mode "
+"included, built from the one GNOME Web/Epiphany uses."
+msgstr ""
+"기사들은 빠른 사용자 경험을 제공하기 위해 기본적으로 JavaScript가 비활성화"
+"된 웹 뷰로 표시되며, 믿을 만하고 빠른 사용자 경험을 제공합니다. 또한, 그놈 "
+"웹(에피파니)에서 사용하는 읽기 모드도 포함되어 있습니다."
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:18
+msgid "Feeds can be imported and exported via OPML."
+msgstr "OPML을 통해 피드를 불러오거나 내보낼 수 있게 됨"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:59
+msgid "Fixed view mode button"
+msgstr "보기 모드 버튼 고정"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:60
+msgid "Option to open YouTube links with an external media player"
+msgstr "YouTube 링크를 외부 미디어 재생기에서 열 수 있는 옵션 추가"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:61
+msgid ""
+"Saved articles are no longer stored inside the cache directory, avoiding "
+"accidental deletion"
+msgstr ""
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:69
+msgid "Feed icons improvements for high DPI screens"
+msgstr "HiDPI 환경에서 피드 아이콘 향상"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:77
+msgid "UI improvements on phones"
+msgstr "스마트폰 내 UI 개선"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:85
+msgid "Switched to the new libhandy Avatar widget"
+msgstr ""
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:86
+msgid "Added Dutch translation courtesy of Heimen Stoffels"
+msgstr ""
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:93
+msgid "Fixed searchbar"
+msgstr "검색바 고정"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:101
+msgid ""
+"New tags feature! You can now categorize your feeds by creating custom tags"
+msgstr ""
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:102
+msgid "RSS links can now be opened directly in Feeds to be imported"
+msgstr ""
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:103
+msgid "Mark as read now only marks the currently visible feeds"
+msgstr ""
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:104
+msgid "Added support for the latest version of libhandy"
+msgstr ""
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:105
+msgid "Improved message dialogs"
+msgstr ""
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:106
+msgid "Performance improvements when importing OPML files"
+msgstr ""
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:107
+msgid "Removed option to disable client side decoration"
+msgstr ""
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:114
+msgid ""
+"Don't remove feeds automatically if they have errors, instead ask the user "
+"what to do"
+msgstr ""
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:115
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:137
+msgid "Updated Italian translation"
+msgstr ""
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:122
+msgid "Updated French translation"
+msgstr ""
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:129
+msgid "Bug fixes"
+msgstr ""
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:136
+msgid "Updated version number"
+msgstr ""
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:144
+msgid "You can now add some feeds by just using the website URL"
+msgstr ""
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:145
+msgid "New generated placeholder icon for feeds without one"
+msgstr ""
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:146
+msgid "Improved reader mode"
+msgstr ""
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:147
+msgid "Swipe left on your touchscreen to move back from an article"
+msgstr ""
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:148
+msgid "Code blocks in articles now have syntax highlighting"
+msgstr ""
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:149
+msgid "Added French translation"
+msgstr ""
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:150
+msgid "Removed the colored border left of the articles"
+msgstr ""
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:151
+msgid "More keyboard shortcuts"
+msgstr ""
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:152
+msgid "Added option to refresh articles on startup"
+msgstr ""
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:153
+msgid "Updated to the GNOME 3.36 runtime"
+msgstr ""
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:154
+msgid "Various improvements and bug fixes"
+msgstr ""
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:161
+msgid "Added loading progress bar"
+msgstr ""
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:162
+msgid "Added Spanish translation"
+msgstr ""
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:163
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:174
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:188
+msgid "Various UI improvements"
+msgstr ""
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:164
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:175
+msgid "Performance improvements"
+msgstr ""
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:165
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:176
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:189
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:199
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:214
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:225
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:278
+msgid "Various bug fixes"
+msgstr ""
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:172
+msgid "Load cached articles on startup"
+msgstr ""
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:173
+msgid "Added new view mode menu"
+msgstr ""
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:177
+msgid "Added Brazilian Portuguese translation"
+msgstr ""
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:178
+msgid "Added Russian translation"
+msgstr ""
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:185
+msgid "Option to ellipsize article titles for a more compact view"
+msgstr ""
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:186
+msgid "Added a search function"
+msgstr ""
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:187
+msgid "Updated dependencies"
+msgstr ""
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:196
+msgid "Errors with feeds are now shown in the UI"
+msgstr ""
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:197
+msgid "Big UI overhaul"
+msgstr "대대적인 UI 개편"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:198
+msgid "Updated translations"
+msgstr "번역 수정"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:206
+msgid "OPML file association"
+msgstr "OPML 파일 연결"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:207
+msgid "Changed left headerbar button order"
+msgstr ""
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:208
+msgid "Optimization for updating feeds"
+msgstr ""
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:209
+msgid "Redesigned right click/longpress menu"
+msgstr ""
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:210
+msgid "Option to show/hide read articles"
+msgstr ""
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:211
+msgid "Reworked suggestion bar"
+msgstr ""
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:212
+msgid "Changed name to Feeds"
+msgstr ""
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:213
+msgid "Improved CPU utilization"
+msgstr "향상된 CPU 활용"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:221
+msgid "New right click or longpress menu for articles"
+msgstr ""
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:222
+msgid "You can now save articles offline"
+msgstr ""
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:223
+msgid "Initial suggestion to add feeds is now less intrusive"
+msgstr ""
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:224
+msgid "Read articles are now greyed out"
+msgstr ""
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:232
+msgid "Concurrent feeds refresh, with customizable thread count"
+msgstr ""
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:233
+msgid "Added German translation (thanks @Etamuk)"
+msgstr ""
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:240
+msgid "Fix bugs in reader mode"
+msgstr ""
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:247
+msgid "Minor bug fix"
+msgstr "몇몇 버그 수정"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:254
+msgid "Improved date and time parsing and display"
+msgstr ""
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:255
+msgid "Reader mode can now work on websites without an article tag"
+msgstr ""
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:256
+msgid "Slight improvements to the icon"
+msgstr ""
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:257
+msgid "New feature to filter articles by feed"
+msgstr ""
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:264
+msgid "Improved favicon download"
+msgstr ""
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:265
+msgid "Fixed refresh duplicating articles"
+msgstr ""
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:272
+msgid "Added option to disable client side decoration"
+msgstr ""
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:273
+msgid "Brought primary menu in line with GNOME HIG"
+msgstr ""
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:274
+msgid "Added placeholder icon for feeds without an icon"
+msgstr ""
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:275
+msgid "Migrated some widgets to Glade templates"
+msgstr ""
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:276
+msgid "Option to use reader mode by default"
+msgstr ""
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:277
+msgid "Option to show article content from the feed"
+msgstr ""
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:285
+msgid "Fixed labels alignment"
+msgstr ""
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:286
+msgid "Changed app name to Feeds"
+msgstr ""
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:287
+msgid "Added separators for the two sections of the app"
+msgstr ""
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:288
+msgid "Using links as feed titles when there is no title"
+msgstr ""
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:289
+msgid "Added preference for maximum article age"
+msgstr ""
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:290
+msgid "Added zoom keyboard shortcuts"
+msgstr ""
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:291
+msgid "Added preference to enable JavaScript"
+msgstr ""
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:292
+msgid "Fix window control positions when they are on the left"
+msgstr ""
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:299
+msgid "Feeds for websites without favicons will now work"
+msgstr ""
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:306
+msgid "Fixed bug with adding new feeds"
+msgstr ""
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:313
+msgid "Switched to native file chooser"
+msgstr ""
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:314
+msgid "Added empty state initial screen for sidebar"
+msgstr ""
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:315
+msgid "Added italian translation"
+msgstr "이탈리아어 추가"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:322
+msgid "First release"
+msgstr "첫 출시"
