@@ -1,16 +1,15 @@
 from gettext import gettext as _
-import threading
+from threading import Thread
 from gi.repository import Gtk, GLib, WebKit2, GObject, Gio, Adw
 from gfeeds.build_reader_html import build_reader_html
 from gfeeds.confManager import ConfManager
 from gfeeds.download_manager import download_text
-from gfeeds.revealer_loading_bar import RevealerLoadingBar
 from functools import reduce
 from operator import or_
 from subprocess import Popen
 
 
-class GFeedsWebView(Gtk.Stack):
+class GFeedsWebView(Adw.Bin):
     __gsignals__ = {
         'gfeeds_webview_load_start': (
             GObject.SignalFlags.RUN_FIRST,
@@ -19,35 +18,26 @@ class GFeedsWebView(Gtk.Stack):
         )
     }
 
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
+    def __init__(self):
+        GObject.type_ensure(WebKit2.WebView)
+        super().__init__(hexpand=True, vexpand=True)
         self.confman = ConfManager()
-        self.set_transition_type(Gtk.StackTransitionType.CROSSFADE)
-        self.set_hexpand(True)
-        self.set_size_request(360, 500)
-
-        self.filler_builder = Gtk.Builder.new_from_resource(
-            '/org/gabmus/gfeeds/ui/webview_filler.ui'
+        self.builder = Gtk.Builder.new_from_resource(
+            '/org/gabmus/gfeeds/ui/webview.ui'
         )
-        self.webview_notif_builder = Gtk.Builder.new_from_resource(
-            '/org/gabmus/gfeeds/ui/toast_webview.ui'
+        self.stack = self.builder.get_object('stack')
+        self.set_child(self.stack)
+        self.webkitview = self.builder.get_object('webkitview')
+        self.loading_bar_revealer = self.builder.get_object(
+            'loading_bar_revealer'
         )
-
-        self.webkitview = WebKit2.WebView(
-            hexpand=True, vexpand=True, width_request=360, height_request=500
-        )
-        self.loading_bar = RevealerLoadingBar()
-        self.webview_notif_builder.get_object(
-            'loading_bar_container'
-        ).set_child(self.loading_bar)
-        self.main_view = self.webview_notif_builder.get_object('container_box')
-        self.toast_overlay = self.webview_notif_builder.get_object(
-            'toast_overlay'
-        )
-        self.toast_overlay.set_child(self.webkitview)
+        self.loading_bar = self.builder.get_object('loading_bar')
+        self.main_view = self.builder.get_object('main_view')
+        self.toast_overlay = self.builder.get_object('toast_overlay')
 
         self.webkitview_settings = WebKit2.Settings()
         self.apply_webview_settings()
+
         self.confman.connect(
             'gfeeds_webview_settings_changed',
             self.apply_webview_settings
@@ -55,12 +45,6 @@ class GFeedsWebView(Gtk.Stack):
 
         self.webkitview.connect('load-changed', self.on_load_changed)
         self.webkitview.connect('decide-policy', self.on_decide_policy)
-
-        self.fillerview = self.filler_builder.get_object('webview_filler_box')
-
-        self.add_titled(self.main_view, 'Web View', _('Web View'))
-        self.add_titled(self.fillerview, 'Filler View', _('Filler View'))
-        self.set_visible_child(self.fillerview)
 
         self.new_page_loaded = False
         self.uri = ''
@@ -107,7 +91,7 @@ class GFeedsWebView(Gtk.Stack):
             )
 
     def _load_rss_content(self, feeditem):
-        self.set_visible_child(self.main_view)
+        self.stack.set_visible_child(self.main_view)
         self.feeditem = feeditem
         self.uri = feeditem.link
         content = feeditem.sd_item.get_content()
@@ -128,21 +112,14 @@ class GFeedsWebView(Gtk.Stack):
         if callback:
             GLib.idle_add(callback)
 
-    def load_feeditem(self, feeditem, trigger_on_load_start=True,
-                      *args, **kwargs):
+    def load_feeditem(self, feeditem, trigger_on_load_start=True):
         self.webkitview.stop_loading()
         uri = feeditem.link
         self.feeditem = feeditem
         self.uri = uri
-        self.set_visible_child(self.main_view)
+        self.stack.set_visible_child(self.main_view)
         if self.confman.conf['default_view'] == 'reader':
-            t = threading.Thread(
-                group=None,
-                target=self._load_reader_async,
-                name=None,
-                daemon=True
-                # args = (uri,)
-            )
+            t = Thread(target=self._load_reader_async, daemon=True)
             if trigger_on_load_start:
                 self.on_load_start()
             t.start()
@@ -166,7 +143,7 @@ class GFeedsWebView(Gtk.Stack):
 
     def on_load_changed(self, webview, event):
         if event != WebKit2.LoadEvent.FINISHED:
-            self.loading_bar.set_reveal_child(True)
+            self.loading_bar_revealer.set_reveal_child(True)
         if event == WebKit2.LoadEvent.STARTED:
             self.loading_bar.set_fraction(.25)
         elif event == WebKit2.LoadEvent.REDIRECTED:
@@ -178,7 +155,7 @@ class GFeedsWebView(Gtk.Stack):
             # waits 1 seconds async then hides the loading bar
             GLib.timeout_add_seconds(
                 1,
-                self.loading_bar.set_reveal_child, False
+                self.loading_bar_revealer.set_reveal_child, False
             )
             self.new_page_loaded = False
             resource = webview.get_main_resource()
@@ -202,7 +179,7 @@ class GFeedsWebView(Gtk.Stack):
                         )
                     )
             ):
-                t = threading.Thread(
+                t = Thread(
                     group=None,
                     target=self._load_reader_async,
                     name=None,

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="webkit2" version="5.0"/>
+  <object class="GtkStack" id="stack">
+    <property name="hexpand">1</property>
+    <property name="vexpand">1</property>
+    <property name="width-request">360</property>
+    <property name="height-request">400</property>
+    <property name="transition-type">crossfade</property>
+    <property name="visible-child">filler_view</property>
+    <child>
+      <object class="AdwStatusPage" id="filler_view">
+        <property name="title" translatable="yes">Select an article</property>
+        <property name="icon-name">webview-filler-symbolic</property>
+        <property name="vexpand">1</property>
+        <property name="hexpand">1</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkOverlay" id="main_view">
+        <property name="vexpand">1</property>
+        <property name="hexpand">1</property>
+        <child type="overlay">
+          <object class="GtkRevealer" id="loading_bar_revealer">
+            <property name="vexpand">0</property>
+            <property name="valign">start</property>
+            <property name="transition-type">crossfade</property>
+            <property name="reveal-child">1</property>
+            <child>
+              <object class="GtkProgressBar" id="loading_bar">
+                <property name="vexpand">0</property>
+                <property name="hexpand">1</property>
+                <style><class name="osd" /></style>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="AdwToastOverlay" id="toast_overlay">
+            <property name="vexpand">1</property>
+            <property name="hexpand">1</property>
+            <child>
+              <object class="WebKitWebView" id="webkitview">
+                <property name="hexpand">1</property>
+                <property name="vexpand">1</property>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>
