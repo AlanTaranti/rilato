@@ -165,6 +165,10 @@ class GFeedsAppWindow(BaseWindow):
         )
         self.set_dark_mode(self.confman.conf['dark_mode'])
 
+    def on_view_mode_change(self, target):
+        self.right_headerbar.on_view_mode_change(target)
+        self.webview.change_view_mode(target)
+
     def on_refresh_end(self, *args):
         # self.errors_bar.engage(
         #     self.feedman.errors,

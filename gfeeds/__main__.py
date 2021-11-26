@@ -100,16 +100,13 @@ class GFeedsApplication(BaseApp):
         )
 
     def view_mode_change(
-            self,
-            action: Gio.SimpleAction,
-            target: GLib.Variant,
-            *args
+            self, action: Gio.SimpleAction, target: GLib.Variant, *args
     ):
         action.change_state(target)
         target_s = str(target).strip("'")
         if target_s not in ['webview', 'reader', 'rsscont']:
             target_s = 'webview'
-        self.window.right_headerbar.on_view_mode_change(target_s)
+        self.window.on_view_mode_change(target_s)
         self.confman.conf['default_view'] = target_s
         self.confman.save_conf()
 

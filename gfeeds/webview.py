@@ -51,6 +51,17 @@ class GFeedsWebView(Adw.Bin):
         self.feeditem = None
         self.html = None
 
+    def change_view_mode(self, target):
+        if target == 'webview':
+            self.webkitview.load_uri(self.uri)
+        elif target == 'reader':
+            Thread(
+                target=self._load_reader_async,
+                args=(self.load_reader,)
+            ).start()
+        elif target == 'rsscont':
+            self.set_enable_rss_content(True)
+
     def apply_webview_settings(self, *args):
         self.webkitview_settings.set_enable_javascript(
             self.confman.conf['enable_js']
@@ -82,7 +93,7 @@ class GFeedsWebView(Adw.Bin):
         if feeditem:
             self.feeditem = feeditem
         if state:
-            self._load_rss_content(self.feeditem)
+            self.load_rss_content(self.feeditem)
         else:
             self.new_page_loaded = True
             self.load_feeditem(
@@ -90,7 +101,7 @@ class GFeedsWebView(Adw.Bin):
                 False
             )
 
-    def _load_rss_content(self, feeditem):
+    def load_rss_content(self, feeditem):
         self.stack.set_visible_child(self.main_view)
         self.feeditem = feeditem
         self.uri = feeditem.link
@@ -102,13 +113,10 @@ class GFeedsWebView(Adw.Bin):
         self.html = '<!-- GFEEDS RSS CONTENT --><article>{0}</article>'.format(
             content if '</' in content else content.replace('\n', '<br>')
         )
-        self.set_enable_reader_mode(True, True)
+        self.load_reader()
 
     def _load_reader_async(self, callback=None, *args):
         self.html = download_text(self.uri)
-        GLib.idle_add(
-            self.set_enable_reader_mode, True
-        )
         if callback:
             GLib.idle_add(callback)
 
@@ -119,10 +127,13 @@ class GFeedsWebView(Adw.Bin):
         self.uri = uri
         self.stack.set_visible_child(self.main_view)
         if self.confman.conf['default_view'] == 'reader':
-            t = Thread(target=self._load_reader_async, daemon=True)
+            Thread(
+                target=self._load_reader_async,
+                args=(self.load_reader,),
+                daemon=True
+            ).start()
             if trigger_on_load_start:
                 self.on_load_start()
-            t.start()
         elif self.confman.conf['default_view'] == 'rsscont':
             self.on_load_start()
             self.set_enable_rss_content(True, feeditem)
@@ -161,38 +172,14 @@ class GFeedsWebView(Adw.Bin):
             resource = webview.get_main_resource()
             resource.get_data(None, self._get_data_cb, None)
 
-    def _set_enable_reader_mode_async_callback(self):
+    def load_reader(self):
+        if not self.feeditem:
+            return
         self.webkitview.load_html(build_reader_html(
             self.html,
             self.confman.conf['dark_reader'],
             self.feeditem.sd_item
         ), self.uri)
-
-    def set_enable_reader_mode(self, state=True, is_rss_content=False):
-        if state:
-            if (
-                    not self.html or (
-                        not is_rss_content and
-                        (
-                            self.html[:36] ==
-                            '<!-- GFEEDS RSS CONTENT --><article>'
-                        )
-                    )
-            ):
-                t = Thread(
-                    group=None,
-                    target=self._load_reader_async,
-                    name=None,
-                    args=(
-                        self._set_enable_reader_mode_async_callback,
-                    ),
-                    daemon=True
-                )
-                t.start()
-            else:
-                self._set_enable_reader_mode_async_callback()
-        else:
-            self.webkitview.load_uri(self.uri)
 
     def _get_data_cb(self, resource, result, user_data=None):
         self.html = resource.get_data_finish(result)
