@@ -6,7 +6,7 @@ data/ui/extra_popover_menu.ui
 data/ui/headerbar.ui
 data/ui/manage_tags_content.ui
 data/ui/shortcutsWindow.ui
-data/ui/webview_filler.ui
+data/ui/webview.ui
 gfeeds/app_window.py
 gfeeds/base_preferences.py
 gfeeds/confirm_add_dialog.py
