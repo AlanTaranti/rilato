@@ -159,7 +159,15 @@ class PrivacyPreferencesPage(MPreferencesPage):
                         PreferencesToggleRow(
                             title=_('Try to block advertisements'),
                             conf_key='enable_adblock',
-                            subtitle=_('Requires app restart')
+                            subtitle=_('Requires app restart'),
+                            signal='on_apply_adblock_changed'
+                        ),
+                        PreferencesButtonRow(
+                            title=_('Update advertisement blocking list'),
+                            subtitle=_('Updates automatically every 10 days'),
+                            button_label=_('Update'),
+                            onclick=lambda *args: None,
+                            signal='on_refresh_blocklist'
                         )
                     ]
                 )

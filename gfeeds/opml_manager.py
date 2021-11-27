@@ -21,7 +21,6 @@ def __add_feeds_from_opml_worker(opml_path):
         confman.add_tag(tag)
     for f in n_feeds_urls_l:
         url = f['feed']
-        print(url)
         if url not in confman.conf['feeds'].keys():
             confman.conf['feeds'][url] = {
                 'tags': f['tags']

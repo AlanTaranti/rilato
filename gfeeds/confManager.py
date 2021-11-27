@@ -71,6 +71,16 @@ class ConfManagerSignaler(GObject.Object):
             GObject.SignalFlags.RUN_LAST,
             None,
             (str,)
+        ),
+        'on_apply_adblock_changed': (
+            GObject.SignalFlags.RUN_LAST,
+            None,
+            (str,)
+        ),
+        'on_refresh_blocklist': (
+            GObject.SignalFlags.RUN_LAST,
+            None,
+            (str,)
         )
     }
 
@@ -108,7 +118,8 @@ class ConfManager(metaclass=Singleton):
         'auto_refresh_enabled': False,
         'notify_new_articles': True,
         'auto_refresh_time_seconds': 300,
-        'enable_adblock': True
+        'enable_adblock': True,
+        'blocklist_last_update': 0.0
     }
 
     def __init__(self):

@@ -7,6 +7,7 @@ from gfeeds.download_manager import download_text
 from functools import reduce
 from operator import or_
 from subprocess import Popen
+from datetime import datetime
 
 
 class GFeedsWebView(Adw.Bin):
@@ -43,6 +44,15 @@ class GFeedsWebView(Adw.Bin):
             self.apply_webview_settings
         )
 
+        self.confman.connect(
+            'on_apply_adblock_changed',
+            lambda *args: self.on_apply_adblock_changed(False)
+        )
+        self.confman.connect(
+            'on_refresh_blocklist',
+            lambda *args: self.on_apply_adblock_changed(True)
+        )
+
         self.webkitview.connect('load-changed', self.on_load_changed)
         self.webkitview.connect('decide-policy', self.on_decide_policy)
 
@@ -52,15 +62,29 @@ class GFeedsWebView(Adw.Bin):
                 'webkit_user_content_filter_store'
             ))
         )
-        self.apply_adblock()
+        if self.confman.conf['enable_adblock']:
+            self.apply_adblock()
 
         self.new_page_loaded = False
         self.uri = ''
         self.feeditem = None
         self.html = None
 
-    def apply_adblock(self):
-        if not self.confman.conf['enable_adblock']:
+    def on_apply_adblock_changed(self, refresh: bool):
+        self.apply_adblock(
+            refresh=refresh, remove=not self.confman.conf['enable_adblock']
+        )
+
+    def apply_adblock(self, refresh: bool = False, remove: bool = False):
+        refresh = refresh or (
+            datetime.fromtimestamp(
+                self.confman.conf['blocklist_last_update']
+            ) - datetime.now()
+        ).days >= 10
+
+        if refresh or remove:
+            self.content_manager.remove_filter_by_id('blocklist')
+        if remove:
             return
 
         def apply_filter(filter: WebKit2.UserContentFilter):
@@ -84,19 +108,26 @@ class GFeedsWebView(Adw.Bin):
                 'https://easylist-downloads.adblockplus.org/'
                 'easylist_min_content_blocker.json'
             )
+            now = datetime.now()
+            print(f'Downloaded updated blocklist at {now}')
+            self.confman.conf['blocklist_last_update'] = now.timestamp()
             GLib.idle_add(download_blocklist_cb, res)
 
         def filter_load_cb(caller, res, *args):
             try:
                 filter = self.user_content_filter_store.load_finish(res)
                 apply_filter(filter)
+                print('Loaded stored blocklist')
             except GLib.Error:
                 print('blocklist store not found, downloading...')
                 Thread(target=download_blocklist, daemon=True).start()
 
-        self.user_content_filter_store.load(
-            'blocklist', None, filter_load_cb, None
-        )
+        if refresh:
+            Thread(target=download_blocklist, daemon=True).start()
+        else:
+            self.user_content_filter_store.load(
+                'blocklist', None, filter_load_cb, None
+            )
 
     def change_view_mode(self, target):
         if target == 'webview':
