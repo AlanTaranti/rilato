@@ -107,7 +107,8 @@ class ConfManager(metaclass=Singleton):
         'use_experimental_listview': False,
         'auto_refresh_enabled': False,
         'notify_new_articles': True,
-        'auto_refresh_time_seconds': 300
+        'auto_refresh_time_seconds': 300,
+        'enable_adblock': True
     }
 
     def __init__(self):

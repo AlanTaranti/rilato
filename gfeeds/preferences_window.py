@@ -129,11 +129,6 @@ class AppearancePreferencesPage(MPreferencesPage):
                             signal='on_max_picture_height_changed'
                         ),
                         PreferencesToggleRow(
-                            title=_('Enable JavaScript'),
-                            conf_key='enable_js',
-                            signal='gfeeds_webview_settings_changed'
-                        ),
-                        PreferencesToggleRow(
                             title=_('Show full articles titles'),
                             conf_key='full_article_title',
                             signal='gfeeds_full_article_title_changed'
@@ -142,6 +137,29 @@ class AppearancePreferencesPage(MPreferencesPage):
                             title=_('Show full feeds names'),
                             conf_key='full_feed_name',
                             signal='gfeeds_full_feed_name_changed'
+                        )
+                    ]
+                )
+            ]
+        )
+
+
+class PrivacyPreferencesPage(MPreferencesPage):
+    def __init__(self):
+        super().__init__(
+            title=_('Privacy'), icon_name='eye-not-looking-symbolic',
+            pref_groups=[
+                MPreferencesGroup(
+                    title=_('Privacy preferences'), rows=[
+                        PreferencesToggleRow(
+                            title=_('Enable JavaScript'),
+                            conf_key='enable_js',
+                            signal='gfeeds_webview_settings_changed'
+                        ),
+                        PreferencesToggleRow(
+                            title=_('Try to block advertisements'),
+                            conf_key='enable_adblock',
+                            subtitle=_('Requires app restart')
                         )
                     ]
                 )
@@ -187,6 +205,7 @@ class PreferencesWindow(Adw.PreferencesWindow):
 
         self.pages = [
             GeneralPreferencesPage(),
+            PrivacyPreferencesPage(),
             AppearancePreferencesPage(),
             AdvancedPreferencesPage()
         ]

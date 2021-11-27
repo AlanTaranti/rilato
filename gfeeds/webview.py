@@ -46,10 +46,57 @@ class GFeedsWebView(Adw.Bin):
         self.webkitview.connect('load-changed', self.on_load_changed)
         self.webkitview.connect('decide-policy', self.on_decide_policy)
 
+        self.content_manager = self.webkitview.get_user_content_manager()
+        self.user_content_filter_store = WebKit2.UserContentFilterStore.new(
+            str(self.confman.cache_path.joinpath(
+                'webkit_user_content_filter_store'
+            ))
+        )
+        self.apply_adblock()
+
         self.new_page_loaded = False
         self.uri = ''
         self.feeditem = None
         self.html = None
+
+    def apply_adblock(self):
+        if not self.confman.conf['enable_adblock']:
+            return
+
+        def apply_filter(filter: WebKit2.UserContentFilter):
+            self.content_manager.add_filter(filter)
+
+        def save_blocklist_cb(caller, res, *args):
+            try:
+                filter = self.user_content_filter_store.save_finish(res)
+                apply_filter(filter)
+            except GLib.Error:
+                print('Error saving blocklist')
+
+        def download_blocklist_cb(blocklist: str):
+            self.user_content_filter_store.save(
+               'blocklist', GLib.Bytes.new(blocklist.encode()),
+                None, save_blocklist_cb
+            )
+
+        def download_blocklist():
+            res = download_text(
+                'https://easylist-downloads.adblockplus.org/'
+                'easylist_min_content_blocker.json'
+            )
+            GLib.idle_add(download_blocklist_cb, res)
+
+        def filter_load_cb(caller, res, *args):
+            try:
+                filter = self.user_content_filter_store.load_finish(res)
+                apply_filter(filter)
+            except GLib.Error:
+                print('blocklist store not found, downloading...')
+                Thread(target=download_blocklist, daemon=True).start()
+
+        self.user_content_filter_store.load(
+            'blocklist', None, filter_load_cb, None
+        )
 
     def change_view_mode(self, target):
         if target == 'webview':
