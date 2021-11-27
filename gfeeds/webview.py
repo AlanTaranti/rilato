@@ -99,8 +99,8 @@ class GFeedsWebView(Adw.Bin):
 
         def download_blocklist_cb(blocklist: str):
             self.user_content_filter_store.save(
-               'blocklist', GLib.Bytes.new(blocklist.encode()),
-                None, save_blocklist_cb
+                'blocklist', GLib.Bytes.new(blocklist.encode()), None,
+                save_blocklist_cb
             )
 
         def download_blocklist():
