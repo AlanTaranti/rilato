@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-27 18:26+0100\n"
+"POT-Creation-Date: 2021-11-29 20:24+0100\n"
 "PO-Revision-Date: 2021-11-27 18:30+0100\n"
 "Last-Translator: Gabriele Musco <gabmus@disroot.org>\n"
 "Language-Team: Italian\n"
@@ -62,11 +62,11 @@ msgstr "`{0}` potrebbe non essere un feed RSS o Atom"
 msgid "Feed {0} exists already, skipping"
 msgstr "Il feed {0} esiste già, lo salto"
 
-#: ../gfeeds/headerbar.py:159
+#: ../gfeeds/headerbar.py:156
 msgid "Add new feed"
 msgstr "Aggiungi nuovo feed"
 
-#: ../gfeeds/headerbar.py:188
+#: ../gfeeds/headerbar.py:185
 msgid ""
 "There were problems with some feeds.\n"
 "Do you want to remove them?"
@@ -499,30 +499,26 @@ msgid "Back to articles"
 msgstr "Indietro agli articoli"
 
 #: ../data/ui/headerbar.ui:136
-msgid "Open externally"
-msgstr "Apri esternamente"
-
-#: ../data/ui/headerbar.ui:143
 msgid "Change view mode"
 msgstr "Cambia modalità di visualizzazione"
 
-#: ../data/ui/headerbar.ui:151
+#: ../data/ui/headerbar.ui:144
 msgid "Share"
 msgstr "Condividi"
 
-#: ../data/ui/extra_popover_menu.ui:15
-msgid "View mode"
-msgstr "Modalità di visualizzazione"
+#: ../data/ui/headerbar.ui:151
+msgid "Open externally"
+msgstr "Apri esternamente"
 
-#: ../data/ui/extra_popover_menu.ui:26
+#: ../data/ui/extra_popover_menu.ui:19
 msgid "Web View"
 msgstr "Vista Web"
 
-#: ../data/ui/extra_popover_menu.ui:33
+#: ../data/ui/extra_popover_menu.ui:26
 msgid "Reader Mode"
 msgstr "Modalità lettura"
 
-#: ../data/ui/extra_popover_menu.ui:40
+#: ../data/ui/extra_popover_menu.ui:33
 msgid "RSS Content"
 msgstr "Contenuto RSS"
 
@@ -959,6 +955,9 @@ msgstr "Aggiunta traduzione italiana"
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:322
 msgid "First release"
 msgstr "Prima release"
+
+#~ msgid "View mode"
+#~ msgstr "Modalità di visualizzazione"
 
 #~ msgid "Filler View"
 #~ msgstr "Vista Riempitiva"

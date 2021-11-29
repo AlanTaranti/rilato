@@ -51,7 +51,7 @@ msgstr "Chyby při parsování feedu `{0}`"
 
 #: ../gfeeds/rss_parser.py:210
 #, python-brace-format
-msgid "`{0}` nemusí být RSS nebo Atom feed."
+msgid "`{0}` may not be an RSS or Atom feed"
 msgstr "`{0}` nesmí být RSS nebo Atom feed."
 
 #: ../gfeeds/rss_parser.py:241
