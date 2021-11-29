@@ -141,7 +141,15 @@
       <object class="GtkMenuButton" id="view_mode_menu_btn">
         <property name="sensitive">False</property>
         <property name="tooltip-text" translatable="yes">Change view mode</property>
-        <style><class name="image-button" /></style>
+        <child>
+          <object class="AdwButtonContent" id="view_mode_btn_content">
+            <child>
+              <object class="GtkImage">
+                <property name="icon-name">pan-down-symbolic</property>
+              </object>
+            </child>
+          </object>
+        </child>
       </object>
     </child>
     <child>
@@ -150,19 +158,6 @@
         <property name="receives-default">True</property>
         <property name="tooltip-text" translatable="yes">Share</property>
         <property name="icon-name">emblem-shared-symbolic</property>
-      </object>
-    </child>
-  </object>
-  <object class="GtkBox" id="view_mode_btn_content">
-    <property name="orientation">horizontal</property>
-    <property name="spacing">6</property>
-    <child>
-      <object class="GtkImage" id="view_mode_menu_btn_icon">
-      </object>
-    </child>
-    <child>
-      <object class="GtkImage">
-        <property name="icon-name">pan-down-symbolic</property>
       </object>
     </child>
   </object>

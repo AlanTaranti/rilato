@@ -7,6 +7,13 @@ from gfeeds.scrolled_message_dialog import ScrolledMessageDialog
 from xml.sax.saxutils import escape
 
 
+VIEW_MODE_ICONS = {
+    'webview': 'globe-alt-symbolic',
+    'reader': 'ephy-reader-mode-symbolic',
+    'rsscont': 'application-rss+xml-symbolic'
+}
+
+
 class AddFeedPopover(Gtk.Popover):
     def __init__(self, relative_to, **kwargs):
         super().__init__(**kwargs)
@@ -67,11 +74,8 @@ class GFeedsHeaderbarRight(Gtk.WindowHandle):
         self.view_mode_menu_btn = self.builder.get_object(
             'view_mode_menu_btn'
         )
-        self.view_mode_menu_btn.get_first_child().set_child(
-            self.builder.get_object('view_mode_btn_content')
-        )
-        self.view_mode_menu_btn_icon = self.builder.get_object(
-            'view_mode_menu_btn_icon'
+        self.view_mode_btn_content = self.builder.get_object(
+            'view_mode_btn_content'
         )
         self.set_view_mode_icon(self.confman.conf['default_view'])
         self.view_mode_menu = GFeedsViewModeMenu(self.view_mode_menu_btn)
@@ -98,13 +102,7 @@ class GFeedsHeaderbarRight(Gtk.WindowHandle):
         self.back_button.connect('clicked', lambda *args: self.back_btn_func())
 
     def set_view_mode_icon(self, mode):
-        self.view_mode_menu_btn_icon.set_from_icon_name(
-            {
-                'webview': 'globe-alt-symbolic',
-                'reader': 'ephy-reader-mode-symbolic',
-                'rsscont': 'application-rss+xml-symbolic'
-            }[mode]
-        )
+        self.view_mode_btn_content.set_icon_name(VIEW_MODE_ICONS[mode])
 
     def on_view_mode_change(self, target):
         self.view_mode_menu.popdown()
