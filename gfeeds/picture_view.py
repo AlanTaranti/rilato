@@ -61,26 +61,16 @@ class PictureView(Gtk.Widget):
             width, height
         )
 
-    def get_real_size(self, w, h):
-        meas_w = self.measure(Gtk.Orientation.HORIZONTAL, h)
-        w = min(meas_w[1], max(w, meas_w[0]))
-        h = self.measure(Gtk.Orientation.VERTICAL, w)[0]
-        return w, h
-
     def do_measure(self, orientation, for_size):
-        if self.aspect_ratio is None:
-            return (0, 0, -1, -1)
-        if orientation == Gtk.Orientation.VERTICAL:
-            # max prevents the height to be lower than the minimum
-            # that I defined
-            height = min(
-                for_size / self.aspect_ratio,
-                max(self.confman.conf['max_picture_height'], 100)
-            )
-            return (height, height, -1, -1)
-        else:
-            return (
-                1,
-                1200,
-                -1, -1
-            )
+        # return (10, 1200, -1, -1)
+        if orientation == Gtk.Orientation.VERTICAL:  # get height
+            if for_size == -1:
+                return (10, 1200, -1, -1)
+            aspect = self.aspect_ratio or 1
+            height = max(min(
+                int(for_size / aspect),
+                max(self.confman.conf['max_picture_height'], 10)
+            ), 10)
+            return (height, 1200, -1, -1)
+        else:  # get width
+            return (10, 1200, -1, -1)

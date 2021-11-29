@@ -130,26 +130,11 @@
         <property name="icon-name">go-previous-symbolic</property>
       </object>
     </child>
-    <child type="end">
-      <object class="GtkButton" id="open_externally_btn">
-        <property name="sensitive">False</property>
-        <property name="tooltip-text" translatable="yes">Open externally</property>
-        <property name="icon-name">gfeeds-open-externally-symbolic</property>
-      </object>
-    </child>
     <child>
       <object class="GtkMenuButton" id="view_mode_menu_btn">
         <property name="sensitive">False</property>
         <property name="tooltip-text" translatable="yes">Change view mode</property>
-        <child>
-          <object class="AdwButtonContent" id="view_mode_btn_content">
-            <child>
-              <object class="GtkImage">
-                <property name="icon-name">pan-down-symbolic</property>
-              </object>
-            </child>
-          </object>
-        </child>
+        <property name="always-show-arrow">1</property>
       </object>
     </child>
     <child>
@@ -158,6 +143,13 @@
         <property name="receives-default">True</property>
         <property name="tooltip-text" translatable="yes">Share</property>
         <property name="icon-name">emblem-shared-symbolic</property>
+      </object>
+    </child>
+    <child type="end">
+      <object class="GtkButton" id="open_externally_btn">
+        <property name="sensitive">False</property>
+        <property name="tooltip-text" translatable="yes">Open externally</property>
+        <property name="icon-name">gfeeds-open-externally-symbolic</property>
       </object>
     </child>
   </object>

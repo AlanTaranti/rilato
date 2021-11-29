@@ -28,7 +28,7 @@
         <property name="hexpand">True</property>
         <child>
           <object class="GtkLabel" id="title_label">
-            <property name="halign">start</property>
+            <property name="halign">fill</property>
             <property name="label">_feed_title</property>
             <property name="wrap">True</property>
             <property name="xalign">0</property>

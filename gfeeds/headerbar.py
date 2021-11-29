@@ -74,11 +74,8 @@ class GFeedsHeaderbarRight(Gtk.WindowHandle):
         self.view_mode_menu_btn = self.builder.get_object(
             'view_mode_menu_btn'
         )
-        self.view_mode_btn_content = self.builder.get_object(
-            'view_mode_btn_content'
-        )
-        self.set_view_mode_icon(self.confman.conf['default_view'])
         self.view_mode_menu = GFeedsViewModeMenu(self.view_mode_menu_btn)
+        self.set_view_mode_icon(self.confman.conf['default_view'])
         self.open_externally_btn = self.builder.get_object(
             'open_externally_btn'
         )
@@ -102,7 +99,9 @@ class GFeedsHeaderbarRight(Gtk.WindowHandle):
         self.back_button.connect('clicked', lambda *args: self.back_btn_func())
 
     def set_view_mode_icon(self, mode):
-        self.view_mode_btn_content.set_icon_name(VIEW_MODE_ICONS[mode])
+        self.view_mode_menu_btn.set_icon_name(
+            VIEW_MODE_ICONS[mode]
+        )
 
     def on_view_mode_change(self, target):
         self.view_mode_menu.popdown()

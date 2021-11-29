@@ -15,20 +15,20 @@
         "--talk-name=org.freedesktop.Flatpak"
     ],
     "modules": [
-        {
+                {
             "name": "gtk",
             "buildsystem": "meson",
             "config-opts": [
                 "-Dtests=false",
-                "-Ddebug=true"
+                "-Ddebug=false"
             ],
             "sources": [
                 {
                     "type": "git",
                     "url": "https://gitlab.gnome.org/GNOME/gtk",
                     "//branch": "master",
-                    "commit": "e0c97e6fccc1f66dabddc21a6e8821347429e157",
-                    "//tag": "4.5.0"
+                    "//commit": "e0c97e6fccc1f66dabddc21a6e8821347429e157",
+                    "tag": "4.5.0"
                 }
             ],
             "modules": [
@@ -46,85 +46,6 @@
                         }
                     ]
                 },
-                {
-                    "name": "sassc",
-                    "cleanup": [ "*" ],
-                    "sources": [
-                        {
-                            "type": "git",
-                            "url": "https://github.com/sass/sassc.git",
-                            "tag": "3.6.1"
-                        },
-                        {
-                            "type": "script",
-                            "dest-filename": "autogen.sh",
-                            "commands": [ "autoreconf -si" ]
-                        }
-                    ],
-                    "modules": [
-                        {
-                            "name": "libsass",
-                            "cleanup": [ "*" ],
-                            "sources": [
-                                {
-                                    "type": "git",
-                                    "url": "https://github.com/sass/libsass.git",
-                                    "tag": "3.6.5"
-                                },
-                                {
-                                    "type": "script",
-                                    "dest-filename": "autogen.sh",
-                                    "commands": [ "autoreconf -si" ]
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "name": "pango",
-                    "buildsystem": "meson",
-                    "config-opts": [
-                        "-Dtests=false"
-                    ],
-                    "sources": [
-                        {
-                            "type": "git",
-                            "url": "https://gitlab.gnome.org/GNOME/pango.git",
-                            "//branch": "main",
-                            "commit": "0c80c6d0b80cce4443e9a18fad2b4bccabaf4325"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "name": "xdg-dbus-proxy",
-            "buildsystem": "autotools",
-            "config-opts": [],
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://github.com/flatpak/xdg-dbus-proxy",
-                    "tag": "0.1.2"
-                }
-            ]
-        },
-        {
-            "name": "libadwaita",
-            "buildsystem": "meson",
-            "config-opts": [
-                "-Dexamples=false",
-                "-Dtests=false",
-                "-Dgtk_doc=false"
-            ],
-            "sources" : [
-                {
-                    "type": "git",
-                    "url": "https://gitlab.gnome.org/GNOME/libadwaita.git",
-                    "branch": "main"
-                }
-            ],
-            "//modules": [
                 {
                     "name": "sassc",
                     "cleanup": [ "*" ],
@@ -186,20 +107,6 @@
                     "type": "git",
                     "url": "https://github.com/eliben/pycparser",
                     "tag": "release_v2.20"
-                }
-            ]
-        },
-        {
-            "name": "python-brotlipy",
-            "buildsystem": "simple",
-            "build-commands": [
-                "python3 setup.py install --prefix=/app --root=/"
-            ],
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://github.com/python-hyper/brotlipy",
-                    "tag": "v1.0.9.2"
                 }
             ]
         },
