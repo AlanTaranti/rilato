@@ -4,15 +4,15 @@
   <menu id="generalMenu">
     <section>
       <item>
-        <attribute name="label" translatable="yes">Show read articles</attribute>
+        <attribute name="label" translatable="yes">Show Read Articles</attribute>
         <attribute name="action">app.show_read_items</attribute>
       </item>
       <item>
-        <attribute name="label" translatable="yes">Mark all as read</attribute>
+        <attribute name="label" translatable="yes">Mark All as Read</attribute>
         <attribute name="action">app.set_all_read</attribute>
       </item>
       <item>
-        <attribute name="label" translatable="yes">Mark all as unread</attribute>
+        <attribute name="label" translatable="yes">Mark All as Unread</attribute>
         <attribute name="action">app.set_all_unread</attribute>
       </item>
     </section>
@@ -53,11 +53,11 @@
     </section>
     <section>
       <item>
-        <attribute name="label" translatable="yes">Open externally</attribute>
+        <attribute name="label" translatable="yes">Open Externally</attribute>
         <attribute name="action">app.open_externally</attribute>
       </item>
       <item>
-        <attribute name="label" translatable="yes">Copy article link</attribute>
+        <attribute name="label" translatable="yes">Copy Article Link</attribute>
         <attribute name="action">app.copy_link</attribute>
       </item>
     </section>
