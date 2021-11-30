@@ -2,7 +2,7 @@ import sys
 import argparse
 from gettext import gettext as _
 from os.path import isfile
-from gi.repository import Gtk, Gio, GLib
+from gi.repository import Gtk, Gdk, Gio, GLib
 from gfeeds.confManager import ConfManager
 from gfeeds.feeds_manager import FeedsManager
 from gfeeds.app_window import GFeedsAppWindow
@@ -82,6 +82,14 @@ class GFeedsApplication(BaseApp):
                     name='quit',
                     func=self.on_destroy_window,
                     accel='<Primary>q'
+                ),
+                AppAction(
+                    name='open_externally',
+                    func=self.open_externally
+                ),
+                AppAction(
+                    name='copy_link',
+                    func=self.copy_link
                 )
             ],
             flags=Gio.ApplicationFlags.HANDLES_COMMAND_LINE,
@@ -98,6 +106,13 @@ class GFeedsApplication(BaseApp):
             get_cached=not self.confman.conf['refresh_on_startup'],
             is_startup=True
         )
+
+    def open_externally(self, *args):
+        self.window.webview.open_externally()
+
+    def copy_link(self, *args):
+        Gdk.Display.get_default().get_clipboard().set(self.window.webview.uri)
+        self.window.webview.show_notif()
 
     def view_mode_change(
             self, action: Gio.SimpleAction, target: GLib.Variant, *args

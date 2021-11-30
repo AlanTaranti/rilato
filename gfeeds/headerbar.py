@@ -1,5 +1,5 @@
 from gettext import gettext as _
-from gi.repository import Gtk, Gdk
+from gi.repository import Gtk
 from gfeeds.confManager import ConfManager
 from gfeeds.feeds_manager import FeedsManager
 from gfeeds.view_mode_menu import GFeedsViewModeMenu
@@ -76,14 +76,17 @@ class GFeedsHeaderbarRight(Gtk.WindowHandle):
         )
         self.view_mode_menu = GFeedsViewModeMenu(self.view_mode_menu_btn)
         self.set_view_mode_icon(self.confman.conf['default_view'])
-        self.open_externally_btn = self.builder.get_object(
-            'open_externally_btn'
-        )
-        self.open_externally_btn.connect(
-            'clicked', self.webview.open_externally
-        )
-        self.share_btn = self.builder.get_object('share_btn')
-        self.share_btn.connect('clicked', self.copy_article_uri)
+
+        self.extra_menu_btn = self.builder.get_object('webview_extra_menu_btn')
+        self.zoom_in_btn = self.builder.get_object('zoom_in_btn')
+        self.zoom_out_btn = self.builder.get_object('zoom_out_btn')
+        self.zoom_reset_btn = self.builder.get_object('zoom_reset_btn')
+        self.zoom_in_btn.connect('clicked', self.webview.key_zoom_in)
+        self.zoom_out_btn.connect('clicked', self.webview.key_zoom_out)
+        self.zoom_reset_btn.connect('clicked', self.webview.key_zoom_reset)
+
+        self.on_zoom_changed(None, self.confman.conf['webview_zoom'])
+        self.webview.connect('zoom_changed', self.on_zoom_changed)
 
         self.title_squeezer = self.builder.get_object(
             'right_headerbar_squeezer'
@@ -97,6 +100,9 @@ class GFeedsHeaderbarRight(Gtk.WindowHandle):
 
         self.back_button = self.builder.get_object('back_btn')
         self.back_button.connect('clicked', lambda *args: self.back_btn_func())
+
+    def on_zoom_changed(self, caller, n_zoom: float):
+        self.zoom_reset_btn.set_label(f'{round(n_zoom*100)}%')
 
     def set_view_mode_icon(self, mode):
         self.view_mode_menu_btn.set_icon_name(
@@ -120,10 +126,6 @@ class GFeedsHeaderbarRight(Gtk.WindowHandle):
             self.right_headerbar.set_show_title_buttons(
                 not self.confman.wm_decoration_on_left
             )
-
-    def copy_article_uri(self, *args):
-        Gdk.Display.get_default().get_clipboard().set(self.webview.uri)
-        self.webview.show_notif()
 
 
 class GFeedsHeaderbarLeft(Gtk.WindowHandle):

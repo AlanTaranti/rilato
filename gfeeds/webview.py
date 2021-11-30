@@ -16,6 +16,11 @@ class GFeedsWebView(Adw.Bin):
             GObject.SignalFlags.RUN_FIRST,
             None,
             (str,)
+        ),
+        'zoom_changed': (
+            GObject.SignalFlags.RUN_FIRST,
+            None,
+            (float,)
         )
     }
 
@@ -64,6 +69,8 @@ class GFeedsWebView(Adw.Bin):
         )
         if self.confman.conf['enable_adblock']:
             self.apply_adblock()
+
+        self.webkitview.set_zoom_level(self.confman.conf['webview_zoom'])
 
         self.new_page_loaded = False
         self.uri = ''
@@ -152,16 +159,24 @@ class GFeedsWebView(Adw.Bin):
 
     def key_zoom_in(self, *args):
         self.webkitview.set_zoom_level(
-            self.webkitview.get_zoom_level()+0.15
+            self.webkitview.get_zoom_level()+0.10
         )
+        self.on_zoom_changed()
 
     def key_zoom_out(self, *args):
         self.webkitview.set_zoom_level(
-            self.webkitview.get_zoom_level()-0.15
+            self.webkitview.get_zoom_level()-0.10
         )
+        self.on_zoom_changed()
 
     def key_zoom_reset(self, *args):
         self.webkitview.set_zoom_level(1.0)
+        self.on_zoom_changed()
+
+    def on_zoom_changed(self):
+        zoom = self.webkitview.get_zoom_level()
+        self.emit('zoom_changed', zoom)
+        self.confman.conf['webview_zoom'] = zoom
 
     def show_notif(self, *args):
         toast = Adw.Toast(title=_('Link copied to clipboard!'))

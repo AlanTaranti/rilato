@@ -248,8 +248,7 @@ class GFeedsAppWindow(BaseWindow):
         self.right_headerbar.set_article_title(
             feed_item.title
         )
-        self.right_headerbar.share_btn.set_sensitive(True)
-        self.right_headerbar.open_externally_btn.set_sensitive(True)
+        self.right_headerbar.extra_menu_btn.set_sensitive(True)
         self.leaflet.set_visible_child(self.webview_box)
         self.on_main_leaflet_folded()
         self.sidebar.listview_sw.invalidate_filter()

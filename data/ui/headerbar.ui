@@ -45,6 +45,50 @@
       </item>
     </section>
   </menu>
+  <menu id="webviewMenu">
+    <section>
+      <item>
+        <attribute name="custom">zoom</attribute>
+      </item>
+    </section>
+    <section>
+      <item>
+        <attribute name="label" translatable="yes">Open externally</attribute>
+        <attribute name="action">app.open_externally</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">Copy article link</attribute>
+        <attribute name="action">app.copy_link</attribute>
+      </item>
+    </section>
+  </menu>
+  <object class="GtkPopoverMenu" id="webview_extra_popover">
+    <property name="menu-model">webviewMenu</property>
+    <child type="zoom">
+      <object class="GtkBox">
+        <property name="homogeneous">0</property>
+        <style><class name="linked" /></style>
+        <child>
+          <object class="GtkButton" id="zoom_out_btn">
+            <property name="icon-name">list-remove-symbolic</property>
+            <property name="tooltip-text" translatable="yes">Zoom out</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkButton" id="zoom_reset_btn">
+            <property name="label">100%</property>
+            <property name="tooltip-text" translatable="yes">Reset zoom</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkButton" id="zoom_in_btn">
+            <property name="icon-name">list-add-symbolic</property>
+            <property name="tooltip-text" translatable="yes">Zoom in</property>
+          </object>
+        </child>
+      </object>
+    </child>
+  </object>
   <object class="GtkHeaderBar" id="left_headerbar">
     <child type="title">
       <object class="AdwBin"></object>
@@ -137,19 +181,11 @@
         <property name="always-show-arrow">1</property>
       </object>
     </child>
-    <child>
-      <object class="GtkButton" id="share_btn">
-        <property name="sensitive">False</property>
-        <property name="receives-default">True</property>
-        <property name="tooltip-text" translatable="yes">Share</property>
-        <property name="icon-name">emblem-shared-symbolic</property>
-      </object>
-    </child>
     <child type="end">
-      <object class="GtkButton" id="open_externally_btn">
-        <property name="sensitive">False</property>
-        <property name="tooltip-text" translatable="yes">Open externally</property>
-        <property name="icon-name">gfeeds-open-externally-symbolic</property>
+      <object class="GtkMenuButton" id="webview_extra_menu_btn">
+        <property name="sensitive">0</property>
+        <property name="icon-name">view-more-symbolic</property>
+        <property name="popover">webview_extra_popover</property>
       </object>
     </child>
   </object>

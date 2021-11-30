@@ -119,7 +119,8 @@ class ConfManager(metaclass=Singleton):
         'notify_new_articles': True,
         'auto_refresh_time_seconds': 300,
         'enable_adblock': True,
-        'blocklist_last_update': 0.0
+        'blocklist_last_update': 0.0,
+        'webview_zoom': 1.0
     }
 
     def __init__(self):
