@@ -2,7 +2,6 @@ from gi.repository import Gtk, Gdk, Gio, GLib
 from gfeeds.confManager import ConfManager
 from threading import Thread
 
-
 class PictureView(Gtk.Widget):
     def __init__(self, path):
         super().__init__(
@@ -62,15 +61,14 @@ class PictureView(Gtk.Widget):
         )
 
     def do_measure(self, orientation, for_size):
-        # return (10, 1200, -1, -1)
         if orientation == Gtk.Orientation.VERTICAL:  # get height
             if for_size == -1:
-                return (10, 1200, -1, -1)
+                return (1200, 1200, -1, -1)
             aspect = self.aspect_ratio or 1
-            height = max(min(
+            height = min(max(min(
                 int(for_size / aspect),
-                max(self.confman.conf['max_picture_height'], 10)
-            ), 10)
+                self.confman.conf['max_picture_height']
+            ), 10), 1200)
             return (height, 1200, -1, -1)
         else:  # get width
-            return (10, 1200, -1, -1)
+            return (10, 10, -1, -1)
