@@ -3,6 +3,7 @@ from gfeeds.confManager import ConfManager
 from threading import Thread
 from math import ceil
 
+
 class PictureView(Gtk.Widget):
     def __init__(self, path):
         super().__init__(
@@ -68,7 +69,7 @@ class PictureView(Gtk.Widget):
                 for_size, 0, 1200, 1200
             )
             # nat = max(self.confman.conf['max_picture_height'], 100)
-            ch = min(ch, 1200)
+            ch = min(ceil(ch), 1200)
             return (ch, 1200, -1, -1)
         else:  # get width
             return (0, 1200, -1, -1)

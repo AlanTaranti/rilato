@@ -2,7 +2,7 @@ from gfeeds.picture_view import PictureView
 from os.path import isfile
 from gfeeds.sha import shasum
 from gfeeds.download_manager import download_raw
-from gi.repository import Gtk, GLib, Pango, Adw
+from gi.repository import Gtk, GLib, Pango
 from gfeeds.confManager import ConfManager
 from gfeeds.simple_avatar import SimpleAvatar
 from gfeeds.relative_day_formatter import humanize_datetime
@@ -11,56 +11,48 @@ from gfeeds.accel_manager import add_mouse_button_accel, add_longpress_accel
 from bs4 import BeautifulSoup
 
 
-class SidebarRow(Adw.Bin):
+@Gtk.Template(resource_path='/org/gabmus/gfeeds/ui/sidebar_listbox_row.ui')
+class SidebarRow(Gtk.Box):
+    __gtype_name__ = 'SidebarRow'
+    title_label = Gtk.Template.Child()
+    origin_label = Gtk.Template.Child()
+    icon_container = Gtk.Template.Child()
+    date_label = Gtk.Template.Child()
+    picture_view_container = Gtk.Template.Child()
+
     def __init__(self, fetch_image_thread_pool):
         super().__init__()
-        # self.get_style_context().add_class('activatable')
         self.fetch_image_thread_pool = fetch_image_thread_pool
         self.feed_item_wrapper = None
         self.feed_item_changed_signal_id = None
         self.feed_item = None
         self.confman = ConfManager()
 
-        self.builder = Gtk.Builder.new_from_resource(
-            '/org/gabmus/gfeeds/ui/sidebar_listbox_row.ui'
-        )
-        self.container_box = self.builder.get_object('container_box')
-        self.title_label = self.builder.get_object('title_label')
         self.confman.connect(
             'gfeeds_full_article_title_changed',
             self.on_full_article_title_changed
         )
         self.on_full_article_title_changed()
-        self.origin_label = self.builder.get_object('origin_label')
         self.confman.connect(
             'gfeeds_full_feed_name_changed',
             self.on_full_feed_name_changed
         )
         self.on_full_feed_name_changed()
 
-        self.icon_container = self.builder.get_object('icon_container')
         self.icon = SimpleAvatar()
         self.icon_container.append(self.icon)
 
-        # Date & time stuff is long
-        self.date_label = self.builder.get_object('date_label')
         self.datestr = ''
-
-        self.picture_view_container = self.builder.get_object(
-            'picture_view_container'
-        )
         # self.picture_view = Gtk.Picture(
         #     width_request=200, height_request=200, can_shrink=True
         # )
         self.picture_view = PictureView(None)
         self.picture_view_container.append(self.picture_view)
-        self.picture_view_container.set_visible(False)
+        # picture_view_container is visible=False on init
 
         self.confman.connect('show_thumbnails_changed', self.set_article_image)
 
         self.popover = RowPopover(self)
-
-        self.set_child(self.container_box)
 
         # longpress & right click
         self.longpress = add_longpress_accel(

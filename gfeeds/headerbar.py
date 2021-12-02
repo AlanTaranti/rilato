@@ -121,6 +121,7 @@ class GFeedsHeaderbarRight(Gtk.WindowHandle):
                 not self.confman.wm_decoration_on_left
             )
 
+
 @Gtk.Template(resource_path='/org/gabmus/gfeeds/ui/left_headerbar.ui')
 class GFeedsHeaderbarLeft(Gtk.WindowHandle):
     __gtype_name__ = 'LeftHeaderbar'
