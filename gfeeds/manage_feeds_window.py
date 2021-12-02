@@ -14,7 +14,13 @@ from functools import reduce
 from operator import or_
 
 
+@Gtk.Template(resource_path='/org/gabmus/gfeeds/ui/manage_tags_listbox_row.ui')
 class ManageTagsListboxRow(Gtk.ListBoxRow):
+    __gtype_name__ = 'ManageTagsListboxRow'
+    label = Gtk.Template.Child()
+    checkbox = Gtk.Template.Child()
+    delete_btn = Gtk.Template.Child()
+
     __gsignals__ = {
         'tag_deleted': (
             GObject.SignalFlags.RUN_FIRST,
@@ -23,16 +29,9 @@ class ManageTagsListboxRow(Gtk.ListBoxRow):
         ),
     }
 
-    def __init__(self, tag, active=True, **kwargs):
-        super().__init__(**kwargs)
-        self.builder = Gtk.Builder.new_from_resource(
-            '/org/gabmus/gfeeds/ui/manage_tags_listbox_row_content.ui'
-        )
+    def __init__(self, tag, active=True):
+        super().__init__()
         self.tag = tag
-        self.main_box = self.builder.get_object('main_box')
-        self.label = self.builder.get_object('label')
-        self.checkbox = self.builder.get_object('checkbox')
-        self.delete_btn = self.builder.get_object('delete_btn')
         self.checkbox.set_active(active)
         self.label.set_text(self.tag)
 
@@ -41,12 +40,9 @@ class ManageTagsListboxRow(Gtk.ListBoxRow):
             self.on_checkbox_toggled
         )
 
-        self.delete_btn.connect(
-            'clicked',
-            lambda *args: self.emit('tag_deleted', self.tag)
-        )
-
-        self.set_child(self.main_box)
+    @Gtk.Template.Callback()
+    def on_delete_btn_clicked(self, *args):
+        self.emit('tag_deleted', self.tag)
 
     def on_checkbox_toggled(self, checkbox):
         with checkbox.handler_block(self.checkbox_handler_id):
