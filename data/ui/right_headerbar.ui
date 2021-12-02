@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <template class="RightHeaderbar" parent="GtkWindowHandle">
+    <property name="vexpand">0</property>
+    <property name="hexpand">1</property>
+    <menu id="webviewMenu">
+      <section>
+        <item>
+          <attribute name="custom">zoom</attribute>
+        </item>
+      </section>
+      <section>
+        <item>
+          <attribute name="label" translatable="yes">Open Externally</attribute>
+          <attribute name="action">app.open_externally</attribute>
+        </item>
+        <item>
+          <attribute name="label" translatable="yes">Copy Article Link</attribute>
+          <attribute name="action">app.copy_link</attribute>
+        </item>
+      </section>
+    </menu>
+    <object class="GtkPopoverMenu" id="extra_popover">
+      <property name="menu-model">webviewMenu</property>
+      <child type="zoom">
+        <object class="GtkBox">
+          <property name="homogeneous">0</property>
+          <style><class name="linked" /></style>
+          <child>
+            <object class="GtkButton" id="zoom_out_btn">
+              <property name="icon-name">list-remove-symbolic</property>
+              <property name="tooltip-text" translatable="yes">Zoom out</property>
+              <signal name="clicked" handler="on_zoom_out_btn_clicked" />
+            </object>
+          </child>
+          <child>
+            <object class="GtkButton" id="zoom_reset_btn">
+              <property name="label">100%</property>
+              <property name="tooltip-text" translatable="yes">Reset zoom</property>
+              <signal name="clicked" handler="on_zoom_reset_btn_clicked" />
+            </object>
+          </child>
+          <child>
+            <object class="GtkButton" id="zoom_in_btn">
+              <property name="icon-name">list-add-symbolic</property>
+              <property name="tooltip-text" translatable="yes">Zoom in</property>
+              <signal name="clicked" handler="on_zoom_in_btn_clicked" />
+            </object>
+          </child>
+        </object>
+      </child>
+    </object>
+    <child>
+      <object class="GtkHeaderBar" id="right_headerbar">
+        <property name="hexpand">1</property>
+        <child type="title">
+          <object class="AdwSqueezer" id="title_squeezer">
+            <property name="hexpand">1</property>
+            <child>
+              <object class="GtkScrolledWindow" id="right_title_container">
+                <property name="vscrollbar-policy">never</property>
+                <property name="hscrollbar-policy">never</property>
+                <property name="width-request">100</property>
+                <property name="hexpand">1</property>
+                <child>
+                  <object class="GtkViewport">
+                    <property name="hexpand">1</property>
+                    <child>
+                      <object class="GtkLabel" id="title_label">
+                        <property name="halign">center</property>
+                        <property name="hexpand">1</property>
+                        <property name="justify">center</property>
+                        <property name="ellipsize">end</property>
+                        <property name="single-line-mode">True</property>
+                        <style><class name="title"/></style>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child>
+              <object class="GtkLabel">
+                <property name="label"></property>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkButton" id="back_btn">
+            <property name="visible">0</property>
+            <property name="tooltip-text" translatable="yes">Back to articles</property>
+            <property name="icon-name">go-previous-symbolic</property>
+            <signal name="clicked" handler="on_back_btn_clicked" />
+          </object>
+        </child>
+        <child>
+          <object class="GtkMenuButton" id="view_mode_menu_btn">
+            <property name="sensitive">False</property>
+            <property name="tooltip-text" translatable="yes">Change view mode</property>
+            <property name="always-show-arrow">1</property>
+          </object>
+        </child>
+        <child type="end">
+          <object class="GtkMenuButton" id="extra_menu_btn">
+            <property name="sensitive">0</property>
+            <property name="icon-name">view-more-symbolic</property>
+            <property name="popover">extra_popover</property>
+          </object>
+        </child>
+      </object>
+    </child>
+  </template>
+</interface>

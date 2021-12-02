@@ -87,7 +87,7 @@ class GFeedsAppWindow(BaseWindow):
             self.searchbar, self.leaflet
         )
         self.right_headerbar = GFeedsHeaderbarRight(
-            self.webview, self.leaflet, self.on_back_button_clicked
+            self.webview, self.leaflet, self.on_back_btn_clicked
         )
         self.sidebar_box = Gtk.Box(
             orientation=Gtk.Orientation.VERTICAL, hexpand=False
@@ -254,7 +254,7 @@ class GFeedsAppWindow(BaseWindow):
         self.sidebar.listview_sw.invalidate_filter()
         feed_item_wrapper.emit_changed()
 
-    def on_back_button_clicked(self, *args):
+    def on_back_btn_clicked(self, *args):
         self.leaflet.set_visible_child(self.sidebar_box)
         self.on_main_leaflet_folded()
         # TODO maybe remove? vvv
@@ -262,6 +262,6 @@ class GFeedsAppWindow(BaseWindow):
 
     def on_main_leaflet_folded(self, *args):
         if self.leaflet.get_folded():
-            self.right_headerbar.back_button.set_visible(True)
+            self.right_headerbar.back_btn.set_visible(True)
         else:
-            self.right_headerbar.back_button.set_visible(False)
+            self.right_headerbar.back_btn.set_visible(False)

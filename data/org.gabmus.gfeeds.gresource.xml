@@ -7,12 +7,13 @@
     <file compressed="true">ui/reader_mode_dark_style.css</file>
 
     <file preprocess="xml-stripblanks">aboutdialog.ui</file>
-    <file preprocess="xml-stripblanks">ui/add_feed_box.ui</file>
+    <file preprocess="xml-stripblanks">ui/add_feed_popover.ui</file>
     <file preprocess="xml-stripblanks">ui/article_right_click_popover_content.ui</file>
     <file preprocess="xml-stripblanks">ui/empty_state.ui</file>
     <file preprocess="xml-stripblanks">ui/extra_popover_menu.ui</file>
     <file preprocess="xml-stripblanks">ui/gfeeds_leaflet.ui</file>
-    <file preprocess="xml-stripblanks">ui/headerbar.ui</file>
+    <file preprocess="xml-stripblanks">ui/left_headerbar.ui</file>
+    <file preprocess="xml-stripblanks">ui/right_headerbar.ui</file>
     <file preprocess="xml-stripblanks">ui/manage_feeds_listbox_row.ui</file>
     <file preprocess="xml-stripblanks">ui/shortcutsWindow.ui</file>
     <file preprocess="xml-stripblanks">ui/sidebar_listbox_row.ui</file>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0" />
+  <template class="LeftHeaderbar" parent="GtkWindowHandle">
+    <property name="vexpand">0</property>
+    <property name="hexpand">1</property>
+    <menu id="generalMenu">
+      <section>
+        <item>
+          <attribute name="label" translatable="yes">Show Read Articles</attribute>
+          <attribute name="action">app.show_read_items</attribute>
+        </item>
+        <item>
+          <attribute name="label" translatable="yes">Mark All as Read</attribute>
+          <attribute name="action">app.set_all_read</attribute>
+        </item>
+        <item>
+          <attribute name="label" translatable="yes">Mark All as Unread</attribute>
+          <attribute name="action">app.set_all_unread</attribute>
+        </item>
+      </section>
+      <section>
+        <item>
+          <attribute name="label" translatable="yes">Manage Feeds</attribute>
+          <attribute name="action">app.manage_feeds</attribute>
+        </item>
+        <item>
+          <attribute name="label" translatable="yes">Import OPML</attribute>
+          <attribute name="action">app.import_opml</attribute>
+        </item>
+        <item>
+          <attribute name="label" translatable="yes">Export OPML</attribute>
+          <attribute name="action">app.export_opml</attribute>
+        </item>
+      </section>
+      <section>
+        <item>
+          <attribute name="label" translatable="yes">Preferences</attribute>
+          <attribute name="action">app.settings</attribute>
+        </item>
+        <item>
+          <attribute name="label" translatable="yes">Keyboard Shortcuts</attribute>
+          <attribute name="action">app.shortcuts</attribute>
+        </item>
+        <item>
+          <attribute name="label" translatable="yes">About Feeds</attribute>
+          <attribute name="action">app.about</attribute>
+        </item>
+      </section>
+    </menu>
+    <child>
+      <object class="GtkHeaderBar" id="left_headerbar">
+        <child type="title"><object class="AdwBin"></object></child>
+        <child>
+          <object class="GtkToggleButton" id="filter_btn">
+            <property name="tooltip-text" translatable="yes">Filter by feed</property>
+            <property name="icon-name">funnel-symbolic</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkMenuButton" id="add_btn">
+            <property name="tooltip-text" translatable="yes">Add new feed</property>
+            <property name="icon-name">list-add-symbolic</property>
+          </object>
+        </child>
+        <child type="end">
+          <object class="GtkMenuButton" id="menu_btn">
+            <property name="tooltip-text" translatable="yes">Menu</property>
+            <property name="icon-name">open-menu-symbolic</property>
+            <property name="menu-model">generalMenu</property>
+          </object>
+        </child>
+        <child type="end">
+          <object class="GtkToggleButton" id="search_btn">
+            <property name="tooltip-text" translatable="yes">Search</property>
+            <property name="icon-name">system-search-symbolic</property>
+            <signal name="toggled" handler="on_search_btn_toggled" />
+          </object>
+        </child>
+        <child type="end">
+          <object class="GtkButton" id="refresh_btn">
+            <property name="tooltip-text" translatable="yes">Refresh</property>
+            <property name="icon-name">view-refresh-symbolic</property>
+            <signal name="clicked" handler="on_refresh_btn_clicked" />
+          </object>
+        </child>
+        <child type="end">
+          <object class="GtkButton" id="errors_btn">
+            <property name="tooltip-text" translatable="yes">There are errors</property>
+            <property name="icon-name">dialog-warning-symbolic</property>
+            <property name="visible">0</property>
+            <signal name="clicked" handler="show_errors_dialog" />
+          </object>
+        </child>
+      </object>
+    </child>
+  </template>
+</interface>
