@@ -4,7 +4,7 @@ from gi.repository import Gtk, Adw, Gio
 from gfeeds.confManager import ConfManager
 from gfeeds.feeds_manager import FeedsManager
 from gfeeds.sidebar import GFeedsSidebar
-from gfeeds.headerbar import GFeedsHeaderbarLeft, GFeedsHeaderbarRight
+from gfeeds.headerbar import LeftHeaderbar, RightHeaderbar
 from gfeeds.searchbar import GFeedsSearchbar
 from gfeeds.suggestion_bar import (
     GFeedsConnectionBar
@@ -63,12 +63,12 @@ class GFeedsAppWindow(BaseWindow):
             ]
         )
 
-        leaflet_builder = Gtk.Builder.new_from_resource(
-            '/org/gabmus/gfeeds/ui/gfeeds_leaflet.ui'
+        self.leaflet = Adw.Leaflet(
+            homogeneous=False, vexpand=True, width_request=350,
+            can_navigate_back=True,
+            transition_type=Adw.LeafletTransitionType.OVER,
         )
-        self.leaflet = leaflet_builder.get_object('leaflet')
         self.connection_bar = GFeedsConnectionBar()
-        # self.errors_bar = GFeedsErrorsBar(self)
         self.feedman.connect(
             'feedmanager_refresh_end', self.on_refresh_end
         )
@@ -83,20 +83,19 @@ class GFeedsAppWindow(BaseWindow):
                 caller.get_search_mode()
             )
         )
-        self.left_headerbar = GFeedsHeaderbarLeft(
+        self.left_headerbar = LeftHeaderbar(
             self.searchbar, self.leaflet
         )
-        self.right_headerbar = GFeedsHeaderbarRight(
+        self.right_headerbar = RightHeaderbar(
             self.webview, self.leaflet, self.on_back_btn_clicked
         )
         self.sidebar_box = Gtk.Box(
-            orientation=Gtk.Orientation.VERTICAL, hexpand=False
+            orientation=Gtk.Orientation.VERTICAL, hexpand=False,
+            width_request=360, height_request=100
         )
-        self.sidebar_box.set_size_request(360, 100)
         self.sidebar_box.append(self.left_headerbar)
         self.sidebar_box.append(self.searchbar)
         self.sidebar_box.append(self.connection_bar)
-        # self.sidebar_box.append(self.errors_bar)
         self.webview_box = Gtk.Box(
             orientation=Gtk.Orientation.VERTICAL, hexpand=True
         )
@@ -118,16 +117,6 @@ class GFeedsAppWindow(BaseWindow):
         self.filter_sw_bin.set_child(self.filter_sw)
         self.filter_sw_bin.get_style_context().add_class('background')
         self.filter_flap.set_flap(self.filter_sw_bin)
-        # this activates the "All" feed filter. while this works it's kinda
-        # hacky and needs a proper function
-        # NOTE: unneeded because refresh doesn't remove old items now
-        # self.feedman.connect(
-        #     'feedmanager_refresh_start',
-        #     lambda caller, msg:
-        #     self.filter_sw.listbox.row_all_activate(
-        #         skip=(msg == 'startup')
-        #     )
-        # )
         self.left_headerbar.filter_btn.connect(
             'toggled', lambda btn:
                 self.filter_flap.set_reveal_flap(btn.get_active())

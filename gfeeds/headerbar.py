@@ -51,7 +51,7 @@ class AddFeedPopover(Gtk.Popover):
 
 
 @Gtk.Template(resource_path='/org/gabmus/gfeeds/ui/right_headerbar.ui')
-class GFeedsHeaderbarRight(Gtk.WindowHandle):
+class RightHeaderbar(Gtk.WindowHandle):
     __gtype_name__ = 'RightHeaderbar'
     right_headerbar = Gtk.Template.Child()
     view_mode_menu_btn = Gtk.Template.Child()
@@ -123,7 +123,7 @@ class GFeedsHeaderbarRight(Gtk.WindowHandle):
 
 
 @Gtk.Template(resource_path='/org/gabmus/gfeeds/ui/left_headerbar.ui')
-class GFeedsHeaderbarLeft(Gtk.WindowHandle):
+class LeftHeaderbar(Gtk.WindowHandle):
     __gtype_name__ = 'LeftHeaderbar'
     left_headerbar = Gtk.Template.Child()
     menu_btn = Gtk.Template.Child()
