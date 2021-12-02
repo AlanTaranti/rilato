@@ -51,7 +51,13 @@ class ManageTagsListboxRow(Gtk.ListBoxRow):
         self.emit('activate')
 
 
+@Gtk.Template(resource_path='/org/gabmus/gfeeds/ui/manage_tags_content.ui')
 class ManageTagsContent(Adw.Bin):
+    __gtype_name__ = 'ManageTagsContent'
+    add_tag_btn = Gtk.Template.Child()
+    tags_entry = Gtk.Template.Child()
+    tags_listbox = Gtk.Template.Child()
+
     __gsignals__ = {
         'new_tag_added': (
             GObject.SignalFlags.RUN_FIRST,
@@ -73,47 +79,21 @@ class ManageTagsContent(Adw.Bin):
         ),
     }
 
-    def __init__(self, flap, window, **kwargs):
-        super().__init__(width_request=280, **kwargs)
-        self.get_style_context().add_class('background')
-        self.builder = Gtk.Builder.new_from_resource(
-            '/org/gabmus/gfeeds/ui/manage_tags_content.ui'
-        )
+    def __init__(self, flap, window):
+        super().__init__()
         self.confman = ConfManager()
         self.flap = flap
         self.window = window
-        self.main_box = self.builder.get_object('main_box')
-        self.add_tag_btn = self.builder.get_object('add_tag_btn')
-        self.tags_entry = self.builder.get_object('tags_entry')
-        self.tags_listbox = self.builder.get_object('tags_listbox')
-
-        self.tags_listbox.connect(
-            'row-activated',
-            self.on_tags_listbox_row_activated
-        )
 
         self.tags_listbox.set_sort_func(
-            self.tags_listbox_sorting_func,
-            None,
-            False
+            self.tags_listbox_sorting_func, None, False
         )
 
-        self.tags_entry.connect('changed', self.on_tags_entry_changed)
-        self.tags_entry.connect(
-            'activate',
-            lambda *args: self.on_add_new_tag(
-                self.tags_entry.get_text().strip()
-            )
-        )
-        self.add_tag_btn.connect(
-            'clicked',
-            lambda *args: self.on_add_new_tag(
-                self.tags_entry.get_text().strip()
-            )
-        )
-
-        self.set_child(self.main_box)
         self.populate_listbox()
+
+    @Gtk.Template.Callback()
+    def on_submit_add_tag(self, *args):
+        self.on_add_new_tag(self.tags_entry.get_text().strip())
 
     def tags_listbox_sorting_func(self, row1, row2, data, notify_destroy):
         return row1.tag.lower() > row2.tag.lower()
@@ -125,6 +105,7 @@ class ManageTagsContent(Adw.Bin):
             self.tags_listbox_add_row(tag, False)
         self.tags_listbox.show()
 
+    @Gtk.Template.Callback()
     def on_tags_listbox_row_activated(self, listbox, row):
         with row.checkbox.handler_block(row.checkbox_handler_id):
             row.checkbox.set_inconsistent(False)
@@ -157,6 +138,7 @@ class ManageTagsContent(Adw.Bin):
         ]):
             self.tags_listbox_add_row(n_tag)
 
+    @Gtk.Template.Callback()
     def on_tags_entry_changed(self, *args):
         self.add_tag_btn.set_sensitive(
             self.tags_entry.get_text().strip() != ''
