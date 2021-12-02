@@ -2,12 +2,9 @@
 <interface>
   <requires lib="gtk" version="4.0" />
   <template class="MainLeaflet" parent="AdwBin">
-    <property name="vexpand">1</property>
-    <property name="hexpand">1</property>
     <child>
       <object class="AdwLeaflet" id="leaflet">
         <property name="homogeneous">0</property>
-        <property name="vexpand">1</property>
         <property name="can-navigate-back">1</property>
         <property name="transition-type">over</property>
         <property name="visible-child">left_box</property>
@@ -16,8 +13,8 @@
           <object class="AdwLeafletPage" id="left_page">
             <property name="child">
               <object class="GtkBox" id="left_box">
-                <property name="orientation">vertical</property>
                 <property name="hexpand">0</property>
+                <property name="orientation">vertical</property>
                 <property name="width-request">360</property>
                 <property name="height-request">100</property>
               </object>
@@ -28,9 +25,7 @@
           <object class="AdwLeafletPage">
             <property name="navigatable">0</property>
             <property name="child">
-              <object class="GtkSeparator">
-                <property name="orientation">vertical</property>
-              </object>
+              <object class="GtkSeparator"></object>
             </property>
           </object>
         </child>
@@ -39,7 +34,6 @@
             <property name="child">
               <object class="GtkBox" id="right_box">
                 <property name="orientation">vertical</property>
-                <property name="hexpand">1</property>
               </object>
             </property>
           </object>
