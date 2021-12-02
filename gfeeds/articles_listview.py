@@ -127,7 +127,7 @@ class ArticlesListModel(Gtk.SortListModel):
             if len(target_links) <= 0:
                 break
             item = self.list_store.get_item(i)
-            if item.feed_item.link in target_links:
+            if item and item.feed_item.link in target_links:
                 target_links.remove(item.feed_item.link)
                 self.list_store.remove(i)
 

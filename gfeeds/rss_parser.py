@@ -90,7 +90,7 @@ class Feed:
             self.sd_feed = SynDomFeed(str(feedpath))
         except Exception:
             self.sd_feed = None
-            print("Error parsing feed")
+            print('Error parsing feed (caught). Traceback:')
             import traceback
             traceback.print_exc()
         # with open(feedpath, 'r') as fd:
