@@ -1,20 +1,6 @@
-from gettext import ngettext
-from gi.repository import Gtk, Adw, Gio
 from gfeeds.main_leaflet import MainLeaflet
-from gfeeds.feeds_view import FeedsViewScrolledWindow
 from gfeeds.confManager import ConfManager
 from gfeeds.feeds_manager import FeedsManager
-from gfeeds.sidebar import GFeedsSidebar
-from gfeeds.headerbar import LeftHeaderbar, RightHeaderbar
-from gfeeds.searchbar import GFeedsSearchbar
-from gfeeds.suggestion_bar import (
-    GFeedsConnectionBar
-)
-from gfeeds.webview import GFeedsWebView
-from gfeeds.stack_with_empty_state import StackWithEmptyState
-from functools import reduce
-from operator import or_
-from subprocess import Popen
 from gfeeds.base_app import BaseWindow, AppShortcut
 from datetime import datetime
 
