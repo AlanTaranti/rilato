@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-29 20:24+0100\n"
-"PO-Revision-Date: 2021-11-27 18:30+0100\n"
+"POT-Creation-Date: 2021-12-02 14:09+0100\n"
+"PO-Revision-Date: 2021-12-02 14:10+0100\n"
 "Last-Translator: Gabriele Musco <gabmus@disroot.org>\n"
 "Language-Team: Italian\n"
 "Language: it\n"
@@ -62,11 +62,7 @@ msgstr "`{0}` potrebbe non essere un feed RSS o Atom"
 msgid "Feed {0} exists already, skipping"
 msgstr "Il feed {0} esiste già, lo salto"
 
-#: ../gfeeds/headerbar.py:156
-msgid "Add new feed"
-msgstr "Aggiungi nuovo feed"
-
-#: ../gfeeds/headerbar.py:185
+#: ../gfeeds/headerbar.py:170
 msgid ""
 "There were problems with some feeds.\n"
 "Do you want to remove them?"
@@ -79,24 +75,24 @@ msgstr ""
 msgid "Error downloading favicon for `{0}`"
 msgstr "Errore nel download della favicon per `{0}`"
 
-#: ../gfeeds/app_window.py:188
+#: ../gfeeds/feeds_view.py:18
+msgid "All feeds"
+msgstr "Tutti i feed"
+
+#: ../gfeeds/webview.py:182
+msgid "Link copied to clipboard!"
+msgstr "Link copiato negli appunti!"
+
+#: ../gfeeds/webview.py:204
+msgid "RSS content not available for this article"
+msgstr "Contenuto RSS non disponibile per questo articolo"
+
+#: ../gfeeds/main_leaflet.py:119
 #, python-brace-format
 msgid "{0} new article"
 msgid_plural "{0} new articles"
 msgstr[0] "{0} nuovo articolo"
 msgstr[1] "{0} nuovi articoli"
-
-#: ../gfeeds/feeds_view.py:18
-msgid "All feeds"
-msgstr "Tutti i feed"
-
-#: ../gfeeds/webview.py:167
-msgid "Link copied to clipboard!"
-msgstr "Link copiato negli appunti!"
-
-#: ../gfeeds/webview.py:189
-msgid "RSS content not available for this article"
-msgstr "Contenuto RSS non disponibile per questo articolo"
 
 #: ../gfeeds/preferences_window.py:21
 msgid "General"
@@ -254,11 +250,11 @@ msgstr "GtkListView sperimentale per la lista degli articoli"
 msgid "Loading feeds..."
 msgstr "Caricamento feed..."
 
-#: ../gfeeds/__main__.py:224
+#: ../gfeeds/__main__.py:241
 msgid "url"
 msgstr "url"
 
-#: ../gfeeds/__main__.py:227
+#: ../gfeeds/__main__.py:244
 msgid "opml file local url or rss remote url to import"
 msgstr "url locale del file opml o url rss remota da importare"
 
@@ -398,37 +394,77 @@ msgstr "Articolo precedente"
 msgid "Show/Hide read articles"
 msgstr "Mostra/Nascondi articoli letti"
 
-#: ../data/ui/shortcutsWindow.ui:68
+#: ../data/ui/shortcutsWindow.ui:68 ../data/ui/right_headerbar.ui:47
 msgid "Zoom in"
 msgstr "Ingrandisci"
 
-#: ../data/ui/shortcutsWindow.ui:74
+#: ../data/ui/shortcutsWindow.ui:74 ../data/ui/right_headerbar.ui:33
 msgid "Zoom out"
 msgstr "Riduci"
 
-#: ../data/ui/shortcutsWindow.ui:80
+#: ../data/ui/shortcutsWindow.ui:80 ../data/ui/right_headerbar.ui:40
 msgid "Reset zoom"
 msgstr "Resetta zoom"
-
-#: ../data/ui/add_feed_box.ui:11
-msgid "Enter feed address to add"
-msgstr "Inserisci l'indirizzo del feed da aggiungere"
-
-#: ../data/ui/add_feed_box.ui:26
-msgid "https://..."
-msgstr "https://..."
-
-#: ../data/ui/add_feed_box.ui:34
-msgid "Add"
-msgstr "Aggiungi"
-
-#: ../data/ui/add_feed_box.ui:48
-msgid "You're already subscribed to that feed!"
-msgstr "Sei già iscritto a questo feed!"
 
 #: ../data/ui/webview.ui:14
 msgid "Select an article"
 msgstr "Seleziona un articolo"
+
+#: ../data/ui/left_headerbar.ui:10
+msgid "Show Read Articles"
+msgstr "Mostra Articoli Letti"
+
+#: ../data/ui/left_headerbar.ui:14
+msgid "Mark All as Read"
+msgstr "Segna Tutti come Letti"
+
+#: ../data/ui/left_headerbar.ui:18
+msgid "Mark All as Unread"
+msgstr "Segna Tutti come Non Letti"
+
+#: ../data/ui/left_headerbar.ui:28
+msgid "Import OPML"
+msgstr "Importa OPML"
+
+#: ../data/ui/left_headerbar.ui:32
+msgid "Export OPML"
+msgstr "Esporta OPML"
+
+#: ../data/ui/left_headerbar.ui:38
+msgid "Preferences"
+msgstr "Preferenze"
+
+#: ../data/ui/left_headerbar.ui:42
+msgid "Keyboard Shortcuts"
+msgstr "Scorciatoie da tastiera"
+
+#: ../data/ui/left_headerbar.ui:46
+msgid "About Feeds"
+msgstr "Informazioni su Feeds"
+
+#: ../data/ui/left_headerbar.ui:56
+msgid "Filter by feed"
+msgstr "Filtra per feed"
+
+#: ../data/ui/left_headerbar.ui:62
+msgid "Add new feed"
+msgstr "Aggiungi nuovo feed"
+
+#: ../data/ui/left_headerbar.ui:68
+msgid "Menu"
+msgstr "Menu"
+
+#: ../data/ui/left_headerbar.ui:75
+msgid "Search"
+msgstr "Cerca"
+
+#: ../data/ui/left_headerbar.ui:82
+msgid "Refresh"
+msgstr "Ricarica"
+
+#: ../data/ui/left_headerbar.ui:89
+msgid "There are errors"
+msgstr "C'è qualche errore"
 
 #: ../data/ui/empty_state.ui:5
 msgid "Let's get started"
@@ -442,73 +478,21 @@ msgstr "Aggiungi nuovi feed tramite URL"
 msgid "Import an OPML file"
 msgstr "Importa un file OPML"
 
-#: ../data/ui/headerbar.ui:7
-msgid "Show read articles"
-msgstr "Mostra articoli letti"
+#: ../data/ui/add_feed_popover.ui:14
+msgid "Enter feed address to add"
+msgstr "Inserisci l'indirizzo del feed da aggiungere"
 
-#: ../data/ui/headerbar.ui:11
-msgid "Mark all as read"
-msgstr "Segna tutti come letti"
+#: ../data/ui/add_feed_popover.ui:28
+msgid "https://..."
+msgstr "https://..."
 
-#: ../data/ui/headerbar.ui:15
-msgid "Mark all as unread"
-msgstr "Segna tutti come non letti"
+#: ../data/ui/add_feed_popover.ui:37
+msgid "Add"
+msgstr "Aggiungi"
 
-#: ../data/ui/headerbar.ui:25
-msgid "Import OPML"
-msgstr "Importa OPML"
-
-#: ../data/ui/headerbar.ui:29
-msgid "Export OPML"
-msgstr "Esporta OPML"
-
-#: ../data/ui/headerbar.ui:35
-msgid "Preferences"
-msgstr "Preferenze"
-
-#: ../data/ui/headerbar.ui:39
-msgid "Keyboard Shortcuts"
-msgstr "Scorciatoie da tastiera"
-
-#: ../data/ui/headerbar.ui:43
-msgid "About Feeds"
-msgstr "Informazioni su Feeds"
-
-#: ../data/ui/headerbar.ui:54
-msgid "Filter by feed"
-msgstr "Filtra per feed"
-
-#: ../data/ui/headerbar.ui:66
-msgid "Menu"
-msgstr "Menu"
-
-#: ../data/ui/headerbar.ui:73
-msgid "Search"
-msgstr "Cerca"
-
-#: ../data/ui/headerbar.ui:79
-msgid "Refresh"
-msgstr "Ricarica"
-
-#: ../data/ui/headerbar.ui:85
-msgid "There are errors"
-msgstr "C'è qualche errore"
-
-#: ../data/ui/headerbar.ui:129
-msgid "Back to articles"
-msgstr "Indietro agli articoli"
-
-#: ../data/ui/headerbar.ui:136
-msgid "Change view mode"
-msgstr "Cambia modalità di visualizzazione"
-
-#: ../data/ui/headerbar.ui:144
-msgid "Share"
-msgstr "Condividi"
-
-#: ../data/ui/headerbar.ui:151
-msgid "Open externally"
-msgstr "Apri esternamente"
+#: ../data/ui/add_feed_popover.ui:51
+msgid "You're already subscribed to that feed!"
+msgstr "Sei già iscritto a questo feed!"
 
 #: ../data/ui/extra_popover_menu.ui:19
 msgid "Web View"
@@ -521,6 +505,22 @@ msgstr "Modalità lettura"
 #: ../data/ui/extra_popover_menu.ui:33
 msgid "RSS Content"
 msgstr "Contenuto RSS"
+
+#: ../data/ui/right_headerbar.ui:15
+msgid "Open Externally"
+msgstr "Apri Esternamente"
+
+#: ../data/ui/right_headerbar.ui:19
+msgid "Copy Article Link"
+msgstr "Copia Link dell'Articolo"
+
+#: ../data/ui/right_headerbar.ui:93
+msgid "Back to articles"
+msgstr "Indietro agli articoli"
+
+#: ../data/ui/right_headerbar.ui:101
+msgid "Change view mode"
+msgstr "Cambia modalità di visualizzazione"
 
 #: ../data/org.gabmus.gfeeds.desktop.in:6
 msgid "@prettyname@"
@@ -955,6 +955,21 @@ msgstr "Aggiunta traduzione italiana"
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:322
 msgid "First release"
 msgstr "Prima release"
+
+#~ msgid "Show read articles"
+#~ msgstr "Mostra articoli letti"
+
+#~ msgid "Mark all as read"
+#~ msgstr "Segna tutti come letti"
+
+#~ msgid "Mark all as unread"
+#~ msgstr "Segna tutti come non letti"
+
+#~ msgid "Share"
+#~ msgstr "Condividi"
+
+#~ msgid "Open externally"
+#~ msgstr "Apri esternamente"
 
 #~ msgid "View mode"
 #~ msgstr "Modalità di visualizzazione"
