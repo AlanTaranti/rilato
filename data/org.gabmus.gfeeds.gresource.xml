@@ -15,6 +15,7 @@
     <file preprocess="xml-stripblanks">ui/left_headerbar.ui</file>
     <file preprocess="xml-stripblanks">ui/right_headerbar.ui</file>
     <file preprocess="xml-stripblanks">ui/manage_feeds_listbox_row.ui</file>
+    <file preprocess="xml-stripblanks">ui/manage_feeds_headerbar.ui</file>
     <file preprocess="xml-stripblanks">ui/shortcutsWindow.ui</file>
     <file preprocess="xml-stripblanks">ui/sidebar_listbox_row.ui</file>
     <file preprocess="xml-stripblanks">ui/scrolled_label.ui</file>

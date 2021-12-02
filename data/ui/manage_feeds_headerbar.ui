@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <template class="ManageFeedsHeaderbar" parent="GtkHeaderBar">
+    <property show-title-buttons="">1</property>
+    <child type="title">
+      <object class="AdwWindowTitle">
+        <property name="title" translatable="yes">Manage Feeds</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkToggleButton" id="tags_btn">
+        <property name="icon-name">user-trash-symbolic</property>
+        <property name="tooltip-text" translatable="yes">Manage Tags for Selected Feeds</property>
+        <property name="sensitive">0</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkButton" id="select_all_btn">
+        <property name="icon-name">edit-select-all-symbolic</property>
+        <property name="tooltip-text" translatable="yes">Select/Unselect All</property>
+      </object>
+    </child>
+    <child type="end">
+      <object class="GtkButton" id="delete_btn">
+        <property name="icon-name">user-trash-symbolic</property>
+        <property name="tooltip-text" translatable="yes">Delete Selected Feeds</property>
+        <property name="sensitive">0</property>
+        <style><class name="destructive-action" /></style>
+      </object>
+    </child>
+  </template>
+</interface>

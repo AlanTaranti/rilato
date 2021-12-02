@@ -178,35 +178,17 @@ class ManageTagsContent(Adw.Bin):
         self.flap.set_reveal_flap(True)
 
 
+@Gtk.Template(resource_path='/org/gabmus/gfeeds/ui/manage_feeds_headerbar.ui')
 class ManageFeedsHeaderbar(Gtk.HeaderBar):
-    def __init__(self, flap, **kwargs):
-        super().__init__(
-            title_widget=Adw.WindowTitle(title=_('Manage Feeds')),
-            show_title_buttons=True,
-            **kwargs
-        )
+    __gtype_name__ = 'ManageFeedsHeaderbar'
+    tags_btn = Gtk.Template.Child()
+    select_all_btn = Gtk.Template.Child()
+    delete_btn = Gtk.Template.Child()
+
+    def __init__(self, flap):
+        super().__init__()
         self.confman = ConfManager()
         self.flap = flap
-
-        self.select_all_btn = Gtk.Button.new_from_icon_name(
-            'edit-select-all-symbolic'
-        )
-        self.select_all_btn.set_tooltip_text(_('Select/Unselect all'))
-
-        self.delete_btn = Gtk.Button(
-            icon_name='user-trash-symbolic',
-            tooltip_text=_('Delete selected feeds')
-        )
-        self.delete_btn.get_style_context().add_class('destructive-action')
-
-        self.tags_btn = Gtk.ToggleButton(icon_name='tag-symbolic')
-        self.tags_btn.set_tooltip_text(_('Manage tags for selected feeds'))
-
-        self.pack_end(self.delete_btn)
-        self.pack_start(self.tags_btn)
-        self.pack_start(self.select_all_btn)
-
-        self.set_actions_sensitive(False)
 
     def set_actions_sensitive(self, state):
         for w in (self.delete_btn, self.tags_btn):
@@ -248,10 +230,10 @@ class ManageFeedsScrolledWindow(Gtk.ScrolledWindow):
         super().__init__(
             vexpand=True,
             hscrollbar_policy=Gtk.PolicyType.NEVER,
-            vscrollbar_policy=Gtk.PolicyType.AUTOMATIC
+            vscrollbar_policy=Gtk.PolicyType.AUTOMATIC,
+            width_request=360, height_request=500
         )
         self.listbox = ManageFeedsListbox()
-        self.set_size_request(360, 500)
         self.set_child(self.listbox)
 
 
