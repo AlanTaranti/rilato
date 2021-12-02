@@ -11,6 +11,7 @@
     <file preprocess="xml-stripblanks">ui/article_right_click_popover_content.ui</file>
     <file preprocess="xml-stripblanks">ui/empty_state.ui</file>
     <file preprocess="xml-stripblanks">ui/extra_popover_menu.ui</file>
+    <file preprocess="xml-stripblanks">ui/main_leaflet.ui</file>
     <file preprocess="xml-stripblanks">ui/left_headerbar.ui</file>
     <file preprocess="xml-stripblanks">ui/right_headerbar.ui</file>
     <file preprocess="xml-stripblanks">ui/manage_feeds_listbox_row.ui</file>

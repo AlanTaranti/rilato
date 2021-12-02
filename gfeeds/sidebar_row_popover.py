@@ -43,7 +43,7 @@ class RowPopover(Gtk.Popover):
             ))
 
     def set_read(self, read):
-        sidebar = self.parent_w.get_root().sidebar
+        sidebar = self.parent_w.get_root().leaflet.sidebar
         row = self.parent_w
         if not read:
             row.set_read(False)

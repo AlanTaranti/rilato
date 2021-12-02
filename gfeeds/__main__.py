@@ -108,11 +108,13 @@ class GFeedsApplication(BaseApp):
         )
 
     def open_externally(self, *args):
-        self.window.webview.open_externally()
+        self.window.leaflet.webview.open_externally()
 
     def copy_link(self, *args):
-        Gdk.Display.get_default().get_clipboard().set(self.window.webview.uri)
-        self.window.webview.show_notif()
+        Gdk.Display.get_default().get_clipboard().set(
+            self.window.leaflet.webview.uri
+        )
+        self.window.leaflet.webview.show_notif()
 
     def view_mode_change(
             self, action: Gio.SimpleAction, target: GLib.Variant, *args
@@ -121,7 +123,7 @@ class GFeedsApplication(BaseApp):
         target_s = str(target).strip("'")
         if target_s not in ['webview', 'reader', 'rsscont']:
             target_s = 'webview'
-        self.window.on_view_mode_change(target_s)
+        self.window.leaflet.on_view_mode_change(target_s)
         self.confman.conf['default_view'] = target_s
         self.confman.save_conf()
 
@@ -133,10 +135,10 @@ class GFeedsApplication(BaseApp):
         self.confman.emit('gfeeds_show_read_changed', '')
 
     def set_all_read(self, *args):
-        self.window.sidebar.listview_sw.set_all_read_state(True)
+        self.window.leaflet.sidebar.listview_sw.set_all_read_state(True)
 
     def set_all_unread(self, *args):
-        self.window.sidebar.listview_sw.set_all_read_state(False)
+        self.window.leaflet.sidebar.listview_sw.set_all_read_state(False)
 
     def manage_feeds(self, *args):
         mf_win = GFeedsManageFeedsWindow(
