@@ -1,0 +1,36 @@
+using Gtk 4.0;
+using WebKit2 5.0;
+using Adw 1;
+
+template Webview : Stack {
+    width-request: 360; height-request: 400;
+    hexpand: true; vexpand: true;
+    transition-type: crossfade;
+    visible-child: filler_view;
+    Adw.StatusPage filler_view {
+        hexpand: true; vexpand: true;
+        title: _('Select an article');
+        icon-name: 'webview-filler-symbolic';
+    }
+    Overlay main_view {
+        hexpand: true; vexpand: true;
+        [overlay] Revealer loading_bar_revealer {
+            vexpand: false;
+            valign: start;
+            transition-type: crossfade;
+            reveal-child: true;
+            ProgressBar loading_bar {
+                styles ['osd']
+                hexpand: true; vexpand: false;
+            }
+        }
+        Adw.ToastOverlay toast_overlay {
+            hexpand: true; vexpand: true;
+            WebKit2.WebView webkitview {
+                hexpand: true; vexpand: true;
+                load-changed => on_load_changed();
+                decide-policy => on_decide_policy();
+            }
+        }
+    }
+}

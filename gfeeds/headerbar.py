@@ -130,6 +130,7 @@ class LeftHeaderbar(Gtk.WindowHandle):
     filter_btn = Gtk.Template.Child()
     add_btn = Gtk.Template.Child()
     refresh_btn = Gtk.Template.Child()
+    search_btn = Gtk.Template.Child()
     errors_btn = Gtk.Template.Child()
 
     def __init__(self, searchbar, leaflet):

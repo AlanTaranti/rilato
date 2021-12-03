@@ -8,7 +8,7 @@
 
     <file preprocess="xml-stripblanks">aboutdialog.ui</file>
     <file preprocess="xml-stripblanks">ui/add_feed_popover.ui</file>
-    <file preprocess="xml-stripblanks">ui/article_right_click_popover_content.ui</file>
+    <file preprocess="xml-stripblanks">ui/row_popover.ui</file>
     <file preprocess="xml-stripblanks">ui/empty_state.ui</file>
     <file preprocess="xml-stripblanks">ui/extra_popover_menu.ui</file>
     <file preprocess="xml-stripblanks">ui/main_leaflet.ui</file>

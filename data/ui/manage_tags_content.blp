@@ -1,0 +1,47 @@
+using Gtk 4.0;
+using Adw 1;
+
+template ManageTagsContent : Adw.Bin {
+    styles ['background']
+    Box {
+        spacing: 6;
+        orientation: vertical;
+        margin-start: 6; margin-end: 6;
+        margin-top: 6; margin-bottom: 6;
+        width-request: 280;
+        Box {
+            spacing: 6;
+            orientation: horizontal;
+            hexpand: false;
+            Entry tags_entry {
+                placeholder-text: _('New tag name…');
+                hexpand: true;
+                changed => on_tags_entry_changed();
+                activate => on_submit_add_tag();
+            }
+            Button add_tag_btn {
+                styles ['suggested-action']
+                tooltip-text: _('Add Tag');
+                icon-name: 'list-add-symbolic';
+                clicked => on_submit_add_tag();
+            }
+        }
+        Separator { orientation: horizontal; }
+        ScrolledWindow {
+            hscrollbar-policy: never;
+            vexpand: true;
+            Viewport {
+                ListBox tags_listbox {
+                    styles ['navigation-sidebar']
+                    selection-mode: none;
+                    row-activated => on_tags_listbox_row_activated();
+                    [placeholder] Adw.StatusPage {
+                        title: _('There are no tags yet');
+                        description: _('Add some using the entry above');
+                        icon-name: 'tag-symbolic';
+                    }
+                }
+            }
+        }
+    }
+}

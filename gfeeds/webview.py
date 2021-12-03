@@ -10,7 +10,15 @@ from subprocess import Popen
 from datetime import datetime
 
 
-class GFeedsWebView(Adw.Bin):
+@Gtk.Template(resource_path='/org/gabmus/gfeeds/ui/webview.ui')
+class GFeedsWebView(Gtk.Stack):
+    __gtype_name__ = 'Webview'
+    webkitview = Gtk.Template.Child()
+    loading_bar_revealer = Gtk.Template.Child()
+    loading_bar = Gtk.Template.Child()
+    main_view = Gtk.Template.Child()
+    toast_overlay = Gtk.Template.Child()
+
     __gsignals__ = {
         'gfeeds_webview_load_start': (
             GObject.SignalFlags.RUN_FIRST,
@@ -26,20 +34,8 @@ class GFeedsWebView(Adw.Bin):
 
     def __init__(self):
         GObject.type_ensure(WebKit2.WebView)
-        super().__init__(hexpand=True, vexpand=True)
+        super().__init__()
         self.confman = ConfManager()
-        self.builder = Gtk.Builder.new_from_resource(
-            '/org/gabmus/gfeeds/ui/webview.ui'
-        )
-        self.stack = self.builder.get_object('stack')
-        self.set_child(self.stack)
-        self.webkitview = self.builder.get_object('webkitview')
-        self.loading_bar_revealer = self.builder.get_object(
-            'loading_bar_revealer'
-        )
-        self.loading_bar = self.builder.get_object('loading_bar')
-        self.main_view = self.builder.get_object('main_view')
-        self.toast_overlay = self.builder.get_object('toast_overlay')
 
         self.webkitview_settings = WebKit2.Settings()
         self.apply_webview_settings()
@@ -57,9 +53,6 @@ class GFeedsWebView(Adw.Bin):
             'on_refresh_blocklist',
             lambda *args: self.on_apply_adblock_changed(True)
         )
-
-        self.webkitview.connect('load-changed', self.on_load_changed)
-        self.webkitview.connect('decide-policy', self.on_decide_policy)
 
         self.content_manager = self.webkitview.get_user_content_manager()
         self.user_content_filter_store = WebKit2.UserContentFilterStore.new(
@@ -195,7 +188,7 @@ class GFeedsWebView(Adw.Bin):
             )
 
     def load_rss_content(self, feeditem):
-        self.stack.set_visible_child(self.main_view)
+        self.set_visible_child(self.main_view)
         self.feeditem = feeditem
         self.uri = feeditem.link
         content = feeditem.sd_item.get_content()
@@ -218,7 +211,7 @@ class GFeedsWebView(Adw.Bin):
         uri = feeditem.link
         self.feeditem = feeditem
         self.uri = uri
-        self.stack.set_visible_child(self.main_view)
+        self.set_visible_child(self.main_view)
         if self.confman.conf['default_view'] == 'reader':
             Thread(
                 target=self._load_reader_async,
@@ -245,6 +238,7 @@ class GFeedsWebView(Adw.Bin):
         self.new_page_loaded = True
         self.emit('gfeeds_webview_load_start', '')
 
+    @Gtk.Template.Callback()
     def on_load_changed(self, webview, event):
         if event != WebKit2.LoadEvent.FINISHED:
             self.loading_bar_revealer.set_reveal_child(True)
@@ -277,6 +271,7 @@ class GFeedsWebView(Adw.Bin):
     def _get_data_cb(self, resource, result, user_data=None):
         self.html = resource.get_data_finish(result)
 
+    @Gtk.Template.Callback()
     def on_decide_policy(self, webView, decision, decisionType):
         if (
                 decisionType in

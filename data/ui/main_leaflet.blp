@@ -1,0 +1,29 @@
+using Gtk 4.0;
+using Adw 1;
+
+template MainLeaflet : Adw.Bin {
+    Adw.Leaflet leaflet {
+        homogeneous: false;
+        can-navigate-back: true;
+        transition-type: over;
+        visible-child: left_box;
+        notify::folded => on_leaflet_folded();
+        Adw.LeafletPage left_page {
+            child: Gtk.Box left_box {
+                hexpand: false;
+                orientation: vertical;
+                width-request: 360;
+                height-request: 100;
+            };
+        }
+        Adw.LeafletPage {
+            navigatable: false;
+            child: Gtk.Separator {};
+        }
+        Adw.LeafletPage right_page {
+            child: Gtk.Box right_box {
+                orientation: vertical;
+            };
+        }
+    }
+}

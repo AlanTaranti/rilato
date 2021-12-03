@@ -1,0 +1,14 @@
+using Gtk 4.0;
+
+ScrolledWindow scrolled_win {
+    height-request: 300;
+    hscrollbar-policy: never;
+    hexpand: true; vexpand: true;
+    Viewport {
+        Label label {
+            margin-start: 12; margin-end: 12;
+            margin-bottom: 20;
+            wrap: true; wrap-mode: char;
+        }
+    }
+}

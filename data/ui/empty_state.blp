@@ -1,0 +1,32 @@
+using Gtk 4.0;
+using Adw 1;
+
+template EmptyState : Adw.Bin {
+    Adw.StatusPage {
+        styles ['navigation-sidebar']
+        title: _('Let\'s get started');
+        icon-name: 'org.gabmus.gfeeds-symbolic';
+        Grid {
+            halign: center;
+            row-spacing: 12; column-spacing: 12;
+            Image {
+                layout { row: 0; column: 0; }
+                icon-name: 'list-add-symbolic';
+            }
+            Image {
+                layout { row: 1; column: 0; }
+                icon-name: 'open-menu-symbolic';
+            }
+            Label {
+                layout { row: 0; column: 1; }
+                label: _('Add new feeds via URL');
+                xalign: 0.0;
+            }
+            Label {
+                layout { row: 1; column: 1; }
+                label: _('Import an OPML file');
+                xalign: 0.0;
+            }
+        }
+    }
+}

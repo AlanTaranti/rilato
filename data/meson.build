@@ -69,14 +69,36 @@ install_data(
 
 subdir('ui')
 
+blueprints = custom_target('blueprints',
+    input: files(
+        'ui/main_leaflet.blp',
+        'ui/manage_feeds_headerbar.blp',
+        'ui/manage_feeds_listbox_row.blp',
+        'ui/manage_tags_content.blp',
+        'ui/manage_tags_listbox_row.blp',
+        'ui/add_feed_popover.blp',
+        'ui/row_popover.blp',
+        'ui/empty_state.blp',
+        'ui/left_headerbar.blp',
+        'ui/right_headerbar.blp',
+        'ui/scrolled_label.blp',
+        'ui/shortcutsWindow.blp',
+        'ui/sidebar_listbox_row.blp',
+        'ui/webview.blp'
+        # 'ui/extra_popover_menu.blp',  # model button missing
+    ),
+    output: '.',
+    command: [find_program('blueprint-compiler'), 'batch-compile', '@OUTPUT@', '@CURRENT_SOURCE_DIR@', '@INPUT@']
+)
+
 app_resources = gnome.compile_resources(app_id,
     app_id + '.gresource.xml',
     gresource_bundle: true,
-    dependencies: configure_file(
+    dependencies: [configure_file(
         input: 'ui/aboutdialog.ui.in',
         output: 'aboutdialog.ui',
         configuration: glade_conf
-    ),
+    ), blueprints],
     install: true,
     install_dir: pkgdatadir
 )

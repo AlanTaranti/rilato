@@ -4,25 +4,21 @@ from gfeeds.confManager import ConfManager
 from gfeeds.feeds_manager import FeedsManager
 
 
+@Gtk.Template(resource_path='/org/gabmus/gfeeds/ui/row_popover.ui')
 class RowPopover(Gtk.Popover):
+    __gtype_name__ = 'RowPopover'
+    read_unread_btn = Gtk.Template.Child()
+    read_unread_img = Gtk.Template.Child()
+    read_unread_label = Gtk.Template.Child()
+
     def __init__(self, parent, **kwargs):
         super().__init__(**kwargs)
         self.confman = ConfManager()
         self.feedman = FeedsManager()
-        self.builder = Gtk.Builder.new_from_resource(
-            '/org/gabmus/gfeeds/ui/article_right_click_popover_content.ui'
-        )
-        self.container_box = self.builder.get_object('container_box')
+
         self.parent_w = parent
 
-        self.read_unread_btn = self.builder.get_object('read_unread_btn')
-        self.read_unread_btn.connect('clicked', self.on_read_unread_clicked)
-        self.read_unread_img = self.builder.get_object('read_unread_img')
-        self.read_unread_label = self.builder.get_object('read_unread_label')
-
-        self.set_autohide(True)
         self.set_parent(self.parent_w)
-        self.set_child(self.container_box)
 
     def on_feed_item_set(self):
         if self.parent_w.feed_item is None:
@@ -63,6 +59,7 @@ class RowPopover(Gtk.Popover):
             ))
         sidebar.listview_sw.invalidate_filter()
 
+    @Gtk.Template.Callback()
     def on_read_unread_clicked(self, btn):
         self.popdown()
         self.set_read(not self.parent_w.feed_item.read)
