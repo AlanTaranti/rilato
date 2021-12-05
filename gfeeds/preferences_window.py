@@ -77,7 +77,7 @@ class GeneralPreferencesPage(MPreferencesPage):
                     title=_('Cache'), rows=[
                         PreferencesButtonRow(
                             title=_('Clear caches'),
-                            button_label='Clear',
+                            button_label=_('Clear'),
                             onclick=self.clear_caches,
                             button_style_class='destructive-action',
                             signal='gfeeds_repopulation_required'
