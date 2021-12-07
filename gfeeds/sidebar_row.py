@@ -117,11 +117,12 @@ class SidebarRow(Gtk.Box):
             else:
                 self.picture_view_container.set_visible(True)
                 self.picture_view.set_file(img)
-                GLib.timeout_add(
-                    100,
-                    lambda *args:
-                        self.picture_view_container.set_visible(True)
-                )
+                self.picture_view_container.set_visible(True)
+                # GLib.timeout_add(
+                #     100,
+                #     lambda *args:
+                #         self.picture_view_container.set_visible(True)
+                # )
                 # self.picture_view.set_filename(img)
 
         def af():
