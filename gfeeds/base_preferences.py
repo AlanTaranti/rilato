@@ -1,6 +1,6 @@
 from gettext import gettext as _
 from gfeeds.confManager import ConfManager
-from gi.repository import Gtk, Adw, Gio, GObject
+from gi.repository import Gtk, Adw, Gio, GObject, Pango
 from typing import Optional, Union, List, Callable
 
 
@@ -19,7 +19,7 @@ class MActionRow(Adw.ActionRow):
 
 class PreferencesButtonRow(MActionRow):
     """
-    A preferences row with a title and a button
+    A preferences row with a button
     title: the title shown
     button_label: a label to show inside the button
     onclick: the function that will be called when the button is pressed
@@ -58,7 +58,7 @@ class PreferencesButtonRow(MActionRow):
 
 class PreferencesEntryRow(MActionRow):
     """
-    A preferences row with a title and a button
+    A preferences row with an entry
     title: the title shown
     conf_key: the key of the configuration dictionary/json in ConfManager
     subtitle: an optional subtitle to be shown
@@ -91,7 +91,7 @@ class PreferencesEntryRow(MActionRow):
 
 class PreferencesFileChooserRow(MActionRow):
     """
-    A preferences row with a title and a file chooser button
+    A preferences row with a file chooser button
     title: the title shown
     conf_key: the key of the configuration dictionary/json in ConfManager
     subtitle: an optional subtitle to be shown
@@ -131,7 +131,7 @@ class PreferencesFileChooserRow(MActionRow):
 
 class PreferencesSpinButtonRow(MActionRow):
     """
-    A preferences row with a title and a spin button
+    A preferences row with a spin button
     title: the title shown
     min_v: minimum num value
     max_v: maximum num value
@@ -173,7 +173,7 @@ class PreferencesSpinButtonRow(MActionRow):
 
 class PreferencesComboRow(Adw.ComboRow):
     """
-    A preferences row with a title and a combo box
+    A preferences row with a combo box
     title: the title shown
     values: a list of acceptable values
     value_names: a list of user facing names for the values provided above
@@ -245,7 +245,7 @@ class PreferencesComboRow(Adw.ComboRow):
 
 class PreferencesToggleRow(MActionRow):
     """
-    A preferences row with a title and a toggle
+    A preferences row with a toggle
     title: the title shown
     conf_key: the key of the configuration dictionary/json in ConfManager
     subtitle: an optional subtitle to be shown
@@ -273,6 +273,43 @@ class PreferencesToggleRow(MActionRow):
         if self.signal is not None:
             self.confman.emit(self.signal, '')
 
+
+class PreferencesFontChooserRow(MActionRow):
+    """
+    A preference row with a font chooser button
+    """
+    def __init__(
+        self, title: str, conf_key: str, subtitle: Optional[str] = None,
+        signal: Optional[str] = None
+    ):
+        super().__init__(title, subtitle)
+        self.confman = ConfManager()
+        self.conf_key = conf_key
+        self.signal = signal
+
+        self.font_btn = Gtk.FontButton(
+            title=self.title, modal=True, use_size=False,
+            use_font=True, font=self.confman.conf[self.conf_key],
+            valign=Gtk.Align.CENTER
+        )
+        self.set_visual_style()
+        self.font_btn.connect('font-set', self.on_font_set)
+        self.add_suffix(self.font_btn)
+        self.set_activatable_widget(self.font_btn)
+
+    def set_visual_style(self):
+        self.font_btn.get_first_child(
+        ).get_child().get_first_child().get_next_sibling().set_visible(False)
+        self.font_btn.get_first_child(
+        ).get_child().get_first_child().set_ellipsize(Pango.EllipsizeMode.END)
+
+    def on_font_set(self, *args):
+        self.set_visual_style()
+        # remove the size
+        n_font = ' '.join(self.font_btn.get_font().split(' ')[:-1]).strip()
+        self.confman.conf[self.conf_key] = n_font
+        if self.signal:
+            self.confman.emit(self.signal, '')
 
 class MPreferencesGroup(Adw.PreferencesGroup):
     def __init__(

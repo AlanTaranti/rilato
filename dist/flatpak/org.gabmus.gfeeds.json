@@ -12,7 +12,11 @@
         "--share=network",
         "--socket=wayland",
         "--socket=pulseaudio",
-        "--talk-name=org.freedesktop.Flatpak"
+        "--talk-name=org.freedesktop.Flatpak",
+        "--filesystem=xdg-data/fonts",
+        "--persist=xdg-data/fonts",
+        "--filesystem=xdg-config/fontconfig",
+        "--persist=xdg-config/fontconfig"
     ],
     "modules": [
         {

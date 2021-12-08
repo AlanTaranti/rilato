@@ -61,7 +61,7 @@ class PictureView(Gtk.Widget):
 
     def do_measure(self, orientation, for_size):
         if not self.texture:
-            return (1200, 1200, -1, -1)
+            return (0, 1200, -1, -1)
         if orientation == Gtk.Orientation.VERTICAL:  # get height
             if for_size == -1:
                 return (1200, 1200, -1, -1)

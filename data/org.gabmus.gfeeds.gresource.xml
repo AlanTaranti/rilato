@@ -4,7 +4,6 @@
     <file compressed="true">org.gabmus.gfeeds.service.desktop</file>
 
     <file compressed="true">ui/reader_mode_style.css</file>
-    <file compressed="true">ui/reader_mode_dark_style.css</file>
 
     <file preprocess="xml-stripblanks">aboutdialog.ui</file>
     <file preprocess="xml-stripblanks">ui/add_feed_popover.ui</file>

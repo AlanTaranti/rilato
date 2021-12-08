@@ -6,6 +6,7 @@ from gfeeds.confManager import ConfManager
 from gfeeds.base_preferences import (
     MPreferencesPage, MPreferencesGroup, PreferencesButtonRow,
     PreferencesSpinButtonRow, PreferencesToggleRow, PreferencesEntryRow,
+    PreferencesFontChooserRow
 )
 from typing import Optional
 
@@ -138,6 +139,30 @@ class AppearancePreferencesPage(MPreferencesPage):
                             conf_key='full_feed_name',
                             signal='gfeeds_full_feed_name_changed'
                         )
+                    ]
+                ),
+                MPreferencesGroup(
+                    title=_('Font preferences'), rows=[
+                        PreferencesToggleRow(
+                            title=_('Use system font for titles'),
+                            conf_key='font_use_system_for_titles'
+                        ),
+                        PreferencesToggleRow(
+                            title=_('Use system font for paragraphs'),
+                            conf_key='font_use_system_for_paragraphs'
+                        ),
+                        PreferencesFontChooserRow(
+                            title=_('Custom title font'),
+                            conf_key='font_titles_custom'
+                        ),
+                        PreferencesFontChooserRow(
+                            title=_('Custom paragraph font'),
+                            conf_key='font_paragraphs_custom'
+                        ),
+                        PreferencesFontChooserRow(
+                            title=_('Custom monospace font'),
+                            conf_key='font_monospace_custom'
+                        ),
                     ]
                 )
             ]

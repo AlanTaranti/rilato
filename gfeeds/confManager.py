@@ -120,7 +120,12 @@ class ConfManager(metaclass=Singleton):
         'auto_refresh_time_seconds': 300,
         'enable_adblock': True,
         'blocklist_last_update': 0.0,
-        'webview_zoom': 1.0
+        'webview_zoom': 1.0,
+        'font_use_system_for_titles': False,
+        'font_use_system_for_paragraphs': True,
+        'font_titles_custom': 'DejaVu Serif',
+        'font_paragraphs_custom': 'Cantarell',
+        'font_monospace_custom': 'DejaVu Sans Mono'
     }
 
     def __init__(self):

@@ -8,7 +8,7 @@ from lxml.html import (
     HtmlElement
 )
 from pygments.formatters import HtmlFormatter
-from gfeeds.reader_mode_style import CSS, DARK_MODE_CSS
+from gfeeds.reader_mode_style import get_css
 
 
 # Thanks to Eloi Rivard (azmeuk) for the contribution on the media block
@@ -96,19 +96,20 @@ def build_reader_html(og_html, dark_mode: bool = False, sd_item=None) -> str:
     syntax_highlight_css, root = build_syntax_highlight_from_raw_html(content)
     content = html_tostring(
         root, encoding='utf-8'
-    ).decode()
+    )
+    if not isinstance(content, str):
+        content = content.decode()
     content += build_media_block()
     return f'''<html>
         <head>
             <meta charset="UTF-8" />
             <style>
-                {CSS}
-                {DARK_MODE_CSS if dark_mode else ""}
+                {get_css()}
                 {syntax_highlight_css}
             </style>
             <title>{doc.short_title() or sd_item.title}</title>
         </head>
-        <body>
+        <body {'class="dark"' if dark_mode else ''}>
             <article>
                 <h1>{doc.short_title() or sd_item.title}</h1>
                 {
