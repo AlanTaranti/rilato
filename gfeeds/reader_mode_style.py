@@ -18,101 +18,26 @@ def get_css():
         serif_font = confman.conf['font_titles_custom']
     if not confman.conf['font_use_system_for_paragraphs']:
         sans_font = confman.conf['font_paragraphs_custom']
-    return f'''@font-face {{
-        font-family: gfeeds-reader-serif;
-        src: local('{serif_font}');
-        font-weight: normal;
-        font-style: normal;
-        font-display: block;
-    }}
-
-    @font-face {{
-        font-family: gfeeds-reader-serif;
-        src: local('{serif_font} Italic');
-        font-weight: normal;
-        font-style: italic;
-        font-display: block;
-    }}
-
-    @font-face {{
-        font-family: gfeeds-reader-serif;
-        src:local('{serif_font} Bold');
-        font-weight: bold;
-        font-style: normal;
-        font-display: block;
-    }}
-
-    @font-face {{
-        font-family: gfeeds-reader-serif;
-        src:local('{serif_font} Bold Italic');
-        font-weight: bold;
-        font-style: italic;
-        font-display: block;
-    }}
-
-    @font-face {{
-        font-family: gfeeds-reader-sans;
-        src: local('{sans_font}');
-        font-weight: normal;
-        font-style: normal;
-        font-display: block;
-    }}
-
-    @font-face {{
-        font-family: gfeeds-reader-sans;
-        src: local('{sans_font} Italic');
-        font-weight: normal;
-        font-style: italic;
-        font-display: block;
-    }}
-
-    @font-face {{
-        font-family: gfeeds-reader-sans;
-        src: local('{sans_font} Bold');
-        font-weight: bold;
-        font-style: normal;
-        font-display: block;
-    }}
-
-    @font-face {{
-        font-family: gfeeds-reader-sans;
-        src: local('{sans_font} Bold Italic');
-        font-weight: bold;
-        font-style: italic;
-        font-display: block;
-    }}
-
-    @font-face {{
-        font-family: gfeeds-reader-mono;
-        src: local('{mono_font}');
-        font-weight: normal;
-        font-style: normal;
-        font-display: block;
-    }}
-
-    @font-face {{
-        font-family: gfeeds-reader-mono;
-        src: local('{mono_font} Italic');
-        font-weight: normal;
-        font-style: italic;
-        font-display: block;
-    }}
-
-    @font-face {{
-        font-family: gfeeds-reader-mono;
-        src: local('{mono_font} Bold');
-        font-weight: bold;
-        font-style: normal;
-        font-display: block;
-    }}
-
-    @font-face {{
-        font-family: gfeeds-reader-mono;
-        src: local('{mono_font} Bold Italic');
-        font-weight: bold;
-        font-style: italic;
-        font-display: block;
-    }}''' + Gio.resources_lookup_data(
+    css = ''
+    for typ, var in zip(
+            ('sans',   'serif',     'mono'),
+            (sans_font, serif_font, mono_font)
+    ):
+        for variant, weight, style in zip(
+                ('',       ' Italic', ' Bold',  ' Bold Italic'),
+                ('normal', 'normal',  'bold',   'bold'),
+                ('normal', 'italic',  'normal', 'italic')
+        ):
+            css += f'''
+            @font-face {{
+                font-family: gfeeds-reader-{typ};
+                src: local('{var}{variant}');
+                font-weight: {weight};
+                font-style: {style};
+                font-display: block;
+            }}'''
+    css += Gio.resources_lookup_data(
         '/org/gabmus/gfeeds/ui/reader_mode_style.css',
         Gio.ResourceLookupFlags.NONE
     ).get_data().decode()
+    return css
