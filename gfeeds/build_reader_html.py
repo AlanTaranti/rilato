@@ -109,7 +109,7 @@ def build_reader_html(og_html, dark_mode: bool = False, sd_item=None) -> str:
             </style>
             <title>{doc.short_title() or sd_item.title}</title>
         </head>
-        <body {'class="dark"' if dark_mode else ''}>
+        <body {'class="dark"' if dark_mode else ''} dir=auto>
             <article>
                 <h1>{doc.short_title() or sd_item.title}</h1>
                 {
