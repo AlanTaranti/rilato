@@ -4,10 +4,12 @@ from gi.repository import Gio, Gtk
 settings = Gtk.Settings.get_default()
 confman = ConfManager()
 
+
 def get_gtk_font():
     ss = settings.get_property('gtk-font-name').split(' ')
     ss.pop(-1)
     return ' '.join(ss).strip()
+
 
 def get_css():
     gtk_font = get_gtk_font()

@@ -311,6 +311,7 @@ class PreferencesFontChooserRow(MActionRow):
         if self.signal:
             self.confman.emit(self.signal, '')
 
+
 class MPreferencesGroup(Adw.PreferencesGroup):
     def __init__(
             self, title: str,
