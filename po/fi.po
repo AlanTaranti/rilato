@@ -1,46 +1,46 @@
-# Ukrainian translation for gfeeds.
+# Finnish translation for gfeeds.
 # Copyright (C) 2021 gfeeds's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gfeeds package.
+# Jiri Grönroos <jiri.gronroos@iki.fi>, 2021.
 #
-# Yuri Chornoivan <yurchor@ukr.net>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: gfeeds master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/gfeeds/issues\n"
-"POT-Creation-Date: 2021-12-08 12:54+0000\n"
-"PO-Revision-Date: 2021-12-09 23:45+0200\n"
-"Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
-"Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
-"Language: uk\n"
+"POT-Creation-Date: 2021-12-08 14:44+0000\n"
+"PO-Revision-Date: 2021-12-09 12:24+0200\n"
+"Language-Team: Finnish <lokalisointi-lista@googlegroups.com>\n"
+"Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Lokalize 20.12.0\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Last-Translator: Jiri Grönroos <jiri.gronroos+l10n@iki.fi>\n"
+"X-Generator: Poedit 3.0\n"
 
 #: data/org.gabmus.gfeeds.appdata.xml.in:4
 msgid "Feeds"
-msgstr "Стрічки"
+msgstr "Syötteet"
 
 #: data/org.gabmus.gfeeds.appdata.xml.in:6 data/org.gabmus.gfeeds.desktop.in:7
 msgid "News reader for GNOME"
-msgstr "Програма для читання новин у GNOME"
+msgstr "Uutislukija Gnomelle"
 
 #: data/org.gabmus.gfeeds.appdata.xml.in:15
 msgid ""
 "Feeds is a minimal RSS/Atom feed reader built with speed and simplicity in "
 "mind."
 msgstr ""
-"«Стрічки» — мінімалістична програма для читання стрічок новин RSS/Atom. "
-"Акцент зроблено на швидкість і простоту."
+"Syötteet on minimaalinen RSS-/Atom-syötteenlukija, jota rakentaessa on "
+"keskitytty nopeuteen ja yksinkertaisuuteen."
 
 #: data/org.gabmus.gfeeds.appdata.xml.in:16
 msgid ""
 "It offers a simple user interface that only shows the latest news from your "
 "subscriptions."
 msgstr ""
-"Програма пропонує вам скористатися простим інтерфейсом користувача, у якому "
-"показано лише найсвіжіші новини з ваших підписок."
+"Se sisältää yksinkertaisen käyttöliittymän, joka näyttää uusimmat uutiset "
+"tilauksistasi."
 
 #: data/org.gabmus.gfeeds.appdata.xml.in:17
 msgid ""
@@ -48,378 +48,367 @@ msgid ""
 "faster and less intrusive user experience. There's also a reader mode "
 "included, built from the one GNOME Web/Epiphany uses."
 msgstr ""
-"Типово, статті показано на вебпанелі із вимкненим javascript для "
-"пришвидшення та меншого втручання у дії користувача. Також реалізовано режим "
-"читача, який побудовано на основі того, що використовується у «Тенетах "
-"GNOME»/Epiphany."
+"Artikkelit näytetään oletusarvoisesti web-näkymässä, JavaScript poistettuna "
+"käytöstä, jotta käyttökokemus on nopea ja häiriötön. Lisäksi tarjolla on "
+"vaihtoehtoinen lukunäkymä."
 
 #: data/org.gabmus.gfeeds.appdata.xml.in:18
 msgid "Feeds can be imported and exported via OPML."
-msgstr "Стрічки можна імпортувати або експортувати у форматі OPML."
+msgstr "Syötteitä on mahdollista tuoda ja viedä käyttäen OPML:ää."
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gabmus.gfeeds.desktop.in:16
 msgid "rss;reader;feed;news;"
-msgstr "rss;reader;feed;news;рсс;читання;стрічка;подача;новини;"
+msgstr "rss;reader;feed;news;syötteet;lukija;uutiset;"
 
 #: data/ui/extra_popover_menu.ui:19
 msgid "Web View"
-msgstr "Вебпанель"
+msgstr "Web-näkymä"
 
 #: data/ui/extra_popover_menu.ui:26
 msgid "Reader Mode"
-msgstr "Режим читача"
+msgstr "Lukunäkymä"
 
 #: data/ui/extra_popover_menu.ui:33
 msgid "RSS Content"
-msgstr "Вміст RSS"
+msgstr "RSS-sisältö"
 
 #: gfeeds/base_preferences.py:106
 msgid "Choose a folder"
-msgstr "Виберіть теку"
+msgstr "Valitse kansio"
 
 #: gfeeds/confirm_add_dialog.py:16
 msgid "Do you want to import these feeds?"
-msgstr "Хочете імпортувати ці стрічки?"
+msgstr "Haluatko tuoda nämä syötteet?"
 
 #: gfeeds/confirm_add_dialog.py:17
 msgid "Do you want to import this feed?"
-msgstr "Хочете імпортувати цю стрічку?"
+msgstr "Haluatko tuoda tämän syötteen?"
 
 #: gfeeds/download_manager.py:79
 #, python-brace-format
 msgid "`{0}`: connection timed out"
-msgstr "`{0}`: перевищено час очікування відповіді у з'єднанні"
+msgstr "`{0}`: yhteys aikakatkaistiin"
 
 #: gfeeds/download_manager.py:83
 #, python-brace-format
 msgid "`{0}` might not be a valid address"
-msgstr "«{0}», ймовірно, не є коректною адресою"
+msgstr "`{0}` ei ole välttämättä kelvollinen osoite"
 
 #: gfeeds/download_manager.py:108
 #, python-brace-format
 msgid "Error downloading `{0}`, code `{1}`"
-msgstr "Помилка під час отримання «{0}», код «{1}»"
+msgstr "Virhe ladatessa `{0}`, koodi `{1}`"
 
 #: gfeeds/feeds_manager.py:83
 #, python-brace-format
 msgid "Feed {0} exists already, skipping"
-msgstr "Запис стрічки {0} вже існує, пропускаємо"
+msgstr "Syöte {0} on jo olemassa, ohitetaan"
 
 #: gfeeds/feeds_view.py:18
 msgid "All feeds"
-msgstr "Всі подачі"
+msgstr "Kaikki syötteet"
 
 #: gfeeds/get_favicon.py:45
 #, python-brace-format
 msgid "Error downloading favicon for `{0}`"
-msgstr "Помилка під час завантаження піктограми для «{0}»"
+msgstr "Virhe ladatessa favicon-kuvaketta kohteelle `{0}`"
 
 #: gfeeds/headerbar.py:171
 msgid ""
 "There were problems with some feeds.\n"
 "Do you want to remove them?"
 msgstr ""
-"З деякими стрічками виникли проблеми.\n"
-"Хочете вилучити їх?"
+"Joidenkin syötteiden kohdalla ilmeni virheitä.\n"
+"Haluatko poistaa ne?"
 
 #: gfeeds/main_leaflet.py:119
 #, python-brace-format
 msgid "{0} new article"
 msgid_plural "{0} new articles"
-msgstr[0] "{0} нова стаття"
-msgstr[1] "{0} нові статті"
-msgstr[2] "{0} нових статей"
-msgstr[3] "{0} нова стаття"
+msgstr[0] "{0} uusi artikkeli"
+msgstr[1] "{0} uutta artikkelia"
 
 #: gfeeds/__main__.py:241
 msgid "url"
-msgstr "адреса"
+msgstr "url"
 
 #: gfeeds/__main__.py:244
 msgid "opml file local url or rss remote url to import"
-msgstr ""
-"локальна адреса файла opml або віддалена адреса rss для імпортування даних"
+msgstr "opml-tiedoston paikallinen osoite tai rss-etäosoite tuotavaksi"
 
 #: gfeeds/manage_feeds_window.py:247
 msgid "Do you want to delete these feeds?"
-msgstr "Хочете вилучити ці стрічки?"
+msgstr "Haluatko poistaa nämä syötteet?"
 
 #: gfeeds/manage_feeds_window.py:299
 msgid "Manage Feeds"
-msgstr "Керування стрічками"
+msgstr "Hallitse syötteitä"
 
 #: gfeeds/opml_file_chooser.py:7
 msgid "XML files"
-msgstr "файли XML"
+msgstr "XML-tiedostot"
 
 #: gfeeds/opml_file_chooser.py:14
 msgid "Choose an OPML file to import"
-msgstr "Виберіть файл OPML для імпортування"
+msgstr "Valitse tuotava OPML-tiedosto"
 
 #: gfeeds/opml_file_chooser.py:18
 msgid "Open"
-msgstr "Відкрити"
+msgstr "Avaa"
 
 #: gfeeds/opml_file_chooser.py:19 gfeeds/opml_file_chooser.py:31
 msgid "Cancel"
-msgstr "Скасувати"
+msgstr "Peru"
 
 #: gfeeds/opml_file_chooser.py:26
 msgid "Choose where to save the exported OPML file"
-msgstr "Виберіть місце зберігання експортованого файла OPML"
+msgstr "Valitse mihin vietävä OPML-tiedosto tallennetaan"
 
 #: gfeeds/opml_file_chooser.py:30
 msgid "Save"
-msgstr "Зберегти"
+msgstr "Tallenna"
 
 #: gfeeds/opml_manager.py:44
 msgid "Error: OPML path provided does not exist"
-msgstr "Помилка: вказаного шляху до OPML не існує"
+msgstr "Virhe: Määritettyä OPML-polkua ei ole olemassa"
 
 #: gfeeds/opml_manager.py:55
 #, python-brace-format
 msgid "Error parsing OPML file `{0}`"
-msgstr "Помилка під час обробки файла OPML «{0}»"
+msgstr "Virhe jäsentäessä OPML-tiedostoa `{0}`"
 
 #: gfeeds/preferences_window.py:22
 msgid "General"
-msgstr "Загальне"
+msgstr "Yleiset"
 
 #: gfeeds/preferences_window.py:25
 msgid "General preferences"
-msgstr "Загальні параметри"
+msgstr "Yleiset asetukset"
 
 #: gfeeds/preferences_window.py:27
 msgid "Show newer articles first"
-msgstr "Показати спочатку новіші статті"
+msgstr "Näytä uusimmat artikkelit ensin"
 
 #: gfeeds/preferences_window.py:32
 msgid "Open links in your browser"
-msgstr "Відкривати посилання у вашому браузері"
+msgstr "Avaa linkit selaimessa"
 
 #: gfeeds/preferences_window.py:36
 msgid "Use external video player for YouTube"
-msgstr "Зовнішній відеопрогравач для YouTube"
+msgstr "Käytä erillistä videosoitinta YouTube-katseluun"
 
 #: gfeeds/preferences_window.py:38
 msgid "Requires youtube-dl and a compatible video player"
-msgstr "Потребує youtube-dl і сумісного відеопрогравача"
+msgstr "Vaatii youtube-dl:n ja yhteensopivan videosoittimen"
 
 #: gfeeds/preferences_window.py:44
 msgid "Preferred video player"
-msgstr "Бажаний відеопрогравач"
+msgstr "Ensisijainen videosoitin"
 
 #: gfeeds/preferences_window.py:48
 msgid "Maximum article age"
-msgstr "Максимальний вік статей"
+msgstr "Artikkelin enimmäisikä"
 
 #: gfeeds/preferences_window.py:49
 msgid "In days"
-msgstr "За днями"
+msgstr "Päivissä"
 
 #: gfeeds/preferences_window.py:56
 msgid "Refresh preferences"
-msgstr "Оновити налаштування"
+msgstr "Päivityksen asetukset"
 
 #: gfeeds/preferences_window.py:58
 msgid "Refresh articles on startup"
-msgstr "Оновлювати статті під час запуску"
+msgstr "Päivitä artikkelit käynnistyksen yhteydessä"
 
 #: gfeeds/preferences_window.py:62
 msgid "New articles notification"
-msgstr "Сповіщення щодо нових статей"
+msgstr "Uusien artikkelien ilmoitus"
 
 #: gfeeds/preferences_window.py:66
 msgid "Enable auto-refresh"
-msgstr "Увімкнути автооновлення"
+msgstr "Käytä automaattista päivitystä"
 
 #: gfeeds/preferences_window.py:70
 msgid "Auto-refresh interval"
-msgstr "Інтервал автооновлення"
+msgstr "Automaattisen päivityksen väli"
 
 #: gfeeds/preferences_window.py:71
 msgid "In seconds"
-msgstr "У секундах"
+msgstr "Sekunneissa"
 
 #: gfeeds/preferences_window.py:78
 msgid "Cache"
-msgstr "Кеш"
+msgstr "Välimuisti"
 
 #: gfeeds/preferences_window.py:80
 msgid "Clear caches"
-msgstr "Очистити кеш"
+msgstr "Tyhjennä välimuistit"
 
 #: gfeeds/preferences_window.py:81
 msgid "Clear"
-msgstr "Очистити"
+msgstr "Tyhjennä"
 
 #: gfeeds/preferences_window.py:109
 msgid "Appearance"
-msgstr "Вигляд"
+msgstr "Ulkoasu"
 
 #: gfeeds/preferences_window.py:112
 msgid "Appearance preferences"
-msgstr "Параметри вигляду"
+msgstr "Ulkoasun asetukset"
 
 #: gfeeds/preferences_window.py:114
 msgid "Dark mode"
-msgstr "Темний режим"
+msgstr "Tumma tila"
 
 #: gfeeds/preferences_window.py:118
 msgid "Use dark theme for reader mode"
-msgstr "Темна тема для режиму читача"
+msgstr "Käytä tummaa teemaa lukunäkymässä"
 
 #: gfeeds/preferences_window.py:122
 msgid "Show article thumbnails"
-msgstr "Показувати мініатюри статей"
+msgstr "Näytä artikkelin pienoiskuvat"
 
 #: gfeeds/preferences_window.py:127
 msgid "Maximum thumbnail height"
-msgstr "Максимальна висота мініатюри"
+msgstr "Pienoiskuvan suurin korkeus"
 
 #: gfeeds/preferences_window.py:133
 msgid "Show full articles titles"
-msgstr "Показувати заголовки статей повністю"
+msgstr "Näytä artikkelien otsikot kokonaan"
 
 #: gfeeds/preferences_window.py:138
 msgid "Show full feeds names"
-msgstr "Показувати назви стрічок повністю"
+msgstr "Näytä syötteiden nimet kokonaan"
 
 #: gfeeds/preferences_window.py:145
-#| msgid "General preferences"
 msgid "Font preferences"
-msgstr "Налаштування шрифтів"
+msgstr "Fonttiasetukset"
 
 #: gfeeds/preferences_window.py:147
 msgid "Use system font for titles"
-msgstr ""
-"Використати для заголовків загальносистемний шрифт"
+msgstr "Käytä järjestelmän fonttia otsikoille"
 
 #: gfeeds/preferences_window.py:151
 msgid "Use system font for paragraphs"
-msgstr ""
-"Використати для абзаців загальносистемний шрифт"
+msgstr "Käytä järjestelmän fonttia kappaleille"
 
 #: gfeeds/preferences_window.py:155
 msgid "Custom title font"
-msgstr ""
-"Нетиповий шрифт заголовків"
+msgstr "Mukautettu otsikkofontti"
 
 #: gfeeds/preferences_window.py:159
 msgid "Custom paragraph font"
-msgstr ""
-"Нетиповий шрифт абзаців"
+msgstr "Mukautettu kappalefontti"
 
 #: gfeeds/preferences_window.py:163
 msgid "Custom monospace font"
-msgstr ""
-"Нетиповий моноширинний шрифт"
+msgstr "Mukautettu tasalevyinen fontti"
 
 #: gfeeds/preferences_window.py:175
 msgid "Privacy"
-msgstr "Конфіденційність"
+msgstr "Yksityisyys"
 
 #: gfeeds/preferences_window.py:178
 msgid "Privacy preferences"
-msgstr "Параметри конфіденційності"
+msgstr "Yksityisyyden asetukset"
 
 #: gfeeds/preferences_window.py:180
 msgid "Enable JavaScript"
-msgstr "Увімкнути JavaScript"
+msgstr "Käytä JavaScriptiä"
 
 #: gfeeds/preferences_window.py:185
 msgid "Try to block advertisements"
-msgstr "Намагатися блокувати рекламу"
+msgstr "Yritä estää mainokset"
 
 #: gfeeds/preferences_window.py:187 gfeeds/preferences_window.py:222
 msgid "Requires app restart"
-msgstr "Потребує перезапуску програми"
+msgstr "Vaatii sovelluksen käynnistämisen uudelleen"
 
 #: gfeeds/preferences_window.py:191
 msgid "Update advertisement blocking list"
-msgstr "Оновити список блокування реклами"
+msgstr "Päivitä mainosestolista"
 
 #: gfeeds/preferences_window.py:192
 msgid "Updates automatically every 10 days"
-msgstr "Автоматично оновлюється кожні 10 днів"
+msgstr "Päivittyy automaattisesti 10 päivän välein"
 
 #: gfeeds/preferences_window.py:193
 msgid "Update"
-msgstr "Оновити"
+msgstr "Päivitä"
 
 #: gfeeds/preferences_window.py:206
 msgid "Advanced"
-msgstr "Додатково"
+msgstr "Lisäasetukset"
 
 #: gfeeds/preferences_window.py:209
 msgid "Advanced preferences"
-msgstr "Додаткові налаштування"
+msgstr "Edistyneet asetukset"
 
 #: gfeeds/preferences_window.py:211
 msgid "Maximum refresh threads"
-msgstr "Максимальна кількість потоків оновлення"
+msgstr "Säikeiden enimmäismäärä päivityksessä"
 
 #: gfeeds/preferences_window.py:213
 msgid "How many threads to use for feeds refresh"
-msgstr ""
-"Кількість потоків обробки, яку можна використовувати для оновлення стрічок"
+msgstr "Kuinka montaa säiettä syötteiden päivittämiseen käytetään"
 
 #: gfeeds/preferences_window.py:220
 msgid "Experimental GtkListView for articles list"
-msgstr "Експериментальний GtkListView для списку статей"
+msgstr "Kokeellinen GtkListView artikkeliluettelolle"
 
 #: gfeeds/rss_parser.py:54
 #, python-brace-format
 msgid "Error: unable to parse datetime {0} for feeditem {1}"
-msgstr "Помилка: не вдалося обробити позначку часу {0} для запису стрічки {1}"
+msgstr "Virhe: ei voitu jäsentää datetimea {0} syötekohteelle {1}"
 
 #: gfeeds/rss_parser.py:101
 #, python-brace-format
 msgid "Errors while parsing feed `{0}`"
-msgstr "Помилки під час обробки стрічки «{0}»"
+msgstr "Virheitä jäsentäessä syötettä `{0}`"
 
 #: gfeeds/rss_parser.py:131
 #, python-brace-format
 msgid "`{0}` may not be an RSS or Atom feed"
-msgstr "«{0}», можливо, не є стрічкою RSS або Atom"
+msgstr "`{0}` ei välttämättä ole RSS- tai Atom-syöte"
 
 #: gfeeds/sidebar.py:21
 msgid "Loading feeds..."
-msgstr "Завантажуємо стрічки…"
+msgstr "Ladataan syötteitä..."
 
 #: gfeeds/sidebar_row_popover.py:31 gfeeds/sidebar_row_popover.py:58
 msgid "Mark as unread"
-msgstr "Позначити як непрочитане"
+msgstr "Merkitse lukemattomaksi"
 
 #: gfeeds/sidebar_row_popover.py:38 gfeeds/sidebar_row_popover.py:50
 msgid "Mark as read"
-msgstr "Позначити як прочитане"
+msgstr "Merkitse luetuksi"
 
 #: gfeeds/suggestion_bar.py:37
 msgid "There are some errors"
-msgstr "Сталися якісь помилки"
+msgstr "Joitain virheitä ilmeni"
 
 #: gfeeds/suggestion_bar.py:46
 msgid "Show"
-msgstr "Показати"
+msgstr "Näytä"
 
 #: gfeeds/suggestion_bar.py:47
 msgid "Ignore"
-msgstr "Ігнорувати"
+msgstr "Ohita"
 
 #: gfeeds/suggestion_bar.py:70
 msgid "There were problems with some feeds. Do you want to remove them?"
-msgstr "З деякими стрічками виникли проблеми. Хочете вилучити їх?"
+msgstr "Joidenkin syötteiden kanssa ilmeni ongelmia. Haluatko poistaa ne?"
 
 #: gfeeds/suggestion_bar.py:97
 msgid "You are offline"
-msgstr "Ви поза мережею"
+msgstr "Et ole yhteydessä verkkoon"
 
 #: gfeeds/webview.py:175
 msgid "Link copied to clipboard!"
-msgstr "Посилання скопійовано до буфера обміну!"
+msgstr "Linkki kopioitu leikepöydälle!"
 
 #: gfeeds/webview.py:197
 msgid "RSS content not available for this article"
-msgstr "Для цієї статті дані RSS не доступні"
+msgstr "RSS-sisältö tälle artikkelille ei ole saatavilla"

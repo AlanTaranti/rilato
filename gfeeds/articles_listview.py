@@ -191,6 +191,7 @@ class ArticlesListView(CommonListScrolledWin):
         self.selection = Gtk.SingleSelection.new(self.articles_store)
         self.selection.set_autoselect(False)
         self.list_view = Gtk.ListView.new(self.selection, self.factory)
+        self.list_view.set_vscroll_policy(Gtk.ScrollablePolicy.NATURAL)
 
         self.list_view.get_style_context().add_class('navigation-sidebar')
         self.set_child(self.list_view)

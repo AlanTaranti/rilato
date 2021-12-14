@@ -9,7 +9,7 @@ class PictureView(Gtk.Widget):
         super().__init__(
             overflow=Gtk.Overflow.HIDDEN, vexpand=True,
             hexpand=True,
-            valign=Gtk.Align.CENTER
+            # valign=Gtk.Align.CENTER
         )
         for c in ('frame', 'picture-rounded'):
             self.get_style_context().add_class(c)
@@ -60,16 +60,18 @@ class PictureView(Gtk.Widget):
         )
 
     def do_measure(self, orientation, for_size):
-        if not self.texture:
-            return (0, 1200, -1, -1)
         if orientation == Gtk.Orientation.VERTICAL:  # get height
             if for_size == -1:
-                return (1200, 1200, -1, -1)
+                return (0, 0, -1, -1)
+            if not self.texture:
+                return (0, 0, -1, -1)
             cw, ch = self.texture.compute_concrete_size(
                 for_size, 0, 1200, 1200
             )
             # nat = max(self.confman.conf['max_picture_height'], 100)
-            ch = min(ceil(ch), 1200)
-            return (ch, 1200, -1, -1)
+            ch = max(min(ceil(ch), 1200), 1)
+            return (0, ch, -1, -1)
         else:  # get width
+            if for_size == -1:
+                return (0, 1200, -1, -1)
             return (0, 1200, -1, -1)
