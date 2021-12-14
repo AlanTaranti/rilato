@@ -7,6 +7,15 @@ from gfeeds.confManager import ConfManager
 class EmptyState(Adw.Bin):
     __gtype_name__ = 'EmptyState'
 
+    def __init__(self):
+        super().__init__()
+        # TODO: hack workaround for:
+        # https://gitlab.gnome.org/GNOME/libadwaita/-/issues/360
+        # remove when fixed
+        self.get_child(
+        ).get_first_child().get_child().get_child().get_first_child(
+        ).set_tightening_threshold(0)
+
 
 class StackWithEmptyState(Gtk.Stack):
     def __init__(self, main_widget):
