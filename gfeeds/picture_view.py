@@ -41,6 +41,11 @@ class PictureView(Gtk.Widget):
         def cb():
             if self.texture is None:
                 return
+            # 270 is the pic natural width with leaflet unfolded
+            cw, ch = self.texture.compute_concrete_size(
+                270, 0, 1200, 1200
+            )
+            self.set_size_request(-1, ceil(ch))
             self.queue_draw()
             self.queue_resize()
 

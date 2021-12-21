@@ -3,7 +3,7 @@ from threading import Thread
 from gi.repository import Gtk, GLib, WebKit2, GObject, Gio, Adw
 from gfeeds.build_reader_html import build_reader_html
 from gfeeds.confManager import ConfManager
-from gfeeds.download_manager import download_text
+from gfeeds.download_manager import DownloadError, download_text
 from functools import reduce
 from operator import or_
 from subprocess import Popen
@@ -202,7 +202,13 @@ class GFeedsWebView(Gtk.Stack):
         self.load_reader()
 
     def _load_reader_async(self, callback=None, *args):
-        self.html = download_text(self.uri)
+        try:
+            self.html = download_text(self.uri)
+        except DownloadError as err:
+            self.html = (
+                f'<h1>{_("Error downloading content.")}</h1>'
+                f'<h3>{_("Error code:")} {err.download_error_code}</h3>'
+            )
         if callback:
             GLib.idle_add(callback)
 

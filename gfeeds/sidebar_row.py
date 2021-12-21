@@ -131,6 +131,8 @@ class SidebarRow(Gtk.Box):
             dest = None
             if self.feed_item.link in self.confman.article_thumb_cache.keys():
                 dest = self.confman.article_thumb_cache[self.feed_item.link]
+                if not isfile(dest):
+                    download_raw(self.feed_item.image_url, dest)
                 GLib.idle_add(cb, dest if dest and isfile(dest) else None)
                 return
             else:

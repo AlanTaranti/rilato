@@ -17,6 +17,11 @@ GET_HEADERS = {
 TIMEOUT = 30
 
 
+class DownloadError(Exception):
+    def __init__(self, code, *args):
+        self.download_error_code = code
+
+
 # will return the content of a file if it's a file url
 def download_text(link: str) -> str:
     if link[:8] == 'file:///':
@@ -28,8 +33,9 @@ def download_text(link: str) -> str:
         res.encoding = 'utf-8'
         return res.text  # TODO: this can break weird encodings!
     else:
-        print(f'response code {res.status_code}')
-        raise requests.HTTPError(f'response code {res.status_code}')
+        raise DownloadError(
+            res.status_code, f'response code {res.status_code}'
+        )
 
 
 def download_raw(link: str, dest: str) -> None:

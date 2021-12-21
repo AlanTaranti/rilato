@@ -152,8 +152,6 @@ class FeedsManager(metaclass=Singleton):
         is_online(cb)
 
     def continue_refresh(self, get_cached):
-        # self.feeds.empty()
-        # self.feeds_items.empty()
         self.trim_feeds_items_by_age()
         tp = ThreadPool(
             self.confman.conf['max_refresh_threads'],
