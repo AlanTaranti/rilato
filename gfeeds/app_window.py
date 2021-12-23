@@ -18,14 +18,18 @@ class GFeedsAppWindow(BaseWindow):
             icon_name='org.gabmus.gfeeds',
             shortcuts=[
                 AppShortcut(
-                    'F10', lambda *args: self.left_headerbar.menu_btn.popup()
+                    'F10', lambda *args:
+                        self.leaflet.left_headerbar.menu_btn.popup()
                 ),
                 AppShortcut(
                     '<Control>r', self.feedman.refresh
                 ),
                 AppShortcut(
                     '<Control>f', lambda *args:
-                        self.left_headerbar.search_btn.set_active(True)
+                        self.leaflet.left_headerbar.search_btn.set_active(
+                            not
+                            self.leaflet.left_headerbar.search_btn.get_active()
+                        )
                 ),
                 AppShortcut(
                     '<Control>j', self.leaflet.sidebar.select_next_article
