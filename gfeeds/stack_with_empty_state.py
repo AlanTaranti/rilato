@@ -9,12 +9,14 @@ class EmptyState(Adw.Bin):
 
     def __init__(self):
         super().__init__()
-        # TODO: hack workaround for:
+        # done: hack workaround for:
         # https://gitlab.gnome.org/GNOME/libadwaita/-/issues/360
         # remove when fixed
-        self.get_child(
-        ).get_first_child().get_child().get_child().get_first_child(
-        ).set_tightening_threshold(0)
+        # self.get_child(
+        # ).get_first_child().get_child().get_child().get_first_child(
+        # ).set_tightening_threshold(0)
+        # error inducing patch reverted, keeping it around if it comes back
+        # in the future
 
 
 class StackWithEmptyState(Gtk.Stack):
