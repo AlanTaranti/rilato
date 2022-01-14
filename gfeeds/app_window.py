@@ -74,10 +74,10 @@ class GFeedsAppWindow(BaseWindow):
             'height': self.get_height()
         }
         # cleanup old read items
-        feeds_items_links = [fi.link for fi in self.feedman.feeds_items]
+        feeds_items_ids = [fi.identifier for fi in self.feedman.feeds_items]
         to_rm = []
         for ri in self.confman.conf['read_items']:
-            if ri not in feeds_items_links:
+            if ri not in feeds_items_ids:
                 to_rm.append(ri)
         for ri in to_rm:
             self.confman.conf['read_items'].remove(ri)

@@ -106,9 +106,9 @@ class FeedsManager(metaclass=Singleton):
                 )
             for fi in n_feed.items:
                 if (
-                        n_feed.rss_link+fi.link+fi.title not in
+                        n_feed.rss_link+fi.identifier not in
                         [
-                            n_feed.rss_link+ofi.link+ofi.title
+                            n_feed.rss_link+ofi.identifier
                             for ofi in self.feeds_items
                         ]
                 ):
@@ -220,9 +220,9 @@ class FeedsManager(metaclass=Singleton):
             else:
                 raise TypeError('delete_feed: targets must be list or Feed')
         for f in targets:
-            identifiers = [fi.link+fi.title for fi in f.items]
+            identifiers = [fi.identifier for fi in f.items]
             for fi in self.feeds_items:
-                if fi.link+fi.title in identifiers:
+                if fi.identifier in identifiers:
                     self.feeds_items.remove(fi)
             for feed in self.feeds:
                 if feed.title+feed.rss_link == f.title+f.rss_link:

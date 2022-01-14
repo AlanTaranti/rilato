@@ -30,10 +30,13 @@ class FeedItem:
         self.sd_item = sd_item
         self.title = self.sd_item.get_title()
         self.link = self.sd_item.get_url()
-        self.read = self.link in self.confman.read_feeds_items
         self.pub_date_str = self.sd_item.get_pub_date()
         self.pub_date = datetime.now(timezone.utc)  # fallback to avoid errors
         self.parent_feed = parent_feed
+
+        # used to identify article for read/unread and thumbs cache
+        self.identifier = self.link or (self.title + self.pub_date_str)
+        self.read = self.identifier in self.confman.read_feeds_items
 
         try:
             self.pub_date = dateparse(self.pub_date_str, tzinfos={
@@ -63,10 +66,10 @@ class FeedItem:
     def set_read(self, read):
         if read == self.read:  # how could this happen?
             return
-        if read and self.link not in self.confman.read_feeds_items:
-            self.confman.read_feeds_items.append(self.link)
-        elif self.link in self.confman.read_feeds_items:
-            self.confman.read_feeds_items.remove(self.link)
+        if read and self.identifier not in self.confman.read_feeds_items:
+            self.confman.read_feeds_items.append(self.identifier)
+        elif self.identifier in self.confman.read_feeds_items:
+            self.confman.read_feeds_items.remove(self.identifier)
         self.read = read
 
     def __repr__(self):
@@ -118,7 +121,7 @@ class Feed:
             if item_age <= self.confman.max_article_age:
                 self.items.append(n_item)
             elif n_item.read:
-                self.confman.read_feeds_items.remove(n_item.link)
+                self.confman.read_feeds_items.remove(n_item.identifier)
 
         if (
                 not self.title and

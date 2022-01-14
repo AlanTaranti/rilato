@@ -122,13 +122,13 @@ class ArticlesListModel(Gtk.SortListModel):
 
     def remove_items(self, to_remove_l):
         num_items = self.list_store.get_n_items()
-        target_links = [fi.link for fi in to_remove_l]
+        target_links = [fi.identifier for fi in to_remove_l]
         for i in range(num_items):
             if len(target_links) <= 0:
                 break
             item = self.list_store.get_item(i)
-            if item and item.feed_item.link in target_links:
-                target_links.remove(item.feed_item.link)
+            if item and item.feed_item.identifier in target_links:
+                target_links.remove(item.feed_item.identifier)
                 self.list_store.remove(i)
 
     def set_search_term(self, term):
