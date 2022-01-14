@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-03 13:15+0100\n"
-"PO-Revision-Date: 2021-12-03 13:19+0100\n"
+"POT-Creation-Date: 2022-01-14 16:45+0100\n"
+"PO-Revision-Date: 2022-01-14 16:47+0100\n"
 "Last-Translator: Gabriele Musco <gabmus@disroot.org>\n"
 "Language-Team: Italian\n"
 "Language: it\n"
@@ -42,17 +42,17 @@ msgstr "Scegli dove salvare il file OPML esportato"
 msgid "Save"
 msgstr "Salva"
 
-#: ../gfeeds/rss_parser.py:54
+#: ../gfeeds/rss_parser.py:57
 #, python-brace-format
 msgid "Error: unable to parse datetime {0} for feeditem {1}"
 msgstr "Errore: impossibile analizzare data e ora {0} per l'articolo {1}"
 
-#: ../gfeeds/rss_parser.py:101
+#: ../gfeeds/rss_parser.py:104
 #, python-brace-format
 msgid "Errors while parsing feed `{0}`"
 msgstr "Errori nell'analisi del feed `{0}`"
 
-#: ../gfeeds/rss_parser.py:131
+#: ../gfeeds/rss_parser.py:134
 #, python-brace-format
 msgid "`{0}` may not be an RSS or Atom feed"
 msgstr "`{0}` potrebbe non essere un feed RSS o Atom"
@@ -79,13 +79,13 @@ msgstr "Errore nel download della favicon per `{0}`"
 msgid "All feeds"
 msgstr "Tutti i feed"
 
-#: ../gfeeds/webview.py:175
+#: ../gfeeds/webview.py:183
 msgid "Link copied to clipboard!"
 msgstr "Link copiato negli appunti!"
 
-#: ../gfeeds/webview.py:197
-msgid "RSS content not available for this article"
-msgstr "Contenuto RSS non disponibile per questo articolo"
+#: ../gfeeds/webview.py:205
+msgid "Feed content not available for this article"
+msgstr "Contenuto del feed non disponibile per questo articolo"
 
 #: ../gfeeds/main_leaflet.py:119
 #, python-brace-format
@@ -94,155 +94,183 @@ msgid_plural "{0} new articles"
 msgstr[0] "{0} nuovo articolo"
 msgstr[1] "{0} nuovi articoli"
 
-#: ../gfeeds/preferences_window.py:21
+#: ../gfeeds/preferences_window.py:22
 msgid "General"
 msgstr "Generale"
 
-#: ../gfeeds/preferences_window.py:24
+#: ../gfeeds/preferences_window.py:25
 msgid "General preferences"
 msgstr "Preferenze generali"
 
-#: ../gfeeds/preferences_window.py:26
+#: ../gfeeds/preferences_window.py:27
 msgid "Show newer articles first"
 msgstr "Mostra nuovi articoli per primi"
 
-#: ../gfeeds/preferences_window.py:31
+#: ../gfeeds/preferences_window.py:32
 msgid "Open links in your browser"
 msgstr "Apri link nel tuo browser"
 
-#: ../gfeeds/preferences_window.py:35
+#: ../gfeeds/preferences_window.py:36
 msgid "Use external video player for YouTube"
 msgstr "Usa un riproduttore video esterno per YouTube"
 
-#: ../gfeeds/preferences_window.py:37
+#: ../gfeeds/preferences_window.py:38
 msgid "Requires youtube-dl and a compatible video player"
 msgstr "Richiede youtube-dl ed un riproduttore video compatibile"
 
-#: ../gfeeds/preferences_window.py:43
+#: ../gfeeds/preferences_window.py:44
 msgid "Preferred video player"
 msgstr "Riproduttore video preferito"
 
-#: ../gfeeds/preferences_window.py:47
+#: ../gfeeds/preferences_window.py:48
 msgid "Maximum article age"
 msgstr "Età massima degli articoli"
 
-#: ../gfeeds/preferences_window.py:48
+#: ../gfeeds/preferences_window.py:49
 msgid "In days"
 msgstr "In giorni"
 
-#: ../gfeeds/preferences_window.py:55
+#: ../gfeeds/preferences_window.py:56
 msgid "Refresh preferences"
 msgstr "Preferenze di aggiornamento"
 
-#: ../gfeeds/preferences_window.py:57
+#: ../gfeeds/preferences_window.py:58
 msgid "Refresh articles on startup"
 msgstr "Aggiorna articoli all'avvio"
 
-#: ../gfeeds/preferences_window.py:61
+#: ../gfeeds/preferences_window.py:62
 msgid "New articles notification"
 msgstr "Notifiche per nuovi articoli"
 
-#: ../gfeeds/preferences_window.py:65
+#: ../gfeeds/preferences_window.py:66
 msgid "Enable auto-refresh"
 msgstr "Attiva ricarica automatica"
 
-#: ../gfeeds/preferences_window.py:69
+#: ../gfeeds/preferences_window.py:70
 msgid "Auto-refresh interval"
 msgstr "Intervallo per la ricarica automatica"
 
-#: ../gfeeds/preferences_window.py:70
+#: ../gfeeds/preferences_window.py:71
 msgid "In seconds"
 msgstr "In secondi"
 
-#: ../gfeeds/preferences_window.py:77
+#: ../gfeeds/preferences_window.py:78
 msgid "Cache"
 msgstr "Cache"
 
-#: ../gfeeds/preferences_window.py:79
+#: ../gfeeds/preferences_window.py:80
 msgid "Clear caches"
 msgstr "Pulisci le cache"
 
-#: ../gfeeds/preferences_window.py:108
+#: ../gfeeds/preferences_window.py:81
+msgid "Clear"
+msgstr "Pulisci"
+
+#: ../gfeeds/preferences_window.py:109
 msgid "Appearance"
 msgstr "Aspetto"
 
-#: ../gfeeds/preferences_window.py:111
+#: ../gfeeds/preferences_window.py:112
 msgid "Appearance preferences"
 msgstr "Preferenze dell'aspetto"
 
-#: ../gfeeds/preferences_window.py:113
+#: ../gfeeds/preferences_window.py:114
 msgid "Dark mode"
 msgstr "Modalità scura"
 
-#: ../gfeeds/preferences_window.py:117
+#: ../gfeeds/preferences_window.py:118
 msgid "Use dark theme for reader mode"
 msgstr "Usa tema scuro per la modalità lettura"
 
-#: ../gfeeds/preferences_window.py:121
+#: ../gfeeds/preferences_window.py:122
 msgid "Show article thumbnails"
 msgstr "Mostra miniature per gli articoli"
 
-#: ../gfeeds/preferences_window.py:126
+#: ../gfeeds/preferences_window.py:127
 msgid "Maximum thumbnail height"
 msgstr "Massima altezza delle miniature"
 
-#: ../gfeeds/preferences_window.py:132
+#: ../gfeeds/preferences_window.py:133
 msgid "Show full articles titles"
 msgstr "Mostra i titoli completi degli articoli"
 
-#: ../gfeeds/preferences_window.py:137
+#: ../gfeeds/preferences_window.py:138
 msgid "Show full feeds names"
 msgstr "Mostra nomi completi dei feed"
 
-#: ../gfeeds/preferences_window.py:150
+#: ../gfeeds/preferences_window.py:145
+msgid "Font preferences"
+msgstr "Preferenze dei caratteri"
+
+#: ../gfeeds/preferences_window.py:147
+msgid "Use system font for titles"
+msgstr "Usa il carattere di sistema per i titoli"
+
+#: ../gfeeds/preferences_window.py:151
+msgid "Use system font for paragraphs"
+msgstr "Usa il carattere di sistema per i paragrafi"
+
+#: ../gfeeds/preferences_window.py:155
+msgid "Custom title font"
+msgstr "Carattere dei titoli personale"
+
+#: ../gfeeds/preferences_window.py:159
+msgid "Custom paragraph font"
+msgstr "Carattere dei paragrafi personale"
+
+#: ../gfeeds/preferences_window.py:163
+msgid "Custom monospace font"
+msgstr "Carattere a spaziatura fissa personale"
+
+#: ../gfeeds/preferences_window.py:175
 msgid "Privacy"
 msgstr "Privacy"
 
-#: ../gfeeds/preferences_window.py:153
+#: ../gfeeds/preferences_window.py:178
 msgid "Privacy preferences"
 msgstr "Preferenze della privacy"
 
-#: ../gfeeds/preferences_window.py:155
+#: ../gfeeds/preferences_window.py:180
 msgid "Enable JavaScript"
 msgstr "Attiva JavaScript"
 
-#: ../gfeeds/preferences_window.py:160
+#: ../gfeeds/preferences_window.py:185
 msgid "Try to block advertisements"
 msgstr "Tenta di bloccare le pubblicità"
 
-#: ../gfeeds/preferences_window.py:162 ../gfeeds/preferences_window.py:197
+#: ../gfeeds/preferences_window.py:187 ../gfeeds/preferences_window.py:222
 msgid "Requires app restart"
 msgstr "Richiede un riavvio dell'app"
 
-#: ../gfeeds/preferences_window.py:166
+#: ../gfeeds/preferences_window.py:191
 msgid "Update advertisement blocking list"
 msgstr "Aggiorna lista di blocco delle pubblicità"
 
-#: ../gfeeds/preferences_window.py:167
+#: ../gfeeds/preferences_window.py:192
 msgid "Updates automatically every 10 days"
 msgstr "Si aggiorna automaticamente ogni 10 giorni"
 
-#: ../gfeeds/preferences_window.py:168
+#: ../gfeeds/preferences_window.py:193
 msgid "Update"
 msgstr "Aggiorna"
 
-#: ../gfeeds/preferences_window.py:181
+#: ../gfeeds/preferences_window.py:206
 msgid "Advanced"
 msgstr "Avanzate"
 
-#: ../gfeeds/preferences_window.py:184
+#: ../gfeeds/preferences_window.py:209
 msgid "Advanced preferences"
 msgstr "Preferenze avanzate"
 
-#: ../gfeeds/preferences_window.py:186
+#: ../gfeeds/preferences_window.py:211
 msgid "Maximum refresh threads"
 msgstr "Massimi thread per aggiornamento"
 
-#: ../gfeeds/preferences_window.py:188
+#: ../gfeeds/preferences_window.py:213
 msgid "How many threads to use for feeds refresh"
 msgstr "Quanti thread usare per aggiornare i feed"
 
-#: ../gfeeds/preferences_window.py:195
+#: ../gfeeds/preferences_window.py:220
 msgid "Experimental GtkListView for articles list"
 msgstr "GtkListView sperimentale per la lista degli articoli"
 
@@ -258,17 +286,17 @@ msgstr "url"
 msgid "opml file local url or rss remote url to import"
 msgstr "url locale del file opml o url rss remota da importare"
 
-#: ../gfeeds/download_manager.py:79
+#: ../gfeeds/download_manager.py:85
 #, python-brace-format
 msgid "`{0}`: connection timed out"
 msgstr "`{0}`: timeout connessione"
 
-#: ../gfeeds/download_manager.py:83
+#: ../gfeeds/download_manager.py:89
 #, python-brace-format
 msgid "`{0}` might not be a valid address"
 msgstr "`{0}` potrebbe non essere un indirizzo valido"
 
-#: ../gfeeds/download_manager.py:108
+#: ../gfeeds/download_manager.py:114
 #, python-brace-format
 msgid "Error downloading `{0}`, code `{1}`"
 msgstr "Errore nel download di `{0}`, codice `{1}`"
@@ -339,8 +367,8 @@ msgid "Reader Mode"
 msgstr "Modalità lettura"
 
 #: ../data/ui/extra_popover_menu.ui:33
-msgid "RSS Content"
-msgstr "Contenuto RSS"
+msgid "Feed Content"
+msgstr "Contenuto del Feed"
 
 #: ../data/ui/shortcutsWindow.blp:11
 msgid "Open Keyboard Shortcuts"
@@ -530,17 +558,13 @@ msgstr ""
 msgid "News reader for GNOME"
 msgstr "Lettore di notizie per GNOME"
 
-#: ../data/org.gabmus.gfeeds.desktop.in:14
+#: ../data/org.gabmus.gfeeds.desktop.in:16
 msgid "rss;reader;feed;news;"
 msgstr "rss;reader;feed;news;lettore;notizie;"
 
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:4
 msgid "Feeds"
 msgstr "Feeds"
-
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:5
-msgid "Gabriele Musco"
-msgstr "Gabriele Musco"
 
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:15
 msgid ""
@@ -955,6 +979,15 @@ msgstr "Aggiunta traduzione italiana"
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:322
 msgid "First release"
 msgstr "Prima release"
+
+#~ msgid "RSS content not available for this article"
+#~ msgstr "Contenuto RSS non disponibile per questo articolo"
+
+#~ msgid "RSS Content"
+#~ msgstr "Contenuto RSS"
+
+#~ msgid "Gabriele Musco"
+#~ msgstr "Gabriele Musco"
 
 #~ msgid "Select/Unselect all"
 #~ msgstr "Seleziona/Deseleziona tutto"
