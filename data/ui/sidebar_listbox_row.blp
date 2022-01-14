@@ -15,7 +15,7 @@ template SidebarRow : Box {
         margin-top: 6; margin-bottom: 6;
         vexpand: true;
         Label title_label {
-            styles ['article-title']
+            styles ['heading']
             wrap: true; wrap-mode: word_char;
             xalign: 0.0;
         }
@@ -26,14 +26,14 @@ template SidebarRow : Box {
         Box {
             spacing: 6;
             Label origin_label {
-                styles ['dim-label', 'smaller-label']
+                styles ['dim-label', 'caption']
                 hexpand: true;
                 wrap: true; wrap-mode: word_char;
                 ellipsize: end;
                 xalign: 0.0;
             }
             [end] Label date_label {
-                styles ['dim-label', 'smaller-label']
+                styles ['dim-label', 'caption']
                 halign: end;
                 justify: right;
                 wrap: true;

@@ -11,8 +11,7 @@ class PictureView(Gtk.Widget):
             hexpand=True,
             # valign=Gtk.Align.CENTER
         )
-        for c in ('frame', 'picture-rounded'):
-            self.get_style_context().add_class(c)
+        self.get_style_context().add_class('card')
         self.confman = ConfManager()
         self.confman.connect(
             'on_max_picture_height_changed',
