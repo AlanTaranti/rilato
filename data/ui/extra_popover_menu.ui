@@ -30,7 +30,7 @@
                   <object class="GtkModelButton" id="mb_rsscont">
                     <property name="action_name">app.view_mode_change</property>
                     <property name="action_target">'rsscont'</property>
-                    <property name="text" translatable="yes">RSS Content</property>
+                    <property name="text" translatable="yes">Feed Content</property>
                   </object>
                 </child>
               </object>

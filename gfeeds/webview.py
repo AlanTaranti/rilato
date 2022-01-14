@@ -202,7 +202,7 @@ class GFeedsWebView(Gtk.Stack):
         content = feeditem.sd_item.get_content()
         if not content:
             content = '<h1><i>'+_(
-                'RSS content not available for this article'
+                'Feed content not available for this article'
                 )+'</i></h1>'
         self.html = '<!-- GFEEDS RSS CONTENT --><article>{0}</article>'.format(
             content if '</' in content else content.replace('\n', '<br>')
