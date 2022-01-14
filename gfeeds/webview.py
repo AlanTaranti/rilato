@@ -8,6 +8,9 @@ from functools import reduce
 from operator import or_
 from subprocess import Popen
 from datetime import datetime
+from typing import Optional
+
+from gfeeds.rss_parser import FeedItem
 
 
 @Gtk.Template(resource_path='/org/gabmus/gfeeds/ui/webview.ui')
@@ -131,6 +134,11 @@ class GFeedsWebView(Gtk.Stack):
 
     def change_view_mode(self, target):
         if target == 'webview':
+            # if uri is empty force rss content
+            if not self.uri:
+                if not self.feeditem:
+                    return
+                return self.load_feeditem(self.feeditem, force_rsscont=True)
             self.webkitview.load_uri(self.uri)
         elif target == 'reader':
             Thread(
@@ -202,6 +210,11 @@ class GFeedsWebView(Gtk.Stack):
         self.load_reader()
 
     def _load_reader_async(self, callback=None, *args):
+        # if uri is empty force rss content
+        if not self.uri:
+            if not self.feeditem:
+                return
+            return self.load_feeditem(self.feeditem, force_rsscont=True)
         try:
             self.html = download_text(self.uri)
         except DownloadError as err:
@@ -212,13 +225,21 @@ class GFeedsWebView(Gtk.Stack):
         if callback:
             GLib.idle_add(callback)
 
-    def load_feeditem(self, feeditem, trigger_on_load_start=True):
+    def load_feeditem(
+            self, feeditem: FeedItem,
+            trigger_on_load_start: Optional[bool] = True,
+            force_rsscont: Optional[bool] = False
+    ):
         self.webkitview.stop_loading()
         uri = feeditem.link
         self.feeditem = feeditem
         self.uri = uri
         self.set_visible_child(self.main_view)
-        if self.confman.conf['default_view'] == 'reader':
+        target = self.confman.conf['default_view']
+        # if uri is empty, fallback to rss content
+        if not uri or force_rsscont:
+            target = 'rsscont'
+        if target == 'reader':
             Thread(
                 target=self._load_reader_async,
                 args=(self.load_reader,),
@@ -226,18 +247,13 @@ class GFeedsWebView(Gtk.Stack):
             ).start()
             if trigger_on_load_start:
                 self.on_load_start()
-        elif self.confman.conf['default_view'] == 'rsscont':
+        elif target == 'rsscont':
             self.on_load_start()
             self.set_enable_rss_content(True, feeditem)
         else:
-            if uri:
-                self.webkitview.load_uri(uri)
-                if trigger_on_load_start:
-                    self.on_load_start()
-            else:
-                # if uri is empty, fallback to rss content
+            self.webkitview.load_uri(uri)
+            if trigger_on_load_start:
                 self.on_load_start()
-                self.set_enable_rss_content(True, feeditem)
 
     def open_externally(self, *args):
         if self.uri:
