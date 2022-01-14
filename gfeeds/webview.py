@@ -230,9 +230,14 @@ class GFeedsWebView(Gtk.Stack):
             self.on_load_start()
             self.set_enable_rss_content(True, feeditem)
         else:
-            self.webkitview.load_uri(uri)
-            if trigger_on_load_start:
+            if uri:
+                self.webkitview.load_uri(uri)
+                if trigger_on_load_start:
+                    self.on_load_start()
+            else:
+                # if uri is empty, fallback to rss content
                 self.on_load_start()
+                self.set_enable_rss_content(True, feeditem)
 
     def open_externally(self, *args):
         if self.uri:
@@ -263,7 +268,8 @@ class GFeedsWebView(Gtk.Stack):
             )
             self.new_page_loaded = False
             resource = webview.get_main_resource()
-            resource.get_data(None, self._get_data_cb, None)
+            if resource:
+                resource.get_data(None, self._get_data_cb, None)
 
     def load_reader(self):
         if not self.feeditem:
