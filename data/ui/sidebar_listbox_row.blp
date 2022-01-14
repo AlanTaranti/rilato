@@ -16,7 +16,7 @@ template SidebarRow : Box {
         vexpand: true;
         Label title_label {
             styles ['article-title']
-            wrap: true;
+            wrap: true; wrap-mode: word_char;
             xalign: 0.0;
         }
         Box picture_view_container {
