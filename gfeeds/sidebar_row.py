@@ -129,8 +129,13 @@ class SidebarRow(Gtk.Box):
             if self.feed_item is None:
                 return
             dest = None
-            if self.feed_item.identifier in self.confman.article_thumb_cache.keys():
-                dest = self.confman.article_thumb_cache[self.feed_item.identifier]
+            if (
+                    self.feed_item.identifier in
+                    self.confman.article_thumb_cache.keys()
+            ):
+                dest = self.confman.article_thumb_cache[
+                    self.feed_item.identifier
+                ]
                 if not isfile(dest):
                     download_raw(self.feed_item.image_url, dest)
                 GLib.idle_add(cb, dest if dest and isfile(dest) else None)
@@ -162,7 +167,9 @@ class SidebarRow(Gtk.Box):
                 GLib.idle_add(cb, dest)
                 return
             else:
-                self.confman.article_thumb_cache[self.feed_item.identifier] = ''
+                self.confman.article_thumb_cache[
+                    self.feed_item.identifier
+                ] = ''
                 self.confman.save_article_thumb_cache()
             GLib.idle_add(cb, None)
 
