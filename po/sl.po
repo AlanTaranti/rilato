@@ -1,0 +1,410 @@
+# Slovenian translation for gfeeds.
+# Copyright (C) 2022 gfeeds's COPYRIGHT HOLDER
+# This file is distributed under the same license as the gfeeds package.
+#
+# Matej Urbančič <mateju@src.gnome.org>, 2022–.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gfeeds master\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/gfeeds/issues\n"
+"POT-Creation-Date: 2022-01-14 19:58+0000\n"
+"PO-Revision-Date: 2022-01-17 21:42+0100\n"
+"Last-Translator: Matej Urbančič <mateju@src.gnome.org>\n"
+"Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
+"Language: sl_SI\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
+"%100==4 ? 3 : 0);\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Generator: Poedit 3.0\n"
+
+#: data/org.gabmus.gfeeds.appdata.xml.in:4
+msgid "Feeds"
+msgstr "Viri"
+
+#: data/org.gabmus.gfeeds.appdata.xml.in:6 data/org.gabmus.gfeeds.desktop.in:7
+msgid "News reader for GNOME"
+msgstr "Bralnik virov za namizje GNOME"
+
+#: data/org.gabmus.gfeeds.appdata.xml.in:15
+msgid ""
+"Feeds is a minimal RSS/Atom feed reader built with speed and simplicity in "
+"mind."
+msgstr ""
+
+#: data/org.gabmus.gfeeds.appdata.xml.in:16
+msgid ""
+"It offers a simple user interface that only shows the latest news from your "
+"subscriptions."
+msgstr ""
+
+#: data/org.gabmus.gfeeds.appdata.xml.in:17
+msgid ""
+"Articles are shown in a web view by default, with javascript disabled for a "
+"faster and less intrusive user experience. There's also a reader mode "
+"included, built from the one GNOME Web/Epiphany uses."
+msgstr ""
+
+#: data/org.gabmus.gfeeds.appdata.xml.in:18
+msgid "Feeds can be imported and exported via OPML."
+msgstr ""
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/org.gabmus.gfeeds.desktop.in:16
+msgid "rss;reader;feed;news;"
+msgstr "rss;reader;feed;news;novice;viri;atom;sporočila;"
+
+#: data/ui/extra_popover_menu.ui:19
+msgid "Web View"
+msgstr "Spletni pogled"
+
+#: data/ui/extra_popover_menu.ui:26
+msgid "Reader Mode"
+msgstr "Bralni način"
+
+#: data/ui/extra_popover_menu.ui:33
+msgid "Feed Content"
+msgstr "Vsebina vira"
+
+#: gfeeds/base_preferences.py:106
+msgid "Choose a folder"
+msgstr "Izbor mape"
+
+#: gfeeds/confirm_add_dialog.py:16
+msgid "Do you want to import these feeds?"
+msgstr ""
+
+#: gfeeds/confirm_add_dialog.py:17
+msgid "Do you want to import this feed?"
+msgstr ""
+
+#: gfeeds/download_manager.py:85
+#, python-brace-format
+msgid "`{0}`: connection timed out"
+msgstr ""
+
+#: gfeeds/download_manager.py:89
+#, python-brace-format
+msgid "`{0}` might not be a valid address"
+msgstr ""
+
+#: gfeeds/download_manager.py:114
+#, python-brace-format
+msgid "Error downloading `{0}`, code `{1}`"
+msgstr ""
+
+#: gfeeds/feeds_manager.py:83
+#, python-brace-format
+msgid "Feed {0} exists already, skipping"
+msgstr ""
+
+#: gfeeds/feeds_view.py:18
+msgid "All feeds"
+msgstr "Vsi viri"
+
+#: gfeeds/get_favicon.py:45
+#, python-brace-format
+msgid "Error downloading favicon for `{0}`"
+msgstr ""
+
+#: gfeeds/headerbar.py:171
+msgid ""
+"There were problems with some feeds.\n"
+"Do you want to remove them?"
+msgstr ""
+
+#: gfeeds/main_leaflet.py:119
+#, python-brace-format
+msgid "{0} new article"
+msgid_plural "{0} new articles"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+
+#: gfeeds/__main__.py:241
+msgid "url"
+msgstr "Naslov URL"
+
+#: gfeeds/__main__.py:244
+msgid "opml file local url or rss remote url to import"
+msgstr ""
+
+#: gfeeds/manage_feeds_window.py:247
+msgid "Do you want to delete these feeds?"
+msgstr ""
+
+#: gfeeds/manage_feeds_window.py:299
+msgid "Manage Feeds"
+msgstr ""
+
+#: gfeeds/opml_file_chooser.py:7
+msgid "XML files"
+msgstr "Datoteke XML"
+
+#: gfeeds/opml_file_chooser.py:14
+msgid "Choose an OPML file to import"
+msgstr ""
+
+#: gfeeds/opml_file_chooser.py:18
+msgid "Open"
+msgstr "Odpri"
+
+#: gfeeds/opml_file_chooser.py:19 gfeeds/opml_file_chooser.py:31
+msgid "Cancel"
+msgstr "Prekliči"
+
+#: gfeeds/opml_file_chooser.py:26
+msgid "Choose where to save the exported OPML file"
+msgstr ""
+
+#: gfeeds/opml_file_chooser.py:30
+msgid "Save"
+msgstr "Shrani"
+
+#: gfeeds/opml_manager.py:44
+msgid "Error: OPML path provided does not exist"
+msgstr ""
+
+#: gfeeds/opml_manager.py:55
+#, python-brace-format
+msgid "Error parsing OPML file `{0}`"
+msgstr ""
+
+#: gfeeds/preferences_window.py:22
+msgid "General"
+msgstr "Splošno"
+
+#: gfeeds/preferences_window.py:25
+msgid "General preferences"
+msgstr ""
+
+#: gfeeds/preferences_window.py:27
+msgid "Show newer articles first"
+msgstr "Najprej pokaži novejše posnetke"
+
+#: gfeeds/preferences_window.py:32
+msgid "Open links in your browser"
+msgstr ""
+
+#: gfeeds/preferences_window.py:36
+msgid "Use external video player for YouTube"
+msgstr ""
+
+#: gfeeds/preferences_window.py:38
+msgid "Requires youtube-dl and a compatible video player"
+msgstr ""
+
+#: gfeeds/preferences_window.py:44
+msgid "Preferred video player"
+msgstr ""
+
+#: gfeeds/preferences_window.py:48
+msgid "Maximum article age"
+msgstr "Največja starost prispevka"
+
+#: gfeeds/preferences_window.py:49
+msgid "In days"
+msgstr ""
+
+#: gfeeds/preferences_window.py:56
+msgid "Refresh preferences"
+msgstr "Osveži lastnosti"
+
+#: gfeeds/preferences_window.py:58
+msgid "Refresh articles on startup"
+msgstr "Ob zagonu osveži prispevke"
+
+#: gfeeds/preferences_window.py:62
+msgid "New articles notification"
+msgstr ""
+
+#: gfeeds/preferences_window.py:66
+msgid "Enable auto-refresh"
+msgstr ""
+
+#: gfeeds/preferences_window.py:70
+msgid "Auto-refresh interval"
+msgstr ""
+
+#: gfeeds/preferences_window.py:71
+msgid "In seconds"
+msgstr ""
+
+#: gfeeds/preferences_window.py:78
+msgid "Cache"
+msgstr "Predpomnilnik"
+
+#: gfeeds/preferences_window.py:80
+msgid "Clear caches"
+msgstr ""
+
+#: gfeeds/preferences_window.py:81
+msgid "Clear"
+msgstr "Počisti"
+
+#: gfeeds/preferences_window.py:109
+msgid "Appearance"
+msgstr "Videz"
+
+#: gfeeds/preferences_window.py:112
+msgid "Appearance preferences"
+msgstr ""
+
+#: gfeeds/preferences_window.py:114
+msgid "Dark mode"
+msgstr "Temna tema"
+
+#: gfeeds/preferences_window.py:118
+msgid "Use dark theme for reader mode"
+msgstr ""
+
+#: gfeeds/preferences_window.py:122
+msgid "Show article thumbnails"
+msgstr ""
+
+#: gfeeds/preferences_window.py:127
+msgid "Maximum thumbnail height"
+msgstr ""
+
+#: gfeeds/preferences_window.py:133
+msgid "Show full articles titles"
+msgstr ""
+
+#: gfeeds/preferences_window.py:138
+msgid "Show full feeds names"
+msgstr ""
+
+#: gfeeds/preferences_window.py:145
+msgid "Font preferences"
+msgstr ""
+
+#: gfeeds/preferences_window.py:147
+msgid "Use system font for titles"
+msgstr ""
+
+#: gfeeds/preferences_window.py:151
+msgid "Use system font for paragraphs"
+msgstr ""
+
+#: gfeeds/preferences_window.py:155
+msgid "Custom title font"
+msgstr ""
+
+#: gfeeds/preferences_window.py:159
+msgid "Custom paragraph font"
+msgstr ""
+
+#: gfeeds/preferences_window.py:163
+msgid "Custom monospace font"
+msgstr "Pisava enotne širine po meri"
+
+#: gfeeds/preferences_window.py:175
+msgid "Privacy"
+msgstr "Zasebnost"
+
+#: gfeeds/preferences_window.py:178
+msgid "Privacy preferences"
+msgstr ""
+
+#: gfeeds/preferences_window.py:180
+msgid "Enable JavaScript"
+msgstr "Omogoči JavaScript"
+
+#: gfeeds/preferences_window.py:185
+msgid "Try to block advertisements"
+msgstr ""
+
+#: gfeeds/preferences_window.py:187 gfeeds/preferences_window.py:222
+msgid "Requires app restart"
+msgstr ""
+
+#: gfeeds/preferences_window.py:191
+msgid "Update advertisement blocking list"
+msgstr ""
+
+#: gfeeds/preferences_window.py:192
+msgid "Updates automatically every 10 days"
+msgstr ""
+
+#: gfeeds/preferences_window.py:193
+msgid "Update"
+msgstr "Posodobi"
+
+#: gfeeds/preferences_window.py:206
+msgid "Advanced"
+msgstr "Napredno"
+
+#: gfeeds/preferences_window.py:209
+msgid "Advanced preferences"
+msgstr ""
+
+#: gfeeds/preferences_window.py:211
+msgid "Maximum refresh threads"
+msgstr ""
+
+#: gfeeds/preferences_window.py:213
+msgid "How many threads to use for feeds refresh"
+msgstr ""
+
+#: gfeeds/preferences_window.py:220
+msgid "Experimental GtkListView for articles list"
+msgstr ""
+
+#: gfeeds/rss_parser.py:57
+#, python-brace-format
+msgid "Error: unable to parse datetime {0} for feeditem {1}"
+msgstr ""
+
+#: gfeeds/rss_parser.py:104
+#, python-brace-format
+msgid "Errors while parsing feed `{0}`"
+msgstr ""
+
+#: gfeeds/rss_parser.py:134
+#, python-brace-format
+msgid "`{0}` may not be an RSS or Atom feed"
+msgstr ""
+
+#: gfeeds/sidebar.py:21
+msgid "Loading feeds..."
+msgstr ""
+
+#: gfeeds/sidebar_row_popover.py:31 gfeeds/sidebar_row_popover.py:58
+msgid "Mark as unread"
+msgstr "Označi kot neprebrano"
+
+#: gfeeds/sidebar_row_popover.py:38 gfeeds/sidebar_row_popover.py:50
+msgid "Mark as read"
+msgstr "Označi kot prebrano"
+
+#: gfeeds/suggestion_bar.py:37
+msgid "There are some errors"
+msgstr ""
+
+#: gfeeds/suggestion_bar.py:46
+msgid "Show"
+msgstr "Pokaži"
+
+#: gfeeds/suggestion_bar.py:47
+msgid "Ignore"
+msgstr "Prezri"
+
+#: gfeeds/suggestion_bar.py:70
+msgid "There were problems with some feeds. Do you want to remove them?"
+msgstr ""
+
+#: gfeeds/suggestion_bar.py:97
+msgid "You are offline"
+msgstr ""
+
+#: gfeeds/webview.py:183
+msgid "Link copied to clipboard!"
+msgstr ""
+
+#: gfeeds/webview.py:205
+msgid "Feed content not available for this article"
+msgstr ""
