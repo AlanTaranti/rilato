@@ -1,23 +1,24 @@
 # Portuguese translations for gfeeds package.
-# Copyright (C) 2021 THE gfeeds'S COPYRIGHT HOLDER
+# Copyright (C) 2022 THE gfeeds'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the gfeeds package.
 # Gleisson Jesuino Joaquim Cardoso <gleissoncg2@gmail.com>, 2019.
 # Rafael Fontenelle <rafaelff@gnome.org>, 2021
+# Matheus Barbosa <mdpb.matheus@gmail.com>, 2022.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gfeeds master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/gfeeds/issues\n"
-"POT-Creation-Date: 2021-12-08 12:54+0000\n"
-"PO-Revision-Date: 2021-12-20 22:37-0300\n"
-"Last-Translator: Rafael Fontenelle <rafaelff@gnome.org>\n"
-"Language-Team: Brazilian Portuguese <gleissoncg2@gmail.com>\n"
+"POT-Creation-Date: 2022-01-23 13:03+0000\n"
+"PO-Revision-Date: 2022-01-25 19:28-0300\n"
+"Last-Translator: Matheus Barbosa <mdpb.matheus@gmail.com>\n"
+"Language-Team: Brazilian Portuguese <gnome-pt_br-list@gnome.org>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 3.0.1\n"
+"Plural-Forms: nplurals=2; plural=(n > 1)\n"
+"X-Generator: Gtranslator 40.0\n"
 
 #: data/org.gabmus.gfeeds.appdata.xml.in:4
 msgid "Feeds"
@@ -72,8 +73,8 @@ msgid "Reader Mode"
 msgstr "Modo de leitura"
 
 #: data/ui/extra_popover_menu.ui:33
-msgid "RSS Content"
-msgstr "Conteúdo RSS"
+msgid "Feed Content"
+msgstr "Conteúdo do feed"
 
 #: gfeeds/base_preferences.py:106
 msgid "Choose a folder"
@@ -87,17 +88,17 @@ msgstr "Deseja importar essas fontes RSS ?"
 msgid "Do you want to import this feed?"
 msgstr "Deseja importar a fonte RSS ?"
 
-#: gfeeds/download_manager.py:79
+#: gfeeds/download_manager.py:85
 #, python-brace-format
 msgid "`{0}`: connection timed out"
 msgstr "`{0}`: tempo de conexão excedido"
 
-#: gfeeds/download_manager.py:83
+#: gfeeds/download_manager.py:89
 #, python-brace-format
 msgid "`{0}` might not be a valid address"
 msgstr "`{0}` pode não ser um endereço válido"
 
-#: gfeeds/download_manager.py:108
+#: gfeeds/download_manager.py:114
 #, python-brace-format
 msgid "Error downloading `{0}`, code `{1}`"
 msgstr "Erro ao baixar `{0}`, código `{1}`"
@@ -360,17 +361,17 @@ msgstr "Quantas threads usar para a atualização de feeds"
 msgid "Experimental GtkListView for articles list"
 msgstr "GtkListView experimental para a lista de artigos"
 
-#: gfeeds/rss_parser.py:54
+#: gfeeds/rss_parser.py:57
 #, python-brace-format
 msgid "Error: unable to parse datetime {0} for feeditem {1}"
 msgstr "Erro: Não é possível analisar a data e hora {0} para o item {1}"
 
-#: gfeeds/rss_parser.py:101
+#: gfeeds/rss_parser.py:104
 #, python-brace-format
 msgid "Errors while parsing feed `{0}`"
 msgstr "Erros ao analisar a fonte RSS `{0}`"
 
-#: gfeeds/rss_parser.py:131
+#: gfeeds/rss_parser.py:134
 #, python-brace-format
 msgid "`{0}` may not be an RSS or Atom feed"
 msgstr "`{0}` pode não ser uma fonte RSS ou Atom"
@@ -407,13 +408,13 @@ msgstr "Ocorreram problemas com alguns feeds. Você quer removê-los?"
 msgid "You are offline"
 msgstr "Você está sem internet"
 
-#: gfeeds/webview.py:175
+#: gfeeds/webview.py:183
 msgid "Link copied to clipboard!"
 msgstr "Copiado para a área de transferência !"
 
-#: gfeeds/webview.py:197
-msgid "RSS content not available for this article"
-msgstr "Conteúdo de RSS não disponível para este artigo"
+#: gfeeds/webview.py:205
+msgid "Feed content not available for this article"
+msgstr "Conteúdo do feed não disponível para este artigo"
 
 #~ msgid "Thumbnail"
 #~ msgstr "Thumbnail"
