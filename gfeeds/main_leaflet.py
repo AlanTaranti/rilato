@@ -1,6 +1,7 @@
 from gettext import ngettext
 from functools import reduce
 from gfeeds.feeds_view import FeedsViewScrolledWindow
+from gfeeds.rss_parser import FeedItem
 from gfeeds.stack_with_empty_state import StackWithEmptyState
 from operator import or_
 from subprocess import Popen
@@ -125,11 +126,10 @@ class MainLeaflet(Adw.Bin):
             ))
             self.get_root().app.send_notification('new_articles', notif)
 
-    def on_sidebar_row_activated(self, feed_item_wrapper):
-        if not feed_item_wrapper:
+    def on_sidebar_row_activated(self, feed_item: FeedItem):
+        if not feed_item:
             return
-        feed_item = feed_item_wrapper.feed_item
-        feed_item.set_read(True)
+        feed_item.read = True
         if (
                 self.confman.conf['open_youtube_externally'] and
                 reduce(or_, [
@@ -156,4 +156,4 @@ class MainLeaflet(Adw.Bin):
         self.leaflet.set_visible_child(self.right_box)
         self.on_leaflet_folded()
         self.sidebar.listview_sw.invalidate_filter()
-        feed_item_wrapper.emit_changed()
+        feed_item.emit('changed', '')

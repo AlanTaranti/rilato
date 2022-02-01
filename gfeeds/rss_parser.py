@@ -1,4 +1,5 @@
 import pytz
+from gi.repository import GObject
 from datetime import datetime, timezone
 from dateutil.parser import parse as dateparse
 from dateutil.tz import gettz
@@ -24,22 +25,28 @@ def get_encoding(in_str):
     return 'utf-8'
 
 
-class FeedItem:
+class FeedItem(GObject.Object):
+    __gsignals__ = {
+        'changed': (
+            GObject.SignalFlags.RUN_FIRST, None, (str,)
+        )
+    }
+
     def __init__(self, sd_item, parent_feed):
         self.confman = ConfManager()
         self.sd_item = sd_item
-        self.title = self.sd_item.get_title()
-        self.link = self.sd_item.get_url()
+        self.__title = self.sd_item.get_title()
+        self.__link = self.sd_item.get_url()
         self.pub_date_str = self.sd_item.get_pub_date()
-        self.pub_date = datetime.now(timezone.utc)  # fallback to avoid errors
+        self.__pub_date = datetime.now(timezone.utc)  # fallback to avoid errors
         self.parent_feed = parent_feed
 
         # used to identify article for read/unread and thumbs cache
         self.identifier = self.link or (self.title + self.pub_date_str)
-        self.read = self.identifier in self.confman.read_feeds_items
+        self.__read = self.identifier in self.confman.read_feeds_items
 
         try:
-            self.pub_date = dateparse(self.pub_date_str, tzinfos={
+            self.__pub_date = dateparse(self.pub_date_str, tzinfos={
                 'UT': gettz('GMT'),
                 'EST': -18000,
                 'EDT': -14400,
@@ -50,8 +57,8 @@ class FeedItem:
                 'PST': -28800,
                 'PDT': -25200
             })
-            if not self.pub_date.tzinfo:
-                self.pub_date = pytz.UTC.localize(self.pub_date)
+            if not self.__pub_date.tzinfo:
+                self.__pub_date = pytz.UTC.localize(self.__pub_date)
         except Exception:
             print(_(
                 'Error: unable to parse datetime {0} for feeditem {1}'
@@ -59,18 +66,39 @@ class FeedItem:
 
         self.image_url = sd_item.get_img_url()
         # sidebar row will try to async get an image from html if above failed
+        super().__init__()
+
+    @GObject.Property(type=str)
+    def title(self) -> str:
+        return self.__title
+
+    @GObject.Property()
+    def pub_date(self) -> datetime:
+        return self.__pub_date
+
+    @GObject.Property(type=str)
+    def link(self) -> str:
+        return self.__link
+
+    @GObject.Property(type=bool, default=False)
+    def read(self) -> bool:
+        return self.__read
+
+    @read.setter
+    def read(self, n_read):
+        self.set_read(n_read)
 
     def set_thumb_from_link(self):
         self.image_url = get_thumb(self.link)
 
     def set_read(self, read):
-        if read == self.read:  # how could this happen?
+        if read == self.__read:
             return
         if read and self.identifier not in self.confman.read_feeds_items:
             self.confman.read_feeds_items.append(self.identifier)
         elif self.identifier in self.confman.read_feeds_items:
             self.confman.read_feeds_items.remove(self.identifier)
-        self.read = read
+        self.__read = read
 
     def __repr__(self):
         return 'FeedItem Object `{0}` from Feed {1}'.format(

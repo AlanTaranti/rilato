@@ -1,5 +1,6 @@
 from gfeeds.picture_view import PictureView
 from os.path import isfile
+from gfeeds.rss_parser import FeedItem
 from gfeeds.sha import shasum
 from gfeeds.download_manager import download_raw
 from gi.repository import Gtk, GLib, Pango
@@ -23,9 +24,8 @@ class SidebarRow(Gtk.Box):
     def __init__(self, fetch_image_thread_pool):
         super().__init__()
         self.fetch_image_thread_pool = fetch_image_thread_pool
-        self.feed_item_wrapper = None
-        self.feed_item_changed_signal_id = None
         self.feed_item = None
+        self.signal_ids = list()
         self.confman = ConfManager()
 
         self.confman.connect(
@@ -66,24 +66,22 @@ class SidebarRow(Gtk.Box):
                 else None
         )
 
-    def set_feed_item(self, feed_item_wrapper):
-        if (
-                not feed_item_wrapper or
-                self.feed_item_wrapper == feed_item_wrapper
-        ):
+    def set_feed_item(self, feed_item: FeedItem):
+        if not feed_item or self.feed_item == feed_item:
             return
+        if self.feed_item is not None:
+            for sig_id in self.signal_ids:
+                self.feed_item.disconnect(sig_id)
+        self.signal_ids = list()
 
-        if (
-                self.feed_item_changed_signal_id is not None and
-                self.feed_item_wrapper is not None
-        ):
-            self.feed_item_wrapper.disconnect(self.feed_item_changed_signal_id)
-            self.feed_item_changed_signal_id = None
-
-        self.feed_item_wrapper = feed_item_wrapper
-        self.feed_item = feed_item_wrapper.feed_item
-        self.feed_item_changed_signal_id = self.feed_item_wrapper.connect(
-            'changed', self.on_feed_item_changed
+        self.feed_item = feed_item
+        self.signal_ids.append(
+            self.feed_item.connect(
+                'notify::read', lambda *args: self.set_read()
+            )
+        )
+        self.signal_ids.append(
+            self.feed_item.connect('changed', self.on_feed_item_changed)
         )
 
         self.origin_label.set_text(self.feed_item.parent_feed.title)
@@ -96,15 +94,14 @@ class SidebarRow(Gtk.Box):
             self.feed_item.parent_feed.favicon_path
         )
         self.set_article_image()
+        self.set_read()
         self.on_feed_item_changed()
 
     def on_feed_item_changed(self, *args):
         if self.feed_item is None:
             return
-        self.set_read()
         self.datestr = humanize_datetime(self.feed_item.pub_date)
         self.date_label.set_text(self.datestr)
-        self.popover.on_feed_item_set()
 
     def set_article_image(self, *args):
         if not self.confman.conf['show_thumbnails'] or self.feed_item is None:
@@ -196,6 +193,7 @@ class SidebarRow(Gtk.Box):
             self.set_dim(True)
         else:
             self.set_dim(False)
+        self.popover.on_feed_item_set()
 
     def set_dim(self, state):
         for w in (
