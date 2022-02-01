@@ -1,3 +1,5 @@
+from pathlib import Path
+from typing import Optional, Tuple, Union
 import pytz
 from gi.repository import GObject, GLib
 from datetime import datetime, timezone
@@ -122,7 +124,10 @@ class FeedItem(GObject.Object):
 
 
 class Feed(GObject.Object):
-    def __init__(self, download_res, no_preprocessing: bool = False):
+    def __init__(
+            self, download_res: Tuple[Union[str, Path, bool], Optional[str]]
+    ):
+        super().__init__()
         self.is_null = False
         self.error = None
         if download_res[0] is False:  # indicates failed download
@@ -138,9 +143,6 @@ class Feed(GObject.Object):
             print('Error parsing feed (caught). Traceback:')
             import traceback
             traceback.print_exc()
-        # with open(feedpath, 'r') as fd:
-        #     feed_str = fd.read()
-        # self.fp_feed = parse_feed(feed_str, no_preprocessing)
         if self.sd_feed is None:
             self.is_null = True
             self.error = _('Errors while parsing feed `{0}`').format(
@@ -156,7 +158,6 @@ class Feed(GObject.Object):
         self.__description = self.sd_feed.get_description()
         self.__image_url = self.sd_feed.get_img_url()
         self.items = []
-        super().__init__()
         raw_entries = self.sd_feed.get_items()
         for entry in raw_entries:
             n_item = FeedItem(entry, self)

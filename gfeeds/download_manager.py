@@ -1,10 +1,11 @@
 from gettext import gettext as _
 from os.path import isfile
+from pathlib import Path
 import requests
 from gfeeds.confManager import ConfManager
 from gfeeds.sha import shasum
 from syndom import Html
-from typing import Optional
+from typing import Optional, Tuple, Union
 
 confman = ConfManager()
 
@@ -66,7 +67,9 @@ def extract_feed_url_from_html(link: str) -> Optional[str]:
 
 
 # TODO: refactor this, the returned typeS(!) are a mess
-def download_feed(link: str, get_cached: bool = False):
+def download_feed(
+        link: str, get_cached: bool = False
+) -> Tuple[Union[str, Path, bool], Optional[str]]:
     dest_path = confman.cache_path.joinpath(shasum(link)+'.rss')
     if get_cached:
         return (dest_path, link) if isfile(dest_path) else ('not_cached', None)
