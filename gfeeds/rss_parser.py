@@ -1,5 +1,5 @@
 import pytz
-from gi.repository import GObject
+from gi.repository import GObject, GLib
 from datetime import datetime, timezone
 from dateutil.parser import parse as dateparse
 from dateutil.tz import gettz
@@ -38,11 +38,12 @@ class FeedItem(GObject.Object):
         self.__title = self.sd_item.get_title()
         self.__link = self.sd_item.get_url()
         self.pub_date_str = self.sd_item.get_pub_date()
-        self.__pub_date = datetime.now(timezone.utc)  # fallback to avoid errors
+        # fallback to avoid errors
+        self.__pub_date = datetime.now(timezone.utc)
         self.parent_feed = parent_feed
 
         # used to identify article for read/unread and thumbs cache
-        self.identifier = self.link or (self.title + self.pub_date_str)
+        self.identifier = self.__link or (self.__title + self.pub_date_str)
         self.__read = self.identifier in self.confman.read_feeds_items
 
         try:
@@ -64,7 +65,7 @@ class FeedItem(GObject.Object):
                 'Error: unable to parse datetime {0} for feeditem {1}'
             ).format(self.pub_date_str, self))
 
-        self.image_url = sd_item.get_img_url()
+        self.__image_url = sd_item.get_img_url()
         # sidebar row will try to async get an image from html if above failed
         super().__init__()
 
@@ -85,13 +86,26 @@ class FeedItem(GObject.Object):
         return self.__read
 
     @read.setter
-    def read(self, n_read):
-        self.set_read(n_read)
+    def read(self, n_read: bool):
+        self.__set_read(n_read)
+
+    @GObject.Property(type=str)
+    def image_url(self) -> str:
+        return self.__image_url
+
+    @image_url.setter
+    def image_url(self, n_image_url: str):
+        self.__image_url = n_image_url
 
     def set_thumb_from_link(self):
-        self.image_url = get_thumb(self.link)
+        image_url = get_thumb(self.__link)
 
-    def set_read(self, read):
+        def cb(url):
+            self.image_url = url
+
+        GLib.idle_add(cb, image_url)
+
+    def __set_read(self, read):
         if read == self.__read:
             return
         if read and self.identifier not in self.confman.read_feeds_items:
@@ -102,12 +116,12 @@ class FeedItem(GObject.Object):
 
     def __repr__(self):
         return 'FeedItem Object `{0}` from Feed {1}'.format(
-            self.title,
+            self.__title,
             self.parent_feed.title
         )
 
 
-class Feed:
+class Feed(GObject.Object):
     def __init__(self, download_res, no_preprocessing: bool = False):
         self.is_null = False
         self.error = None
@@ -137,11 +151,12 @@ class Feed:
 
         self.confman = ConfManager()
         self.init_time = pytz.UTC.localize(datetime.utcnow())
-        self.title = self.sd_feed.get_title()
-        self.link = self.sd_feed.get_url()
-        self.description = self.sd_feed.get_description()
-        self.image_url = self.sd_feed.get_img_url()
+        self.__title = self.sd_feed.get_title()
+        self.__link = self.sd_feed.get_url()
+        self.__description = self.sd_feed.get_description()
+        self.__image_url = self.sd_feed.get_img_url()
         self.items = []
+        super().__init__()
         raw_entries = self.sd_feed.get_items()
         for entry in raw_entries:
             n_item = FeedItem(entry, self)
@@ -151,10 +166,7 @@ class Feed:
             elif n_item.read:
                 self.confman.read_feeds_items.remove(n_item.identifier)
 
-        if (
-                not self.title and
-                len(raw_entries) == 0
-        ):
+        if not self.__title and len(raw_entries) == 0:
             # if these conditions are met, there's reason to believe
             # this is not an rss/atom feed
             self.is_null = True
@@ -163,32 +175,44 @@ class Feed:
             ).format(self.rss_link)
             return
 
-        if not self.title:
-            self.title = self.link or self.rss_link
+        if not self.__title:
+            self.__title = self.__link or self.rss_link
 
         self.favicon_path = str(self.confman.thumbs_cache_path.joinpath(
             shasum(self.rss_link)+'.png'
         ))
         if not isfile(self.favicon_path):
-            if self.image_url:
+            if self.__image_url:
                 try:
-                    download_raw(self.image_url, self.favicon_path)
+                    download_raw(self.__image_url, self.favicon_path)
                 except Exception:
                     print('Invalid image url for feed `{0}` ({1})'.format(
-                        self.rss_link, self.image_url
+                        self.rss_link, self.__image_url
                     ))
-                    self.image_url = None
-            if not self.image_url:
+                    self.__image_url = None
+            if not self.__image_url:
                 try:
                     get_favicon(self.rss_link, self.favicon_path)
                     if not isfile(self.favicon_path):
                         get_favicon(
-                            self.link or self.items[0].link,
+                            self.__link or self.items[0].link,
                             self.favicon_path
                         )
                 except Exception:
                     print(f'No favicon for feed `{self.rss_link}`')
                     self.favicon_path = None
 
+    @GObject.Property(type=str)
+    def title(self) -> str:
+        return self.__title
+
+    @GObject.Property(type=str)
+    def link(self) -> str:
+        return self.__link
+
+    @GObject.Property(type=str)
+    def description(self) -> str:
+        return self.__description
+
     def __repr__(self):
-        return f'Feed Object `{self.title}`; {len(self.items)} items'
+        return f'Feed Object `{self.__title}`; {len(self.items)} items'

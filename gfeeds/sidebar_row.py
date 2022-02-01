@@ -188,7 +188,7 @@ class SidebarRow(Gtk.Box):
         if self.feed_item is None:
             return
         if read is not None:
-            self.feed_item.set_read(read)
+            self.feed_item.read = read
         if self.feed_item.read:
             self.set_dim(True)
         else:
