@@ -1,23 +1,22 @@
-# Swedish translations for gfeeds package.
-# Copyright © 2021, 2022 gfeeds's COPYRIGHT HOLDER
+# Chinese (China) translation for gfeeds.
+# Copyright (C) 2021 gfeeds's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gfeeds package.
-# Åke Engelbrektson <eson@svenskasprakfiler.se>, 2021.
-# Anders Jonsson <anders.jonsson@norsjovallen.se>, 2021, 2022.
+# lumingzh <lumingzh@qq.com>, 2021.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gfeeds master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/gfeeds/issues\n"
-"POT-Creation-Date: 2022-01-14 15:48+0000\n"
-"PO-Revision-Date: 2022-01-15 10:56+0100\n"
-"Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
-"Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
-"Language: sv\n"
+"POT-Creation-Date: 2021-12-14 10:46+0000\n"
+"PO-Revision-Date: 2021-12-17 19:56+0800\n"
+"Last-Translator: lumingzh <lumingzh@qq.com>\n"
+"Language-Team: Chinese - China <i18n-zh@googlegroups.com>\n"
+"Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.0.1\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"X-Generator: Gtranslator 41.0\n"
 
 #: data/org.gabmus.gfeeds.appdata.xml.in:4
 msgid "Feeds"
@@ -25,23 +24,19 @@ msgstr "Feeds"
 
 #: data/org.gabmus.gfeeds.appdata.xml.in:6 data/org.gabmus.gfeeds.desktop.in:7
 msgid "News reader for GNOME"
-msgstr "Nyhetsläsare för GNOME"
+msgstr "用于 GNOME 的新闻阅读器"
 
 #: data/org.gabmus.gfeeds.appdata.xml.in:15
 msgid ""
 "Feeds is a minimal RSS/Atom feed reader built with speed and simplicity in "
 "mind."
-msgstr ""
-"Feeds är en minimal RSS-/Atom-flödesläsare byggd med hastighet och enkelhet "
-"i åtanke."
+msgstr "Feeds 是以速度和简便为设计思想构建的最小化 RSS/Atom 订阅阅读器。"
 
 #: data/org.gabmus.gfeeds.appdata.xml.in:16
 msgid ""
 "It offers a simple user interface that only shows the latest news from your "
 "subscriptions."
-msgstr ""
-"Den erbjuder ett enkelt användargränssnitt som bara visar de senaste "
-"nyheterna från dina prenumerationer."
+msgstr "它提供了仅显示从您的订阅中获取最新内容的简单用户界面。"
 
 #: data/org.gabmus.gfeeds.appdata.xml.in:17
 msgid ""
@@ -49,367 +44,366 @@ msgid ""
 "faster and less intrusive user experience. There's also a reader mode "
 "included, built from the one GNOME Web/Epiphany uses."
 msgstr ""
-"Artiklar visas i en webbvy som standard, med javascript aktiverat för en "
-"snabbare och mindre inkräktande användarupplevelse. Det finns också ett "
-"läsläge inkluderat, byggt på detsamma som GNOME Webb/Epiphany använder."
+"文章默认显示在网页视图中，禁用 JavaScript 以获得更快速和更少干扰的用户体验。"
+"同时包含了来自 GNOME Web/Epiphany 使用的阅读模式。"
 
 #: data/org.gabmus.gfeeds.appdata.xml.in:18
 msgid "Feeds can be imported and exported via OPML."
-msgstr "Flöden kan importeras och exporteras via OPML."
+msgstr "订阅可以通过 OPML 来导入和导出。"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gabmus.gfeeds.desktop.in:16
 msgid "rss;reader;feed;news;"
-msgstr "rss;läsare;flöde;nyheter;"
+msgstr "rss;reader;feed;news;订阅;阅读器;新闻;阅读;"
 
 #: data/ui/extra_popover_menu.ui:19
 msgid "Web View"
-msgstr "Webbvy"
+msgstr "网页视图"
 
 #: data/ui/extra_popover_menu.ui:26
 msgid "Reader Mode"
-msgstr "Läsläge"
+msgstr "阅读模式"
 
 #: data/ui/extra_popover_menu.ui:33
-msgid "Feed Content"
-msgstr "Flödesinnehåll"
+msgid "RSS Content"
+msgstr "RSS 目录"
 
 #: gfeeds/base_preferences.py:106
 msgid "Choose a folder"
-msgstr "Välj en mapp"
+msgstr "选择文件夹"
 
 #: gfeeds/confirm_add_dialog.py:16
 msgid "Do you want to import these feeds?"
-msgstr "Vill du importera dessa flöden?"
+msgstr "您想要导入这些订阅吗？"
 
 #: gfeeds/confirm_add_dialog.py:17
 msgid "Do you want to import this feed?"
-msgstr "Vill du importera detta flöde?"
+msgstr "您想要导入该订阅吗？"
 
-#: gfeeds/download_manager.py:85
+#: gfeeds/download_manager.py:79
 #, python-brace-format
 msgid "`{0}`: connection timed out"
-msgstr "\"{0}\": Anslutningen överskred tidsgränsen"
+msgstr "“{0}”：连接超时"
 
-#: gfeeds/download_manager.py:89
+#: gfeeds/download_manager.py:83
 #, python-brace-format
 msgid "`{0}` might not be a valid address"
-msgstr "\"{0}\" kanske inte är en giltig adress"
+msgstr "“{0}”可能不是有效地址"
 
-#: gfeeds/download_manager.py:114
+#: gfeeds/download_manager.py:108
 #, python-brace-format
 msgid "Error downloading `{0}`, code `{1}`"
-msgstr "Kunde inte hämta \"{0}\", kod \"{1}\""
+msgstr "下载“{0}”时出错，代码“{1}”"
 
 #: gfeeds/feeds_manager.py:83
 #, python-brace-format
 msgid "Feed {0} exists already, skipping"
-msgstr "Flödet {0} finns redan, hoppar över"
+msgstr "订阅 {0} 已存在，正在跳过"
 
 #: gfeeds/feeds_view.py:18
 msgid "All feeds"
-msgstr "Alla flöden"
+msgstr "所有订阅"
 
 #: gfeeds/get_favicon.py:45
 #, python-brace-format
 msgid "Error downloading favicon for `{0}`"
-msgstr "Kunde inte hämta favikon för \"{0}\""
+msgstr "为“{0}”下载网站图标时出错"
 
 #: gfeeds/headerbar.py:171
 msgid ""
 "There were problems with some feeds.\n"
 "Do you want to remove them?"
 msgstr ""
-"Det uppstod problem med några flöden.\n"
-"Vill du ta bort dem?"
+"一些订阅存在问题。\n"
+"您想要移除它们吗？"
 
 #: gfeeds/main_leaflet.py:119
 #, python-brace-format
 msgid "{0} new article"
 msgid_plural "{0} new articles"
-msgstr[0] "{0} ny artikel"
-msgstr[1] "{0} nya artiklar"
+msgstr[0] ""
+msgstr[1] ""
 
 #: gfeeds/__main__.py:241
 msgid "url"
-msgstr "URL"
+msgstr "网址"
 
 #: gfeeds/__main__.py:244
 msgid "opml file local url or rss remote url to import"
-msgstr "OPML-fil, lokal URL eller RSS-URL för att importera"
+msgstr "要导入的 opml 文件本地地址或 rss 远程地址"
 
 #: gfeeds/manage_feeds_window.py:247
 msgid "Do you want to delete these feeds?"
-msgstr "Vill du ta bort dessa flöden?"
+msgstr "您想要删除这些订阅吗？"
 
 #: gfeeds/manage_feeds_window.py:299
 msgid "Manage Feeds"
-msgstr "Hantera flöden"
+msgstr "管理订阅"
 
 #: gfeeds/opml_file_chooser.py:7
 msgid "XML files"
-msgstr "XML-filer"
+msgstr "XML 文件"
 
 #: gfeeds/opml_file_chooser.py:14
 msgid "Choose an OPML file to import"
-msgstr "Välj en OPML-fil att importera"
+msgstr "选择 OPML 文件来导入"
 
 #: gfeeds/opml_file_chooser.py:18
 msgid "Open"
-msgstr "Öppna"
+msgstr "打开"
 
 #: gfeeds/opml_file_chooser.py:19 gfeeds/opml_file_chooser.py:31
 msgid "Cancel"
-msgstr "Avbryt"
+msgstr "取消"
 
 #: gfeeds/opml_file_chooser.py:26
 msgid "Choose where to save the exported OPML file"
-msgstr "Välj var den exporterade OPML-filen skall sparas"
+msgstr "选择保存导出的 OPML 文件的位置"
 
 #: gfeeds/opml_file_chooser.py:30
 msgid "Save"
-msgstr "Spara"
+msgstr "保存"
 
 #: gfeeds/opml_manager.py:44
 msgid "Error: OPML path provided does not exist"
-msgstr "Fel: Angiven OPML-sökväg finns inte"
+msgstr "错误：指定的 OPML 路径不存在"
 
 #: gfeeds/opml_manager.py:55
 #, python-brace-format
 msgid "Error parsing OPML file `{0}`"
-msgstr "Kunde inte tolka OPML-fil \"{0}\""
+msgstr "解析 OPML 文件“{0}”时出错"
 
 #: gfeeds/preferences_window.py:22
 msgid "General"
-msgstr "Allmänt"
+msgstr "常规"
 
 #: gfeeds/preferences_window.py:25
 msgid "General preferences"
-msgstr "Allmänna inställningar"
+msgstr "常规首选项"
 
 #: gfeeds/preferences_window.py:27
 msgid "Show newer articles first"
-msgstr "Visa nyare artiklar först"
+msgstr "优先显示新文章"
 
 #: gfeeds/preferences_window.py:32
 msgid "Open links in your browser"
-msgstr "Öppna länkar i webbläsaren"
+msgstr "在您的浏览器中打开链接"
 
 #: gfeeds/preferences_window.py:36
 msgid "Use external video player for YouTube"
-msgstr "Använd en extern videospelare för YouTube"
+msgstr "为 YouTube 使用外置视频播放器"
 
 #: gfeeds/preferences_window.py:38
 msgid "Requires youtube-dl and a compatible video player"
-msgstr "Kräver youtube-dl och en kompatibel videospelare"
+msgstr "需要 youtube-dl 和兼容的视频播放器"
 
 #: gfeeds/preferences_window.py:44
 msgid "Preferred video player"
-msgstr "Föredragen videospelare"
+msgstr "首选视频播放器"
 
 #: gfeeds/preferences_window.py:48
 msgid "Maximum article age"
-msgstr "Maximal artikelålder"
+msgstr "最大文章日期"
 
 #: gfeeds/preferences_window.py:49
 msgid "In days"
-msgstr "I dagar"
+msgstr "单位天"
 
 #: gfeeds/preferences_window.py:56
 msgid "Refresh preferences"
-msgstr "Uppdatera inställningar"
+msgstr "刷新首选项"
 
 #: gfeeds/preferences_window.py:58
 msgid "Refresh articles on startup"
-msgstr "Uppdatera artiklar vid programstart"
+msgstr "启动时刷新文章"
 
 #: gfeeds/preferences_window.py:62
 msgid "New articles notification"
-msgstr "Avisering för nya artiklar"
+msgstr "新文章提醒"
 
 #: gfeeds/preferences_window.py:66
 msgid "Enable auto-refresh"
-msgstr "Aktivera automatisk uppdatering"
+msgstr "启用自动刷新"
 
 #: gfeeds/preferences_window.py:70
 msgid "Auto-refresh interval"
-msgstr "Intervall för automatisk uppdatering"
+msgstr "自动刷新间隔"
 
 #: gfeeds/preferences_window.py:71
 msgid "In seconds"
-msgstr "I sekunder"
+msgstr "单位秒"
 
 #: gfeeds/preferences_window.py:78
 msgid "Cache"
-msgstr "Cache"
+msgstr "缓存"
 
 #: gfeeds/preferences_window.py:80
 msgid "Clear caches"
-msgstr "Rensa cache-lagrat"
+msgstr "清空缓存"
 
 #: gfeeds/preferences_window.py:81
 msgid "Clear"
-msgstr "Töm"
+msgstr "清空"
 
 #: gfeeds/preferences_window.py:109
 msgid "Appearance"
-msgstr "Utseende"
+msgstr "外观"
 
 #: gfeeds/preferences_window.py:112
 msgid "Appearance preferences"
-msgstr "Utseendeinställningar"
+msgstr "外观首选项"
 
 #: gfeeds/preferences_window.py:114
 msgid "Dark mode"
-msgstr "Mörkt läge"
+msgstr "暗色模式"
 
 #: gfeeds/preferences_window.py:118
 msgid "Use dark theme for reader mode"
-msgstr "Använd mörkt tema för läsläge"
+msgstr "为阅读模式使用暗色模式"
 
 #: gfeeds/preferences_window.py:122
 msgid "Show article thumbnails"
-msgstr "Visa miniatyrbilder för artiklar"
+msgstr "显示文章缩略图"
 
 #: gfeeds/preferences_window.py:127
 msgid "Maximum thumbnail height"
-msgstr "Maximal höjd på miniatyrbild"
+msgstr "最大缩略图高度"
 
 #: gfeeds/preferences_window.py:133
 msgid "Show full articles titles"
-msgstr "Visa fullständiga artikeltitlar"
+msgstr "显示完整文章标题"
 
 #: gfeeds/preferences_window.py:138
 msgid "Show full feeds names"
-msgstr "Visa fullständiga flödesnamn"
+msgstr "显示完整订阅名称"
 
 #: gfeeds/preferences_window.py:145
 msgid "Font preferences"
-msgstr "Typsnittsinställningar"
+msgstr "字体首选项"
 
 #: gfeeds/preferences_window.py:147
 msgid "Use system font for titles"
-msgstr "Använd systemtypsnitt för titlar"
+msgstr "为标题使用系统字体"
 
 #: gfeeds/preferences_window.py:151
 msgid "Use system font for paragraphs"
-msgstr "Använd systemtypsnitt för stycken"
+msgstr "为段落使用系统字体"
 
 #: gfeeds/preferences_window.py:155
 msgid "Custom title font"
-msgstr "Anpassat typsnitt för titel"
+msgstr "自定义标题字体"
 
 #: gfeeds/preferences_window.py:159
 msgid "Custom paragraph font"
-msgstr "Anpassat typsnitt för stycke"
+msgstr "自定义段落字体"
 
 #: gfeeds/preferences_window.py:163
 msgid "Custom monospace font"
-msgstr "Anpassat typsnitt med fast breddslag"
+msgstr "自定义等宽字体"
 
 #: gfeeds/preferences_window.py:175
 msgid "Privacy"
-msgstr "Sekretess"
+msgstr "隐私"
 
 #: gfeeds/preferences_window.py:178
 msgid "Privacy preferences"
-msgstr "Sekretessinställningar"
+msgstr "隐私首选项"
 
 #: gfeeds/preferences_window.py:180
 msgid "Enable JavaScript"
-msgstr "Aktivera JavaScript"
+msgstr "启用 JavaScript"
 
 #: gfeeds/preferences_window.py:185
 msgid "Try to block advertisements"
-msgstr "Försök blockera annonser"
+msgstr "尝试拦截广告"
 
 #: gfeeds/preferences_window.py:187 gfeeds/preferences_window.py:222
 msgid "Requires app restart"
-msgstr "Kräver omstart av programmet"
+msgstr "需要重启应用"
 
 #: gfeeds/preferences_window.py:191
 msgid "Update advertisement blocking list"
-msgstr "Uppdatera annonsblockeringslista"
+msgstr "更新广告拦截列表"
 
 #: gfeeds/preferences_window.py:192
 msgid "Updates automatically every 10 days"
-msgstr "Uppdateras automatiskt var 10:e dag"
+msgstr "自动每 10 天更新"
 
 #: gfeeds/preferences_window.py:193
 msgid "Update"
-msgstr "Uppdatera"
+msgstr "更新"
 
 #: gfeeds/preferences_window.py:206
 msgid "Advanced"
-msgstr "Avancerat"
+msgstr "高级"
 
 #: gfeeds/preferences_window.py:209
 msgid "Advanced preferences"
-msgstr "Avancerade inställningar"
+msgstr "高级首选项"
 
 #: gfeeds/preferences_window.py:211
 msgid "Maximum refresh threads"
-msgstr "Max antal uppdateringstrådar"
+msgstr "最大刷新线程"
 
 #: gfeeds/preferences_window.py:213
 msgid "How many threads to use for feeds refresh"
-msgstr "Hur många trådar att använda för att uppdatera flöden"
+msgstr "订阅刷新时使用多少线程"
 
 #: gfeeds/preferences_window.py:220
 msgid "Experimental GtkListView for articles list"
-msgstr "Experimentell GtkListView för artikellista"
+msgstr "为文章列表试用 GtkListView"
 
-#: gfeeds/rss_parser.py:57
+#: gfeeds/rss_parser.py:54
 #, python-brace-format
 msgid "Error: unable to parse datetime {0} for feeditem {1}"
-msgstr "Fel: Kan inte tolka datumtid {0} för flödesobjekt {1}"
+msgstr "错误：无法为订阅项目 {1} 解析日期 {0}"
 
-#: gfeeds/rss_parser.py:104
+#: gfeeds/rss_parser.py:101
 #, python-brace-format
 msgid "Errors while parsing feed `{0}`"
-msgstr "Fel vid tolkning av flödet \"{0}\""
+msgstr "解析订阅“{0}”时出错"
 
-#: gfeeds/rss_parser.py:134
+#: gfeeds/rss_parser.py:131
 #, python-brace-format
 msgid "`{0}` may not be an RSS or Atom feed"
-msgstr "\"{0}\" kanske inte är ett RSS- eller Atom-flöde"
+msgstr "“{0}”可能不是 RSS 或 Atom 订阅"
 
 #: gfeeds/sidebar.py:21
 msgid "Loading feeds..."
-msgstr "Läser in flöden…"
+msgstr "正在加载订阅……"
 
 #: gfeeds/sidebar_row_popover.py:31 gfeeds/sidebar_row_popover.py:58
 msgid "Mark as unread"
-msgstr "Märk som oläst"
+msgstr "标记为未阅"
 
 #: gfeeds/sidebar_row_popover.py:38 gfeeds/sidebar_row_popover.py:50
 msgid "Mark as read"
-msgstr "Märk som läst"
+msgstr "标记为已阅"
 
 #: gfeeds/suggestion_bar.py:37
 msgid "There are some errors"
-msgstr "Något fel har inträffat"
+msgstr "发生了一些错误"
 
 #: gfeeds/suggestion_bar.py:46
 msgid "Show"
-msgstr "Visa"
+msgstr "显示"
 
 #: gfeeds/suggestion_bar.py:47
 msgid "Ignore"
-msgstr "Ignorera"
+msgstr "忽略"
 
 #: gfeeds/suggestion_bar.py:70
 msgid "There were problems with some feeds. Do you want to remove them?"
-msgstr "Det uppstod problem med några flöden. Vill du ta bort dem?"
+msgstr "一些订阅存在问题。您想要移除它们吗？"
 
 #: gfeeds/suggestion_bar.py:97
 msgid "You are offline"
-msgstr "Du är frånkopplad"
+msgstr "您已离线"
 
-#: gfeeds/webview.py:183
+#: gfeeds/webview.py:175
 msgid "Link copied to clipboard!"
-msgstr "Länk kopierad till urklipp!"
+msgstr "链接已复制到剪贴板！"
 
-#: gfeeds/webview.py:205
-msgid "Feed content not available for this article"
-msgstr "Flödesinnehåll ej tillgängligt för den här artikeln"
+#: gfeeds/webview.py:197
+msgid "RSS content not available for this article"
+msgstr "该文章无可用 RSS 目录"
