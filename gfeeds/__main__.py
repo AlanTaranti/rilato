@@ -235,7 +235,7 @@ class GFeedsApplication(BaseApp):
                     print('This file is not supported')
             self.args = None
 
-    def do_command_line(self, args: list):
+    def do_command_line(self, args: Gio.ApplicationCommandLine):
         """
         GTK.Application command line handler
         called if Gio.ApplicationFlags.HANDLES_COMMAND_LINE is set.
