@@ -198,10 +198,14 @@ class GFeedsApplication(BaseApp):
                             dialog = GFeedsConfirmAddDialog(
                                 self.window, abspath
                             )
-                            res = dialog.run()
-                            dialog.close()
-                            if res == Gtk.ResponseType.YES:
-                                add_feeds_from_opml(abspath)
+
+                            def on_response(_dialog, res):
+                                _dialog.close()
+                                if res == Gtk.ResponseType.YES:
+                                    add_feeds_from_opml(abspath)
+
+                            dialog.connect('response', on_response)
+                            dialog.present()
                         else:
                             # why no check for extension here?
                             # some websites have feeds without extension
@@ -218,10 +222,15 @@ class GFeedsApplication(BaseApp):
                         self.args.argurl,
                         http=True
                     )
-                    res = dialog.run()
-                    dialog.close()
-                    if res == Gtk.ResponseType.YES:
-                        self.feedman.add_feed(self.args.argurl)
+                    argurl = self.args.argurl
+
+                    def on_response(_dialog, res):
+                        _dialog.close()
+                        if res == Gtk.ResponseType.YES:
+                            self.feedman.add_feed(argurl)
+
+                    dialog.connect('response', on_response)
+                    dialog.present()
                 else:
                     print('This file is not supported')
             self.args = None
@@ -233,7 +242,8 @@ class GFeedsApplication(BaseApp):
         must call the self.do_activate() to get the application up and running.
         """
         # call the default commandline handler
-        Gtk.Application.do_command_line(self, args)
+        # not required anymore?
+        # Gtk.Application.do_command_line(self, args)
         # make a command line parser
         parser = argparse.ArgumentParser()
         parser.add_argument(
