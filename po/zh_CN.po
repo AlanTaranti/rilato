@@ -1,14 +1,14 @@
 # Chinese (China) translation for gfeeds.
 # Copyright (C) 2021 gfeeds's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gfeeds package.
-# lumingzh <lumingzh@qq.com>, 2021.
+# lumingzh <lumingzh@qq.com>, 2021-2022.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gfeeds master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/gfeeds/issues\n"
-"POT-Creation-Date: 2021-12-14 10:46+0000\n"
-"PO-Revision-Date: 2021-12-17 19:56+0800\n"
+"POT-Creation-Date: 2022-01-31 04:33+0000\n"
+"PO-Revision-Date: 2022-02-06 11:25+0800\n"
 "Last-Translator: lumingzh <lumingzh@qq.com>\n"
 "Language-Team: Chinese - China <i18n-zh@googlegroups.com>\n"
 "Language: zh_CN\n"
@@ -20,7 +20,7 @@ msgstr ""
 
 #: data/org.gabmus.gfeeds.appdata.xml.in:4
 msgid "Feeds"
-msgstr "Feeds"
+msgstr "订阅"
 
 #: data/org.gabmus.gfeeds.appdata.xml.in:6 data/org.gabmus.gfeeds.desktop.in:7
 msgid "News reader for GNOME"
@@ -30,7 +30,7 @@ msgstr "用于 GNOME 的新闻阅读器"
 msgid ""
 "Feeds is a minimal RSS/Atom feed reader built with speed and simplicity in "
 "mind."
-msgstr "Feeds 是以速度和简便为设计思想构建的最小化 RSS/Atom 订阅阅读器。"
+msgstr "订阅是以速度和简便为设计思想构建的最小化 RSS/Atom 订阅阅读器。"
 
 #: data/org.gabmus.gfeeds.appdata.xml.in:16
 msgid ""
@@ -65,8 +65,9 @@ msgid "Reader Mode"
 msgstr "阅读模式"
 
 #: data/ui/extra_popover_menu.ui:33
-msgid "RSS Content"
-msgstr "RSS 目录"
+#| msgid "RSS Content"
+msgid "Feed Content"
+msgstr "订阅目录"
 
 #: gfeeds/base_preferences.py:106
 msgid "Choose a folder"
@@ -80,17 +81,17 @@ msgstr "您想要导入这些订阅吗？"
 msgid "Do you want to import this feed?"
 msgstr "您想要导入该订阅吗？"
 
-#: gfeeds/download_manager.py:79
+#: gfeeds/download_manager.py:85
 #, python-brace-format
 msgid "`{0}`: connection timed out"
 msgstr "“{0}”：连接超时"
 
-#: gfeeds/download_manager.py:83
+#: gfeeds/download_manager.py:89
 #, python-brace-format
 msgid "`{0}` might not be a valid address"
 msgstr "“{0}”可能不是有效地址"
 
-#: gfeeds/download_manager.py:108
+#: gfeeds/download_manager.py:114
 #, python-brace-format
 msgid "Error downloading `{0}`, code `{1}`"
 msgstr "下载“{0}”时出错，代码“{1}”"
@@ -353,17 +354,17 @@ msgstr "订阅刷新时使用多少线程"
 msgid "Experimental GtkListView for articles list"
 msgstr "为文章列表试用 GtkListView"
 
-#: gfeeds/rss_parser.py:54
+#: gfeeds/rss_parser.py:57
 #, python-brace-format
 msgid "Error: unable to parse datetime {0} for feeditem {1}"
 msgstr "错误：无法为订阅项目 {1} 解析日期 {0}"
 
-#: gfeeds/rss_parser.py:101
+#: gfeeds/rss_parser.py:104
 #, python-brace-format
 msgid "Errors while parsing feed `{0}`"
 msgstr "解析订阅“{0}”时出错"
 
-#: gfeeds/rss_parser.py:131
+#: gfeeds/rss_parser.py:134
 #, python-brace-format
 msgid "`{0}` may not be an RSS or Atom feed"
 msgstr "“{0}”可能不是 RSS 或 Atom 订阅"
@@ -400,10 +401,11 @@ msgstr "一些订阅存在问题。您想要移除它们吗？"
 msgid "You are offline"
 msgstr "您已离线"
 
-#: gfeeds/webview.py:175
+#: gfeeds/webview.py:183
 msgid "Link copied to clipboard!"
 msgstr "链接已复制到剪贴板！"
 
-#: gfeeds/webview.py:197
-msgid "RSS content not available for this article"
-msgstr "该文章无可用 RSS 目录"
+#: gfeeds/webview.py:205
+#| msgid "RSS content not available for this article"
+msgid "Feed content not available for this article"
+msgstr "该文章无可用订阅目录"
