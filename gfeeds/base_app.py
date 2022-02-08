@@ -51,7 +51,7 @@ class BaseApp(Gtk.Application):
             app_id: str,
             app_name: str,
             app_actions: List[AppAction] = [],
-            flags: int = 0,
+            flags: Gio.ApplicationFlags = Gio.ApplicationFlags.FLAGS_NONE,
             css_resource: Optional[str] = None
     ):
         self.app_actions = app_actions

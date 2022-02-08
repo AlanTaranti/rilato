@@ -89,46 +89,6 @@ class PreferencesEntryRow(MActionRow):
         self.confman.save_conf()
 
 
-class PreferencesFileChooserRow(MActionRow):
-    """
-    A preferences row with a file chooser button
-    title: the title shown
-    conf_key: the key of the configuration dictionary/json in ConfManager
-    subtitle: an optional subtitle to be shown
-    signal: an optional signal to let ConfManager emit when the value changes
-    file_chooser_title: the title of the file chooser dialog
-    file_chooser_action: the title of the file chooser dialog
-    """
-
-    def __init__(
-            self, title: str, conf_key: str, subtitle: Optional[str] = None,
-            signal: Optional[str] = None,
-            file_chooser_title: str = _('Choose a folder'),
-            file_chooser_action: Gtk.FileChooserAction =
-            Gtk.FileChooserAction.SELECT_FOLDER
-    ):
-        super().__init__(title, subtitle)
-        self.confman = ConfManager()
-        self.signal = signal
-        self.conf_key = conf_key
-
-        self.file_chooser_btn = Gtk.FileChooserButton.new(
-            file_chooser_title, file_chooser_action
-        )
-        self.file_chooser_btn.set_current_folder_uri(
-            'file://'+self.confman.conf[self.conf_key]
-        )
-
-        self.file_chooser_btn.connect('file-set', self.on_file_set)
-        self.add(self.file_chooser_btn)
-
-    def on_file_set(self, *args):
-        self.confman.conf[self.conf_key] = self.file_chooser_btn.get_filename()
-        if self.signal:
-            self.confman.emit(self.signal, '')
-        self.confman.save_conf()
-
-
 class PreferencesSpinButtonRow(MActionRow):
     """
     A preferences row with a spin button

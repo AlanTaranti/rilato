@@ -1,9 +1,10 @@
 using Gtk 4.0;
 
 ShortcutsWindow shortcuts-gfeeds {
+    modal: true;
+    section-name: 'shortcuts';
     ShortcutsSection {
         visible: true;
-        section-name: 'shortcuts';
         ShortcutsGroup {
             title: _('General');
             ShortcutsShortcut {
