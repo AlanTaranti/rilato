@@ -8,10 +8,13 @@ from gfeeds.feeds_view import (
     FeedsViewListbox,
     FeedsViewListboxRow
 )
+from gfeeds.rss_parser import Feed
 from gfeeds.scrolled_message_dialog import ScrolledMessageDialog
 from gfeeds.get_children import get_children
 from functools import reduce
 from operator import or_
+
+from gfeeds.tag_store import TagObj
 
 
 @Gtk.Template(resource_path='/org/gabmus/gfeeds/ui/manage_tags_listbox_row.ui')
@@ -82,43 +85,35 @@ class ManageTagsContent(Adw.Bin):
     def __init__(self, flap, window):
         super().__init__()
         self.confman = ConfManager()
+        self.feedman = FeedsManager()
         self.flap = flap
         self.window = window
-
-        self.tags_listbox.set_sort_func(
-            self.tags_listbox_sorting_func, None, False
+        self.tags_listbox.bind_model(
+            self.feedman.tag_store, self.__create_tag_row, None
         )
 
-        self.populate_listbox()
+    @Gtk.Template.Callback()
+    def on_submit_add_tag(self, *_):
+        n_tag = self.tags_entry.get_text().strip()
+        if not n_tag:
+            return
+        self.emit('new_tag_added', n_tag)
+        self.tags_entry.set_text('')
+
+    def __create_tag_row(self, tag: TagObj, *_) -> ManageTagsListboxRow:
+        row = ManageTagsListboxRow(tag.name, True)
+        row.connect('tag_deleted', self.on_tag_deleted)
+        return row
 
     @Gtk.Template.Callback()
-    def on_submit_add_tag(self, *args):
-        self.on_add_new_tag(self.tags_entry.get_text().strip())
-
-    def tags_listbox_sorting_func(self, row1, row2, data, notify_destroy):
-        return row1.tag.lower() > row2.tag.lower()
-
-    def populate_listbox(self):
-        for row in get_children(self.tags_listbox):
-            self.tags_listbox.remove(row)
-        for tag in self.confman.conf['tags']:
-            self.tags_listbox_add_row(tag, False)
-        self.tags_listbox.show()
-
-    @Gtk.Template.Callback()
-    def on_tags_listbox_row_activated(self, listbox, row):
+    def on_tags_listbox_row_activated(self, _, row):
         with row.checkbox.handler_block(row.checkbox_handler_id):
             row.checkbox.set_inconsistent(False)
             row.checkbox.set_active(not row.checkbox.get_active())
         if row.checkbox.get_active():
-            self.on_add_new_tag(row.tag)
+            self.emit('new_tag_added', row.tag)
         else:
             self.emit('tag_removed', row.tag)
-
-    def tags_listbox_add_row(self, tag: str, show_all=True):
-        n_row = ManageTagsListboxRow(tag)
-        self.tags_listbox.append(n_row)
-        n_row.connect('tag_deleted', self.on_tag_deleted)
 
     def tags_listbox_get_row_by_tag(self, tag):
         for row in get_children(self.tags_listbox):
@@ -126,26 +121,14 @@ class ManageTagsContent(Adw.Bin):
                 return row
         return None
 
-    def on_add_new_tag(self, n_tag):
-        if n_tag == '':
-            return
-        self.tags_entry.set_text('')
-        self.emit('new_tag_added', n_tag)
-        rows = get_children(self.tags_listbox)
-        if len(rows) == 0 or not reduce(or_, [
-                row.tag.lower() == n_tag.lower()
-                for row in rows
-        ]):
-            self.tags_listbox_add_row(n_tag)
-
     @Gtk.Template.Callback()
-    def on_tags_entry_changed(self, *args):
+    def on_tags_entry_changed(self, *_):
         self.add_tag_btn.set_sensitive(
             self.tags_entry.get_text().strip() != ''
         )
 
     def on_tag_deleted(self, caller, tag):
-        self.tags_listbox.remove(caller)
+        self.feedman.tag_store.remove_tag(tag)
         self.emit('tag_deleted', tag)
 
     def set_reveal(self, reveal: bool):
@@ -214,13 +197,12 @@ class ManageFeedsListboxRow(FeedsViewListboxRow):
 class ManageFeedsListbox(FeedsViewListbox):
     def __init__(self):
         super().__init__(
-            selection_mode=Gtk.SelectionMode.NONE
+            selection_mode=Gtk.SelectionMode.NONE,
+            row_class=ManageFeedsListboxRow
         )
+        self.connect('row-activated', self.on_row_activated)
 
-    def add_feed(self, feed):
-        self.append(ManageFeedsListboxRow(feed))
-
-    def on_row_activated(self, listbox, row):
+    def on_row_activated(self, _, row):
         with row.checkbox.handler_block(row.checkbox_handler_id):
             row.checkbox.set_active(not row.checkbox.get_active())
 
@@ -322,25 +304,18 @@ class GFeedsManageFeedsWindow(Adw.Window):
             'tag_removed',
             self.on_tag_removed
         )
-        self.tags_flap.connect(
-            'tag_deleted',
-            self.on_tag_deleted
-        )
 
-    def on_new_tag_added(self, caller, tag):
-        self.confman.add_tag(
+    def on_new_tag_added(self, _, tag):
+        self.feedman.tag_store.add_tag(
             tag,
             [feed.rss_link for feed in self.get_selected_feeds()]
         )
 
-    def on_tag_removed(self, caller, tag):
+    def on_tag_removed(self, _, tag):
         self.confman.remove_tag(
             tag,
             [feed.rss_link for feed in self.get_selected_feeds()]
         )
-
-    def on_tag_deleted(self, caller, tag):
-        self.confman.delete_tag(tag)
 
     def get_selected_feeds(self):
         return [
@@ -349,7 +324,7 @@ class GFeedsManageFeedsWindow(Adw.Window):
             if row.checkbox.get_active()
         ]
 
-    def on_delete_clicked(self, *args):
+    def on_delete_clicked(self, *_):
         selected_feeds = self.get_selected_feeds()
         dialog = DeleteFeedsConfirmMessageDialog(self, selected_feeds)
 
@@ -362,7 +337,7 @@ class GFeedsManageFeedsWindow(Adw.Window):
         dialog.connect('response', on_response)
         dialog.present()
 
-    def on_select_all_clicked(self, *args):
+    def on_select_all_clicked(self, *_):
         unselect = True
         for row in get_children(self.listbox):
             if not row.checkbox.get_active():
@@ -372,7 +347,7 @@ class GFeedsManageFeedsWindow(Adw.Window):
             for row in get_children(self.listbox):
                 row.emit('activate')
 
-    def on_row_activated(self, listbox, activated_row):
+    def on_row_activated(self, listbox, _):
         for row in get_children(listbox):
             if row.checkbox.get_active():
                 self.headerbar.set_actions_sensitive(True)

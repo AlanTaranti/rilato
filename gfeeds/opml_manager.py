@@ -18,7 +18,7 @@ def __add_feeds_from_opml_callback():
 def __add_feeds_from_opml_worker(opml_path):
     n_feeds_urls_l = opml_to_rss_list(opml_path)
     for tag in [t for f in n_feeds_urls_l for t in f['tags']]:
-        confman.add_tag(tag)
+        feedman.tag_store.add_tag(tag)
     for f in n_feeds_urls_l:
         url = f['feed']
         if url not in confman.conf['feeds'].keys():
@@ -26,9 +26,7 @@ def __add_feeds_from_opml_worker(opml_path):
                 'tags': f['tags']
             }
     confman.save_conf()
-    GLib.idle_add(
-        __add_feeds_from_opml_callback
-    )
+    GLib.idle_add(__add_feeds_from_opml_callback)
 
 
 def add_feeds_from_opml(opml_path):

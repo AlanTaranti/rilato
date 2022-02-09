@@ -3,6 +3,8 @@ from gi.repository import GLib, Gtk
 from gfeeds.confManager import ConfManager
 from gfeeds.feeds_manager import FeedsManager
 from gfeeds.articles_listview import ArticlesListView, ArticlesListBox
+from gfeeds.feed_store import FeedStore
+from gfeeds.rss_parser import Feed
 
 
 class LoadingRevealer(Gtk.Revealer):
@@ -73,9 +75,8 @@ class GFeedsSidebar(Gtk.Overlay):
             lambda *args: self.listview_sw.empty()
         )
 
-        self.feedman.feeds.connect(
-            'pop',
-            lambda caller, obj: self.on_feeds_pop(obj)
+        self.feedman.feed_store.connect(
+            'item-removed', self.on_feed_removed
         )
         self.feedman.connect(
             'feedmanager_refresh_start',
@@ -96,12 +97,12 @@ class GFeedsSidebar(Gtk.Overlay):
     def on_feeds_items_extend(self, caller, n_feeds_items_list):
         self.listview_sw.add_new_items(n_feeds_items_list)
 
-    def on_feeds_pop(self, obj):
-        if obj.rss_link in self.listview_sw.selected_feeds:
+    def on_feed_removed(self, feed: Feed):
+        if feed.rss_link in self.listview_sw.selected_feeds:
             n_selected_feeds = self.listview_sw.selected_feeds
-            n_selected_feeds.remove(obj.rss_link)
+            n_selected_feeds.remove(feed.rss_link)
             self.listview_sw.set_selected_feeds(n_selected_feeds)
-        self.listview_sw.remove_items(obj.items)
+        self.listview_sw.remove_items(feed.items)
 
     def set_search(self, search_term):
         self.listview_sw.set_search_term(search_term)

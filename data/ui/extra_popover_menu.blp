@@ -1,0 +1,29 @@
+using Gtk 4.0;
+
+ScrolledWindow menu_box {
+    hscrollbar-policy: never;
+    vscrollbar-policy: never;
+    Stack {
+        StackPage {
+            name: 'main';
+            child: Box {
+                orientation: vertical;
+                Gtk.ModelButton mb_webview {
+                    action-name: 'app.view_mode_change';
+                    action-target: 'webview';
+                    text: _('Web View');
+                }
+                Gtk.ModelButton mb_reader {
+                    action-name: 'app.view_mode_change';
+                    action-target: 'reader';
+                    text: _('Reader Mode');
+                }
+                Gtk.ModelButton mb_rsscont {
+                    action-name: 'app.view_mode_change';
+                    action-target: 'rsscont';
+                    text: _('Feed Content');
+                }
+            };
+        }
+    }
+}

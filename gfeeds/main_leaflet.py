@@ -1,6 +1,7 @@
 from gettext import ngettext
 from functools import reduce
 from gfeeds.feeds_view import FeedsViewScrolledWindow
+from gfeeds.filter_view import FilterView
 from gfeeds.rss_parser import FeedItem
 from gfeeds.stack_with_empty_state import StackWithEmptyState
 from operator import or_
@@ -36,12 +37,9 @@ class MainLeaflet(Adw.Bin):
             reveal_flap=False,
             swipe_to_open=True, swipe_to_close=True
         )
-        self.filter_sw = FeedsViewScrolledWindow(description=False, tags=True)
+        self.filter_view = FilterView()
         self.filter_flap.set_content(self.sidebar_stack)
-        self.filter_sw_bin = Adw.Bin()
-        self.filter_sw_bin.set_child(self.filter_sw)
-        self.filter_sw_bin.get_style_context().add_class('background')
-        self.filter_flap.set_flap(self.filter_sw_bin)
+        self.filter_flap.set_flap(self.filter_view)
 
         self.searchbar = GFeedsSearchbar()
         self.connection_bar = GFeedsConnectionBar()

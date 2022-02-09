@@ -164,7 +164,7 @@ class GFeedsApplication(BaseApp):
                 save_path = dialog.get_file().get_path()
                 if save_path[-5:].lower() != '.opml':
                     save_path += '.opml'
-                opml_out = feeds_list_to_opml(self.feedman.feeds)
+                opml_out = feeds_list_to_opml(self.feedman.feed_store)
                 with open(save_path, 'w') as fd:
                     fd.write(opml_out)
                     fd.close()

@@ -36,21 +36,13 @@ class StackWithEmptyState(Gtk.Stack):
             else self.empty_state
         )
 
-        self.feedman.feeds.connect(
-            'pop',
-            self.on_feeds_pop
-        )
-        self.feedman.connect(
-            'feedmanager_refresh_end',
-            self.on_feeds_pop
-        )
-        self.feedman.feeds.connect(
-            'append',
-            self.on_feeds_append
+        self.feedman.feed_store.connect(
+            'items-changed',
+            self.on_feed_store_items_changed
         )
 
-    def on_feeds_pop(self, *args):
-        if len(self.feedman.feeds) == 0:
+    def on_feed_store_items_changed(self, *args):
+        if len(self.feedman.feed_store) == 0:
             self.set_visible_child(self.empty_state)
         else:
             self.set_visible_child(self.main_widget)

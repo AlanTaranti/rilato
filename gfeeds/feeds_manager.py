@@ -1,5 +1,6 @@
 from threading import Thread, Event
 from gettext import gettext as _
+from typing import List, Union
 from gi.repository import GLib, GObject
 from gfeeds.singleton import Singleton
 from gfeeds.confManager import ConfManager
@@ -9,8 +10,10 @@ from gfeeds.download_manager import (
     extract_feed_url_from_html
 )
 from gfeeds.signaler_list import SignalerList
+from gfeeds.tag_store import TagStore
 from gfeeds.test_connection import is_online
 from gfeeds.thread_pool import ThreadPool
+from gfeeds.feed_store import FeedStore
 import pytz
 from datetime import datetime
 
@@ -46,7 +49,8 @@ class FeedsManager(metaclass=Singleton):
         self.emit = self.signaler.emit
         self.connect = self.signaler.connect
 
-        self.feeds = SignalerList()
+        self.feed_store = FeedStore()
+        self.tag_store = TagStore()
         self.feeds_items = SignalerList()
 
         self.errors = []
@@ -99,10 +103,11 @@ class FeedsManager(metaclass=Singleton):
         else:
             if (
                     n_feed.rss_link+n_feed.title not in
-                    [f.rss_link+f.title for f in self.feeds]
+                    [f.rss_link+f.title for f in self.feed_store]
             ):
                 GLib.idle_add(
-                    self.feeds.append, n_feed, priority=GLib.PRIORITY_LOW
+                    self.feed_store.add_feed, n_feed,
+                    priority=GLib.PRIORITY_LOW
                 )
             for fi in n_feed.items:
                 if (
@@ -213,21 +218,19 @@ class FeedsManager(metaclass=Singleton):
         t.start()
         return True
 
-    def delete_feeds(self, targets, *args):
+    def delete_feeds(self, targets: Union[List[Feed], Feed], *args):
         if not isinstance(targets, list):
             if isinstance(targets, Feed):
                 targets = [targets]
             else:
                 raise TypeError('delete_feed: targets must be list or Feed')
-        for f in targets:
-            identifiers = [fi.identifier for fi in f.items]
+        for to_rm in targets:
+            identifiers = [fi.identifier for fi in to_rm.items]
             for fi in self.feeds_items:
                 if fi.identifier in identifiers:
                     self.feeds_items.remove(fi)
-            for feed in self.feeds:
-                if feed.title+feed.rss_link == f.title+f.rss_link:
-                    self.feeds.remove(feed)
+            self.feed_store.remove_feed(to_rm)
             self.confman.conf['feeds'].pop(
-                f.rss_link
+                to_rm.rss_link
             )
         self.confman.save_conf()
