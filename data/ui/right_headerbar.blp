@@ -7,6 +7,7 @@ menu webviewMenu {
     }
     section {
         item (_('Open in Browser'), 'app.open_externally')
+        item (_('Open in External Media Player'), 'app.open_media_player')
         item (_('Copy Article Link'), 'app.copy_link')
     }
 }
@@ -15,6 +16,7 @@ PopoverMenu extra_popover {
     menu-model: webviewMenu;
     [zoom] Box {
         styles ['linked']
+        hexpand: true; halign: center;
         Button zoom_out_btn {
             icon-name: 'list-remove-symbolic';
             tooltip-text: _('Zoom Out');

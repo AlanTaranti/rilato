@@ -73,6 +73,11 @@ class GFeedsWebView(Gtk.Stack):
         self.feeditem = None
         self.html = None
 
+    def action_open_media_player(self):
+        self.open_url_in_media_player(
+            self.feeditem.link if self.feeditem else None
+        )
+
     def on_apply_adblock_changed(self, refresh: bool):
         self.apply_adblock(
             refresh=refresh, remove=not self.confman.conf['enable_adblock']
@@ -299,6 +304,17 @@ class GFeedsWebView(Gtk.Stack):
     def _get_data_cb(self, resource, result, user_data=None):
         self.html = resource.get_data_finish(result)
 
+    def open_url_in_media_player(self, url: Optional[str]):
+        if not url:
+            return
+        cmd_parts = [
+            self.confman.conf['media_player'], f"'{url}'"
+        ]
+        if self.confman.is_flatpak:
+            cmd_parts.insert(0, 'flatpak-spawn --host')
+        cmd = ' '.join(cmd_parts)
+        Popen(cmd, shell=True)
+
     @Gtk.Template.Callback()
     def on_decide_policy(self, webView, decision, decisionType):
         if (
@@ -321,13 +337,7 @@ class GFeedsWebView(Gtk.Stack):
                     ])
             ):
                 decision.ignore()
-                cmd_parts = [
-                    self.confman.conf['media_player'], f'"{uri}"'
-                ]
-                if self.confman.is_flatpak:
-                    cmd_parts.insert(0, 'flatpak-spawn --host')
-                cmd = ' '.join(cmd_parts)
-                Popen(cmd, shell=True)
+                self.open_url_in_media_player(uri)
             else:
                 if not self.confman.conf['open_links_externally']:
                     return False

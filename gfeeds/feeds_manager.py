@@ -115,6 +115,7 @@ class FeedsManager(metaclass=Singleton):
                         [
                             n_feed.rss_link+ofi.identifier
                             for ofi in self.article_store.list_store
+                            if ofi
                         ]
                 ):
                     GLib.idle_add(

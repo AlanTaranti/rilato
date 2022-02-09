@@ -88,6 +88,10 @@ class GFeedsApplication(BaseApp):
                     func=self.open_externally
                 ),
                 AppAction(
+                    name='open_media_player',
+                    func=self.open_media_player
+                ),
+                AppAction(
                     name='copy_link',
                     func=self.copy_link
                 )
@@ -106,6 +110,9 @@ class GFeedsApplication(BaseApp):
             get_cached=not self.confman.conf['refresh_on_startup'],
             is_startup=True
         )
+
+    def open_media_player(self, *args):
+        self.window.leaflet.webview.action_open_media_player()
 
     def open_externally(self, *args):
         self.window.leaflet.webview.open_externally()
