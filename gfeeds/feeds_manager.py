@@ -228,14 +228,15 @@ class FeedsManager(metaclass=Singleton):
             else:
                 raise TypeError('delete_feed: targets must be list or Feed')
         articles_to_rm = []
+        n_selected_feeds = self.article_store.selected_feeds.copy()
         for to_rm in targets:
-            identifiers = [fi.identifier for fi in to_rm.items]
-            for fi in self.article_store.list_store:
-                if fi.identifier in identifiers:
-                    articles_to_rm.append(fi)
+            articles_to_rm.extend(to_rm.items)
+            if to_rm.rss_link in n_selected_feeds:
+                n_selected_feeds.remove(to_rm.rss_link)
             self.feed_store.remove_feed(to_rm)
             self.confman.conf['feeds'].pop(
                 to_rm.rss_link
             )
+        self.article_store.set_selected_feeds(n_selected_feeds)
         self.article_store.remove_items(articles_to_rm)
         self.confman.save_conf()

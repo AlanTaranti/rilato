@@ -20,10 +20,13 @@ class FilterView(Adw.Bin):
         self.feeds_listbox.connect(
             'row-activated', self.on_feeds_row_activated
         )
+        self.feeds_listbox.connect(
+            'row-selected', self.on_feed_row_selected
+        )
         self.feeds_listbox_bin.set_child(self.feeds_listbox)
-        all_listbox_row = FeedsViewAllListboxRow()
-        self.all_listbox.append(all_listbox_row)
-        self.all_listbox.select_row(all_listbox_row)
+        self.all_listbox_row = FeedsViewAllListboxRow()
+        self.all_listbox.append(self.all_listbox_row)
+        self.all_listbox.select_row(self.all_listbox_row)
         self.tags_listbox.bind_model(
             self.feedman.tag_store, self.__create_tag_row, None
         )
@@ -48,3 +51,7 @@ class FilterView(Adw.Bin):
         for lb in (self.all_listbox, self.tags_listbox):
             lb.select_row(None)
         self.confman.emit('gfeeds_filter_changed', row.feed)
+
+    def on_feed_row_selected(self, _, row):
+        if not row and not self.tags_listbox.get_selected_row():
+            self.all_listbox.select_row(self.all_listbox_row)

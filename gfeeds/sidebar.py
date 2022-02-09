@@ -50,9 +50,6 @@ class GFeedsSidebar(Gtk.Overlay):
         self.set_child(self.listview_sw)
         self.add_overlay(self.loading_revealer)
 
-        self.feedman.feed_store.connect(
-            'item-removed', self.on_feed_removed
-        )
         self.feedman.connect(
             'feedmanager_refresh_start',
             self.on_refresh_start
@@ -68,12 +65,6 @@ class GFeedsSidebar(Gtk.Overlay):
     def on_refresh_end(self, *_):
         self.listview_sw.all_items_changed()
         self.loading_revealer.set_running(False)
-
-    def on_feed_removed(self, _, feed: Feed):
-        if feed.rss_link in self.listview_sw.selected_feeds:
-            n_selected_feeds = self.listview_sw.selected_feeds
-            n_selected_feeds.remove(feed.rss_link)
-            self.listview_sw.set_selected_feeds(n_selected_feeds)
 
     def set_search(self, search_term):
         self.listview_sw.set_search_term(search_term)
