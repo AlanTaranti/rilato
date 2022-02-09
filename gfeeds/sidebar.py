@@ -87,17 +87,17 @@ class GFeedsSidebar(Gtk.Overlay):
             self.on_refresh_end
         )
 
-    def on_refresh_start(self, *args):
+    def on_refresh_start(self, *_):
         self.loading_revealer.set_running(True)
 
-    def on_refresh_end(self, *args):
+    def on_refresh_end(self, *_):
         self.listview_sw.all_items_changed()
         self.loading_revealer.set_running(False)
 
     def on_feeds_items_extend(self, caller, n_feeds_items_list):
         self.listview_sw.add_new_items(n_feeds_items_list)
 
-    def on_feed_removed(self, feed: Feed):
+    def on_feed_removed(self, _, feed: Feed):
         if feed.rss_link in self.listview_sw.selected_feeds:
             n_selected_feeds = self.listview_sw.selected_feeds
             n_selected_feeds.remove(feed.rss_link)
@@ -107,10 +107,10 @@ class GFeedsSidebar(Gtk.Overlay):
     def set_search(self, search_term):
         self.listview_sw.set_search_term(search_term)
 
-    def select_next_article(self, *args):
+    def select_next_article(self, *_):
         self.listview_sw.select_next()
 
-    def select_prev_article(self, *args):
+    def select_prev_article(self, *_):
         self.listview_sw.select_prev()
 
     def on_feeds_items_pop(self, feed_item):
