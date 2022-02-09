@@ -1,6 +1,5 @@
 from gettext import ngettext
 from functools import reduce
-from gfeeds.feeds_view import FeedsViewScrolledWindow
 from gfeeds.filter_view import FilterView
 from gfeeds.rss_parser import FeedItem
 from gfeeds.stack_with_empty_state import StackWithEmptyState

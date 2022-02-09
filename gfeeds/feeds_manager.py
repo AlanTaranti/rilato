@@ -10,7 +10,6 @@ from gfeeds.download_manager import (
     download_feed,
     extract_feed_url_from_html
 )
-from gfeeds.signaler_list import SignalerList
 from gfeeds.tag_store import TagStore
 from gfeeds.test_connection import is_online
 from gfeeds.thread_pool import ThreadPool

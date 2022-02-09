@@ -1,10 +1,8 @@
 from gettext import gettext as _
-from gi.repository import GLib, Gtk
+from gi.repository import Gtk
 from gfeeds.confManager import ConfManager
 from gfeeds.feeds_manager import FeedsManager
 from gfeeds.articles_listview import ArticlesListView, ArticlesListBox
-from gfeeds.feed_store import FeedStore
-from gfeeds.rss_parser import Feed
 
 
 class LoadingRevealer(Gtk.Revealer):

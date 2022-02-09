@@ -8,12 +8,8 @@ from gfeeds.feeds_view import (
     FeedsViewListbox,
     FeedsViewListboxRow
 )
-from gfeeds.rss_parser import Feed
 from gfeeds.scrolled_message_dialog import ScrolledMessageDialog
 from gfeeds.get_children import get_children
-from functools import reduce
-from operator import or_
-
 from gfeeds.tag_store import TagObj
 
 

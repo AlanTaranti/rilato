@@ -1,4 +1,3 @@
-from gettext import gettext as _
 from gfeeds.confManager import ConfManager
 from gi.repository import Gtk, Adw, Gio, GObject, Pango
 from typing import Optional, Union, List, Callable

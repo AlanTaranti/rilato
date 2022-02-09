@@ -3,7 +3,6 @@ from concurrent.futures import ThreadPoolExecutor
 from gfeeds.feeds_manager import FeedsManager
 from gfeeds.rss_parser import FeedItem
 from gfeeds.sidebar_row import SidebarRow
-from gfeeds.articles_listmodel import ArticlesListModel
 
 
 class CommonListScrolledWin(Gtk.ScrolledWindow):

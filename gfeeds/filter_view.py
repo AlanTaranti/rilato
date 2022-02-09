@@ -1,7 +1,9 @@
 from gi.repository import Gtk, Adw
 from gfeeds.confManager import ConfManager
 from gfeeds.feeds_manager import FeedsManager
-from gfeeds.feeds_view import FeedsViewAllListboxRow, FeedsViewListbox, FeedsViewTagListboxRow
+from gfeeds.feeds_view import (
+    FeedsViewAllListboxRow, FeedsViewListbox, FeedsViewTagListboxRow
+)
 from gfeeds.tag_store import TagObj
 
 
