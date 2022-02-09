@@ -50,31 +50,6 @@ class GFeedsSidebar(Gtk.Overlay):
         self.set_child(self.listview_sw)
         self.add_overlay(self.loading_revealer)
 
-        self.feedman.feeds_items.connect(
-            'pop',
-            lambda caller, obj: self.on_feeds_items_pop(obj)
-        )
-        self.feedman.feeds_items.connect(
-            'append',
-            lambda caller, obj: GLib.idle_add(
-                self.on_feeds_items_append,
-                obj,
-                priority=GLib.PRIORITY_LOW)
-        )
-        self.feedman.feeds_items.connect(
-            'extend',
-            lambda caller, obj: GLib.idle_add(
-                self.on_feeds_items_extend,
-                caller,
-                obj,
-                priority=GLib.PRIORITY_LOW
-            )
-        )
-        self.feedman.feeds_items.connect(
-            'empty',
-            lambda *args: self.listview_sw.empty()
-        )
-
         self.feedman.feed_store.connect(
             'item-removed', self.on_feed_removed
         )
@@ -94,15 +69,11 @@ class GFeedsSidebar(Gtk.Overlay):
         self.listview_sw.all_items_changed()
         self.loading_revealer.set_running(False)
 
-    def on_feeds_items_extend(self, caller, n_feeds_items_list):
-        self.listview_sw.add_new_items(n_feeds_items_list)
-
     def on_feed_removed(self, _, feed: Feed):
         if feed.rss_link in self.listview_sw.selected_feeds:
             n_selected_feeds = self.listview_sw.selected_feeds
             n_selected_feeds.remove(feed.rss_link)
             self.listview_sw.set_selected_feeds(n_selected_feeds)
-        self.listview_sw.remove_items(feed.items)
 
     def set_search(self, search_term):
         self.listview_sw.set_search_term(search_term)
@@ -112,9 +83,3 @@ class GFeedsSidebar(Gtk.Overlay):
 
     def select_prev_article(self, *_):
         self.listview_sw.select_prev()
-
-    def on_feeds_items_pop(self, feed_item):
-        self.listview_sw.remove_items([feed_item])
-
-    def on_feeds_items_append(self, feed_item):
-        self.listview_sw.add_new_items([feed_item])

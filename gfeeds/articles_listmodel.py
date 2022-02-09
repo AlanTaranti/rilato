@@ -1,4 +1,4 @@
-from gi.repository import Gtk, Gio
+from gi.repository import GObject, Gtk, Gio
 from gfeeds.rss_parser import FeedItem
 from gfeeds.confManager import ConfManager
 

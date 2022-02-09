@@ -1,5 +1,6 @@
 from gi.repository import Gtk
 from concurrent.futures import ThreadPoolExecutor
+from gfeeds.feeds_manager import FeedsManager
 from gfeeds.rss_parser import FeedItem
 from gfeeds.sidebar_row import SidebarRow
 from gfeeds.articles_listmodel import ArticlesListModel
@@ -12,7 +13,8 @@ class CommonListScrolledWin(Gtk.ScrolledWindow):
             vscrollbar_policy=Gtk.PolicyType.AUTOMATIC
         )
 
-        self.articles_store = ArticlesListModel()
+        self.feedman = FeedsManager()
+        self.articles_store = self.feedman.article_store
 
         self.fetch_image_thread_pool = ThreadPoolExecutor(
             max_workers=self.articles_store.confman.conf[

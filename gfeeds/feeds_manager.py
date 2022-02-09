@@ -2,6 +2,7 @@ from threading import Thread, Event
 from gettext import gettext as _
 from typing import List, Union
 from gi.repository import GLib, GObject
+from gfeeds.articles_listmodel import ArticlesListModel
 from gfeeds.singleton import Singleton
 from gfeeds.confManager import ConfManager
 from gfeeds.rss_parser import Feed
@@ -51,7 +52,7 @@ class FeedsManager(metaclass=Singleton):
 
         self.feed_store = FeedStore()
         self.tag_store = TagStore()
-        self.feeds_items = SignalerList()
+        self.article_store = ArticlesListModel()
 
         self.errors = []
         self.problematic_feeds = []
@@ -114,12 +115,12 @@ class FeedsManager(metaclass=Singleton):
                         n_feed.rss_link+fi.identifier not in
                         [
                             n_feed.rss_link+ofi.identifier
-                            for ofi in self.feeds_items
+                            for ofi in self.article_store.list_store
                         ]
                 ):
                     GLib.idle_add(
-                        self.feeds_items.append,
-                        fi,
+                        self.article_store.add_new_items,
+                        [fi],
                         priority=GLib.PRIORITY_LOW
                     )
                     if not get_cached:
@@ -172,10 +173,12 @@ class FeedsManager(metaclass=Singleton):
 
     def trim_feeds_items_by_age(self):
         now = pytz.UTC.localize(datetime.utcnow())
-        for item in self.feeds_items:
+        to_rm = []
+        for item in self.article_store.list_store:
             item_age = now - item.pub_date
             if item_age > self.confman.max_article_age:
-                self.feeds_items.remove(item)
+                to_rm.append(item)
+        self.article_store.remove_items(to_rm)
 
     def start_auto_refresh(self):
         if self.auto_refresh_thread is not None:
@@ -224,13 +227,15 @@ class FeedsManager(metaclass=Singleton):
                 targets = [targets]
             else:
                 raise TypeError('delete_feed: targets must be list or Feed')
+        articles_to_rm = []
         for to_rm in targets:
             identifiers = [fi.identifier for fi in to_rm.items]
-            for fi in self.feeds_items:
+            for fi in self.article_store.list_store:
                 if fi.identifier in identifiers:
-                    self.feeds_items.remove(fi)
+                    articles_to_rm.append(fi)
             self.feed_store.remove_feed(to_rm)
             self.confman.conf['feeds'].pop(
                 to_rm.rss_link
             )
+        self.article_store.remove_items(articles_to_rm)
         self.confman.save_conf()

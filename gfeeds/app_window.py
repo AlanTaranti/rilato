@@ -64,17 +64,19 @@ class GFeedsAppWindow(BaseWindow):
             self.confman.conf['windowsize']['height']
         )
 
-    def emit_destroy(self, *args):
+    def emit_destroy(self, *_):
         self.emit('destroy')
 
-    def on_destroy(self, *args):
+    def on_destroy(self, *_):
         self.leaflet.sidebar.listview_sw.shutdown_thread_pool()
         self.confman.conf['windowsize'] = {
             'width': self.get_width(),
             'height': self.get_height()
         }
         # cleanup old read items
-        feeds_items_ids = [fi.identifier for fi in self.feedman.feeds_items]
+        feeds_items_ids = [
+            fi.identifier for fi in self.feedman.article_store.list_store
+        ]
         to_rm = []
         for ri in self.confman.conf['read_items']:
             if ri not in feeds_items_ids:
