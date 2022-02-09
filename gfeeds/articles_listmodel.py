@@ -1,3 +1,4 @@
+from typing import List
 from gi.repository import GObject, Gtk, Gio
 from gfeeds.rss_parser import FeedItem
 from gfeeds.confManager import ConfManager
@@ -102,8 +103,7 @@ class ArticlesListModel(Gtk.SortListModel):
         for i in range(self.list_store.get_n_items()):
             self.list_store.get_item(i).emit('changed', '')
 
-    def remove_items(self, to_remove_l):
-        target_links = [fi.identifier for fi in to_remove_l]
+    def remove_items(self, to_remove_l: List[FeedItem]):
         for item in to_remove_l:
             for index in range(len(self.list_store)):
                 if item == self.list_store[index]:
@@ -114,7 +114,7 @@ class ArticlesListModel(Gtk.SortListModel):
         self.__search_term = term.strip().lower()
         self.invalidate_filter()
 
-    def set_selected_feeds(self, n_feeds_l):
+    def set_selected_feeds(self, n_feeds_l: List[str]):
         self.selected_feeds = n_feeds_l
         self.invalidate_filter()
 
