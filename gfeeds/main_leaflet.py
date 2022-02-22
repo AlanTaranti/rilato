@@ -70,6 +70,10 @@ class MainLeaflet(Adw.Bin):
                     self.filter_flap.get_reveal_flap()
                 )
         )
+        self.confman.connect(
+            'gfeeds_filter_changed', lambda *args:
+                self.left_headerbar.filter_btn.set_active(False)
+        )
         self.searchbar.entry.connect(
             'changed',
             lambda entry: self.sidebar.set_search(entry.get_text())
