@@ -174,7 +174,6 @@ class GFeedsApplication(BaseApp):
                 opml_out = feeds_list_to_opml(self.feedman.feed_store)
                 with open(save_path, 'w') as fd:
                     fd.write(opml_out)
-                    fd.close()
 
         dialog.connect('response', on_response)
         dialog.show()
