@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-14 16:45+0100\n"
-"PO-Revision-Date: 2022-01-14 16:47+0100\n"
+"POT-Creation-Date: 2022-02-22 10:24+0100\n"
+"PO-Revision-Date: 2022-02-22 10:26+0100\n"
 "Last-Translator: Gabriele Musco <gabmus@disroot.org>\n"
 "Language-Team: Italian\n"
 "Language: it\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.0\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #: ../gfeeds/opml_file_chooser.py:7
 msgid "XML files"
@@ -42,22 +42,22 @@ msgstr "Scegli dove salvare il file OPML esportato"
 msgid "Save"
 msgstr "Salva"
 
-#: ../gfeeds/rss_parser.py:57
+#: ../gfeeds/rss_parser.py:67
 #, python-brace-format
 msgid "Error: unable to parse datetime {0} for feeditem {1}"
 msgstr "Errore: impossibile analizzare data e ora {0} per l'articolo {1}"
 
-#: ../gfeeds/rss_parser.py:104
+#: ../gfeeds/rss_parser.py:148
 #, python-brace-format
 msgid "Errors while parsing feed `{0}`"
 msgstr "Errori nell'analisi del feed `{0}`"
 
-#: ../gfeeds/rss_parser.py:134
+#: ../gfeeds/rss_parser.py:175
 #, python-brace-format
 msgid "`{0}` may not be an RSS or Atom feed"
 msgstr "`{0}` potrebbe non essere un feed RSS o Atom"
 
-#: ../gfeeds/feeds_manager.py:83
+#: ../gfeeds/feeds_manager.py:87
 #, python-brace-format
 msgid "Feed {0} exists already, skipping"
 msgstr "Il feed {0} esiste già, lo salto"
@@ -75,19 +75,19 @@ msgstr ""
 msgid "Error downloading favicon for `{0}`"
 msgstr "Errore nel download della favicon per `{0}`"
 
-#: ../gfeeds/feeds_view.py:18
+#: ../gfeeds/feeds_view.py:14
 msgid "All feeds"
 msgstr "Tutti i feed"
 
-#: ../gfeeds/webview.py:183
+#: ../gfeeds/webview.py:188
 msgid "Link copied to clipboard!"
 msgstr "Link copiato negli appunti!"
 
-#: ../gfeeds/webview.py:205
+#: ../gfeeds/webview.py:210
 msgid "Feed content not available for this article"
 msgstr "Contenuto del feed non disponibile per questo articolo"
 
-#: ../gfeeds/main_leaflet.py:119
+#: ../gfeeds/main_leaflet.py:121
 #, python-brace-format
 msgid "{0} new article"
 msgid_plural "{0} new articles"
@@ -278,34 +278,34 @@ msgstr "GtkListView sperimentale per la lista degli articoli"
 msgid "Loading feeds..."
 msgstr "Caricamento feed..."
 
-#: ../gfeeds/__main__.py:241
+#: ../gfeeds/__main__.py:259
 msgid "url"
 msgstr "url"
 
-#: ../gfeeds/__main__.py:244
+#: ../gfeeds/__main__.py:262
 msgid "opml file local url or rss remote url to import"
 msgstr "url locale del file opml o url rss remota da importare"
 
-#: ../gfeeds/download_manager.py:85
+#: ../gfeeds/download_manager.py:88
 #, python-brace-format
 msgid "`{0}`: connection timed out"
 msgstr "`{0}`: timeout connessione"
 
-#: ../gfeeds/download_manager.py:89
+#: ../gfeeds/download_manager.py:92
 #, python-brace-format
 msgid "`{0}` might not be a valid address"
 msgstr "`{0}` potrebbe non essere un indirizzo valido"
 
-#: ../gfeeds/download_manager.py:114
+#: ../gfeeds/download_manager.py:117
 #, python-brace-format
 msgid "Error downloading `{0}`, code `{1}`"
 msgstr "Errore nel download di `{0}`, codice `{1}`"
 
-#: ../gfeeds/manage_feeds_window.py:247
+#: ../gfeeds/manage_feeds_window.py:225
 msgid "Do you want to delete these feeds?"
 msgstr "Vuoi eliminare questi feed?"
 
-#: ../gfeeds/manage_feeds_window.py:299
+#: ../gfeeds/manage_feeds_window.py:277
 msgid "Manage Feeds"
 msgstr "Gestisci Feed"
 
@@ -317,11 +317,11 @@ msgstr "Vuoi importare questi feed?"
 msgid "Do you want to import this feed?"
 msgstr "Vuoi importare questo feed?"
 
-#: ../gfeeds/opml_manager.py:44
+#: ../gfeeds/opml_manager.py:42
 msgid "Error: OPML path provided does not exist"
 msgstr "Errore: il percorso all'OPML fornito non esiste"
 
-#: ../gfeeds/opml_manager.py:55
+#: ../gfeeds/opml_manager.py:53
 #, python-brace-format
 msgid "Error parsing OPML file `{0}`"
 msgstr "Errore nell'analisi del file OPML `{0}`"
@@ -354,10 +354,6 @@ msgstr "Segna come non letto"
 msgid "Mark as read"
 msgstr "Segna come letto"
 
-#: ../gfeeds/base_preferences.py:106
-msgid "Choose a folder"
-msgstr "Scegli una cartella"
-
 #: ../data/ui/extra_popover_menu.ui:19
 msgid "Web View"
 msgstr "Vista Web"
@@ -370,53 +366,69 @@ msgstr "Modalità lettura"
 msgid "Feed Content"
 msgstr "Contenuto del Feed"
 
-#: ../data/ui/shortcutsWindow.blp:11
+#: ../data/ui/shortcutsWindow.blp:12
 msgid "Open Keyboard Shortcuts"
 msgstr "Apri Scorciatoie da tastiera"
 
-#: ../data/ui/shortcutsWindow.blp:15
+#: ../data/ui/shortcutsWindow.blp:16
 msgid "Open Menu"
 msgstr "Apri Menu"
 
-#: ../data/ui/shortcutsWindow.blp:19
+#: ../data/ui/shortcutsWindow.blp:20
 msgid "Open Preferences"
 msgstr "Apri Preferenze"
 
-#: ../data/ui/shortcutsWindow.blp:23
+#: ../data/ui/shortcutsWindow.blp:24
 msgid "Quit"
 msgstr "Esci"
 
-#: ../data/ui/shortcutsWindow.blp:27
-msgid "Refresh Articles"
-msgstr "Aggiorna Articoli"
+#: ../data/ui/shortcutsWindow.blp:28
+msgid "Article List"
+msgstr "Lista Articoli"
 
-#: ../data/ui/shortcutsWindow.blp:31
-msgid "Search Articles"
-msgstr "Cerca Articoli"
+#: ../data/ui/shortcutsWindow.blp:31 ../data/ui/left_headerbar.blp:40
+msgid "Refresh"
+msgstr "Ricarica"
 
-#: ../data/ui/shortcutsWindow.blp:35
-msgid "Next Article"
-msgstr "Articolo Successivo"
+#: ../data/ui/shortcutsWindow.blp:35 ../data/ui/left_headerbar.blp:45
+msgid "Search"
+msgstr "Cerca"
 
 #: ../data/ui/shortcutsWindow.blp:39
-msgid "Previous Article"
-msgstr "Articolo Precedente"
+msgid "Next"
+msgstr "Successivo"
 
 #: ../data/ui/shortcutsWindow.blp:43
+msgid "Previous"
+msgstr "Precedente"
+
+#: ../data/ui/shortcutsWindow.blp:47
 msgid "Show/Hide Read Articles"
 msgstr "Mostra/Nascondi Articoli Letti"
 
-#: ../data/ui/shortcutsWindow.blp:47 ../data/ui/right_headerbar.blp:30
+#: ../data/ui/shortcutsWindow.blp:51
+msgid "Mark All Read"
+msgstr "Segna Tutti come Letti"
+
+#: ../data/ui/shortcutsWindow.blp:55
+msgid "Article"
+msgstr "Articolo"
+
+#: ../data/ui/shortcutsWindow.blp:58 ../data/ui/right_headerbar.blp:32
 msgid "Zoom In"
 msgstr "Aumenta Ingrandimento"
 
-#: ../data/ui/shortcutsWindow.blp:51 ../data/ui/right_headerbar.blp:20
+#: ../data/ui/shortcutsWindow.blp:62 ../data/ui/right_headerbar.blp:22
 msgid "Zoom Out"
 msgstr "Riduci Ingrandimento"
 
-#: ../data/ui/shortcutsWindow.blp:55 ../data/ui/right_headerbar.blp:25
+#: ../data/ui/shortcutsWindow.blp:66 ../data/ui/right_headerbar.blp:27
 msgid "Reset Zoom"
 msgstr "Reimposta Ingrandimento"
+
+#: ../data/ui/shortcutsWindow.blp:70 ../data/ui/right_headerbar.blp:9
+msgid "Open in Browser"
+msgstr "Apri nel Browser"
 
 #: ../data/ui/manage_tags_content.blp:17
 msgid "New tag name…"
@@ -458,19 +470,19 @@ msgstr "Seleziona/Deseleziona Tutto"
 msgid "Delete Selected Feeds"
 msgstr "Elimina i Feed Selezionati"
 
-#: ../data/ui/right_headerbar.blp:9
-msgid "Open in Browser"
-msgstr "Apri nel Browser"
-
 #: ../data/ui/right_headerbar.blp:10
+msgid "Open in External Media Player"
+msgstr "Apri in Riproduttore Multimediale Esterno"
+
+#: ../data/ui/right_headerbar.blp:11
 msgid "Copy Article Link"
 msgstr "Copia Link dell'Articolo"
 
-#: ../data/ui/right_headerbar.blp:63
+#: ../data/ui/right_headerbar.blp:65
 msgid "Back to Articles"
 msgstr "Torna agli Articoli"
 
-#: ../data/ui/right_headerbar.blp:69
+#: ../data/ui/right_headerbar.blp:71
 msgid "Change View Mode"
 msgstr "Cambia Modalità di Visualizzazione"
 
@@ -537,14 +549,6 @@ msgstr "Aggiungi Feed"
 #: ../data/ui/left_headerbar.blp:35
 msgid "Menu"
 msgstr "Menu"
-
-#: ../data/ui/left_headerbar.blp:40
-msgid "Refresh"
-msgstr "Ricarica"
-
-#: ../data/ui/left_headerbar.blp:45
-msgid "Search"
-msgstr "Cerca"
 
 #: ../data/ui/left_headerbar.blp:50
 msgid "There Are Errors"
@@ -979,6 +983,21 @@ msgstr "Aggiunta traduzione italiana"
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:322
 msgid "First release"
 msgstr "Prima release"
+
+#~ msgid "Choose a folder"
+#~ msgstr "Scegli una cartella"
+
+#~ msgid "Refresh Articles"
+#~ msgstr "Aggiorna Articoli"
+
+#~ msgid "Search Articles"
+#~ msgstr "Cerca Articoli"
+
+#~ msgid "Next Article"
+#~ msgstr "Articolo Successivo"
+
+#~ msgid "Previous Article"
+#~ msgstr "Articolo Precedente"
 
 #~ msgid "RSS content not available for this article"
 #~ msgstr "Contenuto RSS non disponibile per questo articolo"

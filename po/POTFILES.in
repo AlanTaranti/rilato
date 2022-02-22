@@ -9,9 +9,10 @@ data/ui/manage_tags_content.blp
 data/ui/right_headerbar.blp
 data/ui/row_popover.blp
 data/ui/shortcutsWindow.blp
+data/ui/left_headerbar.blp
+data/ui/shortcutsWindow.blp
 data/ui/right_headerbar.blp
 data/ui/webview.blp
-gfeeds/base_preferences.py
 gfeeds/confirm_add_dialog.py
 gfeeds/download_manager.py
 gfeeds/feeds_manager.py
