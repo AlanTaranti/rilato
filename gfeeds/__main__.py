@@ -46,7 +46,8 @@ class GFeedsApplication(BaseApp):
                 ),
                 AppAction(
                     name='set_all_read',
-                    func=self.set_all_read
+                    func=self.set_all_read,
+                    accel='<Control>m'
                 ),
                 AppAction(
                     name='set_all_unread',
@@ -85,7 +86,8 @@ class GFeedsApplication(BaseApp):
                 ),
                 AppAction(
                     name='open_externally',
-                    func=self.open_externally
+                    func=self.open_externally,
+                    accel='<Control>o'
                 ),
                 AppAction(
                     name='open_media_player',
