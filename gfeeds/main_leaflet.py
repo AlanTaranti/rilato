@@ -70,9 +70,14 @@ class MainLeaflet(Adw.Bin):
                     self.filter_flap.get_reveal_flap()
                 )
         )
+
+        def filter_changed():
+            self.left_headerbar.filter_btn.set_active(False)
+            adjustment = self.sidebar.listview_sw.get_vadjustment()
+            adjustment.set_value(0)
+            self.sidebar.listview_sw.set_vadjustment(adjustment)
         self.confman.connect(
-            'gfeeds_filter_changed', lambda *args:
-                self.left_headerbar.filter_btn.set_active(False)
+            'gfeeds_filter_changed', lambda *args: filter_changed()
         )
         self.searchbar.entry.connect(
             'changed',
