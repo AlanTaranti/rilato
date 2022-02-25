@@ -135,6 +135,7 @@ class MainLeaflet(Adw.Bin):
             self.get_root().app.send_notification('new_articles', notif)
 
     def on_sidebar_row_activated(self, feed_item: FeedItem):
+        self.feedman.article_store.set_selected_article(feed_item)
         if not feed_item:
             return
         feed_item.read = True

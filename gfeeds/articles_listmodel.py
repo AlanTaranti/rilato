@@ -2,11 +2,13 @@ from typing import List
 from gi.repository import Gtk, Gio
 from gfeeds.rss_parser import FeedItem
 from gfeeds.confManager import ConfManager
+from typing import Optional
 
 
 class ArticlesListModel(Gtk.SortListModel):
     def __init__(self):
         self.selected_feeds = []
+        self.selected_article = None
         self.__search_term = ''
 
         # this is a chain: list_store contains the raw data,
@@ -53,12 +55,19 @@ class ArticlesListModel(Gtk.SortListModel):
             self.selected_feeds = [n_filter.rss_link]
         self.invalidate_filter()
 
+    def set_selected_article(self, n_selected: Optional[FeedItem]):
+        self.selected_article = n_selected
+        self.invalidate_filter()
+
     def _filter_func(self, item: FeedItem, *args) -> bool:
         res = True
         if len(self.selected_feeds) > 0:
             res = item.parent_feed.rss_link in self.selected_feeds
         if not self.confman.conf['show_read_items']:
-            res = res and (not item.read)
+            res = res and (
+                item == self.selected_article or
+                not item.read
+            )
         if self.__search_term:
             res = res and (
                 self.__search_term in item.title.lower()
