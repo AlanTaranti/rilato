@@ -72,7 +72,7 @@ class MainLeaflet(Adw.Bin):
         )
 
         self.confman.connect(
-            'gfeeds_filter_changed', self.on_filter_changed()
+            'gfeeds_filter_changed', self.on_filter_changed
         )
         self.searchbar.entry.connect(
             'changed',
