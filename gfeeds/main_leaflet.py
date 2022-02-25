@@ -71,13 +71,8 @@ class MainLeaflet(Adw.Bin):
                 )
         )
 
-        def filter_changed():
-            self.left_headerbar.filter_btn.set_active(False)
-            adjustment = self.sidebar.listview_sw.get_vadjustment()
-            adjustment.set_value(0)
-            self.sidebar.listview_sw.set_vadjustment(adjustment)
         self.confman.connect(
-            'gfeeds_filter_changed', lambda *args: filter_changed()
+            'gfeeds_filter_changed', self.on_filter_changed()
         )
         self.searchbar.entry.connect(
             'changed',
@@ -95,6 +90,13 @@ class MainLeaflet(Adw.Bin):
         )
 
         self.on_leaflet_folded()
+
+    def on_filter_changed(self, *_):
+        self.left_headerbar.filter_btn.set_active(False)
+        # reset vertical scroll position to 0
+        adjustment = self.sidebar.listview_sw.get_vadjustment()
+        adjustment.set_value(0)
+        self.sidebar.listview_sw.set_vadjustment(adjustment)
 
     @Gtk.Template.Callback()
     def on_leaflet_folded(self, *args):
