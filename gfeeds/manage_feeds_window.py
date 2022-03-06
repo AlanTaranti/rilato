@@ -85,7 +85,7 @@ class ManageTagsContent(Adw.Bin):
         self.flap = flap
         self.window = window
         self.tags_listbox.bind_model(
-            self.feedman.tag_store, self.__create_tag_row, None
+            self.feedman.tag_store.sort_store, self.__create_tag_row, None
         )
 
     @Gtk.Template.Callback()
@@ -177,7 +177,7 @@ class ManageFeedsHeaderbar(Gtk.HeaderBar):
 
 class ManageFeedsListboxRow(FeedsViewListboxRow):
     def __init__(self, feed, **kwargs):
-        super().__init__(feed, **kwargs)
+        super().__init__(feed, count=False, **kwargs)
         self.checkbox.set_visible(True)
         self.checkbox_handler_id = self.checkbox.connect(
             'toggled',
@@ -194,7 +194,8 @@ class ManageFeedsListbox(FeedsViewListbox):
     def __init__(self):
         super().__init__(
             selection_mode=Gtk.SelectionMode.NONE,
-            row_class=ManageFeedsListboxRow
+            row_class=ManageFeedsListboxRow,
+            do_filter=False
         )
         self.connect('row-activated', self.on_row_activated)
 
@@ -304,14 +305,22 @@ class GFeedsManageFeedsWindow(Adw.Window):
     def on_new_tag_added(self, _, tag):
         self.feedman.tag_store.add_tag(
             tag,
-            [feed.rss_link for feed in self.get_selected_feeds()]
+            self.get_selected_feeds()
         )
+        # TODO if tag is currently selected invalidate filter
 
-    def on_tag_removed(self, _, tag):
+    def on_tag_removed(self, _, tag_name):
         self.confman.remove_tag(
-            tag,
+            tag_name,
             [feed.rss_link for feed in self.get_selected_feeds()]
         )
+        # TODO if tag is currently selected invalidate filter
+        tag = self.feedman.tag_store.get_tag(tag_name)
+        if tag is not None:
+            for feed in self.get_selected_feeds():
+                if tag in feed.tags:
+                    feed.tags.remove(tag)
+                    tag.unread_count -= feed.unread_count
 
     def get_selected_feeds(self):
         return [

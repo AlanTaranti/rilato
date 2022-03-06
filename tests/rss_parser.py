@@ -4,7 +4,7 @@ from parameterized import parameterized
 from datetime import datetime, timezone, timedelta
 from .sample_rss import SAMPLE_RSS
 
-from gfeeds.rss_parser import FeedItem, FakeFeed, Feed
+from gfeeds.rss_parser import FeedItem, FakeFeed, Feed, FeedParser
 from os import remove, makedirs, rmdir, listdir
 from os.path import isfile, isdir
 
@@ -86,24 +86,25 @@ class TestFeedItem(unittest.TestCase):
                 remove(f)
         else:
             makedirs(confman_mock.thumbs_cache_path)
-        feed = Feed(download_res)
+        parser = FeedParser()
+        parser.parse(download_res)
 
-        feed.is_null.should.be.false
-        feed.error.should.be.none
-        feed.rss_link.should.equal('https://planet.gnome.org')
+        parser.is_null.should.be.false
+        parser.error.should.be.none
+        parser.rss_link.should.equal('https://planet.gnome.org')
 
         # weird, testing a DOC, but feedparser is not a very stable DOC, so
         # testing it on my side has some value
-        feed.fp_feed.should.be.a(dict)
-        feed.fp_feed.encoding.should.equal('utf-8')
-        feed.fp_feed.entries.should.have.length_of(1)
+        parser.fp_feed.should.be.a(dict)
+        parser.fp_feed.encoding.should.equal('utf-8')
+        parser.fp_feed.entries.should.have.length_of(1)
 
-        feed.title.should.equal('Planet GNOME')
-        feed.link.should.equal('https://planet.gnome.org/')
-        feed.description.should.equal(
+        parser.title.should.equal('Planet GNOME')
+        parser.link.should.equal('https://planet.gnome.org/')
+        parser.description.should.equal(
             'Planet GNOME - https://planet.gnome.org/'
         )
-        feed.items.should.have.length_of(1)
+        parser.raw_entries.should.have.length_of(1)
         # TODO: complete this test, there's more
 
         # cleanup

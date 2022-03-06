@@ -45,6 +45,12 @@ class GFeedsAppWindow(BaseWindow):
                 ),
                 AppShortcut(
                     '<Control>equal', self.leaflet.webview.key_zoom_reset
+                ),
+                AppShortcut(
+                    '<Control>t', lambda *args:
+                        self.leaflet.filter_flap.set_reveal_flap(
+                            not self.leaflet.filter_flap.get_reveal_flap()
+                        )
                 )
             ]
         )

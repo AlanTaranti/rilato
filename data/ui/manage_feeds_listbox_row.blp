@@ -27,6 +27,17 @@ Box hbox {
             wrap: true;
         }
     }
+    Box count_box {
+        orientation: horizontal;
+        margin-end: 6;
+        hexpand: true; vexpand: true;
+        halign: end;
+        valign: center;
+        width-request: 24;
+        Label count_label {
+            styles ['unread-count']
+        }
+    }
     CheckButton check {
         margin-start: 6; margin-end: 12;
     }

@@ -5,7 +5,7 @@ from gi.repository import GLib, GObject
 from gfeeds.articles_listmodel import ArticlesListModel
 from gfeeds.singleton import Singleton
 from gfeeds.confManager import ConfManager
-from gfeeds.rss_parser import Feed
+from gfeeds.rss_parser import Feed, FeedParser
 from gfeeds.download_manager import (
     download_feed,
     extract_feed_url_from_html
@@ -90,30 +90,33 @@ class FeedsManager(metaclass=Singleton):
         download_res = download_feed(uri, get_cached=get_cached)
         if get_cached and download_res[0] == 'not_cached':
             return
-        n_feed = Feed(download_res)
-        if n_feed.is_null:
+        parser = FeedParser()
+        parser.parse(download_res)
+        if parser.is_null:
             feed_uri_from_html = extract_feed_url_from_html(uri)
             if feed_uri_from_html is not None:
                 if uri in self.confman.conf['feeds'].keys():
                     self.confman.conf['feeds'].pop(uri)
                 self._add_feed_async_worker(feed_uri_from_html, refresh)
                 return
-            self.errors.append(n_feed.error)
+            self.errors.append(parser.error)
             self.problematic_feeds.append(uri)
         else:
-            if (
-                    n_feed.rss_link+n_feed.title not in
-                    [f.rss_link+f.title for f in self.feed_store]
-            ):
+            n_feed = self.feed_store.get_feed(
+                parser.feed_identifier
+            )
+            if n_feed is None:
+                n_feed = Feed(self.tag_store)
                 GLib.idle_add(
                     self.feed_store.add_feed, n_feed,
                     priority=GLib.PRIORITY_LOW
                 )
-            for fi in n_feed.items:
+            n_feed.populate(parser)
+            for fi in n_feed.items.values():
                 if (
                         n_feed.rss_link+fi.identifier not in
                         [
-                            n_feed.rss_link+ofi.identifier
+                            ofi.parent_feed.rss_link+ofi.identifier
                             for ofi in self.article_store.list_store
                             if ofi
                         ]
