@@ -34,7 +34,7 @@ class FilterView(Adw.Bin):
         )
 
     def __create_tag_row(self, tag: TagObj, *args) -> FeedsViewTagListboxRow:
-        row = FeedsViewTagListboxRow(tag.name)
+        row = FeedsViewTagListboxRow(tag)
         return row
 
     @Gtk.Template.Callback()
@@ -47,7 +47,7 @@ class FilterView(Adw.Bin):
     def on_tags_row_activated(self, _, row):
         for lb in (self.all_listbox, self.feeds_listbox):
             lb.select_row(None)
-        self.confman.emit('gfeeds_filter_changed', [row.tag])
+        self.confman.emit('gfeeds_filter_changed', [row.title])
 
     def on_feeds_row_activated(self, _, row):
         for lb in (self.all_listbox, self.tags_listbox):

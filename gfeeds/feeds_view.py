@@ -1,5 +1,5 @@
 from gettext import gettext as _
-from gi.repository import Gtk, Pango
+from gi.repository import GObject, Gtk, Pango
 from gfeeds.confManager import ConfManager
 from gfeeds.feeds_manager import FeedsManager
 from gfeeds.rss_parser import Feed
@@ -19,7 +19,7 @@ class FeedsViewAllListboxRow(Gtk.ListBoxRow):
 
 
 class FeedsViewListboxRow(Gtk.ListBoxRow):
-    def __init__(self, feed, description=True):
+    def __init__(self, feed, description=True, count=True):
         super().__init__()
         self.confman = ConfManager()
         self.feed = feed
@@ -51,6 +51,30 @@ class FeedsViewListboxRow(Gtk.ListBoxRow):
             self.desc_label.set_text(self.feed.description)
         else:
             self.name_label.set_ellipsize(Pango.EllipsizeMode.END)
+
+        count_box = self.builder.get_object('count_box')
+        self.count_label = self.builder.get_object('count_label')
+        if count:
+            if self.feed.unread_count == 0:
+                self.count_label.set_visible(False)
+            else:
+                self.count_label.set_text(str(self.feed.unread_count))
+
+            def transform_to(binding, value, user_data=None):
+                return value > 0
+
+            self.feed.bind_property(
+                'unread-count', self.count_label,
+                'visible', GObject.BindingFlags.DEFAULT,
+                None, transform_to
+            )
+            self.feed.bind_property(
+                'unread-count', self.count_label,
+                'label', GObject.BindingFlags.DEFAULT
+            )
+        else:
+            count_box.set_visible(False)
+
         self.set_child(self.hbox)
         self.on_full_feed_name_changed()
 
@@ -68,7 +92,7 @@ class FeedsViewTagListboxRow(Gtk.ListBoxRow):
     def __init__(self, tag):
         super().__init__()
         self.tag = tag
-        self.title = tag
+        self.title = tag.name
         self.builder = Gtk.Builder.new_from_resource(
             '/org/gabmus/gfeeds/ui/manage_feeds_listbox_row.ui'
         )
@@ -81,10 +105,29 @@ class FeedsViewTagListboxRow(Gtk.ListBoxRow):
         self.icon_container.append(self.icon)
 
         self.name_label = self.builder.get_object('title_label')
-        self.name_label.set_text(tag)
+        self.name_label.set_text(tag.name)
         self.desc_label = self.builder.get_object('description_label')
         self.desc_label.set_visible(False)
         self.set_child(self.hbox)
+
+        self.count_label = self.builder.get_object('count_label')
+        if self.tag.unread_count > 0:
+            self.count_label.set_text(str(self.tag.unread_count))
+        else:
+            self.count_label.set_visible(False)
+
+        def transform_to(binding, value, user_data=None):
+            return value > 0
+
+        self.tag.bind_property(
+            'unread-count', self.count_label,
+            'visible', GObject.BindingFlags.DEFAULT,
+            None, transform_to
+        )
+        self.tag.bind_property(
+            'unread-count', self.count_label,
+            'label', GObject.BindingFlags.DEFAULT
+        )
 
     def __repr__(self):
         return f'<FeedsViewTagListboxRow - {self.title}>'
@@ -95,7 +138,7 @@ class FeedsViewListbox(Gtk.ListBox):
 
     def __init__(
             self, description=True, selection_mode=Gtk.SelectionMode.SINGLE,
-            row_class=FeedsViewListboxRow
+            row_class=FeedsViewListboxRow, do_filter=True
     ):
         super().__init__(selection_mode=selection_mode)
         self.get_style_context().add_class('navigation-sidebar')
@@ -105,7 +148,13 @@ class FeedsViewListbox(Gtk.ListBox):
         self.confman = ConfManager()
 
         self.row_class = row_class
-        self.bind_model(self.feedman.feed_store, self.__create_feed_row, None)
+        self.bind_model(
+                self.feedman.feed_store
+                if do_filter
+                else self.feedman.feed_store.sort_store,
+                self.__create_feed_row,
+                None
+        )
 
 #         if tags:
 #             self.confman.connect(

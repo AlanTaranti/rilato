@@ -1,1 +1,11 @@
+@define-color unread-count #c0bfbc; /* Palette Light 4 */
 
+.unread-count {
+    padding: 4px 8px 3px;
+    border-radius: 12px;
+    background-color: @unread-count; 
+    color: @theme_bg_color;
+    min-width: 12px;
+    font-weight: bold;
+    font-size: 0.8em;
+}

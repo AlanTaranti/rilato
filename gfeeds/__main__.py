@@ -38,6 +38,13 @@ class GFeedsApplication(BaseApp):
                     state_default=self.confman.conf['show_read_items']
                 ),
                 AppAction(
+                    name='show_empty_feeds',
+                    func=self.show_empty_feeds,
+                    stateful=True,
+                    state_type=AppAction.StateType.BOOL,
+                    state_default=self.confman.conf['show_empty_feeds']
+                ),
+                AppAction(
                     name='view_mode_change',
                     func=self.view_mode_change,
                     stateful=True,
@@ -143,6 +150,14 @@ class GFeedsApplication(BaseApp):
         self.confman.conf['show_read_items'] = action.get_state().get_boolean()
         self.confman.emit('gfeeds_show_read_changed', '')
 
+    def show_empty_feeds(self, action: Gio.SimpleAction, *args):
+        action.change_state(
+            GLib.Variant.new_boolean(not action.get_state().get_boolean())
+        )
+        self.confman.conf['show_empty_feeds'] = \
+            action.get_state().get_boolean()
+        self.confman.emit('gfeeds_show_empty_feeds_changed', '')
+
     def set_all_read(self, *args):
         self.window.leaflet.sidebar.listview_sw.set_all_read_state(True)
 
@@ -173,7 +188,9 @@ class GFeedsApplication(BaseApp):
                 save_path = dialog.get_file().get_path()
                 if save_path[-5:].lower() != '.opml':
                     save_path += '.opml'
-                opml_out = feeds_list_to_opml(self.feedman.feed_store)
+                opml_out = feeds_list_to_opml(
+                    self.feedman.feed_store.sort_store
+                )
                 with open(save_path, 'w') as fd:
                     fd.write(opml_out)
 

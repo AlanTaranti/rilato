@@ -36,6 +36,11 @@ class ConfManagerSignaler(GObject.Object):
             None,
             (str,)
         ),
+        'gfeeds_show_empty_feeds_changed': (
+            GObject.SignalFlags.RUN_FIRST,
+            None,
+            (str,)
+        ),
         # Signals down here don't have to do with the config
         'gfeeds_filter_changed': (
             GObject.SignalFlags.RUN_FIRST,
@@ -103,6 +108,7 @@ class ConfManager(metaclass=Singleton):
         'max_refresh_threads': 2,
         'read_items': [],
         'show_read_items': True,
+        'show_empty_feeds': False,
         'full_article_title': True,
         # valid values: 'webview', 'reader', 'rsscont'
         'default_view': 'webview',

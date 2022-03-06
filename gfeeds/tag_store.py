@@ -4,12 +4,35 @@ from gfeeds.confManager import ConfManager
 
 
 class TagObj(GObject.Object):
+    __gsignals__ = {
+        'empty_changed': (
+            GObject.SignalFlags.RUN_FIRST, GObject.TYPE_NONE, ()
+        )
+    }
+
     def __init__(self, name: str):
         super().__init__()
         self.name = name
+        self.__unread_count = 0
+
+    @GObject.Property(type=int)
+    def unread_count(self) -> int:
+        return self.__unread_count
+
+    @unread_count.setter
+    def unread_count(self, c: int):
+        self.__unread_count = c
+
+    def increment_unread_count(self, v: int):
+        prev = self.unread_count
+        self.unread_count += v
+        if self.__unread_count == 0 and prev > 0:
+            self.emit('empty_changed')
+        elif self.__unread_count > 0 and prev == 0:
+            self.emit('empty_changed')
 
 
-class TagStore(Gtk.SortListModel):
+class TagStore(Gtk.FilterListModel):
     __gsignals__ = {
         'item-removed': (
             GObject.SignalFlags.RUN_LAST,
@@ -19,17 +42,36 @@ class TagStore(Gtk.SortListModel):
     }
 
     def __init__(self):
-        self.confman = ConfManager()
         self.sorter = Gtk.CustomSorter()
         self.sorter.set_sort_func(self._sort_func)
+        self.filter = Gtk.CustomFilter()
+        self.filter.set_filter_func(self._filter_func)
         self.list_store = Gio.ListStore(item_type=TagObj)
-        super().__init__(model=self.list_store, sorter=self.sorter)
+        self.sort_store = Gtk.SortListModel(
+            model=self.list_store, sorter=self.sorter
+        )
+        self.confman = ConfManager()
+        self.confman.connect(
+                'gfeeds_show_empty_feeds_changed',
+                lambda *args: self.invalidate_filter()
+        )
+        # Hiding read articles can result in empty feeds which should
+        # be hidden
+        self.confman.connect(
+                'gfeeds_show_read_changed',
+                lambda *args: self.invalidate_filter()
+        )
+        super().__init__(model=self.sort_store, filter=self.filter)
         self.populate()
 
     def populate(self):
         self.empty()
         for tag in self.confman.conf['tags']:
-            self.list_store.append(TagObj(tag))
+            n_tag = TagObj(tag)
+            self.list_store.append(n_tag)
+            n_tag.connect(
+                'empty_changed', lambda *args: self.invalidate_filter()
+            )
 
     def _sort_func(self, t1: TagObj, t2: TagObj, *_) -> int:
         return -1 if t1.name.lower() < t2.name.lower() else 1
@@ -38,12 +80,26 @@ class TagStore(Gtk.SortListModel):
         return self.list_store.remove_all()
 
     def add_tag(
-            self, n_tag: Union[TagObj, str], target_feed_urls: List[str] = []
+            self, n_tag: Union[TagObj, str], target_feeds: List[str] = []
     ):
         if isinstance(n_tag, str):
             n_tag = TagObj(n_tag)
-        if n_tag.name not in [t.name for t in self]:
+        existing_tag = self.get_tag(n_tag.name)
+        if existing_tag:
+            n_tag = existing_tag
+        else:
             self.list_store.append(n_tag)
+
+        target_feed_urls = []
+        for feed in target_feeds:
+            target_feed_urls.append(feed.rss_link)
+            if n_tag not in feed.tags:
+                feed.tags.append(n_tag)
+                n_tag.unread_count += feed.unread_count
+        n_tag.connect(
+            'empty_changed', lambda *args: self.invalidate_filter()
+        )
+
         self.confman.add_tag(n_tag.name, target_feed_urls)
 
     def remove_by_index(self, index: int):
@@ -57,3 +113,18 @@ class TagStore(Gtk.SortListModel):
             if tag == tag_o.name:
                 self.remove_by_index(i)
                 return
+
+    def _filter_func(self, item: TagObj, *args) -> bool:
+        if not self.confman.conf['show_empty_feeds'] and \
+                not self.confman.conf['show_read_items']:
+            return item.unread_count > 0
+        return True
+
+    def invalidate_filter(self):
+        self.filter.set_filter_func(self._filter_func)
+
+    def get_tag(self, tag: str):
+        for t in self.list_store:
+            if t.name == tag:
+                return t
+        return None

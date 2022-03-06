@@ -36,9 +36,13 @@ class ArticlesListModel(Gtk.SortListModel):
         )
 
     def set_all_read_state(self, state: bool):
-        for i in range(self.get_n_items()):
-            feed_item = self.get_item(i)
-            feed_item.read = state
+        for feed_item in self.list_store:
+            if not feed_item:
+                continue
+            if self.__filter_by_feed_and_search(feed_item):
+                feed_item.read = state
+        if not self.confman.conf['show_read_items'] and not state:
+            self.invalidate_filter()
 
     def _change_filter(self, caller, n_filter):
         if n_filter is None:
@@ -60,14 +64,18 @@ class ArticlesListModel(Gtk.SortListModel):
         self.invalidate_filter()
 
     def _filter_func(self, item: FeedItem, *args) -> bool:
-        res = True
-        if len(self.selected_feeds) > 0:
-            res = item.parent_feed.rss_link in self.selected_feeds
+        res = self.__filter_by_feed_and_search(item)
         if not self.confman.conf['show_read_items']:
             res = res and (
                 item == self.selected_article or
                 not item.read
             )
+        return res
+
+    def __filter_by_feed_and_search(self, item: FeedItem) -> bool:
+        res = True
+        if len(self.selected_feeds) > 0:
+            res = item.parent_feed.rss_link in self.selected_feeds
         if self.__search_term:
             res = res and (
                 self.__search_term in item.title.lower()
