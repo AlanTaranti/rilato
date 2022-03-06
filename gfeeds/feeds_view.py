@@ -149,11 +149,11 @@ class FeedsViewListbox(Gtk.ListBox):
 
         self.row_class = row_class
         self.bind_model(
-                self.feedman.feed_store
-                if do_filter
-                else self.feedman.feed_store.sort_store,
-                self.__create_feed_row,
-                None
+            self.feedman.feed_store
+            if do_filter
+            else self.feedman.feed_store.sort_store,
+            self.__create_feed_row,
+            None
         )
 
 #         if tags:
