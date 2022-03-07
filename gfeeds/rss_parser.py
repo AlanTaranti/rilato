@@ -208,6 +208,11 @@ class Feed(GObject.Object):
         )
     }
 
+    __title = ''
+    __link = ''
+    __description = ''
+    __image_url = ''
+
     def __init__(self, tag_store: TagStore):
         super().__init__()
         self.confman = ConfManager()
@@ -269,6 +274,14 @@ class Feed(GObject.Object):
     @GObject.Property(type=str)
     def description(self) -> str:
         return self.__description
+
+    @GObject.Property(type=str)
+    def image_url(self) -> str:
+        return self.__image_url
+
+    @image_url.setter
+    def image_url(self, n_image_url: str):
+        self.__image_url = n_image_url
 
     @GObject.Property(type=int, default=0)
     def unread_count(self) -> int:
