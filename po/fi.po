@@ -7,16 +7,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gfeeds master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/gfeeds/issues\n"
-"POT-Creation-Date: 2021-12-08 14:44+0000\n"
-"PO-Revision-Date: 2021-12-09 12:24+0200\n"
+"POT-Creation-Date: 2022-02-09 10:26+0000\n"
+"PO-Revision-Date: 2022-03-09 22:27+0200\n"
+"Last-Translator: Jiri Grönroos <jiri.gronroos+l10n@iki.fi>\n"
 "Language-Team: Finnish <lokalisointi-lista@googlegroups.com>\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"Last-Translator: Jiri Grönroos <jiri.gronroos+l10n@iki.fi>\n"
-"X-Generator: Poedit 3.0\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #: data/org.gabmus.gfeeds.appdata.xml.in:4
 msgid "Feeds"
@@ -70,12 +70,8 @@ msgid "Reader Mode"
 msgstr "Lukunäkymä"
 
 #: data/ui/extra_popover_menu.ui:33
-msgid "RSS Content"
-msgstr "RSS-sisältö"
-
-#: gfeeds/base_preferences.py:106
-msgid "Choose a folder"
-msgstr "Valitse kansio"
+msgid "Feed Content"
+msgstr "Syötteen sisältö"
 
 #: gfeeds/confirm_add_dialog.py:16
 msgid "Do you want to import these feeds?"
@@ -85,27 +81,27 @@ msgstr "Haluatko tuoda nämä syötteet?"
 msgid "Do you want to import this feed?"
 msgstr "Haluatko tuoda tämän syötteen?"
 
-#: gfeeds/download_manager.py:79
+#: gfeeds/download_manager.py:88
 #, python-brace-format
 msgid "`{0}`: connection timed out"
 msgstr "`{0}`: yhteys aikakatkaistiin"
 
-#: gfeeds/download_manager.py:83
+#: gfeeds/download_manager.py:92
 #, python-brace-format
 msgid "`{0}` might not be a valid address"
 msgstr "`{0}` ei ole välttämättä kelvollinen osoite"
 
-#: gfeeds/download_manager.py:108
+#: gfeeds/download_manager.py:117
 #, python-brace-format
 msgid "Error downloading `{0}`, code `{1}`"
 msgstr "Virhe ladatessa `{0}`, koodi `{1}`"
 
-#: gfeeds/feeds_manager.py:83
+#: gfeeds/feeds_manager.py:87
 #, python-brace-format
 msgid "Feed {0} exists already, skipping"
 msgstr "Syöte {0} on jo olemassa, ohitetaan"
 
-#: gfeeds/feeds_view.py:18
+#: gfeeds/feeds_view.py:14
 msgid "All feeds"
 msgstr "Kaikki syötteet"
 
@@ -122,26 +118,26 @@ msgstr ""
 "Joidenkin syötteiden kohdalla ilmeni virheitä.\n"
 "Haluatko poistaa ne?"
 
-#: gfeeds/main_leaflet.py:119
+#: gfeeds/main_leaflet.py:118
 #, python-brace-format
 msgid "{0} new article"
 msgid_plural "{0} new articles"
 msgstr[0] "{0} uusi artikkeli"
 msgstr[1] "{0} uutta artikkelia"
 
-#: gfeeds/__main__.py:241
+#: gfeeds/__main__.py:251
 msgid "url"
 msgstr "url"
 
-#: gfeeds/__main__.py:244
+#: gfeeds/__main__.py:254
 msgid "opml file local url or rss remote url to import"
 msgstr "opml-tiedoston paikallinen osoite tai rss-etäosoite tuotavaksi"
 
-#: gfeeds/manage_feeds_window.py:247
+#: gfeeds/manage_feeds_window.py:229
 msgid "Do you want to delete these feeds?"
 msgstr "Haluatko poistaa nämä syötteet?"
 
-#: gfeeds/manage_feeds_window.py:299
+#: gfeeds/manage_feeds_window.py:281
 msgid "Manage Feeds"
 msgstr "Hallitse syötteitä"
 
@@ -169,11 +165,11 @@ msgstr "Valitse mihin vietävä OPML-tiedosto tallennetaan"
 msgid "Save"
 msgstr "Tallenna"
 
-#: gfeeds/opml_manager.py:44
+#: gfeeds/opml_manager.py:42
 msgid "Error: OPML path provided does not exist"
 msgstr "Virhe: Määritettyä OPML-polkua ei ole olemassa"
 
-#: gfeeds/opml_manager.py:55
+#: gfeeds/opml_manager.py:53
 #, python-brace-format
 msgid "Error parsing OPML file `{0}`"
 msgstr "Virhe jäsentäessä OPML-tiedostoa `{0}`"
@@ -358,22 +354,22 @@ msgstr "Kuinka montaa säiettä syötteiden päivittämiseen käytetään"
 msgid "Experimental GtkListView for articles list"
 msgstr "Kokeellinen GtkListView artikkeliluettelolle"
 
-#: gfeeds/rss_parser.py:54
+#: gfeeds/rss_parser.py:67
 #, python-brace-format
 msgid "Error: unable to parse datetime {0} for feeditem {1}"
 msgstr "Virhe: ei voitu jäsentää datetimea {0} syötekohteelle {1}"
 
-#: gfeeds/rss_parser.py:101
+#: gfeeds/rss_parser.py:148
 #, python-brace-format
 msgid "Errors while parsing feed `{0}`"
 msgstr "Virheitä jäsentäessä syötettä `{0}`"
 
-#: gfeeds/rss_parser.py:131
+#: gfeeds/rss_parser.py:175
 #, python-brace-format
 msgid "`{0}` may not be an RSS or Atom feed"
 msgstr "`{0}` ei välttämättä ole RSS- tai Atom-syöte"
 
-#: gfeeds/sidebar.py:21
+#: gfeeds/sidebar.py:23
 msgid "Loading feeds..."
 msgstr "Ladataan syötteitä..."
 
@@ -405,10 +401,13 @@ msgstr "Joidenkin syötteiden kanssa ilmeni ongelmia. Haluatko poistaa ne?"
 msgid "You are offline"
 msgstr "Et ole yhteydessä verkkoon"
 
-#: gfeeds/webview.py:175
+#: gfeeds/webview.py:183
 msgid "Link copied to clipboard!"
 msgstr "Linkki kopioitu leikepöydälle!"
 
-#: gfeeds/webview.py:197
-msgid "RSS content not available for this article"
-msgstr "RSS-sisältö tälle artikkelille ei ole saatavilla"
+#: gfeeds/webview.py:205
+msgid "Feed content not available for this article"
+msgstr "Syötteen sisältöä tälle artikkelille ei ole saatavilla"
+
+#~ msgid "Choose a folder"
+#~ msgstr "Valitse kansio"
