@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: gfeeds master\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-03-17 16:45+0200\n"
-"PO-Revision-Date: 2022-03-17 16:24+0200\n"
+"PO-Revision-Date: 2022-03-17 17:24+0200\n"
 "Last-Translator: Yosef Or Boczko <yoseforb@gmail.com>\n"
 "Language-Team: Hebrew <GNOME Hebrew Translation Project>\n"
 "Language: he\n"
@@ -37,7 +37,7 @@ msgstr "העדפות כלליות"
 
 #: ../gfeeds/preferences_window.py:27
 msgid "Show newer articles first"
-msgstr "הצגת מאמר חדש קודם"
+msgstr "הצגת מאמרים חדשים ראשונים"
 
 #: ../gfeeds/preferences_window.py:32
 msgid "Open links in your browser"
@@ -371,203 +371,203 @@ msgstr "תוכן הזנה"
 
 #: ../data/ui/shortcutsWindow.blp:12
 msgid "Open Keyboard Shortcuts"
-msgstr ""
+msgstr "פתיחת צירופי מקשים"
 
 #: ../data/ui/shortcutsWindow.blp:16
 msgid "Open Menu"
-msgstr ""
+msgstr "פתיחת תפריט"
 
 #: ../data/ui/shortcutsWindow.blp:20
 msgid "Open Preferences"
-msgstr ""
+msgstr "פתיחת העדפות"
 
 #: ../data/ui/shortcutsWindow.blp:24
 msgid "Open Filter"
-msgstr ""
+msgstr "פתיחת מסנן"
 
 #: ../data/ui/shortcutsWindow.blp:28
 msgid "Quit"
-msgstr ""
+msgstr "יציאה"
 
 #: ../data/ui/shortcutsWindow.blp:32
 msgid "Article List"
-msgstr ""
+msgstr "רשימת מאמרים"
 
 #: ../data/ui/shortcutsWindow.blp:35 ../data/ui/left_headerbar.blp:41
 msgid "Refresh"
-msgstr ""
+msgstr "רענון"
 
 #: ../data/ui/shortcutsWindow.blp:39 ../data/ui/left_headerbar.blp:46
 msgid "Search"
-msgstr ""
+msgstr "חיפוש"
 
 #: ../data/ui/shortcutsWindow.blp:43
 msgid "Next"
-msgstr ""
+msgstr "הבא"
 
 #: ../data/ui/shortcutsWindow.blp:47
 msgid "Previous"
-msgstr ""
+msgstr "הקודם"
 
 #: ../data/ui/shortcutsWindow.blp:51
 msgid "Show/Hide Read Articles"
-msgstr ""
+msgstr "הצגת/הסתרת מאמרים שנקראו"
 
 #: ../data/ui/shortcutsWindow.blp:55
 msgid "Mark All Read"
-msgstr ""
+msgstr "סימון כלא נקרא"
 
 #: ../data/ui/shortcutsWindow.blp:59
 msgid "Article"
-msgstr ""
+msgstr "מאמר"
 
 #: ../data/ui/shortcutsWindow.blp:62 ../data/ui/right_headerbar.blp:32
 msgid "Zoom In"
-msgstr ""
+msgstr "התקרבות"
 
 #: ../data/ui/shortcutsWindow.blp:66 ../data/ui/right_headerbar.blp:22
 msgid "Zoom Out"
-msgstr ""
+msgstr "התרחקות"
 
 #: ../data/ui/shortcutsWindow.blp:70 ../data/ui/right_headerbar.blp:27
 msgid "Reset Zoom"
-msgstr ""
+msgstr "איפוס התקריב"
 
 #: ../data/ui/shortcutsWindow.blp:74 ../data/ui/right_headerbar.blp:9
 msgid "Open in Browser"
-msgstr ""
+msgstr "פתיחה בדפדפן"
 
 #: ../data/ui/add_feed_popover.blp:11
 msgid "Enter feed address to add"
-msgstr ""
+msgstr "יש להזין כתובת הזנה להוספה"
 
 #: ../data/ui/add_feed_popover.blp:26
 msgid "Add"
-msgstr ""
+msgstr "הוספה"
 
 #: ../data/ui/add_feed_popover.blp:32
 msgid "You're already subscribed to that feed!"
-msgstr ""
+msgstr "כבר נרשמת להזנה זו!"
 
 #: ../data/ui/left_headerbar.blp:6
 msgid "Show Read Articles"
-msgstr ""
+msgstr "הצגת מאמרים שנקראו"
 
 #: ../data/ui/left_headerbar.blp:7
 msgid "Mark All as Read"
-msgstr ""
+msgstr "סימון הכול כנקרא"
 
 #: ../data/ui/left_headerbar.blp:8
 msgid "Mark All as Unread"
-msgstr ""
+msgstr "סימון הכל כלא נקרא"
 
 #: ../data/ui/left_headerbar.blp:11
 msgid "Show Empty Feeds"
-msgstr ""
+msgstr "הצגת הזנות ריקות"
 
 #: ../data/ui/left_headerbar.blp:13
 msgid "Import OPML"
-msgstr ""
+msgstr "ייבוא OPML"
 
 #: ../data/ui/left_headerbar.blp:14
 msgid "Export OPML"
-msgstr ""
+msgstr "ייצוא OPML"
 
 #: ../data/ui/left_headerbar.blp:17
 msgid "Preferences"
-msgstr ""
+msgstr "העדפות"
 
 #: ../data/ui/left_headerbar.blp:18
 msgid "Keyboard Shortcuts"
-msgstr ""
+msgstr "צירופי מקשים"
 
 #: ../data/ui/left_headerbar.blp:19
 msgid "About Feeds"
-msgstr ""
+msgstr "על הזנות"
 
 #: ../data/ui/left_headerbar.blp:28
 msgid "Filter"
-msgstr ""
+msgstr "מסנן"
 
 #: ../data/ui/left_headerbar.blp:32
 msgid "Add Feed"
-msgstr ""
+msgstr "הוספת הזנה"
 
 #: ../data/ui/left_headerbar.blp:36
 msgid "Menu"
-msgstr ""
+msgstr "תפריט"
 
 #: ../data/ui/left_headerbar.blp:51
 msgid "There Are Errors"
-msgstr ""
+msgstr "יש שגיאות"
 
 #: ../data/ui/manage_tags_content.blp:17
 msgid "New tag name…"
-msgstr ""
+msgstr "שם תגית חדש…"
 
 #: ../data/ui/manage_tags_content.blp:24
 msgid "Add Tag"
-msgstr ""
+msgstr "הוספת תגית"
 
 #: ../data/ui/manage_tags_content.blp:39
 msgid "There are no tags yet"
-msgstr ""
+msgstr "עוד אין תגיות"
 
 #: ../data/ui/manage_tags_content.blp:40
 msgid "Add some using the entry above"
-msgstr ""
+msgstr "הוספה של כמה באמצעות השורה מעל"
 
 #: ../data/ui/right_headerbar.blp:10
 msgid "Open in External Media Player"
-msgstr ""
+msgstr "פתיחה בנגן מדיה חיצוני"
 
 #: ../data/ui/right_headerbar.blp:11
 msgid "Copy Article Link"
-msgstr ""
+msgstr "העתק קישור מאמר"
 
 #: ../data/ui/right_headerbar.blp:65
 msgid "Back to Articles"
-msgstr ""
+msgstr "חזרה למאמרים"
 
 #: ../data/ui/right_headerbar.blp:71
 msgid "Change View Mode"
-msgstr ""
+msgstr "שינוי מצב תצוגה"
 
 #: ../data/ui/empty_state.blp:7
 msgid "Let's get started"
-msgstr ""
+msgstr "בואו נתחיל"
 
 #: ../data/ui/empty_state.blp:22
 msgid "Add new feeds via URL"
-msgstr ""
+msgstr "הוספת הזנות חדשות באמצעות כתובת URL"
 
 #: ../data/ui/empty_state.blp:27
 msgid "Import an OPML file"
-msgstr ""
+msgstr "ייבוא קובץ OPML"
 
 #: ../data/ui/manage_feeds_headerbar.blp:11
 msgid "Manage Tags for Selected Feeds"
-msgstr ""
+msgstr "ניהול תגיות עבור הזנות נבחרות"
 
 #: ../data/ui/manage_feeds_headerbar.blp:16
 msgid "Select/Unselect All"
-msgstr ""
+msgstr "בחירת/ביטול בחירת הכול"
 
 #: ../data/ui/manage_feeds_headerbar.blp:21
 msgid "Delete Selected Feeds"
-msgstr ""
+msgstr "מחיקת הזנות נבחרות"
 
 #: ../data/ui/row_popover.blp:19
 msgid "Mark as Read"
-msgstr ""
+msgstr "סימון כנקרא"
 
 #: ../data/ui/webview.blp:12
 msgid "Select an article"
-msgstr ""
+msgstr "בחירה מאמר"
 
 #: ../data/org.gabmus.gfeeds.desktop.in:6
 msgid "@prettyname@"
-msgstr ""
+msgstr "@yoseforb@"
 
 #: ../data/org.gabmus.gfeeds.desktop.in:7
 msgid "News reader for GNOME"
@@ -575,7 +575,7 @@ msgstr "קורא חדשות עבור GNOME"
 
 #: ../data/org.gabmus.gfeeds.desktop.in:16
 msgid "rss;reader;feed;news;"
-msgstr "הזנה;הזנות;rss;קריאה;חדשות;"
+msgstr "הזנה;הזנות;rss;קריאה;חדשות;feed;feeds;"
 
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:4
 msgid "Feeds"
@@ -583,7 +583,7 @@ msgstr "הזנות"
 
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:5
 msgid "Gabriele Musco"
-msgstr ""
+msgstr "Gabriele Musco"
 
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:15
 msgid ""
@@ -613,152 +613,157 @@ msgstr "הזנות יכול לייבוא ולייצא באמצעות OPML."
 
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:59
 msgid "Fixed view mode button"
-msgstr ""
+msgstr "כפתור מצב תצוגה קבוע"
 
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:60
 msgid "Option to open YouTube links with an external media player"
-msgstr ""
+msgstr "אפשרות לפתוח קישורי YouTube באמצעות נגד מדיה חיצוני"
 
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:61
 msgid ""
 "Saved articles are no longer stored inside the cache directory, avoiding "
 "accidental deletion"
 msgstr ""
+"מאמרים שמורים לא מאוחסנים יותר בתיקיית המטמון, על מנת להימנע ממחיקה שלהם "
+"בטעות"
 
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:69
 msgid "Feed icons improvements for high DPI screens"
-msgstr ""
+msgstr "שיפור סמליל היישום עבור מסכים עם הבחנה גבוהה"
 
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:77
 msgid "UI improvements on phones"
-msgstr ""
+msgstr "שיפורי מנשק משתמש בטלפונים"
 
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:85
 msgid "Switched to the new libhandy Avatar widget"
-msgstr ""
+msgstr "מעבר ליישומון אוטאר חדש מ־libhandy"
 
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:86
 msgid "Added Dutch translation courtesy of Heimen Stoffels"
-msgstr ""
+msgstr "הוספת תרגום להולנדית תודות ל־Heimen Stoffels"
 
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:93
 msgid "Fixed searchbar"
-msgstr ""
+msgstr "שורת חיפוש קבועה"
 
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:101
 msgid ""
 "New tags feature! You can now categorize your feeds by creating custom tags"
 msgstr ""
+"יכולת תגיות חדשה! ניתן עכשיו לסדר לקטגוריות את ההזנות שלך באמצעות יצירת "
+"תגיות מותאמות"
 
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:102
 msgid "RSS links can now be opened directly in Feeds to be imported"
-msgstr ""
+msgstr "ניתן כעת לפתוח קישורי RSS ישירות בהזנות לייבוא"
 
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:103
 msgid "Mark as read now only marks the currently visible feeds"
-msgstr ""
+msgstr "סימון כנקרא עכשיו מסמן רק את ההזנות הגלויות"
 
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:104
 msgid "Added support for the latest version of libhandy"
-msgstr ""
+msgstr "הוספת תמיכה לגרסה האחרונה של libhandy"
 
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:105
 msgid "Improved message dialogs"
-msgstr ""
+msgstr "שיפו הודעה בחלונות דו-שיח"
 
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:106
 msgid "Performance improvements when importing OPML files"
-msgstr ""
+msgstr "שיפורי ביצועים בייבוא קובצי OPML"
 
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:107
 msgid "Removed option to disable client side decoration"
-msgstr ""
+msgstr "מחיקת אפשרות להשבתת קישוטי צד לקוח"
 
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:114
 msgid ""
 "Don't remove feeds automatically if they have errors, instead ask the user "
 "what to do"
 msgstr ""
+"הזנות לא נמחקות באופן אוטומטי אם יש שגיאות, במקום זאת המשתמש נשאל מה לעשות"
 
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:115
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:137
 msgid "Updated Italian translation"
-msgstr ""
+msgstr "עדכון תרגום לאיטלקית"
 
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:122
 msgid "Updated French translation"
-msgstr ""
+msgstr "עדכון תרגום לצרפתית"
 
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:129
 msgid "Bug fixes"
-msgstr ""
+msgstr "תיקוני תקלות"
 
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:136
 msgid "Updated version number"
-msgstr ""
+msgstr "עדכון מספר גרסה"
 
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:144
 msgid "You can now add some feeds by just using the website URL"
-msgstr ""
+msgstr "ניתן כעת להוסיף כמה הזנות רק על ידי שימוש בכתובת URL של אתר אינטרנט"
 
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:145
 msgid "New generated placeholder icon for feeds without one"
-msgstr ""
+msgstr "יצירת סמליל מציין מיקום חדש להזנות ללא אחד כזה"
 
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:146
 msgid "Improved reader mode"
-msgstr ""
+msgstr "שיפור מצב קריאה"
 
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:147
 msgid "Swipe left on your touchscreen to move back from an article"
-msgstr ""
+msgstr "החלקה שמאלה במסך לוח המגע שלך לחזרה לאחור ממאמר"
 
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:148
 msgid "Code blocks in articles now have syntax highlighting"
-msgstr ""
+msgstr "גושי קוד במאמרים מוצגים כעת עם הדגשת תחביר"
 
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:149
 msgid "Added French translation"
-msgstr ""
+msgstr "הוספת תרגום לצרפתית"
 
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:150
 msgid "Removed the colored border left of the articles"
-msgstr ""
+msgstr "הסרת צבע בגבול השמאלי של המאמרים"
 
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:151
 msgid "More keyboard shortcuts"
-msgstr ""
+msgstr "עוד צירופי מקשים"
 
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:152
 msgid "Added option to refresh articles on startup"
-msgstr ""
+msgstr "הוספת אפשרות לרענון מאמרים עם ההפעלה"
 
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:153
 msgid "Updated to the GNOME 3.36 runtime"
-msgstr ""
+msgstr "עדכון לזמן הריצה של GNOME 3.36"
 
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:154
 msgid "Various improvements and bug fixes"
-msgstr ""
+msgstr "מספר שיפורים ותיקוני תקלות"
 
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:161
 msgid "Added loading progress bar"
-msgstr ""
+msgstr "הוספת פס טעינה"
 
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:162
 msgid "Added Spanish translation"
-msgstr ""
+msgstr "הוספת תרגום לספרדית"
 
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:163
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:174
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:188
 msgid "Various UI improvements"
-msgstr ""
+msgstr "מספר שיפור מנשק משתמש"
 
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:164
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:175
 msgid "Performance improvements"
-msgstr ""
+msgstr "שיפורי ביצועים"
 
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:165
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:176
@@ -768,212 +773,212 @@ msgstr ""
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:225
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:278
 msgid "Various bug fixes"
-msgstr ""
+msgstr "מספר תיקוני תקלות"
 
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:172
 msgid "Load cached articles on startup"
-msgstr ""
+msgstr "טעינת מטמון מאמרים בהפעלה"
 
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:173
 msgid "Added new view mode menu"
-msgstr ""
+msgstr "הוספת תפריט חדש למצב תצוגה"
 
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:177
 msgid "Added Brazilian Portuguese translation"
-msgstr ""
+msgstr "הוספת תרגום לפורטוגזית ברזילאית"
 
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:178
 msgid "Added Russian translation"
-msgstr ""
+msgstr "הוספת תרגום לרוסית"
 
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:185
 msgid "Option to ellipsize article titles for a more compact view"
-msgstr ""
+msgstr "אפשרות "
 
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:186
 msgid "Added a search function"
-msgstr ""
+msgstr "הוספת אפשרות חיפוש"
 
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:187
 msgid "Updated dependencies"
-msgstr ""
+msgstr "עדכון תלויות"
 
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:196
 msgid "Errors with feeds are now shown in the UI"
-msgstr ""
+msgstr "שגיאות בהזנות כעת מוצגות במנשק המשתמש"
 
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:197
 msgid "Big UI overhaul"
-msgstr ""
+msgstr "שיפוץ נרחב למנשק המשתמש"
 
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:198
 msgid "Updated translations"
-msgstr ""
+msgstr "עדכוני תרגום"
 
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:206
 msgid "OPML file association"
-msgstr ""
+msgstr "קישור קובץ OPML"
 
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:207
 msgid "Changed left headerbar button order"
-msgstr ""
+msgstr "שינוי סדר בכפתורים בשרורת הכותרת השמאלית"
 
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:208
 msgid "Optimization for updating feeds"
-msgstr ""
+msgstr "שיפור ביצועים בעדכון הזנות"
 
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:209
 msgid "Redesigned right click/longpress menu"
-msgstr ""
+msgstr "עיצוב מחדש של לחיצה ימנית/לחיצה ארוכה על תפריט"
 
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:210
 msgid "Option to show/hide read articles"
-msgstr ""
+msgstr "אפשרות להצגת/הסתרת מאמרים שנקראו"
 
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:211
 msgid "Reworked suggestion bar"
-msgstr ""
+msgstr "עבודה מחדש על שורת ההצעות"
 
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:212
 msgid "Changed name to Feeds"
-msgstr ""
+msgstr "שינוי שם להזנות"
 
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:213
 msgid "Improved CPU utilization"
-msgstr ""
+msgstr "שיפור כלי מעבד"
 
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:221
 msgid "New right click or longpress menu for articles"
-msgstr ""
+msgstr "לחיצה ימנית או לחיצה ארוכה על תפריט למעבר למאמרים"
 
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:222
 msgid "You can now save articles offline"
-msgstr ""
+msgstr "ניתן כעת לשמור מאמרים למצב לא מקוון"
 
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:223
 msgid "Initial suggestion to add feeds is now less intrusive"
-msgstr ""
+msgstr "ההצעה הראשונית להוספת הזנות כעת פחות מפריע"
 
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:224
 msgid "Read articles are now greyed out"
-msgstr ""
+msgstr "מאמרים שנקראו מסומנים עכשיו באפור"
 
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:232
 msgid "Concurrent feeds refresh, with customizable thread count"
-msgstr ""
+msgstr "רענון הזנות במקביל, עם אפשרות התאמה של מספר חוטים"
 
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:233
 msgid "Added German translation (thanks @Etamuk)"
-msgstr ""
+msgstr "הוספת תרגום לגרמנית (תודות ל־‎@Etamuk‎)"
 
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:240
 msgid "Fix bugs in reader mode"
-msgstr ""
+msgstr "תיקוני תקלות במצב קריאה"
 
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:247
 msgid "Minor bug fix"
-msgstr ""
+msgstr "תיקוני תקלות קטנים"
 
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:254
 msgid "Improved date and time parsing and display"
-msgstr ""
+msgstr "שיפור ניתוח תאריך ושעה בתצוגה"
 
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:255
 msgid "Reader mode can now work on websites without an article tag"
-msgstr ""
+msgstr "מצב קריאה עובד עכשיו גם באתרי אינטרנט ללא תגית מאמר"
 
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:256
 msgid "Slight improvements to the icon"
-msgstr ""
+msgstr "שיפורים קלים לסמליל"
 
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:257
 msgid "New feature to filter articles by feed"
-msgstr ""
+msgstr "תכונה חדשה לסינון מאמרים לפי הזנה"
 
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:264
 msgid "Improved favicon download"
-msgstr ""
+msgstr "שיפור הורדה סמליל מועדף"
 
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:265
 msgid "Fixed refresh duplicating articles"
-msgstr ""
+msgstr "תיקון רענון כפול של מאמרים"
 
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:272
 msgid "Added option to disable client side decoration"
-msgstr ""
+msgstr "הוספת אפשרות להשבתת קישוטי צד לקוח"
 
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:273
 msgid "Brought primary menu in line with GNOME HIG"
-msgstr ""
+msgstr "יישור קו של התפריט העיקרי ל־GNOME HIG"
 
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:274
 msgid "Added placeholder icon for feeds without an icon"
-msgstr ""
+msgstr "הוספת סמליל מציין מיקום להזנות ללא סמליל"
 
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:275
 msgid "Migrated some widgets to Glade templates"
-msgstr ""
+msgstr "מעבר של כמה יישומונים לתבניות Glade"
 
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:276
 msgid "Option to use reader mode by default"
-msgstr ""
+msgstr "אפשרות להשתמש במצב קריאה בבררת מחדל"
 
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:277
 msgid "Option to show article content from the feed"
-msgstr ""
+msgstr "אפשרות להצגת תוכן מאמר מההזנה"
 
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:285
 msgid "Fixed labels alignment"
-msgstr ""
+msgstr "תיקון יישור תוויות"
 
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:286
 msgid "Changed app name to Feeds"
-msgstr ""
+msgstr "שינוי שם היישום להזנות (Feeds)"
 
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:287
 msgid "Added separators for the two sections of the app"
-msgstr ""
+msgstr "הוספת מפרידים לשני המקטעים של היישום"
 
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:288
 msgid "Using links as feed titles when there is no title"
-msgstr ""
+msgstr "שימוש בקישורים ככותרת להזנה בזמן שאין כותרת"
 
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:289
 msgid "Added preference for maximum article age"
-msgstr ""
+msgstr "הוספת העדפה לזמן חיים מרבי למאמר"
 
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:290
 msgid "Added zoom keyboard shortcuts"
-msgstr ""
+msgstr "הוספת צירופי מקשים לתקריב"
 
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:291
 msgid "Added preference to enable JavaScript"
-msgstr ""
+msgstr "הוספת העדפה לאפשור JavaScript"
 
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:292
 msgid "Fix window control positions when they are on the left"
-msgstr ""
+msgstr "תיקון מיקום פקדי חלון בשעה שהם בצד שמאל"
 
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:299
 msgid "Feeds for websites without favicons will now work"
-msgstr ""
+msgstr "הזנות לאתר אינטרנט ללא סמליל תעבדנה עכשיו"
 
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:306
 msgid "Fixed bug with adding new feeds"
-msgstr ""
+msgstr "תיקון תקלה עם הוספת הזנות חדשות"
 
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:313
 msgid "Switched to native file chooser"
-msgstr ""
+msgstr "מעבר לבוחר קבצים טבעי"
 
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:314
 msgid "Added empty state initial screen for sidebar"
-msgstr ""
+msgstr "הוספת מצב מסך ריק לסרגל הצד"
 
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:315
 msgid "Added italian translation"
-msgstr ""
+msgstr "הוספת תרגום לאיטלקית"
 
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:322
 msgid "First release"
-msgstr ""
+msgstr "שחרור ראשון"
