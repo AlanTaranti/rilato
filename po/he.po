@@ -1,0 +1,409 @@
+# Hebrew translation for gfeeds.
+# Copyright (C) 2022 gfeeds's COPYRIGHT HOLDER
+# This file is distributed under the same license as the gfeeds package.
+# Yosef Or Boczko <yoseforb@gmail.com>, 2022.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gfeeds master\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/gfeeds/issues\n"
+"POT-Creation-Date: 2022-03-09 21:41+0000\n"
+"PO-Revision-Date: 2022-03-17 16:24+0200\n"
+"Last-Translator: Yosef Or Boczko <yoseforb@gmail.com>\n"
+"Language-Team: Hebrew <GNOME Hebrew Translation Project>\n"
+"Language: he\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n==2 ? 1 : n>10 && n%10==0 ? "
+"2 : 3)\n"
+"X-Generator: Gtranslator 40.0\n"
+
+#: data/org.gabmus.gfeeds.appdata.xml.in:4
+msgid "Feeds"
+msgstr "הזנות"
+
+#: data/org.gabmus.gfeeds.appdata.xml.in:6 data/org.gabmus.gfeeds.desktop.in:7
+msgid "News reader for GNOME"
+msgstr "קורא חדשות עבור GNOME"
+
+#: data/org.gabmus.gfeeds.appdata.xml.in:15
+msgid ""
+"Feeds is a minimal RSS/Atom feed reader built with speed and simplicity in "
+"mind."
+msgstr "הזנות הוא קורא הזנת RSS/Atom בסיסי הנבנה במחשב על מהירות ופשטות."
+
+#: data/org.gabmus.gfeeds.appdata.xml.in:16
+msgid ""
+"It offers a simple user interface that only shows the latest news from your "
+"subscriptions."
+msgstr "הוא מציע ממשק משתמש פשוט שרק מציג את החדשות האחרונות מההרשמות שלך."
+
+#: data/org.gabmus.gfeeds.appdata.xml.in:17
+msgid ""
+"Articles are shown in a web view by default, with javascript disabled for a "
+"faster and less intrusive user experience. There's also a reader mode "
+"included, built from the one GNOME Web/Epiphany uses."
+msgstr ""
+"מאמרים מוצגים בתצוגת אינטרנט בבררת מחדל, עם JavaScript מושבת לטובת חווית "
+"משתמש מהירה יותר וחסרת הפרעות. כלול גם מצב קריאה, נבנה מזה שבשימוש דפדפן "
+"GNOME ‏(Epiphany)."
+
+#: data/org.gabmus.gfeeds.appdata.xml.in:18
+msgid "Feeds can be imported and exported via OPML."
+msgstr "הזנות יכול לייבוא ולייצא באמצעות OPML."
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/org.gabmus.gfeeds.desktop.in:16
+msgid "rss;reader;feed;news;"
+msgstr "הזנה;הזנות;rss;קריאה;חדשות;"
+
+#: data/ui/extra_popover_menu.ui:19
+msgid "Web View"
+msgstr "תצוגת אינטרנט"
+
+#: data/ui/extra_popover_menu.ui:26
+msgid "Reader Mode"
+msgstr "מצב קריאה"
+
+#: data/ui/extra_popover_menu.ui:33
+msgid "Feed Content"
+msgstr "תוכן הזנה"
+
+#: gfeeds/confirm_add_dialog.py:16
+msgid "Do you want to import these feeds?"
+msgstr "האם ברצונך לייבא הזנות אלה?"
+
+#: gfeeds/confirm_add_dialog.py:17
+msgid "Do you want to import this feed?"
+msgstr "האם ברצונך לייבא הזנה זו?"
+
+#: gfeeds/download_manager.py:88
+#, python-brace-format
+msgid "`{0}`: connection timed out"
+msgstr "‏'{0}': תם זמן ההתחברות"
+
+#: gfeeds/download_manager.py:92
+#, python-brace-format
+msgid "`{0}` might not be a valid address"
+msgstr "יתכן ו־'{0}' כתובת לא תקפה"
+
+#: gfeeds/download_manager.py:117
+#, python-brace-format
+msgid "Error downloading `{0}`, code `{1}`"
+msgstr "שגיאה בהורדת '{0}', קוד '{1}'"
+
+#: gfeeds/feeds_manager.py:87
+#, python-brace-format
+msgid "Feed {0} exists already, skipping"
+msgstr "הזנה {0} כבר קיימת, מדלג"
+
+#: gfeeds/feeds_view.py:14
+msgid "All feeds"
+msgstr "כל ההזנות"
+
+#: gfeeds/get_favicon.py:45
+#, python-brace-format
+msgid "Error downloading favicon for `{0}`"
+msgstr "שגיאה בהורדת צלמית עבור '{0}'"
+
+#: gfeeds/headerbar.py:171
+msgid ""
+"There were problems with some feeds.\n"
+"Do you want to remove them?"
+msgstr ""
+"יש בעיות עם כמה הזנות.\n"
+"האם ברצונך למחוק אותן?"
+
+#: gfeeds/main_leaflet.py:128
+#, python-brace-format
+msgid "{0} new article"
+msgid_plural "{0} new articles"
+msgstr[0] "מאמר חדש אחד"
+msgstr[1] "שני מאמרים חדשים"
+msgstr[2] "‏{0} מאמרים חדשים"
+msgstr[3] "‏{0} מאמרים חדשים"
+
+#: gfeeds/__main__.py:276
+msgid "url"
+msgstr "כתובת"
+
+#: gfeeds/__main__.py:279
+msgid "opml file local url or rss remote url to import"
+msgstr "קובץ OPML מקומי, כתובת URL או RSS מרוחק לייבוא"
+
+#: gfeeds/manage_feeds_window.py:226
+msgid "Do you want to delete these feeds?"
+msgstr "האם ברצונך למחוק הזנות אלה?"
+
+#: gfeeds/manage_feeds_window.py:278
+msgid "Manage Feeds"
+msgstr "ניהול הזנות"
+
+#: gfeeds/opml_file_chooser.py:7
+msgid "XML files"
+msgstr "קובצי XML"
+
+#: gfeeds/opml_file_chooser.py:14
+msgid "Choose an OPML file to import"
+msgstr "בחירת קובץ OPML לייבוא"
+
+#: gfeeds/opml_file_chooser.py:18
+msgid "Open"
+msgstr "פתיחה"
+
+#: gfeeds/opml_file_chooser.py:19 gfeeds/opml_file_chooser.py:31
+msgid "Cancel"
+msgstr "ביטול"
+
+#: gfeeds/opml_file_chooser.py:26
+msgid "Choose where to save the exported OPML file"
+msgstr "בחירה היכן לשמור את קובץ ה־OPML המיובא"
+
+#: gfeeds/opml_file_chooser.py:30
+msgid "Save"
+msgstr "שמירה"
+
+#: gfeeds/opml_manager.py:42
+msgid "Error: OPML path provided does not exist"
+msgstr "שגיאה: נתיב OPML שסופק אינו קיים"
+
+#: gfeeds/opml_manager.py:53
+#, python-brace-format
+msgid "Error parsing OPML file `{0}`"
+msgstr "שגיאה בניתוח קובץ OPML ‏'‎{0}'"
+
+#: gfeeds/preferences_window.py:22
+msgid "General"
+msgstr "כללי"
+
+#: gfeeds/preferences_window.py:25
+msgid "General preferences"
+msgstr "העדפות כלליות"
+
+#: gfeeds/preferences_window.py:27
+msgid "Show newer articles first"
+msgstr "הצגת מאמר חדש קודם"
+
+#: gfeeds/preferences_window.py:32
+msgid "Open links in your browser"
+msgstr "פתיחת קישורים בדפדפן שלך"
+
+#: gfeeds/preferences_window.py:36
+msgid "Use external video player for YouTube"
+msgstr "שימוש בנגן סרטים חיצוני עבור YouTube"
+
+#: gfeeds/preferences_window.py:38
+msgid "Requires youtube-dl and a compatible video player"
+msgstr "דורש youtube-dl ונגן סרטים מתאים"
+
+#: gfeeds/preferences_window.py:44
+msgid "Preferred video player"
+msgstr "נגן סרטים מועדף"
+
+#: gfeeds/preferences_window.py:48
+msgid "Maximum article age"
+msgstr "אורך חיים מרבי למאמר"
+
+#: gfeeds/preferences_window.py:49
+msgid "In days"
+msgstr "בימים"
+
+#: gfeeds/preferences_window.py:56
+msgid "Refresh preferences"
+msgstr "העדפות רענון"
+
+#: gfeeds/preferences_window.py:58
+msgid "Refresh articles on startup"
+msgstr "רענון מאמרים עם ההפעלה"
+
+#: gfeeds/preferences_window.py:62
+msgid "New articles notification"
+msgstr "התרעה על מאמרים חדשים"
+
+#: gfeeds/preferences_window.py:66
+msgid "Enable auto-refresh"
+msgstr "לאפשר רענון אוטומטי"
+
+#: gfeeds/preferences_window.py:70
+msgid "Auto-refresh interval"
+msgstr "מרווח לרענון אוטומטי"
+
+#: gfeeds/preferences_window.py:71
+msgid "In seconds"
+msgstr "בשניות"
+
+#: gfeeds/preferences_window.py:78
+msgid "Cache"
+msgstr "מטמון"
+
+#: gfeeds/preferences_window.py:80
+msgid "Clear caches"
+msgstr "פינוי מטמון"
+
+#: gfeeds/preferences_window.py:81
+msgid "Clear"
+msgstr "פינוי"
+
+#: gfeeds/preferences_window.py:109
+msgid "Appearance"
+msgstr "מראה"
+
+#: gfeeds/preferences_window.py:112
+msgid "Appearance preferences"
+msgstr "העדפות מראה"
+
+#: gfeeds/preferences_window.py:114
+msgid "Dark mode"
+msgstr "מצב כהה"
+
+#: gfeeds/preferences_window.py:118
+msgid "Use dark theme for reader mode"
+msgstr "שימוש בערכת נושא כהה במצב קריאה"
+
+#: gfeeds/preferences_window.py:122
+msgid "Show article thumbnails"
+msgstr "הצגת תמונות ממוזערות למאמר"
+
+#: gfeeds/preferences_window.py:127
+msgid "Maximum thumbnail height"
+msgstr "גובה מרבי לתמונה ממוזערת"
+
+#: gfeeds/preferences_window.py:133
+msgid "Show full articles titles"
+msgstr "הצגת כותרת מלאה למאמר"
+
+#: gfeeds/preferences_window.py:138
+msgid "Show full feeds names"
+msgstr "הצגת שם מלא של הזנות"
+
+#: gfeeds/preferences_window.py:145
+msgid "Font preferences"
+msgstr "העדפות גופן"
+
+#: gfeeds/preferences_window.py:147
+msgid "Use system font for titles"
+msgstr "שימוש בגופן מערכת לכותרות"
+
+#: gfeeds/preferences_window.py:151
+msgid "Use system font for paragraphs"
+msgstr "שימוש בגופן מערכת לפסקאות"
+
+#: gfeeds/preferences_window.py:155
+msgid "Custom title font"
+msgstr "גופן מותאם לכותרת"
+
+#: gfeeds/preferences_window.py:159
+msgid "Custom paragraph font"
+msgstr "גופן מותאם לפסקאות"
+
+#: gfeeds/preferences_window.py:163
+msgid "Custom monospace font"
+msgstr "גופן באורך קבוע מותאם"
+
+#: gfeeds/preferences_window.py:175
+msgid "Privacy"
+msgstr "פרטיות"
+
+#: gfeeds/preferences_window.py:178
+msgid "Privacy preferences"
+msgstr "העדפות פרטיות"
+
+#: gfeeds/preferences_window.py:180
+msgid "Enable JavaScript"
+msgstr "לאפשר JavaScript"
+
+#: gfeeds/preferences_window.py:185
+msgid "Try to block advertisements"
+msgstr "לנסות לחסום פרסומות"
+
+#: gfeeds/preferences_window.py:187 gfeeds/preferences_window.py:222
+msgid "Requires app restart"
+msgstr "נדרשת הפעלה מחדש של היישום"
+
+#: gfeeds/preferences_window.py:191
+msgid "Update advertisement blocking list"
+msgstr "עדכון רשימת חסימת פרסומות"
+
+#: gfeeds/preferences_window.py:192
+msgid "Updates automatically every 10 days"
+msgstr "עדכון אוטומטי בכל 10 ימים"
+
+#: gfeeds/preferences_window.py:193
+msgid "Update"
+msgstr "עדכון"
+
+#: gfeeds/preferences_window.py:206
+msgid "Advanced"
+msgstr "מתקדם"
+
+#: gfeeds/preferences_window.py:209
+msgid "Advanced preferences"
+msgstr "העדפות מתקדמות"
+
+#: gfeeds/preferences_window.py:211
+msgid "Maximum refresh threads"
+msgstr "מספר חוטים מרביים לרענון"
+
+#: gfeeds/preferences_window.py:213
+msgid "How many threads to use for feeds refresh"
+msgstr "כמה חוטים לשימוש לרענון הזנות"
+
+#: gfeeds/preferences_window.py:220
+msgid "Experimental GtkListView for articles list"
+msgstr "‏GtkListView ניסיוני עבור רשימת המאמרים"
+
+#: gfeeds/rss_parser.py:68
+#, python-brace-format
+msgid "Error: unable to parse datetime {0} for feeditem {1}"
+msgstr "שגיאה: לא ניתן לנתח את התאריך והשעה {0} עבור פריט הזנה {1}"
+
+#: gfeeds/rss_parser.py:154
+#, python-brace-format
+msgid "Errors while parsing feed `{0}`"
+msgstr "שגיאה בניתוח הזנה '{0}'"
+
+#: gfeeds/rss_parser.py:172
+#, python-brace-format
+msgid "`{0}` may not be an RSS or Atom feed"
+msgstr "‏יתכן ו־'{0} אינו הזנת RSS או Atom"
+
+#: gfeeds/sidebar.py:21
+msgid "Loading feeds..."
+msgstr "טוען הזנות…"
+
+#: gfeeds/sidebar_row_popover.py:31 gfeeds/sidebar_row_popover.py:58
+msgid "Mark as unread"
+msgstr "סימון כלא נקרא"
+
+#: gfeeds/sidebar_row_popover.py:38 gfeeds/sidebar_row_popover.py:50
+msgid "Mark as read"
+msgstr "סימון כנקרא"
+
+#: gfeeds/suggestion_bar.py:37
+msgid "There are some errors"
+msgstr "יש כמה שגיאות"
+
+#: gfeeds/suggestion_bar.py:46
+msgid "Show"
+msgstr "הצגה"
+
+#: gfeeds/suggestion_bar.py:47
+msgid "Ignore"
+msgstr "התעלמות"
+
+#: gfeeds/suggestion_bar.py:70
+msgid "There were problems with some feeds. Do you want to remove them?"
+msgstr "ישנן בעיות בכמה הזנות. האם ברצונך למחוק אותן?"
+
+#: gfeeds/suggestion_bar.py:97
+msgid "You are offline"
+msgstr "הנך במצב לא מקוון"
+
+#: gfeeds/webview.py:188
+msgid "Link copied to clipboard!"
+msgstr "קישור הועתק ללוח הגזירים!"
+
+#: gfeeds/webview.py:210
+msgid "Feed content not available for this article"
+msgstr "תוכן ההזנה לא זימן למאמר זה"
