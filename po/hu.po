@@ -1,486 +1,33 @@
 # Hungarian translations for gfeeds package.
-# Copyright (C) 2021 THE gfeeds'S COPYRIGHT HOLDER
+# Copyright (C) 2021, 2022 Free Software Foundation, Inc.
 # This file is distributed under the same license as the gfeeds package.
-# Meskó Balázs <mesko.balazs@fsf.hu>, 2021.
 #
+# Meskó Balázs <mesko.balazs at fsf dot hu>, 2021.
+# Balázs Úr <ur.balazs at fsf dot hu>, 2022.
 msgid ""
 msgstr ""
-"Project-Id-Version: gfeeds 0.16.2\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-23 17:36+0200\n"
-"PO-Revision-Date: 2021-04-24 11:53+0200\n"
-"Last-Translator: Meskó Balázs <mesko.balazs@fsf.hu>\n"
-"Language-Team: Hungarian <translation-team-hu@lists.sourceforge.net>\n"
+"Project-Id-Version: gfeeds master\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/gfeeds/issues\n"
+"POT-Creation-Date: 2022-02-09 10:26+0000\n"
+"PO-Revision-Date: 2022-03-18 00:59+0100\n"
+"Last-Translator: Balázs Úr <ur.balazs at fsf dot hu>\n"
+"Language-Team: Hungarian <gnome-hu-list at gnome dot org>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.4.2\n"
+"X-Generator: Lokalize 19.12.3\n"
 
-#: ../gfeeds/manage_feeds_window.py:210 ../gfeeds/manage_feeds_window.py:325
-msgid "Manage Feeds"
-msgstr "Hírforrások kezelése"
-
-#: ../gfeeds/manage_feeds_window.py:217
-msgid "Select/Unselect all"
-msgstr "Összes kiválasztása be/ki"
-
-#: ../gfeeds/manage_feeds_window.py:223
-msgid "Delete selected feeds"
-msgstr "Kiválasztott hírforrások törlése"
-
-#: ../gfeeds/manage_feeds_window.py:230
-msgid "Manage tags for selected feeds"
-msgstr "Kiválasztott hírforrások címkéinek kezelése"
-
-#: ../gfeeds/manage_feeds_window.py:296
-msgid "Do you want to delete these feeds?"
-msgstr "Biztos, hogy törli ezeket a hírforrásokat?"
-
-#: ../gfeeds/sidebar_row_popover.py:47 ../gfeeds/sidebar_row_popover.py:92
-msgid "Mark as unread"
-msgstr "Megjelölés olvasatlanként"
-
-#: ../gfeeds/sidebar_row_popover.py:55 ../gfeeds/sidebar_row_popover.py:82
-msgid "Mark as read"
-msgstr "Megjelölés olvasottként"
-
-#: ../gfeeds/headerbar.py:162
-msgid "Add new feed"
-msgstr "Új hírforrás hozzáadása"
-
-#: ../gfeeds/build_reader_html.py:98
-msgid "Thumbnail"
-msgstr "Bélyegkép"
-
-#: ../gfeeds/suggestion_bar.py:39
-msgid "There are some errors"
-msgstr "Hibák történtek"
-
-#: ../gfeeds/suggestion_bar.py:48
-msgid "Show"
-msgstr "Megjelenítés"
-
-#: ../gfeeds/suggestion_bar.py:49
-msgid "Ignore"
-msgstr "Figyelmen kívül hagyás"
-
-#: ../gfeeds/suggestion_bar.py:72
-msgid "There were problems with some feeds. Do you want to remove them?"
-msgstr "Problémák voltak egyes hírforrásokkal. Eltávolítja azokat?"
-
-#: ../gfeeds/suggestion_bar.py:92
-msgid "You are offline"
-msgstr "Nincs internetkapcsolat"
-
-#: ../gfeeds/rss_parser.py:61
-#, python-brace-format
-msgid "Error: unable to parse datetime {0} for feeditem {1}"
-msgstr "Hiba: a(z) {0} dátum nem dolgozható fel ennél az elemnél: {1}"
-
-#: ../gfeeds/rss_parser.py:169
-#, python-brace-format
-msgid "Errors while parsing feed `{0}`"
-msgstr "Hiba történt a(z) „{0}” feldolgozásakor"
-
-#: ../gfeeds/rss_parser.py:209
-#, python-brace-format
-msgid "`{0}` may not be an RSS or Atom feed"
-msgstr "A(z) „{0}” lehet, hogy nem RSS vagy Atom hírforrás"
-
-#: ../gfeeds/download_manager.py:87
-#, python-brace-format
-msgid "`{0}`: connection timed out"
-msgstr "„{0}”: időtúllépés a kapcsolatban"
-
-#: ../gfeeds/download_manager.py:89
-#, python-brace-format
-msgid "`{0}` is not an URL"
-msgstr "A(z) „{0}” nem URL"
-
-#: ../gfeeds/download_manager.py:114
-#, python-brace-format
-msgid "Error downloading `{0}`, code `{1}`"
-msgstr "Hiba a(z) „{0}” letöltésekor, kód: „{1}”"
-
-#: ../gfeeds/confirm_add_dialog.py:16
-msgid "Do you want to import these feeds?"
-msgstr "Importálja ezeket a hírforrásokat?"
-
-#: ../gfeeds/confirm_add_dialog.py:17
-msgid "Do you want to import this feed?"
-msgstr "Importálja ezt a hírforrást?"
-
-#: ../gfeeds/sidebar.py:181
-msgid "Feed"
-msgstr "Hírforrás"
-
-#: ../gfeeds/sidebar.py:187
-msgid "Saved"
-msgstr "Mentett"
-
-#: ../gfeeds/opml_file_chooser.py:7
-msgid "Choose an OPML file to import"
-msgstr "Válassza ki az importálandó OPML-fájlt"
-
-#: ../gfeeds/opml_file_chooser.py:14 ../gfeeds/opml_file_chooser.py:31
-msgid "XML files"
-msgstr "XML-fájlok"
-
-#: ../gfeeds/opml_file_chooser.py:22
-msgid "Choose where to save the exported OPML file"
-msgstr "Válasszon hová menti az exportálandó OPML-fájlt"
-
-#: ../gfeeds/get_favicon.py:70
-#, python-brace-format
-msgid "Error downloading favicon for `{0}`"
-msgstr "Hiba a(z) „{0}” faviconjának letöltésekor"
-
-#: ../gfeeds/opml_manager.py:42
-msgid "Error: OPML path provided does not exist"
-msgstr "Hiba: A megadott OPML útvonal nem létezik"
-
-#: ../gfeeds/opml_manager.py:51
-#, python-brace-format
-msgid "Error parsing OPML file `{0}`"
-msgstr "Hiba a(z) „{0}” OPML-fájl feldolgozásakor"
-
-#: ../gfeeds/feeds_manager.py:75
-#, python-brace-format
-msgid "Feed {0} exists already, skipping"
-msgstr "A(z) „{0}” hírforrás már létezik, kihagyás"
-
-#: ../gfeeds/spinner_button.py:16
-msgid "Refresh feeds"
-msgstr "Hírforrások frissítése"
-
-#: ../gfeeds/webview.py:74
-msgid "Web View"
-msgstr "Webnézet"
-
-#: ../gfeeds/webview.py:75
-msgid "Filler View"
-msgstr "Kitöltő nézet"
-
-#: ../gfeeds/webview.py:136
-msgid "RSS content or summary not available for this article"
-msgstr "Nem érhető el RSS-tartalom vagy összefoglaló ehhez a cikkhez"
-
-#: ../gfeeds/__main__.py:295
-msgid "url"
-msgstr "URL"
-
-#: ../gfeeds/__main__.py:298
-msgid "opml file local url or rss remote url to import"
-msgstr "importálandó helyi OPML-fájl vagy távoli RSS URL"
-
-#: ../gfeeds/feeds_view.py:18
-msgid "All feeds"
-msgstr "Összes hírforrás"
-
-#: ../gfeeds/settings_window.py:179
-msgid "General"
-msgstr "Általános"
-
-#: ../gfeeds/settings_window.py:183
-msgid "General Settings"
-msgstr "Általános beállítások"
-
-#: ../gfeeds/settings_window.py:186
-msgid "Refresh articles on startup"
-msgstr "Cikkek frissítése indításkor"
-
-#: ../gfeeds/settings_window.py:191
-msgid "Show newer articles first"
-msgstr "Újabb cikkek megjelenítése elsőként"
-
-#: ../gfeeds/settings_window.py:196
-msgid "Open links in your browser"
-msgstr "Hivatkozások megnyitása böngészőben"
-
-#: ../gfeeds/settings_window.py:201
-msgid "Open YouTube links via your video player"
-msgstr "YouTube-hivatkozások megnyitása videolejátszóval"
-
-#: ../gfeeds/settings_window.py:204
-msgid "Great when paired with youtube-dl enabled players"
-msgstr "Különösen youtube-dl-képes lejátszókkal hasznos"
-
-#: ../gfeeds/settings_window.py:218
-msgid "Preferred media player"
-msgstr "Előnyben részesített médialejátszó"
-
-#: ../gfeeds/settings_window.py:222
-msgid "Maximum article age"
-msgstr "Cikkek maximális életkora"
-
-#: ../gfeeds/settings_window.py:226
-msgid "In days"
-msgstr "Napokban"
-
-#: ../gfeeds/settings_window.py:232
-msgid "Cache"
-msgstr "Gyorsítótár"
-
-#: ../gfeeds/settings_window.py:235
-msgid "Clear all caches"
-msgstr "Összes gyorsítótár törlése"
-
-#: ../gfeeds/settings_window.py:236
-msgid "Clear caches"
-msgstr "Gyorsítótárak törlése"
-
-#: ../gfeeds/settings_window.py:274
-msgid "View"
-msgstr "Nézet"
-
-#: ../gfeeds/settings_window.py:278
-msgid "View Settings"
-msgstr "Nézetbeállítások"
-
-#: ../gfeeds/settings_window.py:281
-msgid "Show full articles titles"
-msgstr "Teljes cikkcímek megjelenítése"
-
-#: ../gfeeds/settings_window.py:286
-msgid "Show full feeds names"
-msgstr "Teljes hírforrásnevek megjelenítése"
-
-#: ../gfeeds/settings_window.py:291
-msgid "Use dark theme for reader mode"
-msgstr "Sötét téma használata az olvasó módhoz"
-
-#: ../gfeeds/settings_window.py:296
-msgid "Enable JavaScript"
-msgstr "JavaScript engedélyezése"
-
-#: ../gfeeds/settings_window.py:312
-msgid "Advanced"
-msgstr "Speciális"
-
-#: ../gfeeds/settings_window.py:316
-msgid "Advanced Settings"
-msgstr "Speciális beállítások"
-
-#: ../gfeeds/settings_window.py:319
-msgid "Maximum refresh threads"
-msgstr "Frissítési szálak legnagyobb száma"
-
-#: ../gfeeds/settings_window.py:324
-msgid "How many threads to refresh feeds"
-msgstr "Hány szálat használjon a hírforrások frissítéséhez"
-
-#: ../data/ui/empty_state.glade:42
-msgid "Let's get started"
-msgstr "Kezdjen neki"
-
-#: ../data/ui/empty_state.glade:88
-msgid "Add new feeds via URL"
-msgstr "Új hírforrások hozzáadása URL alapján"
-
-#: ../data/ui/empty_state.glade:100
-msgid "Import an OPML file"
-msgstr "OPML-fájl importálása"
-
-#: ../data/ui/spinner_button.glade:23
-msgid "page0"
-msgstr "0. oldal"
-
-#: ../data/ui/spinner_button.glade:34
-msgid "page1"
-msgstr "1. oldal"
-
-#: ../data/ui/manage_tags_listbox_row_content.glade:18
-#: ../data/ui/scrolled_label.glade:21
-msgid "label"
-msgstr "címke"
-
-#: ../data/ui/headerbar.glade:34
-msgid "Menu"
-msgstr "Menü"
-
-#: ../data/ui/headerbar.glade:66
-msgid "Search"
-msgstr "Keresés"
-
-#: ../data/ui/headerbar.glade:86
-msgid "Filter by feed"
-msgstr "Szűrés hírforrás alapján"
-
-#: ../data/ui/headerbar.glade:118
-msgid "Back to articles"
-msgstr "Vissza a cikkekhez"
-
-#: ../data/ui/headerbar.glade:134
-msgid "Open externally"
-msgstr "Megnyitás alkalmazással"
-
-#: ../data/ui/headerbar.glade:154
-msgid "Change view mode"
-msgstr "Nézetmód módosítása"
-
-#: ../data/ui/headerbar.glade:196
-msgid "Share"
-msgstr "Megosztás"
-
-#: ../data/ui/webview_filler.glade:42
-msgid "Select an article"
-msgstr "Válasszon cikket"
-
-#: ../data/ui/article_right_click_popover_content.glade:48
-msgid "Save article"
-msgstr "Cikk mentése"
-
-#: ../data/ui/add_feed_box.glade:20
-msgid "Enter feed address to add"
-msgstr "Adja meg a hozzáadandó hírforrás címét"
-
-#: ../data/ui/add_feed_box.glade:41
-msgid "https://..."
-msgstr "https://..."
-
-#: ../data/ui/add_feed_box.glade:61
-msgid "Add"
-msgstr "Hozzáadás"
-
-#: ../data/ui/add_feed_box.glade:91
-msgid "You're already subscribed to that feed!"
-msgstr "Már feliratkozott erre a hírforrásra!"
-
-#: ../data/ui/menu.xml:6
-msgid "Show read articles"
-msgstr "Olvasott cikkek megjelenítése"
-
-#: ../data/ui/menu.xml:10
-msgid "Mark all as read"
-msgstr "Összes olvasottnak jelölése"
-
-#: ../data/ui/menu.xml:14
-msgid "Mark all as unread"
-msgstr "Összes olvasatlannak jelölése"
-
-#: ../data/ui/menu.xml:24
-msgid "Import OPML"
-msgstr "OPML importálása"
-
-#: ../data/ui/menu.xml:28
-msgid "Export OPML"
-msgstr "OPML exportálása"
-
-#: ../data/ui/menu.xml:34
-msgid "Preferences"
-msgstr "Beállítások"
-
-#: ../data/ui/menu.xml:38
-msgid "Keyboard Shortcuts"
-msgstr "Gyorsbillentyűk"
-
-#: ../data/ui/menu.xml:42
-msgid "About Feeds"
-msgstr "Hírforrások névjegye"
-
-#: ../data/ui/manage_tags_popover_content.glade:24
-msgid "New tag name..."
-msgstr "Új címkenév…"
-
-#: ../data/ui/manage_tags_popover_content.glade:37
-msgid "Add tag"
-msgstr "Címke hozzáadása"
-
-#: ../data/ui/manage_tags_popover_content.glade:112
-msgid "There are no tags yet"
-msgstr "Még nincsenek címkék"
-
-#: ../data/ui/manage_tags_popover_content.glade:128
-msgid "Add some using the entry above"
-msgstr "Adjon hozzá párat a fenti beviteli mezővel"
-
-#: ../data/ui/extra_popover_menu.glade:18
-msgid "View mode"
-msgstr "Nézetmód"
-
-#: ../data/ui/extra_popover_menu.glade:52
-msgid "Reader Mode"
-msgstr "Olvasó mód"
-
-#: ../data/ui/extra_popover_menu.glade:67
-msgid "RSS Content"
-msgstr "RSS tartalom"
-
-#: ../data/ui/shortcutsWindow.xml:13
-msgid "Open Keyboard Shortcuts"
-msgstr "Gyorsbillentyűk megnyitása"
-
-#: ../data/ui/shortcutsWindow.xml:19
-msgid "Open Menu"
-msgstr "Menü megnyitása"
-
-#: ../data/ui/shortcutsWindow.xml:25
-msgid "Open Preferences"
-msgstr "Beállítások megnyitása"
-
-#: ../data/ui/shortcutsWindow.xml:31
-msgid "Quit"
-msgstr "Kilépés"
-
-#: ../data/ui/shortcutsWindow.xml:37
-msgid "Refresh articles"
-msgstr "Cikkek frissítése"
-
-#: ../data/ui/shortcutsWindow.xml:43
-msgid "Search articles"
-msgstr "Cikkek keresése"
-
-#: ../data/ui/shortcutsWindow.xml:49
-msgid "Next article"
-msgstr "Következő cikk"
-
-#: ../data/ui/shortcutsWindow.xml:55
-msgid "Previous article"
-msgstr "Előző cikk"
-
-#: ../data/ui/shortcutsWindow.xml:61
-msgid "Show/Hide read articles"
-msgstr "Olvasott cikkek megjelenítése be/ki"
-
-#: ../data/ui/shortcutsWindow.xml:67
-msgid "Zoom in"
-msgstr "Nagyítás"
-
-#: ../data/ui/shortcutsWindow.xml:73
-msgid "Zoom out"
-msgstr "Kicsinyítés"
-
-#: ../data/ui/shortcutsWindow.xml:79
-msgid "Reset zoom"
-msgstr "Nagyítás visszaállítása"
-
-#: ../data/ui/webview_with_notification.glade:51
-msgid "Link copied to clipboard!"
-msgstr "Hivatkozás a vágólapra másolva!"
-
-#: ../data/org.gabmus.gfeeds.desktop.in:5
-msgid "@prettyname@"
-msgstr "@prettyname@"
-
-#: ../data/org.gabmus.gfeeds.desktop.in:6
-msgid "News reader for GNOME"
-msgstr "Hírolvasó a GNOME-hoz"
-
-#: ../data/org.gabmus.gfeeds.desktop.in:13
-msgid "rss;reader;feed;news;"
-msgstr "rss;olvasó;hírforrás;hírek;"
-
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:4
+#: data/org.gabmus.gfeeds.appdata.xml.in:4
 msgid "Feeds"
 msgstr "Hírforrások"
 
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:5
-msgid "Gabriele Musco"
-msgstr "Gabriele Musco"
+#: data/org.gabmus.gfeeds.appdata.xml.in:6 data/org.gabmus.gfeeds.desktop.in:7
+msgid "News reader for GNOME"
+msgstr "Hírolvasó a GNOME-hoz"
 
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:15
+#: data/org.gabmus.gfeeds.appdata.xml.in:15
 msgid ""
 "Feeds is a minimal RSS/Atom feed reader built with speed and simplicity in "
 "mind."
@@ -488,7 +35,7 @@ msgstr ""
 "A Hírforrások egy minimális RSS/Atom hírolvasó, amely a sebességre és az "
 "egyszerűségre törekedve készült."
 
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:16
+#: data/org.gabmus.gfeeds.appdata.xml.in:16
 msgid ""
 "It offers a simple user interface that only shows the latest news from your "
 "subscriptions."
@@ -496,17 +43,387 @@ msgstr ""
 "Egyszerű felhasználó felületet biztosít, amely csak a legfrissebb híreket "
 "jeleníti meg a feliratkozásai közül."
 
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:17
+#: data/org.gabmus.gfeeds.appdata.xml.in:17
 msgid ""
 "Articles are shown in a web view by default, with javascript disabled for a "
 "faster and less intrusive user experience. There's also a reader mode "
 "included, built from the one GNOME Web/Epiphany uses."
 msgstr ""
-"A cikkek alapértelmezetten a webnézetben jelennek meg, letiltott "
-"JavaScripttel, a gyorsabb betöltés és a kevésbé tolakodó felhasználói "
-"élmény érdekében. Tartalmaz olvasó módot is, amely ugyanarra az összetevőre "
-"épül, mint amit a GNOME Web is használ."
+"A cikkek alapértelmezetten egy webnézetben jelennek meg, letiltott"
+" JavaScripttel a gyorsabb betöltés és a kevésbé tolakodó felhasználói élmény"
+" érdekében. Tartalmaz olvasó módot is, amely ugyanarra az összetevőre épül,"
+" mint amit a GNOME Web/Epiphany is használ."
 
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:18
+#: data/org.gabmus.gfeeds.appdata.xml.in:18
 msgid "Feeds can be imported and exported via OPML."
 msgstr "A hírforrások OPML-ből importálhatók és abba exportálhatók."
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/org.gabmus.gfeeds.desktop.in:16
+msgid "rss;reader;feed;news;"
+msgstr "rss;olvasó;hírforrás;hírek;"
+
+#: data/ui/extra_popover_menu.ui:19
+msgid "Web View"
+msgstr "Webnézet"
+
+#: data/ui/extra_popover_menu.ui:26
+msgid "Reader Mode"
+msgstr "Olvasó mód"
+
+#: data/ui/extra_popover_menu.ui:33
+#| msgid "RSS Content"
+msgid "Feed Content"
+msgstr "Hírforrás tartalma"
+
+#: gfeeds/confirm_add_dialog.py:16
+msgid "Do you want to import these feeds?"
+msgstr "Szeretné importálni ezeket a hírforrásokat?"
+
+#: gfeeds/confirm_add_dialog.py:17
+msgid "Do you want to import this feed?"
+msgstr "Szeretné importálni ezt a hírforrást?"
+
+#: gfeeds/download_manager.py:88
+#, python-brace-format
+msgid "`{0}`: connection timed out"
+msgstr "„{0}”: időtúllépés a kapcsolatban"
+
+#: gfeeds/download_manager.py:92
+#, python-brace-format
+msgid "`{0}` might not be a valid address"
+msgstr "A „{0}” lehet, hogy nem érvényes cím"
+
+#: gfeeds/download_manager.py:117
+#, python-brace-format
+msgid "Error downloading `{0}`, code `{1}`"
+msgstr "Hiba a(z) „{0}” letöltésekor, kód: „{1}”"
+
+#: gfeeds/feeds_manager.py:87
+#, python-brace-format
+msgid "Feed {0} exists already, skipping"
+msgstr "A(z) „{0}” hírforrás már létezik, kihagyás"
+
+#: gfeeds/feeds_view.py:14
+msgid "All feeds"
+msgstr "Összes hírforrás"
+
+#: gfeeds/get_favicon.py:45
+#, python-brace-format
+msgid "Error downloading favicon for `{0}`"
+msgstr "Hiba a(z) „{0}” böngészőikonjának letöltésekor"
+
+#: gfeeds/headerbar.py:171
+#| msgid "There were problems with some feeds. Do you want to remove them?"
+msgid ""
+"There were problems with some feeds.\n"
+"Do you want to remove them?"
+msgstr ""
+"Problémák voltak egyes hírforrásokkal.\n"
+"Szeretné eltávolítani azokat?"
+
+#: gfeeds/main_leaflet.py:118
+#, python-brace-format
+#| msgid "Save article"
+msgid "{0} new article"
+msgid_plural "{0} new articles"
+msgstr[0] "{0} új cikk"
+msgstr[1] "{0} új cikk"
+
+#: gfeeds/__main__.py:251
+msgid "url"
+msgstr "URL"
+
+#: gfeeds/__main__.py:254
+msgid "opml file local url or rss remote url to import"
+msgstr "importálandó helyi OPML-fájl vagy távoli RSS URL"
+
+#: gfeeds/manage_feeds_window.py:229
+msgid "Do you want to delete these feeds?"
+msgstr "Szeretné törölni ezeket a hírforrásokat?"
+
+#: gfeeds/manage_feeds_window.py:281
+msgid "Manage Feeds"
+msgstr "Hírforrások kezelése"
+
+#: gfeeds/opml_file_chooser.py:7
+msgid "XML files"
+msgstr "XML-fájlok"
+
+#: gfeeds/opml_file_chooser.py:14
+msgid "Choose an OPML file to import"
+msgstr "Válassza ki az importálandó OPML-fájlt"
+
+#: gfeeds/opml_file_chooser.py:18
+#| msgid "Open Menu"
+msgid "Open"
+msgstr "Megnyitás"
+
+#: gfeeds/opml_file_chooser.py:19 gfeeds/opml_file_chooser.py:31
+msgid "Cancel"
+msgstr "Mégse"
+
+#: gfeeds/opml_file_chooser.py:26
+msgid "Choose where to save the exported OPML file"
+msgstr "Válassza ki, hogy hová mentse az exportálandó OPML-fájlt"
+
+#: gfeeds/opml_file_chooser.py:30
+#| msgid "Saved"
+msgid "Save"
+msgstr "Mentés"
+
+#: gfeeds/opml_manager.py:42
+msgid "Error: OPML path provided does not exist"
+msgstr "Hiba: A megadott OPML útvonal nem létezik"
+
+#: gfeeds/opml_manager.py:53
+#, python-brace-format
+msgid "Error parsing OPML file `{0}`"
+msgstr "Hiba a(z) „{0}” OPML-fájl feldolgozásakor"
+
+#: gfeeds/preferences_window.py:22
+msgid "General"
+msgstr "Általános"
+
+#: gfeeds/preferences_window.py:25
+#| msgid "Open Preferences"
+msgid "General preferences"
+msgstr "Általános beállítások"
+
+#: gfeeds/preferences_window.py:27
+msgid "Show newer articles first"
+msgstr "Újabb cikkek megjelenítése elsőként"
+
+#: gfeeds/preferences_window.py:32
+msgid "Open links in your browser"
+msgstr "Hivatkozások megnyitása böngészőben"
+
+#: gfeeds/preferences_window.py:36
+msgid "Use external video player for YouTube"
+msgstr "Külső videólejátszó használata a YouTube-hoz"
+
+#: gfeeds/preferences_window.py:38
+msgid "Requires youtube-dl and a compatible video player"
+msgstr "A youtube-dl és egy kompatibilis videólejátszó meglétét igényli"
+
+#: gfeeds/preferences_window.py:44
+#| msgid "Preferred media player"
+msgid "Preferred video player"
+msgstr "Előnyben részesített videólejátszó"
+
+#: gfeeds/preferences_window.py:48
+msgid "Maximum article age"
+msgstr "Cikkek legnagyobb életkora"
+
+#: gfeeds/preferences_window.py:49
+msgid "In days"
+msgstr "Napokban"
+
+#: gfeeds/preferences_window.py:56
+#| msgid "Refresh feeds"
+msgid "Refresh preferences"
+msgstr "Beállítások frissítése"
+
+#: gfeeds/preferences_window.py:58
+msgid "Refresh articles on startup"
+msgstr "Cikkek frissítése indításkor"
+
+#: gfeeds/preferences_window.py:62
+#| msgid "Show newer articles first"
+msgid "New articles notification"
+msgstr "Új cikkek értesítés"
+
+#: gfeeds/preferences_window.py:66
+msgid "Enable auto-refresh"
+msgstr "Automatikus frissítés engedélyezése"
+
+#: gfeeds/preferences_window.py:70
+msgid "Auto-refresh interval"
+msgstr "Automatikus frissítés időköze"
+
+#: gfeeds/preferences_window.py:71
+msgid "In seconds"
+msgstr "Másodpercben"
+
+#: gfeeds/preferences_window.py:78
+msgid "Cache"
+msgstr "Gyorsítótár"
+
+#: gfeeds/preferences_window.py:80
+msgid "Clear caches"
+msgstr "Gyorsítótárak törlése"
+
+#: gfeeds/preferences_window.py:81
+msgid "Clear"
+msgstr "Törlés"
+
+#: gfeeds/preferences_window.py:109
+msgid "Appearance"
+msgstr "Megjelenés"
+
+#: gfeeds/preferences_window.py:112
+#| msgid "Open Preferences"
+msgid "Appearance preferences"
+msgstr "Megjelenési beállítások"
+
+#: gfeeds/preferences_window.py:114
+msgid "Dark mode"
+msgstr "Sötét mód"
+
+#: gfeeds/preferences_window.py:118
+msgid "Use dark theme for reader mode"
+msgstr "Sötét téma használata az olvasó módhoz"
+
+#: gfeeds/preferences_window.py:122
+#| msgid "Show full articles titles"
+msgid "Show article thumbnails"
+msgstr "Cikkek bélyegképeinek megjelenítése"
+
+#: gfeeds/preferences_window.py:127
+#| msgid "Maximum article age"
+msgid "Maximum thumbnail height"
+msgstr "Bélyegkép legnagyobb magassága"
+
+#: gfeeds/preferences_window.py:133
+msgid "Show full articles titles"
+msgstr "Teljes cikkcímek megjelenítése"
+
+#: gfeeds/preferences_window.py:138
+msgid "Show full feeds names"
+msgstr "Teljes hírforrásnevek megjelenítése"
+
+#: gfeeds/preferences_window.py:145
+#| msgid "Open Preferences"
+msgid "Font preferences"
+msgstr "Betűkészlet beállításai"
+
+#: gfeeds/preferences_window.py:147
+msgid "Use system font for titles"
+msgstr "Rendszer betűkészletének használata a címeknél"
+
+#: gfeeds/preferences_window.py:151
+msgid "Use system font for paragraphs"
+msgstr "Rendszer betűkészletének használata a bekezdéseknél"
+
+#: gfeeds/preferences_window.py:155
+msgid "Custom title font"
+msgstr "Egyéni betűkészlet a címhez"
+
+#: gfeeds/preferences_window.py:159
+msgid "Custom paragraph font"
+msgstr "Egyéni betűkészlet a bekezdéshez"
+
+#: gfeeds/preferences_window.py:163
+msgid "Custom monospace font"
+msgstr "Egyéni rögzített szélességű betűkészlet"
+
+#: gfeeds/preferences_window.py:175
+msgid "Privacy"
+msgstr "Adatvédelem"
+
+#: gfeeds/preferences_window.py:178
+#| msgid "Preferences"
+msgid "Privacy preferences"
+msgstr "Adatvédelmi beállítások"
+
+#: gfeeds/preferences_window.py:180
+msgid "Enable JavaScript"
+msgstr "JavaScript engedélyezése"
+
+#: gfeeds/preferences_window.py:185
+msgid "Try to block advertisements"
+msgstr "Hirdetések tiltásának kísérlete"
+
+#: gfeeds/preferences_window.py:187 gfeeds/preferences_window.py:222
+msgid "Requires app restart"
+msgstr "Az alkalmazás újraindítását igényli"
+
+#: gfeeds/preferences_window.py:191
+msgid "Update advertisement blocking list"
+msgstr "Hirdetések tiltólistájának frissítése"
+
+#: gfeeds/preferences_window.py:192
+msgid "Updates automatically every 10 days"
+msgstr "Automatikusan frissíti 10 naponként"
+
+#: gfeeds/preferences_window.py:193
+msgid "Update"
+msgstr "Frissítés"
+
+#: gfeeds/preferences_window.py:206
+msgid "Advanced"
+msgstr "Speciális"
+
+#: gfeeds/preferences_window.py:209
+#| msgid "Open Preferences"
+msgid "Advanced preferences"
+msgstr "Speciális beállítások"
+
+#: gfeeds/preferences_window.py:211
+msgid "Maximum refresh threads"
+msgstr "Frissítési szálak legnagyobb száma"
+
+#: gfeeds/preferences_window.py:213
+#| msgid "How many threads to refresh feeds"
+msgid "How many threads to use for feeds refresh"
+msgstr "Hány szálat használjon a hírforrások frissítéséhez"
+
+#: gfeeds/preferences_window.py:220
+msgid "Experimental GtkListView for articles list"
+msgstr "Kísérleti GtkListView a cikkek listájához"
+
+#: gfeeds/rss_parser.py:67
+#, python-brace-format
+msgid "Error: unable to parse datetime {0} for feeditem {1}"
+msgstr "Hiba: a(z) {0} dátum nem dolgozható fel ennél a hírforráselemnél: {1}"
+
+#: gfeeds/rss_parser.py:148
+#, python-brace-format
+msgid "Errors while parsing feed `{0}`"
+msgstr "Hibák történtek a(z) „{0}” hírforrás feldolgozásakor"
+
+#: gfeeds/rss_parser.py:175
+#, python-brace-format
+msgid "`{0}` may not be an RSS or Atom feed"
+msgstr "A(z) „{0}” lehet, hogy nem RSS vagy Atom hírforrás"
+
+#: gfeeds/sidebar.py:23
+msgid "Loading feeds..."
+msgstr "Hírforrások betöltése…"
+
+#: gfeeds/sidebar_row_popover.py:31 gfeeds/sidebar_row_popover.py:58
+msgid "Mark as unread"
+msgstr "Megjelölés olvasatlanként"
+
+#: gfeeds/sidebar_row_popover.py:38 gfeeds/sidebar_row_popover.py:50
+msgid "Mark as read"
+msgstr "Megjelölés olvasottként"
+
+#: gfeeds/suggestion_bar.py:37
+msgid "There are some errors"
+msgstr "Hibák történtek"
+
+#: gfeeds/suggestion_bar.py:46
+msgid "Show"
+msgstr "Megjelenítés"
+
+#: gfeeds/suggestion_bar.py:47
+msgid "Ignore"
+msgstr "Mellőzés"
+
+#: gfeeds/suggestion_bar.py:70
+msgid "There were problems with some feeds. Do you want to remove them?"
+msgstr "Problémák voltak egyes hírforrásokkal. Szeretné eltávolítani azokat?"
+
+#: gfeeds/suggestion_bar.py:97
+msgid "You are offline"
+msgstr "Nincs internetkapcsolat"
+
+#: gfeeds/webview.py:183
+msgid "Link copied to clipboard!"
+msgstr "Hivatkozás a vágólapra másolva!"
+
+#: gfeeds/webview.py:205
+#| msgid "RSS content or summary not available for this article"
+msgid "Feed content not available for this article"
+msgstr "Nem érhető el hírforrástartalom ennél a cikknél"
