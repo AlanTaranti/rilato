@@ -177,7 +177,7 @@ class FeedParser(GObject.Object):
             self.title = self.link or self.rss_link
 
         self.favicon_path = str(self.confman.thumbs_cache_path.joinpath(
-            shasum(self.rss_link)+'.png'
+            shasum(self.rss_link+'v2')+'.png'
         ))
         if not isfile(self.favicon_path):
             if self.image_url:
