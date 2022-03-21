@@ -216,10 +216,9 @@ class FeedsManager(metaclass=Singleton):
         self.emit('feedmanager_refresh_start', '')
         self.errors = []
         t = Thread(
-            group=None,
             target=self._add_feed_async_worker,
-            name=None,
-            args=(uri,)
+            args=(uri,),
+            daemon=True
         )
         t.start()
         return True

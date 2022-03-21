@@ -148,7 +148,7 @@ class GFeedsWebView(Gtk.Stack):
         elif target == 'reader':
             Thread(
                 target=self._load_reader_async,
-                args=(self.load_reader,)
+                args=(self.load_reader,), daemon=True
             ).start()
         elif target == 'rsscont':
             self.set_enable_rss_content(True)
