@@ -427,6 +427,20 @@
             ]
         },
         {
+            "name": "python-magic",
+            "buildsystem": "simple",
+            "build-commands": [
+                "python3 setup.py install --prefix=/app --root=/"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/ahupp/python-magic",
+                    "tag": "0.4.25"
+                }
+            ]
+        },
+        {
             "name": "gfeeds",
             "buildsystem": "meson",
             "config-opts": [

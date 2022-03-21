@@ -6,7 +6,6 @@ from datetime import datetime, timezone
 from dateutil.parser import parse as dateparse
 from dateutil.tz import gettz
 from gettext import gettext as _
-from gfeeds.download_manager import download_raw
 from gfeeds.get_favicon import get_favicon
 from os.path import isfile
 from gfeeds.confManager import ConfManager
@@ -182,7 +181,7 @@ class FeedParser(GObject.Object):
         if not isfile(self.favicon_path):
             if self.image_url:
                 try:
-                    download_raw(self.image_url, self.favicon_path)
+                    get_favicon(self.image_url, self.favicon_path, direct=True)
                 except Exception:
                     print('Invalid image url for feed `{0}` ({1})'.format(
                         self.rss_link, self.image_url
