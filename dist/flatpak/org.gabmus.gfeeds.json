@@ -2,9 +2,9 @@
     "app-id": "org.gabmus.gfeeds",
     "command": "gfeeds",
     "runtime": "org.gnome.Platform",
-    "runtime-version": "master",
+    "runtime-version": "42",
     "sdk": "org.gnome.Sdk",
-    "sdk-version": "master",
+    "sdk-version": "42",
     "finish-args": [
         "--device=dri",
         "--share=ipc",
@@ -19,6 +19,7 @@
         "--persist=xdg-config/fontconfig"
     ],
     "modules": [
+        "python-deps.json",
         {
             "name": "blueprint-compiler",
             "buildsystem": "meson",
@@ -26,325 +27,8 @@
                 {
                     "type": "git",
                     "url": "https://gitlab.gnome.org/jwestman/blueprint-compiler",
-                    "branch": "main"
-                }
-            ]
-        },
-        {
-            "name": "python-cffi",
-            "buildsystem": "simple",
-            "build-commands": [
-                "python3 setup.py install --prefix=/app --root=/"
-            ],
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://files.pythonhosted.org/packages/00/9e/92de7e1217ccc3d5f352ba21e52398372525765b2e0c4530e6eb2ba9282a/cffi-1.15.0.tar.gz",
-                    "sha256": "920f0d66a896c2d99f0adbb391f990a84091179542c205fa53ce5787aff87954"
-                }
-            ]
-        },
-        {
-            "name": "python-pycparser",
-            "buildsystem": "simple",
-            "build-commands": [
-                "python3 setup.py install --prefix=/app --root=/"
-            ],
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://github.com/eliben/pycparser",
-                    "tag": "release_v2.20"
-                }
-            ]
-        },
-        {
-            "name": "python-readability",
-            "buildsystem": "simple",
-            "build-commands": [
-                "python3 setup.py install --prefix=/app --root=/"
-            ],
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://github.com/buriy/python-readability",
-                    "tag": "v0.8.1"
-                }
-            ]
-        },
-        {
-            "name": "python-pygments",
-            "buildsystem": "simple",
-            "build-commands": [
-                "python3 setup.py install --prefix=/app --root=/"
-            ],
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://github.com/pygments/pygments",
-                    "tag": "2.6.1",
-                    "commit": "d2eae8580d7e363bca03554e3b516d0fd77b25cb"
-                }
-            ]
-        },
-        {
-            "name": "python-certifi",
-            "buildsystem": "simple",
-            "build-commands": [
-                "python3 setup.py install --prefix=/app --root=/"
-            ],
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://github.com/certifi/python-certifi",
-                    "tag": "2021.05.30"
-                }
-            ]
-        },
-        {
-            "name": "python-cssselect",
-            "buildsystem": "simple",
-            "build-commands": [
-                "python3 setup.py install --prefix=/app --root=/"
-            ],
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://github.com/scrapy/cssselect",
-                    "tag": "v1.1.0"
-                }
-            ]
-        },
-        {
-            "name": "python-pillow",
-            "buildsystem": "simple",
-            "build-commands": [
-                "python3 setup.py install --prefix=/app --root=/"
-            ],
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://github.com/python-pillow/Pillow",
-                    "tag": "8.4.0"
-                }
-            ]
-        },
-        {
-            "name": "python-markupsafe",
-            "buildsystem": "simple",
-            "build-commands": [
-                "python3 setup.py install --prefix=/app --root=/"
-            ],
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://github.com/pallets/markupsafe",
-                    "tag": "1.1.1",
-                    "commit": "22c946de28c2f5916f8c88a983a3e48e1cdbd2fd"
-                }
-            ]
-        },
-        {
-            "name": "python-beautifulsoup",
-            "buildsystem": "simple",
-            "build-commands": [
-                "python3 setup.py install --prefix=/app --root=/"
-            ],
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://files.pythonhosted.org/packages/a1/69/daeee6d8f22c997e522cdbeb59641c4d31ab120aba0f2c799500f7456b7e/beautifulsoup4-4.10.0.tar.gz",
-                    "sha256": "c23ad23c521d818955a4151a67d81580319d4bf548d3d49f4223ae041ff98891"
-                }
-            ]
-        },
-        {
-            "name": "cython",
-            "buildsystem": "simple",
-            "build-commands": [
-                "python3 setup.py install --prefix=/app --root=/"
-            ],
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://files.pythonhosted.org/packages/d9/cd/0d2d90b27219c07f68f1c25bcc7b02dd27639d2180add9d4b73e70945869/Cython-0.29.23.tar.gz",
-                    "sha256": "6a0d31452f0245daacb14c979c77e093eb1a546c760816b5eed0047686baad8e"
-                }
-            ]
-        },
-        {
-            "name": "python-humanize",
-            "buildsystem": "simple",
-            "build-commands": [
-                "python3 setup.py build",
-                "python3 setup.py install --prefix=/app --root=/ --optimize=1 --skip-build"
-            ],
-            "sources": [
-                {
-                    "//comment": "Needs to be archive, git doesn't include .mo files needed for localization",
-                    "type": "archive",
-                    "url": "https://files.pythonhosted.org/packages/4f/95/e097e65913e9b5ce68a576cf3ea364eb240973cc15c6a8184047a3571290/humanize-3.12.0.tar.gz",
-                    "sha256": "5ec1a66e230a3e31fb3f184aab9436ea13d4e37c168e0ffc345ae5bb57e58be6"
-                }
-            ]
-        },
-        {
-            "name": "python-pytz",
-            "buildsystem": "simple",
-            "build-commands": [
-                "python3 setup.py install --prefix=/app --root=/"
-            ],
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://files.pythonhosted.org/packages/f4/f6/94fee50f4d54f58637d4b9987a1b862aeb6cd969e73623e02c5c00755577/pytz-2020.1.tar.gz",
-                    "sha256": "c35965d010ce31b23eeb663ed3cc8c906275d6be1a34393a1d73a41febf4a048"
-                }
-            ]
-        },
-        {
-            "name": "python-setuptools-scm",
-            "buildsystem": "simple",
-            "build-commands": [
-                "python3 setup.py build",
-                "python3 setup.py egg_info",
-                "python3 setup.py install --prefix=/app --root=/"
-            ],
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://github.com/pypa/setuptools_scm",
-                    "tag": "v5.0.1"
-                }
-            ]
-        },
-        {
-            "name": "python-lxml",
-            "buildsystem": "simple",
-            "build-commands": [
-                "python3 setup.py build --with-cython",
-                "python3 setup.py install --prefix=/app --root=/"
-            ],
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://github.com/lxml/lxml.git",
-                    "tag": "lxml-4.6.4-5",
-                    "commmit": "24a459910130afc8a16bdecdde35ca9d5aa47f1d"
-                }
-            ]
-        },
-        {
-            "name": "python-dateutil",
-            "buildsystem": "simple",
-            "build-commands": [
-                "python3 setup.py install --prefix=/app --root=/ --optimize=1"
-            ],
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://github.com/dateutil/dateutil",
-                    "tag": "2.8.2"
-                }
-            ]
-        },
-        {
-            "name": "python-idna",
-            "buildsystem": "simple",
-            "build-commands": [
-                "python3 setup.py install --prefix=/app --root=/"
-            ],
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://github.com/kjd/idna",
-                    "tag": "v3.3"
-                }
-            ]
-        },
-        {
-            "name": "python-chardet",
-            "buildsystem": "simple",
-            "build-commands": [
-                "python3 setup.py install --prefix=/app --root=/"
-            ],
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://github.com/chardet/chardet",
-                    "tag": "4.0.0",
-                    "commit": "a808ed1c945293c0edeeda3a360abfa2a0b25a20"
-                }
-            ]
-        },
-        {
-            "name": "python-urllib3",
-            "buildsystem": "simple",
-            "build-commands": [
-                "python3 setup.py install --prefix=/app --root=/"
-            ],
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://github.com/urllib3/urllib3",
-                    "tag": "1.26.7"
-                }
-            ]
-        },
-        {
-            "name": "python-requests",
-            "buildsystem": "simple",
-            "build-commands": [
-                "python3 setup.py install --prefix=/app --root=/"
-            ],
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://github.com/psf/requests/archive/v2.26.0.tar.gz",
-                    "sha256": "e88b61425a0b4f1316e7ab8f6c11d7abbc99b464e418786681d59fef9f9d6421"
-                }
-            ]
-        },
-        {
-            "name": "python-webencodings",
-            "buildsystem": "simple",
-            "build-commands": [
-                "python3 setup.py install --prefix=/app --root=/"
-            ],
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://github.com/gsnedders/python-webencodings",
-                    "tag": "v0.5.1",
-                    "commit": "fa2cb5d75ab41e63ace691bc0825d3432ba7d694"
-                }
-            ]
-        },
-        {
-            "name": "python-html5lib",
-            "buildsystem": "simple",
-            "build-commands": [
-                "python3 setup.py install --prefix=/app --root=/"
-            ],
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://github.com/html5lib/html5lib-python",
-                    "tag": "1.1"
-                }
-            ]
-        },
-        {
-            "name": "python-sgmllib3k",
-            "buildsystem": "simple",
-            "build-commands": [
-                "python3 setup.py install --prefix=/app --root=/"
-            ],
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://files.pythonhosted.org/packages/9e/bd/3704a8c3e0942d711c1299ebf7b9091930adae6675d7c8f476a7ce48653c/sgmllib3k-1.0.0.tar.gz",
-                    "sha256": "7868fb1c8bfa764c1ac563d3cf369c381d1325d36124933a726f29fcdaa812e9"
+                    "branch": "main",
+                    "commit": "e3a37893a8709aa3d6a571ecb5a3f690da0ef82d"
                 }
             ]
         },
@@ -358,11 +42,10 @@
             ],
             "sources": [
                 {
-                    "//type": "dir",
-                    "//path": "/home/gabmus/git/syndication-domination",
                     "type": "git",
                     "url": "https://gitlab.com/gabmus/syndication-domination",
-                    "branch": "master"
+                    "branch": "master",
+                    "commit": "e503361944ae8f8af5fe281aa61a346f28a0b051"
                 }
             ],
             "modules": [
@@ -373,7 +56,7 @@
                         {
                             "type": "git",
                             "url": "https://github.com/pybind/pybind11/",
-                            "tag": "v2.8.1"
+                            "tag": "v2.9.1"
                         },
                         {
                             "type": "patch",
@@ -393,7 +76,7 @@
                         {
                             "type": "git",
                             "url": "https://github.com/pybind/pybind11/",
-                            "tag": "v2.8.1"
+                            "tag": "v2.9.1"
                         },
                         {
                             "type": "patch",
@@ -409,7 +92,7 @@
                         {
                             "type": "git",
                             "url": "https://github.com/zeux/pugixml",
-                            "tag": "v1.11.4"
+                            "tag": "v1.12.1"
                         }
                     ]
                 },
@@ -423,20 +106,6 @@
                             "tag": "5.8.0"
                         }
                     ]
-                }
-            ]
-        },
-        {
-            "name": "python-magic",
-            "buildsystem": "simple",
-            "build-commands": [
-                "python3 setup.py install --prefix=/app --root=/"
-            ],
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://github.com/ahupp/python-magic",
-                    "tag": "0.4.25"
                 }
             ]
         },
