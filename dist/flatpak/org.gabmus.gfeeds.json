@@ -35,7 +35,7 @@
         {
             "name": "python-syndom",
             "buildsystem": "meson",
-            "config-opts" : [
+            "config-opts": [
                 "-DTO_JSON_BINARY=false",
                 "-DPYTHON_BINDINGS=true",
                 "-DHTML_SUPPORT=true"
@@ -120,7 +120,7 @@
                 {
                     "type": "git",
                     "url": "https://gitlab.gnome.org/World/gfeeds",
-                    "tag": "1.0"
+                    "tag": "1.0.0"
                 }
             ]
         }

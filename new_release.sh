@@ -23,7 +23,7 @@ manifest = None
 with open('$MANIFEST_PATH') as fd:
     manifest = json.loads(fd.read())
 for i, module in enumerate(manifest['modules']):
-    if module['name'] == '$TARGET_MODULE':
+    if isinstance(module, dict) and module['name'] == '$TARGET_MODULE':
         manifest['modules'][i]['sources'][0]['tag'] = '$n_version'
         break
 with open('$MANIFEST_PATH', 'w') as fd:

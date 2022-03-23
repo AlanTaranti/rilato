@@ -53,6 +53,23 @@
     <url type="donation">https://liberapay.com/gabmus/donate</url>
     <update_contact>gabmus@disroot.org</update_contact>
     <releases>
+        <release version="1.0.0" timestamp="1648049398">
+            <description>
+                <ul>
+                    <li>Brand new look powered by GTK4 and Libadwaita</li>
+                    <li>Articles can have thumbnails</li>
+                    <li>New advertisement blocking feature</li>
+                    <li>Human friendly article date and time</li>
+                    <li>Less intrusive feed error notification</li>
+                    <li>Customizable reader mode fonts</li>
+                    <li>Empty feeds can be hidden</li>
+                    <li>New lightning fast C++ powered backend for feed parsing</li>
+                    <li>Experimental article list implementation using GtkListView</li>
+                    <li>Removed saved articles feature</li>
+                </ul>
+            </description>
+        </release>
+
         <release version="0.16.2" timestamp="1610993645">
             <description>
                 <ul>
