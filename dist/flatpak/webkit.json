@@ -19,9 +19,9 @@
             "config-opts": [],
             "sources": [
                 {
-                    "type": "git",
-                    "url": "https://github.com/containers/bubblewrap",
-                    "tag": "v0.6.1"
+                    "type": "archive",
+                    "url": "https://github.com/containers/bubblewrap/archive/refs/tags/v0.6.1.tar.gz",
+                    "sha256": "2b21ee6d2bead1aaf7c35742e5e53b061ec6eb1644889a4379fda662b03e8121"
                 }
             ]
         },
@@ -31,9 +31,9 @@
             "config-opts": [],
             "sources": [
                 {
-                    "type": "git",
-                    "url": "https://github.com/flatpak/xdg-dbus-proxy",
-                    "tag": "0.1.3"
+                    "type": "archive",
+                    "url": "https://github.com/flatpak/xdg-dbus-proxy/archive/refs/tags/0.1.3.tar.gz",
+                    "sha256": "a1d57f0d478bee4cc2be67e84ac6fcfe729460345d8a4fadd6555ae83b14a789"
                 }
             ]
         }
