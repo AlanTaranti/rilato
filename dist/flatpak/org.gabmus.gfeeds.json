@@ -19,6 +19,7 @@
         "--persist=xdg-config/fontconfig"
     ],
     "modules": [
+        "webkit.json",
         "python-deps.json",
         {
             "name": "python-lxml",
@@ -32,6 +33,20 @@
                     "type": "archive",
                     "url": "https://github.com/lxml/lxml/releases/download/lxml-4.8.0/lxml-4.8.0.tar.gz",
                     "sha256": "f63f62fc60e6228a4ca9abae28228f35e1bd3ce675013d1dfb828688d50c6e23"
+                }
+            ]
+        },
+        {
+            "name": "python-pygments",
+            "buildsystem": "simple",
+            "build-commands": [
+                "python3 setup.py install --prefix=/app --root=/"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://github.com/pygments/pygments/archive/refs/tags/2.11.2.tar.gz",
+                    "sha256": "2ff53b96fae81588e6f4f9147cb45af7d321c67335e5d794f6838f1710154598"
                 }
             ]
         },
@@ -124,7 +139,6 @@
                 }
             ]
         },
-        "webkit.json",
         {
             "name": "gfeeds",
             "buildsystem": "meson",
