@@ -21,6 +21,21 @@
     "modules": [
         "python-deps.json",
         {
+            "name": "python-lxml",
+            "buildsystem": "simple",
+            "build-commands": [
+                "python3 setup.py build --with-cython",
+                "python3 setup.py install --prefix=/app --root=/"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://github.com/lxml/lxml/releases/download/lxml-4.8.0/lxml-4.8.0.tar.gz",
+                    "sha256": "f63f62fc60e6228a4ca9abae28228f35e1bd3ce675013d1dfb828688d50c6e23"
+                }
+            ]
+        },
+        {
             "name": "blueprint-compiler",
             "buildsystem": "meson",
             "sources": [
