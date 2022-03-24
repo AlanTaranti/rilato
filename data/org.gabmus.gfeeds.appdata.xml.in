@@ -53,6 +53,14 @@
     <url type="donation">https://liberapay.com/gabmus/donate</url>
     <update_contact>gabmus@disroot.org</update_contact>
     <releases>
+        <release version="1.0.2" timestamp="1648138767">
+            <description>
+                <ul>
+                    <li>Flatpak dependency fixes</li>
+                </ul>
+            </description>
+        </release>
+
         <release version="1.0.1" timestamp="1648110833">
             <description>
                 <ul>
