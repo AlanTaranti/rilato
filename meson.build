@@ -61,7 +61,10 @@ subdir('data')
 subdir('bin')
 subdir('po')
 
-meson.add_install_script('meson_post_install.py')
+gnome.post_install(
+  glib_compile_schemas: true,
+  gtk_update_icon_cache: true
+)
 
 # envdata = environment()
 # python_paths = [join_paths(meson.current_build_dir(), '..')]
