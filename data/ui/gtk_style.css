@@ -9,3 +9,8 @@
     font-weight: bold;
     font-size: 0.8em;
 }
+
+.link-preview-osd {
+    padding: 3px;
+    border-radius: 0 6px 0 0;
+}

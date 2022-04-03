@@ -21,6 +21,8 @@ class GFeedsWebView(Gtk.Stack):
     loading_bar = Gtk.Template.Child()
     main_view = Gtk.Template.Child()
     toast_overlay = Gtk.Template.Child()
+    link_preview_revealer = Gtk.Template.Child()
+    link_preview_label = Gtk.Template.Child()
 
     __gsignals__ = {
         'gfeeds_webview_load_start': (
@@ -68,10 +70,24 @@ class GFeedsWebView(Gtk.Stack):
 
         self.webkitview.set_zoom_level(self.confman.conf['webview_zoom'])
 
+
         self.new_page_loaded = False
         self.uri = ''
         self.feeditem = None
         self.html = None
+
+    @Gtk.Template.Callback()
+    def on_mouse_target_changed(self, webkitview, hit_test_result, modifiers):
+        if hit_test_result:
+            if hit_test_result.context_is_link():
+                self.link_preview_revealer.set_visible(True)
+                self.link_preview_revealer.set_reveal_child(True)
+                self.link_preview_label.set_text(
+                    hit_test_result.get_link_uri()
+                )
+                return
+        self.link_preview_revealer.set_visible(False)
+        self.link_preview_revealer.set_reveal_child(False)
 
     def action_open_media_player(self):
         self.open_url_in_media_player(
