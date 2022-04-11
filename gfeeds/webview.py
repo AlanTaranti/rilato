@@ -70,7 +70,6 @@ class GFeedsWebView(Gtk.Stack):
 
         self.webkitview.set_zoom_level(self.confman.conf['webview_zoom'])
 
-
         self.new_page_loaded = False
         self.uri = ''
         self.feeditem = None
