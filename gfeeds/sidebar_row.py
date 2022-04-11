@@ -1,4 +1,4 @@
-from gfeeds.picture_view import PictureView
+from math import ceil
 from os.path import isfile
 from gfeeds.rss_parser import FeedItem
 from gfeeds.sha import shasum
@@ -43,10 +43,8 @@ class SidebarRow(Gtk.Box):
         self.icon_container.append(self.icon)
 
         self.datestr = ''
-        # self.picture_view = Gtk.Picture(
-        #     width_request=200, height_request=200, can_shrink=True
-        # )
-        self.picture_view = PictureView(None)
+        self.picture_view = Gtk.Picture(overflow=Gtk.Overflow.HIDDEN)
+        self.picture_view.get_style_context().add_class('card')
         self.picture_view_container.append(self.picture_view)
         # picture_view_container is visible=False on init
 
@@ -113,14 +111,11 @@ class SidebarRow(Gtk.Box):
                 self.picture_view_container.set_visible(False)
             else:
                 self.picture_view_container.set_visible(True)
-                self.picture_view.set_file(img)
+                self.picture_view.set_filename(img)
+                cw, ch = self.picture_view.get_paintable(
+                ).compute_concrete_size(270, 0, 1200, 1200)
+                self.picture_view.set_size_request(-1, ceil(ch))
                 self.picture_view_container.set_visible(True)
-                # GLib.timeout_add(
-                #     100,
-                #     lambda *args:
-                #         self.picture_view_container.set_visible(True)
-                # )
-                # self.picture_view.set_filename(img)
 
         def af():
             if self.feed_item is None:
