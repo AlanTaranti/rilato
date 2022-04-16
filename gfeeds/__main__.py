@@ -1,3 +1,4 @@
+from posixpath import expanduser
 import sys
 import argparse
 from gettext import gettext as _
@@ -9,17 +10,19 @@ from gfeeds.app_window import GFeedsAppWindow
 from gfeeds.preferences_window import show_preferences_window
 from gfeeds.opml_manager import (
     feeds_list_to_opml,
-    add_feeds_from_opml
+    add_feeds_from_opml,
+    opml_to_rss_list
 )
 from gfeeds.opml_file_chooser import (
     GFeedsOpmlFileChooserDialog,
     GFeedsOpmlSavePathChooserDialog
 )
 from gfeeds.manage_feeds_window import GFeedsManageFeedsWindow
-from gfeeds.confirm_add_dialog import GFeedsConfirmAddDialog
+from gfeeds.scrolled_dialog import ScrolledDialog
 from gfeeds.shortcuts_window import show_shortcuts_window
 from gfeeds.util.rss_link_from_file import get_feed_link_from_file
 from gfeeds.base_app import BaseApp, AppAction
+from xml.sax.saxutils import escape
 
 
 class GFeedsApplication(BaseApp):
@@ -186,7 +189,7 @@ class GFeedsApplication(BaseApp):
         def on_response(_dialog, res):
             if res == Gtk.ResponseType.ACCEPT:
                 save_path = dialog.get_file().get_path()
-                if save_path[-5:].lower() != '.opml':
+                if not save_path.lower().endswith('.opml'):
                     save_path += '.opml'
                 opml_out = feeds_list_to_opml(
                     self.feedman.feed_store.sort_store
@@ -216,36 +219,42 @@ class GFeedsApplication(BaseApp):
         # self.feedman.refresh(get_cached=True)
         if self.args:
             if self.args.argurl:
-                if self.args.argurl[:8].lower() == 'file:///':
-                    abspath = self.args.argurl[7:]
-                    if isfile(abspath):
-                        if abspath[-5:].lower() == '.opml':
-                            dialog = GFeedsConfirmAddDialog(
-                                self.window, abspath
-                            )
+                abspath = self.args.argurl.strip()
+                if abspath.lower().startswith('file:///'):
+                    abspath = self.args.argurl.removeprefix('file://')
+                if isfile(expanduser(abspath)):
+                    if abspath.lower().endswith('.opml'):
+                        dialog = ScrolledDialog(
+                            transient_for=self.window,
+                            title=_('Do you want to import these feeds?'),
+                            message=escape('\n'.join([
+                                f['feed']
+                                for f in opml_to_rss_list(abspath)
+                            ]))
+                        )
 
-                            def on_response(_dialog, res):
-                                _dialog.close()
-                                if res == Gtk.ResponseType.YES:
-                                    add_feeds_from_opml(abspath)
+                        def on_response(_dialog, res):
+                            _dialog.close()
+                            if res == Gtk.ResponseType.YES:
+                                add_feeds_from_opml(abspath)
 
-                            dialog.connect('response', on_response)
-                            dialog.present()
-                        else:
-                            # why no check for extension here?
-                            # some websites have feeds without extension
-                            # dumb but that's what it is
-                            self.args.argurl = get_feed_link_from_file(
-                                abspath
-                            ) or ''
+                        dialog.connect('response', on_response)
+                        dialog.present()
+                    else:
+                        # why no check for extension here?
+                        # some websites have feeds without extension
+                        # dumb but that's what it is
+                        self.args.argurl = get_feed_link_from_file(
+                            abspath
+                        ) or ''
                 if (
-                        self.args.argurl[:7].lower() == 'http://' or
-                        self.args.argurl[:8].lower() == 'https://'
+                        self.args.argurl.lower().startswith('http://') or
+                        self.args.argurl.lower().startswith('https://')
                 ):
-                    dialog = GFeedsConfirmAddDialog(
-                        self.window,
-                        self.args.argurl,
-                        http=True
+                    dialog = ScrolledDialog(
+                        transient_for=self.window,
+                        title=_('Do you want to import this feed?'),
+                        message=escape(self.args.argurl),
                     )
                     argurl = self.args.argurl
 

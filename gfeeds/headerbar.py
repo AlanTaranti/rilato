@@ -3,7 +3,7 @@ from gi.repository import Gtk
 from gfeeds.confManager import ConfManager
 from gfeeds.feeds_manager import FeedsManager
 from gfeeds.view_mode_menu import GFeedsViewModeMenu
-from gfeeds.scrolled_message_dialog import ScrolledMessageDialog
+from gfeeds.scrolled_dialog import ScrolledDialog
 from xml.sax.saxutils import escape
 
 
@@ -162,18 +162,13 @@ class LeftHeaderbar(Gtk.WindowHandle):
 
     @Gtk.Template.Callback()
     def show_errors_dialog(self, *args):
-        dialog = ScrolledMessageDialog(
+        dialog = ScrolledDialog(
             transient_for=self.get_root(),
-            modal=True,
-            message_type=Gtk.MessageType.QUESTION,
-            buttons=Gtk.ButtonsType.YES_NO,
-            text=_(
+            title=_(
                 'There were problems with some feeds.\n'
                 'Do you want to remove them?'
-            )
-        )
-        dialog.format_secondary_markup(
-            escape('\n'.join(self.feedman.errors))
+            ),
+            message=escape('\n'.join(self.feedman.errors))
         )
 
         def on_response(_dialog, res):
@@ -186,7 +181,6 @@ class LeftHeaderbar(Gtk.WindowHandle):
                 self.errors_btn.set_visible(False)
             else:
                 self.errors_btn.set_visible(True)
-            dialog.close()
 
         dialog.connect('response', on_response)
         dialog.present()

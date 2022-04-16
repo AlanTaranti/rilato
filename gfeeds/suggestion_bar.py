@@ -1,9 +1,6 @@
 from gettext import gettext as _
-from xml.sax.saxutils import escape
 from gi.repository import Gtk, Pango
 from gfeeds.feeds_manager import FeedsManager
-from gfeeds.confManager import ConfManager
-from gfeeds.scrolled_message_dialog import ScrolledMessageDialog
 
 
 class GFeedsInfoBar(Gtk.InfoBar):
@@ -29,66 +26,6 @@ class GFeedsInfoBar(Gtk.InfoBar):
         self.container_box.append(self.label)
         self.add_child(self.container_box)
         # self.set_size_request(360, -1)
-
-
-class GFeedsErrorsBar(GFeedsInfoBar):
-    def __init__(self, parent_win, **kwargs):
-        super().__init__(
-            text=_('There are some errors'),
-            icon_name='computer-fail-symbolic',
-            message_type=Gtk.MessageType.INFO,
-            **kwargs
-        )
-        self.confman = ConfManager()
-        self.parent_win = parent_win
-        self.errors = []
-        self.problematic_feeds = []
-        self.show_button = Gtk.Button(label=_('Show'))
-        self.ignore_button = Gtk.Button(label=_('Ignore'))
-        self.show_button.connect('clicked', self.show_errors)
-        self.ignore_button.connect(
-            'clicked',
-            lambda *args: self.set_revealed(False)
-        )
-        self.container_box.append(self.ignore_button)
-        self.container_box.append(self.show_button)
-        self.set_revealed(False)
-
-    def engage(self, errors: list, problematic_feeds: list):
-        self.errors = errors
-        self.problematic_feeds = problematic_feeds
-        if len(errors) != 0:
-            self.set_revealed(True)
-
-    def show_errors(self, *args):
-        dialog = ScrolledMessageDialog(
-            transient_for=self.parent_win,
-            modal=True,
-            message_type=Gtk.MessageType.QUESTION,
-            buttons=Gtk.ButtonsType.YES_NO,
-            text=_(
-                'There were problems with some feeds. '
-                'Do you want to remove them?'
-            )
-        )
-        dialog.format_secondary_markup(
-            escape('\n'.join(self.errors))
-        )
-
-        def on_response(_dialog, res):
-            _dialog.close()
-            if (res == Gtk.ResponseType.YES):
-                for pf in self.problematic_feeds:
-                    if pf in self.confman.conf['feeds'].keys():
-                        self.confman.conf['feeds'].pop(pf)
-                        self.confman.save_conf()
-                self.set_revealed(False)
-            else:
-                self.set_revealed(True)
-            dialog.close()
-
-        dialog.connect('response', on_response)
-        dialog.present()
 
 
 class GFeedsConnectionBar(GFeedsInfoBar):
