@@ -1,8 +1,8 @@
 from math import ceil
 from os.path import isfile
 from gfeeds.rss_parser import FeedItem
-from gfeeds.sha import shasum
-from gfeeds.download_manager import download_raw
+from gfeeds.util.sha import shasum
+from gfeeds.util.download_manager import download_raw
 from gi.repository import Gtk, GLib, Pango
 from gfeeds.confManager import ConfManager
 from gfeeds.simple_avatar import SimpleAvatar

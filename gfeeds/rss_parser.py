@@ -6,13 +6,13 @@ from datetime import datetime, timezone
 from dateutil.parser import parse as dateparse
 from dateutil.tz import gettz
 from gettext import gettext as _
-from gfeeds.get_favicon import get_favicon
+from gfeeds.util.get_favicon import get_favicon
 from os.path import isfile
 from gfeeds.confManager import ConfManager
 from gfeeds.tag_store import TagStore
-from gfeeds.sha import shasum
+from gfeeds.util.sha import shasum
 # from bs4 import UnicodeDammit  # TODO: reimplement it!
-from gfeeds.get_thumb import get_thumb
+from gfeeds.util.get_thumb import get_thumb
 from syndom import Feed as SynDomFeed
 
 

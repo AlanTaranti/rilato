@@ -3,8 +3,8 @@ from urllib.parse import urlparse
 from PIL import Image
 from os.path import isfile
 from os import remove, replace
-from gfeeds.download_manager import download_raw
-from gfeeds.sha import shasum
+from gfeeds.util.download_manager import download_raw
+from gfeeds.util.sha import shasum
 from gfeeds.confManager import ConfManager
 from syndom import Html
 from magic import Magic  # for mime types

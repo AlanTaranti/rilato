@@ -3,16 +3,16 @@ from gettext import gettext as _
 from typing import List, Union
 from gi.repository import GLib, GObject
 from gfeeds.articles_listmodel import ArticlesListModel
-from gfeeds.singleton import Singleton
+from gfeeds.util.singleton import Singleton
 from gfeeds.confManager import ConfManager
 from gfeeds.rss_parser import Feed, FeedParser
-from gfeeds.download_manager import (
+from gfeeds.util.download_manager import (
     download_feed,
     extract_feed_url_from_html
 )
 from gfeeds.tag_store import TagStore
-from gfeeds.test_connection import is_online
-from gfeeds.thread_pool import ThreadPool
+from gfeeds.util.test_connection import is_online
+from gfeeds.util.thread_pool import ThreadPool
 from gfeeds.feed_store import FeedStore
 import pytz
 from datetime import datetime

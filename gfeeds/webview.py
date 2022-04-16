@@ -3,13 +3,12 @@ from threading import Thread
 from gi.repository import Gtk, GLib, WebKit2, GObject, Gio, Adw
 from gfeeds.build_reader_html import build_reader_html
 from gfeeds.confManager import ConfManager
-from gfeeds.download_manager import DownloadError, download_text
+from gfeeds.util.download_manager import DownloadError, download_text
 from functools import reduce
 from operator import or_
 from subprocess import Popen
 from datetime import datetime
 from typing import Optional
-
 from gfeeds.rss_parser import FeedItem
 
 

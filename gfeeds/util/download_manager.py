@@ -3,7 +3,7 @@ from os.path import isfile
 from pathlib import Path
 import requests
 from gfeeds.confManager import ConfManager
-from gfeeds.sha import shasum
+from gfeeds.util.sha import shasum
 from syndom import Html
 from typing import Optional, Tuple, Union
 

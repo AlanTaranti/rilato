@@ -1,7 +1,7 @@
 from urllib.parse import urlparse
 from syndom import Html
-from gfeeds.download_manager import download_raw
-from gfeeds.sha import shasum
+from gfeeds.util.download_manager import download_raw
+from gfeeds.util.sha import shasum
 from gfeeds.confManager import ConfManager
 from os.path import isfile
 

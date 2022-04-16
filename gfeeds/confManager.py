@@ -4,7 +4,7 @@ from os import environ as Env
 import json
 from datetime import timedelta
 from gi.repository import GObject, Gio
-from gfeeds.singleton import Singleton
+from gfeeds.util.singleton import Singleton
 from gfeeds.signaler_list import SignalerList
 
 
