@@ -9,7 +9,8 @@ time_locale = environ.get(
 try:
     humanize.i18n.activate(time_locale)
 except Exception:
-    print(f'Time localization unavailable for locale `{time_locale}`')
+    if not time_locale.startswith('en_'):
+        print(f'Time localization unavailable for locale `{time_locale}`')
 THREE_DAYS = 60*60*24*3
 
 

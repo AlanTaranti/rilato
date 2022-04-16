@@ -6,7 +6,7 @@ from gfeeds.util.download_manager import download_raw
 from gi.repository import Gtk, GLib, Pango
 from gfeeds.confManager import ConfManager
 from gfeeds.simple_avatar import SimpleAvatar
-from gfeeds.relative_day_formatter import humanize_datetime
+from gfeeds.util.relative_day_formatter import humanize_datetime
 from gfeeds.sidebar_row_popover import RowPopover
 from gfeeds.accel_manager import add_mouse_button_accel, add_longpress_accel
 from bs4 import BeautifulSoup
