@@ -5,7 +5,6 @@ import json
 from datetime import timedelta
 from gi.repository import GObject, Gio
 from gfeeds.util.singleton import Singleton
-from gfeeds.signaler_list import SignalerList
 
 
 class ConfManagerSignaler(GObject.Object):
@@ -184,14 +183,6 @@ class ConfManager(metaclass=Singleton):
             self.conf = ConfManager.BASE_SCHEMA.copy()
             self.save_conf()
 
-        self.read_feeds_items = SignalerList(self.conf['read_items'])
-        self.read_feeds_items.connect(
-            'append', self.dump_read_items_to_conf
-        )
-        self.read_feeds_items.connect(
-            'pop', self.dump_read_items_to_conf
-        )
-
         bl_gsettings = Gio.Settings.new('org.gnome.desktop.wm.preferences')
         bl = bl_gsettings.get_value('button-layout').get_string()
         self.wm_decoration_on_left = (
@@ -255,9 +246,6 @@ class ConfManager(metaclass=Singleton):
             if tag in self.conf['feeds'][feed]['tags']:
                 self.conf['feeds'][feed]['tags'].remove(tag)
         self.save_conf()
-
-    def dump_read_items_to_conf(self, *args):
-        self.conf['read_items'] = self.read_feeds_items.get_list()
 
     def save_conf(self, *args, force_overwrite=False):
         if self.path.is_file() and not force_overwrite:

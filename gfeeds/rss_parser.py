@@ -46,7 +46,7 @@ class FeedItem(GObject.Object):
 
         # used to identify article for read/unread and thumbs cache
         self.identifier = self.__link or (self.__title + self.pub_date_str)
-        self.__read = self.identifier in self.confman.read_feeds_items
+        self.__read = self.identifier in self.confman.conf['read_items']
 
         try:
             self.__pub_date = dateparse(self.pub_date_str, tzinfos={
@@ -111,10 +111,11 @@ class FeedItem(GObject.Object):
         if read == self.__read:
             return
         self.parent_feed.unread_count += -1 if read else 1
-        if read and self.identifier not in self.confman.read_feeds_items:
-            self.confman.read_feeds_items.append(self.identifier)
-        elif not read and self.identifier in self.confman.read_feeds_items:
-            self.confman.read_feeds_items.remove(self.identifier)
+        if read and self.identifier not in self.confman.conf['read_items']:
+            self.confman.conf['read_items'].append(self.identifier)
+        elif not read and self.identifier in self.confman.conf['read_items']:
+            self.confman.conf['read_items'].remove(self.identifier)
+        self.confman.save_conf()
         self.__read = read
 
     def __repr__(self):
@@ -246,7 +247,8 @@ class Feed(GObject.Object):
             if valid_age and not n_item.read:
                 unread_count += 1
             if not valid_age and n_item.read:
-                self.confman.read_feeds_items.remove(n_item.identifier)
+                self.confman.conf['read_items'].remove(n_item.identifier)
+                self.confman.save_conf()
 
         if self.rss_link in self.confman.conf['feeds']:
             feed_conf = self.confman.conf['feeds'][self.rss_link]
