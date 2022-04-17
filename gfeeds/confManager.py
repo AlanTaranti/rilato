@@ -4,6 +4,7 @@ from os import environ as Env
 import json
 from datetime import timedelta
 from gi.repository import GObject, Gio
+from threading import Thread
 from gfeeds.util.singleton import Singleton
 
 
@@ -247,10 +248,17 @@ class ConfManager(metaclass=Singleton):
                 self.conf['feeds'][feed]['tags'].remove(tag)
         self.save_conf()
 
-    def save_conf(self, *args, force_overwrite=False):
+    def __save_conf(self, force_overwrite: bool = False):
         if self.path.is_file() and not force_overwrite:
             with open(self.path, 'r') as fd:
                 if json.loads(fd.read()) == self.conf:
                     return
         with open(self.path, 'w') as fd:
             fd.write(json.dumps(self.conf))
+
+    def save_conf(
+            self, force_overwrite: bool = False, force_sync: bool = False
+    ):
+        if force_sync:
+            return self.__save_conf(force_overwrite)
+        Thread(target=self.__save_conf, args=(force_overwrite,)).start()
