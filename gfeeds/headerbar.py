@@ -2,7 +2,6 @@ from gettext import gettext as _
 from gi.repository import Gtk
 from gfeeds.confManager import ConfManager
 from gfeeds.feeds_manager import FeedsManager
-from gfeeds.view_mode_menu import GFeedsViewModeMenu
 from gfeeds.scrolled_dialog import ScrolledDialog
 from xml.sax.saxutils import escape
 
@@ -71,7 +70,6 @@ class RightHeaderbar(Gtk.WindowHandle):
         self.leaflet = leaflet
         self.back_btn_func = back_btn_func
         self.webview.connect('gfeeds_webview_load_start', self.on_load_start)
-        self.view_mode_menu = GFeedsViewModeMenu(self.view_mode_menu_btn)
         self.set_view_mode_icon(self.confman.conf['default_view'])
 
         self.on_zoom_changed(None, self.confman.conf['webview_zoom'])
@@ -104,7 +102,6 @@ class RightHeaderbar(Gtk.WindowHandle):
         )
 
     def on_view_mode_change(self, target):
-        self.view_mode_menu.popdown()
         self.set_view_mode_icon(target)
 
     def set_article_title(self, title):
