@@ -2,9 +2,9 @@ data/org.gabmus.gfeeds.appdata.xml.in
 data/org.gabmus.gfeeds.desktop.in
 data/ui/add_feed_popover.blp
 data/ui/empty_state.blp
-data/ui/extra_popover_menu.ui
 data/ui/left_headerbar.blp
 data/ui/shortcutsWindow.blp
+data/ui/main_leaflet.blp
 data/ui/manage_feeds_headerbar.blp
 data/ui/manage_tags_content.blp
 data/ui/right_headerbar.blp
@@ -25,7 +25,6 @@ gfeeds/preferences_window.py
 gfeeds/rss_parser.py
 gfeeds/sidebar.py
 gfeeds/sidebar_row_popover.py
-gfeeds/suggestion_bar.py
 gfeeds/util/download_manager.py
 gfeeds/util/get_favicon.py
 gfeeds/webview.py

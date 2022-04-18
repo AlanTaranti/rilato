@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-16 11:58+0200\n"
+"POT-Creation-Date: 2022-04-18 10:34+0200\n"
 "PO-Revision-Date: 2022-03-23 16:38+0100\n"
 "Last-Translator: Gabriele Musco <gabmus@disroot.org>\n"
 "Language-Team: Italian\n"
@@ -42,7 +42,7 @@ msgstr "Scegli dove salvare il file OPML esportato"
 msgid "Save"
 msgstr "Salva"
 
-#: ../gfeeds/feeds_view.py:14
+#: ../gfeeds/feeds_view.py:13
 msgid "All feeds"
 msgstr "Tutti i feed"
 
@@ -59,7 +59,7 @@ msgstr "Gestisci Feed"
 msgid "Do you want to delete these feeds?"
 msgstr "Vuoi eliminare questi feed?"
 
-#: ../gfeeds/headerbar.py:168
+#: ../gfeeds/headerbar.py:184
 msgid ""
 "There were problems with some feeds.\n"
 "Do you want to remove them?"
@@ -287,7 +287,7 @@ msgstr "url"
 msgid "opml file local url or rss remote url to import"
 msgstr "url locale del file opml o url rss remota da importare"
 
-#: ../gfeeds/main_leaflet.py:128
+#: ../gfeeds/main_leaflet.py:119
 #, python-brace-format
 msgid "{0} new article"
 msgid_plural "{0} new articles"
@@ -302,15 +302,11 @@ msgstr "Segna come non letto"
 msgid "Mark as read"
 msgstr "Segna come letto"
 
-#: ../gfeeds/suggestion_bar.py:34
-msgid "You are offline"
-msgstr "Sei offline"
-
-#: ../gfeeds/webview.py:202
+#: ../gfeeds/webview.py:201
 msgid "Link copied to clipboard!"
 msgstr "Link copiato negli appunti!"
 
-#: ../gfeeds/webview.py:224
+#: ../gfeeds/webview.py:223
 msgid "Feed content not available for this article"
 msgstr "Contenuto del feed non disponibile per questo articolo"
 
@@ -328,27 +324,15 @@ msgstr "Errore nell'analisi del file OPML `{0}`"
 msgid "Error: unable to parse datetime {0} for feeditem {1}"
 msgstr "Errore: impossibile analizzare data e ora {0} per l'articolo {1}"
 
-#: ../gfeeds/rss_parser.py:153
+#: ../gfeeds/rss_parser.py:154
 #, python-brace-format
 msgid "Errors while parsing feed `{0}`"
 msgstr "Errori nell'analisi del feed `{0}`"
 
-#: ../gfeeds/rss_parser.py:171
+#: ../gfeeds/rss_parser.py:172
 #, python-brace-format
 msgid "`{0}` may not be an RSS or Atom feed"
 msgstr "`{0}` potrebbe non essere un feed RSS o Atom"
-
-#: ../data/ui/extra_popover_menu.ui:19
-msgid "Web View"
-msgstr "Vista Web"
-
-#: ../data/ui/extra_popover_menu.ui:26
-msgid "Reader Mode"
-msgstr "Modalità lettura"
-
-#: ../data/ui/extra_popover_menu.ui:33
-msgid "Feed Content"
-msgstr "Contenuto del Feed"
 
 #: ../data/ui/right_headerbar.blp:9 ../data/ui/shortcutsWindow.blp:74
 msgid "Open in Browser"
@@ -362,25 +346,37 @@ msgstr "Apri in Riproduttore Multimediale Esterno"
 msgid "Copy Article Link"
 msgstr "Copia Link dell'Articolo"
 
-#: ../data/ui/right_headerbar.blp:22 ../data/ui/shortcutsWindow.blp:66
+#: ../data/ui/right_headerbar.blp:17 ../data/ui/right_headerbar.blp:92
+msgid "View Mode"
+msgstr ""
+
+#: ../data/ui/right_headerbar.blp:19
+msgid "Web View"
+msgstr "Vista Web"
+
+#: ../data/ui/right_headerbar.blp:24
+msgid "Reader Mode"
+msgstr "Modalità lettura"
+
+#: ../data/ui/right_headerbar.blp:29
+msgid "Feed Content"
+msgstr "Contenuto del Feed"
+
+#: ../data/ui/right_headerbar.blp:43 ../data/ui/shortcutsWindow.blp:66
 msgid "Zoom Out"
 msgstr "Riduci Ingrandimento"
 
-#: ../data/ui/right_headerbar.blp:27 ../data/ui/shortcutsWindow.blp:70
+#: ../data/ui/right_headerbar.blp:48 ../data/ui/shortcutsWindow.blp:70
 msgid "Reset Zoom"
 msgstr "Reimposta Ingrandimento"
 
-#: ../data/ui/right_headerbar.blp:32 ../data/ui/shortcutsWindow.blp:62
+#: ../data/ui/right_headerbar.blp:53 ../data/ui/shortcutsWindow.blp:62
 msgid "Zoom In"
 msgstr "Aumenta Ingrandimento"
 
-#: ../data/ui/right_headerbar.blp:65
+#: ../data/ui/right_headerbar.blp:86
 msgid "Back to Articles"
 msgstr "Torna agli Articoli"
-
-#: ../data/ui/right_headerbar.blp:71
-msgid "Change View Mode"
-msgstr "Cambia Modalità di Visualizzazione"
 
 #: ../data/ui/left_headerbar.blp:6
 msgid "Show Read Articles"
@@ -477,6 +473,10 @@ msgstr "Aggiungi nuovi feed tramite URL"
 #: ../data/ui/empty_state.blp:27
 msgid "Import an OPML file"
 msgstr "Importa un file OPML"
+
+#: ../data/ui/main_leaflet.blp:40
+msgid "Offline"
+msgstr ""
 
 #: ../data/ui/webview.blp:12
 msgid "Select an article"
@@ -1030,6 +1030,12 @@ msgstr "Aggiunta traduzione italiana"
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:355
 msgid "First release"
 msgstr "Prima release"
+
+#~ msgid "You are offline"
+#~ msgstr "Sei offline"
+
+#~ msgid "Change View Mode"
+#~ msgstr "Cambia Modalità di Visualizzazione"
 
 #~ msgid "There are some errors"
 #~ msgstr "C'è qualche errore"
