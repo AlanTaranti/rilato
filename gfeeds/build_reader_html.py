@@ -97,13 +97,11 @@ def build_reader_html(og_html, dark_mode: bool = False, sd_item=None) -> str:
     doc = RDoc(og_html)
     content = doc.summary(html_partial=True)
     syntax_highlight_css, root = build_syntax_highlight_from_raw_html(content)
-    print(syntax_highlight_css)
     content = html_tostring(
         root, encoding='utf-8'
     )
     if not isinstance(content, str):
         content = content.decode()
-    print(content)
     content += build_media_block()
     return f'''<html>
         <head>

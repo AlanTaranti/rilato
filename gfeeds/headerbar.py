@@ -1,9 +1,12 @@
 from gettext import gettext as _
-from gi.repository import Gtk
+from typing import Optional
+from gi.repository import GObject, Gtk
 from gfeeds.confManager import ConfManager
 from gfeeds.feeds_manager import FeedsManager
 from gfeeds.scrolled_dialog import ScrolledDialog
 from xml.sax.saxutils import escape
+
+from gfeeds.webview import GFeedsWebView
 
 
 VIEW_MODE_ICONS = {
@@ -28,11 +31,11 @@ class AddFeedPopover(Gtk.Popover):
         relative_to.set_popover(self)
 
     @Gtk.Template.Callback()
-    def on_url_entry_changed(self, *args):
+    def on_url_entry_changed(self, *_):
         self.already_subscribed_revealer.set_reveal_child(False)
 
     @Gtk.Template.Callback()
-    def on_url_entry_activate(self, *args):
+    def on_url_entry_activate(self, *_):
         if self.confirm_btn.get_sensitive():
             self.on_confirm_btn_clicked(self.confirm_btn)
 
@@ -52,6 +55,13 @@ class AddFeedPopover(Gtk.Popover):
 @Gtk.Template(resource_path='/org/gabmus/gfeeds/ui/right_headerbar.ui')
 class RightHeaderbar(Gtk.WindowHandle):
     __gtype_name__ = 'RightHeaderbar'
+    __gsignals__ = {
+        'go_back': (
+            GObject.SignalFlags.RUN_LAST,
+            None,
+            (str,)
+        )
+    }
     right_headerbar = Gtk.Template.Child()
     view_mode_menu_btn = Gtk.Template.Child()
     extra_menu_btn = Gtk.Template.Child()
@@ -63,35 +73,46 @@ class RightHeaderbar(Gtk.WindowHandle):
     title_label = Gtk.Template.Child()
     back_btn = Gtk.Template.Child()
 
-    def __init__(self, webview, leaflet, back_btn_func):
+    def __init__(self, webview: Optional[GFeedsWebView] = None):
         super().__init__()
         self.confman = ConfManager()
         self.webview = webview
-        self.leaflet = leaflet
-        self.back_btn_func = back_btn_func
-        self.webview.connect('gfeeds_webview_load_start', self.on_load_start)
         self.set_view_mode_icon(self.confman.conf['default_view'])
-
         self.on_zoom_changed(None, self.confman.conf['webview_zoom'])
-        self.webview.connect('zoom_changed', self.on_zoom_changed)
 
-        self.leaflet.connect('notify::folded', self.set_headerbar_controls)
+    @GObject.Property(type=GFeedsWebView, default=None, nick='webview')
+    def webview(self) -> GFeedsWebView:
+        return self.__webview
+
+    @webview.setter
+    def webview(self, wv: GFeedsWebView):
+        self.__webview = wv
+        if wv is None:
+            return
+        self.__webview.connect('gfeeds_webview_load_start', self.on_load_start)
+        self.__webview.connect('zoom_changed', self.on_zoom_changed)
 
     @Gtk.Template.Callback()
-    def on_zoom_in_btn_clicked(self, *args):
+    def on_zoom_in_btn_clicked(self, *_):
+        if self.webview is None:
+            return
         self.webview.key_zoom_in()
 
     @Gtk.Template.Callback()
-    def on_zoom_out_btn_clicked(self, *args):
+    def on_zoom_out_btn_clicked(self, *_):
+        if self.webview is None:
+            return
         self.webview.key_zoom_out()
 
     @Gtk.Template.Callback()
-    def on_zoom_reset_btn_clicked(self, *args):
+    def on_zoom_reset_btn_clicked(self, *_):
+        if self.webview is None:
+            return
         self.webview.key_zoom_reset()
 
     @Gtk.Template.Callback()
-    def on_back_btn_clicked(self, *args):
-        self.back_btn_func()
+    def on_back_btn_clicked(self, *_):
+        self.emit('go_back', '')
 
     def on_zoom_changed(self, caller, n_zoom: float):
         self.zoom_reset_btn.set_label(f'{round(n_zoom*100)}%')
@@ -107,16 +128,8 @@ class RightHeaderbar(Gtk.WindowHandle):
     def set_article_title(self, title):
         self.title_label.set_text(title)
 
-    def on_load_start(self, *args):
+    def on_load_start(self, *_):
         self.view_mode_menu_btn.set_sensitive(True)
-
-    def set_headerbar_controls(self, *args):
-        if self.leaflet.get_folded():
-            self.right_headerbar.set_show_title_buttons(True)
-        else:
-            self.right_headerbar.set_show_title_buttons(
-                not self.confman.wm_decoration_on_left
-            )
 
 
 @Gtk.Template(resource_path='/org/gabmus/gfeeds/ui/left_headerbar.ui')
@@ -130,13 +143,11 @@ class LeftHeaderbar(Gtk.WindowHandle):
     search_btn = Gtk.Template.Child()
     errors_btn = Gtk.Template.Child()
 
-    def __init__(self, searchbar, leaflet):
+    def __init__(self, searchbar: Optional[Gtk.SearchBar] = None):
         super().__init__()
         self.confman = ConfManager()
         self.feedman = FeedsManager()
         self.searchbar = searchbar
-        self.leaflet = leaflet
-        self.set_headerbar_controls()
 
         self.add_popover = AddFeedPopover(self.add_btn)
         self.add_btn.set_popover(self.add_popover)
@@ -151,14 +162,22 @@ class LeftHeaderbar(Gtk.WindowHandle):
         )
         self.on_new_feed_add_start()
 
-        self.leaflet.connect('notify::folded', self.set_headerbar_controls)
+    @GObject.Property(
+        type=Gtk.SearchBar, default=None, nick='searchbar'
+    )
+    def searchbar(self) -> Gtk.SearchBar:
+        return self.__searchbar
+
+    @searchbar.setter
+    def searchbar(self, sb: Gtk.SearchBar):
+        self.__searchbar = sb
 
     @Gtk.Template.Callback()
-    def on_refresh_btn_clicked(self, *args):
+    def on_refresh_btn_clicked(self, *_):
         self.feedman.refresh()
 
     @Gtk.Template.Callback()
-    def show_errors_dialog(self, *args):
+    def show_errors_dialog(self, *__):
         dialog = ScrolledDialog(
             transient_for=self.get_root(),
             title=_(
@@ -184,21 +203,15 @@ class LeftHeaderbar(Gtk.WindowHandle):
 
     @Gtk.Template.Callback()
     def on_search_btn_toggled(self, togglebtn):
+        if self.searchbar is None:
+            return
         self.searchbar.set_search_mode(togglebtn.get_active())
 
-    def on_new_feed_add_start(self, *args):
+    def on_new_feed_add_start(self, *_):
         self.refresh_btn.set_sensitive(False)
         self.add_popover.confirm_btn.set_sensitive(False)
 
-    def on_new_feed_add_end(self, *args):
+    def on_new_feed_add_end(self, *_):
         self.refresh_btn.set_sensitive(True)
         self.add_popover.confirm_btn.set_sensitive(True)
         self.add_popover.url_entry.set_text('')
-
-    def set_headerbar_controls(self, *args):
-        if self.leaflet.get_folded():
-            self.left_headerbar.set_show_title_buttons(True)
-        else:
-            self.left_headerbar.set_show_title_buttons(
-                self.confman.wm_decoration_on_left
-            )

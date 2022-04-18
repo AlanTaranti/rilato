@@ -14,7 +14,7 @@ from gfeeds.rss_parser import FeedItem
 
 @Gtk.Template(resource_path='/org/gabmus/gfeeds/ui/webview.ui')
 class GFeedsWebView(Gtk.Stack):
-    __gtype_name__ = 'Webview'
+    __gtype_name__ = 'GFeedsWebView'
     webkitview = Gtk.Template.Child()
     loading_bar_revealer = Gtk.Template.Child()
     loading_bar = Gtk.Template.Child()
@@ -37,7 +37,6 @@ class GFeedsWebView(Gtk.Stack):
     }
 
     def __init__(self):
-        GObject.type_ensure(WebKit2.WebView)
         super().__init__()
         self.confman = ConfManager()
 

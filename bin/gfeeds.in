@@ -67,7 +67,8 @@ if __name__ == '__main__':
     gi.require_version('WebKit2', '5.0')
 
 
-    from gi.repository import Gio
+    from gi.repository import Gio, GObject, WebKit2
+    GObject.type_ensure(WebKit2.WebView)
     resource = Gio.Resource.load(os.path.join(pkgdatadir, '@appid@.gresource'))
     resource._register()
 

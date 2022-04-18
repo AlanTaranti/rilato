@@ -31,8 +31,10 @@ class LoadingRevealer(Gtk.Revealer):
 
 
 class GFeedsSidebar(Gtk.Overlay):
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
+    __gtype_name__ = 'GFeedsSidebar'
+
+    def __init__(self):
+        super().__init__()
         self.confman = ConfManager()
         self.feedman = FeedsManager()
 
