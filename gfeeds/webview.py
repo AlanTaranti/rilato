@@ -1,7 +1,7 @@
 from gettext import gettext as _
 from threading import Thread
 from gi.repository import Gtk, GLib, WebKit2, GObject, Gio, Adw
-from gfeeds.build_reader_html import build_reader_html
+from gfeeds.util.build_reader_html import build_reader_html
 from gfeeds.confManager import ConfManager
 from gfeeds.util.download_manager import DownloadError, download_text
 from functools import reduce

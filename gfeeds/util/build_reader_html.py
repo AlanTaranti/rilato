@@ -1,5 +1,5 @@
 from typing import List, Tuple, Union
-from gfeeds.readability_wrapper import RDoc
+from gfeeds.util.readability_wrapper import RDoc
 import pygments
 import pygments.lexers
 from lxml.html import (
@@ -8,7 +8,7 @@ from lxml.html import (
     HtmlElement
 )
 from pygments.formatters import HtmlFormatter
-from gfeeds.reader_mode_style import get_css
+from gfeeds.util.reader_mode_style import get_css
 
 
 # Thanks to Eloi Rivard (azmeuk) for the contribution on the media block
