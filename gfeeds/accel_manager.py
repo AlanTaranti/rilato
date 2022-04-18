@@ -26,10 +26,11 @@ def __add_accelerator(
 ):
     if shortcut:
         # res is bool, don't know what it is
-        res, key, mod = Gtk.accelerator_parse(shortcut)
-        trigger = Gtk.KeyvalTrigger.new(key, mod)
-        cb = Gtk.CallbackAction.new(callback)
-        gshcut = Gtk.Shortcut.new(trigger, cb)
+        _, key, mod = Gtk.accelerator_parse(shortcut)
+        gshcut = Gtk.Shortcut(
+            trigger=Gtk.KeyvalTrigger(keyval=key, modifiers=mod),
+            action=Gtk.CallbackAction.new(callback)
+        )
         controller.add_shortcut(gshcut)
 
 
