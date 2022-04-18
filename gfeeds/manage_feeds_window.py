@@ -1,5 +1,5 @@
 from gettext import gettext as _
-from gfeeds.accel_manager import add_accelerators
+from gfeeds.accel_manager import add_accelerators, Accelerator
 from gi.repository import Gtk, GObject, Adw
 from xml.sax.saxutils import escape
 from gfeeds.confManager import ConfManager
@@ -272,10 +272,7 @@ class GFeedsManageFeedsWindow(Adw.Window):
 
         add_accelerators(
             self,
-            [{
-                'combo': 'Escape',
-                'cb': lambda *args: self.close()
-            }]
+            [Accelerator('Escape', lambda *_: self.close())]
         )
 
         self.tags_flap.connect(

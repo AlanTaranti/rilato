@@ -1,17 +1,29 @@
+from typing import Callable, Dict, List, Literal, Union
 from gi.repository import Gtk
 
 
-def add_accelerators(window, shortcuts_l: list):
+class Accelerator:
+    def __init__(self, combo: str, cb: Callable):
+        self.combo = combo
+        self.cb = cb
+
+
+def add_accelerators(
+        window: Gtk.Window,
+        shortcuts_l: List[Accelerator]
+):
     window._auto_shortcut_controller = Gtk.ShortcutController()
     window._auto_shortcut_controller.set_scope(Gtk.ShortcutScope.GLOBAL)
     for s in shortcuts_l:
         __add_accelerator(
-            window._auto_shortcut_controller, s['combo'], s['cb']
+            window._auto_shortcut_controller, s.combo, s.cb
         )
     window.add_controller(window._auto_shortcut_controller)
 
 
-def __add_accelerator(controller, shortcut, callback):
+def __add_accelerator(
+        controller: Gtk.ShortcutController, shortcut: str, callback: Callable
+):
     if shortcut:
         # res is bool, don't know what it is
         res, key, mod = Gtk.accelerator_parse(shortcut)
@@ -21,8 +33,10 @@ def __add_accelerator(controller, shortcut, callback):
         controller.add_shortcut(gshcut)
 
 
-def add_mouse_button_accel(widget, function,
-                           propagation=Gtk.PropagationPhase.BUBBLE):
+def add_mouse_button_accel(
+        widget: Gtk.Widget, function: Callable,
+        propagation: Gtk.PropagationPhase = Gtk.PropagationPhase.BUBBLE
+):
     '''Adds an accelerator for mouse btn press for widget to function.
     NOTE: this returns the Gtk.Gesture, you need to keep this around or it
     won't work. Assign it to some random variable and don't let it go out of
@@ -37,8 +51,10 @@ def add_mouse_button_accel(widget, function,
     return gesture
 
 
-def add_longpress_accel(widget, function,
-                        propagation=Gtk.PropagationPhase.BUBBLE):
+def add_longpress_accel(
+        widget: Gtk.Widget, function: Callable,
+        propagation: Gtk.PropagationPhase = Gtk.PropagationPhase.BUBBLE
+):
     '''Adds an accelerator for mouse btn press for widget to function.
     NOTE: this returns the Gtk.Gesture, you need to keep this around or it
     won't work. Assign it to some random variable and don't let it go out of
