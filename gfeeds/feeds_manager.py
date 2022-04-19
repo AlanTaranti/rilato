@@ -5,7 +5,8 @@ from gi.repository import GLib, GObject
 from gfeeds.articles_listmodel import ArticlesListModel
 from gfeeds.util.singleton import Singleton
 from gfeeds.confManager import ConfManager
-from gfeeds.rss_parser import Feed, FeedParser
+from gfeeds.feed import Feed
+from gfeeds.feed_parser import FeedParser
 from gfeeds.util.download_manager import (
     download_feed,
     extract_feed_url_from_html

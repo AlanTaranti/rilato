@@ -9,7 +9,7 @@ from operator import or_
 from subprocess import Popen
 from datetime import datetime
 from typing import Optional
-from gfeeds.rss_parser import FeedItem
+from gfeeds.feed_item import FeedItem
 
 
 @Gtk.Template(resource_path='/org/gabmus/gfeeds/ui/webview.ui')

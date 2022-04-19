@@ -2,7 +2,7 @@ from gettext import gettext as _
 from gi.repository import GObject, Gtk, Pango
 from gfeeds.confManager import ConfManager
 from gfeeds.feeds_manager import FeedsManager
-from gfeeds.rss_parser import Feed
+from gfeeds.feed import Feed
 from gfeeds.simple_avatar import SimpleAvatar
 
 

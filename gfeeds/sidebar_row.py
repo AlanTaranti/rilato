@@ -1,6 +1,6 @@
 from math import ceil
 from os.path import isfile
-from gfeeds.rss_parser import FeedItem
+from gfeeds.feed_item import FeedItem
 from gfeeds.util.sha import shasum
 from gfeeds.util.download_manager import download_raw
 from gi.repository import Gtk, GLib, Pango

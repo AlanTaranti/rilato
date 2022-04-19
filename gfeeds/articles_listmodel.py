@@ -1,6 +1,6 @@
 from typing import List
 from gi.repository import Gtk, Gio
-from gfeeds.rss_parser import FeedItem
+from gfeeds.feed_item import FeedItem
 from gfeeds.confManager import ConfManager
 from typing import Optional
 

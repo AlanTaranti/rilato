@@ -1,7 +1,7 @@
 from gi.repository import Gtk
 from concurrent.futures import ThreadPoolExecutor
 from gfeeds.feeds_manager import FeedsManager
-from gfeeds.rss_parser import FeedItem
+from gfeeds.feed_item import FeedItem
 from gfeeds.sidebar_row import SidebarRow
 
 
