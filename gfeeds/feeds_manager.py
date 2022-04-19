@@ -88,10 +88,15 @@ class FeedsManager(metaclass=Singleton):
                 return
             self.confman.conf['feeds'][uri] = {}
         download_res = download_feed(uri, get_cached=get_cached)
-        if get_cached and download_res[0] == 'not_cached':
+        if get_cached and download_res['feedpath'] == 'not_cached':
             return
         parser = FeedParser()
-        parser.parse(download_res)
+        parser.parse(
+            feedpath=download_res['feedpath'],
+            rss_link=download_res['rss_link'],
+            failed=download_res['failed'],
+            error=download_res['error']
+        )
         if parser.is_null:
             feed_uri_from_html = extract_feed_url_from_html(uri)
             if feed_uri_from_html is not None:

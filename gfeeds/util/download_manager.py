@@ -66,13 +66,17 @@ def extract_feed_url_from_html(link: str) -> Optional[str]:
     return None
 
 
-# TODO: refactor this, the returned typeS(!) are a mess
 def download_feed(
         link: str, get_cached: bool = False
-) -> Tuple[Union[str, Path, bool], Optional[str]]:
+) -> dict:
     dest_path = confman.cache_path.joinpath(shasum(link)+'.rss')
     if get_cached:
-        return (dest_path, link) if isfile(dest_path) else ('not_cached', None)
+        return {
+            'feedpath': dest_path if isfile(dest_path) else 'not_cached',
+            'rss_link': link,
+            'failed': not isfile(dest_path),
+            'error': None
+        }
     headers = GET_HEADERS.copy()
     if (
             'last-modified' in confman.conf['feeds'][link].keys() and
@@ -85,11 +89,21 @@ def download_feed(
             link, headers=headers, allow_redirects=True, timeout=TIMEOUT
         )
     except requests.exceptions.ConnectTimeout:
-        return (False, _('`{0}`: connection timed out').format(link))
+        return {
+            'feedpath': None,
+            'rss_link': link,
+            'failed': True,
+            'error': _('`{0}`: connection timed out').format(link)
+        }
     except Exception:
         import traceback
         traceback.print_exc()
-        return (False, _('`{0}` might not be a valid address').format(link))
+        return {
+            'feedpath': None,
+            'rss_link': link,
+            'failed': True,
+            'error': _('`{0}` might not be a valid address').format(link)
+        }
     if 'last-modified' in res.headers.keys():
         confman.conf['feeds'][link]['last-modified'] = \
             res.headers['last-modified']
@@ -102,9 +116,19 @@ def download_feed(
             confman.conf['feeds'][link].pop('last-modified')
         with open(dest_path, 'wb') as fd:
             fd.write(res.content)  # res.text is str, res.content is bytes
-        return (dest_path, link)
+        return {
+            'feedpath': dest_path,
+            'rss_link': link,
+            'failed': False,
+            'error': None
+        }
 
-    def handle_304(): return (dest_path, link)
+    def handle_304(): return {
+        'feedpath': dest_path,
+        'rss_link': link,
+        'failed': False,
+        'error': None
+    }
 
     def handle_301_302():
         n_link = res.headers.get('location', link)
@@ -112,10 +136,14 @@ def download_feed(
         confman.conf['feeds'].pop(link)
         return download_feed(n_link)
 
-    def handle_everything_else(): return (
-        False,
-        _('Error downloading `{0}`, code `{1}`').format(link, res.status_code)
-    )
+    def handle_everything_else(): return {
+        'feedpath': None,
+        'rss_link': link,
+        'failed': True,
+        'error': _('Error downloading `{0}`, code `{1}`').format(
+            link, res.status_code
+        )
+    }
 
     handlers = {
         200: handle_200, 304: handle_304,

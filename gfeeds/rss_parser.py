@@ -16,17 +16,6 @@ from gfeeds.util.get_thumb import get_thumb
 from syndom import Feed as SynDomFeed
 
 
-def get_encoding(in_str):
-    sample = in_str[:200]
-    if 'encoding' in sample:
-        enc_i = sample.index('encoding')
-        trim = sample[enc_i+10:]
-        str_delimiter = "'" if "'" in trim else '"'
-        encoding = trim[:trim.index(str_delimiter)]
-        return encoding
-    return 'utf-8'
-
-
 class FeedItem(GObject.Object):
     __gsignals__ = {
         'changed': (
@@ -125,8 +114,7 @@ class FeedItem(GObject.Object):
         )
 
 
-class FeedParser(GObject.Object):
-
+class FeedParser:
     def __init__(self):
         super().__init__()
         self.is_null = False
@@ -134,14 +122,14 @@ class FeedParser(GObject.Object):
         self.confman = ConfManager()
 
     def parse(
-            self, download_res: Tuple[Union[str, Path, bool], Optional[str]]
+        self, feedpath: Optional[Path] = None, rss_link: Optional[str] = None,
+        failed: bool = False, error: Optional[str] = None
     ):
-        if download_res[0] is False:  # indicates failed download
+        if failed:  # indicates failed download
             self.is_null = True
-            self.error = download_res[1]
-            print(download_res)
+            self.error = error or '<NULL ERROR>'
+            print(error)
             return
-        feedpath = download_res[0]
         try:
             self.sd_feed = SynDomFeed(str(feedpath))
         except Exception:
@@ -155,7 +143,7 @@ class FeedParser(GObject.Object):
                 feedpath
             )
             return
-        self.rss_link = download_res[1] or self.sd_feed.get_rss_url()
+        self.rss_link = rss_link or self.sd_feed.get_rss_url()
 
         self.confman = ConfManager()
         self.title = self.sd_feed.get_title()
@@ -193,7 +181,7 @@ class FeedParser(GObject.Object):
                     get_favicon(self.rss_link, self.favicon_path)
                     if not isfile(self.favicon_path):
                         get_favicon(
-                            self.link or self.items[0].link,
+                            self.link or self.raw_entries[0].uri,
                             self.favicon_path
                         )
                 except Exception:
@@ -204,7 +192,7 @@ class FeedParser(GObject.Object):
 class Feed(GObject.Object):
     __gsignals__ = {
         'empty_changed': (
-            GObject.SignalFlags.RUN_FIRST, GObject.TYPE_NONE, ()
+            GObject.SignalFlags.RUN_FIRST, None, ()
         )
     }
 
@@ -277,11 +265,11 @@ class Feed(GObject.Object):
         return self.__description
 
     @GObject.Property(type=str)
-    def image_url(self) -> str:
+    def image_url(self) -> Optional[str]:
         return self.__image_url
 
     @image_url.setter
-    def image_url(self, n_image_url: str):
+    def image_url(self, n_image_url: Optional[str]):
         self.__image_url = n_image_url
 
     @GObject.Property(type=int, default=0)
