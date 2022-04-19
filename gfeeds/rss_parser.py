@@ -1,5 +1,5 @@
 from pathlib import Path
-from typing import Optional, Tuple, Union
+from typing import Optional
 import pytz
 from gi.repository import GObject, GLib
 from datetime import datetime, timezone

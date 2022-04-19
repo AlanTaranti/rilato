@@ -5,7 +5,7 @@ import requests
 from gfeeds.confManager import ConfManager
 from gfeeds.util.sha import shasum
 from syndom import Html
-from typing import Optional, Tuple, Union
+from typing import Dict, Optional, Union
 
 confman = ConfManager()
 
@@ -68,8 +68,8 @@ def extract_feed_url_from_html(link: str) -> Optional[str]:
 
 def download_feed(
         link: str, get_cached: bool = False
-) -> dict:
-    dest_path = confman.cache_path.joinpath(shasum(link)+'.rss')
+) -> Dict[str, Union[None, str, Path, bool]]:
+    dest_path: Path = confman.cache_path.joinpath(shasum(link)+'.rss')
     if get_cached:
         return {
             'feedpath': dest_path if isfile(dest_path) else 'not_cached',

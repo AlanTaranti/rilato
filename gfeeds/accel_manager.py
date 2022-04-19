@@ -1,4 +1,4 @@
-from typing import Callable, Dict, List, Literal, Union
+from typing import Callable, List
 from gi.repository import Gtk
 
 
