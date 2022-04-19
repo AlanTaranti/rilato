@@ -60,7 +60,7 @@ class ArticlesListView(CommonListScrolledWin):
         return self.selection.get_selected()
 
     def get_selected_item(self) -> FeedItem:
-        return self.articles_store.get_item(self.get_selected())
+        return self.articles_store[self.get_selected()]
 
     def select_row(self, index):
         self.selection.select_item(index, True)

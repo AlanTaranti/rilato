@@ -117,8 +117,8 @@ class ArticlesListModel(Gtk.SortListModel):
         self.add_new_items(feeditems_l)
 
     def all_items_changed(self):
-        for i in range(self.list_store.get_n_items()):
-            self.list_store.get_item(i).emit('changed', '')
+        for item in self.list_store:
+            item.emit('changed', '')
 
     def remove_items(self, to_remove_l: List[FeedItem]):
         for item in to_remove_l:
