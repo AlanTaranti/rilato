@@ -39,7 +39,7 @@ class StackWithEmptyState(Gtk.Stack):
         )
 
     @GObject.Property(type=Gtk.Widget, default=None, nick='main-widget')
-    def main_widget(self) -> Gtk.Widget:
+    def main_widget(self) -> Optional[Gtk.Widget]:
         return self.__main_widget
 
     @main_widget.setter
