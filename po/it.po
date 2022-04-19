@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-18 11:58+0200\n"
+"POT-Creation-Date: 2022-04-19 09:08+0200\n"
 "PO-Revision-Date: 2022-03-23 16:38+0100\n"
 "Last-Translator: Gabriele Musco <gabmus@disroot.org>\n"
 "Language-Team: Italian\n"
@@ -46,7 +46,7 @@ msgstr "Salva"
 msgid "All feeds"
 msgstr "Tutti i feed"
 
-#: ../gfeeds/feeds_manager.py:87
+#: ../gfeeds/feeds_manager.py:88
 #, python-brace-format
 msgid "Feed {0} exists already, skipping"
 msgstr "Il feed {0} esiste già, lo salto"
@@ -55,7 +55,7 @@ msgstr "Il feed {0} esiste già, lo salto"
 msgid "Manage Feeds"
 msgstr "Gestisci Feed"
 
-#: ../gfeeds/manage_feeds_window.py:321
+#: ../gfeeds/manage_feeds_window.py:318
 msgid "Do you want to delete these feeds?"
 msgstr "Vuoi eliminare questi feed?"
 
@@ -251,17 +251,27 @@ msgstr "Quanti thread usare per aggiornare i feed"
 msgid "Experimental GtkListView for articles list"
 msgstr "GtkListView sperimentale per la lista degli articoli"
 
-#: ../gfeeds/util/download_manager.py:88
+#: ../gfeeds/feed_parser.py:37
+#, python-brace-format
+msgid "Errors while parsing feed `{0}`"
+msgstr "Errori nell'analisi del feed `{0}`"
+
+#: ../gfeeds/feed_parser.py:55
+#, python-brace-format
+msgid "`{0}` may not be an RSS or Atom feed"
+msgstr "`{0}` potrebbe non essere un feed RSS o Atom"
+
+#: ../gfeeds/util/download_manager.py:96
 #, python-brace-format
 msgid "`{0}`: connection timed out"
 msgstr "`{0}`: timeout connessione"
 
-#: ../gfeeds/util/download_manager.py:92
+#: ../gfeeds/util/download_manager.py:105
 #, python-brace-format
 msgid "`{0}` might not be a valid address"
 msgstr "`{0}` potrebbe non essere un indirizzo valido"
 
-#: ../gfeeds/util/download_manager.py:117
+#: ../gfeeds/util/download_manager.py:143
 #, python-brace-format
 msgid "Error downloading `{0}`, code `{1}`"
 msgstr "Errore nel download di `{0}`, codice `{1}`"
@@ -310,6 +320,11 @@ msgstr "Link copiato negli appunti!"
 msgid "Feed content not available for this article"
 msgstr "Contenuto del feed non disponibile per questo articolo"
 
+#: ../gfeeds/feed_item.py:48
+#, python-brace-format
+msgid "Error: unable to parse datetime {0} for feeditem {1}"
+msgstr "Errore: impossibile analizzare data e ora {0} per l'articolo {1}"
+
 #: ../gfeeds/opml_manager.py:42
 msgid "Error: OPML path provided does not exist"
 msgstr "Errore: il percorso all'OPML fornito non esiste"
@@ -318,21 +333,6 @@ msgstr "Errore: il percorso all'OPML fornito non esiste"
 #, python-brace-format
 msgid "Error parsing OPML file `{0}`"
 msgstr "Errore nell'analisi del file OPML `{0}`"
-
-#: ../gfeeds/rss_parser.py:67
-#, python-brace-format
-msgid "Error: unable to parse datetime {0} for feeditem {1}"
-msgstr "Errore: impossibile analizzare data e ora {0} per l'articolo {1}"
-
-#: ../gfeeds/rss_parser.py:154
-#, python-brace-format
-msgid "Errors while parsing feed `{0}`"
-msgstr "Errori nell'analisi del feed `{0}`"
-
-#: ../gfeeds/rss_parser.py:172
-#, python-brace-format
-msgid "`{0}` may not be an RSS or Atom feed"
-msgstr "`{0}` potrebbe non essere un feed RSS o Atom"
 
 #: ../data/ui/right_headerbar.blp:9 ../data/ui/shortcutsWindow.blp:74
 msgid "Open in Browser"

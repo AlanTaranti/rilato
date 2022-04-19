@@ -13,6 +13,8 @@ data/ui/row_popover.blp
 data/ui/scrolled_dialog.blp
 data/ui/shortcutsWindow.blp
 data/ui/webview.blp
+gfeeds/feed_item.py
+gfeeds/feed_parser.py
 gfeeds/feeds_manager.py
 gfeeds/feeds_view.py
 gfeeds/headerbar.py
@@ -22,7 +24,6 @@ gfeeds/manage_feeds_window.py
 gfeeds/opml_file_chooser.py
 gfeeds/opml_manager.py
 gfeeds/preferences_window.py
-gfeeds/rss_parser.py
 gfeeds/sidebar.py
 gfeeds/sidebar_row_popover.py
 gfeeds/util/download_manager.py
