@@ -6,6 +6,7 @@ from gfeeds.confManager import ConfManager
 from gfeeds.util.sha import shasum
 from syndom import Html
 from typing import Dict, Optional, Union
+from gfeeds.util.to_unicode import to_unicode, bytes_to_unicode
 
 confman = ConfManager()
 
@@ -31,8 +32,7 @@ def download_text(link: str) -> str:
         return toret
     res = requests.get(link, headers=GET_HEADERS, timeout=TIMEOUT)
     if 200 <= res.status_code <= 299:
-        res.encoding = 'utf-8'
-        return res.text  # TODO: this can break weird encodings!
+        return bytes_to_unicode(res.content, enc=res.encoding)
     else:
         raise DownloadError(
             res.status_code, f'response code {res.status_code}'
@@ -116,6 +116,7 @@ def download_feed(
             confman.conf['feeds'][link].pop('last-modified')
         with open(dest_path, 'wb') as fd:
             fd.write(res.content)  # res.text is str, res.content is bytes
+        to_unicode(dest_path)
         return {
             'feedpath': dest_path,
             'rss_link': link,
