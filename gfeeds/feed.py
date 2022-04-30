@@ -25,8 +25,8 @@ class Feed(GObject.Object):
         self.confman = ConfManager()
         self.tag_store = tag_store
         self.__unread_count = 0
-        self.tags = []
-        self.items = {}
+        self.tags = list()
+        self.items = dict()
 
     def populate(self, parser: FeedParser):
         self.rss_link = parser.rss_link
