@@ -2,7 +2,7 @@
     "app-id": "org.gabmus.gfeeds",
     "command": "gfeeds",
     "runtime": "org.gnome.Platform",
-    "runtime-version": "master",
+    "runtime-version": "42",
     "sdk": "org.gnome.Sdk",
     "sdk-version": "42",
     "finish-args": [
