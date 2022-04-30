@@ -229,7 +229,7 @@ class FeedsManager(metaclass=Singleton):
         t.start()
         return True
 
-    def delete_feeds(self, targets: Union[List[Feed], Feed], *args):
+    def delete_feeds(self, targets: Union[List[Feed], Feed], *_):
         if not isinstance(targets, list):
             if isinstance(targets, Feed):
                 targets = [targets]
@@ -238,7 +238,7 @@ class FeedsManager(metaclass=Singleton):
         articles_to_rm = []
         n_selected_feeds = self.article_store.selected_feeds.copy()
         for to_rm in targets:
-            articles_to_rm.extend(to_rm.items)
+            articles_to_rm.extend([i[1] for i in to_rm.items.items()])
             if to_rm.rss_link in n_selected_feeds:
                 n_selected_feeds.remove(to_rm.rss_link)
             self.feed_store.remove_feed(to_rm)

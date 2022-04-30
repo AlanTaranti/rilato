@@ -121,11 +121,18 @@ class ArticlesListModel(Gtk.SortListModel):
             item.emit('changed', '')
 
     def remove_items(self, to_remove_l: List[FeedItem]):
-        for item in to_remove_l:
-            for index in range(len(self.list_store)):
-                if item == self.list_store[index]:
-                    self.list_store.remove(index)
-                    break
+        to_rm_ids = [i.identifier for i in to_remove_l]
+        to_rm_indices = []
+        for index, item in enumerate(self.list_store):
+            if len(to_rm_ids) <= 0:
+                break
+            if not item:
+                continue
+            if item.identifier in to_rm_ids:
+                to_rm_ids.remove(item.identifier)
+                to_rm_indices.append(index)
+        for index in sorted(to_rm_indices, reverse=True):
+            self.list_store.remove(index)
 
     def set_search_term(self, term):
         self.__search_term = term.strip().lower()
