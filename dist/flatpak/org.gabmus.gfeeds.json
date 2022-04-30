@@ -4,7 +4,7 @@
     "runtime": "org.gnome.Platform",
     "runtime-version": "master",
     "sdk": "org.gnome.Sdk",
-    "sdk-version": "master",
+    "sdk-version": "42",
     "finish-args": [
         "--device=dri",
         "--share=ipc",
@@ -19,6 +19,7 @@
         "--persist=xdg-config/fontconfig"
     ],
     "modules": [
+        "webkit.json",
         "python-deps.json",
         {
             "name": "python-lxml",
@@ -146,7 +147,7 @@
                 {
                     "type": "git",
                     "url": "https://gitlab.gnome.org/World/gfeeds",
-                    "tag": "1.0.2"
+                    "tag": "1.0.3"
                 }
             ]
         }

@@ -53,6 +53,20 @@
     <url type="donation">https://liberapay.com/gabmus/donate</url>
     <update_contact>gabmus@disroot.org</update_contact>
     <releases>
+        <release version="1.0.3" timestamp="1651320263">
+            <description>
+                <ul>
+                    <li>Links in the web view show a preview of the destination URL</li>
+                    <li>Stability improvements related to article thumbnails</li>
+                    <li>Reworked dialog windows</li>
+                    <li>Fixes for non-unicode character encodings</li>
+                    <li>Fixes for importing OPML</li>
+                    <li>Various bug fixes and improvements</li>
+                    <li>Code refactoring</li>
+                </ul>
+            </description>
+        </release>
+
         <release version="1.0.2" timestamp="1648138767">
             <description>
                 <ul>
