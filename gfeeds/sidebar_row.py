@@ -134,21 +134,21 @@ class SidebarRow(Gtk.Box):
                 return
             else:
                 try:
-                    if not self.feed_item.image_url:
-                        self.feed_item.set_thumb_from_link()
-                    if not self.feed_item.image_url:
+                    img_url = self.feed_item.image_url
+                    if not img_url:
+                        img_url = self.feed_item.set_thumb_from_link()
+                    if not img_url:
                         raise Exception()
-                    ext = \
-                        self.feed_item.image_url.split('.')[-1].lower().strip()
+                    ext = img_url.split('.')[-1].lower().strip()
                     if '?' in ext:
                         ext = ext.split('?')[0]
                     if ext not in ('png', 'jpg', 'gif', 'svg'):
                         raise Exception()
                     dest = str(self.confman.thumbs_cache_path.joinpath(
-                        shasum(self.feed_item.image_url) + '.' + ext
+                        shasum(img_url) + '.' + ext
                     ))
                     if not isfile(dest):
-                        download_raw(self.feed_item.image_url, dest)
+                        download_raw(img_url, dest)
                     self.confman.article_thumb_cache[
                         self.feed_item.identifier
                     ] = dest

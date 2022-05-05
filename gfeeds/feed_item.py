@@ -1,4 +1,5 @@
 from gettext import gettext as _
+from typing import Optional
 from gi.repository import GObject, GLib
 from dateutil.tz import gettz
 from datetime import datetime, timezone
@@ -80,13 +81,14 @@ class FeedItem(GObject.Object):
     def image_url(self, n_image_url: str):
         self.__image_url = n_image_url
 
-    def set_thumb_from_link(self):
+    def set_thumb_from_link(self) -> Optional[str]:
         image_url = get_thumb(self.__link)
 
         def cb(url):
             self.image_url = url
 
         GLib.idle_add(cb, image_url)
+        return image_url
 
     def __set_read(self, read):
         if read == self.__read:

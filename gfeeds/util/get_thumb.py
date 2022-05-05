@@ -23,7 +23,7 @@ def get_thumb(link):
     res = sd_html.img_url
     if not res:
         return None
-    if 'http://' in res or 'https://' in res:
+    if res.startswith('https://') or res.startswith('http://'):
         return res
     if res[0] == '/':
         up = urlparse(link)
