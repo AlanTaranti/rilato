@@ -86,6 +86,9 @@ class FeedsManager(metaclass=Singleton):
                 uri = 'http://' + uri
             if uri in self.confman.conf['feeds'].keys():
                 print(_('Feed {0} exists already, skipping').format(uri))
+                GLib.idle_add(
+                    self.emit, 'feedmanager_refresh_end', ''
+                )
                 return
             self.confman.conf['feeds'][uri] = {}
         download_res = download_feed(uri, get_cached=get_cached)
