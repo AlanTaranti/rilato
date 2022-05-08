@@ -77,7 +77,7 @@ def feeds_list_to_opml(feeds):
             <outline
                 title={quoteattr(f.title)}
                 text={quoteattr(f.description)}
-                type=rss
+                type="rss"
                 xmlUrl={quoteattr(f.rss_link)}
                 htmlUrl={quoteattr(f.link)}
                 category={quoteattr(categories)}
