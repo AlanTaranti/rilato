@@ -123,12 +123,6 @@ class AppearancePreferencesPage(MPreferencesPage):
                             conf_key='show_thumbnails',
                             signal='show_thumbnails_changed'
                         ),
-                        PreferencesSpinButtonRow(
-                            title=_('Maximum thumbnail height'),
-                            min_v=100, max_v=1200,
-                            conf_key='max_picture_height',
-                            signal='on_max_picture_height_changed'
-                        ),
                         PreferencesToggleRow(
                             title=_('Show full articles titles'),
                             conf_key='full_article_title',

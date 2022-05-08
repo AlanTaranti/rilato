@@ -67,11 +67,6 @@ class ConfManagerSignaler(GObject.Object):
             None,
             (str,)
         ),
-        'on_max_picture_height_changed': (
-            GObject.SignalFlags.RUN_LAST,
-            None,
-            (str,)
-        ),
         'show_thumbnails_changed': (
             GObject.SignalFlags.RUN_LAST,
             None,
@@ -118,7 +113,6 @@ class ConfManager(metaclass=Singleton):
         'tags': [],
         'open_youtube_externally': False,
         'media_player': 'mpv',
-        'max_picture_height': 600,
         'show_thumbnails': True,
         'use_experimental_listview': False,
         'auto_refresh_enabled': False,
