@@ -1,10 +1,10 @@
 using Gtk 4.0;
+using Adw 1;
 
 
-template ScrolledDialog : Window {
+template ScrolledDialog : Adw.Window {
     styles ['background', 'csd', 'dialog', 'message']
     accessible-role: dialog;
-    decorated: false;
     overflow: hidden;
     Box {
         hexpand: true; vexpand: true;

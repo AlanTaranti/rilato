@@ -1,9 +1,9 @@
 from typing import Optional
-from gi.repository import Gtk, GObject
+from gi.repository import Gtk, GObject, Adw
 
 
 @Gtk.Template(resource_path='/org/gabmus/gfeeds/ui/scrolled_dialog.ui')
-class ScrolledDialog(Gtk.Window):
+class ScrolledDialog(Adw.Window):
     __gtype_name__ = 'ScrolledDialog'
     __gsignals__ = {
         'response': (
