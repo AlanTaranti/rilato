@@ -112,8 +112,13 @@ class SidebarRow(Gtk.Box):
             else:
                 self.picture_view_container.set_visible(True)
                 self.picture_view.set_filename(img)
-                cw, ch = self.picture_view.get_paintable(
-                ).compute_concrete_size(270, 0, 1200, 1200)
+                paintable = self.picture_view.get_paintable()
+                # this happens presumably when the image isn't supported, like
+                # for webp files
+                if not paintable:
+                    self.picture_view_container.set_visible(False)
+                    return
+                _, ch = paintable.compute_concrete_size(270, 0, 1200, 1200)
                 self.picture_view.set_size_request(-1, ceil(ch))
                 self.picture_view_container.set_visible(True)
 
@@ -139,13 +144,11 @@ class SidebarRow(Gtk.Box):
                         img_url = self.feed_item.set_thumb_from_link()
                     if not img_url:
                         raise Exception()
-                    ext = img_url.split('.')[-1].lower().strip()
-                    if '?' in ext:
-                        ext = ext.split('?')[0]
-                    if ext not in ('png', 'jpg', 'gif', 'svg'):
-                        raise Exception()
+                    # yes, the file extension is ignored entirely
+                    # this shouldn't matter anyway and pictures get set
+                    # correctly
                     dest = str(self.confman.thumbs_cache_path.joinpath(
-                        shasum(img_url) + '.' + ext
+                        shasum(img_url)
                     ))
                     if not isfile(dest):
                         download_raw(img_url, dest)
