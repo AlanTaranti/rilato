@@ -2,7 +2,7 @@ from gi.repository import GLib
 from gettext import gettext as _
 from threading import Thread
 from os.path import isfile
-from xml.sax.saxutils import escape
+from xml.sax.saxutils import quoteattr
 from gfeeds.confManager import ConfManager
 from gfeeds.feeds_manager import FeedsManager
 from syndom import Opml
@@ -71,17 +71,16 @@ OPML_SUFFIX = '''
 def feeds_list_to_opml(feeds):
     opml_out = OPML_PREFIX
     for f in feeds:
+        categories = confman.conf['feeds'][f.rss_link].get('tags', list())
+        categories = ','.join(categories)
         opml_out += f'''
             <outline
-                title="{escape(f.title)}"
-                text="{escape(f.description)}"
+                title={quoteattr(f.title)}
+                text={quoteattr(f.description)}
                 type="rss"
-                xmlUrl="{escape(f.rss_link)}"
-                htmlUrl="{escape(f.link)}"
-                category="{escape(
-                    ','.join(confman.conf['feeds'][f.rss_link]['tags'])
-                ) if 'tags' in confman.conf['feeds'][f.rss_link].keys()
-                else ''}"
+                xmlUrl={quoteattr(f.rss_link)}
+                htmlUrl={quoteattr(f.link)}
+                category={quoteattr(categories)}
             />
         '''
     opml_out += OPML_SUFFIX
