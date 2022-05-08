@@ -2,11 +2,21 @@ using Gtk 4.0;
 
 template SidebarRow : Box {
     spacing: 6;
-    Box icon_container {
-        width-request: 32; height-request: 32;
-        halign: center; valign: start;
-        margin-start: 6; margin-end: 6;
-        margin-top: 6; margin-bottom: 6;
+    orientation: vertical;
+    Box {
+        orientation: horizontal;
+        spacing: 6;
+        Box icon_container {
+            width-request: 32; height-request: 32;
+            halign: center; valign: start;
+            margin-start: 6; margin-end: 6;
+            margin-top: 6; margin-bottom: 6;
+        }
+        Label title_label {
+            styles ['heading']
+            wrap: true; wrap-mode: word_char;
+            xalign: 0.0;
+        }
     }
     Box {
         spacing: 6;
@@ -14,13 +24,9 @@ template SidebarRow : Box {
         margin-start: 6; margin-end: 6;
         margin-top: 6; margin-bottom: 6;
         vexpand: true;
-        Label title_label {
-            styles ['heading']
-            wrap: true; wrap-mode: word_char;
-            xalign: 0.0;
-        }
         Box picture_view_container {
             hexpand: true;
+            halign: center;
             visible: false;
         }
         Box {

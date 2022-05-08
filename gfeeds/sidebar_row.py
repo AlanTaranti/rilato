@@ -43,7 +43,10 @@ class SidebarRow(Gtk.Box):
         self.icon_container.append(self.icon)
 
         self.datestr = ''
-        self.picture_view = Gtk.Picture(overflow=Gtk.Overflow.HIDDEN)
+        self.picture_view = Gtk.Picture(
+            overflow=Gtk.Overflow.HIDDEN,
+            halign=Gtk.Align.CENTER, hexpand=True
+        )
         self.picture_view.get_style_context().add_class('card')
         self.picture_view_container.append(self.picture_view)
         # picture_view_container is visible=False on init
@@ -118,7 +121,7 @@ class SidebarRow(Gtk.Box):
                 if not paintable:
                     self.picture_view_container.set_visible(False)
                     return
-                _, ch = paintable.compute_concrete_size(270, 0, 1200, 1200)
+                _, ch = paintable.compute_concrete_size(330, 0, 1200, 1200)
                 self.picture_view.set_size_request(-1, ceil(ch))
                 self.picture_view_container.set_visible(True)
 
