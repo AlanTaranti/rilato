@@ -67,6 +67,7 @@ OPML_SUFFIX = '''
 </opml>
 '''
 
+
 def feeds_list_to_opml(feeds):
     opml_out = OPML_PREFIX
     for f in feeds:
