@@ -20,7 +20,9 @@ find ../data/ -iname "*.appdata.xml.in" | xargs xgettext --no-wrap --package-nam
 
 msgcat --use-first $APPNAME-python.pot $APPNAME-blueprint.pot $APPNAME-desktop.pot $APPNAME-appdata.pot > $APPNAME.pot
 
-sed 's/#: //g;s/:[0-9]*//g;s/\.\.\///g' <(fgrep "#: " $APPNAME.pot) | sort | uniq | sed 's/ /\n/g' | uniq > POTFILES.in
+sed 's/#: //g;s/:[0-9]*//g;s/\.\.\///g' <(fgrep "#: " $APPNAME.pot) | sort | uniq | sed 's/ /\n/g' | uniq > POTFILES.in.in
+cat POTFILES.in.in | sort | uniq > POTFILES.in
+rm POTFILES.in.in
 
 [ -f "${lang}.po" ] && mv "${lang}.po" "${lang}.po.old"
 msginit --locale=$lang --input $APPNAME.pot
