@@ -71,7 +71,7 @@ def build_syntax_highlight(root: HtmlElement) -> Tuple[str, HtmlElement]:
         newtext = pygments.highlight(code_text, lexer, formatter)
         newhtml = html_fromstring(newtext)
 
-        pre_node = code_node.getparent().getparent()
+        pre_node = code_node.getparent()
         pre_node.getparent().replace(pre_node, newhtml)
 
     return syntax_highlight_css, root
