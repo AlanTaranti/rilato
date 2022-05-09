@@ -122,7 +122,7 @@ class SidebarRow(Gtk.Box):
                     self.picture_view_container.set_visible(False)
                     return
                 _, ch = paintable.compute_concrete_size(320, 0, 1200, 1200)
-                self.picture_view.set_size_request(-1, min(144, ceil(ch)))
+                self.picture_view.set_size_request(-1, min(200, ceil(ch)))
                 self.picture_view_container.set_visible(True)
 
         def af():
