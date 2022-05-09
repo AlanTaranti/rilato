@@ -3,6 +3,7 @@ using Gtk 4.0;
 template SidebarRow : Box {
     spacing: 6;
     orientation: vertical;
+    margin-bottom: 6;
     Box {
         orientation: horizontal;
         spacing: 6;
@@ -15,14 +16,13 @@ template SidebarRow : Box {
         Label title_label {
             styles ['heading']
             wrap: true; wrap-mode: word_char;
+            hexpand: true;
             xalign: 0.0;
         }
     }
     Box {
         spacing: 6;
         orientation: vertical;
-        margin-start: 6; margin-end: 6;
-        margin-top: 6; margin-bottom: 6;
         vexpand: true;
         Box picture_view_container {
             hexpand: true;
