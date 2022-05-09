@@ -57,11 +57,11 @@ class SidebarRow(Gtk.Box):
 
         # longpress & right click
         self.longpress = add_longpress_accel(
-            self, lambda *args: self.popover.popup()
+            self, lambda *_: self.popover.popup()
         )
         self.rightclick = add_mouse_button_accel(
             self,
-            lambda gesture, *args:
+            lambda gesture, *_:
                 self.popover.popup()
                 if gesture.get_current_button() == 3  # 3 is right click
                 else None
@@ -78,7 +78,7 @@ class SidebarRow(Gtk.Box):
         self.feed_item = feed_item
         self.signal_ids.append(
             self.feed_item.connect(
-                'notify::read', lambda *args: self.set_read()
+                'notify::read', lambda *_: self.set_read()
             )
         )
         self.signal_ids.append(
@@ -98,13 +98,13 @@ class SidebarRow(Gtk.Box):
         self.set_read()
         self.on_feed_item_changed()
 
-    def on_feed_item_changed(self, *args):
+    def on_feed_item_changed(self, *_):
         if self.feed_item is None:
             return
         self.datestr = humanize_datetime(self.feed_item.pub_date)
         self.date_label.set_text(self.datestr)
 
-    def set_article_image(self, *args):
+    def set_article_image(self, *_):
         if not self.confman.conf['show_thumbnails'] or self.feed_item is None:
             self.picture_view_container.set_visible(False)
             return
@@ -121,8 +121,8 @@ class SidebarRow(Gtk.Box):
                 if not paintable:
                     self.picture_view_container.set_visible(False)
                     return
-                _, ch = paintable.compute_concrete_size(330, 0, 1200, 1200)
-                self.picture_view.set_size_request(-1, min(206, ceil(ch)))
+                _, ch = paintable.compute_concrete_size(320, 0, 1200, 1200)
+                self.picture_view.set_size_request(-1, min(144, ceil(ch)))
                 self.picture_view_container.set_visible(True)
 
         def af():
@@ -173,13 +173,13 @@ class SidebarRow(Gtk.Box):
 
         self.fetch_image_thread_pool.submit(af)
 
-    def on_full_article_title_changed(self, *args):
+    def on_full_article_title_changed(self, *_):
         self.title_label.set_ellipsize(
             Pango.EllipsizeMode.NONE if self.confman.conf['full_article_title']
             else Pango.EllipsizeMode.END
         )
 
-    def on_full_feed_name_changed(self, *args):
+    def on_full_feed_name_changed(self, *_):
         self.origin_label.set_ellipsize(
             Pango.EllipsizeMode.NONE if self.confman.conf['full_feed_name']
             else Pango.EllipsizeMode.END
