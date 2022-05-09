@@ -4,7 +4,7 @@ from os.path import isfile, abspath, join
 from gi.repository import Gtk, Adw
 from gfeeds.confManager import ConfManager
 from gfeeds.base_preferences import (
-    MPreferencesPage, MPreferencesGroup, PreferencesButtonRow,
+    MPreferencesPage, MPreferencesGroup, PreferencesButtonRow, PreferencesComboRow,
     PreferencesSpinButtonRow, PreferencesToggleRow, PreferencesEntryRow,
     PreferencesFontChooserRow
 )
@@ -114,9 +114,13 @@ class AppearancePreferencesPage(MPreferencesPage):
                             title=_('Dark mode'), conf_key='dark_mode',
                             signal='dark_mode_changed'
                         ),
-                        PreferencesToggleRow(
-                            title=_('Use dark theme for reader mode'),
-                            conf_key='dark_reader'
+                        PreferencesComboRow(
+                            title=_('Reader mode theme'),
+                            conf_key='reader_theme',
+                            values=['auto', 'light', 'dark'],
+                            value_names=[
+                                _('Automatic'), _('Light'), _('Dark')
+                            ]
                         ),
                         PreferencesToggleRow(
                             title=_('Show article thumbnails'),

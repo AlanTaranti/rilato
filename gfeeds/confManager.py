@@ -92,7 +92,7 @@ class ConfManager(metaclass=Singleton):
     BASE_SCHEMA = {
         'feeds': {},
         'dark_mode': False,
-        'dark_reader': False,
+        'reader_theme': 'auto',  # 'auto', 'light', 'dark'
         'new_first': True,
         'windowsize': {
             'width': 350,

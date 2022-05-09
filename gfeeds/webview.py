@@ -308,9 +308,14 @@ class GFeedsWebView(Gtk.Stack):
     def load_reader(self):
         if not self.feeditem:
             return
+        dark = False
+        if self.confman.conf['reader_theme'] == 'auto':
+            dark = Adw.StyleManager.get_default().get_dark()
+        else:
+            dark = self.confman.conf['reader_theme'] == 'dark'
         self.webkitview.load_html(build_reader_html(
             self.html,
-            self.confman.conf['dark_reader'],
+            dark,
             self.feeditem.sd_item
         ), self.uri)
 
