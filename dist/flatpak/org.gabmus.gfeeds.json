@@ -2,9 +2,9 @@
     "app-id": "org.gabmus.gfeeds",
     "command": "gfeeds",
     "runtime": "org.gnome.Platform",
-    "runtime-version": "42",
+    "runtime-version": "master",
     "sdk": "org.gnome.Sdk",
-    "sdk-version": "42",
+    "sdk-version": "master",
     "finish-args": [
         "--device=dri",
         "--share=ipc",
@@ -19,7 +19,6 @@
         "--persist=xdg-config/fontconfig"
     ],
     "modules": [
-        "webkit.json",
         "python-deps.json",
         {
             "name": "python-lxml",
