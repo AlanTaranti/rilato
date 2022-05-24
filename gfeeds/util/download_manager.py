@@ -1,6 +1,7 @@
 from gettext import gettext as _
 from os.path import isfile
 from pathlib import Path
+from urllib.parse import urlparse
 import requests
 from gfeeds.confManager import ConfManager
 from gfeeds.util.sha import shasum
@@ -59,8 +60,13 @@ def extract_feed_url_from_html(link: str) -> Optional[str]:
         if not isfile(dest):
             download_raw(link, dest)
         sd_html = Html(dest)
-        return sd_html.rss_url or None
-        # maybe sanitize(sd_html.rss_url) ?
+        res: str = sd_html.rss_url or None
+        if res is None:
+            return None
+        if res.startswith('/'):
+            parsed = urlparse(link)
+            res = f'{parsed.scheme}://{parsed.netloc}{res}'
+        return res
     except Exception:
         print('Error extracting feed from HTML')
     return None
