@@ -7,16 +7,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gfeeds master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/gfeeds/issues\n"
-"POT-Creation-Date: 2022-01-31 04:33+0000\n"
-"PO-Revision-Date: 2022-02-06 11:25+0800\n"
+"POT-Creation-Date: 2022-05-09 14:29+0000\n"
+"PO-Revision-Date: 2022-05-28 10:06-0400\n"
 "Last-Translator: lumingzh <lumingzh@qq.com>\n"
 "Language-Team: Chinese - China <i18n-zh@googlegroups.com>\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0\n"
-"X-Generator: Gtranslator 41.0\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 2.4.3\n"
 
 #: data/org.gabmus.gfeeds.appdata.xml.in:4
 msgid "Feeds"
@@ -56,61 +56,31 @@ msgstr "订阅可以通过 OPML 来导入和导出。"
 msgid "rss;reader;feed;news;"
 msgstr "rss;reader;feed;news;订阅;阅读器;新闻;阅读;"
 
-#: data/ui/extra_popover_menu.ui:19
-msgid "Web View"
-msgstr "网页视图"
-
-#: data/ui/extra_popover_menu.ui:26
-msgid "Reader Mode"
-msgstr "阅读模式"
-
-#: data/ui/extra_popover_menu.ui:33
-#| msgid "RSS Content"
-msgid "Feed Content"
-msgstr "订阅目录"
-
-#: gfeeds/base_preferences.py:106
-msgid "Choose a folder"
-msgstr "选择文件夹"
-
-#: gfeeds/confirm_add_dialog.py:16
-msgid "Do you want to import these feeds?"
-msgstr "您想要导入这些订阅吗？"
-
-#: gfeeds/confirm_add_dialog.py:17
-msgid "Do you want to import this feed?"
-msgstr "您想要导入该订阅吗？"
-
-#: gfeeds/download_manager.py:85
+#: gfeeds/feed_item.py:49
 #, python-brace-format
-msgid "`{0}`: connection timed out"
-msgstr "“{0}”：连接超时"
+msgid "Error: unable to parse datetime {0} for feeditem {1}"
+msgstr "错误：无法为订阅项目 {1} 解析日期 {0}"
 
-#: gfeeds/download_manager.py:89
+#: gfeeds/feed_parser.py:37
 #, python-brace-format
-msgid "`{0}` might not be a valid address"
-msgstr "“{0}”可能不是有效地址"
+msgid "Errors while parsing feed `{0}`"
+msgstr "解析订阅“{0}”时出错"
 
-#: gfeeds/download_manager.py:114
+#: gfeeds/feed_parser.py:55
 #, python-brace-format
-msgid "Error downloading `{0}`, code `{1}`"
-msgstr "下载“{0}”时出错，代码“{1}”"
+msgid "`{0}` may not be an RSS or Atom feed"
+msgstr "“{0}”可能不是 RSS 或 Atom 订阅"
 
-#: gfeeds/feeds_manager.py:83
+#: gfeeds/feeds_manager.py:88
 #, python-brace-format
 msgid "Feed {0} exists already, skipping"
 msgstr "订阅 {0} 已存在，正在跳过"
 
-#: gfeeds/feeds_view.py:18
+#: gfeeds/feeds_view.py:13
 msgid "All feeds"
 msgstr "所有订阅"
 
-#: gfeeds/get_favicon.py:45
-#, python-brace-format
-msgid "Error downloading favicon for `{0}`"
-msgstr "为“{0}”下载网站图标时出错"
-
-#: gfeeds/headerbar.py:171
+#: gfeeds/headerbar.py:184
 msgid ""
 "There were problems with some feeds.\n"
 "Do you want to remove them?"
@@ -122,24 +92,31 @@ msgstr ""
 #, python-brace-format
 msgid "{0} new article"
 msgid_plural "{0} new articles"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "{0} 篇新文章"
 
-#: gfeeds/__main__.py:241
+#: gfeeds/__main__.py:229
+msgid "Do you want to import these feeds?"
+msgstr "您想要导入这些订阅吗？"
+
+#: gfeeds/__main__.py:256
+msgid "Do you want to import this feed?"
+msgstr "您想要导入该订阅吗？"
+
+#: gfeeds/__main__.py:285
 msgid "url"
 msgstr "网址"
 
-#: gfeeds/__main__.py:244
+#: gfeeds/__main__.py:288
 msgid "opml file local url or rss remote url to import"
 msgstr "要导入的 opml 文件本地地址或 rss 远程地址"
 
-#: gfeeds/manage_feeds_window.py:247
-msgid "Do you want to delete these feeds?"
-msgstr "您想要删除这些订阅吗？"
-
-#: gfeeds/manage_feeds_window.py:299
+#: gfeeds/manage_feeds_window.py:263
 msgid "Manage Feeds"
 msgstr "管理订阅"
+
+#: gfeeds/manage_feeds_window.py:318
+msgid "Do you want to delete these feeds?"
+msgstr "您想要删除这些订阅吗？"
 
 #: gfeeds/opml_file_chooser.py:7
 msgid "XML files"
@@ -165,11 +142,11 @@ msgstr "选择保存导出的 OPML 文件的位置"
 msgid "Save"
 msgstr "保存"
 
-#: gfeeds/opml_manager.py:44
+#: gfeeds/opml_manager.py:42
 msgid "Error: OPML path provided does not exist"
 msgstr "错误：指定的 OPML 路径不存在"
 
-#: gfeeds/opml_manager.py:55
+#: gfeeds/opml_manager.py:53
 #, python-brace-format
 msgid "Error parsing OPML file `{0}`"
 msgstr "解析 OPML 文件“{0}”时出错"
@@ -259,115 +236,108 @@ msgid "Dark mode"
 msgstr "暗色模式"
 
 #: gfeeds/preferences_window.py:118
-msgid "Use dark theme for reader mode"
-msgstr "为阅读模式使用暗色模式"
+msgid "Reader mode theme"
+msgstr "阅读模式主题"
 
 #: gfeeds/preferences_window.py:122
+msgid "Automatic"
+msgstr "自动"
+
+#: gfeeds/preferences_window.py:122
+msgid "Light"
+msgstr "亮色"
+
+#: gfeeds/preferences_window.py:122
+msgid "Dark"
+msgstr "暗色"
+
+#: gfeeds/preferences_window.py:126
 msgid "Show article thumbnails"
 msgstr "显示文章缩略图"
 
-#: gfeeds/preferences_window.py:127
-msgid "Maximum thumbnail height"
-msgstr "最大缩略图高度"
-
-#: gfeeds/preferences_window.py:133
+#: gfeeds/preferences_window.py:131
 msgid "Show full articles titles"
 msgstr "显示完整文章标题"
 
-#: gfeeds/preferences_window.py:138
+#: gfeeds/preferences_window.py:136
 msgid "Show full feeds names"
 msgstr "显示完整订阅名称"
 
-#: gfeeds/preferences_window.py:145
+#: gfeeds/preferences_window.py:143
 msgid "Font preferences"
 msgstr "字体首选项"
 
-#: gfeeds/preferences_window.py:147
+#: gfeeds/preferences_window.py:145
 msgid "Use system font for titles"
 msgstr "为标题使用系统字体"
 
-#: gfeeds/preferences_window.py:151
+#: gfeeds/preferences_window.py:149
 msgid "Use system font for paragraphs"
 msgstr "为段落使用系统字体"
 
-#: gfeeds/preferences_window.py:155
+#: gfeeds/preferences_window.py:153
 msgid "Custom title font"
 msgstr "自定义标题字体"
 
-#: gfeeds/preferences_window.py:159
+#: gfeeds/preferences_window.py:157
 msgid "Custom paragraph font"
 msgstr "自定义段落字体"
 
-#: gfeeds/preferences_window.py:163
+#: gfeeds/preferences_window.py:161
 msgid "Custom monospace font"
 msgstr "自定义等宽字体"
 
-#: gfeeds/preferences_window.py:175
+#: gfeeds/preferences_window.py:173
 msgid "Privacy"
 msgstr "隐私"
 
-#: gfeeds/preferences_window.py:178
+#: gfeeds/preferences_window.py:176
 msgid "Privacy preferences"
 msgstr "隐私首选项"
 
-#: gfeeds/preferences_window.py:180
+#: gfeeds/preferences_window.py:178
 msgid "Enable JavaScript"
 msgstr "启用 JavaScript"
 
-#: gfeeds/preferences_window.py:185
+#: gfeeds/preferences_window.py:183
 msgid "Try to block advertisements"
 msgstr "尝试拦截广告"
 
-#: gfeeds/preferences_window.py:187 gfeeds/preferences_window.py:222
+#: gfeeds/preferences_window.py:185 gfeeds/preferences_window.py:220
 msgid "Requires app restart"
 msgstr "需要重启应用"
 
-#: gfeeds/preferences_window.py:191
+#: gfeeds/preferences_window.py:189
 msgid "Update advertisement blocking list"
 msgstr "更新广告拦截列表"
 
-#: gfeeds/preferences_window.py:192
+#: gfeeds/preferences_window.py:190
 msgid "Updates automatically every 10 days"
 msgstr "自动每 10 天更新"
 
-#: gfeeds/preferences_window.py:193
+#: gfeeds/preferences_window.py:191
 msgid "Update"
 msgstr "更新"
 
-#: gfeeds/preferences_window.py:206
+#: gfeeds/preferences_window.py:204
 msgid "Advanced"
 msgstr "高级"
 
-#: gfeeds/preferences_window.py:209
+#: gfeeds/preferences_window.py:207
 msgid "Advanced preferences"
 msgstr "高级首选项"
 
-#: gfeeds/preferences_window.py:211
+#: gfeeds/preferences_window.py:209
 msgid "Maximum refresh threads"
 msgstr "最大刷新线程"
 
-#: gfeeds/preferences_window.py:213
+#: gfeeds/preferences_window.py:211
 msgid "How many threads to use for feeds refresh"
 msgstr "订阅刷新时使用多少线程"
 
-#: gfeeds/preferences_window.py:220
+#: gfeeds/preferences_window.py:218
 msgid "Experimental GtkListView for articles list"
 msgstr "为文章列表试用 GtkListView"
-
-#: gfeeds/rss_parser.py:57
-#, python-brace-format
-msgid "Error: unable to parse datetime {0} for feeditem {1}"
-msgstr "错误：无法为订阅项目 {1} 解析日期 {0}"
-
-#: gfeeds/rss_parser.py:104
-#, python-brace-format
-msgid "Errors while parsing feed `{0}`"
-msgstr "解析订阅“{0}”时出错"
-
-#: gfeeds/rss_parser.py:134
-#, python-brace-format
-msgid "`{0}` may not be an RSS or Atom feed"
-msgstr "“{0}”可能不是 RSS 或 Atom 订阅"
 
 #: gfeeds/sidebar.py:21
 msgid "Loading feeds..."
@@ -381,31 +351,61 @@ msgstr "标记为未阅"
 msgid "Mark as read"
 msgstr "标记为已阅"
 
-#: gfeeds/suggestion_bar.py:37
-msgid "There are some errors"
-msgstr "发生了一些错误"
+#: gfeeds/util/download_manager.py:96
+#, python-brace-format
+msgid "`{0}`: connection timed out"
+msgstr "“{0}”：连接超时"
 
-#: gfeeds/suggestion_bar.py:46
-msgid "Show"
-msgstr "显示"
+#: gfeeds/util/download_manager.py:105
+#, python-brace-format
+msgid "`{0}` might not be a valid address"
+msgstr "“{0}”可能不是有效地址"
 
-#: gfeeds/suggestion_bar.py:47
-msgid "Ignore"
-msgstr "忽略"
+#: gfeeds/util/download_manager.py:144
+#, python-brace-format
+msgid "Error downloading `{0}`, code `{1}`"
+msgstr "下载“{0}”时出错，代码“{1}”"
 
-#: gfeeds/suggestion_bar.py:70
-msgid "There were problems with some feeds. Do you want to remove them?"
-msgstr "一些订阅存在问题。您想要移除它们吗？"
+#: gfeeds/util/get_favicon.py:53
+#, python-brace-format
+msgid "Error downloading favicon for `{0}`"
+msgstr "为“{0}”下载网站图标时出错"
 
-#: gfeeds/suggestion_bar.py:97
-msgid "You are offline"
-msgstr "您已离线"
-
-#: gfeeds/webview.py:183
+#: gfeeds/webview.py:201
 msgid "Link copied to clipboard!"
 msgstr "链接已复制到剪贴板！"
 
-#: gfeeds/webview.py:205
-#| msgid "RSS content not available for this article"
+#: gfeeds/webview.py:223
 msgid "Feed content not available for this article"
 msgstr "该文章无可用订阅目录"
+
+#~ msgid "Web View"
+#~ msgstr "网页视图"
+
+#~| msgid "RSS Content"
+#~ msgid "Feed Content"
+#~ msgstr "订阅目录"
+
+#~ msgid "Choose a folder"
+#~ msgstr "选择文件夹"
+
+#~ msgid "Use dark theme for reader mode"
+#~ msgstr "为阅读模式使用暗色模式"
+
+#~ msgid "Maximum thumbnail height"
+#~ msgstr "最大缩略图高度"
+
+#~ msgid "There are some errors"
+#~ msgstr "发生了一些错误"
+
+#~ msgid "Show"
+#~ msgstr "显示"
+
+#~ msgid "Ignore"
+#~ msgstr "忽略"
+
+#~ msgid "There were problems with some feeds. Do you want to remove them?"
+#~ msgstr "一些订阅存在问题。您想要移除它们吗？"
+
+#~ msgid "You are offline"
+#~ msgstr "您已离线"
