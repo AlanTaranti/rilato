@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gfeeds master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/gfeeds/issues\n"
-"POT-Creation-Date: 2022-05-09 14:29+0000\n"
-"PO-Revision-Date: 2022-05-09 19:05+0300\n"
+"POT-Creation-Date: 2022-06-02 09:20+0000\n"
+"PO-Revision-Date: 2022-06-02 13:24+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -70,8 +70,9 @@ msgstr "Помилка: не вдалося обробити позначку ч
 
 #: gfeeds/feed_parser.py:37
 #, python-brace-format
-msgid "Errors while parsing feed `{0}`"
-msgstr "Помилки під час обробки стрічки «{0}»"
+#| msgid "Errors while parsing feed `{0}`"
+msgid "Errors while parsing feed `{0}`, URL: `{1}`"
+msgstr "Помилки під час обробки стрічки «{0}», адреса: «{1}»"
 
 #: gfeeds/feed_parser.py:55
 #, python-brace-format
@@ -85,7 +86,7 @@ msgstr "Запис стрічки {0} вже існує, пропускаємо"
 
 #: gfeeds/feeds_view.py:13
 msgid "All feeds"
-msgstr "Всі подачі"
+msgstr "Всі стрічки"
 
 #: gfeeds/headerbar.py:184
 msgid ""
@@ -247,7 +248,6 @@ msgid "Dark mode"
 msgstr "Темний режим"
 
 #: gfeeds/preferences_window.py:118
-#| msgid "Reader Mode"
 msgid "Reader mode theme"
 msgstr "Тема режиму читача"
 
@@ -260,7 +260,6 @@ msgid "Light"
 msgstr "Світла"
 
 #: gfeeds/preferences_window.py:122
-#| msgid "Dark mode"
 msgid "Dark"
 msgstr "Темна"
 
@@ -365,17 +364,17 @@ msgstr "Позначити як непрочитане"
 msgid "Mark as read"
 msgstr "Позначити як прочитане"
 
-#: gfeeds/util/download_manager.py:96
+#: gfeeds/util/download_manager.py:102
 #, python-brace-format
 msgid "`{0}`: connection timed out"
 msgstr "`{0}`: перевищено час очікування відповіді у з'єднанні"
 
-#: gfeeds/util/download_manager.py:105
+#: gfeeds/util/download_manager.py:111
 #, python-brace-format
 msgid "`{0}` might not be a valid address"
 msgstr "«{0}», ймовірно, не є коректною адресою"
 
-#: gfeeds/util/download_manager.py:144
+#: gfeeds/util/download_manager.py:150
 #, python-brace-format
 msgid "Error downloading `{0}`, code `{1}`"
 msgstr "Помилка під час отримання «{0}», код «{1}»"
