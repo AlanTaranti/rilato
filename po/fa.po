@@ -1,42 +1,45 @@
-# Chinese (China) translation for gfeeds.
-# Copyright (C) 2021 gfeeds's COPYRIGHT HOLDER
+# Persian translation for gfeeds.
+# Copyright (C) 2022 gfeeds's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gfeeds package.
-# lumingzh <lumingzh@qq.com>, 2021-2022.
+# MohammadSaleh Kamyab <mskf1383@protonmail.com>, 2022.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gfeeds master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/gfeeds/issues\n"
-"POT-Creation-Date: 2022-05-09 14:29+0000\n"
-"PO-Revision-Date: 2022-05-28 10:06-0400\n"
-"Last-Translator: lumingzh <lumingzh@qq.com>\n"
-"Language-Team: Chinese - China <i18n-zh@googlegroups.com>\n"
-"Language: zh_CN\n"
+"POT-Creation-Date: 2022-05-28 14:06+0000\n"
+"PO-Revision-Date: 2022-05-29 13:58+0430\n"
+"Language-Team: Persian <fa@li.org>\n"
+"Language: fa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 2.4.3\n"
+"Last-Translator: MohammadSaleh Kamyab <mskf1383@protonmail.com>\n"
+"X-Generator: Poedit 2.4.2\n"
 
 #: data/org.gabmus.gfeeds.appdata.xml.in:4
 msgid "Feeds"
-msgstr "订阅"
+msgstr "خوراک‌ها"
 
 #: data/org.gabmus.gfeeds.appdata.xml.in:6 data/org.gabmus.gfeeds.desktop.in:7
 msgid "News reader for GNOME"
-msgstr "用于 GNOME 的新闻阅读器"
+msgstr "خبرخوان برای گنوم"
 
 #: data/org.gabmus.gfeeds.appdata.xml.in:15
 msgid ""
 "Feeds is a minimal RSS/Atom feed reader built with speed and simplicity in "
 "mind."
-msgstr "订阅是以速度和简便为设计思想构建的最小化 RSS/Atom 订阅阅读器。"
+msgstr ""
+"خوراک‌ها، خوراک‌خوانی کمینه‌گرا برای RSS/اتم است که با هدف سرعت و سادگی ساخته "
+"شده است."
 
 #: data/org.gabmus.gfeeds.appdata.xml.in:16
 msgid ""
 "It offers a simple user interface that only shows the latest news from your "
 "subscriptions."
-msgstr "它提供了仅显示从您的订阅中获取最新内容的简单用户界面。"
+msgstr ""
+"رابط کاربری ساده‌ای دارد که فقط آخرین اخبار را از پی‌گیری‌هایتان نمایش می‌دهد."
 
 #: data/org.gabmus.gfeeds.appdata.xml.in:17
 msgid ""
@@ -44,368 +47,340 @@ msgid ""
 "faster and less intrusive user experience. There's also a reader mode "
 "included, built from the one GNOME Web/Epiphany uses."
 msgstr ""
-"文章默认显示在网页视图中，禁用 JavaScript 以获得更快速和更少干扰的用户体验。"
-"同时包含了来自 GNOME Web/Epiphany 使用的阅读模式。"
+"مقاله‌ها به طور پیش‌گزیده در نمای وب نشان داده می‌شوند؛ با جاوااسکریپت از کار "
+"افتاده برای تجربهٔ کاربری‌ای سریع‌تر و حضور کم‌تر فضول‌ها. همچنین یک حالت خواندن "
+"را نیز شامل می‌شود که از همانی که وب گنوم/اپیفانی استفاده می‌کند، ساخته شده "
+"است."
 
 #: data/org.gabmus.gfeeds.appdata.xml.in:18
 msgid "Feeds can be imported and exported via OPML."
-msgstr "订阅可以通过 OPML 来导入和导出。"
+msgstr "خوراک‌ها می‌توانند از طریق OPML درون‌ریزی و برون‌ریزی شوند."
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gabmus.gfeeds.desktop.in:16
 msgid "rss;reader;feed;news;"
-msgstr "rss;reader;feed;news;订阅;阅读器;新闻;阅读;"
+msgstr ""
+"rss;reader;feeds;news;آراس‌اس;خوان;خبرخوان;خوراک‌خوان;خبرها;اخبار;خوراک;"
 
 #: gfeeds/feed_item.py:49
 #, python-brace-format
 msgid "Error: unable to parse datetime {0} for feeditem {1}"
-msgstr "错误：无法为订阅项目 {1} 解析日期 {0}"
+msgstr "خطا: ناتوانی در تجزیهٔ زمان و تاریخ {0} برای مورد خوراک {1}"
 
 #: gfeeds/feed_parser.py:37
 #, python-brace-format
 msgid "Errors while parsing feed `{0}`"
-msgstr "解析订阅“{0}”时出错"
+msgstr "خطا هنگام تجزیهٔ خوراک «{0}»"
 
 #: gfeeds/feed_parser.py:55
 #, python-brace-format
 msgid "`{0}` may not be an RSS or Atom feed"
-msgstr "“{0}”可能不是 RSS 或 Atom 订阅"
+msgstr "احتمالاً «{0}» یک خوراک RSS یا اتم نیست"
 
 #: gfeeds/feeds_manager.py:88
 #, python-brace-format
 msgid "Feed {0} exists already, skipping"
-msgstr "订阅 {0} 已存在，正在跳过"
+msgstr "خوراک {0} هم‌اکنون وجود دارد، پریدن"
 
 #: gfeeds/feeds_view.py:13
 msgid "All feeds"
-msgstr "所有订阅"
+msgstr "تمامی خوراک‌ها"
 
 #: gfeeds/headerbar.py:184
 msgid ""
 "There were problems with some feeds.\n"
 "Do you want to remove them?"
 msgstr ""
-"一些订阅存在问题。\n"
-"您想要移除它们吗？"
+"مشکلی با برخی از خوراک‌ها وجود دارد.\n"
+"آیا می‌خواهید برشان دارید؟"
 
 #: gfeeds/main_leaflet.py:119
 #, python-brace-format
 msgid "{0} new article"
 msgid_plural "{0} new articles"
-msgstr[0] "{0} 篇新文章"
+msgstr[0] "{0} مقالهٔ جدید"
 
 #: gfeeds/__main__.py:229
 msgid "Do you want to import these feeds?"
-msgstr "您想要导入这些订阅吗？"
+msgstr "آیا می‌خواهید این خوراک‌ها را درون‌ریزی کنید؟"
 
 #: gfeeds/__main__.py:256
 msgid "Do you want to import this feed?"
-msgstr "您想要导入该订阅吗？"
+msgstr "آیا می‌خواهید این خوراک را درون‌ریزی کنید؟"
 
 #: gfeeds/__main__.py:285
 msgid "url"
-msgstr "网址"
+msgstr "نشانی"
 
 #: gfeeds/__main__.py:288
 msgid "opml file local url or rss remote url to import"
-msgstr "要导入的 opml 文件本地地址或 rss 远程地址"
+msgstr "پروندهٔ opml محلّی یا نشانی دوردست rss برای درون‌ریزی"
 
 #: gfeeds/manage_feeds_window.py:263
 msgid "Manage Feeds"
-msgstr "管理订阅"
+msgstr "مدیریت خوراک‌ها"
 
 #: gfeeds/manage_feeds_window.py:318
 msgid "Do you want to delete these feeds?"
-msgstr "您想要删除这些订阅吗？"
+msgstr "آیا می‌خواهید این خوراک‌ها را حذف کنید؟"
 
 #: gfeeds/opml_file_chooser.py:7
 msgid "XML files"
-msgstr "XML 文件"
+msgstr "پرونده‌های XML"
 
 #: gfeeds/opml_file_chooser.py:14
 msgid "Choose an OPML file to import"
-msgstr "选择 OPML 文件来导入"
+msgstr "یک پروندهٔ OMPL را برای درون‌ریزی انتخاب کنید"
 
 #: gfeeds/opml_file_chooser.py:18
 msgid "Open"
-msgstr "打开"
+msgstr "گشودن"
 
 #: gfeeds/opml_file_chooser.py:19 gfeeds/opml_file_chooser.py:31
 msgid "Cancel"
-msgstr "取消"
+msgstr "لغو"
 
 #: gfeeds/opml_file_chooser.py:26
 msgid "Choose where to save the exported OPML file"
-msgstr "选择保存导出的 OPML 文件的位置"
+msgstr "مکان ذخیره‌سازی پروندهٔ OPML برون‌ریخته را انتخاب کنید"
 
 #: gfeeds/opml_file_chooser.py:30
 msgid "Save"
-msgstr "保存"
+msgstr "ذخیره"
 
 #: gfeeds/opml_manager.py:42
 msgid "Error: OPML path provided does not exist"
-msgstr "错误：指定的 OPML 路径不存在"
+msgstr "خطا: مسیر OPML ارائه شده وجود ندارد"
 
 #: gfeeds/opml_manager.py:53
 #, python-brace-format
 msgid "Error parsing OPML file `{0}`"
-msgstr "解析 OPML 文件“{0}”时出错"
+msgstr "خطا در تجزیهٔ پروندهٔ OMPL ‏«{0}»"
 
 #: gfeeds/preferences_window.py:22
 msgid "General"
-msgstr "常规"
+msgstr "عمومی"
 
 #: gfeeds/preferences_window.py:25
 msgid "General preferences"
-msgstr "常规首选项"
+msgstr "ترجیحات عمومی"
 
 #: gfeeds/preferences_window.py:27
 msgid "Show newer articles first"
-msgstr "优先显示新文章"
+msgstr "نمایش مقاله‌های جدیدتر در ابتدا"
 
 #: gfeeds/preferences_window.py:32
 msgid "Open links in your browser"
-msgstr "在您的浏览器中打开链接"
+msgstr "گشودن پیوند‌های در مروگرتان"
 
 #: gfeeds/preferences_window.py:36
 msgid "Use external video player for YouTube"
-msgstr "为 YouTube 使用外置视频播放器"
+msgstr "استفاده از پخش‌کنندهٔ خارجی برای یوتیوب"
 
 #: gfeeds/preferences_window.py:38
 msgid "Requires youtube-dl and a compatible video player"
-msgstr "需要 youtube-dl 和兼容的视频播放器"
+msgstr "به youtube-dl و یک پخش‌کنندهٔ ویدیوی سازگار نیاز دارد"
 
 #: gfeeds/preferences_window.py:44
 msgid "Preferred video player"
-msgstr "首选视频播放器"
+msgstr "پخش‌کنندهٔ ویدیوی ترجیحی"
 
 #: gfeeds/preferences_window.py:48
 msgid "Maximum article age"
-msgstr "最大文章日期"
+msgstr "سن بیشینهٔ مقاله"
 
 #: gfeeds/preferences_window.py:49
 msgid "In days"
-msgstr "单位天"
+msgstr "به روز"
 
 #: gfeeds/preferences_window.py:56
 msgid "Refresh preferences"
-msgstr "刷新首选项"
+msgstr "تازه‌سازی ترجیحات"
 
 #: gfeeds/preferences_window.py:58
 msgid "Refresh articles on startup"
-msgstr "启动时刷新文章"
+msgstr "تازه‌سازی مقاله‌ها هنگام شروع"
 
 #: gfeeds/preferences_window.py:62
 msgid "New articles notification"
-msgstr "新文章提醒"
+msgstr "اعلان مقاله‌های جدید"
 
 #: gfeeds/preferences_window.py:66
 msgid "Enable auto-refresh"
-msgstr "启用自动刷新"
+msgstr "به کار انداختن تازه‌سازی خودکار"
 
 #: gfeeds/preferences_window.py:70
 msgid "Auto-refresh interval"
-msgstr "自动刷新间隔"
+msgstr "فاصلهٔ تازه‌سازی خودکار"
 
 #: gfeeds/preferences_window.py:71
 msgid "In seconds"
-msgstr "单位秒"
+msgstr "به ثانیه"
 
 #: gfeeds/preferences_window.py:78
 msgid "Cache"
-msgstr "缓存"
+msgstr "انباره"
 
 #: gfeeds/preferences_window.py:80
 msgid "Clear caches"
-msgstr "清空缓存"
+msgstr "پاک‌سازی انباره‌ها"
 
 #: gfeeds/preferences_window.py:81
 msgid "Clear"
-msgstr "清空"
+msgstr "پاک‌سازی"
 
 #: gfeeds/preferences_window.py:109
 msgid "Appearance"
-msgstr "外观"
+msgstr "ظاهر"
 
 #: gfeeds/preferences_window.py:112
 msgid "Appearance preferences"
-msgstr "外观首选项"
+msgstr "ترجیحات ظاهر"
 
 #: gfeeds/preferences_window.py:114
 msgid "Dark mode"
-msgstr "暗色模式"
+msgstr "حالت تاریک"
 
 #: gfeeds/preferences_window.py:118
 msgid "Reader mode theme"
-msgstr "阅读模式主题"
+msgstr "پوستهٔ حالت خواندن"
 
 #: gfeeds/preferences_window.py:122
 msgid "Automatic"
-msgstr "自动"
+msgstr "خودکار"
 
 #: gfeeds/preferences_window.py:122
 msgid "Light"
-msgstr "亮色"
+msgstr "روشن"
 
 #: gfeeds/preferences_window.py:122
 msgid "Dark"
-msgstr "暗色"
+msgstr "تاریک"
 
 #: gfeeds/preferences_window.py:126
 msgid "Show article thumbnails"
-msgstr "显示文章缩略图"
+msgstr "نمایش بندانگشتی مقاله‌ها"
 
 #: gfeeds/preferences_window.py:131
 msgid "Show full articles titles"
-msgstr "显示完整文章标题"
+msgstr "نمایش عنوان کامل مقاله‌ها"
 
 #: gfeeds/preferences_window.py:136
 msgid "Show full feeds names"
-msgstr "显示完整订阅名称"
+msgstr "نمایش نام کامل خوراک‌ها"
 
 #: gfeeds/preferences_window.py:143
 msgid "Font preferences"
-msgstr "字体首选项"
+msgstr "ترجیحات قلم"
 
 #: gfeeds/preferences_window.py:145
 msgid "Use system font for titles"
-msgstr "为标题使用系统字体"
+msgstr "استفاده از قلم سامانه برای عنوان‌ها"
 
 #: gfeeds/preferences_window.py:149
 msgid "Use system font for paragraphs"
-msgstr "为段落使用系统字体"
+msgstr "استفاده از قلم سامانه برای بندها"
 
 #: gfeeds/preferences_window.py:153
 msgid "Custom title font"
-msgstr "自定义标题字体"
+msgstr "قلم عنوان سفارشی"
 
 #: gfeeds/preferences_window.py:157
 msgid "Custom paragraph font"
-msgstr "自定义段落字体"
+msgstr "قلم بند سفارشی"
 
 #: gfeeds/preferences_window.py:161
 msgid "Custom monospace font"
-msgstr "自定义等宽字体"
+msgstr "قلم هم‌عرض سفارشی"
 
 #: gfeeds/preferences_window.py:173
 msgid "Privacy"
-msgstr "隐私"
+msgstr "حریم خصوصی"
 
 #: gfeeds/preferences_window.py:176
 msgid "Privacy preferences"
-msgstr "隐私首选项"
+msgstr "ترجیحات حریم خصوصی"
 
 #: gfeeds/preferences_window.py:178
 msgid "Enable JavaScript"
-msgstr "启用 JavaScript"
+msgstr "به کار انداختن جاوااسکریپت"
 
 #: gfeeds/preferences_window.py:183
 msgid "Try to block advertisements"
-msgstr "尝试拦截广告"
+msgstr "سعی برای مسدود کردن تبلیغات"
 
 #: gfeeds/preferences_window.py:185 gfeeds/preferences_window.py:220
 msgid "Requires app restart"
-msgstr "需要重启应用"
+msgstr "نیاز به راه‌اندازی دوبارهٔ کاره دارد"
 
 #: gfeeds/preferences_window.py:189
 msgid "Update advertisement blocking list"
-msgstr "更新广告拦截列表"
+msgstr "به‌روز رسانی سیاههٔ مسدودیت تبلیغات"
 
 #: gfeeds/preferences_window.py:190
 msgid "Updates automatically every 10 days"
-msgstr "自动每 10 天更新"
+msgstr "هر ۱۰ روز به طور خودکار به‌روز می‌شود"
 
 #: gfeeds/preferences_window.py:191
 msgid "Update"
-msgstr "更新"
+msgstr "به‌روز رسانی"
 
 #: gfeeds/preferences_window.py:204
 msgid "Advanced"
-msgstr "高级"
+msgstr "پیش‌رفته"
 
 #: gfeeds/preferences_window.py:207
 msgid "Advanced preferences"
-msgstr "高级首选项"
+msgstr "ترجیحات پیش‌رفته"
 
 #: gfeeds/preferences_window.py:209
 msgid "Maximum refresh threads"
-msgstr "最大刷新线程"
+msgstr "بیشینهٔ ریسه‌های تازه‌سازی"
 
 #: gfeeds/preferences_window.py:211
 msgid "How many threads to use for feeds refresh"
-msgstr "订阅刷新时使用多少线程"
+msgstr "چه تعداد ریسه برای تازه‌سازی خوراک‌ها استفاده شود"
 
 #: gfeeds/preferences_window.py:218
 msgid "Experimental GtkListView for articles list"
-msgstr "为文章列表试用 GtkListView"
+msgstr "‏GtkListView تجربی برای سیاههٔ مقاله‌ها"
 
 #: gfeeds/sidebar.py:21
 msgid "Loading feeds..."
-msgstr "正在加载订阅……"
+msgstr "بار کردن خوراک‌ها…"
 
 #: gfeeds/sidebar_row_popover.py:31 gfeeds/sidebar_row_popover.py:58
 msgid "Mark as unread"
-msgstr "标记为未阅"
+msgstr "علامت زدن به عنون نخوانده"
 
 #: gfeeds/sidebar_row_popover.py:38 gfeeds/sidebar_row_popover.py:50
 msgid "Mark as read"
-msgstr "标记为已阅"
+msgstr "علامت زدن به عنوان خوانده"
 
-#: gfeeds/util/download_manager.py:96
+#: gfeeds/util/download_manager.py:102
 #, python-brace-format
 msgid "`{0}`: connection timed out"
-msgstr "“{0}”：连接超时"
+msgstr "«{0}»: زمان اتّصال تمام شد"
 
-#: gfeeds/util/download_manager.py:105
+#: gfeeds/util/download_manager.py:111
 #, python-brace-format
 msgid "`{0}` might not be a valid address"
-msgstr "“{0}”可能不是有效地址"
+msgstr "ممکن است «{0}» نشانی معتبری نباشد"
 
-#: gfeeds/util/download_manager.py:144
+#: gfeeds/util/download_manager.py:150
 #, python-brace-format
 msgid "Error downloading `{0}`, code `{1}`"
-msgstr "下载“{0}”时出错，代码“{1}”"
+msgstr "خطای بارگیری «{0}»، کد «{1}»"
 
 #: gfeeds/util/get_favicon.py:53
 #, python-brace-format
 msgid "Error downloading favicon for `{0}`"
-msgstr "为“{0}”下载网站图标时出错"
+msgstr "خطای بارگیری favicon برای «{0}»"
 
 #: gfeeds/webview.py:201
 msgid "Link copied to clipboard!"
-msgstr "链接已复制到剪贴板！"
+msgstr "پیوند به تخته‌گیره رونوشت شد!"
 
 #: gfeeds/webview.py:223
 msgid "Feed content not available for this article"
-msgstr "该文章无可用订阅目录"
-
-#~ msgid "Web View"
-#~ msgstr "网页视图"
-
-#~| msgid "RSS Content"
-#~ msgid "Feed Content"
-#~ msgstr "订阅目录"
-
-#~ msgid "Choose a folder"
-#~ msgstr "选择文件夹"
-
-#~ msgid "Use dark theme for reader mode"
-#~ msgstr "为阅读模式使用暗色模式"
-
-#~ msgid "Maximum thumbnail height"
-#~ msgstr "最大缩略图高度"
-
-#~ msgid "There are some errors"
-#~ msgstr "发生了一些错误"
-
-#~ msgid "Show"
-#~ msgstr "显示"
-
-#~ msgid "Ignore"
-#~ msgstr "忽略"
-
-#~ msgid "There were problems with some feeds. Do you want to remove them?"
-#~ msgstr "一些订阅存在问题。您想要移除它们吗？"
-
-#~ msgid "You are offline"
-#~ msgstr "您已离线"
+msgstr "محتوای خوراک برای این مقاله موجود نیست"
