@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-09 16:35+0200\n"
-"PO-Revision-Date: 2022-05-09 16:36+0200\n"
+"POT-Creation-Date: 2022-06-02 11:19+0200\n"
+"PO-Revision-Date: 2022-06-02 11:19+0200\n"
 "Last-Translator: Gabriele Musco <gabmus@disroot.org>\n"
 "Language-Team: Italian\n"
 "Language: it\n"
@@ -18,66 +18,40 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.0.1\n"
 
-#: ../gfeeds/opml_file_chooser.py:7
-msgid "XML files"
-msgstr "File XML"
+#: ../gfeeds/opml_manager.py:42
+msgid "Error: OPML path provided does not exist"
+msgstr "Errore: il percorso all'OPML fornito non esiste"
 
-#: ../gfeeds/opml_file_chooser.py:14
-msgid "Choose an OPML file to import"
-msgstr "Scegli un file OPML da importare"
-
-#: ../gfeeds/opml_file_chooser.py:18
-msgid "Open"
-msgstr "Apri"
-
-#: ../gfeeds/opml_file_chooser.py:19 ../gfeeds/opml_file_chooser.py:31
-msgid "Cancel"
-msgstr "Annulla"
-
-#: ../gfeeds/opml_file_chooser.py:26
-msgid "Choose where to save the exported OPML file"
-msgstr "Scegli dove salvare il file OPML esportato"
-
-#: ../gfeeds/opml_file_chooser.py:30
-msgid "Save"
-msgstr "Salva"
-
-#: ../gfeeds/feeds_manager.py:88
+#: ../gfeeds/opml_manager.py:53
 #, python-brace-format
-msgid "Feed {0} exists already, skipping"
-msgstr "Il feed {0} esiste già, lo salto"
+msgid "Error parsing OPML file `{0}`"
+msgstr "Errore nell'analisi del file OPML `{0}`"
 
-#: ../gfeeds/headerbar.py:184
-msgid ""
-"There were problems with some feeds.\n"
-"Do you want to remove them?"
-msgstr ""
-"C'è qualche problema con alcuni feed.\n"
-"Vuoi rimuoverli?"
+#: ../gfeeds/sidebar_row_popover.py:31 ../gfeeds/sidebar_row_popover.py:58
+msgid "Mark as unread"
+msgstr "Segna come non letto"
+
+#: ../gfeeds/sidebar_row_popover.py:38 ../gfeeds/sidebar_row_popover.py:50
+msgid "Mark as read"
+msgstr "Segna come letto"
+
+#: ../gfeeds/feeds_view.py:13
+msgid "All feeds"
+msgstr "Tutti i feed"
+
+#: ../gfeeds/sidebar.py:21
+msgid "Loading feeds..."
+msgstr "Caricamento feed..."
 
 #: ../gfeeds/feed_item.py:49
 #, python-brace-format
 msgid "Error: unable to parse datetime {0} for feeditem {1}"
 msgstr "Errore: impossibile analizzare data e ora {0} per l'articolo {1}"
 
-#: ../gfeeds/feeds_view.py:13
-msgid "All feeds"
-msgstr "Tutti i feed"
-
-#: ../gfeeds/webview.py:201
-msgid "Link copied to clipboard!"
-msgstr "Link copiato negli appunti!"
-
-#: ../gfeeds/webview.py:223
-msgid "Feed content not available for this article"
-msgstr "Contenuto del feed non disponibile per questo articolo"
-
-#: ../gfeeds/main_leaflet.py:119
+#: ../gfeeds/feeds_manager.py:88
 #, python-brace-format
-msgid "{0} new article"
-msgid_plural "{0} new articles"
-msgstr[0] "{0} nuovo articolo"
-msgstr[1] "{0} nuovi articoli"
+msgid "Feed {0} exists already, skipping"
+msgstr "Il feed {0} esiste già, lo salto"
 
 #: ../gfeeds/preferences_window.py:22
 msgid "General"
@@ -267,55 +241,54 @@ msgstr "Quanti thread usare per aggiornare i feed"
 msgid "Experimental GtkListView for articles list"
 msgstr "GtkListView sperimentale per la lista degli articoli"
 
-#: ../gfeeds/sidebar.py:21
-msgid "Loading feeds..."
-msgstr "Caricamento feed..."
-
-#: ../gfeeds/__main__.py:229
-msgid "Do you want to import these feeds?"
-msgstr "Vuoi importare questi feed?"
-
-#: ../gfeeds/__main__.py:256
-msgid "Do you want to import this feed?"
-msgstr "Vuoi importare questo feed?"
-
-#: ../gfeeds/__main__.py:285
-msgid "url"
-msgstr "url"
-
-#: ../gfeeds/__main__.py:288
-msgid "opml file local url or rss remote url to import"
-msgstr "url locale del file opml o url rss remota da importare"
-
-#: ../gfeeds/util/get_favicon.py:53
-#, python-brace-format
-msgid "Error downloading favicon for `{0}`"
-msgstr "Errore nel download della favicon per `{0}`"
-
-#: ../gfeeds/util/download_manager.py:96
-#, python-brace-format
-msgid "`{0}`: connection timed out"
-msgstr "`{0}`: timeout connessione"
-
-#: ../gfeeds/util/download_manager.py:105
-#, python-brace-format
-msgid "`{0}` might not be a valid address"
-msgstr "`{0}` potrebbe non essere un indirizzo valido"
-
-#: ../gfeeds/util/download_manager.py:144
-#, python-brace-format
-msgid "Error downloading `{0}`, code `{1}`"
-msgstr "Errore nel download di `{0}`, codice `{1}`"
-
 #: ../gfeeds/feed_parser.py:37
 #, python-brace-format
-msgid "Errors while parsing feed `{0}`"
-msgstr "Errori nell'analisi del feed `{0}`"
+msgid "Errors while parsing feed `{0}`, URL: `{1}`"
+msgstr "Errori nell'analisi del feed `{0}`, URL: `{1}`"
 
 #: ../gfeeds/feed_parser.py:55
 #, python-brace-format
 msgid "`{0}` may not be an RSS or Atom feed"
 msgstr "`{0}` potrebbe non essere un feed RSS o Atom"
+
+#: ../gfeeds/webview.py:201
+msgid "Link copied to clipboard!"
+msgstr "Link copiato negli appunti!"
+
+#: ../gfeeds/webview.py:223
+msgid "Feed content not available for this article"
+msgstr "Contenuto del feed non disponibile per questo articolo"
+
+#: ../gfeeds/main_leaflet.py:119
+#, python-brace-format
+msgid "{0} new article"
+msgid_plural "{0} new articles"
+msgstr[0] "{0} nuovo articolo"
+msgstr[1] "{0} nuovi articoli"
+
+#: ../gfeeds/opml_file_chooser.py:7
+msgid "XML files"
+msgstr "File XML"
+
+#: ../gfeeds/opml_file_chooser.py:14
+msgid "Choose an OPML file to import"
+msgstr "Scegli un file OPML da importare"
+
+#: ../gfeeds/opml_file_chooser.py:18
+msgid "Open"
+msgstr "Apri"
+
+#: ../gfeeds/opml_file_chooser.py:19 ../gfeeds/opml_file_chooser.py:31
+msgid "Cancel"
+msgstr "Annulla"
+
+#: ../gfeeds/opml_file_chooser.py:26
+msgid "Choose where to save the exported OPML file"
+msgstr "Scegli dove salvare il file OPML esportato"
+
+#: ../gfeeds/opml_file_chooser.py:30
+msgid "Save"
+msgstr "Salva"
 
 #: ../gfeeds/manage_feeds_window.py:263
 msgid "Manage Feeds"
@@ -325,190 +298,53 @@ msgstr "Gestisci Feed"
 msgid "Do you want to delete these feeds?"
 msgstr "Vuoi eliminare questi feed?"
 
-#: ../gfeeds/opml_manager.py:42
-msgid "Error: OPML path provided does not exist"
-msgstr "Errore: il percorso all'OPML fornito non esiste"
+#: ../gfeeds/headerbar.py:184
+msgid ""
+"There were problems with some feeds.\n"
+"Do you want to remove them?"
+msgstr ""
+"C'è qualche problema con alcuni feed.\n"
+"Vuoi rimuoverli?"
 
-#: ../gfeeds/opml_manager.py:53
+#: ../gfeeds/__main__.py:229
+msgid "Do you want to import these feeds?"
+msgstr "Vuoi importare questi feed?"
+
+#: ../gfeeds/__main__.py:266
+msgid "Do you want to import this feed?"
+msgstr "Vuoi importare questo feed?"
+
+#: ../gfeeds/__main__.py:295
+msgid "url"
+msgstr "url"
+
+#: ../gfeeds/__main__.py:298
+msgid "opml file local url or rss remote url to import"
+msgstr "url locale del file opml o url rss remota da importare"
+
+#: ../gfeeds/util/download_manager.py:102
 #, python-brace-format
-msgid "Error parsing OPML file `{0}`"
-msgstr "Errore nell'analisi del file OPML `{0}`"
+msgid "`{0}`: connection timed out"
+msgstr "`{0}`: timeout connessione"
 
-#: ../gfeeds/sidebar_row_popover.py:31 ../gfeeds/sidebar_row_popover.py:58
-msgid "Mark as unread"
-msgstr "Segna come non letto"
+#: ../gfeeds/util/download_manager.py:111
+#, python-brace-format
+msgid "`{0}` might not be a valid address"
+msgstr "`{0}` potrebbe non essere un indirizzo valido"
 
-#: ../gfeeds/sidebar_row_popover.py:38 ../gfeeds/sidebar_row_popover.py:50
-msgid "Mark as read"
-msgstr "Segna come letto"
+#: ../gfeeds/util/download_manager.py:150
+#, python-brace-format
+msgid "Error downloading `{0}`, code `{1}`"
+msgstr "Errore nel download di `{0}`, codice `{1}`"
 
-#: ../data/ui/shortcutsWindow.blp:12
-msgid "Open Keyboard Shortcuts"
-msgstr "Apri Scorciatoie da tastiera"
-
-#: ../data/ui/shortcutsWindow.blp:16
-msgid "Open Menu"
-msgstr "Apri Menu"
-
-#: ../data/ui/shortcutsWindow.blp:20
-msgid "Open Preferences"
-msgstr "Apri Preferenze"
-
-#: ../data/ui/shortcutsWindow.blp:24
-msgid "Open Filter"
-msgstr "Apri Filtro"
-
-#: ../data/ui/shortcutsWindow.blp:28
-msgid "Quit"
-msgstr "Esci"
-
-#: ../data/ui/shortcutsWindow.blp:32
-msgid "Article List"
-msgstr "Lista Articoli"
-
-#: ../data/ui/shortcutsWindow.blp:35 ../data/ui/left_headerbar.blp:41
-msgid "Refresh"
-msgstr "Ricarica"
-
-#: ../data/ui/shortcutsWindow.blp:39 ../data/ui/left_headerbar.blp:46
-msgid "Search"
-msgstr "Cerca"
-
-#: ../data/ui/shortcutsWindow.blp:43
-msgid "Next"
-msgstr "Successivo"
-
-#: ../data/ui/shortcutsWindow.blp:47
-msgid "Previous"
-msgstr "Precedente"
-
-#: ../data/ui/shortcutsWindow.blp:51
-msgid "Show/Hide Read Articles"
-msgstr "Mostra/Nascondi Articoli Letti"
-
-#: ../data/ui/shortcutsWindow.blp:55
-msgid "Mark All Read"
-msgstr "Segna Tutti come Letti"
-
-#: ../data/ui/shortcutsWindow.blp:59
-msgid "Article"
-msgstr "Articolo"
-
-#: ../data/ui/shortcutsWindow.blp:62 ../data/ui/right_headerbar.blp:53
-msgid "Zoom In"
-msgstr "Aumenta Ingrandimento"
-
-#: ../data/ui/shortcutsWindow.blp:66 ../data/ui/right_headerbar.blp:43
-msgid "Zoom Out"
-msgstr "Riduci Ingrandimento"
-
-#: ../data/ui/shortcutsWindow.blp:70 ../data/ui/right_headerbar.blp:48
-msgid "Reset Zoom"
-msgstr "Reimposta Ingrandimento"
-
-#: ../data/ui/shortcutsWindow.blp:74 ../data/ui/right_headerbar.blp:9
-msgid "Open in Browser"
-msgstr "Apri nel Browser"
-
-#: ../data/ui/manage_tags_content.blp:17
-msgid "New tag name…"
-msgstr "Nuovo nome tag…"
-
-#: ../data/ui/manage_tags_content.blp:24
-msgid "Add Tag"
-msgstr "Aggiungi Tag"
-
-#: ../data/ui/manage_tags_content.blp:39
-msgid "There are no tags yet"
-msgstr "Non ci sono ancora tag"
-
-#: ../data/ui/manage_tags_content.blp:40
-msgid "Add some using the entry above"
-msgstr "Aggiungine alcuni usando il campo qui sopra"
-
-#: ../data/ui/empty_state.blp:7
-msgid "Let's get started"
-msgstr "Cominciamo"
-
-#: ../data/ui/empty_state.blp:22
-msgid "Add new feeds via URL"
-msgstr "Aggiungi nuovi feed tramite URL"
-
-#: ../data/ui/empty_state.blp:27
-msgid "Import an OPML file"
-msgstr "Importa un file OPML"
-
-#: ../data/ui/manage_feeds_headerbar.blp:11
-msgid "Manage Tags for Selected Feeds"
-msgstr "Gestisci i Tag per i Feed Selezionati"
-
-#: ../data/ui/manage_feeds_headerbar.blp:16
-msgid "Select/Unselect All"
-msgstr "Seleziona/Deseleziona Tutto"
-
-#: ../data/ui/manage_feeds_headerbar.blp:21
-msgid "Delete Selected Feeds"
-msgstr "Elimina i Feed Selezionati"
-
-#: ../data/ui/right_headerbar.blp:10
-msgid "Open in External Media Player"
-msgstr "Apri in Riproduttore Multimediale Esterno"
-
-#: ../data/ui/right_headerbar.blp:11
-msgid "Copy Article Link"
-msgstr "Copia Link dell'Articolo"
-
-#: ../data/ui/right_headerbar.blp:17 ../data/ui/right_headerbar.blp:92
-msgid "View Mode"
-msgstr "Modalità di Visualizzazione"
-
-#: ../data/ui/right_headerbar.blp:19
-msgid "Web View"
-msgstr "Vista Web"
-
-#: ../data/ui/right_headerbar.blp:24
-msgid "Reader Mode"
-msgstr "Modalità lettura"
-
-#: ../data/ui/right_headerbar.blp:29
-msgid "Feed Content"
-msgstr "Contenuto del Feed"
-
-#: ../data/ui/right_headerbar.blp:86
-msgid "Back to Articles"
-msgstr "Torna agli Articoli"
-
-#: ../data/ui/row_popover.blp:19
-msgid "Mark as Read"
-msgstr "Segna come Letto"
-
-#: ../data/ui/add_feed_popover.blp:11
-msgid "Enter feed address to add"
-msgstr "Inserisci l'indirizzo del feed da aggiungere"
-
-#: ../data/ui/add_feed_popover.blp:26
-msgid "Add"
-msgstr "Aggiungi"
-
-#: ../data/ui/add_feed_popover.blp:32
-msgid "You're already subscribed to that feed!"
-msgstr "Sei già iscritto a questo feed!"
-
-#: ../data/ui/webview.blp:12
-msgid "Select an article"
-msgstr "Seleziona un articolo"
+#: ../gfeeds/util/get_favicon.py:53
+#, python-brace-format
+msgid "Error downloading favicon for `{0}`"
+msgstr "Errore nel download della favicon per `{0}`"
 
 #: ../data/ui/main_leaflet.blp:40
 msgid "Offline"
 msgstr "Disconnesso"
-
-#: ../data/ui/scrolled_dialog.blp:43
-msgid "No"
-msgstr "No"
-
-#: ../data/ui/scrolled_dialog.blp:48
-msgid "Yes"
-msgstr "Si"
 
 #: ../data/ui/left_headerbar.blp:6
 msgid "Show Read Articles"
@@ -558,9 +394,173 @@ msgstr "Aggiungi Feed"
 msgid "Menu"
 msgstr "Menu"
 
+#: ../data/ui/left_headerbar.blp:41 ../data/ui/shortcutsWindow.blp:35
+msgid "Refresh"
+msgstr "Ricarica"
+
+#: ../data/ui/left_headerbar.blp:46 ../data/ui/shortcutsWindow.blp:39
+msgid "Search"
+msgstr "Cerca"
+
 #: ../data/ui/left_headerbar.blp:51
 msgid "There Are Errors"
 msgstr "Ci Sono Errori"
+
+#: ../data/ui/scrolled_dialog.blp:43
+msgid "No"
+msgstr "No"
+
+#: ../data/ui/scrolled_dialog.blp:48
+msgid "Yes"
+msgstr "Si"
+
+#: ../data/ui/manage_feeds_headerbar.blp:11
+msgid "Manage Tags for Selected Feeds"
+msgstr "Gestisci i Tag per i Feed Selezionati"
+
+#: ../data/ui/manage_feeds_headerbar.blp:16
+msgid "Select/Unselect All"
+msgstr "Seleziona/Deseleziona Tutto"
+
+#: ../data/ui/manage_feeds_headerbar.blp:21
+msgid "Delete Selected Feeds"
+msgstr "Elimina i Feed Selezionati"
+
+#: ../data/ui/right_headerbar.blp:9 ../data/ui/shortcutsWindow.blp:74
+msgid "Open in Browser"
+msgstr "Apri nel Browser"
+
+#: ../data/ui/right_headerbar.blp:10
+msgid "Open in External Media Player"
+msgstr "Apri in Riproduttore Multimediale Esterno"
+
+#: ../data/ui/right_headerbar.blp:11
+msgid "Copy Article Link"
+msgstr "Copia Link dell'Articolo"
+
+#: ../data/ui/right_headerbar.blp:17 ../data/ui/right_headerbar.blp:92
+msgid "View Mode"
+msgstr "Modalità di Visualizzazione"
+
+#: ../data/ui/right_headerbar.blp:19
+msgid "Web View"
+msgstr "Vista Web"
+
+#: ../data/ui/right_headerbar.blp:24
+msgid "Reader Mode"
+msgstr "Modalità lettura"
+
+#: ../data/ui/right_headerbar.blp:29
+msgid "Feed Content"
+msgstr "Contenuto del Feed"
+
+#: ../data/ui/right_headerbar.blp:43 ../data/ui/shortcutsWindow.blp:66
+msgid "Zoom Out"
+msgstr "Riduci Ingrandimento"
+
+#: ../data/ui/right_headerbar.blp:48 ../data/ui/shortcutsWindow.blp:70
+msgid "Reset Zoom"
+msgstr "Reimposta Ingrandimento"
+
+#: ../data/ui/right_headerbar.blp:53 ../data/ui/shortcutsWindow.blp:62
+msgid "Zoom In"
+msgstr "Aumenta Ingrandimento"
+
+#: ../data/ui/right_headerbar.blp:86
+msgid "Back to Articles"
+msgstr "Torna agli Articoli"
+
+#: ../data/ui/empty_state.blp:7
+msgid "Let's get started"
+msgstr "Cominciamo"
+
+#: ../data/ui/empty_state.blp:22
+msgid "Add new feeds via URL"
+msgstr "Aggiungi nuovi feed tramite URL"
+
+#: ../data/ui/empty_state.blp:27
+msgid "Import an OPML file"
+msgstr "Importa un file OPML"
+
+#: ../data/ui/shortcutsWindow.blp:12
+msgid "Open Keyboard Shortcuts"
+msgstr "Apri Scorciatoie da tastiera"
+
+#: ../data/ui/shortcutsWindow.blp:16
+msgid "Open Menu"
+msgstr "Apri Menu"
+
+#: ../data/ui/shortcutsWindow.blp:20
+msgid "Open Preferences"
+msgstr "Apri Preferenze"
+
+#: ../data/ui/shortcutsWindow.blp:24
+msgid "Open Filter"
+msgstr "Apri Filtro"
+
+#: ../data/ui/shortcutsWindow.blp:28
+msgid "Quit"
+msgstr "Esci"
+
+#: ../data/ui/shortcutsWindow.blp:32
+msgid "Article List"
+msgstr "Lista Articoli"
+
+#: ../data/ui/shortcutsWindow.blp:43
+msgid "Next"
+msgstr "Successivo"
+
+#: ../data/ui/shortcutsWindow.blp:47
+msgid "Previous"
+msgstr "Precedente"
+
+#: ../data/ui/shortcutsWindow.blp:51
+msgid "Show/Hide Read Articles"
+msgstr "Mostra/Nascondi Articoli Letti"
+
+#: ../data/ui/shortcutsWindow.blp:55
+msgid "Mark All Read"
+msgstr "Segna Tutti come Letti"
+
+#: ../data/ui/shortcutsWindow.blp:59
+msgid "Article"
+msgstr "Articolo"
+
+#: ../data/ui/add_feed_popover.blp:11
+msgid "Enter feed address to add"
+msgstr "Inserisci l'indirizzo del feed da aggiungere"
+
+#: ../data/ui/add_feed_popover.blp:26
+msgid "Add"
+msgstr "Aggiungi"
+
+#: ../data/ui/add_feed_popover.blp:32
+msgid "You're already subscribed to that feed!"
+msgstr "Sei già iscritto a questo feed!"
+
+#: ../data/ui/row_popover.blp:19
+msgid "Mark as Read"
+msgstr "Segna come Letto"
+
+#: ../data/ui/manage_tags_content.blp:17
+msgid "New tag name…"
+msgstr "Nuovo nome tag…"
+
+#: ../data/ui/manage_tags_content.blp:24
+msgid "Add Tag"
+msgstr "Aggiungi Tag"
+
+#: ../data/ui/manage_tags_content.blp:39
+msgid "There are no tags yet"
+msgstr "Non ci sono ancora tag"
+
+#: ../data/ui/manage_tags_content.blp:40
+msgid "Add some using the entry above"
+msgstr "Aggiungine alcuni usando il campo qui sopra"
+
+#: ../data/ui/webview.blp:12
+msgid "Select an article"
+msgstr "Seleziona un articolo"
 
 #: ../data/org.gabmus.gfeeds.desktop.in:6
 msgid "@prettyname@"
@@ -577,6 +577,10 @@ msgstr "rss;reader;feed;news;lettore;notizie;"
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:4
 msgid "Feeds"
 msgstr "Feeds"
+
+#: ../data/org.gabmus.gfeeds.appdata.xml.in:5
+msgid "Gabriele Musco"
+msgstr "Gabriele Musco"
 
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:15
 msgid ""
@@ -1067,6 +1071,10 @@ msgstr "Aggiunta traduzione italiana"
 msgid "First release"
 msgstr "Prima release"
 
+#, python-brace-format
+#~ msgid "Errors while parsing feed `{0}`"
+#~ msgstr "Errori nell'analisi del feed `{0}`"
+
 #~ msgid "Use dark theme for reader mode"
 #~ msgstr "Usa tema scuro per la modalità lettura"
 
@@ -1111,9 +1119,6 @@ msgstr "Prima release"
 
 #~ msgid "RSS Content"
 #~ msgstr "Contenuto RSS"
-
-#~ msgid "Gabriele Musco"
-#~ msgstr "Gabriele Musco"
 
 #~ msgid "Select/Unselect all"
 #~ msgstr "Seleziona/Deseleziona tutto"
