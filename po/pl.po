@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gfeeds\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-15 14:44+0200\n"
-"PO-Revision-Date: 2022-05-15 14:45+0200\n"
+"POT-Creation-Date: 2022-06-05 14:08+0200\n"
+"PO-Revision-Date: 2022-06-05 14:10+0200\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <community-poland@mozilla.org>\n"
 "Language: pl\n"
@@ -298,17 +298,17 @@ msgstr[0] "{0} nowy artykuł"
 msgstr[1] "{0} nowe artykuły"
 msgstr[2] "{0} nowych artykułów"
 
-#: ../gfeeds/util/download_manager.py:96
+#: ../gfeeds/util/download_manager.py:102
 #, python-brace-format
 msgid "`{0}`: connection timed out"
 msgstr "„{0}”: połączenie przekroczyło czas oczekiwania"
 
-#: ../gfeeds/util/download_manager.py:105
+#: ../gfeeds/util/download_manager.py:111
 #, python-brace-format
 msgid "`{0}` might not be a valid address"
 msgstr "„{0}” może nie być prawidłowym adresem"
 
-#: ../gfeeds/util/download_manager.py:144
+#: ../gfeeds/util/download_manager.py:150
 #, python-brace-format
 msgid "Error downloading `{0}`, code `{1}`"
 msgstr "Błąd podczas pobierania „{0}”, kod „{1}”"
@@ -337,8 +337,8 @@ msgstr ""
 
 #: ../gfeeds/feed_parser.py:37
 #, python-brace-format
-msgid "Errors while parsing feed `{0}`"
-msgstr "Błędy podczas przetwarzania kanału „{0}”"
+msgid "Errors while parsing feed `{0}`, URL: `{1}`"
+msgstr "Błędy podczas przetwarzania kanału „{0}”, adres URL: „{1}”"
 
 #: ../gfeeds/feed_parser.py:55
 #, python-brace-format
@@ -581,10 +581,6 @@ msgstr ""
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:4
 msgid "Feeds"
 msgstr "Feeds"
-
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:5
-msgid "Gabriele Musco"
-msgstr "Gabriele Musco"
 
 #: ../data/org.gabmus.gfeeds.appdata.xml.in:15
 msgid ""
