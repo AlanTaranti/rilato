@@ -4,14 +4,15 @@
 # Gabriele Musco <emaildigabry@gmail.com>, 2019.
 # Onno Giesmann <nutzer3105@gmail.com>, 2019-2021.
 # Philipp Kiemle <philipp.kiemle@gmail.com>, 2022.
+# Jürgen Benvenuti <gastornis@posteo.org>, 2022.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/gfeeds/issues\n"
-"POT-Creation-Date: 2022-05-15 12:49+0000\n"
-"PO-Revision-Date: 2022-05-24 10:12+0200\n"
-"Last-Translator: Philipp Kiemle <philipp.kiemle@gmail.com>\n"
+"POT-Creation-Date: 2022-06-02 09:20+0000\n"
+"PO-Revision-Date: 2022-06-07 23:33+0200\n"
+"Last-Translator: Jürgen Benvenuti <gastornis@posteo.org>\n"
 "Language-Team: \n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -34,14 +35,14 @@ msgid ""
 "mind."
 msgstr ""
 "Feeds ist ein minimalistisches Anzeigeprogramm für RSS/Atom-"
-"Nachrichtenquellen, der Wert auf Geschwindigkeit und Einfachheit legt."
+"Nachrichtenquellen, das Wert auf Geschwindigkeit und Einfachheit legt."
 
 #: data/org.gabmus.gfeeds.appdata.xml.in:16
 msgid ""
 "It offers a simple user interface that only shows the latest news from your "
 "subscriptions."
 msgstr ""
-"Er hat eine einfach gehaltene Benutzeroberfläche, die nur die neuesten "
+"Es hat eine einfach gehaltene Benutzeroberfläche, die nur die neuesten "
 "Nachrichten aus Ihren Abonnements anzeigt."
 
 #: data/org.gabmus.gfeeds.appdata.xml.in:17
@@ -51,9 +52,9 @@ msgid ""
 "included, built from the one GNOME Web/Epiphany uses."
 msgstr ""
 "Artikel werden standardmäßig in einer Webansicht angezeigt, in der "
-"Javascript deaktiviert ist, um ein schnelleres und weniger verwirrendes "
+"JavaScript deaktiviert ist, um ein schnelleres und weniger aufdringliches "
 "Nutzungserlebnis zu bieten. Es ist auch ein Lesemodus verfügbar, der auf "
-"Grundlage der von GNOME Web / Epiphany verwendeten Funktionen erstellt wurde."
+"Grundlage der von GNOME Web/Epiphany verwendeten Funktionen erstellt wurde."
 
 #: data/org.gabmus.gfeeds.appdata.xml.in:18
 msgid "Feeds can be imported and exported via OPML."
@@ -74,8 +75,8 @@ msgstr ""
 
 #: gfeeds/feed_parser.py:37
 #, python-brace-format
-msgid "Errors while parsing feed `{0}`"
-msgstr "Fehler beim Analysieren der Nachrichtenquelle »{0}«"
+msgid "Errors while parsing feed `{0}`, URL: `{1}`"
+msgstr "Fehler beim Analysieren der Nachrichtenquelle »{0}«, Adresse: »{1}«"
 
 #: gfeeds/feed_parser.py:55
 #, python-brace-format
@@ -97,7 +98,7 @@ msgid ""
 "Do you want to remove them?"
 msgstr ""
 "Es gab Probleme mit einigen Nachrichtenquellen.\n"
-"Möchten Sie sie entfernen?"
+"Möchten Sie diese entfernen?"
 
 #: gfeeds/main_leaflet.py:119
 #, python-brace-format
@@ -163,7 +164,7 @@ msgstr "Fehler: Der angegebene OPML-Pfad existiert nicht"
 #: gfeeds/opml_manager.py:53
 #, python-brace-format
 msgid "Error parsing OPML file `{0}`"
-msgstr "Fehler beim Analysieren der OPML-Datei `{0}`"
+msgstr "Fehler beim Analysieren der OPML-Datei »{0}«"
 
 #: gfeeds/preferences_window.py:22
 msgid "General"
@@ -175,11 +176,11 @@ msgstr "Allgemeine Einstellungen"
 
 #: gfeeds/preferences_window.py:27
 msgid "Show newer articles first"
-msgstr "Neue Artikel zuerst anzeigen"
+msgstr "Neuere Artikel zuerst anzeigen"
 
 #: gfeeds/preferences_window.py:32
 msgid "Open links in your browser"
-msgstr "Links im Browser öffnen"
+msgstr "Verweise im Browser öffnen"
 
 #: gfeeds/preferences_window.py:36
 msgid "Use external video player for YouTube"
@@ -327,7 +328,7 @@ msgstr "Werbeblockierungsliste aktualisieren"
 
 #: gfeeds/preferences_window.py:190
 msgid "Updates automatically every 10 days"
-msgstr "Aktualisiert automatische alle 10 Tage"
+msgstr "Aktualisiert automatisch alle 10 Tage"
 
 #: gfeeds/preferences_window.py:191
 msgid "Update"
@@ -356,7 +357,7 @@ msgstr "Experimentelle GtkListView für Artikelliste"
 
 #: gfeeds/sidebar.py:21
 msgid "Loading feeds..."
-msgstr "Nachrichtenquellen werden geladen …"
+msgstr "Nachrichtenquellen werden geladen …"
 
 #: gfeeds/sidebar_row_popover.py:31 gfeeds/sidebar_row_popover.py:58
 msgid "Mark as unread"
@@ -366,17 +367,17 @@ msgstr "Als ungelesen markieren"
 msgid "Mark as read"
 msgstr "Als gelesen markieren"
 
-#: gfeeds/util/download_manager.py:96
+#: gfeeds/util/download_manager.py:102
 #, python-brace-format
 msgid "`{0}`: connection timed out"
 msgstr "»{0}«: Zeitüberschreitung der Verbindung"
 
-#: gfeeds/util/download_manager.py:105
+#: gfeeds/util/download_manager.py:111
 #, python-brace-format
 msgid "`{0}` might not be a valid address"
 msgstr "»{0}« ist möglicherweise keine gültige Adresse"
 
-#: gfeeds/util/download_manager.py:144
+#: gfeeds/util/download_manager.py:150
 #, python-brace-format
 msgid "Error downloading `{0}`, code `{1}`"
 msgstr "Fehler beim Herunterladen von »{0}«, Code »{1}«"
@@ -384,16 +385,15 @@ msgstr "Fehler beim Herunterladen von »{0}«, Code »{1}«"
 #: gfeeds/util/get_favicon.py:53
 #, python-brace-format
 msgid "Error downloading favicon for `{0}`"
-msgstr "Fehler beim Herunterladen des Favicon für »{0}«"
+msgstr "Fehler beim Herunterladen des Favicons für »{0}«"
 
 #: gfeeds/webview.py:201
 msgid "Link copied to clipboard!"
 msgstr "Verweis in die Zwischenablage kopiert!"
 
-# "feed" wird hier sonst durchgängig als "Feed" übersetzt, außer es bezieht sich ausdrücklich auf RSS. Hier auch entsprechend anpassen? - jb
 #: gfeeds/webview.py:223
 msgid "Feed content not available for this article"
-msgstr "RSS-Inhalt für diesen Artikel nicht verfügbar"
+msgstr "Nachrichtenquellen-Inhalt für diesen Artikel nicht verfügbar"
 
 #~ msgid "Thumbnail"
 #~ msgstr "Vorschau"
