@@ -30,8 +30,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/lxml/lxml/releases/download/lxml-4.8.0/lxml-4.8.0.tar.gz",
-                    "sha256": "f63f62fc60e6228a4ca9abae28228f35e1bd3ce675013d1dfb828688d50c6e23"
+                    "url": "https://github.com/lxml/lxml/releases/download/lxml-4.9.1/lxml-4.9.1.tar.gz",
+                    "sha256": "fe749b052bb7233fe5d072fcb549221a8cb1a16725c47c37e42b0b9cb3ff2c3f"
                 }
             ]
         },
@@ -54,9 +54,9 @@
             "buildsystem": "meson",
             "sources": [
                 {
-                    "type": "git",
-                    "url": "https://gitlab.gnome.org/jwestman/blueprint-compiler",
-                    "commit": "3d4aae79c49751d57a075a8b94f0dc96ac0d5b2f"
+                    "type": "archive",
+                    "url": "https://gitlab.gnome.org/jwestman/blueprint-compiler/-/archive/v0.2.0/blueprint-compiler-v0.2.0.tar.gz",
+                    "sha256": "d4e5444c95e8d0060c819d0ab96f79a7ea2673296be95a2fb00359d1d54a0d83"
                 }
             ]
         },
@@ -77,8 +77,25 @@
             ],
             "modules": [
                 {
+                    "name": "boost",
+                    "buildsystem": "simple",
+                    "sources": [
+                        {
+                            "type": "archive",
+                            "url": "https://downloads.sourceforge.net/boost/boost/1.79.0/boost_1_79_0.tar.bz2",
+                            "sha256": "475d589d51a7f8b3ba2ba4eda022b170e562ca3b760ee922c146b6c65856ef39"
+                        }
+                    ],
+                    "build-commands": [
+                        "./bootstrap.sh --prefix=/app --with-libraries=locale,filesystem,system,date_time,regex,program_options",
+                        "./b2 headers",
+                        "./b2 -j$FLATPAK_BUILDER_N_JOBS install variant=release cxxstd=17 --layout=system"
+                    ]
+                },
+                {
                     "name": "pybind11",
                     "buildsystem": "cmake",
+                    "config-opts": ["-DBUILD_TESTING=false"],
                     "sources": [
                         {
                             "type": "archive",
