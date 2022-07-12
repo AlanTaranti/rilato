@@ -178,14 +178,6 @@ class ConfManager(metaclass=Singleton):
             self.conf = ConfManager.BASE_SCHEMA.copy()
             self.save_conf()
 
-        bl_gsettings = Gio.Settings.new('org.gnome.desktop.wm.preferences')
-        bl = bl_gsettings.get_value('button-layout').get_string()
-        self.wm_decoration_on_left = (
-            'close:' in bl or
-            'maximize:' in bl or
-            'minimize:' in bl
-        )
-
         # font_gsettings = Gio.Settings.new('org.gnome.destkop.interface')
         # self.sans_font = font_gsettings.get_value(
         #     'font-name'
