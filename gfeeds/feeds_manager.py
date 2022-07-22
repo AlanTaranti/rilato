@@ -82,7 +82,7 @@ class FeedsManager(metaclass=Singleton):
             get_cached: bool = False
     ):
         if not refresh:
-            if 'http://' not in uri and 'https://' not in uri:
+            if not (uri.startswith('http://') or uri.startswith('https://')):
                 uri = 'http://' + uri
             if uri in self.confman.conf['feeds'].keys():
                 print(_('Feed {0} exists already, skipping').format(uri))
@@ -92,14 +92,15 @@ class FeedsManager(metaclass=Singleton):
                 return
             self.confman.conf['feeds'][uri] = {}
         download_res = download_feed(uri, get_cached=get_cached)
-        if get_cached and download_res['feedpath'] == 'not_cached':
+        if get_cached and download_res.feedpath == 'not_cached':
             return
         parser = FeedParser()
+        assert(not isinstance(download_res.feedpath, str))
         parser.parse(
-            feedpath=download_res['feedpath'],
-            rss_link=download_res['rss_link'],
-            failed=download_res['failed'],
-            error=download_res['error']
+            feedpath=download_res.feedpath,
+            rss_link=download_res.rss_link,
+            failed=download_res.failed,
+            error=download_res.error
         )
         if parser.is_null:
             feed_uri_from_html = extract_feed_url_from_html(uri)
