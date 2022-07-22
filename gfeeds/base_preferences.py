@@ -249,22 +249,13 @@ class PreferencesFontChooserRow(MActionRow):
         self.font_btn = Gtk.FontButton(
             title=self.title, modal=True, use_size=False,
             use_font=True, font=self.confman.conf[self.conf_key],
-            valign=Gtk.Align.CENTER
+            valign=Gtk.Align.CENTER, level=Gtk.FontChooserLevel.FAMILY
         )
-        self.set_visual_style()
         self.font_btn.connect('font-set', self.on_font_set)
         self.add_suffix(self.font_btn)
         self.set_activatable_widget(self.font_btn)
 
-    def set_visual_style(self):
-        self.font_btn.get_first_child(
-        ).get_child().get_first_child().get_next_sibling().set_visible(False)
-        self.font_btn.get_first_child(
-        ).get_child().get_first_child().set_ellipsize(Pango.EllipsizeMode.END)
-
     def on_font_set(self, *args):
-        self.set_visual_style()
-        # remove the size
         n_font = ' '.join(self.font_btn.get_font().split(' ')[:-1]).strip()
         self.confman.conf[self.conf_key] = n_font
         if self.signal:

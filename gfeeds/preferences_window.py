@@ -4,9 +4,9 @@ from os.path import isfile, abspath, join
 from gi.repository import Gtk, Adw
 from gfeeds.confManager import ConfManager
 from gfeeds.base_preferences import (
-    MPreferencesPage, MPreferencesGroup, PreferencesButtonRow, PreferencesComboRow,
-    PreferencesSpinButtonRow, PreferencesToggleRow, PreferencesEntryRow,
-    PreferencesFontChooserRow
+    MPreferencesPage, MPreferencesGroup, PreferencesButtonRow,
+    PreferencesComboRow, PreferencesSpinButtonRow, PreferencesToggleRow,
+    PreferencesEntryRow, PreferencesFontChooserRow
 )
 from typing import Optional
 
