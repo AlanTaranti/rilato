@@ -40,7 +40,7 @@ message('Looking for dependencies')
 dependency('glib-2.0')
 dependency('gobject-introspection-1.0', version: '>=1.35.9')
 dependency('gtk4', version :'>=4.3.1')
-dependency('libadwaita-1', version :'>=1.0.0.alpha.3')
+dependency('libadwaita-1', version :'>=1.2.alpha')
 
 i18n = import('i18n')
 python = import('python')
