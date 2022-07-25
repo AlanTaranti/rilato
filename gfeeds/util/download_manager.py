@@ -6,7 +6,7 @@ import requests
 from gfeeds.confManager import ConfManager
 from gfeeds.util.sha import shasum
 from syndom import Html
-from typing import Dict, Literal, Optional, Union
+from typing import Literal, Optional, Union
 from gfeeds.util.to_unicode import to_unicode, bytes_to_unicode
 
 confman = ConfManager()
@@ -63,7 +63,9 @@ def extract_feed_url_from_html(link: str) -> Optional[str]:
         res: str = sd_html.rss_url
         if not res:
             return None
-        if res.startswith('/'):
+        if res.startswith('https://') or res.startswith('http://'):
+            return res
+        elif res.startswith('/'):
             parsed = urlparse(link)
             res = f'{parsed.scheme}://{parsed.netloc}{res}'
         else:
