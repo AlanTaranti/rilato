@@ -69,7 +69,7 @@ def extract_feed_url_from_html(link: str) -> Optional[str]:
             parsed = urlparse(link)
             res = f'{parsed.scheme}://{parsed.netloc}{res}'
         else:
-            res = link + ('' if link.endswith('/') else '') + res
+            res = link + ('' if link.endswith('/') else '/') + res
         return res
     except Exception:
         print('Error extracting feed from HTML')
