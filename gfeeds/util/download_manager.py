@@ -1,9 +1,9 @@
 from gettext import gettext as _
 from os.path import isfile
 from pathlib import Path
-from urllib.parse import urlparse
 import requests
 from gfeeds.confManager import ConfManager
+from gfeeds.util.create_full_url import create_full_url
 from gfeeds.util.sha import shasum
 from syndom import Html
 from typing import Literal, Optional, Union
@@ -63,13 +63,7 @@ def extract_feed_url_from_html(link: str) -> Optional[str]:
         res: str = sd_html.rss_url
         if not res:
             return None
-        if res.startswith('https://') or res.startswith('http://'):
-            return res
-        elif res.startswith('/'):
-            parsed = urlparse(link)
-            res = f'{parsed.scheme}://{parsed.netloc}{res}'
-        else:
-            res = link + ('' if link.endswith('/') else '/') + res
+        res = create_full_url(link, res)
         return res
     except Exception:
         print('Error extracting feed from HTML')
