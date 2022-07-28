@@ -82,18 +82,20 @@ class MainLeaflet(Adw.Bin):
 
     @Gtk.Template.Callback()
     def on_leaflet_folded(self, *args):
+        rh = self.right_headerbar.right_headerbar
+        lh = self.left_headerbar.left_headerbar
         if self.leaflet.get_folded():
             self.right_headerbar.back_btn.set_visible(True)
-            self.right_headerbar.right_headerbar.set_show_start_title_buttons(True)
-            self.right_headerbar.right_headerbar.set_show_end_title_buttons(True)
-            self.left_headerbar.left_headerbar.set_show_start_title_buttons(True)
-            self.left_headerbar.left_headerbar.set_show_end_title_buttons(True)
+            rh.set_show_start_title_buttons(True)
+            rh.set_show_end_title_buttons(True)
+            lh.set_show_start_title_buttons(True)
+            lh.set_show_end_title_buttons(True)
         else:
             self.right_headerbar.back_btn.set_visible(False)
-            self.right_headerbar.right_headerbar.set_show_start_title_buttons(False)
-            self.right_headerbar.right_headerbar.set_show_end_title_buttons(True)
-            self.left_headerbar.left_headerbar.set_show_start_title_buttons(True)
-            self.left_headerbar.left_headerbar.set_show_end_title_buttons(False)
+            rh.set_show_start_title_buttons(False)
+            rh.set_show_end_title_buttons(True)
+            lh.set_show_start_title_buttons(True)
+            lh.set_show_end_title_buttons(False)
 
     @Gtk.Template.Callback()
     def on_back_btn_clicked(self, *_):

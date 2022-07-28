@@ -34,9 +34,9 @@ class FeedParser:
             traceback.print_exc()
         if self.sd_feed is None:
             self.is_null = True
-            self.error = _('Errors while parsing feed `{0}`, URL: `{1}`').format(
-                feedpath, rss_link
-            )
+            self.error = _(
+                'Errors while parsing feed `{0}`, URL: `{1}`'
+            ).format(feedpath, rss_link)
             return
         self.rss_link = rss_link or self.sd_feed.get_rss_url()
 

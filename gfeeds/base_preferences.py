@@ -1,5 +1,5 @@
 from gfeeds.confManager import ConfManager
-from gi.repository import Gtk, Adw, Gio, GObject, Pango
+from gi.repository import Gtk, Adw, Gio, GObject
 from typing import Optional, Union, List, Callable
 
 

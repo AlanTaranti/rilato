@@ -3,7 +3,7 @@ from os.path import isfile
 from os import environ as Env
 import json
 from datetime import timedelta
-from gi.repository import GObject, Gio
+from gi.repository import GObject
 from threading import Thread
 from gfeeds.util.singleton import Singleton
 
