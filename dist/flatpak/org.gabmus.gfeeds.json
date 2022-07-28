@@ -18,6 +18,12 @@
         "--filesystem=xdg-config/fontconfig",
         "--persist=xdg-config/fontconfig"
     ],
+    "cleanup": [
+        "/lib/python3.10/site-packages/_pytest",
+        "/lib/python3.10/site-packages/pytest*",
+        "/bin/pytest",
+        "/bin/py.test"
+    ],
     "modules": [
         "python-deps.json",
         {

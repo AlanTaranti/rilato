@@ -17,9 +17,15 @@ readability-lxml = "^0.8.1"
 humanize = "^4.0.0"
 beautifulsoup4 = "^4.11.1"
 lxml = "^4.8.0"
+pytest = "^7.1.2"
 
 [tool.poetry.dev-dependencies]
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+pythonpath = [
+  "."
+]

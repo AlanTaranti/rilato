@@ -61,4 +61,16 @@ subdir('data')
 subdir('bin')
 subdir('po')
 
+# tests
+
+pytest_exe = find_program('pytest', required: false)
+if pytest_exe.found()
+    pytest_tests = [
+        'feed_from_html'
+    ]
+    foreach t : pytest_tests
+        test(t, pytest_exe, args: [meson.project_source_root() + '/test/' + t + '.py'], suite: 'pytest')
+    endforeach
+endif
+
 meson.add_install_script('meson_post_install.py')
