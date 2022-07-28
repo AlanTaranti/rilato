@@ -17,5 +17,5 @@ flatpak:
         RUNTIME_REPO: "https://flathub.org/repo/flathub.flatpakrepo"
         APP_ID: "org.gabmus.gfeeds"
     extends: .flatpak
-    # rules:
-    #     - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
+    rules:
+        - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
