@@ -1,9 +1,11 @@
+from typing import Iterable
 from gi.repository import GLib
 from gettext import gettext as _
 from threading import Thread
 from os.path import isfile
 from xml.sax.saxutils import quoteattr
 from gfeeds.confManager import ConfManager
+from gfeeds.feed import Feed
 from gfeeds.feeds_manager import FeedsManager
 from syndom import Opml
 
@@ -68,10 +70,10 @@ OPML_SUFFIX = '''
 '''
 
 
-def feeds_list_to_opml(feeds):
+def feeds_list_to_opml(feeds: Iterable[Feed]):
     opml_out = OPML_PREFIX
     for f in feeds:
-        categories = confman.conf['feeds'][f.rss_link].get('tags', list())
+        categories = (f.get_conf_dict() or dict()).get('tags', [])
         categories = ','.join(categories)
         opml_out += f'''
             <outline

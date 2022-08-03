@@ -270,7 +270,7 @@ class GFeedsManageFeedsWindow(Adw.Window):
         self.main_box.append(self.flap)
         self.set_content(self.main_box)
 
-        add_accelerators(
+        self.__auto_shortcut_controller = add_accelerators(
             self,
             [Accelerator('Escape', lambda *_: self.close())]
         )

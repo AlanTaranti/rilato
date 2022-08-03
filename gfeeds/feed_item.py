@@ -54,19 +54,19 @@ class FeedItem(GObject.Object):
         super().__init__()
 
     @GObject.Property(type=str)
-    def title(self) -> str:
+    def title(self) -> str:  # type: ignore
         return self.__title
 
     @GObject.Property()
-    def pub_date(self) -> datetime:
+    def pub_date(self) -> datetime:  # type: ignore
         return self.__pub_date
 
     @GObject.Property(type=str)
-    def link(self) -> str:
+    def link(self) -> str:  # type: ignore
         return self.__link
 
     @GObject.Property(type=bool, default=False)
-    def read(self) -> bool:
+    def read(self) -> bool:  # type: ignore
         return self.__read
 
     @read.setter
@@ -74,7 +74,7 @@ class FeedItem(GObject.Object):
         self.__set_read(n_read)
 
     @GObject.Property(type=str)
-    def image_url(self) -> str:
+    def image_url(self) -> str:  # type: ignore
         return self.__image_url
 
     @image_url.setter

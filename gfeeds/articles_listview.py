@@ -22,14 +22,24 @@ class CommonListScrolledWin(Gtk.ScrolledWindow):
         )
 
         # API bindings
-        self.articles_store._bind_api(self)
+        self.empty = self.articles_store.empty
+        self.populate = self.articles_store.populate
+        self.selected_feeds = self.articles_store.selected_feeds
+        self.invalidate_filter = self.articles_store.invalidate_filter
+        self.invalidate_sort = self.articles_store.invalidate_sort
+        self.set_search_term = self.articles_store.set_search_term
+        self.set_selected_feeds = self.articles_store.set_selected_feeds
+        self.selected_feeds = self.articles_store.selected_feeds
+        self.add_new_items = self.articles_store.add_new_items
+        self.remove_items = self.articles_store.remove_items
+        self.set_all_read_state = self.articles_store.set_all_read_state
+        self.all_items_changed = self.articles_store.all_items_changed
 
     def shutdown_thread_pool(self):
         self.fetch_image_thread_pool.shutdown(wait=False, cancel_futures=True)
 
     def __del__(self):
         self.shutdown_thread_pool()
-        super().__del__()
 
 
 class ArticlesListView(CommonListScrolledWin):

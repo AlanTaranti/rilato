@@ -19,6 +19,7 @@ class Feed(GObject.Object):
     __link = ''
     __description = ''
     __image_url = ''
+    rss_link = ''
 
     def __init__(self, tag_store: TagStore):
         super().__init__()
@@ -27,6 +28,9 @@ class Feed(GObject.Object):
         self.__unread_count = 0
         self.tags = list()
         self.items = dict()
+
+    def get_conf_dict(self) -> Optional[dict]:
+        return self.confman.conf['feeds'].get(self.rss_link, None)
 
     def populate(self, parser: FeedParser):
         self.rss_link = parser.rss_link
@@ -58,12 +62,11 @@ class Feed(GObject.Object):
                 self.confman.save_conf()
 
         if self.rss_link in self.confman.conf['feeds']:
-            feed_conf = self.confman.conf['feeds'][self.rss_link]
-            if 'tags' in feed_conf:
-                for tag_name in feed_conf['tags']:
-                    tag_obj = self.tag_store.get_tag(tag_name)
-                    if tag_obj is not None and tag_obj not in self.tags:
-                        self.tags.append(tag_obj)
+            feed_conf = self.get_conf_dict()
+            for tag_name in (feed_conf or dict()).get('tags', []):
+                tag_obj = self.tag_store.get_tag(tag_name)
+                if tag_obj is not None and tag_obj not in self.tags:
+                    self.tags.append(tag_obj)
 
         # Set property, trigger signal (avoiding excess signals during init)
         if unread_count != self.__unread_count:
@@ -72,19 +75,19 @@ class Feed(GObject.Object):
             GLib.idle_add(do)
 
     @GObject.Property(type=str)
-    def title(self) -> str:
+    def title(self) -> str:  # type: ignore
         return self.__title
 
     @GObject.Property(type=str)
-    def link(self) -> str:
+    def link(self) -> str:  # type: ignore
         return self.__link
 
     @GObject.Property(type=str)
-    def description(self) -> str:
+    def description(self) -> str:  # type: ignore
         return self.__description
 
     @GObject.Property(type=str)
-    def image_url(self) -> Optional[str]:
+    def image_url(self) -> Optional[str]:  # type: ignore
         return self.__image_url
 
     @image_url.setter
@@ -92,7 +95,7 @@ class Feed(GObject.Object):
         self.__image_url = n_image_url
 
     @GObject.Property(type=int, default=0)
-    def unread_count(self) -> int:
+    def unread_count(self) -> int:  # type: ignore
         return self.__unread_count
 
     @unread_count.setter

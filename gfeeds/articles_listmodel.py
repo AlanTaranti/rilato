@@ -141,17 +141,3 @@ class ArticlesListModel(Gtk.SortListModel):
     def set_selected_feeds(self, n_feeds_l: List[str]):
         self.selected_feeds = n_feeds_l
         self.invalidate_filter()
-
-    def _bind_api(self, target):
-        target.empty = self.empty
-        target.populate = self.populate
-        target.selected_feeds = self.selected_feeds
-        target.invalidate_filter = self.invalidate_filter
-        target.invalidate_sort = self.invalidate_sort
-        target.set_search_term = self.set_search_term
-        target.set_selected_feeds = self.set_selected_feeds
-        target.selected_feeds = self.selected_feeds
-        target.add_new_items = self.add_new_items
-        target.remove_items = self.remove_items
-        target.set_all_read_state = self.set_all_read_state
-        target.all_items_changed = self.all_items_changed
