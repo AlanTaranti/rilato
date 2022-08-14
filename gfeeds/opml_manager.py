@@ -70,20 +70,28 @@ OPML_SUFFIX = '''
 '''
 
 
+def __outline(
+        title: str, text: str, xml_url: str, html_url: str, category: str
+) -> str:
+    return (
+        '<outline type=rss '
+        f'title={quoteattr(title)} '
+        f'text={quoteattr(text)} '
+        f'xmlUrl={quoteattr(xml_url)} '
+        f'htmlUrl={quoteattr(html_url)} '
+        f'category={quoteattr(category)} '
+        '/>'
+    )
+
+
 def feeds_list_to_opml(feeds: Iterable[Feed]):
     opml_out = OPML_PREFIX
     for f in feeds:
         categories = (f.get_conf_dict() or dict()).get('tags', [])
         categories = ','.join(categories)
-        opml_out += f'''
-            <outline
-                title={quoteattr(f.title)}
-                text={quoteattr(f.description)}
-                type="rss"
-                xmlUrl={quoteattr(f.rss_link)}
-                htmlUrl={quoteattr(f.link)}
-                category={quoteattr(categories)}
-            />
-        '''
+        opml_out += '    ' + __outline(
+            f.title, f.description, f.rss_link, f.link,  # type: ignore
+            categories
+        )
     opml_out += OPML_SUFFIX
     return opml_out

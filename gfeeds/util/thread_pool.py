@@ -1,5 +1,5 @@
 import threading
-from typing import Any, Callable, List
+from typing import Any, Callable, Iterable
 from gi.repository import GLib
 
 
@@ -8,9 +8,9 @@ class ThreadPool:
             self,
             max_threads: int,
             worker_func: Callable,
-            worker_func_args_l: List[Any],
+            worker_func_args_l: Iterable[Iterable[Any]],
             final_callback: Callable,
-            final_callback_args: List[Any]
+            final_callback_args: Iterable[Any]
     ):
         self.worker_func = worker_func
         self.worker_func_args_l = worker_func_args_l

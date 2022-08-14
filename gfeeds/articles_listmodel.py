@@ -90,11 +90,11 @@ class ArticlesListModel(Gtk.SortListModel):
         # equal (unused) -> 0
         if self.confman.conf['new_first']:
             return (
-                -1 if item1.pub_date > item2.pub_date
+                -1 if item1.pub_date > item2.pub_date  # type: ignore
                 else 1
             )
         return (
-            -1 if item1.pub_date < item2.pub_date
+            -1 if item1.pub_date < item2.pub_date  # type: ignore
             else 1
         )
 

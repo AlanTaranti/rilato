@@ -31,16 +31,16 @@ class AddFeedPopover(Gtk.Popover):
         relative_to.set_popover(self)
 
     @Gtk.Template.Callback()
-    def on_url_entry_changed(self, *_):
+    def on_url_entry_changed(self, *__):
         self.already_subscribed_revealer.set_reveal_child(False)
 
     @Gtk.Template.Callback()
-    def on_url_entry_activate(self, *_):
+    def on_url_entry_activate(self, *__):
         if self.confirm_btn.get_sensitive():
             self.on_confirm_btn_clicked(self.confirm_btn)
 
     @Gtk.Template.Callback()
-    def on_confirm_btn_clicked(self, btn):
+    def on_confirm_btn_clicked(self, __):
         url = self.url_entry.get_text().strip()
         if not url:
             return
@@ -81,7 +81,7 @@ class RightHeaderbar(Gtk.WindowHandle):
         self.on_zoom_changed(None, self.confman.conf['webview_zoom'])
 
     @GObject.Property(type=GFeedsWebView, default=None, nick='webview')
-    def webview(self) -> GFeedsWebView:
+    def webview(self) -> GFeedsWebView:  # type: ignore
         return self.__webview
 
     @webview.setter
@@ -93,28 +93,28 @@ class RightHeaderbar(Gtk.WindowHandle):
         self.__webview.connect('zoom_changed', self.on_zoom_changed)
 
     @Gtk.Template.Callback()
-    def on_zoom_in_btn_clicked(self, *_):
+    def on_zoom_in_btn_clicked(self, *__):
         if self.webview is None:
             return
         self.webview.key_zoom_in()
 
     @Gtk.Template.Callback()
-    def on_zoom_out_btn_clicked(self, *_):
+    def on_zoom_out_btn_clicked(self, *__):
         if self.webview is None:
             return
         self.webview.key_zoom_out()
 
     @Gtk.Template.Callback()
-    def on_zoom_reset_btn_clicked(self, *_):
+    def on_zoom_reset_btn_clicked(self, *__):
         if self.webview is None:
             return
         self.webview.key_zoom_reset()
 
     @Gtk.Template.Callback()
-    def on_back_btn_clicked(self, *_):
+    def on_back_btn_clicked(self, *__):
         self.emit('go_back', '')
 
-    def on_zoom_changed(self, caller, n_zoom: float):
+    def on_zoom_changed(self, __, n_zoom: float):
         self.zoom_reset_btn.set_label(f'{round(n_zoom*100)}%')
 
     def set_view_mode_icon(self, mode):
@@ -165,7 +165,7 @@ class LeftHeaderbar(Gtk.WindowHandle):
     @GObject.Property(
         type=Gtk.SearchBar, default=None, nick='searchbar'
     )
-    def searchbar(self) -> Gtk.SearchBar:
+    def searchbar(self) -> Gtk.SearchBar:  # type: ignore
         return self.__searchbar
 
     @searchbar.setter
@@ -173,13 +173,13 @@ class LeftHeaderbar(Gtk.WindowHandle):
         self.__searchbar = sb
 
     @Gtk.Template.Callback()
-    def on_refresh_btn_clicked(self, *_):
+    def on_refresh_btn_clicked(self, *__):
         self.feedman.refresh()
 
     @Gtk.Template.Callback()
     def show_errors_dialog(self, *__):
         dialog = ScrolledDialog(
-            transient_for=self.get_root(),
+            transient_for=self.get_root(),  # type: ignore
             title=_(
                 'There were problems with some feeds.\n'
                 'Do you want to remove them?'

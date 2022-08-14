@@ -1,6 +1,7 @@
 from typing import List, Union
 from gi.repository import GObject, Gtk, Gio
 from gfeeds.confManager import ConfManager
+from gfeeds.feed import Feed
 
 
 class TagObj(GObject.Object):
@@ -16,7 +17,7 @@ class TagObj(GObject.Object):
         self.__unread_count = 0
 
     @GObject.Property(type=int)
-    def unread_count(self) -> int:
+    def unread_count(self) -> int:  # type: ignore
         return self.__unread_count
 
     @unread_count.setter
@@ -53,13 +54,13 @@ class TagStore(Gtk.FilterListModel):
         self.confman = ConfManager()
         self.confman.connect(
                 'gfeeds_show_empty_feeds_changed',
-                lambda *args: self.invalidate_filter()
+                lambda *_: self.invalidate_filter()
         )
         # Hiding read articles can result in empty feeds which should
         # be hidden
         self.confman.connect(
                 'gfeeds_show_read_changed',
-                lambda *args: self.invalidate_filter()
+                lambda *_: self.invalidate_filter()
         )
         super().__init__(model=self.sort_store, filter=self.filter)
         self.populate()
@@ -70,7 +71,7 @@ class TagStore(Gtk.FilterListModel):
             n_tag = TagObj(tag)
             self.list_store.append(n_tag)
             n_tag.connect(
-                'empty_changed', lambda *args: self.invalidate_filter()
+                'empty_changed', lambda *_: self.invalidate_filter()
             )
 
     def _sort_func(self, t1: TagObj, t2: TagObj, *_) -> int:
@@ -80,10 +81,9 @@ class TagStore(Gtk.FilterListModel):
         return self.list_store.remove_all()
 
     def add_tag(
-            self, n_tag: Union[TagObj, str], target_feeds: List[str] = []
+            self, n_tag_: Union[TagObj, str], target_feeds: List[Feed] = []
     ):
-        if isinstance(n_tag, str):
-            n_tag = TagObj(n_tag)
+        n_tag = TagObj(n_tag_) if isinstance(n_tag_, str) else n_tag_
         existing_tag = self.get_tag(n_tag.name)
         if existing_tag:
             n_tag = existing_tag
@@ -97,7 +97,7 @@ class TagStore(Gtk.FilterListModel):
                 feed.tags.append(n_tag)
                 n_tag.unread_count += feed.unread_count
         n_tag.connect(
-            'empty_changed', lambda *args: self.invalidate_filter()
+            'empty_changed', lambda *_: self.invalidate_filter()
         )
 
         self.confman.add_tag(n_tag.name, target_feed_urls)
@@ -114,7 +114,7 @@ class TagStore(Gtk.FilterListModel):
                 self.remove_by_index(i)
                 return
 
-    def _filter_func(self, item: TagObj, *args) -> bool:
+    def _filter_func(self, item: TagObj, *_) -> bool:
         if not self.confman.conf['show_empty_feeds'] and \
                 not self.confman.conf['show_read_items']:
             return item.unread_count > 0

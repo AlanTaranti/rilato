@@ -1,3 +1,4 @@
+from typing import Any, Callable, Optional
 from gi.repository import Gtk
 from concurrent.futures import ThreadPoolExecutor
 from gfeeds.feeds_manager import FeedsManager
@@ -98,17 +99,19 @@ class ArticlesListView(CommonListScrolledWin):
         feed_item.read = True
 
     def _on_setup_listitem(
-            self, factory: Gtk.ListItemFactory, list_item: Gtk.ListItem
+            self, _: Gtk.ListItemFactory, list_item: Gtk.ListItem
     ):
         row_w = SidebarRow(self.fetch_image_thread_pool)
         list_item.set_child(row_w)
-        list_item.row_w = row_w  # otherwise it gets garbage collected
+        # otherwise row gets garbage collected
+        list_item.row_w = row_w  # type: ignore
 
     def _on_bind_listitem(
-            self, factory: Gtk.ListItemFactory, list_item: Gtk.ListItem
+            self, _: Gtk.ListItemFactory, list_item: Gtk.ListItem
     ):
-        row_w = list_item.get_child()
-        row_w.set_feed_item(list_item.get_item())
+        row_w: SidebarRow = list_item.get_child()  # type: ignore
+        feed_item: FeedItem = list_item.get_item()  # type: ignore
+        row_w.set_feed_item(feed_item)
 
 
 class ArticlesListBox(CommonListScrolledWin):
@@ -123,16 +126,16 @@ class ArticlesListBox(CommonListScrolledWin):
         self.listbox.bind_model(self.articles_store, self._create_row, None)
         self.set_child(self.listbox)
 
-    def connect_activate(self, func):
+    def connect_activate(self, func: Callable[[Optional[FeedItem]], Any]):
         self.listbox.connect(
             'row-activated',
-            lambda lb, row, *args:
+            lambda _, row, *__:
                 func(row.get_child().feed_item)
                 if row else func(None)
         )
 
     def _create_row(
-            self, feed_item: FeedItem, *args
+            self, feed_item: FeedItem, *_
     ) -> Gtk.Widget:
         row_w = SidebarRow(self.fetch_image_thread_pool)
         row_w.set_feed_item(feed_item)
@@ -153,7 +156,7 @@ class ArticlesListBox(CommonListScrolledWin):
             return 0
         return index
 
-    def select_next(self, *args):
+    def select_next(self, *_):
         index = self.get_selected_index()
         if index < 0:
             index = -1  # so that 0 is selected
@@ -163,7 +166,7 @@ class ArticlesListBox(CommonListScrolledWin):
         self.listbox.select_row(target)
         target.activate()
 
-    def select_prev(self, *args):
+    def select_prev(self, *_):
         index = self.get_selected_index()
         if index <= 0:
             index = 1  # so that 0 is selected

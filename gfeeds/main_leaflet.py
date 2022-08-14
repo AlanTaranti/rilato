@@ -1,5 +1,6 @@
 from gettext import ngettext
 from functools import reduce
+from typing import Optional
 from gfeeds.filter_view import FilterView
 from gfeeds.feed_item import FeedItem
 from gfeeds.stack_with_empty_state import StackWithEmptyState
@@ -127,7 +128,7 @@ class MainLeaflet(Adw.Bin):
             ))
             self.get_root().app.send_notification('new_articles', notif)
 
-    def on_sidebar_row_activated(self, feed_item: FeedItem):
+    def on_sidebar_row_activated(self, feed_item: Optional[FeedItem]):
         self.feedman.article_store.set_selected_article(feed_item)
         if not feed_item:
             return
@@ -135,7 +136,7 @@ class MainLeaflet(Adw.Bin):
         if (
                 self.confman.conf['open_youtube_externally'] and
                 reduce(or_, [
-                    f'://{pfx}' in feed_item.link
+                    f'://{pfx}' in feed_item.link  # type: ignore
                     for pfx in [
                         p + 'youtube.com'
                         for p in ('', 'www.', 'm.')

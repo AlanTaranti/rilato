@@ -1,11 +1,11 @@
-from typing import Optional
+from typing import List, Optional
 from gi.repository import GObject, GLib
 from datetime import datetime
-from gfeeds.feed_parser import FeedParser
-from gfeeds.tag_store import TagStore
 from gfeeds.confManager import ConfManager
 from gfeeds.feed_item import FeedItem
 import pytz
+import gfeeds.feeds_manager as feeds_manager
+from syndom import Feed as SynDomFeed, FeedItem as SynDomFeedItem
 
 
 class Feed(GObject.Object):
@@ -19,34 +19,50 @@ class Feed(GObject.Object):
     __link = ''
     __description = ''
     __image_url = ''
+    __unread_count = 0
     rss_link = ''
+    tags = list()
+    items = dict()
+    sd_feed = None
+    favicon_path = ''
+    init_time = None
 
-    def __init__(self, tag_store: TagStore):
+    def __init__(
+        self, rss_link: str, title: str, link: str, description: str,
+        image_url: Optional[str], favicon_path: Optional[str],
+        sd_feed: SynDomFeed, raw_entries: List[SynDomFeedItem]
+    ):
         super().__init__()
         self.confman = ConfManager()
-        self.tag_store = tag_store
+        self.feedman = feeds_manager.FeedsManager()
+        self.tag_store = self.feedman.tag_store
         self.__unread_count = 0
         self.tags = list()
         self.items = dict()
+        self.update(
+            rss_link, title, link, description, image_url, favicon_path,
+            sd_feed, raw_entries
+        )
 
-    def get_conf_dict(self) -> Optional[dict]:
-        return self.confman.conf['feeds'].get(self.rss_link, None)
-
-    def populate(self, parser: FeedParser):
-        self.rss_link = parser.rss_link
-        self.__title = parser.title
-        self.__link = parser.link
-        self.__description = parser.description
-        self.__image_url = parser.image_url
-        self.favicon_path = parser.favicon_path
-        self.sd_feed = parser.sd_feed
+    def update(
+        self, rss_link: str, title: str, link: str, description: str,
+        image_url: Optional[str], favicon_path: Optional[str],
+        sd_feed: SynDomFeed, raw_entries: List[SynDomFeedItem]
+    ):
+        self.rss_link = rss_link
+        self.__title = title
+        self.__link = link
+        self.__description = description
+        self.__image_url = image_url
+        self.favicon_path = favicon_path
+        self.sd_feed = sd_feed
 
         unread_count = 0
         self.init_time = pytz.UTC.localize(datetime.utcnow())
-        for entry in parser.raw_entries:
+        for entry in raw_entries:
             n_item = FeedItem(entry, self)
             uid = self.rss_link + n_item.identifier
-            item_age = self.init_time - n_item.pub_date
+            item_age = self.init_time - n_item.pub_date  # type: ignore
             valid_age = item_age <= self.confman.max_article_age
             if uid in self.items:
                 if not valid_age:
@@ -62,8 +78,8 @@ class Feed(GObject.Object):
                 self.confman.save_conf()
 
         if self.rss_link in self.confman.conf['feeds']:
-            feed_conf = self.get_conf_dict()
-            for tag_name in (feed_conf or dict()).get('tags', []):
+            feed_conf = (self.get_conf_dict() or dict())
+            for tag_name in feed_conf.get('tags', []):
                 tag_obj = self.tag_store.get_tag(tag_name)
                 if tag_obj is not None and tag_obj not in self.tags:
                     self.tags.append(tag_obj)
@@ -73,6 +89,9 @@ class Feed(GObject.Object):
             def do():
                 self.unread_count = unread_count
             GLib.idle_add(do)
+
+    def get_conf_dict(self) -> Optional[dict]:
+        return self.confman.conf['feeds'].get(self.rss_link, None)
 
     @GObject.Property(type=str)
     def title(self) -> str:  # type: ignore
