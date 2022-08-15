@@ -1,6 +1,8 @@
-from typing import Iterable
+from typing import Iterable, TYPE_CHECKING
 from xml.sax.saxutils import quoteattr
-from gfeeds.feed import Feed
+
+if TYPE_CHECKING:
+    from gfeeds.feed import Feed
 
 
 OPML_PREFIX = '''<?xml version="1.0" encoding="UTF-8"?>
@@ -11,17 +13,15 @@ OPML_PREFIX = '''<?xml version="1.0" encoding="UTF-8"?>
   <body>
 '''
 
-OPML_SUFFIX = '''
-  </body>
-</opml>
-'''
+OPML_SUFFIX = '''  </body>
+</opml>'''
 
 
 def __outline(
         title: str, text: str, xml_url: str, html_url: str, category: str
 ) -> str:
     return (
-        '<outline type=rss '
+        '<outline type="rss" '
         f'title={quoteattr(title)} '
         f'text={quoteattr(text)} '
         f'xmlUrl={quoteattr(xml_url)} '
@@ -31,7 +31,7 @@ def __outline(
     )
 
 
-def feeds_list_to_opml(feeds: Iterable[Feed]):
+def feeds_list_to_opml(feeds: Iterable['Feed']):
     opml_out = OPML_PREFIX
     for f in feeds:
         categories = (f.get_conf_dict() or dict()).get('tags', [])
@@ -39,6 +39,6 @@ def feeds_list_to_opml(feeds: Iterable[Feed]):
         opml_out += '    ' + __outline(
             f.title, f.description, f.rss_link, f.link,  # type: ignore
             categories
-        )
+        ) + '\n'
     opml_out += OPML_SUFFIX
     return opml_out
