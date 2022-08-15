@@ -8,11 +8,8 @@ from gfeeds.confManager import ConfManager
 from gfeeds.feeds_manager import FeedsManager
 from gfeeds.app_window import GFeedsAppWindow
 from gfeeds.preferences_window import show_preferences_window
-from gfeeds.opml_manager import (
-    feeds_list_to_opml,
-    add_feeds_from_opml,
-    opml_to_rss_list
-)
+from gfeeds.util.opml_generator import feeds_list_to_opml
+from gfeeds.util.opml_parser import opml_to_rss_list
 from gfeeds.opml_file_chooser import (
     GFeedsOpmlFileChooserDialog,
     GFeedsOpmlSavePathChooserDialog
@@ -178,7 +175,7 @@ class GFeedsApplication(BaseApp):
 
         def on_response(_dialog, res):
             if res == Gtk.ResponseType.ACCEPT:
-                add_feeds_from_opml(dialog.get_file().get_path())
+                self.feedman.import_opml(dialog.get_file().get_path())
 
         dialog.connect('response', on_response)
         dialog.show()
@@ -236,7 +233,7 @@ class GFeedsApplication(BaseApp):
                         def on_response(_dialog, res):
                             _dialog.close()
                             if res == Gtk.ResponseType.YES:
-                                add_feeds_from_opml(abspath)
+                                self.feedman.import_opml(abspath)
 
                         dialog.connect('response', on_response)
                         dialog.present()

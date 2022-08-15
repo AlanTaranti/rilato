@@ -1,8 +1,10 @@
+from pathlib import Path
 from threading import Thread, Event
 from gettext import gettext as _
 from typing import List, Union
 from gi.repository import GLib, GObject
 from gfeeds.articles_listmodel import ArticlesListModel
+from gfeeds.util.opml_parser import opml_to_rss_list
 from gfeeds.util.singleton import Singleton
 from gfeeds.confManager import ConfManager
 from gfeeds.feed import Feed
@@ -270,3 +272,20 @@ class FeedsManager(metaclass=Singleton):
         self.article_store.set_selected_feeds(n_selected_feeds)
         self.article_store.remove_items(articles_to_rm)
         self.confman.save_conf()
+
+    def import_opml(self, opml_path: Union[str, Path]):
+
+        def af(p: Union[str, Path]):
+            n_feeds_urls_l = opml_to_rss_list(p)
+            for tag in [t for f in n_feeds_urls_l for t in f['tags']]:
+                GLib.idle_add(self.tag_store.add_tag, tag)
+            for f in n_feeds_urls_l:
+                url = f['feed']
+                if url not in self.confman.conf['feeds'].keys():
+                    self.confman.conf['feeds'][url] = {'tags': f['tags']}
+            self.confman.save_conf()
+            GLib.idle_add(self.refresh)
+
+        Thread(
+            target=af, args=(opml_path,), daemon=True
+        ).start()
