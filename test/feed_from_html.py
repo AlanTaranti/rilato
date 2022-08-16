@@ -41,7 +41,7 @@ def test_rss_https(monkeypatch):
         'application/rss+xml', 'https://fake0.example.com/blog/rss.xml'
     ))
     res = extract_feed_url_from_html('https://fake0.example.com/blog')
-    assert(res == 'https://fake0.example.com/blog/rss.xml')
+    assert res == 'https://fake0.example.com/blog/rss.xml'
 
 
 def test_rss_abspath(monkeypatch):
@@ -49,7 +49,7 @@ def test_rss_abspath(monkeypatch):
         'application/rss+xml', '/blog/rss.xml'
     ))
     res = extract_feed_url_from_html('https://fake1.example.com/blog')
-    assert(res == 'https://fake1.example.com/blog/rss.xml')
+    assert res == 'https://fake1.example.com/blog/rss.xml'
 
 
 def test_rss_abspath_different_dir(monkeypatch):
@@ -57,7 +57,7 @@ def test_rss_abspath_different_dir(monkeypatch):
         'application/rss+xml', '/another/rss.xml'
     ))
     res = extract_feed_url_from_html('https://fake2.example.com/blog')
-    assert(res == 'https://fake2.example.com/another/rss.xml')
+    assert res == 'https://fake2.example.com/another/rss.xml'
 
 
 def test_rss_relpath(monkeypatch):
@@ -65,7 +65,7 @@ def test_rss_relpath(monkeypatch):
         'application/rss+xml', 'rss.xml'
     ))
     res = extract_feed_url_from_html('https://fake3.example.com/blog')
-    assert(res == 'https://fake3.example.com/blog/rss.xml')
+    assert res == 'https://fake3.example.com/blog/rss.xml'
 
 
 def test_rss_relpath_trailing_slash(monkeypatch):
@@ -73,7 +73,7 @@ def test_rss_relpath_trailing_slash(monkeypatch):
         'application/rss+xml', 'rss.xml'
     ))
     res = extract_feed_url_from_html('https://fake4.example.com/blog/')
-    assert(res == 'https://fake4.example.com/blog/rss.xml')
+    assert res == 'https://fake4.example.com/blog/rss.xml'
 
 
 def test_fail(monkeypatch):
@@ -81,4 +81,4 @@ def test_fail(monkeypatch):
         '<link rel="alternate" type="{0}" href="{1}">', '')
     )
     res = extract_feed_url_from_html('https://fake5.example.com/blog')
-    assert(res is None)
+    assert res is None

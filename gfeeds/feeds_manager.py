@@ -96,7 +96,7 @@ class FeedsManager(metaclass=Singleton):
         download_res = download_feed(uri, get_cached=get_cached)
         if get_cached and download_res.feedpath == 'not_cached':
             return
-        assert(not isinstance(download_res.feedpath, str))
+        assert not isinstance(download_res.feedpath, str)
         parser_res = parse_feed(
             feedpath=download_res.feedpath,
             rss_link_=download_res.rss_link,

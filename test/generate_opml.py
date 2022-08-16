@@ -54,4 +54,4 @@ def __configure_mock():
 def test_generate_opml():
     __configure_mock()
     opml = feeds_list_to_opml(MOCK_FEEDS)
-    assert(opml == EXPECTED_OPML)
+    assert opml == EXPECTED_OPML

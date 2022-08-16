@@ -39,8 +39,8 @@ class FeedParserRes:
 
     @property
     def feed_identifier(self) -> str:
-        assert(self.rss_link)
-        assert(self.title)
+        assert self.rss_link
+        assert self.title
         return self.rss_link + self.title
 
 
