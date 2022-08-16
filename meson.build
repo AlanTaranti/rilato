@@ -49,9 +49,9 @@ if not py_installation.found()
     error('No valid python3 binary found')
 endif
 gnome = import('gnome')
-prefix = get_option('prefix') # should be /usr
-bindir = get_option('bindir') # should be bin
-datadir = get_option('datadir') # should be /usr/share
+prefix = get_option('prefix')  # should be /usr
+bindir = get_option('bindir')  # should be bin
+datadir = get_option('datadir')  # should be /usr/share
 pkgdatadir = join_paths(prefix, datadir, meson.project_name())
 pythondir = py_installation.get_install_dir()
 localedir = join_paths(prefix, get_option('localedir'))
@@ -65,12 +65,7 @@ subdir('po')
 
 pytest_exe = find_program('pytest', required: false)
 if pytest_exe.found()
-    pytest_tests = [
-        'feed_from_html'
-    ]
-    foreach t : pytest_tests
-        test(t, pytest_exe, args: [meson.project_source_root() + '/test/' + t + '.py'], suite: 'pytest')
-    endforeach
+    test('pytest', pytest_exe, args: [meson.project_source_root() + '/test'], suite: 'pytest')
 endif
 
 meson.add_install_script('meson_post_install.py')

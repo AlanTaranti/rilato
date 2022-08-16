@@ -277,12 +277,12 @@ class FeedsManager(metaclass=Singleton):
 
         def af(p: Union[str, Path]):
             n_feeds_urls_l = opml_to_rss_list(p)
-            for tag in [t for f in n_feeds_urls_l for t in f['tags']]:
+            for tag in [t for f in n_feeds_urls_l for t in f.tags]:
                 GLib.idle_add(self.tag_store.add_tag, tag)
             for f in n_feeds_urls_l:
-                url = f['feed']
+                url = f.feed
                 if url not in self.confman.conf['feeds'].keys():
-                    self.confman.conf['feeds'][url] = {'tags': f['tags']}
+                    self.confman.conf['feeds'][url] = {'tags': f.tags}
             self.confman.save_conf()
             GLib.idle_add(self.refresh)
 

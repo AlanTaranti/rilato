@@ -74,12 +74,12 @@ class GFeedsApplication(BaseApp):
                 ),
                 AppAction(
                     name='settings',
-                    func=lambda *args: show_preferences_window(self.window),
+                    func=lambda *__: show_preferences_window(self.window),
                     accel='<Primary>comma'
                 ),
                 AppAction(
                     name='shortcuts',
-                    func=lambda *args: show_shortcuts_window(self.window),
+                    func=lambda *__: show_shortcuts_window(self.window),
                     accel='<Primary>question'
                 ),
                 AppAction(
@@ -120,20 +120,20 @@ class GFeedsApplication(BaseApp):
             is_startup=True
         )
 
-    def open_media_player(self, *args):
+    def open_media_player(self, *__):
         self.window.leaflet.webview.action_open_media_player()
 
-    def open_externally(self, *args):
+    def open_externally(self, *__):
         self.window.leaflet.webview.open_externally()
 
-    def copy_link(self, *args):
+    def copy_link(self, *__):
         Gdk.Display.get_default().get_clipboard().set(
             self.window.leaflet.webview.uri
         )
         self.window.leaflet.webview.show_notif()
 
     def view_mode_change(
-            self, action: Gio.SimpleAction, target: GLib.Variant, *args
+            self, action: Gio.SimpleAction, target: GLib.Variant, *__
     ):
         action.change_state(target)
         target_s = str(target).strip("'")
@@ -143,14 +143,14 @@ class GFeedsApplication(BaseApp):
         self.confman.conf['default_view'] = target_s
         self.confman.save_conf()
 
-    def show_read_items(self, action: Gio.SimpleAction, *args):
+    def show_read_items(self, action: Gio.SimpleAction, *__):
         action.change_state(
             GLib.Variant.new_boolean(not action.get_state().get_boolean())
         )
         self.confman.conf['show_read_items'] = action.get_state().get_boolean()
         self.confman.emit('gfeeds_show_read_changed', '')
 
-    def show_empty_feeds(self, action: Gio.SimpleAction, *args):
+    def show_empty_feeds(self, action: Gio.SimpleAction, *__):
         action.change_state(
             GLib.Variant.new_boolean(not action.get_state().get_boolean())
         )
@@ -158,32 +158,32 @@ class GFeedsApplication(BaseApp):
             action.get_state().get_boolean()
         self.confman.emit('gfeeds_show_empty_feeds_changed', '')
 
-    def set_all_read(self, *args):
+    def set_all_read(self, *__):
         self.window.leaflet.sidebar.listview_sw.set_all_read_state(True)
 
-    def set_all_unread(self, *args):
+    def set_all_unread(self, *__):
         self.window.leaflet.sidebar.listview_sw.set_all_read_state(False)
 
-    def manage_feeds(self, *args):
+    def manage_feeds(self, *__):
         mf_win = GFeedsManageFeedsWindow(
             self.window
         )
         mf_win.present()
 
-    def import_opml(self, *args):
+    def import_opml(self, *__):
         dialog = GFeedsOpmlFileChooserDialog(self.window)
 
-        def on_response(_dialog, res):
+        def on_response(__, res):
             if res == Gtk.ResponseType.ACCEPT:
                 self.feedman.import_opml(dialog.get_file().get_path())
 
         dialog.connect('response', on_response)
         dialog.show()
 
-    def export_opml(self, *args):
+    def export_opml(self, *__):
         dialog = GFeedsOpmlSavePathChooserDialog(self.window)
 
-        def on_response(_dialog, res):
+        def on_response(__, res):
             if res == Gtk.ResponseType.ACCEPT:
                 save_path = dialog.get_file().get_path()
                 if not save_path.lower().endswith('.opml'):
@@ -197,7 +197,7 @@ class GFeedsApplication(BaseApp):
         dialog.connect('response', on_response)
         dialog.show()
 
-    def show_about_dialog(self, *args):
+    def show_about_dialog(self, *__):
         about_builder = Gtk.Builder.new_from_resource(
             '/org/gabmus/gfeeds/aboutdialog.ui'
         )
@@ -206,7 +206,7 @@ class GFeedsApplication(BaseApp):
         dialog.set_transient_for(self.window)
         dialog.present()
 
-    def on_destroy_window(self, *args):
+    def on_destroy_window(self, *__):
         self.window.on_destroy()
         self.quit()
 
@@ -225,7 +225,7 @@ class GFeedsApplication(BaseApp):
                             transient_for=self.window,
                             title=_('Do you want to import these feeds?'),
                             message=escape('\n'.join([
-                                f['feed']
+                                f.feed
                                 for f in opml_to_rss_list(abspath)
                             ]))
                         )

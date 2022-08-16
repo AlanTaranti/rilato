@@ -1,17 +1,29 @@
+from functools import reduce
+from operator import and_
 from pathlib import Path
 from gettext import gettext as _
 from syndom import Opml
-from typing import Dict, List, Literal, Union
+from typing import List, Union
+
+
+class FeedImportData:
+    def __init__(self, feed: str, tags: List[str]):
+        self.feed = feed
+        self.tags = tags
+
+    def __eq__(self, other: 'FeedImportData') -> bool:
+        return (
+            self.feed == other.feed and
+            len(self.tags) == len(other.tags) and
+            reduce(and_, [
+                t in other.tags for t in self.tags
+            ], True)
+        )
 
 
 def opml_to_rss_list(
         opml_path: Union[str, Path]
-) -> List[
-        Dict[
-            Literal['feed', 'tags'],
-            Union[str, List[str]]
-        ]
-]:
+) -> List[FeedImportData]:
     if isinstance(opml_path, str):
         opml_path = Path(opml_path)
     res = []
@@ -21,7 +33,7 @@ def opml_to_rss_list(
     try:
         sd_opml = Opml(str(opml_path), True)
         res = [
-            {'feed': item.get_feed_url(), 'tags': item.get_categories()}
+            FeedImportData(item.get_feed_url(), item.get_categories())
             for item in sd_opml.get_items()
         ]
     except Exception:
