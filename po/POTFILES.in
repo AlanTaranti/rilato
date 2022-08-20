@@ -20,10 +20,10 @@ gfeeds/main_leaflet.py
 gfeeds/__main__.py
 gfeeds/manage_feeds_window.py
 gfeeds/opml_file_chooser.py
-gfeeds/opml_manager.py
 gfeeds/preferences_window.py
 gfeeds/sidebar.py
 gfeeds/sidebar_row_popover.py
 gfeeds/util/download_manager.py
 gfeeds/util/get_favicon.py
+gfeeds/util/opml_parser.py
 gfeeds/webview.py
