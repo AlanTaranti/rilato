@@ -9,7 +9,6 @@ from gfeeds.simple_avatar import SimpleAvatar
 from gfeeds.util.relative_day_formatter import humanize_datetime
 from gfeeds.sidebar_row_popover import RowPopover
 from gfeeds.accel_manager import add_mouse_button_accel, add_longpress_accel
-from bs4 import BeautifulSoup
 
 
 @Gtk.Template(resource_path='/org/gabmus/gfeeds/ui/sidebar_listbox_row.ui')
@@ -86,10 +85,7 @@ class SidebarRow(Gtk.Box):
         )
 
         self.origin_label.set_text(self.feed_item.parent_feed.title)
-        self.title_label.set_text(
-            BeautifulSoup(self.feed_item.title).text
-            if '</' in self.feed_item.title else self.feed_item.title
-        )
+        self.title_label.set_text(self.feed_item.title)
         self.icon.set_image(
             self.feed_item.parent_feed.title,
             self.feed_item.parent_feed.favicon_path

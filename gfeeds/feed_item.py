@@ -1,5 +1,6 @@
 from gettext import gettext as _
 from typing import Optional
+from bs4 import BeautifulSoup
 from gi.repository import GObject, GLib
 from dateutil.tz import gettz
 from datetime import datetime, timezone
@@ -19,7 +20,12 @@ class FeedItem(GObject.Object):
     def __init__(self, sd_item, parent_feed):
         self.confman = ConfManager()
         self.sd_item = sd_item
-        self.__title = self.sd_item.get_title()
+        title = self.sd_item.get_title()
+        self.__title = (
+            BeautifulSoup(title, features='lxml').text
+            if title and '</' in title
+            else title
+        )
         self.__link = self.sd_item.get_url()
         self.pub_date_str = self.sd_item.get_pub_date()
         # fallback to avoid errors
