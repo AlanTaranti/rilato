@@ -1,4 +1,4 @@
-from typing import Any, Callable, Optional
+from typing import Any, Callable, Literal, Optional
 from gi.repository import Gtk
 from concurrent.futures import ThreadPoolExecutor
 from gfeeds.feeds_manager import FeedsManager
@@ -63,7 +63,7 @@ class ArticlesListView(CommonListScrolledWin):
     def connect_activate(self, func):
         self.selection.connect(
             'notify::selected-item',
-            lambda caller, feed_item, *args:
+            lambda *_:
                 func(self.selection.get_selected_item())
         )
 
@@ -76,23 +76,22 @@ class ArticlesListView(CommonListScrolledWin):
     def select_row(self, index):
         self.selection.select_item(index, True)
 
-    def select_next(self, *args):
+    # for both select next and prev; increment can be +1 or -1
+    def __select_successive(self, increment: Literal[1, -1]):
         index = self.get_selected()
-        if index == Gtk.INVALID_LIST_POSITION:
-            return self.select_row(0)
-        # if index > ??? num_rows?:
-        #     return
-        self.select_row(index+1)
-
-    def select_prev(self, *args):
-        index = self.get_selected()
-        if index == Gtk.INVALID_LIST_POSITION:
-            return self.select_row(0)
-        if index == 0:
+        if increment == -1 and index == 0:
             return
-        self.select_row(index-1)
+        if index == Gtk.INVALID_LIST_POSITION:
+            index = -1 * increment  # so that 0 is selected
+        self.select_row(index + increment)
 
-    def on_activate(self, *args):
+    def select_next(self, *_):
+        self.__select_successive(1)
+
+    def select_prev(self, *_):
+        self.__select_successive(-1)
+
+    def on_activate(self, *_):
         feed_item = self.selection.get_selected_item()
         if not feed_item:
             return
@@ -156,22 +155,21 @@ class ArticlesListBox(CommonListScrolledWin):
             return 0
         return index
 
-    def select_next(self, *_):
+    # for both select next and prev; increment can be +1 or -1
+    def __select_successive(self, increment: Literal[1, -1]):
         index = self.get_selected_index()
+        if increment == -1 and index == 0:
+            return
         if index < 0:
-            index = -1  # so that 0 is selected
-        target = self.listbox.get_row_at_index(index+1)
+            index = -1 * increment  # so that 0 is selected
+        target = self.listbox.get_row_at_index(index + increment)
         if not target:
             return
         self.listbox.select_row(target)
         target.activate()
 
+    def select_next(self, *_):
+        self.__select_successive(1)
+
     def select_prev(self, *_):
-        index = self.get_selected_index()
-        if index <= 0:
-            index = 1  # so that 0 is selected
-        target = self.listbox.get_row_at_index(index-1)
-        if not target:
-            return
-        self.listbox.select_row(target)
-        target.activate()
+        self.__select_successive(-1)
