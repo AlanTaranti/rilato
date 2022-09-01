@@ -1,9 +1,8 @@
 from gettext import gettext as _
 from typing import Optional
-from gi.repository import GObject, Gtk
+from gi.repository import Adw, GObject, Gtk
 from gfeeds.confManager import ConfManager
 from gfeeds.feeds_manager import FeedsManager
-from gfeeds.scrolled_dialog import ScrolledDialog
 from xml.sax.saxutils import escape
 
 from gfeeds.webview import GFeedsWebView
@@ -178,18 +177,37 @@ class LeftHeaderbar(Gtk.WindowHandle):
 
     @Gtk.Template.Callback()
     def show_errors_dialog(self, *__):
-        dialog = ScrolledDialog(
+        dialog = Adw.MessageDialog(
             transient_for=self.get_root(),  # type: ignore
-            title=_(
-                'There were problems with some feeds.\n'
-                'Do you want to remove them?'
+            heading=_(
+                'Remove Invalid Feed?'
             ),
-            message=escape('\n'.join(self.feedman.errors))
+            extra_child=Gtk.ScrolledWindow(
+                css_classes=['card'],
+                hscrollbar_policy=Gtk.PolicyType.NEVER,
+                width_request=270,
+                margin_start=12,
+                margin_end=12,
+                child=Gtk.Label(
+                    wrap=True,
+                    xalign=0.0,
+                    margin_top=12,
+                    margin_bottom=12,
+                    margin_start=12,
+                    margin_end=12,
+                    label=escape('\n'.join(self.feedman.errors))
+                )
+            )
         )
+
+        dialog.add_response('keep', _('_Keep'))
+        dialog.add_response('remove', _('_Remove'))
+        dialog.set_response_appearance('remove',
+                                       Adw.ResponseAppearance.DESTRUCTIVE)
 
         def on_response(_dialog, res):
             _dialog.close()
-            if (res == Gtk.ResponseType.YES):
+            if (res == 'remove'):
                 for pf in self.feedman.problematic_feeds:
                     if pf in self.confman.conf['feeds'].keys():
                         self.confman.conf['feeds'].pop(pf)
