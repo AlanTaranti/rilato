@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gfeeds master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/gfeeds/issues\n"
-"POT-Creation-Date: 2022-06-02 09:20+0000\n"
-"PO-Revision-Date: 2022-06-02 13:24+0300\n"
+"POT-Creation-Date: 2022-09-01 07:35+0000\n"
+"PO-Revision-Date: 2022-09-01 15:10+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -63,23 +63,22 @@ msgstr "Стрічки можна імпортувати або експорту
 msgid "rss;reader;feed;news;"
 msgstr "rss;reader;feed;news;рсс;читання;стрічка;подача;новини;"
 
-#: gfeeds/feed_item.py:49
+#: gfeeds/feed_item.py:55
 #, python-brace-format
 msgid "Error: unable to parse datetime {0} for feeditem {1}"
 msgstr "Помилка: не вдалося обробити позначку часу {0} для запису стрічки {1}"
 
-#: gfeeds/feed_parser.py:37
+#: gfeeds/feed_parser.py:64
 #, python-brace-format
-#| msgid "Errors while parsing feed `{0}`"
 msgid "Errors while parsing feed `{0}`, URL: `{1}`"
 msgstr "Помилки під час обробки стрічки «{0}», адреса: «{1}»"
 
-#: gfeeds/feed_parser.py:55
+#: gfeeds/feed_parser.py:74
 #, python-brace-format
 msgid "`{0}` may not be an RSS or Atom feed"
 msgstr "«{0}», можливо, не є стрічкою RSS або Atom"
 
-#: gfeeds/feeds_manager.py:88
+#: gfeeds/feeds_manager.py:90
 #, python-brace-format
 msgid "Feed {0} exists already, skipping"
 msgstr "Запис стрічки {0} вже існує, пропускаємо"
@@ -88,15 +87,19 @@ msgstr "Запис стрічки {0} вже існує, пропускаємо"
 msgid "All feeds"
 msgstr "Всі стрічки"
 
-#: gfeeds/headerbar.py:184
-msgid ""
-"There were problems with some feeds.\n"
-"Do you want to remove them?"
-msgstr ""
-"З деякими стрічками виникли проблеми.\n"
-"Хочете вилучити їх?"
+#: gfeeds/headerbar.py:195
+msgid "There were problems with some feeds. Do you want to remove them?"
+msgstr "З деякими стрічками виникли проблеми. Хочете вилучити їх?"
 
-#: gfeeds/main_leaflet.py:119
+#: gfeeds/headerbar.py:200
+msgid "_Keep"
+msgstr "З_берегти"
+
+#: gfeeds/headerbar.py:202
+msgid "_Remove"
+msgstr "Ви_лучити"
+
+#: gfeeds/main_leaflet.py:122
 #, python-brace-format
 msgid "{0} new article"
 msgid_plural "{0} new articles"
@@ -105,19 +108,19 @@ msgstr[1] "{0} нові статті"
 msgstr[2] "{0} нових статей"
 msgstr[3] "{0} нова стаття"
 
-#: gfeeds/__main__.py:229
+#: gfeeds/__main__.py:226
 msgid "Do you want to import these feeds?"
 msgstr "Хочете імпортувати ці стрічки?"
 
-#: gfeeds/__main__.py:256
+#: gfeeds/__main__.py:253
 msgid "Do you want to import this feed?"
 msgstr "Хочете імпортувати цю стрічку?"
 
-#: gfeeds/__main__.py:285
+#: gfeeds/__main__.py:282
 msgid "url"
 msgstr "адреса"
 
-#: gfeeds/__main__.py:288
+#: gfeeds/__main__.py:285
 msgid "opml file local url or rss remote url to import"
 msgstr ""
 "локальна адреса файла opml або віддалена адреса rss для імпортування даних"
@@ -153,15 +156,6 @@ msgstr "Виберіть місце зберігання експортован�
 #: gfeeds/opml_file_chooser.py:30
 msgid "Save"
 msgstr "Зберегти"
-
-#: gfeeds/opml_manager.py:42
-msgid "Error: OPML path provided does not exist"
-msgstr "Помилка: вказаного шляху до OPML не існує"
-
-#: gfeeds/opml_manager.py:53
-#, python-brace-format
-msgid "Error parsing OPML file `{0}`"
-msgstr "Помилка під час обробки файла OPML «{0}»"
 
 #: gfeeds/preferences_window.py:22
 msgid "General"
@@ -364,25 +358,34 @@ msgstr "Позначити як непрочитане"
 msgid "Mark as read"
 msgstr "Позначити як прочитане"
 
-#: gfeeds/util/download_manager.py:102
+#: gfeeds/util/download_manager.py:111
 #, python-brace-format
 msgid "`{0}`: connection timed out"
 msgstr "`{0}`: перевищено час очікування відповіді у з'єднанні"
 
-#: gfeeds/util/download_manager.py:111
+#: gfeeds/util/download_manager.py:120
 #, python-brace-format
 msgid "`{0}` might not be a valid address"
 msgstr "«{0}», ймовірно, не є коректною адресою"
 
-#: gfeeds/util/download_manager.py:150
+#: gfeeds/util/download_manager.py:154
 #, python-brace-format
 msgid "Error downloading `{0}`, code `{1}`"
 msgstr "Помилка під час отримання «{0}», код «{1}»"
 
-#: gfeeds/util/get_favicon.py:53
+#: gfeeds/util/get_favicon.py:49
 #, python-brace-format
 msgid "Error downloading favicon for `{0}`"
 msgstr "Помилка під час завантаження піктограми для «{0}»"
+
+#: gfeeds/util/opml_parser.py:31
+msgid "Error: OPML path provided does not exist"
+msgstr "Помилка: вказаного шляху до OPML не існує"
+
+#: gfeeds/util/opml_parser.py:42
+#, python-brace-format
+msgid "Error parsing OPML file `{0}`"
+msgstr "Помилка під час обробки файла OPML «{0}»"
 
 #: gfeeds/webview.py:201
 msgid "Link copied to clipboard!"
@@ -391,6 +394,13 @@ msgstr "Посилання скопійовано до буфера обміну
 #: gfeeds/webview.py:223
 msgid "Feed content not available for this article"
 msgstr "Для цієї статті дані стрічки є недоступними"
+
+#~ msgid ""
+#~ "There were problems with some feeds.\n"
+#~ "Do you want to remove them?"
+#~ msgstr ""
+#~ "З деякими стрічками виникли проблеми.\n"
+#~ "Хочете вилучити їх?"
 
 #~ msgid "Web View"
 #~ msgstr "Вебпанель"
@@ -416,9 +426,6 @@ msgstr "Для цієї статті дані стрічки є недоступ
 
 #~ msgid "Ignore"
 #~ msgstr "Ігнорувати"
-
-#~ msgid "There were problems with some feeds. Do you want to remove them?"
-#~ msgstr "З деякими стрічками виникли проблеми. Хочете вилучити їх?"
 
 #~ msgid "You are offline"
 #~ msgstr "Ви поза мережею"
