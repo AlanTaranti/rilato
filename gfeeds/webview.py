@@ -1,26 +1,27 @@
 from gettext import gettext as _
 from threading import Thread
 from gi.repository import Gtk, GLib, WebKit2, GObject, Gio, Adw
-from gfeeds.build_reader_html import build_reader_html
+from gfeeds.util.build_reader_html import build_reader_html
 from gfeeds.confManager import ConfManager
-from gfeeds.download_manager import DownloadError, download_text
+from gfeeds.util.download_manager import DownloadError, download_text
 from functools import reduce
 from operator import or_
 from subprocess import Popen
 from datetime import datetime
 from typing import Optional
-
-from gfeeds.rss_parser import FeedItem
+from gfeeds.feed_item import FeedItem
 
 
 @Gtk.Template(resource_path='/org/gabmus/gfeeds/ui/webview.ui')
 class GFeedsWebView(Gtk.Stack):
-    __gtype_name__ = 'Webview'
+    __gtype_name__ = 'GFeedsWebView'
     webkitview = Gtk.Template.Child()
     loading_bar_revealer = Gtk.Template.Child()
     loading_bar = Gtk.Template.Child()
     main_view = Gtk.Template.Child()
     toast_overlay = Gtk.Template.Child()
+    link_preview_revealer = Gtk.Template.Child()
+    link_preview_label = Gtk.Template.Child()
 
     __gsignals__ = {
         'gfeeds_webview_load_start': (
@@ -36,7 +37,6 @@ class GFeedsWebView(Gtk.Stack):
     }
 
     def __init__(self):
-        GObject.type_ensure(WebKit2.WebView)
         super().__init__()
         self.confman = ConfManager()
 
@@ -72,6 +72,19 @@ class GFeedsWebView(Gtk.Stack):
         self.uri = ''
         self.feeditem = None
         self.html = None
+
+    @Gtk.Template.Callback()
+    def on_mouse_target_changed(self, webkitview, hit_test_result, modifiers):
+        if hit_test_result:
+            if hit_test_result.context_is_link():
+                self.link_preview_revealer.set_visible(True)
+                self.link_preview_revealer.set_reveal_child(True)
+                self.link_preview_label.set_text(
+                    hit_test_result.get_link_uri()
+                )
+                return
+        self.link_preview_revealer.set_visible(False)
+        self.link_preview_revealer.set_reveal_child(False)
 
     def action_open_media_player(self):
         self.open_url_in_media_player(
@@ -157,9 +170,8 @@ class GFeedsWebView(Gtk.Stack):
         self.webkitview_settings.set_enable_javascript(
             self.confman.conf['enable_js']
         )
-        self.webkitview_settings.set_enable_smooth_scrolling(True)
+        self.webkitview_settings.set_enable_smooth_scrolling(False)
         self.webkitview_settings.set_enable_page_cache(True)
-        self.webkitview_settings.set_enable_frame_flattening(True)
         self.webkitview_settings.set_enable_accelerated_2d_canvas(True)
         self.webkitview.set_settings(self.webkitview_settings)
 
@@ -295,9 +307,14 @@ class GFeedsWebView(Gtk.Stack):
     def load_reader(self):
         if not self.feeditem:
             return
+        dark = False
+        if self.confman.conf['reader_theme'] == 'auto':
+            dark = Adw.StyleManager.get_default().get_dark()
+        else:
+            dark = self.confman.conf['reader_theme'] == 'dark'
         self.webkitview.load_html(build_reader_html(
             self.html,
-            self.confman.conf['dark_reader'],
+            dark,
             self.feeditem.sd_item
         ), self.uri)
 

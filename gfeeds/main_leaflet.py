@@ -1,15 +1,14 @@
 from gettext import ngettext
 from functools import reduce
+from typing import Optional
 from gfeeds.filter_view import FilterView
-from gfeeds.rss_parser import FeedItem
+from gfeeds.feed_item import FeedItem
 from gfeeds.stack_with_empty_state import StackWithEmptyState
 from operator import or_
 from subprocess import Popen
 from gi.repository import Gtk, Adw, Gio
 from gfeeds.sidebar import GFeedsSidebar
-from gfeeds.suggestion_bar import GFeedsConnectionBar
 from gfeeds.webview import GFeedsWebView
-from gfeeds.searchbar import GFeedsSearchbar
 from gfeeds.headerbar import LeftHeaderbar, RightHeaderbar
 from gfeeds.confManager import ConfManager
 from gfeeds.feeds_manager import FeedsManager
@@ -21,41 +20,21 @@ class MainLeaflet(Adw.Bin):
     left_box = Gtk.Template.Child()
     right_box = Gtk.Template.Child()
     leaflet = Gtk.Template.Child()
+    connection_bar: Gtk.InfoBar = Gtk.Template.Child()
+    left_headerbar: LeftHeaderbar = Gtk.Template.Child()
+    filter_view: FilterView = Gtk.Template.Child()
+    searchbar: Gtk.SearchBar = Gtk.Template.Child()
+    searchbar_entry: Gtk.SearchEntry = Gtk.Template.Child()
+    filter_flap: Adw.Flap = Gtk.Template.Child()
+    sidebar_stack: StackWithEmptyState = Gtk.Template.Child()
+    sidebar: GFeedsSidebar = Gtk.Template.Child()
+    webview: GFeedsWebView = Gtk.Template.Child()
+    right_headerbar: RightHeaderbar = Gtk.Template.Child()
 
     def __init__(self):
         super().__init__()
         self.confman = ConfManager()
         self.feedman = FeedsManager()
-
-        self.sidebar = GFeedsSidebar()
-        self.sidebar_stack = StackWithEmptyState(self.sidebar)
-        self.filter_flap = Adw.Flap(
-            flap_position=Gtk.PackType.START,
-            fold_policy=Adw.FlapFoldPolicy.ALWAYS,
-            modal=True,
-            reveal_flap=False,
-            swipe_to_open=True, swipe_to_close=True
-        )
-        self.filter_view = FilterView()
-        self.filter_flap.set_content(self.sidebar_stack)
-        self.filter_flap.set_flap(self.filter_view)
-
-        self.searchbar = GFeedsSearchbar()
-        self.connection_bar = GFeedsConnectionBar()
-        self.webview = GFeedsWebView()
-
-        self.left_headerbar = LeftHeaderbar(self.searchbar, self.leaflet)
-        self.right_headerbar = RightHeaderbar(
-            self.webview, self.leaflet, self.on_back_btn_clicked
-        )
-
-        for w in (
-                self.left_headerbar, self.searchbar, self.connection_bar,
-                self.filter_flap
-        ):
-            self.left_box.append(w)
-        for w in (self.right_headerbar, self.webview):
-            self.right_box.append(w)
 
         self.sidebar.listview_sw.connect_activate(
             self.on_sidebar_row_activated
@@ -64,17 +43,11 @@ class MainLeaflet(Adw.Bin):
             'toggled', lambda btn:
                 self.filter_flap.set_reveal_flap(btn.get_active())
         )
-        self.filter_flap.connect(
-            'notify::reveal-flap', lambda *args:
-                self.left_headerbar.filter_btn.set_active(
-                    self.filter_flap.get_reveal_flap()
-                )
-        )
 
         self.confman.connect(
             'gfeeds_filter_changed', self.on_filter_changed
         )
-        self.searchbar.entry.connect(
+        self.searchbar_entry.connect(
             'changed',
             lambda entry: self.sidebar.set_search(entry.get_text())
         )
@@ -88,8 +61,18 @@ class MainLeaflet(Adw.Bin):
         self.feedman.connect(
             'feedmanager_refresh_end', self.on_refresh_end
         )
+        self.feedman.connect(
+            'feedmanager_online_changed',
+            lambda _, value: self.connection_bar.set_revealed(not value)
+        )
 
         self.on_leaflet_folded()
+
+    @Gtk.Template.Callback()
+    def on_reveal_flap_changed(self, *_):
+        self.left_headerbar.filter_btn.set_active(
+            self.filter_flap.get_reveal_flap()
+        )
 
     def on_filter_changed(self, *_):
         self.left_headerbar.filter_btn.set_active(False)
@@ -100,12 +83,23 @@ class MainLeaflet(Adw.Bin):
 
     @Gtk.Template.Callback()
     def on_leaflet_folded(self, *args):
+        rh = self.right_headerbar.right_headerbar
+        lh = self.left_headerbar.left_headerbar
         if self.leaflet.get_folded():
             self.right_headerbar.back_btn.set_visible(True)
+            rh.set_show_start_title_buttons(True)
+            rh.set_show_end_title_buttons(True)
+            lh.set_show_start_title_buttons(True)
+            lh.set_show_end_title_buttons(True)
         else:
             self.right_headerbar.back_btn.set_visible(False)
+            rh.set_show_start_title_buttons(False)
+            rh.set_show_end_title_buttons(True)
+            lh.set_show_start_title_buttons(True)
+            lh.set_show_end_title_buttons(False)
 
-    def on_back_btn_clicked(self, *args):
+    @Gtk.Template.Callback()
+    def on_back_btn_clicked(self, *_):
         self.leaflet.set_visible_child(self.left_box)
         self.on_leaflet_folded()
 
@@ -134,7 +128,7 @@ class MainLeaflet(Adw.Bin):
             ))
             self.get_root().app.send_notification('new_articles', notif)
 
-    def on_sidebar_row_activated(self, feed_item: FeedItem):
+    def on_sidebar_row_activated(self, feed_item: Optional[FeedItem]):
         self.feedman.article_store.set_selected_article(feed_item)
         if not feed_item:
             return
@@ -142,7 +136,7 @@ class MainLeaflet(Adw.Bin):
         if (
                 self.confman.conf['open_youtube_externally'] and
                 reduce(or_, [
-                    f'://{pfx}' in feed_item.link
+                    f'://{pfx}' in feed_item.link  # type: ignore
                     for pfx in [
                         p + 'youtube.com'
                         for p in ('', 'www.', 'm.')

@@ -1,18 +1,21 @@
+from pathlib import Path
 from threading import Thread, Event
 from gettext import gettext as _
 from typing import List, Union
 from gi.repository import GLib, GObject
 from gfeeds.articles_listmodel import ArticlesListModel
-from gfeeds.singleton import Singleton
+from gfeeds.util.opml_parser import opml_to_rss_list
+from gfeeds.util.singleton import Singleton
 from gfeeds.confManager import ConfManager
-from gfeeds.rss_parser import Feed, FeedParser
-from gfeeds.download_manager import (
+from gfeeds.feed import Feed
+from gfeeds.feed_parser import parse_feed
+from gfeeds.util.download_manager import (
     download_feed,
     extract_feed_url_from_html
 )
 from gfeeds.tag_store import TagStore
-from gfeeds.test_connection import is_online
-from gfeeds.thread_pool import ThreadPool
+from gfeeds.util.test_connection import is_online
+from gfeeds.util.thread_pool import ThreadPool
 from gfeeds.feed_store import FeedStore
 import pytz
 from datetime import datetime
@@ -64,7 +67,7 @@ class FeedsManager(metaclass=Singleton):
             self.on_refresh_end
         )
 
-    def on_refresh_end(self, *args):
+    def on_refresh_end(self, *__):
         self.confman.save_conf()
         # new articles notified in app_window
         self.start_auto_refresh()
@@ -81,37 +84,64 @@ class FeedsManager(metaclass=Singleton):
             get_cached: bool = False
     ):
         if not refresh:
-            if 'http://' not in uri and 'https://' not in uri:
+            if not (uri.startswith('http://') or uri.startswith('https://')):
                 uri = 'http://' + uri
             if uri in self.confman.conf['feeds'].keys():
                 print(_('Feed {0} exists already, skipping').format(uri))
+                GLib.idle_add(
+                    self.emit, 'feedmanager_refresh_end', ''
+                )
                 return
             self.confman.conf['feeds'][uri] = {}
         download_res = download_feed(uri, get_cached=get_cached)
-        if get_cached and download_res[0] == 'not_cached':
+        if get_cached and download_res.feedpath == 'not_cached':
             return
-        parser = FeedParser()
-        parser.parse(download_res)
-        if parser.is_null:
+        assert not isinstance(download_res.feedpath, str)
+        parser_res = parse_feed(
+            feedpath=download_res.feedpath,
+            rss_link_=download_res.rss_link,
+            failed=download_res.failed,
+            error=download_res.error
+        )
+        if parser_res.is_null:
             feed_uri_from_html = extract_feed_url_from_html(uri)
             if feed_uri_from_html is not None:
                 if uri in self.confman.conf['feeds'].keys():
                     self.confman.conf['feeds'].pop(uri)
                 self._add_feed_async_worker(feed_uri_from_html, refresh)
                 return
-            self.errors.append(parser.error)
+            self.errors.append(parser_res.error)
             self.problematic_feeds.append(uri)
         else:
             n_feed = self.feed_store.get_feed(
-                parser.feed_identifier
+                parser_res.feed_identifier
             )
             if n_feed is None:
-                n_feed = Feed(self.tag_store)
+                n_feed = Feed(
+                    rss_link=parser_res.rss_link,
+                    title=parser_res.title,
+                    link=parser_res.link,
+                    description=parser_res.description,
+                    image_url=parser_res.image_url,
+                    favicon_path=parser_res.favicon_path,
+                    sd_feed=parser_res.sd_feed,
+                    raw_entries=parser_res.raw_entries
+                )
                 GLib.idle_add(
                     self.feed_store.add_feed, n_feed,
                     priority=GLib.PRIORITY_LOW
                 )
-            n_feed.populate(parser)
+            else:
+                n_feed.update(
+                    rss_link=parser_res.rss_link,
+                    title=parser_res.title,
+                    link=parser_res.link,
+                    description=parser_res.description,
+                    image_url=parser_res.image_url,
+                    favicon_path=parser_res.favicon_path,
+                    sd_feed=parser_res.sd_feed,
+                    raw_entries=parser_res.raw_entries
+                )
             for fi in n_feed.items.values():
                 if (
                         n_feed.rss_link+fi.identifier not in
@@ -135,7 +165,7 @@ class FeedsManager(metaclass=Singleton):
 
     def refresh(
             self,
-            *args,
+            *__,
             get_cached: bool = False,
             is_startup: bool = False
     ):
@@ -223,7 +253,7 @@ class FeedsManager(metaclass=Singleton):
         t.start()
         return True
 
-    def delete_feeds(self, targets: Union[List[Feed], Feed], *args):
+    def delete_feeds(self, targets: Union[List[Feed], Feed], *_):
         if not isinstance(targets, list):
             if isinstance(targets, Feed):
                 targets = [targets]
@@ -232,7 +262,7 @@ class FeedsManager(metaclass=Singleton):
         articles_to_rm = []
         n_selected_feeds = self.article_store.selected_feeds.copy()
         for to_rm in targets:
-            articles_to_rm.extend(to_rm.items)
+            articles_to_rm.extend(to_rm.items.values())
             if to_rm.rss_link in n_selected_feeds:
                 n_selected_feeds.remove(to_rm.rss_link)
             self.feed_store.remove_feed(to_rm)
@@ -242,3 +272,20 @@ class FeedsManager(metaclass=Singleton):
         self.article_store.set_selected_feeds(n_selected_feeds)
         self.article_store.remove_items(articles_to_rm)
         self.confman.save_conf()
+
+    def import_opml(self, opml_path: Union[str, Path]):
+
+        def af(p: Union[str, Path]):
+            n_feeds_urls_l = opml_to_rss_list(p)
+            for tag in [t for f in n_feeds_urls_l for t in f.tags]:
+                GLib.idle_add(self.tag_store.add_tag, tag)
+            for f in n_feeds_urls_l:
+                url = f.feed
+                if url not in self.confman.conf['feeds'].keys():
+                    self.confman.conf['feeds'][url] = {'tags': f.tags}
+            self.confman.save_conf()
+            GLib.idle_add(self.refresh)
+
+        Thread(
+            target=af, args=(opml_path,), daemon=True
+        ).start()

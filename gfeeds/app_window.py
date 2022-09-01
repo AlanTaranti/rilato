@@ -18,14 +18,14 @@ class GFeedsAppWindow(BaseWindow):
             icon_name='org.gabmus.gfeeds',
             shortcuts=[
                 AppShortcut(
-                    'F10', lambda *args:
+                    'F10', lambda *_:
                         self.leaflet.left_headerbar.menu_btn.popup()
                 ),
                 AppShortcut(
                     '<Control>r', self.feedman.refresh
                 ),
                 AppShortcut(
-                    '<Control>f', lambda *args:
+                    '<Control>f', lambda *_:
                         self.leaflet.left_headerbar.search_btn.set_active(
                             not
                             self.leaflet.left_headerbar.search_btn.get_active()
@@ -47,7 +47,7 @@ class GFeedsAppWindow(BaseWindow):
                     '<Control>equal', self.leaflet.webview.key_zoom_reset
                 ),
                 AppShortcut(
-                    '<Control>t', lambda *args:
+                    '<Control>t', lambda *_:
                         self.leaflet.filter_flap.set_reveal_flap(
                             not self.leaflet.filter_flap.get_reveal_flap()
                         )
@@ -59,7 +59,7 @@ class GFeedsAppWindow(BaseWindow):
 
         self.confman.connect(
             'dark_mode_changed',
-            lambda *args: self.set_dark_mode(self.confman.conf['dark_mode'])
+            lambda *_: self.set_dark_mode(self.confman.conf['dark_mode'])
         )
         self.set_dark_mode(self.confman.conf['dark_mode'])
 

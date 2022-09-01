@@ -2,9 +2,8 @@ from gettext import gettext as _
 from gi.repository import GObject, Gtk, Pango
 from gfeeds.confManager import ConfManager
 from gfeeds.feeds_manager import FeedsManager
-from gfeeds.rss_parser import Feed
+from gfeeds.feed import Feed
 from gfeeds.simple_avatar import SimpleAvatar
-from gfeeds.get_children import get_children
 
 
 class FeedsViewAllListboxRow(Gtk.ListBoxRow):
@@ -156,70 +155,9 @@ class FeedsViewListbox(Gtk.ListBox):
             None
         )
 
-#         if tags:
-#             self.confman.connect(
-#                 'gfeeds_tags_append',
-#                 self.on_tags_append
-#             )
-#             self.confman.connect(
-#                 'gfeeds_tags_pop',
-#                 self.on_tags_pop
-#             )
-#
-#             for tag in self.confman.conf['tags']:
-#                 self.on_tags_append(None, tag)
-
-#     def on_feeds_pop(self, caller, feed):
-#         self.remove_feed(feed)
-#
-#     def on_feeds_append(self, caller, feed):
-#         self.add_feed(feed)
-#
-#     def on_tags_append(self, caller, tag):
-#         self.append(FeedsViewTagListboxRow(tag))
-#
-#     def on_tags_pop(self, caller, tag):
-#         for row in get_children(self):
-#             if row.IS_TAG and row.tag == tag:
-#                 self.remove(row)
-#                 break
-
     def __create_feed_row(self, feed: Feed, *args) -> Gtk.ListBoxRow:
         row = self.row_class(feed, description=self.description)
         return row
-
-#     def remove_feed(self, feed):
-#         for row in get_children(self):
-#             if not hasattr(row, 'IS_ALL'):
-#                 continue
-#             if not row.IS_ALL:
-#                 if row.feed == feed:
-#                     self.remove(row)
-#                     break
-#
-#     def empty(self, *args):
-#         for row in get_children(self):
-#             if row and not row.IS_ALL and not row.IS_TAG:
-#                 self.remove(row)
-
-    def row_all_activate(self, skip=False):
-        if skip:
-            return
-        for row in get_children(self):
-            if row.IS_ALL:
-                row.activate()
-                break
-
-#     def gfeeds_sort_func(self, row1, row2, data, notify_destroy):
-#         if row1.IS_ALL:
-#             return False
-#         if row2.IS_ALL:
-#             return True
-#         if row1.IS_TAG and not row2.IS_TAG:
-#             return False
-#         if row2.IS_TAG and not row1.IS_TAG:
-#             return True
-#         return row1.title.lower() > row2.title.lower()
 
 
 class FeedsViewScrolledWindow(Gtk.ScrolledWindow):

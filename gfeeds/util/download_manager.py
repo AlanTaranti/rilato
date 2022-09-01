@@ -3,9 +3,11 @@ from os.path import isfile
 from pathlib import Path
 import requests
 from gfeeds.confManager import ConfManager
-from gfeeds.sha import shasum
+from gfeeds.util.create_full_url import create_full_url
+from gfeeds.util.sha import shasum
 from syndom import Html
-from typing import Optional, Tuple, Union
+from typing import Literal, Optional, Union
+from gfeeds.util.to_unicode import to_unicode, bytes_to_unicode
 
 confman = ConfManager()
 
@@ -31,8 +33,7 @@ def download_text(link: str) -> str:
         return toret
     res = requests.get(link, headers=GET_HEADERS, timeout=TIMEOUT)
     if 200 <= res.status_code <= 299:
-        res.encoding = 'utf-8'
-        return res.text  # TODO: this can break weird encodings!
+        return bytes_to_unicode(res.content, enc=res.encoding)
     else:
         raise DownloadError(
             res.status_code, f'response code {res.status_code}'
@@ -59,20 +60,38 @@ def extract_feed_url_from_html(link: str) -> Optional[str]:
         if not isfile(dest):
             download_raw(link, dest)
         sd_html = Html(dest)
-        return sd_html.rss_url or None
-        # maybe sanitize(sd_html.rss_url) ?
+        res: str = sd_html.rss_url
+        if not res:
+            return None
+        res = create_full_url(link, res)
+        return res
     except Exception:
         print('Error extracting feed from HTML')
     return None
 
 
-# TODO: refactor this, the returned typeS(!) are a mess
+class DownloadFeedResponse:
+    def __init__(
+            self, feedpath: Optional[Union[Path, Literal['not_cached']]],
+            rss_link: Optional[str], failed: bool, error: Optional[str]
+    ):
+        self.feedpath = feedpath
+        self.rss_link = rss_link
+        self.failed = failed
+        self.error = error
+
+
 def download_feed(
         link: str, get_cached: bool = False
-) -> Tuple[Union[str, Path, bool], Optional[str]]:
-    dest_path = confman.cache_path.joinpath(shasum(link)+'.rss')
+) -> DownloadFeedResponse:
+    dest_path: Path = confman.cache_path.joinpath(shasum(link)+'.rss')
     if get_cached:
-        return (dest_path, link) if isfile(dest_path) else ('not_cached', None)
+        return DownloadFeedResponse(
+            dest_path if isfile(dest_path) else 'not_cached',
+            link,
+            not isfile(dest_path),
+            None
+        )
     headers = GET_HEADERS.copy()
     if (
             'last-modified' in confman.conf['feeds'][link].keys() and
@@ -85,11 +104,21 @@ def download_feed(
             link, headers=headers, allow_redirects=True, timeout=TIMEOUT
         )
     except requests.exceptions.ConnectTimeout:
-        return (False, _('`{0}`: connection timed out').format(link))
+        return DownloadFeedResponse(
+            None,
+            link,
+            True,
+            _('`{0}`: connection timed out').format(link)
+        )
     except Exception:
         import traceback
         traceback.print_exc()
-        return (False, _('`{0}` might not be a valid address').format(link))
+        return DownloadFeedResponse(
+            None,
+            link,
+            True,
+            _('`{0}` might not be a valid address').format(link)
+        )
     if 'last-modified' in res.headers.keys():
         confman.conf['feeds'][link]['last-modified'] = \
             res.headers['last-modified']
@@ -102,9 +131,14 @@ def download_feed(
             confman.conf['feeds'][link].pop('last-modified')
         with open(dest_path, 'wb') as fd:
             fd.write(res.content)  # res.text is str, res.content is bytes
-        return (dest_path, link)
+        to_unicode(dest_path)
+        return DownloadFeedResponse(
+            dest_path, link, False, None
+        )
 
-    def handle_304(): return (dest_path, link)
+    def handle_304(): return DownloadFeedResponse(
+        dest_path, link, False, None
+    )
 
     def handle_301_302():
         n_link = res.headers.get('location', link)
@@ -112,10 +146,15 @@ def download_feed(
         confman.conf['feeds'].pop(link)
         return download_feed(n_link)
 
-    def handle_everything_else(): return (
-        False,
-        _('Error downloading `{0}`, code `{1}`').format(link, res.status_code)
-    )
+    def handle_everything_else():
+        return DownloadFeedResponse(
+            None,
+            link,
+            True,
+            _('Error downloading `{0}`, code `{1}`').format(
+                link, res.status_code
+            )
+        )
 
     handlers = {
         200: handle_200, 304: handle_304,

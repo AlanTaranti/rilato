@@ -1,9 +1,10 @@
+from typing import Any, Callable
 from gi.repository import Gio
 
 __HOSTNAME = 'gnome.org'
 
 
-def is_online(callback):
+def is_online(callback: Callable[[bool], Any]):
 
     def __async_cb(src, a_res, data):
         res = False

@@ -9,7 +9,6 @@
     <file preprocess="xml-stripblanks">ui/add_feed_popover.ui</file>
     <file preprocess="xml-stripblanks">ui/row_popover.ui</file>
     <file preprocess="xml-stripblanks">ui/empty_state.ui</file>
-    <file preprocess="xml-stripblanks">ui/extra_popover_menu.ui</file>
     <file preprocess="xml-stripblanks">ui/main_leaflet.ui</file>
     <file preprocess="xml-stripblanks">ui/left_headerbar.ui</file>
     <file preprocess="xml-stripblanks">ui/right_headerbar.ui</file>
@@ -22,6 +21,7 @@
     <file preprocess="xml-stripblanks">ui/manage_tags_content.ui</file>
     <file preprocess="xml-stripblanks">ui/manage_tags_listbox_row.ui</file>
     <file preprocess="xml-stripblanks">ui/filter_view.ui</file>
+    <file preprocess="xml-stripblanks">ui/scrolled_dialog.ui</file>
 
     <file compressed="true">ui/gtk_style.css</file>
 
@@ -32,7 +32,6 @@
     <file preprocess="xml-stripblanks">icons/scalable/status/eye-open-negative-filled-symbolic.svg</file>
     <file preprocess="xml-stripblanks">icons/scalable/status/globe-alt-symbolic.svg</file>
     <file preprocess="xml-stripblanks">icons/scalable/status/tag-symbolic.svg</file>
-    <file preprocess="xml-stripblanks">icons/scalable/status/funnel-symbolic.svg</file>
     <file preprocess="xml-stripblanks">icons/scalable/status/webview-filler-symbolic.svg</file>
 
   </gresource>

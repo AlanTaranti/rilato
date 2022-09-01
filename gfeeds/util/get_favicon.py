@@ -1,10 +1,10 @@
 from gettext import gettext as _
-from urllib.parse import urlparse
 from PIL import Image
 from os.path import isfile
 from os import remove, replace
-from gfeeds.download_manager import download_raw
-from gfeeds.sha import shasum
+from gfeeds.util.create_full_url import create_full_url
+from gfeeds.util.download_manager import download_raw
+from gfeeds.util.sha import shasum
 from gfeeds.confManager import ConfManager
 from syndom import Html
 from magic import Magic  # for mime types
@@ -38,23 +38,17 @@ def get_favicon(link: str, favicon_path: str, direct: bool = False):
         p = url
         if '?' in p:
             p = p.split('?')[0]
-        if not ('http://' in url or 'https://' in url):
-            target = url.lstrip('/')
-            up = urlparse(link)
-            target = f'{up.scheme or "http"}://{up.hostname}/{target}'
+        target = create_full_url(link, url)
+        try:
+            download_raw(target, favicon_path_orig)
+        except Exception:
             try:
                 download_raw(target, favicon_path_orig)
             except Exception:
-                try:
-                    target = f'{up.scheme or "http"}://{url}'
-                    download_raw(target, favicon_path_orig)
-                except Exception:
-                    print(
-                        _('Error downloading favicon for `{0}`').format(link)
-                    )
-                    return
-        else:
-            download_raw(url, favicon_path_orig)
+                print(
+                    _('Error downloading favicon for `{0}`').format(link)
+                )
+                return
     if mime.from_file(favicon_path_orig) == 'image/svg+xml':
         replace(favicon_path_orig, favicon_path)
         return

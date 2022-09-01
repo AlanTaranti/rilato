@@ -2,7 +2,7 @@ using Gtk 4.0;
 using WebKit2 5.0;
 using Adw 1;
 
-template Webview : Stack {
+template GFeedsWebView : Stack {
     width-request: 360; height-request: 400;
     hexpand: true; vexpand: true;
     transition-type: crossfade;
@@ -24,12 +24,25 @@ template Webview : Stack {
                 hexpand: true; vexpand: false;
             }
         }
+        [overlay] Revealer link_preview_revealer {
+            vexpand: false; hexpand: false;
+            valign: end; halign: start;
+            reveal-child: false;
+            transition-type: crossfade;
+            Label link_preview_label {
+                styles ['osd', 'link-preview-osd']
+                halign: start; vexpand: true;
+                ellipsize: end;
+                wrap: false;
+            }
+        }
         Adw.ToastOverlay toast_overlay {
             hexpand: true; vexpand: true;
             WebKit2.WebView webkitview {
                 hexpand: true; vexpand: true;
                 load-changed => on_load_changed();
                 decide-policy => on_decide_policy();
+                mouse-target-changed => on_mouse_target_changed();
             }
         }
     }

@@ -1,5 +1,5 @@
 project('gfeeds',
-    version: '1.0.2',
+    version: '1.0.3',
     meson_version: '>= 0.58.0',
     license: 'GPL3'
 )
@@ -40,7 +40,7 @@ message('Looking for dependencies')
 dependency('glib-2.0')
 dependency('gobject-introspection-1.0', version: '>=1.35.9')
 dependency('gtk4', version :'>=4.3.1')
-dependency('libadwaita-1', version :'>=1.0.0.alpha.3')
+dependency('libadwaita-1', version :'>=1.2.alpha')
 
 i18n = import('i18n')
 python = import('python')
@@ -49,9 +49,9 @@ if not py_installation.found()
     error('No valid python3 binary found')
 endif
 gnome = import('gnome')
-prefix = get_option('prefix') # should be /usr
-bindir = get_option('bindir') # should be bin
-datadir = get_option('datadir') # should be /usr/share
+prefix = get_option('prefix')  # should be /usr
+bindir = get_option('bindir')  # should be bin
+datadir = get_option('datadir')  # should be /usr/share
 pkgdatadir = join_paths(prefix, datadir, meson.project_name())
 pythondir = py_installation.get_install_dir()
 localedir = join_paths(prefix, get_option('localedir'))
@@ -61,18 +61,14 @@ subdir('data')
 subdir('bin')
 subdir('po')
 
+# tests
+
+pytest_exe = find_program('pytest', required: false)
+if pytest_exe.found()
+    test('pytest', pytest_exe, args: [meson.project_source_root() + '/test'], suite: 'pytest')
+endif
+
 gnome.post_install(
   glib_compile_schemas: true,
   gtk_update_icon_cache: true
 )
-
-# envdata = environment()
-# python_paths = [join_paths(meson.current_build_dir(), '..')]
-# envdata.append('PYTHONPATH', python_paths)
-# envdata.append('TESTS_BUILDDIR', meson.current_build_dir())
-# test(
-#   'unit-tests',
-#   import('python').find_installation('python3'),
-#   args: ['-m', 'unittest', 'tests'],
-#   env: envdata
-# )

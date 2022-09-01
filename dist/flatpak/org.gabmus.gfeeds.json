@@ -2,9 +2,9 @@
     "app-id": "org.gabmus.gfeeds",
     "command": "gfeeds",
     "runtime": "org.gnome.Platform",
-    "runtime-version": "42",
+    "runtime-version": "master",
     "sdk": "org.gnome.Sdk",
-    "sdk-version": "42",
+    "sdk-version": "master",
     "finish-args": [
         "--device=dri",
         "--share=ipc",
@@ -18,8 +18,13 @@
         "--filesystem=xdg-config/fontconfig",
         "--persist=xdg-config/fontconfig"
     ],
+    "cleanup": [
+        "/lib/python3.10/site-packages/_pytest",
+        "/lib/python3.10/site-packages/pytest*",
+        "/bin/pytest",
+        "/bin/py.test"
+    ],
     "modules": [
-        "webkit.json",
         "python-deps.json",
         {
             "name": "python-lxml",
@@ -31,8 +36,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/lxml/lxml/releases/download/lxml-4.8.0/lxml-4.8.0.tar.gz",
-                    "sha256": "f63f62fc60e6228a4ca9abae28228f35e1bd3ce675013d1dfb828688d50c6e23"
+                    "url": "https://github.com/lxml/lxml/releases/download/lxml-4.9.1/lxml-4.9.1.tar.gz",
+                    "sha256": "fe749b052bb7233fe5d072fcb549221a8cb1a16725c47c37e42b0b9cb3ff2c3f"
                 }
             ]
         },
@@ -55,10 +60,9 @@
             "buildsystem": "meson",
             "sources": [
                 {
-                    "type": "git",
-                    "url": "https://gitlab.gnome.org/jwestman/blueprint-compiler",
-                    "branch": "main",
-                    "commit": "e3a37893a8709aa3d6a571ecb5a3f690da0ef82d"
+                    "type": "archive",
+                    "url": "https://gitlab.gnome.org/jwestman/blueprint-compiler/-/archive/v0.2.0/blueprint-compiler-v0.2.0.tar.gz",
+                    "sha256": "d4e5444c95e8d0060c819d0ab96f79a7ea2673296be95a2fb00359d1d54a0d83"
                 }
             ]
         },
@@ -74,19 +78,35 @@
                 {
                     "type": "git",
                     "url": "https://gitlab.com/gabmus/syndication-domination",
-                    "branch": "master",
-                    "commit": "e503361944ae8f8af5fe281aa61a346f28a0b051"
+                    "commit": "81d5d99178a270039e147645ff2a2992a58bd2ad"
                 }
             ],
             "modules": [
                 {
-                    "name": "pybind11",
-                    "buildsystem": "cmake",
+                    "name": "boost",
+                    "buildsystem": "simple",
                     "sources": [
                         {
-                            "type": "git",
-                            "url": "https://github.com/pybind/pybind11/",
-                            "tag": "v2.9.1"
+                            "type": "archive",
+                            "url": "https://downloads.sourceforge.net/boost/boost/1.79.0/boost_1_79_0.tar.bz2",
+                            "sha256": "475d589d51a7f8b3ba2ba4eda022b170e562ca3b760ee922c146b6c65856ef39"
+                        }
+                    ],
+                    "build-commands": [
+                        "./bootstrap.sh --prefix=/app --with-libraries=locale,filesystem,system,date_time,regex,program_options",
+                        "./b2 headers",
+                        "./b2 -j$FLATPAK_BUILDER_N_JOBS install variant=release cxxstd=17 --layout=system"
+                    ]
+                },
+                {
+                    "name": "pybind11",
+                    "buildsystem": "cmake",
+                    "config-opts": ["-DBUILD_TESTING=false"],
+                    "sources": [
+                        {
+                            "type": "archive",
+                            "url": "https://github.com/pybind/pybind11/archive/refs/tags/v2.9.2.tar.gz",
+                            "sha256": "6bd528c4dbe2276635dc787b6b1f2e5316cf6b49ee3e150264e455a0d68d19c1"
                         },
                         {
                             "type": "patch",
@@ -104,9 +124,9 @@
                     ],
                     "sources": [
                         {
-                            "type": "git",
-                            "url": "https://github.com/pybind/pybind11/",
-                            "tag": "v2.9.1"
+                            "type": "archive",
+                            "url": "https://github.com/pybind/pybind11/archive/refs/tags/v2.9.2.tar.gz",
+                            "sha256": "6bd528c4dbe2276635dc787b6b1f2e5316cf6b49ee3e150264e455a0d68d19c1"
                         },
                         {
                             "type": "patch",
@@ -149,7 +169,7 @@
                 {
                     "type": "git",
                     "url": "https://gitlab.gnome.org/World/gfeeds",
-                    "tag": "1.0.2"
+                    "tag": "1.0.3"
                 }
             ]
         }

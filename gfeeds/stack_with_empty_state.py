@@ -1,4 +1,5 @@
-from gi.repository import Gtk, Adw
+from typing import Optional
+from gi.repository import GObject, Gtk, Adw
 from gfeeds.feeds_manager import FeedsManager
 from gfeeds.confManager import ConfManager
 
@@ -9,30 +10,26 @@ class EmptyState(Adw.Bin):
 
     def __init__(self):
         super().__init__()
-        # done: hack workaround for:
-        # https://gitlab.gnome.org/GNOME/libadwaita/-/issues/360
-        # remove when fixed
-        # self.get_child(
-        # ).get_first_child().get_child().get_child().get_first_child(
-        # ).set_tightening_threshold(0)
-        # error inducing patch reverted, keeping it around if it comes back
-        # in the future
 
 
 class StackWithEmptyState(Gtk.Stack):
-    def __init__(self, main_widget):
+    __gtype_name__ = 'StackWithEmptyState'
+
+    def __init__(self, main_widget: Optional[Gtk.Widget] = None):
         super().__init__(
             vexpand=True, hexpand=True,
             transition_type=Gtk.StackTransitionType.CROSSFADE
         )
+        self.__main_widget = main_widget
         self.feedman = FeedsManager()
         self.confman = ConfManager()
-        self.main_widget = main_widget
         self.empty_state = EmptyState()
-        self.add_named(self.main_widget, 'main_widget')
+        if self.main_widget is not None:
+            self.add_named(self.main_widget, 'main_widget')
         self.add_named(self.empty_state, 'empty_state')
         self.set_visible_child(
             self.main_widget if len(self.confman.conf['feeds']) > 0
+            and self.main_widget is not None
             else self.empty_state
         )
 
@@ -40,6 +37,15 @@ class StackWithEmptyState(Gtk.Stack):
             'items-changed',
             self.on_feed_store_items_changed
         )
+
+    @GObject.Property(type=Gtk.Widget, default=None, nick='main-widget')
+    def main_widget(self) -> Optional[Gtk.Widget]:
+        return self.__main_widget
+
+    @main_widget.setter
+    def main_widget(self, w: Gtk.Widget):
+        self.__main_widget = w
+        self.add_named(self.__main_widget, 'main_widget')
 
     def on_feed_store_items_changed(self, *args):
         if len(self.feedman.feed_store) == 0:

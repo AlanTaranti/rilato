@@ -13,10 +13,6 @@ class PictureView(Gtk.Widget):
         )
         self.get_style_context().add_class('card')
         self.confman = ConfManager()
-        self.confman.connect(
-            'on_max_picture_height_changed',
-            lambda *args: self.queue_resize()
-        )
         self.texture = None
         self.set_file(path)
 
@@ -72,7 +68,6 @@ class PictureView(Gtk.Widget):
             cw, ch = self.texture.compute_concrete_size(
                 for_size, 0, 1200, 1200
             )
-            # nat = max(self.confman.conf['max_picture_height'], 100)
             ch = max(min(ceil(ch), 1200), 1)
             return (0, ch, -1, -1)
         else:  # get width

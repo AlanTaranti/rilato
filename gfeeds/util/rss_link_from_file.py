@@ -1,4 +1,4 @@
-from gfeeds.download_manager import extract_feed_url_from_html
+from gfeeds.util.download_manager import extract_feed_url_from_html
 from typing import Optional
 from os.path import isfile
 from syndom import Feed as SynDomFeed

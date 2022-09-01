@@ -39,6 +39,8 @@
 
 body {
     font-family: gfeeds-reader-sans, sans-serif;
+    padding-top: 100px;
+    padding-bottom: 100px;
 }
 
 body.sans {

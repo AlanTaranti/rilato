@@ -5,8 +5,8 @@ from gi.repository import Gtk, Adw
 from gfeeds.confManager import ConfManager
 from gfeeds.base_preferences import (
     MPreferencesPage, MPreferencesGroup, PreferencesButtonRow,
-    PreferencesSpinButtonRow, PreferencesToggleRow, PreferencesEntryRow,
-    PreferencesFontChooserRow
+    PreferencesComboRow, PreferencesSpinButtonRow, PreferencesToggleRow,
+    PreferencesEntryRow, PreferencesFontChooserRow
 )
 from typing import Optional
 
@@ -114,20 +114,18 @@ class AppearancePreferencesPage(MPreferencesPage):
                             title=_('Dark mode'), conf_key='dark_mode',
                             signal='dark_mode_changed'
                         ),
-                        PreferencesToggleRow(
-                            title=_('Use dark theme for reader mode'),
-                            conf_key='dark_reader'
+                        PreferencesComboRow(
+                            title=_('Reader mode theme'),
+                            conf_key='reader_theme',
+                            values=['auto', 'light', 'dark'],
+                            value_names=[
+                                _('Automatic'), _('Light'), _('Dark')
+                            ]
                         ),
                         PreferencesToggleRow(
                             title=_('Show article thumbnails'),
                             conf_key='show_thumbnails',
                             signal='show_thumbnails_changed'
-                        ),
-                        PreferencesSpinButtonRow(
-                            title=_('Maximum thumbnail height'),
-                            min_v=100, max_v=1200,
-                            conf_key='max_picture_height',
-                            signal='on_max_picture_height_changed'
                         ),
                         PreferencesToggleRow(
                             title=_('Show full articles titles'),

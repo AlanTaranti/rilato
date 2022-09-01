@@ -4,13 +4,12 @@ variables:
     BUNDLE: "gfeeds.flatpak"
 
 flake8:
-    image: python:3.9
+    image: python:3.10
     script:
         - pip install flake8
         - flake8 gfeeds
 
 flatpak:
-    image: 'registry.gitlab.gnome.org/gnome/gnome-runtime-images/gnome:42'
     variables:
         MANIFEST_PATH: "dist/flatpak/org.gabmus.gfeeds.json"
         MESON_ARGS: "-Dprofile=Devel"

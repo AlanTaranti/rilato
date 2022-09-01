@@ -3,9 +3,9 @@ from os.path import isfile
 from os import environ as Env
 import json
 from datetime import timedelta
-from gi.repository import GObject, Gio
-from gfeeds.singleton import Singleton
-from gfeeds.signaler_list import SignalerList
+from gi.repository import GObject
+from threading import Thread
+from gfeeds.util.singleton import Singleton
 
 
 class ConfManagerSignaler(GObject.Object):
@@ -67,11 +67,6 @@ class ConfManagerSignaler(GObject.Object):
             None,
             (str,)
         ),
-        'on_max_picture_height_changed': (
-            GObject.SignalFlags.RUN_LAST,
-            None,
-            (str,)
-        ),
         'show_thumbnails_changed': (
             GObject.SignalFlags.RUN_LAST,
             None,
@@ -97,7 +92,7 @@ class ConfManager(metaclass=Singleton):
     BASE_SCHEMA = {
         'feeds': {},
         'dark_mode': False,
-        'dark_reader': False,
+        'reader_theme': 'auto',  # 'auto', 'light', 'dark'
         'new_first': True,
         'windowsize': {
             'width': 350,
@@ -118,7 +113,6 @@ class ConfManager(metaclass=Singleton):
         'tags': [],
         'open_youtube_externally': False,
         'media_player': 'mpv',
-        'max_picture_height': 600,
         'show_thumbnails': True,
         'use_experimental_listview': False,
         'auto_refresh_enabled': False,
@@ -184,22 +178,6 @@ class ConfManager(metaclass=Singleton):
             self.conf = ConfManager.BASE_SCHEMA.copy()
             self.save_conf()
 
-        self.read_feeds_items = SignalerList(self.conf['read_items'])
-        self.read_feeds_items.connect(
-            'append', self.dump_read_items_to_conf
-        )
-        self.read_feeds_items.connect(
-            'pop', self.dump_read_items_to_conf
-        )
-
-        bl_gsettings = Gio.Settings.new('org.gnome.desktop.wm.preferences')
-        bl = bl_gsettings.get_value('button-layout').get_string()
-        self.wm_decoration_on_left = (
-            'close:' in bl or
-            'maximize:' in bl or
-            'minimize:' in bl
-        )
-
         # font_gsettings = Gio.Settings.new('org.gnome.destkop.interface')
         # self.sans_font = font_gsettings.get_value(
         #     'font-name'
@@ -256,13 +234,17 @@ class ConfManager(metaclass=Singleton):
                 self.conf['feeds'][feed]['tags'].remove(tag)
         self.save_conf()
 
-    def dump_read_items_to_conf(self, *args):
-        self.conf['read_items'] = self.read_feeds_items.get_list()
-
-    def save_conf(self, *args, force_overwrite=False):
+    def __save_conf(self, force_overwrite: bool = False):
         if self.path.is_file() and not force_overwrite:
             with open(self.path, 'r') as fd:
                 if json.loads(fd.read()) == self.conf:
                     return
         with open(self.path, 'w') as fd:
             fd.write(json.dumps(self.conf))
+
+    def save_conf(
+            self, force_overwrite: bool = False, force_sync: bool = False
+    ):
+        if force_sync:
+            return self.__save_conf(force_overwrite)
+        Thread(target=self.__save_conf, args=(force_overwrite,)).start()

@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <requires lib="gtk" version="4.0"/>
-  <object class="GtkAboutDialog" id="aboutdialog">
-    <property name="program_name">@prettyname@</property>
+  <object class="AdwAboutWindow" id="aboutdialog">
+    <property name="application_name">@prettyname@</property>
     <property name="version">@VERSION@</property>
     <property name="copyright" translatable="yes">@authorfullname@, et al.</property>
     <property name="website">@PACKAGE_URL@</property>
-    <property name="authors">@CONTRIBUTORS@</property>
+    <property name="developers">@CONTRIBUTORS@</property>
     <property name="translator_credits" translatable="yes">@TRANSLATORS@</property>
-    <property name="logo_icon_name">@APPID@</property>
+    <property name="application_icon">@APPID@</property>
     <property name="license_type">gpl-3-0</property>
   </object>
 </interface>

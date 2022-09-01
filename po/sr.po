@@ -1,21 +1,22 @@
 # Serbian translation for gfeeds.
 # Copyright © 2022 gfeeds's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gfeeds package.
-# Мирослав Николић <miroslavnikolic@rocketmail.com>, 2022.
+# Мирослав Николић <miroslavnikolić@rocketmail.com>, 2022.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: gfeeds master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/gfeeds/issues\n"
-"POT-Creation-Date: 2022-03-18 17:58+0000\n"
-"PO-Revision-Date: 2022-03-19 06:01+0200\n"
-"Last-Translator: Мирослав Николић <miroslavnikolic@rocketmail.com>\n"
-"Language-Team: Serbian <gnome-sr@googlegroups.com>\n"
+"POT-Creation-Date: 2022-06-02 09:20+0000\n"
+"PO-Revision-Date: 2022-06-18 09:36+0200\n"
+"Last-Translator: Мирослав Николић <miroslavnikolić@rocketmail.com>\n"
+"Language-Team: Serbian <српски <gnome-sr@googlegroups.org>>\n"
 "Language: sr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=n==1? 3 : n%10==1 && n%100!=11 ? 0 : n"
-"%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2\n"
 
 #: data/org.gabmus.gfeeds.appdata.xml.in:4
 msgid "Feeds"
@@ -60,56 +61,32 @@ msgstr "Токовник се може увести и извести путем
 msgid "rss;reader;feed;news;"
 msgstr "рсс;читач;ток;вести;rss;reader;feed;news;"
 
-#: data/ui/extra_popover_menu.ui:19
-msgid "Web View"
-msgstr "Веб преглед"
-
-#: data/ui/extra_popover_menu.ui:26
-msgid "Reader Mode"
-msgstr "Режим читача"
-
-#: data/ui/extra_popover_menu.ui:33
-msgid "Feed Content"
-msgstr "Садржај тока"
-
-#: gfeeds/confirm_add_dialog.py:16
-msgid "Do you want to import these feeds?"
-msgstr "Да ли желите да увезете ове токове?"
-
-#: gfeeds/confirm_add_dialog.py:17
-msgid "Do you want to import this feed?"
-msgstr "Да ли желите да увезете овај ток?"
-
-#: gfeeds/download_manager.py:88
+#: gfeeds/feed_item.py:49
 #, python-brace-format
-msgid "`{0}`: connection timed out"
-msgstr "„{0}“: истекло је време повезивања"
+msgid "Error: unable to parse datetime {0} for feeditem {1}"
+msgstr "Грешка: не могу да обрадим време датума „{0}“ за ставку тока „{1}“"
 
-#: gfeeds/download_manager.py:92
+#: gfeeds/feed_parser.py:37
 #, python-brace-format
-msgid "`{0}` might not be a valid address"
-msgstr "„{0}“ не може бити исправна адреса"
+#| msgid "Errors while parsing feed `{0}`"
+msgid "Errors while parsing feed `{0}`, URL: `{1}`"
+msgstr "Грешка приликом обраде тока „{0}“, адреса „{1}“"
 
-#: gfeeds/download_manager.py:117
+#: gfeeds/feed_parser.py:55
 #, python-brace-format
-msgid "Error downloading `{0}`, code `{1}`"
-msgstr "Грешка преузимања „{0}“, шифра „{1}“"
+msgid "`{0}` may not be an RSS or Atom feed"
+msgstr "„{0}“ не може бити РСС или Атом ток"
 
-#: gfeeds/feeds_manager.py:87
+#: gfeeds/feeds_manager.py:88
 #, python-brace-format
 msgid "Feed {0} exists already, skipping"
 msgstr "Већ постоји ток „{0}“, прескачем"
 
-#: gfeeds/feeds_view.py:14
+#: gfeeds/feeds_view.py:13
 msgid "All feeds"
 msgstr "Сви токови"
 
-#: gfeeds/get_favicon.py:45
-#, python-brace-format
-msgid "Error downloading favicon for `{0}`"
-msgstr "Грешка преузимања фавиконице за „{0}“"
-
-#: gfeeds/headerbar.py:171
+#: gfeeds/headerbar.py:184
 msgid ""
 "There were problems with some feeds.\n"
 "Do you want to remove them?"
@@ -117,7 +94,7 @@ msgstr ""
 "Било  је проблема са неким токовима.\n"
 "Да ли желите да их уклоните?"
 
-#: gfeeds/main_leaflet.py:128
+#: gfeeds/main_leaflet.py:119
 #, python-brace-format
 msgid "{0} new article"
 msgid_plural "{0} new articles"
@@ -126,21 +103,29 @@ msgstr[1] "{0} нова чланка"
 msgstr[2] "{0} нових чланака"
 msgstr[3] "Један нови чланак"
 
-#: gfeeds/__main__.py:276
+#: gfeeds/__main__.py:229
+msgid "Do you want to import these feeds?"
+msgstr "Да ли желите да увезете ове токове?"
+
+#: gfeeds/__main__.py:256
+msgid "Do you want to import this feed?"
+msgstr "Да ли желите да увезете овај ток?"
+
+#: gfeeds/__main__.py:285
 msgid "url"
 msgstr "адреса"
 
-#: gfeeds/__main__.py:279
+#: gfeeds/__main__.py:288
 msgid "opml file local url or rss remote url to import"
 msgstr "локална адреса опм датотеке или адреса удаљеног рсс-а за увоз"
 
-#: gfeeds/manage_feeds_window.py:226
-msgid "Do you want to delete these feeds?"
-msgstr "Да ли желите да обришете ове токове?"
-
-#: gfeeds/manage_feeds_window.py:278
+#: gfeeds/manage_feeds_window.py:263
 msgid "Manage Feeds"
 msgstr "Управљај Токовником"
+
+#: gfeeds/manage_feeds_window.py:318
+msgid "Do you want to delete these feeds?"
+msgstr "Да ли желите да обришете ове токове?"
 
 #: gfeeds/opml_file_chooser.py:7
 msgid "XML files"
@@ -260,115 +245,110 @@ msgid "Dark mode"
 msgstr "Тамни режим"
 
 #: gfeeds/preferences_window.py:118
-msgid "Use dark theme for reader mode"
-msgstr "Користи тамну тему за режим читача"
+#| msgid "Reader Mode"
+msgid "Reader mode theme"
+msgstr "Режим теме читача"
 
 #: gfeeds/preferences_window.py:122
+msgid "Automatic"
+msgstr "Самостално"
+
+#: gfeeds/preferences_window.py:122
+msgid "Light"
+msgstr "Светла"
+
+#: gfeeds/preferences_window.py:122
+#| msgid "Dark mode"
+msgid "Dark"
+msgstr "Тамна"
+
+#: gfeeds/preferences_window.py:126
 msgid "Show article thumbnails"
 msgstr "Прикажи сличице чланка"
 
-#: gfeeds/preferences_window.py:127
-msgid "Maximum thumbnail height"
-msgstr "Највећа висина сличице"
-
-#: gfeeds/preferences_window.py:133
+#: gfeeds/preferences_window.py:131
 msgid "Show full articles titles"
 msgstr "Прикажи пун наслов чланака"
 
-#: gfeeds/preferences_window.py:138
+#: gfeeds/preferences_window.py:136
 msgid "Show full feeds names"
 msgstr "Прикажи пуне називе токова"
 
-#: gfeeds/preferences_window.py:145
+#: gfeeds/preferences_window.py:143
 msgid "Font preferences"
 msgstr "Поставке слова"
 
-#: gfeeds/preferences_window.py:147
+#: gfeeds/preferences_window.py:145
 msgid "Use system font for titles"
 msgstr "Користи слова система за наслове"
 
-#: gfeeds/preferences_window.py:151
+#: gfeeds/preferences_window.py:149
 msgid "Use system font for paragraphs"
 msgstr "Користи слова система за пасусе"
 
-#: gfeeds/preferences_window.py:155
+#: gfeeds/preferences_window.py:153
 msgid "Custom title font"
 msgstr "Произвољна слова наслова"
 
-#: gfeeds/preferences_window.py:159
+#: gfeeds/preferences_window.py:157
 msgid "Custom paragraph font"
 msgstr "Произвољна слова пасуса"
 
-#: gfeeds/preferences_window.py:163
+#: gfeeds/preferences_window.py:161
 msgid "Custom monospace font"
 msgstr "Произвољна слова сталне ширине"
 
-#: gfeeds/preferences_window.py:175
+#: gfeeds/preferences_window.py:173
 msgid "Privacy"
 msgstr "Приватност"
 
-#: gfeeds/preferences_window.py:178
+#: gfeeds/preferences_window.py:176
 msgid "Privacy preferences"
 msgstr "Поставке приватности"
 
-#: gfeeds/preferences_window.py:180
+#: gfeeds/preferences_window.py:178
 msgid "Enable JavaScript"
 msgstr "Укључи Јава скрипт"
 
-#: gfeeds/preferences_window.py:185
+#: gfeeds/preferences_window.py:183
 msgid "Try to block advertisements"
 msgstr "Покушај да блокираш оглашавања"
 
-#: gfeeds/preferences_window.py:187 gfeeds/preferences_window.py:222
+#: gfeeds/preferences_window.py:185 gfeeds/preferences_window.py:220
 msgid "Requires app restart"
 msgstr "Захтева поновно покретање"
 
-#: gfeeds/preferences_window.py:191
+#: gfeeds/preferences_window.py:189
 msgid "Update advertisement blocking list"
 msgstr "Освежи списак блокирања оглашавања"
 
-#: gfeeds/preferences_window.py:192
+#: gfeeds/preferences_window.py:190
 msgid "Updates automatically every 10 days"
 msgstr "Сам освежи сваких 10 дана"
 
-#: gfeeds/preferences_window.py:193
+#: gfeeds/preferences_window.py:191
 msgid "Update"
 msgstr "Освежи"
 
-#: gfeeds/preferences_window.py:206
+#: gfeeds/preferences_window.py:204
 msgid "Advanced"
 msgstr "Напредно"
 
-#: gfeeds/preferences_window.py:209
+#: gfeeds/preferences_window.py:207
 msgid "Advanced preferences"
 msgstr "Напредне поставке"
 
-#: gfeeds/preferences_window.py:211
+#: gfeeds/preferences_window.py:209
 msgid "Maximum refresh threads"
 msgstr "Највише нити освежавања"
 
-#: gfeeds/preferences_window.py:213
+#: gfeeds/preferences_window.py:211
 msgid "How many threads to use for feeds refresh"
 msgstr "Колико ће нити користити за освежавање токова"
 
-#: gfeeds/preferences_window.py:220
+#: gfeeds/preferences_window.py:218
 msgid "Experimental GtkListView for articles list"
 msgstr "Експериментални „GtkListView“ за списак чланака"
-
-#: gfeeds/rss_parser.py:68
-#, python-brace-format
-msgid "Error: unable to parse datetime {0} for feeditem {1}"
-msgstr "Грешка: не могу да обрадим време датума „{0}“ за ставку тока „{1}“"
-
-#: gfeeds/rss_parser.py:154
-#, python-brace-format
-msgid "Errors while parsing feed `{0}`"
-msgstr "Грешка приликом обраде тока „{0}“"
-
-#: gfeeds/rss_parser.py:172
-#, python-brace-format
-msgid "`{0}` may not be an RSS or Atom feed"
-msgstr "„{0}“ не може бити РСС или Атом ток"
 
 #: gfeeds/sidebar.py:21
 msgid "Loading feeds..."
@@ -382,30 +362,57 @@ msgstr "Означи као непрочитано"
 msgid "Mark as read"
 msgstr "Означи као прочитано"
 
-#: gfeeds/suggestion_bar.py:37
-msgid "There are some errors"
-msgstr "Постоје неке грешке"
+#: gfeeds/util/download_manager.py:102
+#, python-brace-format
+msgid "`{0}`: connection timed out"
+msgstr "„{0}“: истекло је време повезивања"
 
-#: gfeeds/suggestion_bar.py:46
-msgid "Show"
-msgstr "Прикажи"
+#: gfeeds/util/download_manager.py:111
+#, python-brace-format
+msgid "`{0}` might not be a valid address"
+msgstr "„{0}“ не може бити исправна адреса"
 
-#: gfeeds/suggestion_bar.py:47
-msgid "Ignore"
-msgstr "Занемари"
+#: gfeeds/util/download_manager.py:150
+#, python-brace-format
+msgid "Error downloading `{0}`, code `{1}`"
+msgstr "Грешка преузимања „{0}“, шифра „{1}“"
 
-#: gfeeds/suggestion_bar.py:70
-msgid "There were problems with some feeds. Do you want to remove them?"
-msgstr "Било  је проблема са неким токовима. Да ли желите да их уклоните?"
+#: gfeeds/util/get_favicon.py:53
+#, python-brace-format
+msgid "Error downloading favicon for `{0}`"
+msgstr "Грешка преузимања фавиконице за „{0}“"
 
-#: gfeeds/suggestion_bar.py:97
-msgid "You are offline"
-msgstr "Ван мреже сте"
-
-#: gfeeds/webview.py:188
+#: gfeeds/webview.py:201
 msgid "Link copied to clipboard!"
 msgstr "Веза је умножена у оставу!"
 
-#: gfeeds/webview.py:210
+#: gfeeds/webview.py:223
 msgid "Feed content not available for this article"
 msgstr "Садржај тока није доступан за овај чланак"
+
+#~ msgid "Web View"
+#~ msgstr "Веб преглед"
+
+#~ msgid "Feed Content"
+#~ msgstr "Садржај тока"
+
+#~ msgid "Use dark theme for reader mode"
+#~ msgstr "Користи тамну тему за режим читача"
+
+#~ msgid "Maximum thumbnail height"
+#~ msgstr "Највећа висина сличице"
+
+#~ msgid "There are some errors"
+#~ msgstr "Постоје неке грешке"
+
+#~ msgid "Show"
+#~ msgstr "Прикажи"
+
+#~ msgid "Ignore"
+#~ msgstr "Занемари"
+
+#~ msgid "There were problems with some feeds. Do you want to remove them?"
+#~ msgstr "Било  је проблема са неким токовима. Да ли желите да их уклоните?"
+
+#~ msgid "You are offline"
+#~ msgstr "Ван мреже сте"

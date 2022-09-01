@@ -1,7 +1,8 @@
+from typing import Any, Callable, Literal, Optional
 from gi.repository import Gtk
 from concurrent.futures import ThreadPoolExecutor
 from gfeeds.feeds_manager import FeedsManager
-from gfeeds.rss_parser import FeedItem
+from gfeeds.feed_item import FeedItem
 from gfeeds.sidebar_row import SidebarRow
 
 
@@ -22,14 +23,24 @@ class CommonListScrolledWin(Gtk.ScrolledWindow):
         )
 
         # API bindings
-        self.articles_store._bind_api(self)
+        self.empty = self.articles_store.empty
+        self.populate = self.articles_store.populate
+        self.selected_feeds = self.articles_store.selected_feeds
+        self.invalidate_filter = self.articles_store.invalidate_filter
+        self.invalidate_sort = self.articles_store.invalidate_sort
+        self.set_search_term = self.articles_store.set_search_term
+        self.set_selected_feeds = self.articles_store.set_selected_feeds
+        self.selected_feeds = self.articles_store.selected_feeds
+        self.add_new_items = self.articles_store.add_new_items
+        self.remove_items = self.articles_store.remove_items
+        self.set_all_read_state = self.articles_store.set_all_read_state
+        self.all_items_changed = self.articles_store.all_items_changed
 
     def shutdown_thread_pool(self):
         self.fetch_image_thread_pool.shutdown(wait=False, cancel_futures=True)
 
     def __del__(self):
         self.shutdown_thread_pool()
-        super().__del__()
 
 
 class ArticlesListView(CommonListScrolledWin):
@@ -52,7 +63,7 @@ class ArticlesListView(CommonListScrolledWin):
     def connect_activate(self, func):
         self.selection.connect(
             'notify::selected-item',
-            lambda caller, feed_item, *args:
+            lambda *_:
                 func(self.selection.get_selected_item())
         )
 
@@ -60,45 +71,46 @@ class ArticlesListView(CommonListScrolledWin):
         return self.selection.get_selected()
 
     def get_selected_item(self) -> FeedItem:
-        return self.articles_store.get_item(self.get_selected())
+        return self.articles_store[self.get_selected()]
 
     def select_row(self, index):
         self.selection.select_item(index, True)
 
-    def select_next(self, *args):
+    # for both select next and prev; increment can be +1 or -1
+    def __select_successive(self, increment: Literal[1, -1]):
         index = self.get_selected()
-        if index == Gtk.INVALID_LIST_POSITION:
-            return self.select_row(0)
-        # if index > ??? num_rows?:
-        #     return
-        self.select_row(index+1)
-
-    def select_prev(self, *args):
-        index = self.get_selected()
-        if index == Gtk.INVALID_LIST_POSITION:
-            return self.select_row(0)
-        if index == 0:
+        if increment == -1 and index == 0:
             return
-        self.select_row(index-1)
+        if index == Gtk.INVALID_LIST_POSITION:
+            index = -1 * increment  # so that 0 is selected
+        self.select_row(index + increment)
 
-    def on_activate(self, *args):
+    def select_next(self, *_):
+        self.__select_successive(1)
+
+    def select_prev(self, *_):
+        self.__select_successive(-1)
+
+    def on_activate(self, *_):
         feed_item = self.selection.get_selected_item()
         if not feed_item:
             return
         feed_item.read = True
 
     def _on_setup_listitem(
-            self, factory: Gtk.ListItemFactory, list_item: Gtk.ListItem
+            self, _: Gtk.ListItemFactory, list_item: Gtk.ListItem
     ):
         row_w = SidebarRow(self.fetch_image_thread_pool)
         list_item.set_child(row_w)
-        list_item.row_w = row_w  # otherwise it gets garbage collected
+        # otherwise row gets garbage collected
+        list_item.row_w = row_w  # type: ignore
 
     def _on_bind_listitem(
-            self, factory: Gtk.ListItemFactory, list_item: Gtk.ListItem
+            self, _: Gtk.ListItemFactory, list_item: Gtk.ListItem
     ):
-        row_w = list_item.get_child()
-        row_w.set_feed_item(list_item.get_item())
+        row_w: SidebarRow = list_item.get_child()  # type: ignore
+        feed_item: FeedItem = list_item.get_item()  # type: ignore
+        row_w.set_feed_item(feed_item)
 
 
 class ArticlesListBox(CommonListScrolledWin):
@@ -113,16 +125,16 @@ class ArticlesListBox(CommonListScrolledWin):
         self.listbox.bind_model(self.articles_store, self._create_row, None)
         self.set_child(self.listbox)
 
-    def connect_activate(self, func):
+    def connect_activate(self, func: Callable[[Optional[FeedItem]], Any]):
         self.listbox.connect(
             'row-activated',
-            lambda lb, row, *args:
+            lambda _, row, *__:
                 func(row.get_child().feed_item)
                 if row else func(None)
         )
 
     def _create_row(
-            self, feed_item: FeedItem, *args
+            self, feed_item: FeedItem, *_
     ) -> Gtk.Widget:
         row_w = SidebarRow(self.fetch_image_thread_pool)
         row_w.set_feed_item(feed_item)
@@ -143,22 +155,21 @@ class ArticlesListBox(CommonListScrolledWin):
             return 0
         return index
 
-    def select_next(self, *args):
+    # for both select next and prev; increment can be +1 or -1
+    def __select_successive(self, increment: Literal[1, -1]):
         index = self.get_selected_index()
+        if increment == -1 and index == 0:
+            return
         if index < 0:
-            index = -1  # so that 0 is selected
-        target = self.listbox.get_row_at_index(index+1)
+            index = -1 * increment  # so that 0 is selected
+        target = self.listbox.get_row_at_index(index + increment)
         if not target:
             return
         self.listbox.select_row(target)
         target.activate()
 
-    def select_prev(self, *args):
-        index = self.get_selected_index()
-        if index <= 0:
-            index = 1  # so that 0 is selected
-        target = self.listbox.get_row_at_index(index-1)
-        if not target:
-            return
-        self.listbox.select_row(target)
-        target.activate()
+    def select_next(self, *_):
+        self.__select_successive(1)
+
+    def select_prev(self, *_):
+        self.__select_successive(-1)

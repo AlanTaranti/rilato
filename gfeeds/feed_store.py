@@ -1,7 +1,7 @@
 from gi.repository import GObject, Gtk, Gio
 from typing import Optional
 from gfeeds.confManager import ConfManager
-from gfeeds.rss_parser import Feed
+from gfeeds.feed import Feed
 
 
 class FeedStore(Gtk.FilterListModel):

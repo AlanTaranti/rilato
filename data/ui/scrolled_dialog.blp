@@ -1,0 +1,54 @@
+using Gtk 4.0;
+using Adw 1;
+
+
+template ScrolledDialog : Adw.Window {
+    styles ['background', 'csd', 'dialog', 'message']
+    accessible-role: dialog;
+    overflow: hidden;
+    Box {
+        hexpand: true; vexpand: true;
+        orientation: vertical;
+        spacing: 12;
+        margin-top: 12;
+        Label title_label {
+            styles ['title-2']
+            wrap: true;
+            margin-start: 12; margin-end: 12;
+            justify: center;
+        }
+        ScrolledWindow {
+            styles ['card']
+            hscrollbar-policy: never;
+            width-request: 270; height-request: 300;
+            margin-start: 12; margin-end: 12;
+            Label message_label {
+                wrap: true;
+                xalign: 0.0;
+                margin-top: 12; margin-bottom: 12;
+                margin-start: 12; margin-end: 12;
+            }
+        }
+        Box {
+            styles ['dialog-action-box']
+            orientation: horizontal;
+            hexpand: true;
+            Box {
+                styles ['dialog-action-area']
+                orientation: horizontal;
+                hexpand: true;
+                homogeneous: true;
+                Button no_btn {
+                    styles ['destructive-action']
+                    label: _('No');
+                    clicked => on_no_clicked();
+                }
+                Button yes_btn {
+                    styles ['suggested-action']
+                    label: _('Yes');
+                    clicked => on_yes_clicked();
+                }
+            }
+        }
+    }
+}

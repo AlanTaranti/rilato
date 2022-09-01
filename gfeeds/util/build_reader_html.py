@@ -1,5 +1,5 @@
-from typing import Tuple
-from gfeeds.readability_wrapper import RDoc
+from typing import List, Tuple, Union
+from gfeeds.util.readability_wrapper import RDoc
 import pygments
 import pygments.lexers
 from lxml.html import (
@@ -8,7 +8,7 @@ from lxml.html import (
     HtmlElement
 )
 from pygments.formatters import HtmlFormatter
-from gfeeds.reader_mode_style import get_css
+from gfeeds.util.reader_mode_style import get_css
 
 
 # Thanks to Eloi Rivard (azmeuk) for the contribution on the media block
@@ -37,7 +37,7 @@ def _build_media_img(title, imgurl, link='#') -> str:
 
 def build_syntax_highlight(root: HtmlElement) -> Tuple[str, HtmlElement]:
     syntax_highlight_css = ''
-    code_nodes = root.xpath(
+    code_nodes: List[HtmlElement] = root.xpath(
         '//pre/code'
     )
     lexer = None
@@ -53,21 +53,22 @@ def build_syntax_highlight(root: HtmlElement) -> Tuple[str, HtmlElement]:
             except pygments.util.ClassNotFound:
                 pass
 
-        if not code_node.text:
+        code_text = code_node.text_content()
+        if not code_text:
             continue
 
-        if not lexer:
+        if lexer is None:
             try:
-                lexer = pygments.lexers.guess_lexer(code_node.text)
+                lexer = pygments.lexers.guess_lexer(code_text)
             except pygments.util.ClassNotFound:
                 continue
 
-        formatter = HtmlFormatter(style='solarized-dark')
+        formatter = HtmlFormatter(style='solarized-dark', linenos=False)
 
         if not syntax_highlight_css:
             syntax_highlight_css = formatter.get_style_defs()
 
-        newtext = pygments.highlight(code_node.text, lexer, formatter)
+        newtext = pygments.highlight(code_text, lexer, formatter)
         newhtml = html_fromstring(newtext)
 
         pre_node = code_node.getparent()
@@ -76,10 +77,12 @@ def build_syntax_highlight(root: HtmlElement) -> Tuple[str, HtmlElement]:
     return syntax_highlight_css, root
 
 
-def build_syntax_highlight_from_raw_html(raw_html) -> Tuple[str, HtmlElement]:
+def build_syntax_highlight_from_raw_html(
+        raw_html: Union[str, bytes]
+) -> Tuple[str, HtmlElement]:
     return build_syntax_highlight(
         html_fromstring(
-            raw_html if type(raw_html) == str else raw_html.decode()
+            raw_html if isinstance(raw_html, str) else raw_html.decode()
         )
     )
 

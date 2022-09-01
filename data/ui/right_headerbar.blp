@@ -12,6 +12,27 @@ menu webviewMenu {
     }
 }
 
+menu viewModeMenu {
+    section {
+        label: _('View Mode');
+        item {
+            label: _('Web View');
+            action: 'app.view_mode_change';
+            target: 'webview';
+        }
+        item {
+            label: _('Reader Mode');
+            action: 'app.view_mode_change';
+            target: 'reader';
+        }
+        item {
+            label: _('Feed Content');
+            action: 'app.view_mode_change';
+            target: 'rsscont';
+        }
+    }
+}
+
 PopoverMenu extra_popover {
     menu-model: webviewMenu;
     [zoom] Box {
@@ -37,7 +58,7 @@ PopoverMenu extra_popover {
 
 template RightHeaderbar : WindowHandle {
     vexpand: false; hexpand: true;
-    HeaderBar right_headerbar {
+    Adw.HeaderBar right_headerbar {
         hexpand: true;
         [title] Adw.Squeezer title_squeezer {
             hexpand: true;
@@ -68,8 +89,9 @@ template RightHeaderbar : WindowHandle {
         }
         MenuButton view_mode_menu_btn {
             sensitive: false;
-            tooltip-text: _('Change View Mode');
+            tooltip-text: _('View Mode');
             always-show-arrow: true;
+            menu-model: viewModeMenu;
         }
         [end] MenuButton extra_menu_btn {
             sensitive: false;

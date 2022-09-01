@@ -1,5 +1,5 @@
 from gettext import gettext as _
-from gfeeds.accel_manager import add_accelerators
+from gfeeds.accel_manager import add_accelerators, Accelerator
 from gi.repository import Gtk, GObject, Adw
 from xml.sax.saxutils import escape
 from gfeeds.confManager import ConfManager
@@ -8,7 +8,7 @@ from gfeeds.feeds_view import (
     FeedsViewListbox,
     FeedsViewListboxRow
 )
-from gfeeds.scrolled_message_dialog import ScrolledMessageDialog
+from gfeeds.scrolled_dialog import ScrolledDialog
 from gfeeds.get_children import get_children
 from gfeeds.tag_store import TagObj
 
@@ -216,21 +216,6 @@ class ManageFeedsScrolledWindow(Gtk.ScrolledWindow):
         self.set_child(self.listbox)
 
 
-class DeleteFeedsConfirmMessageDialog(ScrolledMessageDialog):
-    def __init__(self, parent, selected_feeds):
-        super().__init__(
-            transient_for=parent,
-            modal=True,
-            message_type=Gtk.MessageType.QUESTION,
-            buttons=Gtk.ButtonsType.YES_NO,
-            text=_('Do you want to delete these feeds?')
-        )
-
-        self.format_secondary_markup(
-            '\n'.join([escape(f.title) for f in selected_feeds])
-        )
-
-
 class GFeedsManageFeedsWindow(Adw.Window):
     def __init__(self, appwindow, **kwargs):
         super().__init__(
@@ -285,12 +270,9 @@ class GFeedsManageFeedsWindow(Adw.Window):
         self.main_box.append(self.flap)
         self.set_content(self.main_box)
 
-        add_accelerators(
+        self.__auto_shortcut_controller = add_accelerators(
             self,
-            [{
-                'combo': 'Escape',
-                'cb': lambda *args: self.close()
-            }]
+            [Accelerator('Escape', lambda *_: self.close())]
         )
 
         self.tags_flap.connect(
@@ -329,9 +311,13 @@ class GFeedsManageFeedsWindow(Adw.Window):
             if row.checkbox.get_active()
         ]
 
-    def on_delete_clicked(self, *_):
+    def on_delete_clicked(self, *__):
         selected_feeds = self.get_selected_feeds()
-        dialog = DeleteFeedsConfirmMessageDialog(self, selected_feeds)
+        dialog = ScrolledDialog(
+            transient_for=self,
+            title=_('Do you want to delete these feeds?'),
+            message='\n'.join([escape(f.title) for f in selected_feeds])
+        )
 
         def on_response(_dialog, res):
             _dialog.close()

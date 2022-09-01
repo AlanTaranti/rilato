@@ -22,11 +22,11 @@ menu generalMenu {
 
 template LeftHeaderbar : WindowHandle {
     vexpand: false; hexpand: true;
-    HeaderBar left_headerbar {
+    Adw.HeaderBar left_headerbar {
         [title] Adw.Bin {}
         ToggleButton filter_btn {
             tooltip-text: _('Filter');
-            icon-name: 'funnel-symbolic';
+            icon-name: 'sidebar-show-symbolic';
         }
         MenuButton add_btn {
             tooltip-text: _('Add Feed');

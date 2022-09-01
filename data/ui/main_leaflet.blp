@@ -14,6 +14,50 @@ template MainLeaflet : Adw.Bin {
                 orientation: vertical;
                 width-request: 360;
                 height-request: 100;
+                .LeftHeaderbar left_headerbar {
+                    searchbar: searchbar;
+                }
+                SearchBar searchbar {
+                    hexpand: false;
+                    show-close-button: false;
+                    search-mode-enabled: false;
+                    child: SearchEntry searchbar_entry {};
+                    key-capture-widget: searchbar_entry;
+                }
+                InfoBar connection_bar {
+                    message-type: info;
+                    revealed: false;
+                    Box {
+                        orientation: horizontal;
+                        spacing: 6;
+                        margin-top: 6; margin-bottom: 6;
+                        halign: center;
+                        hexpand: true;
+                        Image {
+                            icon-name: 'network-offline-symbolic';
+                        }
+                        Label {
+                            label: _('Offline');
+                            wrap: true;
+                            xalign: 0.0;
+                        }
+                    }
+                }
+                Adw.Flap filter_flap {
+                    flap-position: start;
+                    fold-policy: always;
+                    modal: true;
+                    reveal-flap: false;
+                    swipe-to-open: true;
+                    swipe-to-close: true;
+                    notify::reveal-flap => on_reveal_flap_changed();
+                    [flap] .FilterView filter_view {}
+                    [content] .StackWithEmptyState sidebar_stack {
+                        main-widget: .GFeedsSidebar sidebar {
+
+                        };
+                    }
+                }
             };
         }
         Adw.LeafletPage {
@@ -23,6 +67,11 @@ template MainLeaflet : Adw.Bin {
         Adw.LeafletPage right_page {
             child: Gtk.Box right_box {
                 orientation: vertical;
+                .RightHeaderbar right_headerbar {
+                    webview: webview;
+                    go_back => on_back_btn_clicked();
+                }
+                .GFeedsWebView webview {}
             };
         }
     }

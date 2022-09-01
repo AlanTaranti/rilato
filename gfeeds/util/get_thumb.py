@@ -1,7 +1,7 @@
-from urllib.parse import urlparse
 from syndom import Html
-from gfeeds.download_manager import download_raw
-from gfeeds.sha import shasum
+from gfeeds.util.create_full_url import create_full_url
+from gfeeds.util.download_manager import download_raw
+from gfeeds.util.sha import shasum
 from gfeeds.confManager import ConfManager
 from os.path import isfile
 
@@ -23,11 +23,4 @@ def get_thumb(link):
     res = sd_html.img_url
     if not res:
         return None
-    if 'http://' in res or 'https://' in res:
-        return res
-    if res[0] == '/':
-        up = urlparse(link)
-        res = res.lstrip('/')
-        url = f'{up.scheme or "http"}://{up.hostname}/{res}'
-        return url
-    return f'{link}/{res}'
+    return create_full_url(link, res)
