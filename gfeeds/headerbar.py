@@ -4,6 +4,7 @@ from gi.repository import Adw, GObject, Gtk
 from gfeeds.confManager import ConfManager
 from gfeeds.feeds_manager import FeedsManager
 from xml.sax.saxutils import escape
+from gfeeds.scrolled_dialog import ScrolledDialogResponse, ScrolledDialogV2
 
 from gfeeds.webview import GFeedsWebView
 
@@ -177,46 +178,32 @@ class LeftHeaderbar(Gtk.WindowHandle):
 
     @Gtk.Template.Callback()
     def show_errors_dialog(self, *__):
-        dialog = Adw.MessageDialog(
-            transient_for=self.get_root(),  # type: ignore
-            heading=_(
-                'Remove Invalid Feed?'
+
+        def on_remove():
+            for pf in self.feedman.problematic_feeds:
+                if pf in self.confman.conf['feeds'].keys():
+                    self.confman.conf['feeds'].pop(pf)
+                    self.confman.save_conf()
+            self.errors_btn.set_visible(False)
+
+        def on_keep():
+            self.errors_btn.set_visible(True)
+
+        dialog = ScrolledDialogV2(
+            self.get_root(),  # type: ignore
+            _(
+                'There were problems with some feeds.'
+                ' Do you want to remove them?'
             ),
-            extra_child=Gtk.ScrolledWindow(
-                css_classes=['card'],
-                hscrollbar_policy=Gtk.PolicyType.NEVER,
-                width_request=270,
-                margin_start=12,
-                margin_end=12,
-                child=Gtk.Label(
-                    wrap=True,
-                    xalign=0.0,
-                    margin_top=12,
-                    margin_bottom=12,
-                    margin_start=12,
-                    margin_end=12,
-                    label=escape('\n'.join(self.feedman.errors))
+            escape('\n'.join(self.feedman.errors)),
+            [
+                ScrolledDialogResponse('keep', _('_Keep'), on_keep),
+                ScrolledDialogResponse(
+                    'remove', _('_Remove'), on_remove,
+                    Adw.ResponseAppearance.DESTRUCTIVE
                 )
-            )
+            ]
         )
-
-        dialog.add_response('keep', _('_Keep'))
-        dialog.add_response('remove', _('_Remove'))
-        dialog.set_response_appearance('remove',
-                                       Adw.ResponseAppearance.DESTRUCTIVE)
-
-        def on_response(_dialog, res):
-            _dialog.close()
-            if (res == 'remove'):
-                for pf in self.feedman.problematic_feeds:
-                    if pf in self.confman.conf['feeds'].keys():
-                        self.confman.conf['feeds'].pop(pf)
-                        self.confman.save_conf()
-                self.errors_btn.set_visible(False)
-            else:
-                self.errors_btn.set_visible(True)
-
-        dialog.connect('response', on_response)
         dialog.present()
 
     @Gtk.Template.Callback()
