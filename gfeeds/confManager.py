@@ -5,6 +5,7 @@ import json
 from datetime import timedelta
 from gi.repository import GObject
 from threading import Thread
+from gfeeds.gsettings_wrapper import GsettingsWrapper
 from gfeeds.util.singleton import Singleton
 
 
@@ -85,6 +86,32 @@ class ConfManagerSignaler(GObject.Object):
     }
 
 
+def json_to_gsettings(path: Path):
+    gw = GsettingsWrapper('org.gabmus.gfeeds')
+    conf = dict()
+
+    if path.is_file():
+        try:
+            with open(path) as fd:
+                conf = json.loads(fd.read())
+        except Exception:
+            return
+    else:
+        return
+
+    for k in conf.keys():
+        if k == 'windowsize':
+            gw['window_width'] = conf[k]['width']
+            gw['window_height'] = conf[k]['height']
+            continue
+        try:
+            gw[k] = conf[k]
+        except KeyError:
+            print(f'json_to_gsettings: skipping unsupported key {k}')
+
+    path.unlink()
+
+
 class ConfManager(metaclass=Singleton):
 
     _background_color = None
@@ -150,44 +177,12 @@ class ConfManager(metaclass=Singleton):
         ]:
             if not p.is_dir():
                 p.mkdir(parents=True)
-        self.path = self.conf_dir.joinpath('org.gabmus.gfeeds.json')
+        self.legacy_conf_path = self.conf_dir.joinpath(
+            'org.gabmus.gfeeds.json'
+        )
 
-        if self.path.is_file():
-            try:
-                with open(self.path) as fd:
-                    self.conf = json.loads(fd.read())
-                # verify that the file has all of the schema keys
-                for k in ConfManager.BASE_SCHEMA:
-                    if k not in self.conf.keys():
-                        if isinstance(
-                                ConfManager.BASE_SCHEMA[k], (list, dict)
-                        ):
-                            self.conf[k] = ConfManager.BASE_SCHEMA[k].copy()
-                        else:
-                            self.conf[k] = ConfManager.BASE_SCHEMA[k]
-                if isinstance(self.conf['feeds'], list):
-                    n_feeds = {}
-                    for o_feed in self.conf['feeds']:
-                        n_feeds[o_feed] = {}
-                    self.conf['feeds'] = n_feeds
-                    self.save_conf()
-            except Exception:
-                self.conf = ConfManager.BASE_SCHEMA.copy()
-                self.save_conf(force_overwrite=True)
-        else:
-            self.conf = ConfManager.BASE_SCHEMA.copy()
-            self.save_conf()
-
-        # font_gsettings = Gio.Settings.new('org.gnome.destkop.interface')
-        # self.sans_font = font_gsettings.get_value(
-        #     'font-name'
-        # ).get_string()
-        # self.serif_font = font_gsettings.get_value(
-        #     'document-font-name'
-        # ).get_string()
-        # self.mono_font = font_gsettings.get_value(
-        #     'monospace-font-name'
-        # ).get_string()
+        self.conf = GsettingsWrapper('org.gabmus.gfeeds')
+        json_to_gsettings(self.legacy_conf_path)
 
         self.article_thumb_cache_path = self.thumbs_cache_path.joinpath(
             'article_thumb_cache.json'
@@ -208,16 +203,19 @@ class ConfManager(metaclass=Singleton):
         return timedelta(days=self.conf['max_article_age_days'])
 
     def add_tag(self, tag: str, target_feeds=[]):
-        lowercase_tags = [t.lower() for t in self.conf['tags']]
+        tags: list = self.conf['tags']
+        lowercase_tags = [t.lower() for t in tags]
         if tag.lower() not in lowercase_tags:
-            self.conf['tags'].append(tag)
+            tags.append(tag)
+            self.conf['tags'] = tags
             self.emit('gfeeds_tags_append', tag)
+        feeds: dict = self.conf['feeds']
         for feed in target_feeds:
-            if 'tags' not in self.conf['feeds'][feed].keys():
-                self.conf['feeds'][feed]['tags'] = []
-            if tag not in self.conf['feeds'][feed]['tags']:
-                self.conf['feeds'][feed]['tags'].append(tag)
-        self.save_conf()
+            if 'tags' not in feeds[feed].keys():
+                feeds[feed]['tags'] = []
+            if tag not in feeds[feed]['tags']:
+                feeds[feed]['tags'].append(tag)
+        self.conf['feeds'] = feeds
 
     def delete_tag(self, tag: str):
         while tag in self.conf['tags']:
@@ -227,24 +225,14 @@ class ConfManager(metaclass=Singleton):
         # self.save_conf()  # done by remove_tags
 
     def remove_tag(self, tag: str, target_feeds: list):
+        feeds: dict = self.conf['feeds']
         for feed in target_feeds:
-            if 'tags' not in self.conf['feeds'][feed].keys():
+            if 'tags' not in feeds[feed].keys():
                 continue
-            if tag in self.conf['feeds'][feed]['tags']:
-                self.conf['feeds'][feed]['tags'].remove(tag)
-        self.save_conf()
+            if tag in feeds[feed]['tags']:
+                feeds[feed].remove(tag)
+        self.conf['feeds'] = feeds
 
-    def __save_conf(self, force_overwrite: bool = False):
-        if self.path.is_file() and not force_overwrite:
-            with open(self.path, 'r') as fd:
-                if json.loads(fd.read()) == self.conf:
-                    return
-        with open(self.path, 'w') as fd:
-            fd.write(json.dumps(self.conf))
-
-    def save_conf(
-            self, force_overwrite: bool = False, force_sync: bool = False
-    ):
-        if force_sync:
-            return self.__save_conf(force_overwrite)
-        Thread(target=self.__save_conf, args=(force_overwrite,)).start()
+    # TODO: legacy; remove
+    def save_conf(self, *_):
+        pass
