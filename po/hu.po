@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gfeeds master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/gfeeds/issues\n"
-"POT-Creation-Date: 2022-07-12 05:28+0000\n"
-"PO-Revision-Date: 2022-08-30 00:15+0200\n"
+"POT-Creation-Date: 2022-09-01 07:35+0000\n"
+"PO-Revision-Date: 2022-09-02 01:12+0200\n"
 "Last-Translator: Balázs Úr <ur.balazs at fsf dot hu>\n"
 "Language-Team: Hungarian <gnome-hu-list at gnome dot org>\n"
 "Language: hu\n"
@@ -63,23 +63,22 @@ msgstr "A hírforrások OPML-ből importálhatók és abba exportálhatók."
 msgid "rss;reader;feed;news;"
 msgstr "rss;olvasó;hírforrás;hírek;"
 
-#: gfeeds/feed_item.py:49
+#: gfeeds/feed_item.py:55
 #, python-brace-format
 msgid "Error: unable to parse datetime {0} for feeditem {1}"
 msgstr "Hiba: a(z) {0} dátum nem dolgozható fel ennél a hírforráselemnél: {1}"
 
-#: gfeeds/feed_parser.py:37
+#: gfeeds/feed_parser.py:64
 #, python-brace-format
-#| msgid "Errors while parsing feed `{0}`"
 msgid "Errors while parsing feed `{0}`, URL: `{1}`"
 msgstr "Hibák történtek a(z) „{0}” hírforrás feldolgozásakor, URL: „{1}”"
 
-#: gfeeds/feed_parser.py:55
+#: gfeeds/feed_parser.py:74
 #, python-brace-format
 msgid "`{0}` may not be an RSS or Atom feed"
 msgstr "A(z) „{0}” lehet, hogy nem RSS vagy Atom hírforrás"
 
-#: gfeeds/feeds_manager.py:88
+#: gfeeds/feeds_manager.py:90
 #, python-brace-format
 msgid "Feed {0} exists already, skipping"
 msgstr "A(z) „{0}” hírforrás már létezik, kihagyás"
@@ -88,34 +87,41 @@ msgstr "A(z) „{0}” hírforrás már létezik, kihagyás"
 msgid "All feeds"
 msgstr "Összes hírforrás"
 
-#: gfeeds/headerbar.py:184
-msgid ""
-"There were problems with some feeds.\n"
-"Do you want to remove them?"
-msgstr ""
-"Problémák voltak egyes hírforrásokkal.\n"
-"Szeretné eltávolítani azokat?"
+#: gfeeds/headerbar.py:195
+#| msgid ""
+#| "There were problems with some feeds.\n"
+#| "Do you want to remove them?"
+msgid "There were problems with some feeds. Do you want to remove them?"
+msgstr "Problémák voltak egyes hírforrásokkal. Szeretné eltávolítani azokat?"
 
-#: gfeeds/main_leaflet.py:119
+#: gfeeds/headerbar.py:200
+msgid "_Keep"
+msgstr "_Megtartás"
+
+#: gfeeds/headerbar.py:202
+msgid "_Remove"
+msgstr "_Eltávolítás"
+
+#: gfeeds/main_leaflet.py:122
 #, python-brace-format
 msgid "{0} new article"
 msgid_plural "{0} new articles"
 msgstr[0] "{0} új cikk"
 msgstr[1] "{0} új cikk"
 
-#: gfeeds/__main__.py:229
+#: gfeeds/__main__.py:226
 msgid "Do you want to import these feeds?"
 msgstr "Szeretné importálni ezeket a hírforrásokat?"
 
-#: gfeeds/__main__.py:256
+#: gfeeds/__main__.py:253
 msgid "Do you want to import this feed?"
 msgstr "Szeretné importálni ezt a hírforrást?"
 
-#: gfeeds/__main__.py:285
+#: gfeeds/__main__.py:282
 msgid "url"
 msgstr "URL"
 
-#: gfeeds/__main__.py:288
+#: gfeeds/__main__.py:285
 msgid "opml file local url or rss remote url to import"
 msgstr "importálandó helyi OPML-fájl vagy távoli RSS URL"
 
@@ -150,15 +156,6 @@ msgstr "Válassza ki, hogy hová mentse az exportálandó OPML-fájlt"
 #: gfeeds/opml_file_chooser.py:30
 msgid "Save"
 msgstr "Mentés"
-
-#: gfeeds/opml_manager.py:42
-msgid "Error: OPML path provided does not exist"
-msgstr "Hiba: A megadott OPML útvonal nem létezik"
-
-#: gfeeds/opml_manager.py:53
-#, python-brace-format
-msgid "Error parsing OPML file `{0}`"
-msgstr "Hiba a(z) „{0}” OPML-fájl feldolgozásakor"
 
 #: gfeeds/preferences_window.py:22
 msgid "General"
@@ -245,7 +242,6 @@ msgid "Dark mode"
 msgstr "Sötét mód"
 
 #: gfeeds/preferences_window.py:118
-#| msgid "Reader Mode"
 msgid "Reader mode theme"
 msgstr "Olvasó mód témája"
 
@@ -258,7 +254,6 @@ msgid "Light"
 msgstr "Világos"
 
 #: gfeeds/preferences_window.py:122
-#| msgid "Dark mode"
 msgid "Dark"
 msgstr "Sötét"
 
@@ -362,25 +357,34 @@ msgstr "Megjelölés olvasatlanként"
 msgid "Mark as read"
 msgstr "Megjelölés olvasottként"
 
-#: gfeeds/util/download_manager.py:102
+#: gfeeds/util/download_manager.py:111
 #, python-brace-format
 msgid "`{0}`: connection timed out"
 msgstr "„{0}”: időtúllépés a kapcsolatban"
 
-#: gfeeds/util/download_manager.py:111
+#: gfeeds/util/download_manager.py:120
 #, python-brace-format
 msgid "`{0}` might not be a valid address"
 msgstr "A „{0}” lehet, hogy nem érvényes cím"
 
-#: gfeeds/util/download_manager.py:150
+#: gfeeds/util/download_manager.py:154
 #, python-brace-format
 msgid "Error downloading `{0}`, code `{1}`"
 msgstr "Hiba a(z) „{0}” letöltésekor, kód: „{1}”"
 
-#: gfeeds/util/get_favicon.py:53
+#: gfeeds/util/get_favicon.py:49
 #, python-brace-format
 msgid "Error downloading favicon for `{0}`"
 msgstr "Hiba a(z) „{0}” böngészőikonjának letöltésekor"
+
+#: gfeeds/util/opml_parser.py:31
+msgid "Error: OPML path provided does not exist"
+msgstr "Hiba: A megadott OPML útvonal nem létezik"
+
+#: gfeeds/util/opml_parser.py:42
+#, python-brace-format
+msgid "Error parsing OPML file `{0}`"
+msgstr "Hiba a(z) „{0}” OPML-fájl feldolgozásakor"
 
 #: gfeeds/webview.py:201
 msgid "Link copied to clipboard!"
