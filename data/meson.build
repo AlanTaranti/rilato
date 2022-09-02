@@ -63,7 +63,7 @@ if glib_compile_schemas.found()
     test(
         'validate-gschema', glib_compile_schemas,
         args: [
-            '--strict', '--dry-run', gschema_configured
+            '--strict', '--dry-run', meson.current_build_dir()
         ]
     )
 endif
