@@ -50,10 +50,26 @@ gschema_conf.set('apppath', app_id_aspath)
 gschema_conf.set('appid', app_id)
 gschema_conf.set('projectname', meson.project_name())
 
-configure_file(
+gschema_configured = configure_file(
     input: app_id + '.gschema.xml.in',
     output: app_id + '.gschema.xml',
-    configuration: gschema_conf,
+    configuration: gschema_conf
+)
+
+# validate gschema
+
+glib_compile_schemas = find_program('glib-compile-schemas', required: true)
+if glib_compile_schemas.found()
+    test(
+        'validate-gschema', glib_compile_schemas,
+        args: [
+            '--strict', '--dry-run', gschema_configured
+        ]
+    )
+endif
+
+install_data(
+    gschema_configured,
     install_dir: join_paths(datadir, 'glib-2.0/schemas')
 )
 
