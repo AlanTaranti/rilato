@@ -88,22 +88,24 @@ class AppShortcut:
         self.keystroke = keystroke
         self.callback = callback
 
-    def bind(self, widget: Gtk.Widget):
-        assert hasattr(widget, '_shortcut_controller')
+    def bind(self, win: 'BaseWindow'):
         _, key, mod = Gtk.accelerator_parse(self.keystroke)
         trigger = Gtk.KeyvalTrigger.new(key, mod)
         cb = Gtk.CallbackAction.new(self.callback)
         shortcut = Gtk.Shortcut.new(trigger, cb)
-        widget._shortcut_controller.add_shortcut(shortcut)
+        win.shortcut_controller.add_shortcut(shortcut)
 
     @classmethod
     def create_controller(cls, widget: Gtk.Widget):
-        widget._shortcut_controller = Gtk.ShortcutController()
-        widget._shortcut_controller.set_scope(Gtk.ShortcutScope.GLOBAL)
-        widget.add_controller(widget._shortcut_controller)
+        sc = Gtk.ShortcutController()
+        sc.set_scope(Gtk.ShortcutScope.GLOBAL)
+        widget.add_controller(sc)
+        return sc
 
 
 class BaseWindow(Adw.ApplicationWindow):
+    shortcut_controller: Gtk.ShortcutController
+
     def __init__(
             self,
             app_name: str,
@@ -113,7 +115,7 @@ class BaseWindow(Adw.ApplicationWindow):
         super().__init__()
         self.set_title(app_name)
         self.set_icon_name(icon_name)
-        AppShortcut.create_controller(self)
+        self.shortcut_controller = AppShortcut.create_controller(self)
         for shortcut in shortcuts:
             shortcut.bind(self)
 
