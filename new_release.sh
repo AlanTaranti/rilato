@@ -30,12 +30,12 @@ with open('$MANIFEST_PATH', 'w') as fd:
     fd.write(json.dumps(manifest, indent=4, sort_keys=False))
 "
 
-RELEASE_TIME=$(date +%s)
+RELEASE_DATE=$(date +%Y-%m-%d)
 
 release_text=$(python3 -c "
 def mprint(t):
     print(t, end='\\\\n')
-mprint('        <release version=\"$n_version\" timestamp=\"$RELEASE_TIME\">')
+mprint('        <release version=\"$n_version\" date=\"$RELEASE_DATE\">')
 mprint('            <description>')
 mprint('                <ul>')
 for line in '$changelog'.split(';'):
@@ -52,4 +52,4 @@ target_line=$(sed -n "/<releases/=" $APPDATA_PATH)
 sed -i "${target_line}a\
 $release_text" $APPDATA_PATH
 
-sed -i "s~<release version=\"$n_version\" timestamp=\"$RELEASE_TIME\">~        <release version=\"$n_version\" timestamp=\"$RELEASE_TIME\">~" $APPDATA_PATH
+sed -i "s~<release version=\"$n_version\" timestamp=\"$RELEASE_DATE\">~        <release version=\"$n_version\" timestamp=\"$RELEASE_DATE\">~" $APPDATA_PATH
