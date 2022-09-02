@@ -1,6 +1,7 @@
 from math import ceil
 from os.path import isfile
 from gfeeds.feed_item import FeedItem
+from gfeeds.util.paths import THUMBS_CACHE_PATH
 from gfeeds.util.sha import shasum
 from gfeeds.util.download_manager import download_raw
 from gi.repository import Gtk, GLib, Pango
@@ -146,7 +147,7 @@ class SidebarRow(Gtk.Box):
                     # yes, the file extension is ignored entirely
                     # this shouldn't matter anyway and pictures get set
                     # correctly
-                    dest = str(self.confman.thumbs_cache_path.joinpath(
+                    dest = str(THUMBS_CACHE_PATH.joinpath(
                         shasum(img_url)
                     ))
                     if not isfile(dest):

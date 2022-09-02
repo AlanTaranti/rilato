@@ -3,13 +3,10 @@ from typing import List, Optional
 from gettext import gettext as _
 from gfeeds.util.get_favicon import get_favicon
 from os.path import isfile
-from gfeeds.confManager import ConfManager
+from gfeeds.util.paths import THUMBS_CACHE_PATH
 from gfeeds.util.sha import shasum
 # from bs4 import UnicodeDammit  # TODO: reimplement it!
 from syndom import Feed as SynDomFeed, FeedItem as SynDomFeedItem
-
-
-confman = ConfManager()
 
 
 class FeedParserRes:
@@ -78,7 +75,7 @@ def parse_feed(
     rss_link = rss_link_ or sd_feed.get_rss_url()
     if not title:
         title = rss_link
-    favicon_path = str(confman.thumbs_cache_path.joinpath(
+    favicon_path = str(THUMBS_CACHE_PATH.joinpath(
         shasum(rss_link+'v2')+'.png'
     ))
     image_url = sd_feed.get_img_url()

@@ -1,11 +1,17 @@
 from pathlib import Path
 from os.path import isfile
-from os import environ as Env
 import json
 from datetime import timedelta
+from typing import List
 from gi.repository import GObject
-from threading import Thread
 from gfeeds.gsettings_wrapper import GsettingsWrapper
+from gfeeds.util.paths import (
+    ARTICLE_THUMB_CACHE_PATH,
+    CACHE_HOME,
+    CACHE_PATH,
+    CONF_DIR,
+    THUMBS_CACHE_PATH
+)
 from gfeeds.util.singleton import Singleton
 
 
@@ -86,8 +92,7 @@ class ConfManagerSignaler(GObject.Object):
     }
 
 
-def json_to_gsettings(path: Path):
-    gw = GsettingsWrapper('org.gabmus.gfeeds')
+def json_to_gsettings(gw: GsettingsWrapper, path: Path):
     conf = dict()
 
     if path.is_file():
@@ -162,14 +167,10 @@ class ConfManager(metaclass=Singleton):
 
         self.is_flatpak = isfile('/.flatpak-info')
 
-        self.conf_dir = Path(
-            Env.get('XDG_CONFIG_HOME') or f'{Env.get("HOME")}/.config'
-        )
-        self.cache_home = Path(
-            Env.get('XDG_CACHE_HOME') or f'{Env.get("HOME")}/.cache'
-        )
-        self.cache_path = self.cache_home.joinpath('org.gabmus.gfeeds')
-        self.thumbs_cache_path = self.cache_path.joinpath('thumbnails')
+        self.conf_dir = CONF_DIR
+        self.cache_home = CACHE_HOME
+        self.cache_path = CACHE_PATH
+        self.thumbs_cache_path = THUMBS_CACHE_PATH
         for p in [
                 self.conf_dir,
                 self.cache_path,
@@ -182,11 +183,9 @@ class ConfManager(metaclass=Singleton):
         )
 
         self.conf = GsettingsWrapper('org.gabmus.gfeeds')
-        json_to_gsettings(self.legacy_conf_path)
+        json_to_gsettings(self.conf, self.legacy_conf_path)
 
-        self.article_thumb_cache_path = self.thumbs_cache_path.joinpath(
-            'article_thumb_cache.json'
-        )
+        self.article_thumb_cache_path = ARTICLE_THUMB_CACHE_PATH
         if not self.article_thumb_cache_path.is_file():
             self.article_thumb_cache = dict()
             self.save_article_thumb_cache()
@@ -218,11 +217,12 @@ class ConfManager(metaclass=Singleton):
         self.conf['feeds'] = feeds
 
     def delete_tag(self, tag: str):
-        while tag in self.conf['tags']:
-            self.conf['tags'].remove(tag)
+        tags: List[str] = self.conf['tags']
+        while tag in tags:
+            tags.remove(tag)
         self.emit('gfeeds_tags_pop', tag)
+        self.conf['tags'] = tags
         self.remove_tag(tag, self.conf['feeds'].keys())
-        # self.save_conf()  # done by remove_tags
 
     def remove_tag(self, tag: str, target_feeds: list):
         feeds: dict = self.conf['feeds']

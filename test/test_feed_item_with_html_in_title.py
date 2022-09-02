@@ -49,7 +49,18 @@ def run_around_tests():
     remove(RSS_PATH)
 
 
-def test_feed_item_with_html_in_title():
+def __mock_confman(monkeypatch):
+    class MockConfManager:
+        def __init__(self):
+            self.conf = {'read_items': []}
+
+    monkeypatch.setattr(
+        'gfeeds.feed_item.ConfManager', MockConfManager
+    )
+
+
+def test_feed_item_with_html_in_title(monkeypatch):
+    __mock_confman(monkeypatch)
     feed = parse_feed(Path(RSS_PATH))
     assert len(feed.raw_entries) == 1
     fi = FeedItem(feed.raw_entries[0], feed)

@@ -1,7 +1,7 @@
 from pathlib import Path
 from threading import Thread, Event
 from gettext import gettext as _
-from typing import List, Union
+from typing import Dict, List, Union
 from gi.repository import GLib, GObject
 from gfeeds.articles_listmodel import ArticlesListModel
 from gfeeds.util.opml_parser import opml_to_rss_list
@@ -68,7 +68,6 @@ class FeedsManager(metaclass=Singleton):
         )
 
     def on_refresh_end(self, *__):
-        self.confman.save_conf()
         # new articles notified in app_window
         self.start_auto_refresh()
 
@@ -106,8 +105,10 @@ class FeedsManager(metaclass=Singleton):
         if parser_res.is_null:
             feed_uri_from_html = extract_feed_url_from_html(uri)
             if feed_uri_from_html is not None:
-                if uri in self.confman.conf['feeds'].keys():
-                    self.confman.conf['feeds'].pop(uri)
+                feeds: Dict[str, dict] = self.confman.conf['feeds']
+                if uri in feeds.keys():
+                    feeds.pop(uri)
+                self.confman.conf['feeds'] = feeds
                 self._add_feed_async_worker(feed_uri_from_html, refresh)
                 return
             self.errors.append(parser_res.error)
@@ -261,17 +262,18 @@ class FeedsManager(metaclass=Singleton):
                 raise TypeError('delete_feed: targets must be list or Feed')
         articles_to_rm = []
         n_selected_feeds = self.article_store.selected_feeds.copy()
+        feeds: Dict[str, dict] = self.confman.conf['feeds']
         for to_rm in targets:
             articles_to_rm.extend(to_rm.items.values())
             if to_rm.rss_link in n_selected_feeds:
                 n_selected_feeds.remove(to_rm.rss_link)
             self.feed_store.remove_feed(to_rm)
-            self.confman.conf['feeds'].pop(
+            feeds.pop(
                 to_rm.rss_link
             )
+        self.confman.conf['feeds'] = feeds
         self.article_store.set_selected_feeds(n_selected_feeds)
         self.article_store.remove_items(articles_to_rm)
-        self.confman.save_conf()
 
     def import_opml(self, opml_path: Union[str, Path]):
 
@@ -279,11 +281,12 @@ class FeedsManager(metaclass=Singleton):
             n_feeds_urls_l = opml_to_rss_list(p)
             for tag in [t for f in n_feeds_urls_l for t in f.tags]:
                 GLib.idle_add(self.tag_store.add_tag, tag)
+            feeds: Dict[str, dict] = self.confman.conf['feeds']
             for f in n_feeds_urls_l:
                 url = f.feed
-                if url not in self.confman.conf['feeds'].keys():
-                    self.confman.conf['feeds'][url] = {'tags': f.tags}
-            self.confman.save_conf()
+                if url not in feeds.keys():
+                    feeds[url] = {'tags': f.tags}
+            self.confman.conf['feeds'] = feeds
             GLib.idle_add(self.refresh)
 
         Thread(

@@ -1,7 +1,7 @@
 from gi.repository import Gtk
 
 
-def __is_valid_true(c: Gtk.Widget):
+def __is_valid_true(_: Gtk.Widget):
     return True
 
 

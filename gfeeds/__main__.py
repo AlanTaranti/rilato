@@ -141,7 +141,6 @@ class GFeedsApplication(BaseApp):
             target_s = 'webview'
         self.window.leaflet.on_view_mode_change(target_s)
         self.confman.conf['default_view'] = target_s
-        self.confman.save_conf()
 
     def show_read_items(self, action: Gio.SimpleAction, *__):
         action.change_state(

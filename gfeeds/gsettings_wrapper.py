@@ -9,11 +9,15 @@ GSETTINGS_TYPES = Union[str, int, float, bool, dict, list]
 class GsettingsWrapper:
     def __init__(self, package: str):
         self.package = package
+        if self.package not in Gio.Settings.list_schemas():
+            raise KeyError(
+                f'GsettingsWrapper: Schema {self.package} not installed'
+            )
         self.gs = Gio.Settings.new(self.package)
         self.__keys = self.gs.keys()
 
     @property
-    def keys():
+    def keys(self):
         return self.__keys
 
     def convert_and_check_key(self, key: str) -> str:
@@ -63,7 +67,7 @@ class GsettingsWrapper:
 
     def __type_err(self):
         raise TypeError(
-            f'GsettingsWrapper: Type not supported'
+            'GsettingsWrapper: Type not supported'
         )
 
     def __getitem__(self, key: str) -> GSETTINGS_TYPES:
@@ -71,3 +75,8 @@ class GsettingsWrapper:
 
     def __setitem__(self, key: str, value: GSETTINGS_TYPES):
         self.set(key, value)
+
+    def to_json_str(self) -> str:
+        return json.dumps({
+            k: self.get(k) for k in self.__keys
+        }, indent=4)

@@ -65,7 +65,17 @@ subdir('po')
 
 pytest_exe = find_program('pytest', required: false)
 if pytest_exe.found()
-    test('pytest', pytest_exe, args: [meson.project_source_root() + '/test'], suite: 'pytest')
+    test(
+        'pytest',
+        pytest_exe,
+        args: [meson.project_source_root() + '/test'],
+        suite: 'pytest',
+        env: [
+            'GSETTINGS_SCHEMA_DIR="@0@:${GSETTINGS_SCHEMA_DIR}"'.format(
+                join_paths(datadir, 'glib-2.0/schemas')
+            )
+        ]
+    )
 endif
 
 gnome.post_install(
