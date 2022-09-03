@@ -1,9 +1,25 @@
 import json
-from typing import Union
-from gi.repository import Gio
+from typing import Callable, Dict, Union
+from gi.repository import GLib, Gio
+
+
+def __convert_string_variant(v: GLib.Variant) -> Union[str, dict, list]:
+    res = v.get_string()
+    if (
+            (res.startswith('{') and res.endswith('}')) or
+            (res.startswith('[') and res.endswith(']'))
+    ):
+        return json.loads(res)
+    return res
 
 
 GSETTINGS_TYPES = Union[str, int, float, bool, dict, list]
+VARIANT_CONVERTERS: Dict[str, Callable[[GLib.Variant], GSETTINGS_TYPES]] = {
+    's': __convert_string_variant,
+    'i': lambda v: int(v.get_int32()),
+    'd': lambda v: float(v.get_double()),
+    'b': lambda v: v.get_boolean(),
+}
 
 
 class GsettingsWrapper:
@@ -31,23 +47,10 @@ class GsettingsWrapper:
     def get(self, key: str) -> GSETTINGS_TYPES:
         key = self.convert_and_check_key(key)
         v = self.gs.get_value(key)
-        match v.get_type_string():
-            case 's':
-                res = v.get_string()
-                if (
-                        (res.startswith('{') and res.endswith('}')) or
-                        (res.startswith('[') and res.endswith(']'))
-                ):
-                    return json.loads(res)
-                return res
-            case 'i':
-                return int(v.get_int32())
-            case 'd':
-                return float(v.get_double())
-            case 'b':
-                return v.get_boolean()
-            case _:
-                self.__type_err()
+        converter = VARIANT_CONVERTERS.get(v.get_type_string(), None)
+        if converter is None:
+            self.__type_err()
+        return converter(v)
 
     def set(self, key: str, value: GSETTINGS_TYPES):
         key = self.convert_and_check_key(key)
