@@ -44,8 +44,8 @@ class AddFeedPopover(Gtk.Popover):
         url = self.url_entry.get_text().strip()
         if not url:
             return
-        res = self.feedman.add_feed(url, True)
-        if res:
+        feed_is_new = self.feedman.add_feed(url, True)
+        if feed_is_new:
             self.popdown()
             self.already_subscribed_revealer.set_reveal_child(False)
         else:
@@ -181,7 +181,7 @@ class LeftHeaderbar(Gtk.WindowHandle):
 
         def on_remove(d: ScrolledDialogV2, _):
             d.close()
-            feeds: Dict[str, Dict[str, str]] = self.confman.conf['feeds']
+            feeds: Dict[str, dict] = self.confman.conf['feeds']
             for pf in self.feedman.problematic_feeds:
                 if pf in feeds.keys():
                     feeds.pop(pf)

@@ -91,7 +91,9 @@ class FeedsManager(metaclass=Singleton):
                     self.emit, 'feedmanager_refresh_end', ''
                 )
                 return
-            self.confman.conf['feeds'][uri] = {}
+            feeds: Dict[str, dict] = self.confman.conf['feeds']
+            feeds[uri] = {}
+            self.confman.conf['feeds'] = feeds
         download_res = download_feed(uri, get_cached=get_cached)
         if get_cached and download_res.feedpath == 'not_cached':
             return
