@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gfeeds\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-05 14:08+0200\n"
-"PO-Revision-Date: 2022-06-05 14:10+0200\n"
+"POT-Creation-Date: 2022-09-04 13:33+0200\n"
+"PO-Revision-Date: 2022-09-04 13:35+0200\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <community-poland@mozilla.org>\n"
 "Language: pl\n"
@@ -231,7 +231,7 @@ msgstr "Wybór miejsca zapisania wyeksportowanego pliku OPML"
 msgid "Save"
 msgstr "Zapisz"
 
-#: ../gfeeds/feeds_manager.py:88
+#: ../gfeeds/feeds_manager.py:90
 #, python-brace-format
 msgid "Feed {0} exists already, skipping"
 msgstr "Kanał {0} już istnieje, pomijanie"
@@ -248,15 +248,6 @@ msgstr "Oznacz jako przeczytane"
 msgid "Loading feeds..."
 msgstr "Wczytywanie kanałów…"
 
-#: ../gfeeds/opml_manager.py:42
-msgid "Error: OPML path provided does not exist"
-msgstr "Błąd: podana ścieżka do pliku OPML nie istnieje"
-
-#: ../gfeeds/opml_manager.py:53
-#, python-brace-format
-msgid "Error parsing OPML file `{0}`"
-msgstr "Błąd podczas przetwarzania pliku OPML „{0}”"
-
 #: ../gfeeds/feeds_view.py:13
 msgid "All feeds"
 msgstr "Wszystkie kanały"
@@ -269,28 +260,32 @@ msgstr "Zarządzanie kanałami"
 msgid "Do you want to delete these feeds?"
 msgstr "Usunąć te kanały?"
 
-#: ../gfeeds/headerbar.py:184
-msgid ""
-"There were problems with some feeds.\n"
-"Do you want to remove them?"
-msgstr ""
-"Wystąpiły problemy z częścią kanałów.\n"
-"Usunąć je?"
+#: ../gfeeds/headerbar.py:195
+msgid "There were problems with some feeds. Do you want to remove them?"
+msgstr "Wystąpiły problemy z częścią kanałów. Usunąć je?"
 
-#: ../gfeeds/feed_item.py:49
+#: ../gfeeds/headerbar.py:200
+msgid "_Keep"
+msgstr "_Nie usuwaj"
+
+#: ../gfeeds/headerbar.py:202
+msgid "_Remove"
+msgstr "_Usuń"
+
+#: ../gfeeds/feed_item.py:55
 #, python-brace-format
 msgid "Error: unable to parse datetime {0} for feeditem {1}"
 msgstr "Błąd: nie można przetworzyć daty i czasu {0} dla elementu kanału {1}"
 
-#: ../gfeeds/webview.py:201
+#: ../gfeeds/webview.py:200
 msgid "Link copied to clipboard!"
 msgstr "Skopiowano odnośnik do schowka"
 
-#: ../gfeeds/webview.py:223
+#: ../gfeeds/webview.py:222
 msgid "Feed content not available for this article"
 msgstr "Treść kanału jest niedostępna dla tego artykułu"
 
-#: ../gfeeds/main_leaflet.py:119
+#: ../gfeeds/main_leaflet.py:122
 #, python-brace-format
 msgid "{0} new article"
 msgid_plural "{0} new articles"
@@ -298,49 +293,58 @@ msgstr[0] "{0} nowy artykuł"
 msgstr[1] "{0} nowe artykuły"
 msgstr[2] "{0} nowych artykułów"
 
-#: ../gfeeds/util/download_manager.py:102
+#: ../gfeeds/util/download_manager.py:111
 #, python-brace-format
 msgid "`{0}`: connection timed out"
 msgstr "„{0}”: połączenie przekroczyło czas oczekiwania"
 
-#: ../gfeeds/util/download_manager.py:111
+#: ../gfeeds/util/download_manager.py:120
 #, python-brace-format
 msgid "`{0}` might not be a valid address"
 msgstr "„{0}” może nie być prawidłowym adresem"
 
-#: ../gfeeds/util/download_manager.py:150
+#: ../gfeeds/util/download_manager.py:154
 #, python-brace-format
 msgid "Error downloading `{0}`, code `{1}`"
 msgstr "Błąd podczas pobierania „{0}”, kod „{1}”"
 
-#: ../gfeeds/util/get_favicon.py:53
+#: ../gfeeds/util/opml_parser.py:31
+msgid "Error: OPML path provided does not exist"
+msgstr "Błąd: podana ścieżka do pliku OPML nie istnieje"
+
+#: ../gfeeds/util/opml_parser.py:42
+#, python-brace-format
+msgid "Error parsing OPML file `{0}`"
+msgstr "Błąd podczas przetwarzania pliku OPML „{0}”"
+
+#: ../gfeeds/util/get_favicon.py:49
 #, python-brace-format
 msgid "Error downloading favicon for `{0}`"
 msgstr "Błąd podczas pobierania ikony dla „{0}”"
 
-#: ../gfeeds/__main__.py:229
+#: ../gfeeds/__main__.py:226
 msgid "Do you want to import these feeds?"
 msgstr "Zaimportować te kanały?"
 
-#: ../gfeeds/__main__.py:256
+#: ../gfeeds/__main__.py:253
 msgid "Do you want to import this feed?"
 msgstr "Zaimportować ten kanał?"
 
-#: ../gfeeds/__main__.py:285
+#: ../gfeeds/__main__.py:282
 msgid "url"
 msgstr "URL"
 
-#: ../gfeeds/__main__.py:288
+#: ../gfeeds/__main__.py:285
 msgid "opml file local url or rss remote url to import"
 msgstr ""
 "adres URL lokalnego pliku OPML lub zdalnego kanału RSS do zaimportowania"
 
-#: ../gfeeds/feed_parser.py:37
+#: ../gfeeds/feed_parser.py:64
 #, python-brace-format
 msgid "Errors while parsing feed `{0}`, URL: `{1}`"
 msgstr "Błędy podczas przetwarzania kanału „{0}”, adres URL: „{1}”"
 
-#: ../gfeeds/feed_parser.py:55
+#: ../gfeeds/feed_parser.py:74
 #, python-brace-format
 msgid "`{0}` may not be an RSS or Atom feed"
 msgstr "„{0}” może nie być kanałem RSS ani Atom"
