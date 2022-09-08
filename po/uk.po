@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gfeeds master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/gfeeds/issues\n"
-"POT-Creation-Date: 2022-09-01 07:35+0000\n"
-"PO-Revision-Date: 2022-09-01 15:10+0300\n"
+"POT-Creation-Date: 2022-09-08 05:35+0000\n"
+"PO-Revision-Date: 2022-09-08 20:36+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -68,17 +68,17 @@ msgstr "rss;reader;feed;news;рсс;читання;стрічка;подача;�
 msgid "Error: unable to parse datetime {0} for feeditem {1}"
 msgstr "Помилка: не вдалося обробити позначку часу {0} для запису стрічки {1}"
 
-#: gfeeds/feed_parser.py:64
+#: gfeeds/feed_parser.py:61
 #, python-brace-format
 msgid "Errors while parsing feed `{0}`, URL: `{1}`"
 msgstr "Помилки під час обробки стрічки «{0}», адреса: «{1}»"
 
-#: gfeeds/feed_parser.py:74
+#: gfeeds/feed_parser.py:71
 #, python-brace-format
 msgid "`{0}` may not be an RSS or Atom feed"
 msgstr "«{0}», можливо, не є стрічкою RSS або Atom"
 
-#: gfeeds/feeds_manager.py:90
+#: gfeeds/feeds_manager.py:89
 #, python-brace-format
 msgid "Feed {0} exists already, skipping"
 msgstr "Запис стрічки {0} вже існує, пропускаємо"
@@ -87,15 +87,15 @@ msgstr "Запис стрічки {0} вже існує, пропускаємо"
 msgid "All feeds"
 msgstr "Всі стрічки"
 
-#: gfeeds/headerbar.py:195
+#: gfeeds/headerbar.py:198
 msgid "There were problems with some feeds. Do you want to remove them?"
 msgstr "З деякими стрічками виникли проблеми. Хочете вилучити їх?"
 
-#: gfeeds/headerbar.py:200
+#: gfeeds/headerbar.py:203
 msgid "_Keep"
 msgstr "З_берегти"
 
-#: gfeeds/headerbar.py:202
+#: gfeeds/headerbar.py:205
 msgid "_Remove"
 msgstr "Ви_лучити"
 
@@ -108,19 +108,19 @@ msgstr[1] "{0} нові статті"
 msgstr[2] "{0} нових статей"
 msgstr[3] "{0} нова стаття"
 
-#: gfeeds/__main__.py:226
+#: gfeeds/__main__.py:225
 msgid "Do you want to import these feeds?"
 msgstr "Хочете імпортувати ці стрічки?"
 
-#: gfeeds/__main__.py:253
+#: gfeeds/__main__.py:252
 msgid "Do you want to import this feed?"
 msgstr "Хочете імпортувати цю стрічку?"
 
-#: gfeeds/__main__.py:282
+#: gfeeds/__main__.py:281
 msgid "url"
 msgstr "адреса"
 
-#: gfeeds/__main__.py:285
+#: gfeeds/__main__.py:284
 msgid "opml file local url or rss remote url to import"
 msgstr ""
 "локальна адреса файла opml або віддалена адреса rss для імпортування даних"
@@ -157,75 +157,75 @@ msgstr "Виберіть місце зберігання експортован�
 msgid "Save"
 msgstr "Зберегти"
 
-#: gfeeds/preferences_window.py:22
+#: gfeeds/preferences_window.py:24
 msgid "General"
 msgstr "Загальне"
 
-#: gfeeds/preferences_window.py:25
+#: gfeeds/preferences_window.py:27
 msgid "General preferences"
 msgstr "Загальні параметри"
 
-#: gfeeds/preferences_window.py:27
+#: gfeeds/preferences_window.py:29
 msgid "Show newer articles first"
 msgstr "Показати спочатку новіші статті"
 
-#: gfeeds/preferences_window.py:32
+#: gfeeds/preferences_window.py:34
 msgid "Open links in your browser"
 msgstr "Відкривати посилання у вашому браузері"
 
-#: gfeeds/preferences_window.py:36
+#: gfeeds/preferences_window.py:38
 msgid "Use external video player for YouTube"
 msgstr "Зовнішній відеопрогравач для YouTube"
 
-#: gfeeds/preferences_window.py:38
+#: gfeeds/preferences_window.py:40
 msgid "Requires youtube-dl and a compatible video player"
 msgstr "Потребує youtube-dl і сумісного відеопрогравача"
 
-#: gfeeds/preferences_window.py:44
+#: gfeeds/preferences_window.py:46
 msgid "Preferred video player"
 msgstr "Бажаний відеопрогравач"
 
-#: gfeeds/preferences_window.py:48
+#: gfeeds/preferences_window.py:50
 msgid "Maximum article age"
 msgstr "Максимальний вік статей"
 
-#: gfeeds/preferences_window.py:49
+#: gfeeds/preferences_window.py:51
 msgid "In days"
 msgstr "За днями"
 
-#: gfeeds/preferences_window.py:56
+#: gfeeds/preferences_window.py:58
 msgid "Refresh preferences"
 msgstr "Оновити налаштування"
 
-#: gfeeds/preferences_window.py:58
+#: gfeeds/preferences_window.py:60
 msgid "Refresh articles on startup"
 msgstr "Оновлювати статті під час запуску"
 
-#: gfeeds/preferences_window.py:62
+#: gfeeds/preferences_window.py:64
 msgid "New articles notification"
 msgstr "Сповіщення щодо нових статей"
 
-#: gfeeds/preferences_window.py:66
+#: gfeeds/preferences_window.py:68
 msgid "Enable auto-refresh"
 msgstr "Увімкнути автооновлення"
 
-#: gfeeds/preferences_window.py:70
+#: gfeeds/preferences_window.py:72
 msgid "Auto-refresh interval"
 msgstr "Інтервал автооновлення"
 
-#: gfeeds/preferences_window.py:71
+#: gfeeds/preferences_window.py:73
 msgid "In seconds"
 msgstr "У секундах"
 
-#: gfeeds/preferences_window.py:78
+#: gfeeds/preferences_window.py:80
 msgid "Cache"
 msgstr "Кеш"
 
-#: gfeeds/preferences_window.py:80
+#: gfeeds/preferences_window.py:82
 msgid "Clear caches"
 msgstr "Очистити кеш"
 
-#: gfeeds/preferences_window.py:81
+#: gfeeds/preferences_window.py:83
 msgid "Clear"
 msgstr "Очистити"
 
@@ -346,6 +346,36 @@ msgstr ""
 msgid "Experimental GtkListView for articles list"
 msgstr "Експериментальний GtkListView для списку статей"
 
+#: gfeeds/preferences_window.py:226
+msgid "Troubleshooting"
+msgstr "Усування проблем"
+
+#: gfeeds/preferences_window.py:228
+msgid "Export Configuration as JSON"
+msgstr "Експортувати налаштування як JSON"
+
+#: gfeeds/preferences_window.py:229
+msgid "Attach this when reporting bugs"
+msgstr "Долучіть ці дані при звітуванні щодо вад"
+
+#: gfeeds/preferences_window.py:230
+msgid "Export"
+msgstr "Експортувати"
+
+#. type: ignore
+#: gfeeds/preferences_window.py:243
+#| msgid "Feed Content"
+msgid "Feeds Configuration"
+msgstr "Налаштування стрічок"
+
+#: gfeeds/preferences_window.py:247
+msgid "_Close"
+msgstr "_Закрити"
+
+#: gfeeds/preferences_window.py:250
+msgid "Cop_y"
+msgstr "_Копіювати"
+
 #: gfeeds/sidebar.py:21
 msgid "Loading feeds..."
 msgstr "Завантажуємо стрічки…"
@@ -358,22 +388,22 @@ msgstr "Позначити як непрочитане"
 msgid "Mark as read"
 msgstr "Позначити як прочитане"
 
-#: gfeeds/util/download_manager.py:111
+#: gfeeds/util/download_manager.py:112
 #, python-brace-format
 msgid "`{0}`: connection timed out"
 msgstr "`{0}`: перевищено час очікування відповіді у з'єднанні"
 
-#: gfeeds/util/download_manager.py:120
+#: gfeeds/util/download_manager.py:121
 #, python-brace-format
 msgid "`{0}` might not be a valid address"
 msgstr "«{0}», ймовірно, не є коректною адресою"
 
-#: gfeeds/util/download_manager.py:154
+#: gfeeds/util/download_manager.py:157
 #, python-brace-format
 msgid "Error downloading `{0}`, code `{1}`"
 msgstr "Помилка під час отримання «{0}», код «{1}»"
 
-#: gfeeds/util/get_favicon.py:49
+#: gfeeds/util/get_favicon.py:48
 #, python-brace-format
 msgid "Error downloading favicon for `{0}`"
 msgstr "Помилка під час завантаження піктограми для «{0}»"
@@ -404,10 +434,6 @@ msgstr "Для цієї статті дані стрічки є недоступ
 
 #~ msgid "Web View"
 #~ msgstr "Вебпанель"
-
-#~| msgid "RSS Content"
-#~ msgid "Feed Content"
-#~ msgstr "Вміст стрічки"
 
 #~ msgid "Choose a folder"
 #~ msgstr "Виберіть теку"
