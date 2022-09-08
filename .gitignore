@@ -69,3 +69,4 @@ __pycache__
 /buildflatpak
 .buildconfig
 /__venv
+*/.pytest_cache
