@@ -74,8 +74,9 @@ class Feed(GObject.Object):
             if valid_age and not n_item.read:
                 unread_count += 1
             if not valid_age and n_item.read:
-                self.confman.conf['read_items'].remove(n_item.identifier)
-                self.confman.save_conf()
+                read_items: List[str] = self.confman.conf['read_items']
+                read_items.remove(n_item.identifier)
+                self.confman.conf['read_items'] = read_items
 
         if self.rss_link in self.confman.conf['feeds']:
             feed_conf = (self.get_conf_dict() or dict())

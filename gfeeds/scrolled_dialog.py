@@ -88,10 +88,9 @@ class ScrolledDialogV2(Adw.MessageDialog):
 
         self.connect('response', self.on_response)
 
-    def on_response(self, _, res: str):
-        self.close()
+    def on_response(self, dialog: 'ScrolledDialogV2', res: str):
         for r in self.__responses:
             if r.name == res:
                 if r.callback is not None:
-                    r.callback()
+                    r.callback(dialog, res)
                 return

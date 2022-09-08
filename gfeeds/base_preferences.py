@@ -52,7 +52,6 @@ class PreferencesButtonRow(MActionRow):
         self.onclick(self.confman)
         if self.signal:
             self.confman.emit(self.signal, '')
-        self.confman.save_conf()
 
 
 class PreferencesEntryRow(MActionRow):
@@ -79,13 +78,12 @@ class PreferencesEntryRow(MActionRow):
         self.entry.connect('changed', self.on_entry_changed)
         self.add_suffix(self.entry)
 
-    def on_entry_changed(self, *args):
+    def on_entry_changed(self, *_):
         self.confman.conf[self.conf_key] = self.entry.get_text().strip()
         if self.onchange is not None:
             self.onchange(self.confman)
         if self.signal:
             self.confman.emit(self.signal, '')
-        self.confman.save_conf()
 
 
 class PreferencesSpinButtonRow(MActionRow):
@@ -123,11 +121,10 @@ class PreferencesSpinButtonRow(MActionRow):
         self.spin_button.connect('value-changed', self.on_value_changed)
         self.add_suffix(self.spin_button)
 
-    def on_value_changed(self, *args):
+    def on_value_changed(self, *_):
         self.confman.conf[self.conf_key] = self.spin_button.get_value_as_int()
         if self.signal:
             self.confman.emit(self.signal, self.confman.conf[self.conf_key])
-        self.confman.save_conf()
 
 
 class PreferencesComboRow(Adw.ComboRow):
@@ -199,7 +196,6 @@ class PreferencesComboRow(Adw.ComboRow):
             self.confman.conf[self.conf_key] = value
             if self.signal:
                 self.confman.emit(self.signal, '')
-            self.confman.save_conf()
 
 
 class PreferencesToggleRow(MActionRow):
@@ -228,7 +224,6 @@ class PreferencesToggleRow(MActionRow):
 
     def on_toggle_state_set(self, toggle, state):
         self.confman.conf[self.conf_key] = state
-        self.confman.save_conf()
         if self.signal is not None:
             self.confman.emit(self.signal, '')
 

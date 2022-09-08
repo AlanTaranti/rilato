@@ -4,12 +4,11 @@ from pathlib import Path
 import requests
 from gfeeds.confManager import ConfManager
 from gfeeds.util.create_full_url import create_full_url
+from gfeeds.util.paths import CACHE_PATH
 from gfeeds.util.sha import shasum
 from syndom import Html
-from typing import Literal, Optional, Union
+from typing import Dict, Literal, Optional, Union
 from gfeeds.util.to_unicode import to_unicode, bytes_to_unicode
-
-confman = ConfManager()
 
 GET_HEADERS = {
     'User-Agent': 'gfeeds/1.0',
@@ -54,7 +53,7 @@ def download_raw(link: str, dest: str) -> None:
 
 def extract_feed_url_from_html(link: str) -> Optional[str]:
     dest = str(
-        confman.cache_path.joinpath(shasum(link)+'.html')
+        CACHE_PATH.joinpath(shasum(link)+'.html')
     )
     try:
         if not isfile(dest):
@@ -84,7 +83,9 @@ class DownloadFeedResponse:
 def download_feed(
         link: str, get_cached: bool = False
 ) -> DownloadFeedResponse:
-    dest_path: Path = confman.cache_path.joinpath(shasum(link)+'.rss')
+    confman = ConfManager()
+
+    dest_path: Path = CACHE_PATH.joinpath(shasum(link)+'.rss')
     if get_cached:
         return DownloadFeedResponse(
             dest_path if isfile(dest_path) else 'not_cached',
@@ -142,8 +143,10 @@ def download_feed(
 
     def handle_301_302():
         n_link = res.headers.get('location', link)
-        confman.conf['feeds'][n_link] = confman.conf['feeds'][link]
-        confman.conf['feeds'].pop(link)
+        feeds: Dict[str, dict] = confman.conf['feeds']
+        feeds[n_link] = feeds[link]
+        feeds.pop(link)
+        confman.conf['feeds'] = feeds
         return download_feed(n_link)
 
     def handle_everything_else():

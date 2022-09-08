@@ -1,12 +1,161 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist>
-    <schema path="/@apppath@/" id="@appid@" gettext-domain="@projectname@">
 
-    <!-- <key type="s" name="username">
-      <default>""</default>
-      <summary>Email address</summary>
-  </key> -->
+  <enum id="@appid@.reader-theme-enum">
+    <value nick="auto"  value="0"/>
+    <value nick="light" value="1"/>
+    <value nick="dark"  value="2"/>
+  </enum>
 
+  <enum id="@appid@.default-article-view-enum">
+    <value nick="webview"  value="0"/>
+    <value nick="reader" value="1"/>
+    <value nick="feedcont"  value="2"/>
+  </enum>
+
+  <schema path="/@apppath@/" id="@appid@" gettext-domain="@projectname@">
+    <key type="s" name="feeds">
+      <!-- Content is JSON
+        Schema: {
+          'feed url': {
+            'tags': ['tag1', 'tag2'],
+            'last-modified': "date string"
+          }
+        }
+      -->
+      <default>'{}'</default>
+      <summary>Feeds JSON (URL, tags, last modified)</summary>
+    </key>
+    <key type="b" name="dark-mode">
+      <default>false</default>
+      <summary>Enable dark mode</summary>
+    </key>
+    <key enum="@appid@.reader-theme-enum" name="reader-theme">
+      <default>'auto'</default>
+      <summary>Reader mode theme</summary>
+    </key>
+    <key type="b" name="new-first">
+      <default>true</default>
+      <summary>Show new articles first</summary>
+    </key>
+    <key type="i" name="window-height">
+      <default>650</default>
+      <summary>Window height</summary>
+    </key>
+    <key type="i" name="window-width">
+      <default>350</default>
+      <summary>Window width</summary>
+    </key>
+    <key type="i" name="max-article-age-days">
+      <default>30</default>
+      <summary>Maximum article age in days</summary>
+    </key>
+    <key type="b" name="enable-js">
+      <default>false</default>
+      <summary>Enable JavaScript in Web/Reader view</summary>
+    </key>
+    <key type="i" name="max-refresh-threads">
+      <default>2</default>
+      <summary>Maximum number of threads to use when loading feeds</summary>
+    </key>
+    <key type="s" name="read-items">
+      <!-- Content is JSON list, contains feed item URLs -->
+      <default>'[]'</default>
+      <summary>Feed items that have been read</summary>
+    </key>
+    <key type="b" name="show-read-items">
+      <default>true</default>
+      <summary>Whether read items should be shown or hidden</summary>
+    </key>
+    <key type="b" name="show-empty-feeds">
+      <default>true</default>
+      <summary>Whether empty feeds (containing no unread items) should be shown or hidden</summary>
+    </key>
+    <key type="b" name="full-article-title">
+      <default>true</default>
+      <summary>Whether to show the full article title or ellipsize it to fit one row</summary>
+    </key>
+    <key enum="@appid@.default-article-view-enum" name="default-view">
+      <default>'webview'</default>
+      <summary>How to show articles (web view, reader mode, feed content)</summary>
+    </key>
+    <key type="b" name="open-links-externally">
+      <default>true</default>
+      <summary>Whether to open links from the article view in the default browser or in the app</summary>
+    </key>
+    <key type="b" name="full-feed-name">
+      <default>true</default>
+      <summary>Whether to show the full feed name or to ellipsize it to fit one row</summary>
+    </key>
+    <key type="b" name="refresh-on-startup">
+      <default>false</default>
+      <summary>Whether the feeds should be refreshed for new items on startup</summary>
+    </key>
+    <key type="s" name="tags">
+      <!-- Content is JSON list -->
+      <default>'[]'</default>
+      <summary>List of tags used to categorize feeds</summary>
+    </key>
+    <key type="b" name="open-youtube-externally">
+      <default>true</default>
+      <summary>Whether to open YouTube links in a designated media player app</summary>
+    </key>
+    <key type="s" name="media-player">
+      <default>'mpv'</default>
+      <summary>Media player to use to open YouTube videos</summary>
+    </key>
+    <key type="b" name="show-thumbnails">
+      <default>true</default>
+      <summary>Whether to show feed item thumbnails</summary>
+    </key>
+    <key type="b" name="use-experimental-listview">
+      <default>false</default>
+      <summary>Whether to use the experimental Gtk.ListView implementation for the feed item list</summary>
+    </key>
+    <key type="b" name="auto-refresh-enabled">
+      <default>false</default>
+      <summary>Whether to automatically refresh for new feed items at a certain interval</summary>
+    </key>
+    <key type="b" name="notify-new-articles">
+      <default>true</default>
+      <summary>Show a notification when new unread articles are available</summary>
+    </key>
+    <key type="i" name="auto-refresh-time-seconds">
+      <default>300</default>
+      <summary>Time interval between automatic refreshes, in seconds</summary>
+    </key>
+    <key type="b" name="enable-adblock">
+      <default>true</default>
+      <summary>Whether to block advertisements in the article view</summary>
+    </key>
+    <key type="d" name="blocklist-last-update">
+      <default>0.0</default>
+      <summary>Date and time of the last update of the ad block list, as python timestamp</summary>
+    </key>
+    <key type="d" name="webview-zoom">
+      <default>1.0</default>
+      <summary>Zoom level of the article view</summary>
+    </key>
+    <key type="b" name="font-use-system-for-titles">
+      <default>false</default>
+      <summary>Use system font for article view headings</summary>
+    </key>
+    <key type="b" name="font-use-system-for-paragraphs">
+      <default>true</default>
+      <summary>Use system font for article view content</summary>
+    </key>
+    <key type="s" name="font-titles-custom">
+      <default>'DejaVu Serif'</default>
+      <summary>Custom font to use for article view headings</summary>
+    </key>
+    <key type="s" name="font-paragraphs-custom">
+      <default>'Cantarell'</default>
+      <summary>Custom font to use for article view content</summary>
+    </key>
+    <key type="s" name="font-monospace-custom">
+      <default>'DejaVu Sans Mono'</default>
+      <summary>Custom font to use for article view code blocks</summary>
+    </key>
   </schema>
 
 </schemalist>

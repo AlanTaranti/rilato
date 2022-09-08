@@ -25,13 +25,13 @@ class FeedStore(Gtk.FilterListModel):
         self.confman = ConfManager()
         self.confman.connect(
                 'gfeeds_show_empty_feeds_changed',
-                lambda *args: self.invalidate_filter()
+                lambda *_: self.invalidate_filter()
         )
         # Hiding read articles can result in empty feeds which should
         # be hidden
         self.confman.connect(
                 'gfeeds_show_read_changed',
-                lambda *args: self.invalidate_filter()
+                lambda *_: self.invalidate_filter()
         )
         super().__init__(model=self.sort_store, filter=self.filter)
 
@@ -41,7 +41,7 @@ class FeedStore(Gtk.FilterListModel):
     def invalidate_sort(self):
         self.sorter.set_sort_func(self._sort_func)
 
-    def _filter_func(self, feed: Feed, *args) -> bool:
+    def _filter_func(self, feed: Feed, *_) -> bool:
         res = True
         if not self.confman.conf['show_empty_feeds']:
             if self.confman.conf['show_read_items']:
@@ -59,7 +59,7 @@ class FeedStore(Gtk.FilterListModel):
     def add_feed(self, n_feed: Feed):
         self.list_store.append(n_feed)
         n_feed.connect(
-            'empty_changed', lambda *args: self.invalidate_filter()
+            'empty_changed', lambda *_: self.invalidate_filter()
         )
 
     def remove_by_index(self, index: int):

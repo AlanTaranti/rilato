@@ -1,7 +1,7 @@
 from gettext import gettext as _
 from os import remove, listdir
 from os.path import isfile, abspath, join
-from gi.repository import Gtk, Adw
+from gi.repository import Gdk, Gtk, Adw
 from gfeeds.confManager import ConfManager
 from gfeeds.base_preferences import (
     MPreferencesPage, MPreferencesGroup, PreferencesButtonRow,
@@ -9,6 +9,8 @@ from gfeeds.base_preferences import (
     PreferencesEntryRow, PreferencesFontChooserRow
 )
 from typing import Optional
+from gfeeds.scrolled_dialog import ScrolledDialogResponse, ScrolledDialogV2
+from gfeeds.util.paths import CACHE_PATH, THUMBS_CACHE_PATH
 
 
 def show_preferences_window(parent_win, *args):
@@ -90,8 +92,8 @@ class GeneralPreferencesPage(MPreferencesPage):
 
     def clear_caches(self, confman, *args):
         for p in [
-                confman.cache_path,
-                confman.thumbs_cache_path,
+                CACHE_PATH,
+                THUMBS_CACHE_PATH,
         ]:
             files = [
                 abspath(join(p, f)) for f in listdir(p)
@@ -99,8 +101,6 @@ class GeneralPreferencesPage(MPreferencesPage):
             for f in files:
                 if isfile(f):
                     remove(f)
-        confman.conf['saved_items'] = {}
-        confman.save_conf()
 
 
 class AppearancePreferencesPage(MPreferencesPage):
@@ -221,9 +221,41 @@ class AdvancedPreferencesPage(MPreferencesPage):
                             conf_key='use_experimental_listview'
                         )
                     ]
+                ),
+                MPreferencesGroup(
+                    title=_('Troubleshooting'), rows=[
+                        PreferencesButtonRow(
+                            title=_('Export Configuration as JSON'),
+                            subtitle=_('Attach this when reporting bugs'),
+                            button_label=_('Export'),
+                            onclick=self.on_export_conf_as_json
+                        )
+                    ]
                 )
             ]
         )
+
+    def on_export_conf_as_json(self, confman: ConfManager):
+        conf_json = confman.conf.to_json_str()
+
+        dialog = ScrolledDialogV2(
+            parent=self.get_root(),  # type: ignore
+            title=_('Feeds Configuration'),
+            body=conf_json,
+            responses=[
+                ScrolledDialogResponse(
+                    'close', _('_Close'), lambda d, _: d.close()
+                ),
+                ScrolledDialogResponse(
+                    'copy', _('Cop_y'),
+                    lambda _, __:
+                        Gdk.Display.get_default().get_clipboard().set(
+                            conf_json
+                        )
+                )
+            ]
+        )
+        dialog.present()
 
 
 class PreferencesWindow(Adw.PreferencesWindow):

@@ -53,7 +53,7 @@
     <url type="donation">https://liberapay.com/gabmus/donate</url>
     <update_contact>gabmus@disroot.org</update_contact>
     <releases>
-        <release version="1.0.3" timestamp="1651320263">
+        <release version="1.0.3" date="2022-04-30">
             <description>
                 <ul>
                     <li>Links in the web view show a preview of the destination URL</li>
@@ -67,7 +67,7 @@
             </description>
         </release>
 
-        <release version="1.0.2" timestamp="1648138767">
+        <release version="1.0.2" date="2022-03-24">
             <description>
                 <ul>
                     <li>Flatpak dependency fixes</li>
@@ -75,7 +75,7 @@
             </description>
         </release>
 
-        <release version="1.0.1" timestamp="1648110833">
+        <release version="1.0.1" date="2022-03-24">
             <description>
                 <ul>
                     <li>Flatpak dependency fixes</li>
@@ -83,7 +83,7 @@
             </description>
         </release>
 
-        <release version="1.0.0" timestamp="1648049398">
+        <release version="1.0.0" date="2022-03-23">
             <description>
                 <ul>
                     <li>Brand new look powered by GTK4 and Libadwaita</li>
@@ -100,7 +100,7 @@
             </description>
         </release>
 
-        <release version="0.16.2" timestamp="1610993645">
+        <release version="0.16.2" date="2021-01-18">
             <description>
                 <ul>
                     <li>Fixed view mode button</li>
@@ -110,7 +110,7 @@
             </description>
         </release>
 
-        <release version="0.16.1" timestamp="1605252437">
+        <release version="0.16.1" date="2020-11-13">
             <description>
                 <ul>
                     <li>Feed icons improvements for high DPI screens</li>
@@ -118,7 +118,7 @@
             </description>
         </release>
 
-        <release version="0.16" timestamp="1605187000">
+        <release version="0.16" date="2020-11-12">
             <description>
                 <ul>
                     <li>UI improvements on phones</li>
@@ -126,7 +126,7 @@
             </description>
         </release>
 
-        <release version="0.15" timestamp="1600839902">
+        <release version="0.15" date="2020-09-23">
             <description>
                 <ul>
                     <li>Switched to the new libhandy Avatar widget</li>
@@ -134,7 +134,7 @@
                 </ul>
             </description>
         </release>
-        <release version="0.14.1" timestamp="1595058263">
+        <release version="0.14.1" date="2020-07-18">
             <description>
                 <ul>
                     <li>Fixed searchbar</li>
@@ -142,7 +142,7 @@
             </description>
         </release>
 
-        <release version="0.14" timestamp="1594969691">
+        <release version="0.14" date="2020-07-17">
             <description>
                 <ul>
                     <li>New tags feature! You can now categorize your feeds by creating custom tags</li>
@@ -155,7 +155,7 @@
                 </ul>
             </description>
         </release>
-        <release version="0.13.4" timestamp="1585301719">
+        <release version="0.13.4" date="2020-03-27">
             <description>
                 <ul>
                     <li>Don't remove feeds automatically if they have errors, instead ask the user what to do</li>
@@ -163,21 +163,21 @@
                 </ul>
             </description>
         </release>
-        <release version="0.13.3" timestamp="1584954312">
+        <release version="0.13.3" date="2020-03-23">
             <description>
                 <ul>
                     <li>Updated French translation</li>
                 </ul>
             </description>
         </release>
-        <release version="0.13.2" timestamp="1584607863">
+        <release version="0.13.2" date="2020-03-19">
             <description>
                 <ul>
                     <li>Bug fixes</li>
                 </ul>
             </description>
         </release>
-        <release version="0.13.1" timestamp="1584193485">
+        <release version="0.13.1" date="2020-03-14">
             <description>
                 <ul>
                     <li>Updated version number</li>
@@ -185,7 +185,7 @@
                 </ul>
             </description>
         </release>
-        <release version="0.13" timestamp="1584181344">
+        <release version="0.13" date="2020-03-14">
             <description>
                 <ul>
                     <li>You can now add some feeds by just using the website URL</li>
@@ -202,7 +202,7 @@
                 </ul>
             </description>
         </release>
-        <release version="0.12" timestamp="1575482243">
+        <release version="0.12" date="2019-12-04">
             <description>
                 <ul>
                     <li>Added loading progress bar</li>
@@ -213,7 +213,7 @@
                 </ul>
             </description>
         </release>
-        <release version="0.11" timestamp="1570369507">
+        <release version="0.11" date="2019-10-06">
             <description>
                 <ul>
                     <li>Load cached articles on startup</li>
@@ -226,7 +226,7 @@
                 </ul>
             </description>
         </release>
-        <release version="0.10" timestamp="1568546701">
+        <release version="0.10" date="2019-09-15">
             <description>
                 <ul>
                     <li>Option to ellipsize article titles for a more compact view</li>
@@ -237,7 +237,7 @@
                 </ul>
             </description>
         </release>
-        <release version="0.9" timestamp="1567692081">
+        <release version="0.9" date="2019-09-05">
             <description>
                 <ul>
                     <li>Errors with feeds are now shown in the UI</li>
@@ -247,7 +247,7 @@
                 </ul>
             </description>
         </release>
-        <release version="0.8" timestamp="1567447599">
+        <release version="0.8" date="2019-09-02">
             <description>
                 <ul>
                     <li>OPML file association</li>
@@ -262,7 +262,7 @@
                 </ul>
             </description>
         </release>
-        <release version="0.7" timestamp="1566463350">
+        <release version="0.7" date="2019-08-22">
             <description>
                 <ul>
                     <li>New right click or longpress menu for articles</li>
@@ -273,7 +273,7 @@
                 </ul>
             </description>
         </release>
-        <release version="0.6" timestamp="1565595606">
+        <release version="0.6" date="2019-08-12">
             <description>
                 <ul>
                     <li>Concurrent feeds refresh, with customizable thread count</li>
@@ -281,21 +281,21 @@
                 </ul>
             </description>
         </release>
-        <release version="0.5.2" timestamp="1565334511">
+        <release version="0.5.2" date="2019-08-09">
             <description>
                 <ul>
                     <li>Fix bugs in reader mode</li>
                 </ul>
             </description>
         </release>
-        <release version="0.5.1" timestamp="1565274311">
+        <release version="0.5.1" date="2019-08-08">
             <description>
                 <ul>
                     <li>Minor bug fix</li>
                 </ul>
             </description>
         </release>
-        <release version="0.5" timestamp="1565260850">
+        <release version="0.5" date="2019-08-08">
             <description>
                 <ul>
                     <li>Improved date and time parsing and display</li>
@@ -305,7 +305,7 @@
                 </ul>
             </description>
         </release>
-        <release version="0.4.1" timestamp="1565090294">
+        <release version="0.4.1" date="2019-08-06">
             <description>
                 <ul>
                     <li>Improved favicon download</li>
@@ -313,7 +313,7 @@
                 </ul>
             </description>
         </release>
-        <release version="0.4" timestamp="1565083891">
+        <release version="0.4" date="2019-08-06">
             <description>
                 <ul>
                     <li>Added option to disable client side decoration</li>
@@ -326,7 +326,7 @@
                 </ul>
             </description>
         </release>
-        <release version="0.3" timestamp="1564832105">
+        <release version="0.3" date="2019-08-03">
             <description>
                 <ul>
                     <li>Fixed labels alignment</li>
@@ -340,21 +340,21 @@
                 </ul>
             </description>
         </release>
-        <release version="0.2.2" timestamp="1564747422">
+        <release version="0.2.2" date="2019-08-02">
             <description>
                 <ul>
                     <li>Feeds for websites without favicons will now work</li>
                 </ul>
             </description>
         </release>
-        <release version="0.2.1" timestamp="1564745958">
+        <release version="0.2.1" date="2019-08-02">
             <description>
                 <ul>
                     <li>Fixed bug with adding new feeds</li>
                 </ul>
             </description>
         </release>
-        <release version="0.2" timestamp="1564642611">
+        <release version="0.2" date="2019-08-01">
             <description>
                 <ul>
                     <li>Switched to native file chooser</li>
@@ -363,7 +363,7 @@
                 </ul>
             </description>
         </release>
-        <release version="0.1" timestamp="1564557774">
+        <release version="0.1" date="2019-07-31">
             <description>
                 <ul>
                     <li>First release</li>

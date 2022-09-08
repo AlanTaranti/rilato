@@ -1,14 +1,10 @@
 from gi.repository import Adw, GLib, Gdk, Gio
 from threading import Thread
-from gfeeds.confManager import ConfManager
 from pathlib import Path
 from os.path import isfile
 from PIL import Image
 from typing import Union
-
-
-confman = ConfManager()
-thumbs_cache_path = Path(confman.thumbs_cache_path)
+from gfeeds.util.paths import THUMBS_CACHE_PATH
 
 
 def make_thumb(path, width: int, height: int = 1000) -> Union[str, None]:
@@ -16,7 +12,7 @@ def make_thumb(path, width: int, height: int = 1000) -> Union[str, None]:
         return None
     if not isinstance(path, Path):
         path = Path(path)
-    dest = thumbs_cache_path.joinpath(f'{width}x{height}_{path.name}_v2')
+    dest = THUMBS_CACHE_PATH.joinpath(f'{width}x{height}_{path.name}_v2')
     if dest.is_file():
         return str(dest)
     try:
@@ -57,9 +53,10 @@ class SimpleAvatar(Adw.Bin):
             if not cached:
                 return
             GLib.idle_add(cb, cached)
-        gio_file = Gio.File.new_for_path(image)
+            return
 
         def af():
+            gio_file = Gio.File.new_for_path(image)
             try:
                 texture = Gdk.Texture.new_from_file(gio_file)
             except Exception:

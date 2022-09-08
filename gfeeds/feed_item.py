@@ -1,5 +1,5 @@
 from gettext import gettext as _
-from typing import Optional
+from typing import List, Optional
 from bs4 import BeautifulSoup
 from gi.repository import GObject, GLib
 from dateutil.tz import gettz
@@ -100,11 +100,12 @@ class FeedItem(GObject.Object):
         if read == self.__read:
             return
         self.parent_feed.unread_count += -1 if read else 1
-        if read and self.identifier not in self.confman.conf['read_items']:
-            self.confman.conf['read_items'].append(self.identifier)
-        elif not read and self.identifier in self.confman.conf['read_items']:
-            self.confman.conf['read_items'].remove(self.identifier)
-        self.confman.save_conf()
+        read_items: List[str] = self.confman.conf['read_items']
+        if read and self.identifier not in read_items:
+            read_items.append(self.identifier)
+        elif not read and self.identifier in read_items:
+            read_items.remove(self.identifier)
+        self.confman.conf['read_items'] = read_items
         self.__read = read
 
     def __repr__(self):

@@ -1,5 +1,5 @@
 from gettext import gettext as _
-from typing import Optional
+from typing import Dict, Optional
 from gi.repository import Adw, GObject, Gtk
 from gfeeds.confManager import ConfManager
 from gfeeds.feeds_manager import FeedsManager
@@ -44,8 +44,8 @@ class AddFeedPopover(Gtk.Popover):
         url = self.url_entry.get_text().strip()
         if not url:
             return
-        res = self.feedman.add_feed(url, True)
-        if res:
+        feed_is_new = self.feedman.add_feed(url, True)
+        if feed_is_new:
             self.popdown()
             self.already_subscribed_revealer.set_reveal_child(False)
         else:
@@ -179,14 +179,17 @@ class LeftHeaderbar(Gtk.WindowHandle):
     @Gtk.Template.Callback()
     def show_errors_dialog(self, *__):
 
-        def on_remove():
+        def on_remove(d: ScrolledDialogV2, _):
+            d.close()
+            feeds: Dict[str, dict] = self.confman.conf['feeds']
             for pf in self.feedman.problematic_feeds:
-                if pf in self.confman.conf['feeds'].keys():
-                    self.confman.conf['feeds'].pop(pf)
-                    self.confman.save_conf()
+                if pf in feeds.keys():
+                    feeds.pop(pf)
+            self.confman.conf['feeds'] = feeds
             self.errors_btn.set_visible(False)
 
-        def on_keep():
+        def on_keep(d: ScrolledDialogV2, _):
+            d.close()
             self.errors_btn.set_visible(True)
 
         dialog = ScrolledDialogV2(

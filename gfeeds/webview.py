@@ -10,6 +10,7 @@ from subprocess import Popen
 from datetime import datetime
 from typing import Optional
 from gfeeds.feed_item import FeedItem
+from gfeeds.util.paths import CACHE_PATH, IS_FLATPAK
 
 
 @Gtk.Template(resource_path='/org/gabmus/gfeeds/ui/webview.ui')
@@ -59,7 +60,7 @@ class GFeedsWebView(Gtk.Stack):
 
         self.content_manager = self.webkitview.get_user_content_manager()
         self.user_content_filter_store = WebKit2.UserContentFilterStore.new(
-            str(self.confman.cache_path.joinpath(
+            str(CACHE_PATH.joinpath(
                 'webkit_user_content_filter_store'
             ))
         )
@@ -327,7 +328,7 @@ class GFeedsWebView(Gtk.Stack):
         cmd_parts = [
             self.confman.conf['media_player'], f"'{url}'"
         ]
-        if self.confman.is_flatpak:
+        if IS_FLATPAK:
             cmd_parts.insert(0, 'flatpak-spawn --host')
         cmd = ' '.join(cmd_parts)
         Popen(cmd, shell=True)
