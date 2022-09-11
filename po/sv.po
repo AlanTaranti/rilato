@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gfeeds master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/gfeeds/issues\n"
-"POT-Creation-Date: 2022-06-02 09:20+0000\n"
-"PO-Revision-Date: 2022-06-02 16:37+0200\n"
+"POT-Creation-Date: 2022-09-08 05:35+0000\n"
+"PO-Revision-Date: 2022-09-11 18:15+0200\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.1.1\n"
 
 #: data/org.gabmus.gfeeds.appdata.xml.in:4
 msgid "Feeds"
@@ -62,22 +62,22 @@ msgstr "Flöden kan importeras och exporteras via OPML."
 msgid "rss;reader;feed;news;"
 msgstr "rss;läsare;flöde;nyheter;"
 
-#: gfeeds/feed_item.py:49
+#: gfeeds/feed_item.py:55
 #, python-brace-format
 msgid "Error: unable to parse datetime {0} for feeditem {1}"
 msgstr "Fel: Kan inte tolka datumtid {0} för flödesobjekt {1}"
 
-#: gfeeds/feed_parser.py:37
+#: gfeeds/feed_parser.py:61
 #, python-brace-format
 msgid "Errors while parsing feed `{0}`, URL: `{1}`"
 msgstr "Fel vid tolkning av flödet \"{0}\", URL: \"{1}\""
 
-#: gfeeds/feed_parser.py:55
+#: gfeeds/feed_parser.py:71
 #, python-brace-format
 msgid "`{0}` may not be an RSS or Atom feed"
 msgstr "\"{0}\" kanske inte är ett RSS- eller Atom-flöde"
 
-#: gfeeds/feeds_manager.py:88
+#: gfeeds/feeds_manager.py:89
 #, python-brace-format
 msgid "Feed {0} exists already, skipping"
 msgstr "Flödet {0} finns redan, hoppar över"
@@ -86,34 +86,38 @@ msgstr "Flödet {0} finns redan, hoppar över"
 msgid "All feeds"
 msgstr "Alla flöden"
 
-#: gfeeds/headerbar.py:184
-msgid ""
-"There were problems with some feeds.\n"
-"Do you want to remove them?"
-msgstr ""
-"Det uppstod problem med några flöden.\n"
-"Vill du ta bort dem?"
+#: gfeeds/headerbar.py:198
+msgid "There were problems with some feeds. Do you want to remove them?"
+msgstr "Det uppstod problem med några flöden. Vill du ta bort dem?"
 
-#: gfeeds/main_leaflet.py:119
+#: gfeeds/headerbar.py:203
+msgid "_Keep"
+msgstr "_Behåll"
+
+#: gfeeds/headerbar.py:205
+msgid "_Remove"
+msgstr "_Ta bort"
+
+#: gfeeds/main_leaflet.py:122
 #, python-brace-format
 msgid "{0} new article"
 msgid_plural "{0} new articles"
 msgstr[0] "{0} ny artikel"
 msgstr[1] "{0} nya artiklar"
 
-#: gfeeds/__main__.py:229
+#: gfeeds/__main__.py:225
 msgid "Do you want to import these feeds?"
 msgstr "Vill du importera dessa flöden?"
 
-#: gfeeds/__main__.py:256
+#: gfeeds/__main__.py:252
 msgid "Do you want to import this feed?"
 msgstr "Vill du importera detta flöde?"
 
-#: gfeeds/__main__.py:285
+#: gfeeds/__main__.py:281
 msgid "url"
 msgstr "URL"
 
-#: gfeeds/__main__.py:288
+#: gfeeds/__main__.py:284
 msgid "opml file local url or rss remote url to import"
 msgstr "OPML-fil, lokal URL eller RSS-URL för att importera"
 
@@ -149,84 +153,75 @@ msgstr "Välj var den exporterade OPML-filen skall sparas"
 msgid "Save"
 msgstr "Spara"
 
-#: gfeeds/opml_manager.py:42
-msgid "Error: OPML path provided does not exist"
-msgstr "Fel: Angiven OPML-sökväg finns inte"
-
-#: gfeeds/opml_manager.py:53
-#, python-brace-format
-msgid "Error parsing OPML file `{0}`"
-msgstr "Kunde inte tolka OPML-fil \"{0}\""
-
-#: gfeeds/preferences_window.py:22
+#: gfeeds/preferences_window.py:24
 msgid "General"
 msgstr "Allmänt"
 
-#: gfeeds/preferences_window.py:25
+#: gfeeds/preferences_window.py:27
 msgid "General preferences"
 msgstr "Allmänna inställningar"
 
-#: gfeeds/preferences_window.py:27
+#: gfeeds/preferences_window.py:29
 msgid "Show newer articles first"
 msgstr "Visa nyare artiklar först"
 
-#: gfeeds/preferences_window.py:32
+#: gfeeds/preferences_window.py:34
 msgid "Open links in your browser"
 msgstr "Öppna länkar i webbläsaren"
 
-#: gfeeds/preferences_window.py:36
+#: gfeeds/preferences_window.py:38
 msgid "Use external video player for YouTube"
 msgstr "Använd en extern videospelare för YouTube"
 
-#: gfeeds/preferences_window.py:38
+#: gfeeds/preferences_window.py:40
 msgid "Requires youtube-dl and a compatible video player"
 msgstr "Kräver youtube-dl och en kompatibel videospelare"
 
-#: gfeeds/preferences_window.py:44
+#: gfeeds/preferences_window.py:46
 msgid "Preferred video player"
 msgstr "Föredragen videospelare"
 
-#: gfeeds/preferences_window.py:48
+#: gfeeds/preferences_window.py:50
 msgid "Maximum article age"
 msgstr "Maximal artikelålder"
 
-#: gfeeds/preferences_window.py:49
+#: gfeeds/preferences_window.py:51
 msgid "In days"
 msgstr "I dagar"
 
-#: gfeeds/preferences_window.py:56
+#: gfeeds/preferences_window.py:58
 msgid "Refresh preferences"
 msgstr "Uppdatera inställningar"
 
-#: gfeeds/preferences_window.py:58
+#: gfeeds/preferences_window.py:60
 msgid "Refresh articles on startup"
 msgstr "Uppdatera artiklar vid programstart"
 
-#: gfeeds/preferences_window.py:62
+#: gfeeds/preferences_window.py:64
 msgid "New articles notification"
 msgstr "Avisering för nya artiklar"
 
-#: gfeeds/preferences_window.py:66
+#: gfeeds/preferences_window.py:68
 msgid "Enable auto-refresh"
 msgstr "Aktivera automatisk uppdatering"
 
-#: gfeeds/preferences_window.py:70
+#: gfeeds/preferences_window.py:72
 msgid "Auto-refresh interval"
 msgstr "Intervall för automatisk uppdatering"
 
-#: gfeeds/preferences_window.py:71
+#: gfeeds/preferences_window.py:73
 msgid "In seconds"
 msgstr "I sekunder"
 
-#: gfeeds/preferences_window.py:78
+#: gfeeds/preferences_window.py:80
 msgid "Cache"
 msgstr "Cache"
 
-#: gfeeds/preferences_window.py:80
+#: gfeeds/preferences_window.py:82
 msgid "Clear caches"
 msgstr "Rensa cache-lagrat"
 
-#: gfeeds/preferences_window.py:81
+#: gfeeds/preferences_window.py:83
 msgid "Clear"
 msgstr "Töm"
 
@@ -346,6 +341,35 @@ msgstr "Hur många trådar att använda för att uppdatera flöden"
 msgid "Experimental GtkListView for articles list"
 msgstr "Experimentell GtkListView för artikellista"
 
+#: gfeeds/preferences_window.py:226
+msgid "Troubleshooting"
+msgstr "Problemlösning"
+
+#: gfeeds/preferences_window.py:228
+msgid "Export Configuration as JSON"
+msgstr "Exportera konfiguration som JSON"
+
+#: gfeeds/preferences_window.py:229
+msgid "Attach this when reporting bugs"
+msgstr "Bifoga denna när du rapporterar fel"
+
+#: gfeeds/preferences_window.py:230
+msgid "Export"
+msgstr "Exportera"
+
+#. type: ignore
+#: gfeeds/preferences_window.py:243
+msgid "Feeds Configuration"
+msgstr "Flödeskonfiguration"
+
+#: gfeeds/preferences_window.py:247
+msgid "_Close"
+msgstr "S_täng"
+
+#: gfeeds/preferences_window.py:250
+msgid "Cop_y"
+msgstr "_Kopiera"
+
 #: gfeeds/sidebar.py:21
 msgid "Loading feeds..."
 msgstr "Läser in flöden…"
@@ -358,25 +382,34 @@ msgstr "Märk som oläst"
 msgid "Mark as read"
 msgstr "Märk som läst"
 
-#: gfeeds/util/download_manager.py:102
+#: gfeeds/util/download_manager.py:112
 #, python-brace-format
 msgid "`{0}`: connection timed out"
 msgstr "\"{0}\": Anslutningen överskred tidsgränsen"
 
-#: gfeeds/util/download_manager.py:111
+#: gfeeds/util/download_manager.py:121
 #, python-brace-format
 msgid "`{0}` might not be a valid address"
 msgstr "\"{0}\" kanske inte är en giltig adress"
 
-#: gfeeds/util/download_manager.py:150
+#: gfeeds/util/download_manager.py:157
 #, python-brace-format
 msgid "Error downloading `{0}`, code `{1}`"
 msgstr "Kunde inte hämta \"{0}\", kod \"{1}\""
 
-#: gfeeds/util/get_favicon.py:53
+#: gfeeds/util/get_favicon.py:48
 #, python-brace-format
 msgid "Error downloading favicon for `{0}`"
 msgstr "Kunde inte hämta favikon för \"{0}\""
+
+#: gfeeds/util/opml_parser.py:31
+msgid "Error: OPML path provided does not exist"
+msgstr "Fel: Angiven OPML-sökväg finns inte"
+
+#: gfeeds/util/opml_parser.py:42
+#, python-brace-format
+msgid "Error parsing OPML file `{0}`"
+msgstr "Kunde inte tolka OPML-fil \"{0}\""
 
 #: gfeeds/webview.py:201
 msgid "Link copied to clipboard!"
@@ -386,11 +419,15 @@ msgstr "Länk kopierad till urklipp!"
 msgid "Feed content not available for this article"
 msgstr "Flödesinnehåll ej tillgängligt för den här artikeln"
 
+#~ msgid ""
+#~ "There were problems with some feeds.\n"
+#~ "Do you want to remove them?"
+#~ msgstr ""
+#~ "Det uppstod problem med några flöden.\n"
+#~ "Vill du ta bort dem?"
+
 #~ msgid "Web View"
 #~ msgstr "Webbvy"
-
-#~ msgid "Feed Content"
-#~ msgstr "Flödesinnehåll"
 
 #~ msgid "Choose a folder"
 #~ msgstr "Välj en mapp"
@@ -409,9 +446,6 @@ msgstr "Flödesinnehåll ej tillgängligt för den här artikeln"
 
 #~ msgid "Ignore"
 #~ msgstr "Ignorera"
-
-#~ msgid "There were problems with some feeds. Do you want to remove them?"
-#~ msgstr "Det uppstod problem med några flöden. Vill du ta bort dem?"
 
 #~ msgid "You are offline"
 #~ msgstr "Du är frånkopplad"
