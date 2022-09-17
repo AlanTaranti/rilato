@@ -8,7 +8,7 @@ from gfeeds.feeds_view import (
     FeedsViewListbox,
     FeedsViewListboxRow
 )
-from gfeeds.scrolled_dialog import ScrolledDialog
+from gfeeds.scrolled_dialog import ScrolledDialogResponse, ScrolledDialogV2
 from gfeeds.get_children import get_children
 from gfeeds.tag_store import TagObj
 
@@ -313,19 +313,28 @@ class GFeedsManageFeedsWindow(Adw.Window):
 
     def on_delete_clicked(self, *__):
         selected_feeds = self.get_selected_feeds()
-        dialog = ScrolledDialog(
-            transient_for=self,
+
+        def on_delete(_dialog, res):
+            _dialog.close()
+            self.feedman.delete_feeds(selected_feeds)
+            self.headerbar.set_actions_sensitive(False)
+
+        def on_cancel(_dialog, res):
+            _dialog.close()
+
+        dialog = ScrolledDialogV2(
+            parent=self,
             title=_('Do you want to delete these feeds?'),
-            message='\n'.join([escape(f.title) for f in selected_feeds])
+            body='\n'.join([escape(f.title) for f in selected_feeds]),
+            responses=[
+                ScrolledDialogResponse('cancel', _('_Cancel'), on_cancel),
+                ScrolledDialogResponse(
+                    'delete', _('_Delete'), on_delete,
+                    Adw.ResponseAppearance.DESTRUCTIVE
+                )
+            ]
         )
 
-        def on_response(_dialog, res):
-            _dialog.close()
-            if res == Gtk.ResponseType.YES:
-                self.feedman.delete_feeds(selected_feeds)
-                self.headerbar.set_actions_sensitive(False)
-
-        dialog.connect('response', on_response)
         dialog.present()
 
     def on_select_all_clicked(self, *_):

@@ -8,7 +8,7 @@ template AddFeedPopover : Gtk.Popover {
         spacing: 6;
         Gtk.Label {
             styles ['dim-label']
-            label: _('Enter feed address to add');
+            label: _("Enter feed address to add");
             xalign: 0.0;
         }
         Gtk.Box {
@@ -23,13 +23,13 @@ template AddFeedPopover : Gtk.Popover {
             }
             Gtk.Button confirm_btn {
                 styles ['suggested-action']
-                label: _('Add');
+                label: _("Add");
                 clicked => on_confirm_btn_clicked();
             }
         }
         Gtk.Revealer already_subscribed_revealer {
             Gtk.Label {
-                label: _('You\'re already subscribed to that feed!');
+                label: _("You're already subscribed to that feed!");
                 wrap: true;
                 xalign: 0.0;
             }

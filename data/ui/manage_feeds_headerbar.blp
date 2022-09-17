@@ -4,21 +4,21 @@ using Adw 1;
 template ManageFeedsHeaderbar : Gtk.HeaderBar {
     show-title-buttons: true;
     [title] Adw.WindowTitle {
-        title: _('Manage Feeds');
+        title: _("Manage Feeds");
     }
     Gtk.ToggleButton tags_btn {
         icon-name: 'tag-symbolic';
-        tooltip-text: _('Manage Tags for Selected Feeds');
+        tooltip-text: _("Manage Tags for Selected Feeds");
         sensitive: false;
     }
     Gtk.Button select_all_btn {
         icon-name: 'edit-select-all-symbolic';
-        tooltip-text: _('Select/Unselect All');
+        tooltip-text: _("Select/Unselect All");
     }
     [end] Gtk.Button delete_btn {
         styles ['destructive-action']
         icon-name: 'user-trash-symbolic';
-        tooltip-text: _('Delete Selected Feeds');
+        tooltip-text: _("Delete Selected Feeds");
         sensitive: false;
     }
 }

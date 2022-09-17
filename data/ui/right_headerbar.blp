@@ -6,27 +6,27 @@ menu webviewMenu {
         item { custom: zoom; }
     }
     section {
-        item (_('Open in Browser'), 'app.open_externally')
-        item (_('Open in External Media Player'), 'app.open_media_player')
-        item (_('Copy Article Link'), 'app.copy_link')
+        item (_("Open in Browser"), 'app.open_externally')
+        item (_("Open in External Media Player"), 'app.open_media_player')
+        item (_("Copy Article Link"), 'app.copy_link')
     }
 }
 
 menu viewModeMenu {
     section {
-        label: _('View Mode');
+        label: _("View Mode");
         item {
-            label: _('Web View');
+            label: _("Web View");
             action: 'app.view_mode_change';
             target: 'webview';
         }
         item {
-            label: _('Reader Mode');
+            label: _("Reader Mode");
             action: 'app.view_mode_change';
             target: 'reader';
         }
         item {
-            label: _('Feed Content');
+            label: _("Feed Content");
             action: 'app.view_mode_change';
             target: 'rsscont';
         }
@@ -40,17 +40,17 @@ PopoverMenu extra_popover {
         hexpand: true; halign: center;
         Button zoom_out_btn {
             icon-name: 'list-remove-symbolic';
-            tooltip-text: _('Zoom Out');
+            tooltip-text: _("Zoom Out");
             clicked => on_zoom_out_btn_clicked();
         }
         Button zoom_reset_btn {
             label: '100%';
-            tooltip-text: _('Reset Zoom');
+            tooltip-text: _("Reset Zoom");
             clicked => on_zoom_reset_btn_clicked();
         }
         Button zoom_in_btn {
             icon-name: 'list-add-symbolic';
-            tooltip-text: _('Zoom In');
+            tooltip-text: _("Zoom In");
             clicked => on_zoom_in_btn_clicked();
         }
     }
@@ -83,13 +83,13 @@ template RightHeaderbar : WindowHandle {
         }
         Button back_btn {
             visible: false;
-            tooltip-text: _('Back to Articles');
+            tooltip-text: _("Back to Articles");
             icon-name: 'go-previous-symbolic';
             clicked => on_back_btn_clicked();
         }
         MenuButton view_mode_menu_btn {
             sensitive: false;
-            tooltip-text: _('View Mode');
+            tooltip-text: _("View Mode");
             always-show-arrow: true;
             menu-model: viewModeMenu;
         }

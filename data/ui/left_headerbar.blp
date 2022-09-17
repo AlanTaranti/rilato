@@ -3,20 +3,20 @@ using Adw 1;
 
 menu generalMenu {
     section {
-        item (_('Show Read Articles'), 'app.show_read_items')
-        item (_('Mark All as Read'), 'app.set_all_read')
-        item (_('Mark All as Unread'), 'app.set_all_unread')
+        item (_("Show Read Articles"), 'app.show_read_items')
+        item (_("Mark All as Read"), 'app.set_all_read')
+        item (_("Mark All as Unread"), 'app.set_all_unread')
     }
     section {
-        item (_('Show Empty Feeds'), 'app.show_empty_feeds')
-        item (_('Manage Feeds'), 'app.manage_feeds')
-        item (_('Import OPML'), 'app.import_opml')
-        item (_('Export OPML'), 'app.export_opml')
+        item (_("Show Empty Feeds"), 'app.show_empty_feeds')
+        item (_("Manage Feeds"), 'app.manage_feeds')
+        item (_("Import OPML"), 'app.import_opml')
+        item (_("Export OPML"), 'app.export_opml')
     }
     section {
-        item (_('Preferences'), 'app.settings')
-        item (_('Keyboard Shortcuts'), 'app.shortcuts')
-        item (_('About Feeds'), 'app.about')
+        item (_("Preferences"), 'app.settings')
+        item (_("Keyboard Shortcuts"), 'app.shortcuts')
+        item (_("About Feeds"), 'app.about')
     }
 }
 
@@ -25,30 +25,30 @@ template LeftHeaderbar : WindowHandle {
     Adw.HeaderBar left_headerbar {
         [title] Adw.Bin {}
         ToggleButton filter_btn {
-            tooltip-text: _('Filter');
+            tooltip-text: _("Filter");
             icon-name: 'sidebar-show-symbolic';
         }
         MenuButton add_btn {
-            tooltip-text: _('Add Feed');
+            tooltip-text: _("Add Feed");
             icon-name: 'list-add-symbolic';
         }
         [end] MenuButton menu_btn {
-            tooltip-text: _('Menu');
+            tooltip-text: _("Menu");
             icon-name: 'open-menu-symbolic';
             menu-model: generalMenu;
         }
         [end] Button refresh_btn {
-            tooltip-text: _('Refresh');
+            tooltip-text: _("Refresh");
             icon-name: 'view-refresh-symbolic';
             clicked => on_refresh_btn_clicked();
         }
         [end] ToggleButton search_btn {
-            tooltip-text: _('Search');
+            tooltip-text: _("Search");
             icon-name: 'system-search-symbolic';
             toggled => on_search_btn_toggled();
         }
         [end] Button errors_btn {
-            tooltip-text: _('There Are Errors');
+            tooltip-text: _("There Are Errors");
             icon-name: 'dialog-warning-symbolic';
             visible: false;
             clicked => show_errors_dialog();

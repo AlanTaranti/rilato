@@ -102,7 +102,6 @@ blueprints = custom_target('blueprints',
         'ui/sidebar_listbox_row.blp',
         'ui/webview.blp',
         'ui/filter_view.blp',
-        'ui/scrolled_dialog.blp',
         # 'ui/extra_popover_menu.blp',  # model button missing
     ),
     output: '.',

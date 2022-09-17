@@ -3,7 +3,7 @@ import sys
 import argparse
 from gettext import gettext as _
 from os.path import isfile
-from gi.repository import Gtk, Gdk, Gio, GLib
+from gi.repository import Gtk, Gdk, Gio, GLib, Adw
 from gfeeds.confManager import ConfManager
 from gfeeds.feeds_manager import FeedsManager
 from gfeeds.app_window import GFeedsAppWindow
@@ -15,7 +15,7 @@ from gfeeds.opml_file_chooser import (
     GFeedsOpmlSavePathChooserDialog
 )
 from gfeeds.manage_feeds_window import GFeedsManageFeedsWindow
-from gfeeds.scrolled_dialog import ScrolledDialog
+from gfeeds.scrolled_dialog import ScrolledDialogResponse, ScrolledDialogV2
 from gfeeds.shortcuts_window import show_shortcuts_window
 from gfeeds.util.rss_link_from_file import get_feed_link_from_file
 from gfeeds.base_app import BaseApp, AppAction
@@ -220,21 +220,31 @@ class GFeedsApplication(BaseApp):
                     abspath = self.args.argurl.removeprefix('file://')
                 if isfile(expanduser(abspath)):
                     if abspath.lower().endswith('.opml'):
-                        dialog = ScrolledDialog(
-                            transient_for=self.window,
+                        def on_cancel(_dialog, __):
+                            _dialog.close()
+
+                        def on_import(_dialog, __):
+                            _dialog.close()
+                            self.feedman.import_opml(abspath)
+
+                        dialog = ScrolledDialogV2(
+                            parent=self.window,
                             title=_('Do you want to import these feeds?'),
-                            message=escape('\n'.join([
+                            body=escape('\n'.join([
                                 f.feed
                                 for f in opml_to_rss_list(abspath)
-                            ]))
+                            ])),
+                            responses=[
+                                ScrolledDialogResponse(
+                                    'cancel', _('_Cancel'), on_cancel
+                                ),
+                                ScrolledDialogResponse(
+                                    'import', _('_Import'), on_import,
+                                    Adw.ResponseAppearance.SUGGESTED
+                                )
+                            ]
                         )
 
-                        def on_response(_dialog, res):
-                            _dialog.close()
-                            if res == Gtk.ResponseType.YES:
-                                self.feedman.import_opml(abspath)
-
-                        dialog.connect('response', on_response)
                         dialog.present()
                     else:
                         # why no check for extension here?
@@ -247,19 +257,29 @@ class GFeedsApplication(BaseApp):
                         self.args.argurl.lower().startswith('http://') or
                         self.args.argurl.lower().startswith('https://')
                 ):
-                    dialog = ScrolledDialog(
-                        transient_for=self.window,
+                    def on_import(_dialog, __):
+                        _dialog.close()
+                        self.feedman.add_feed(argurl)
+
+                    def on_cancel(_dialog, __):
+                        _dialog.close()
+
+                    dialog = ScrolledDialogV2(
+                        parent=self.window,
                         title=_('Do you want to import this feed?'),
-                        message=escape(self.args.argurl),
+                        body=escape(self.args.argurl),
+                        responses=[
+                            ScrolledDialogResponse(
+                                'cancel', _('_Cancel'), on_cancel
+                            ),
+                            ScrolledDialogResponse(
+                                'import', _('_Import'), on_import,
+                                Adw.ResponseAppearance.SUGGESTED
+                            )
+                        ]
                     )
                     argurl = self.args.argurl
 
-                    def on_response(_dialog, res):
-                        _dialog.close()
-                        if res == Gtk.ResponseType.YES:
-                            self.feedman.add_feed(argurl)
-
-                    dialog.connect('response', on_response)
                     dialog.present()
                 else:
                     print('This file is not supported')
