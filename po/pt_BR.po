@@ -4,21 +4,21 @@
 # Gleisson Jesuino Joaquim Cardoso <gleissoncg2@gmail.com>, 2019.
 # Matheus Barbosa <mdpb.matheus@gmail.com>, 2022.
 # Rafael Fontenelle <rafaelff@gnome.org>, 2021-2022.
-#
+# Enrico Nicoletto <hiko@duck.com>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: gfeeds master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/gfeeds/issues\n"
-"POT-Creation-Date: 2022-06-02 09:20+0000\n"
-"PO-Revision-Date: 2022-06-26 07:42-0300\n"
-"Last-Translator: Rafael Fontenelle <rafaelff@gnome.org>\n"
+"POT-Creation-Date: 2022-09-08 17:37+0000\n"
+"PO-Revision-Date: 2022-09-10 16:15-0300\n"
+"Last-Translator: Enrico Nicoletto <hiko@duck.com>\n"
 "Language-Team: Brazilian Portuguese <gnome-pt_br-list@gnome.org>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1)\n"
-"X-Generator: Gtranslator 40.0\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #: data/org.gabmus.gfeeds.appdata.xml.in:4
 msgid "Feeds"
@@ -64,23 +64,22 @@ msgstr "As fontes RSS podem ser importadas e exportadas via OPML."
 msgid "rss;reader;feed;news;"
 msgstr "leitor, feed, notícias;"
 
-#: gfeeds/feed_item.py:49
+#: gfeeds/feed_item.py:55
 #, python-brace-format
 msgid "Error: unable to parse datetime {0} for feeditem {1}"
 msgstr "Erro: Não é possível analisar a data e hora {0} para o item {1}"
 
-#: gfeeds/feed_parser.py:37
+#: gfeeds/feed_parser.py:61
 #, python-brace-format
-#| msgid "Errors while parsing feed `{0}`"
 msgid "Errors while parsing feed `{0}`, URL: `{1}`"
 msgstr "Erros ao analisar a fonte RSS `{0}`, URL: `{1}`"
 
-#: gfeeds/feed_parser.py:55
+#: gfeeds/feed_parser.py:71
 #, python-brace-format
 msgid "`{0}` may not be an RSS or Atom feed"
 msgstr "`{0}` pode não ser uma fonte RSS ou Atom"
 
-#: gfeeds/feeds_manager.py:88
+#: gfeeds/feeds_manager.py:89
 #, python-brace-format
 msgid "Feed {0} exists already, skipping"
 msgstr "A fonte RSS {0} já existe, pulando"
@@ -89,34 +88,38 @@ msgstr "A fonte RSS {0} já existe, pulando"
 msgid "All feeds"
 msgstr "Mostrar todos"
 
-#: gfeeds/headerbar.py:184
-msgid ""
-"There were problems with some feeds.\n"
-"Do you want to remove them?"
-msgstr ""
-"Ocorreram problemas com alguns feeds.\n"
-"Você quer removê-los?"
+#: gfeeds/headerbar.py:198
+msgid "There were problems with some feeds. Do you want to remove them?"
+msgstr "Ocorreram problemas com alguns feeds. Você quer removê-los?"
 
-#: gfeeds/main_leaflet.py:119
+#: gfeeds/headerbar.py:203
+msgid "_Keep"
+msgstr "Man_ter"
+
+#: gfeeds/headerbar.py:205
+msgid "_Remove"
+msgstr "_Remover"
+
+#: gfeeds/main_leaflet.py:122
 #, python-brace-format
 msgid "{0} new article"
 msgid_plural "{0} new articles"
 msgstr[0] "{0} novo artigo"
 msgstr[1] "{0} novos artigos"
 
-#: gfeeds/__main__.py:229
+#: gfeeds/__main__.py:225
 msgid "Do you want to import these feeds?"
 msgstr "Deseja importar essas fontes RSS ?"
 
-#: gfeeds/__main__.py:256
+#: gfeeds/__main__.py:252
 msgid "Do you want to import this feed?"
 msgstr "Deseja importar a fonte RSS ?"
 
-#: gfeeds/__main__.py:285
+#: gfeeds/__main__.py:281
 msgid "url"
 msgstr "url"
 
-#: gfeeds/__main__.py:288
+#: gfeeds/__main__.py:284
 msgid "opml file local url or rss remote url to import"
 msgstr "url local do arquivo opml ou URL remoto rss para importar"
 
@@ -152,84 +155,75 @@ msgstr "Escolha onde salvar o arquivo OPML exportado"
 msgid "Save"
 msgstr "Salvar"
 
-#: gfeeds/opml_manager.py:42
-msgid "Error: OPML path provided does not exist"
-msgstr "Erro: O caminho OPML fornecido não existe"
-
-#: gfeeds/opml_manager.py:53
-#, python-brace-format
-msgid "Error parsing OPML file `{0}`"
-msgstr "Erro ao analisar o arquivo OPML `{0}`"
-
-#: gfeeds/preferences_window.py:22
+#: gfeeds/preferences_window.py:24
 msgid "General"
 msgstr "Geral"
 
-#: gfeeds/preferences_window.py:25
+#: gfeeds/preferences_window.py:27
 msgid "General preferences"
 msgstr "Preferências gerais"
 
-#: gfeeds/preferences_window.py:27
+#: gfeeds/preferences_window.py:29
 msgid "Show newer articles first"
 msgstr "Mostrar novos artigos primeiros"
 
-#: gfeeds/preferences_window.py:32
+#: gfeeds/preferences_window.py:34
 msgid "Open links in your browser"
 msgstr "Abrir links no navegador"
 
-#: gfeeds/preferences_window.py:36
+#: gfeeds/preferences_window.py:38
 msgid "Use external video player for YouTube"
 msgstr "Usar reprodutor de vídeo externo para o YouTube"
 
-#: gfeeds/preferences_window.py:38
+#: gfeeds/preferences_window.py:40
 msgid "Requires youtube-dl and a compatible video player"
 msgstr "Exibe youtube-dl e um reprodutor de vídeo compatível"
 
-#: gfeeds/preferences_window.py:44
+#: gfeeds/preferences_window.py:46
 msgid "Preferred video player"
 msgstr "Reprodutor de vídeo preferido"
 
-#: gfeeds/preferences_window.py:48
+#: gfeeds/preferences_window.py:50
 msgid "Maximum article age"
 msgstr "Data máxima do artigo"
 
-#: gfeeds/preferences_window.py:49
+#: gfeeds/preferences_window.py:51
 msgid "In days"
 msgstr "Em dias"
 
-#: gfeeds/preferences_window.py:56
+#: gfeeds/preferences_window.py:58
 msgid "Refresh preferences"
 msgstr "Atualizar preferências"
 
-#: gfeeds/preferences_window.py:58
+#: gfeeds/preferences_window.py:60
 msgid "Refresh articles on startup"
 msgstr "Atualiza artigos no início"
 
-#: gfeeds/preferences_window.py:62
+#: gfeeds/preferences_window.py:64
 msgid "New articles notification"
 msgstr "Notificação de novos artigos"
 
-#: gfeeds/preferences_window.py:66
+#: gfeeds/preferences_window.py:68
 msgid "Enable auto-refresh"
 msgstr "Habilitar atualização automática"
 
-#: gfeeds/preferences_window.py:70
+#: gfeeds/preferences_window.py:72
 msgid "Auto-refresh interval"
 msgstr "Intervalo de atualização"
 
-#: gfeeds/preferences_window.py:71
+#: gfeeds/preferences_window.py:73
 msgid "In seconds"
 msgstr "Em segundos"
 
-#: gfeeds/preferences_window.py:78
+#: gfeeds/preferences_window.py:80
 msgid "Cache"
 msgstr "Histórico"
 
-#: gfeeds/preferences_window.py:80
+#: gfeeds/preferences_window.py:82
 msgid "Clear caches"
 msgstr "Limpar histórico"
 
-#: gfeeds/preferences_window.py:81
+#: gfeeds/preferences_window.py:83
 msgid "Clear"
 msgstr "Limpar"
 
@@ -246,7 +240,6 @@ msgid "Dark mode"
 msgstr "Modo noturno"
 
 #: gfeeds/preferences_window.py:118
-#| msgid "Reader Mode"
 msgid "Reader mode theme"
 msgstr "Tema do modo de leitura"
 
@@ -259,7 +252,6 @@ msgid "Light"
 msgstr "Claro"
 
 #: gfeeds/preferences_window.py:122
-#| msgid "Dark mode"
 msgid "Dark"
 msgstr "Escuro"
 
@@ -351,6 +343,35 @@ msgstr "Quantas threads usar para a atualização de feeds"
 msgid "Experimental GtkListView for articles list"
 msgstr "GtkListView experimental para a lista de artigos"
 
+#: gfeeds/preferences_window.py:226
+msgid "Troubleshooting"
+msgstr "Resolução de problemas"
+
+#: gfeeds/preferences_window.py:228
+msgid "Export Configuration as JSON"
+msgstr "Exportar Configuração como JSON"
+
+#: gfeeds/preferences_window.py:229
+msgid "Attach this when reporting bugs"
+msgstr "Anexe isto ao relatar problemas"
+
+#: gfeeds/preferences_window.py:230
+msgid "Export"
+msgstr "Exportar"
+
+#. type: ignore
+#: gfeeds/preferences_window.py:243
+msgid "Feeds Configuration"
+msgstr "Configuração de Feeds"
+
+#: gfeeds/preferences_window.py:247
+msgid "_Close"
+msgstr "_Fechar"
+
+#: gfeeds/preferences_window.py:250
+msgid "Cop_y"
+msgstr "Cop_iar"
+
 #: gfeeds/sidebar.py:21
 msgid "Loading feeds..."
 msgstr "Carregando feeds..."
@@ -363,25 +384,34 @@ msgstr "Marcar como não lido"
 msgid "Mark as read"
 msgstr "Marcar como lido"
 
-#: gfeeds/util/download_manager.py:102
+#: gfeeds/util/download_manager.py:112
 #, python-brace-format
 msgid "`{0}`: connection timed out"
 msgstr "`{0}`: tempo de conexão excedido"
 
-#: gfeeds/util/download_manager.py:111
+#: gfeeds/util/download_manager.py:121
 #, python-brace-format
 msgid "`{0}` might not be a valid address"
 msgstr "`{0}` pode não ser um endereço válido"
 
-#: gfeeds/util/download_manager.py:150
+#: gfeeds/util/download_manager.py:157
 #, python-brace-format
 msgid "Error downloading `{0}`, code `{1}`"
 msgstr "Erro ao baixar `{0}`, código `{1}`"
 
-#: gfeeds/util/get_favicon.py:53
+#: gfeeds/util/get_favicon.py:48
 #, python-brace-format
 msgid "Error downloading favicon for `{0}`"
 msgstr "Erro ao baixar o favicon para `{0}`"
+
+#: gfeeds/util/opml_parser.py:31
+msgid "Error: OPML path provided does not exist"
+msgstr "Erro: O caminho OPML fornecido não existe"
+
+#: gfeeds/util/opml_parser.py:42
+#, python-brace-format
+msgid "Error parsing OPML file `{0}`"
+msgstr "Erro ao analisar o arquivo OPML `{0}`"
 
 #: gfeeds/webview.py:201
 msgid "Link copied to clipboard!"
@@ -390,382 +420,3 @@ msgstr "Copiado para a área de transferência !"
 #: gfeeds/webview.py:223
 msgid "Feed content not available for this article"
 msgstr "Conteúdo do feed não disponível para este artigo"
-
-#~ msgid "Web View"
-#~ msgstr "Visualização Web"
-
-#~ msgid "Feed Content"
-#~ msgstr "Conteúdo do feed"
-
-#~ msgid "Choose a folder"
-#~ msgstr "Escolher uma pasta"
-
-#~ msgid "Use dark theme for reader mode"
-#~ msgstr "Usar tema escuro pra o modo leitor"
-
-#~ msgid "Maximum thumbnail height"
-#~ msgstr "Altura máxima de miniaturas"
-
-#~ msgid "There are some errors"
-#~ msgstr "Existem alguns erros"
-
-#~ msgid "Show"
-#~ msgstr "Mostrar"
-
-#~ msgid "Ignore"
-#~ msgstr "Ignorar"
-
-#~ msgid "There were problems with some feeds. Do you want to remove them?"
-#~ msgstr "Ocorreram problemas com alguns feeds. Você quer removê-los?"
-
-#~ msgid "You are offline"
-#~ msgstr "Você está sem internet"
-
-#~ msgid "Thumbnail"
-#~ msgstr "Thumbnail"
-
-#~ msgid "Add new feed"
-#~ msgstr "Adiciona nova fonte RSS"
-
-#~ msgid "`{0}` is not an URL"
-#~ msgstr "`{0}` não é um URL"
-
-#~ msgid "General Settings"
-#~ msgstr "Configurações gerais"
-
-#~ msgid "Clear all caches"
-#~ msgstr "Limpar todo histórico"
-
-#~ msgid "View"
-#~ msgstr "Aparência"
-
-#~ msgid "View Settings"
-#~ msgstr "Configurações da aparência"
-
-#~ msgid "Advanced Settings"
-#~ msgstr "Configurações avançadas"
-
-#~ msgid "Feed"
-#~ msgstr "Artigos RSS"
-
-#~ msgid "Filler View"
-#~ msgstr "Visualização de preenchimento"
-
-#~ msgid "Select/Unselect all"
-#~ msgstr "Marca / Desmarca tudo"
-
-#~ msgid "Delete selected feeds"
-#~ msgstr "Excluir"
-
-#~ msgid "Manage tags for selected feeds"
-#~ msgstr "Gerenciar tags para os feeds selecionados"
-
-#~ msgid "Let's get started"
-#~ msgstr "Vamos começar"
-
-#~ msgid "Add new feeds via URL"
-#~ msgstr "Adiciona fontes RSS via URL"
-
-#~ msgid "Import an OPML file"
-#~ msgstr "Importa um arquivo OPML"
-
-#~ msgid "Open Keyboard Shortcuts"
-#~ msgstr "Abrir atalhos do teclado"
-
-#~ msgid "Quit"
-#~ msgstr "Sair"
-
-#~ msgid "Refresh articles"
-#~ msgstr "Atualiza artigos RSS"
-
-#~ msgid "Search articles"
-#~ msgstr "Procurar artigos"
-
-#~ msgid "Previous article"
-#~ msgstr "Artigo anterior"
-
-#~ msgid "Show/Hide read articles"
-#~ msgstr "Mostrar/Ocultar artigos lidos"
-
-#~ msgid "Zoom in"
-#~ msgstr "Mais zoom"
-
-#~ msgid "Zoom out"
-#~ msgstr "Menos zoom"
-
-#~ msgid "Reset zoom"
-#~ msgstr "Restaurar zoom"
-
-#~ msgid "New tag name..."
-#~ msgstr "Novo nome da tag ..."
-
-#~ msgid "Add tag"
-#~ msgstr "Adicionar tag"
-
-#~ msgid "There are no tags yet"
-#~ msgstr "Ainda não há tags"
-
-#~ msgid "Add some using the entry above"
-#~ msgstr "Adicione  usando a entrada acima"
-
-#~ msgid "label"
-#~ msgstr "legenda"
-
-#~ msgid "Save article"
-#~ msgstr "Salvar artigo"
-
-#~ msgid "Show read articles"
-#~ msgstr "Mostrar artigos lidos"
-
-#~ msgid "Mark all as read"
-#~ msgstr "Marcar todos como lido"
-
-#~ msgid "Mark all as unread"
-#~ msgstr "Marcar todos como não lido"
-
-#~ msgid "Import OPML"
-#~ msgstr "Importar OPML"
-
-#~ msgid "Export OPML"
-#~ msgstr "Exportar OPML"
-
-#~ msgid "Keyboard Shortcuts"
-#~ msgstr "Atalhos do teclado"
-
-#~ msgid "About Feeds"
-#~ msgstr "Sobre o Feeds"
-
-#~ msgid "page0"
-#~ msgstr "página0"
-
-#~ msgid "page1"
-#~ msgstr "página1"
-
-#~ msgid "View mode"
-#~ msgstr "Modo de visualização"
-
-#~ msgid "Menu"
-#~ msgstr "Menu"
-
-#~ msgid "Search"
-#~ msgstr "Pesquisa"
-
-#~ msgid "Filter by feed"
-#~ msgstr "Filtro"
-
-#~ msgid "Back to articles"
-#~ msgstr "Voltar aos artigos"
-
-#~ msgid "Open externally"
-#~ msgstr "Abrir no navegador"
-
-#~ msgid "Change view mode"
-#~ msgstr "Alterna o Modo de visualização"
-
-#~ msgid "Share"
-#~ msgstr "Compartilhamento"
-
-#~ msgid "Enter feed address to add"
-#~ msgstr "Digite o endereço RSS a ser adicionado"
-
-#~ msgid "https://..."
-#~ msgstr "https://..."
-
-#~ msgid "Add"
-#~ msgstr "Adicionar"
-
-#~ msgid "You're already subscribed to that feed!"
-#~ msgstr "Você já está inscrito !"
-
-#~ msgid "Select an article"
-#~ msgstr "Selecione um artigo"
-
-#~ msgid "@prettyname@"
-#~ msgstr "@nomebonito@"
-
-#~ msgid "@appid@"
-#~ msgstr "@appid@"
-
-#~ msgid ""
-#~ "Error resizing favicon for feed {0}. Probably not an image.\n"
-#~ "Trying downloading favicon from an article."
-#~ msgstr ""
-#~ "Erro ao redimensionar o favicon para o feed {0}. Provavelmente não é uma "
-#~ "imagem.\n"
-#~ "Tentando baixar o favicon de um artigo."
-
-#~ msgid ""
-#~ "Error resizing favicon from article for feed {0}.\n"
-#~ "Deleting invalid favicon."
-#~ msgstr ""
-#~ "Erro ao redimensionar o favicon do artigo para o feed {0}.\n"
-#~ "Excluindo favicon inválido."
-
-#~ msgid "Reader mode unavailable for this site"
-#~ msgstr "Modo de leitor indisponível para este site"
-
-#~ msgid "Show colored border"
-#~ msgstr "Mostrar bordas coloridas"
-
-#~ msgid "Enable client side decoration"
-#~ msgstr "Ativar decoração de janela"
-
-#~ msgid "There were problems with some feeds"
-#~ msgstr "Ocorreram problemas com algumas fontes RSS"
-
-#~ msgid "Gabriele Musco"
-#~ msgstr "Gabriele Musco"
-
-#~ msgid "Option to ellipsize article titles for a more compact view"
-#~ msgstr ""
-#~ "Opção de redimensionar títulos de artigos para uma visualização mais "
-#~ "compacta"
-
-#~ msgid "Added a search function"
-#~ msgstr "Adicionada uma função de pesquisa"
-
-#~ msgid "Updated dependencies"
-#~ msgstr "Dependências atualizadas"
-
-#~ msgid "Various UI improvements"
-#~ msgstr "Várias melhorias na interface do usuário"
-
-#~ msgid "Various bug fixes"
-#~ msgstr "Várias correções de bugs"
-
-#~ msgid "Errors with feeds are now shown in the UI"
-#~ msgstr "Erros com feeds agora são mostrados na interface do usuário"
-
-#~ msgid "Big UI overhaul"
-#~ msgstr "Grande revisão da interface do usuário"
-
-#~ msgid "Updated translations"
-#~ msgstr "Traduções atualizadas"
-
-#~ msgid "OPML file association"
-#~ msgstr "Associação de arquivo OPML"
-
-#~ msgid "Changed left headerbar button order"
-#~ msgstr "Ordem dos botões da barra de cabeçalho esquerda alterada"
-
-#~ msgid "Optimization for updating feeds"
-#~ msgstr "Otimização para atualização de feeds"
-
-#~ msgid "Redesigned right click/longpress menu"
-#~ msgstr "Redesenhado clique direito /  menu"
-
-#~ msgid "Option to show/hide read articles"
-#~ msgstr "Opção para mostrar / ocultar artigos lidos"
-
-#~ msgid "Reworked suggestion bar"
-#~ msgstr "Barra de sugestões reformulada"
-
-#~ msgid "Changed name to Feeds"
-#~ msgstr "Nome alterado para Feeds"
-
-#~ msgid "Improved CPU utilization"
-#~ msgstr "Melhor utilização da CPU"
-
-#~ msgid "New right click or longpress menu for articles"
-#~ msgstr "Novo botão direito do mouse ou menu toque longo para artigos"
-
-#~ msgid "You can now save articles offline"
-#~ msgstr "Agora você pode salvar artigos offline"
-
-#~ msgid "Initial suggestion to add feeds is now less intrusive"
-#~ msgstr "A sugestão inicial de adicionar feeds agora é menos invasiva"
-
-#~ msgid "Read articles are now greyed out"
-#~ msgstr "Agora, os artigos lidos ficam acinzentados"
-
-#~ msgid "Concurrent feeds refresh, with customizable thread count"
-#~ msgstr ""
-#~ "Atualização simultânea de feeds, com contagem de tópicos personalizável"
-
-#~ msgid "Added German translation (thanks @Etamuk)"
-#~ msgstr "Adicionado tradução alemã (Graças ao @Etamuk)"
-
-#~ msgid "Fix bugs in reader mode"
-#~ msgstr "Corrigido bugs no modo leitor"
-
-#~ msgid "Minor bug fix"
-#~ msgstr "Muitas correções de bugs"
-
-#~ msgid "Improved date and time parsing and display"
-#~ msgstr "Análise e exibição aprimoradas de data e hora"
-
-#~ msgid "Reader mode can now work on websites without an article tag"
-#~ msgstr "O modo Leitor agora pode funcionar em sites sem uma tag de artigo"
-
-#~ msgid "Slight improvements to the icon"
-#~ msgstr "Pequenas melhorias no ícone"
-
-#~ msgid "New feature to filter articles by feed"
-#~ msgstr "Novo recurso para filtrar artigos por feed"
-
-#~ msgid "Improved favicon download"
-#~ msgstr "Carregamento de favicon aprimorado"
-
-#~ msgid "Fixed refresh duplicating articles"
-#~ msgstr "Corrigida a atualização de artigos duplicados"
-
-#~ msgid "Added option to disable client side decoration"
-#~ msgstr "Adicionado opção para desativar a decoração da janela"
-
-#~ msgid "Brought primary menu in line with GNOME HIG"
-#~ msgstr "Trouxe o menu principal alinhado com o GNOME HIG"
-
-#~ msgid "Added placeholder icon for feeds without an icon"
-#~ msgstr "Ícone de marcador de posição adicionado para feeds sem um ícone"
-
-#~ msgid "Migrated some widgets to Glade templates"
-#~ msgstr "Migrado alguns widgets para modelos Glade"
-
-#~ msgid "Option to use reader mode by default"
-#~ msgstr "Opção para usar o modo leitor por padrão"
-
-#~ msgid "Option to show article content from the feed"
-#~ msgstr "Opção para mostrar o conteúdo do artigo a partir do feed"
-
-#~ msgid "Fixed labels alignment"
-#~ msgstr "Corrigido o alinhamento das etiquetas"
-
-#~ msgid "Changed app name to Feeds"
-#~ msgstr "Nome do aplicativo alterado para Feeds"
-
-#~ msgid "Added separators for the two sections of the app"
-#~ msgstr "Separadores adicionados para as duas seções do aplicativo"
-
-#~ msgid "Using links as feed titles when there is no title"
-#~ msgstr "Usando links como títulos de feed quando não há título"
-
-#~ msgid "Added preference for maximum article age"
-#~ msgstr "Adição de preferência para a idade máxima do artigo"
-
-#~ msgid "Added zoom keyboard shortcuts"
-#~ msgstr "Adicionados atalhos de teclado com zoom"
-
-#~ msgid "Added preference to enable JavaScript"
-#~ msgstr "Adicionado preferência para ativar o JavaScript"
-
-#~ msgid "Fix window control positions when they are on the left"
-#~ msgstr ""
-#~ "Corrijido as posições de controle da janela quando estiverem à esquerda"
-
-#~ msgid "Feeds for websites without favicons will now work"
-#~ msgstr "Os feeds de sites sem favoritos agora funcionam"
-
-#~ msgid "Fixed bug with adding new feeds"
-#~ msgstr "Corrigido o erro ao adicionar novos feeds"
-
-#~ msgid "Switched to native file chooser"
-#~ msgstr "Mudado para o seletor de arquivo nativo"
-
-#~ msgid "Added empty state initial screen for sidebar"
-#~ msgstr "Adicionada tela inicial de estado vazio para a barra lateral"
-
-#~ msgid "Added italian translation"
-#~ msgstr "Adicionado tradução italiana"
-
-#~ msgid "First release"
-#~ msgstr "Primeiro lançamento"

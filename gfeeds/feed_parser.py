@@ -75,7 +75,7 @@ def parse_feed(
     rss_link = rss_link_ or sd_feed.get_rss_url()
     if not title:
         title = rss_link
-    favicon_path = str(THUMBS_CACHE_PATH.joinpath(
+    favicon_path: Optional[str] = str(THUMBS_CACHE_PATH.joinpath(
         shasum(rss_link+'v2')+'.png'
     ))
     image_url = sd_feed.get_img_url()

@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gfeeds master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/gfeeds/issues\n"
-"POT-Creation-Date: 2022-09-01 07:35+0000\n"
-"PO-Revision-Date: 2022-09-02 01:12+0200\n"
+"POT-Creation-Date: 2022-09-08 05:35+0000\n"
+"PO-Revision-Date: 2022-09-10 21:21+0200\n"
 "Last-Translator: Balázs Úr <ur.balazs at fsf dot hu>\n"
 "Language-Team: Hungarian <gnome-hu-list at gnome dot org>\n"
 "Language: hu\n"
@@ -68,17 +68,17 @@ msgstr "rss;olvasó;hírforrás;hírek;"
 msgid "Error: unable to parse datetime {0} for feeditem {1}"
 msgstr "Hiba: a(z) {0} dátum nem dolgozható fel ennél a hírforráselemnél: {1}"
 
-#: gfeeds/feed_parser.py:64
+#: gfeeds/feed_parser.py:61
 #, python-brace-format
 msgid "Errors while parsing feed `{0}`, URL: `{1}`"
 msgstr "Hibák történtek a(z) „{0}” hírforrás feldolgozásakor, URL: „{1}”"
 
-#: gfeeds/feed_parser.py:74
+#: gfeeds/feed_parser.py:71
 #, python-brace-format
 msgid "`{0}` may not be an RSS or Atom feed"
 msgstr "A(z) „{0}” lehet, hogy nem RSS vagy Atom hírforrás"
 
-#: gfeeds/feeds_manager.py:90
+#: gfeeds/feeds_manager.py:89
 #, python-brace-format
 msgid "Feed {0} exists already, skipping"
 msgstr "A(z) „{0}” hírforrás már létezik, kihagyás"
@@ -87,18 +87,15 @@ msgstr "A(z) „{0}” hírforrás már létezik, kihagyás"
 msgid "All feeds"
 msgstr "Összes hírforrás"
 
-#: gfeeds/headerbar.py:195
-#| msgid ""
-#| "There were problems with some feeds.\n"
-#| "Do you want to remove them?"
+#: gfeeds/headerbar.py:198
 msgid "There were problems with some feeds. Do you want to remove them?"
 msgstr "Problémák voltak egyes hírforrásokkal. Szeretné eltávolítani azokat?"
 
-#: gfeeds/headerbar.py:200
+#: gfeeds/headerbar.py:203
 msgid "_Keep"
 msgstr "_Megtartás"
 
-#: gfeeds/headerbar.py:202
+#: gfeeds/headerbar.py:205
 msgid "_Remove"
 msgstr "_Eltávolítás"
 
@@ -109,19 +106,19 @@ msgid_plural "{0} new articles"
 msgstr[0] "{0} új cikk"
 msgstr[1] "{0} új cikk"
 
-#: gfeeds/__main__.py:226
+#: gfeeds/__main__.py:225
 msgid "Do you want to import these feeds?"
 msgstr "Szeretné importálni ezeket a hírforrásokat?"
 
-#: gfeeds/__main__.py:253
+#: gfeeds/__main__.py:252
 msgid "Do you want to import this feed?"
 msgstr "Szeretné importálni ezt a hírforrást?"
 
-#: gfeeds/__main__.py:282
+#: gfeeds/__main__.py:281
 msgid "url"
 msgstr "URL"
 
-#: gfeeds/__main__.py:285
+#: gfeeds/__main__.py:284
 msgid "opml file local url or rss remote url to import"
 msgstr "importálandó helyi OPML-fájl vagy távoli RSS URL"
 
@@ -157,75 +154,75 @@ msgstr "Válassza ki, hogy hová mentse az exportálandó OPML-fájlt"
 msgid "Save"
 msgstr "Mentés"
 
-#: gfeeds/preferences_window.py:22
+#: gfeeds/preferences_window.py:24
 msgid "General"
 msgstr "Általános"
 
-#: gfeeds/preferences_window.py:25
+#: gfeeds/preferences_window.py:27
 msgid "General preferences"
 msgstr "Általános beállítások"
 
-#: gfeeds/preferences_window.py:27
+#: gfeeds/preferences_window.py:29
 msgid "Show newer articles first"
 msgstr "Újabb cikkek megjelenítése elsőként"
 
-#: gfeeds/preferences_window.py:32
+#: gfeeds/preferences_window.py:34
 msgid "Open links in your browser"
 msgstr "Hivatkozások megnyitása böngészőben"
 
-#: gfeeds/preferences_window.py:36
+#: gfeeds/preferences_window.py:38
 msgid "Use external video player for YouTube"
 msgstr "Külső videólejátszó használata a YouTube-hoz"
 
-#: gfeeds/preferences_window.py:38
+#: gfeeds/preferences_window.py:40
 msgid "Requires youtube-dl and a compatible video player"
 msgstr "A youtube-dl és egy kompatibilis videólejátszó meglétét igényli"
 
-#: gfeeds/preferences_window.py:44
+#: gfeeds/preferences_window.py:46
 msgid "Preferred video player"
 msgstr "Előnyben részesített videólejátszó"
 
-#: gfeeds/preferences_window.py:48
+#: gfeeds/preferences_window.py:50
 msgid "Maximum article age"
 msgstr "Cikkek legnagyobb életkora"
 
-#: gfeeds/preferences_window.py:49
+#: gfeeds/preferences_window.py:51
 msgid "In days"
 msgstr "Napokban"
 
-#: gfeeds/preferences_window.py:56
+#: gfeeds/preferences_window.py:58
 msgid "Refresh preferences"
 msgstr "Beállítások frissítése"
 
-#: gfeeds/preferences_window.py:58
+#: gfeeds/preferences_window.py:60
 msgid "Refresh articles on startup"
 msgstr "Cikkek frissítése indításkor"
 
-#: gfeeds/preferences_window.py:62
+#: gfeeds/preferences_window.py:64
 msgid "New articles notification"
 msgstr "Új cikkek értesítés"
 
-#: gfeeds/preferences_window.py:66
+#: gfeeds/preferences_window.py:68
 msgid "Enable auto-refresh"
 msgstr "Automatikus frissítés engedélyezése"
 
-#: gfeeds/preferences_window.py:70
+#: gfeeds/preferences_window.py:72
 msgid "Auto-refresh interval"
 msgstr "Automatikus frissítés időköze"
 
-#: gfeeds/preferences_window.py:71
+#: gfeeds/preferences_window.py:73
 msgid "In seconds"
 msgstr "Másodpercben"
 
-#: gfeeds/preferences_window.py:78
+#: gfeeds/preferences_window.py:80
 msgid "Cache"
 msgstr "Gyorsítótár"
 
-#: gfeeds/preferences_window.py:80
+#: gfeeds/preferences_window.py:82
 msgid "Clear caches"
 msgstr "Gyorsítótárak törlése"
 
-#: gfeeds/preferences_window.py:81
+#: gfeeds/preferences_window.py:83
 msgid "Clear"
 msgstr "Törlés"
 
@@ -345,6 +342,35 @@ msgstr "Hány szálat használjon a hírforrások frissítéséhez"
 msgid "Experimental GtkListView for articles list"
 msgstr "Kísérleti GtkListView a cikkek listájához"
 
+#: gfeeds/preferences_window.py:226
+msgid "Troubleshooting"
+msgstr "Hibaelhárítás"
+
+#: gfeeds/preferences_window.py:228
+msgid "Export Configuration as JSON"
+msgstr "Beállítások exportálása JSON-ként"
+
+#: gfeeds/preferences_window.py:229
+msgid "Attach this when reporting bugs"
+msgstr "Ennek csatolása a hibák jelentésekor"
+
+#: gfeeds/preferences_window.py:230
+msgid "Export"
+msgstr "Exportálás"
+
+#. type: ignore
+#: gfeeds/preferences_window.py:243
+msgid "Feeds Configuration"
+msgstr "Hírforrások beállításai"
+
+#: gfeeds/preferences_window.py:247
+msgid "_Close"
+msgstr "_Bezárás"
+
+#: gfeeds/preferences_window.py:250
+msgid "Cop_y"
+msgstr "_Másolás"
+
 #: gfeeds/sidebar.py:21
 msgid "Loading feeds..."
 msgstr "Hírforrások betöltése…"
@@ -357,22 +383,22 @@ msgstr "Megjelölés olvasatlanként"
 msgid "Mark as read"
 msgstr "Megjelölés olvasottként"
 
-#: gfeeds/util/download_manager.py:111
+#: gfeeds/util/download_manager.py:112
 #, python-brace-format
 msgid "`{0}`: connection timed out"
 msgstr "„{0}”: időtúllépés a kapcsolatban"
 
-#: gfeeds/util/download_manager.py:120
+#: gfeeds/util/download_manager.py:121
 #, python-brace-format
 msgid "`{0}` might not be a valid address"
 msgstr "A „{0}” lehet, hogy nem érvényes cím"
 
-#: gfeeds/util/download_manager.py:154
+#: gfeeds/util/download_manager.py:157
 #, python-brace-format
 msgid "Error downloading `{0}`, code `{1}`"
 msgstr "Hiba a(z) „{0}” letöltésekor, kód: „{1}”"
 
-#: gfeeds/util/get_favicon.py:49
+#: gfeeds/util/get_favicon.py:48
 #, python-brace-format
 msgid "Error downloading favicon for `{0}`"
 msgstr "Hiba a(z) „{0}” böngészőikonjának letöltésekor"

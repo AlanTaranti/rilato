@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gfeeds\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-04 13:33+0200\n"
-"PO-Revision-Date: 2022-09-04 13:35+0200\n"
+"POT-Creation-Date: 2022-09-11 15:21+0200\n"
+"PO-Revision-Date: 2022-09-11 15:22+0200\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <community-poland@mozilla.org>\n"
 "Language: pl\n"
@@ -19,75 +19,75 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
 
-#: ../gfeeds/preferences_window.py:22
+#: ../gfeeds/preferences_window.py:24
 msgid "General"
 msgstr "Ogólne"
 
-#: ../gfeeds/preferences_window.py:25
+#: ../gfeeds/preferences_window.py:27
 msgid "General preferences"
 msgstr "Ogólne preferencje"
 
-#: ../gfeeds/preferences_window.py:27
+#: ../gfeeds/preferences_window.py:29
 msgid "Show newer articles first"
 msgstr "Najpierw nowsze artykuły"
 
-#: ../gfeeds/preferences_window.py:32
+#: ../gfeeds/preferences_window.py:34
 msgid "Open links in your browser"
 msgstr "Otwieranie odnośników w przeglądarce"
 
-#: ../gfeeds/preferences_window.py:36
+#: ../gfeeds/preferences_window.py:38
 msgid "Use external video player for YouTube"
 msgstr "Zewnętrzny odtwarzacz filmów dla serwisu YouTube"
 
-#: ../gfeeds/preferences_window.py:38
+#: ../gfeeds/preferences_window.py:40
 msgid "Requires youtube-dl and a compatible video player"
 msgstr "Wymaga programu youtube-dl i zgodnego odtwarzacza filmów"
 
-#: ../gfeeds/preferences_window.py:44
+#: ../gfeeds/preferences_window.py:46
 msgid "Preferred video player"
 msgstr "Preferowany odtwarzacz filmów"
 
-#: ../gfeeds/preferences_window.py:48
+#: ../gfeeds/preferences_window.py:50
 msgid "Maximum article age"
 msgstr "Maksymalny wiek artykułów"
 
-#: ../gfeeds/preferences_window.py:49
+#: ../gfeeds/preferences_window.py:51
 msgid "In days"
 msgstr "W dniach"
 
-#: ../gfeeds/preferences_window.py:56
+#: ../gfeeds/preferences_window.py:58
 msgid "Refresh preferences"
 msgstr "Preferencje odświeżania"
 
-#: ../gfeeds/preferences_window.py:58
+#: ../gfeeds/preferences_window.py:60
 msgid "Refresh articles on startup"
 msgstr "Odświeżanie artykułów po uruchomieniu"
 
-#: ../gfeeds/preferences_window.py:62
+#: ../gfeeds/preferences_window.py:64
 msgid "New articles notification"
 msgstr "Powiadomienia o nowych artykułach"
 
-#: ../gfeeds/preferences_window.py:66
+#: ../gfeeds/preferences_window.py:68
 msgid "Enable auto-refresh"
 msgstr "Automatyczne odświeżanie"
 
-#: ../gfeeds/preferences_window.py:70
+#: ../gfeeds/preferences_window.py:72
 msgid "Auto-refresh interval"
 msgstr "Czas między automatycznymi odświeżeniami"
 
-#: ../gfeeds/preferences_window.py:71
+#: ../gfeeds/preferences_window.py:73
 msgid "In seconds"
 msgstr "W sekundach"
 
-#: ../gfeeds/preferences_window.py:78
+#: ../gfeeds/preferences_window.py:80
 msgid "Cache"
 msgstr "Pamięć podręczna"
 
-#: ../gfeeds/preferences_window.py:80
+#: ../gfeeds/preferences_window.py:82
 msgid "Clear caches"
 msgstr "Czyszczenie pamięci podręcznej"
 
-#: ../gfeeds/preferences_window.py:81
+#: ../gfeeds/preferences_window.py:83
 msgid "Clear"
 msgstr "Wyczyść"
 
@@ -207,6 +207,34 @@ msgstr "Ile wątków używać do odświeżania kanałów"
 msgid "Experimental GtkListView for articles list"
 msgstr "Eksperymentalny widżet GtkListView dla listy artykułów"
 
+#: ../gfeeds/preferences_window.py:226
+msgid "Troubleshooting"
+msgstr "Rozwiązywanie problemów"
+
+#: ../gfeeds/preferences_window.py:228
+msgid "Export Configuration as JSON"
+msgstr "Eksport konfiguracji do pliku JSON"
+
+#: ../gfeeds/preferences_window.py:229
+msgid "Attach this when reporting bugs"
+msgstr "Proszę go dołączyć podczas zgłaszania błędów"
+
+#: ../gfeeds/preferences_window.py:230
+msgid "Export"
+msgstr "Wyeksportuj"
+
+#: ../gfeeds/preferences_window.py:243
+msgid "Feeds Configuration"
+msgstr "Konfiguracja"
+
+#: ../gfeeds/preferences_window.py:247
+msgid "_Close"
+msgstr "Za_mknij"
+
+#: ../gfeeds/preferences_window.py:250
+msgid "Cop_y"
+msgstr "S_kopiuj"
+
 #: ../gfeeds/opml_file_chooser.py:7
 msgid "XML files"
 msgstr "Pliki XML"
@@ -231,7 +259,7 @@ msgstr "Wybór miejsca zapisania wyeksportowanego pliku OPML"
 msgid "Save"
 msgstr "Zapisz"
 
-#: ../gfeeds/feeds_manager.py:90
+#: ../gfeeds/feeds_manager.py:89
 #, python-brace-format
 msgid "Feed {0} exists already, skipping"
 msgstr "Kanał {0} już istnieje, pomijanie"
@@ -260,15 +288,15 @@ msgstr "Zarządzanie kanałami"
 msgid "Do you want to delete these feeds?"
 msgstr "Usunąć te kanały?"
 
-#: ../gfeeds/headerbar.py:195
+#: ../gfeeds/headerbar.py:198
 msgid "There were problems with some feeds. Do you want to remove them?"
 msgstr "Wystąpiły problemy z częścią kanałów. Usunąć je?"
 
-#: ../gfeeds/headerbar.py:200
+#: ../gfeeds/headerbar.py:203
 msgid "_Keep"
 msgstr "_Nie usuwaj"
 
-#: ../gfeeds/headerbar.py:202
+#: ../gfeeds/headerbar.py:205
 msgid "_Remove"
 msgstr "_Usuń"
 
@@ -277,11 +305,11 @@ msgstr "_Usuń"
 msgid "Error: unable to parse datetime {0} for feeditem {1}"
 msgstr "Błąd: nie można przetworzyć daty i czasu {0} dla elementu kanału {1}"
 
-#: ../gfeeds/webview.py:200
+#: ../gfeeds/webview.py:201
 msgid "Link copied to clipboard!"
 msgstr "Skopiowano odnośnik do schowka"
 
-#: ../gfeeds/webview.py:222
+#: ../gfeeds/webview.py:223
 msgid "Feed content not available for this article"
 msgstr "Treść kanału jest niedostępna dla tego artykułu"
 
@@ -293,17 +321,17 @@ msgstr[0] "{0} nowy artykuł"
 msgstr[1] "{0} nowe artykuły"
 msgstr[2] "{0} nowych artykułów"
 
-#: ../gfeeds/util/download_manager.py:111
+#: ../gfeeds/util/download_manager.py:112
 #, python-brace-format
 msgid "`{0}`: connection timed out"
 msgstr "„{0}”: połączenie przekroczyło czas oczekiwania"
 
-#: ../gfeeds/util/download_manager.py:120
+#: ../gfeeds/util/download_manager.py:121
 #, python-brace-format
 msgid "`{0}` might not be a valid address"
 msgstr "„{0}” może nie być prawidłowym adresem"
 
-#: ../gfeeds/util/download_manager.py:154
+#: ../gfeeds/util/download_manager.py:157
 #, python-brace-format
 msgid "Error downloading `{0}`, code `{1}`"
 msgstr "Błąd podczas pobierania „{0}”, kod „{1}”"
@@ -317,34 +345,34 @@ msgstr "Błąd: podana ścieżka do pliku OPML nie istnieje"
 msgid "Error parsing OPML file `{0}`"
 msgstr "Błąd podczas przetwarzania pliku OPML „{0}”"
 
-#: ../gfeeds/util/get_favicon.py:49
+#: ../gfeeds/util/get_favicon.py:48
 #, python-brace-format
 msgid "Error downloading favicon for `{0}`"
 msgstr "Błąd podczas pobierania ikony dla „{0}”"
 
-#: ../gfeeds/__main__.py:226
+#: ../gfeeds/__main__.py:225
 msgid "Do you want to import these feeds?"
 msgstr "Zaimportować te kanały?"
 
-#: ../gfeeds/__main__.py:253
+#: ../gfeeds/__main__.py:252
 msgid "Do you want to import this feed?"
 msgstr "Zaimportować ten kanał?"
 
-#: ../gfeeds/__main__.py:282
+#: ../gfeeds/__main__.py:281
 msgid "url"
 msgstr "URL"
 
-#: ../gfeeds/__main__.py:285
+#: ../gfeeds/__main__.py:284
 msgid "opml file local url or rss remote url to import"
 msgstr ""
 "adres URL lokalnego pliku OPML lub zdalnego kanału RSS do zaimportowania"
 
-#: ../gfeeds/feed_parser.py:64
+#: ../gfeeds/feed_parser.py:61
 #, python-brace-format
 msgid "Errors while parsing feed `{0}`, URL: `{1}`"
 msgstr "Błędy podczas przetwarzania kanału „{0}”, adres URL: „{1}”"
 
-#: ../gfeeds/feed_parser.py:74
+#: ../gfeeds/feed_parser.py:71
 #, python-brace-format
 msgid "`{0}` may not be an RSS or Atom feed"
 msgstr "„{0}” może nie być kanałem RSS ani Atom"

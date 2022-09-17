@@ -11,7 +11,9 @@ class FeedImportData:
         self.feed = feed
         self.tags = tags
 
-    def __eq__(self, other: 'FeedImportData') -> bool:
+    def __eq__(self, other) -> bool:
+        if not isinstance(other, FeedImportData):
+            return False
         return (
             self.feed == other.feed and
             len(self.tags) == len(other.tags) and

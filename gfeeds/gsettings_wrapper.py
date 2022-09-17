@@ -49,7 +49,7 @@ class GsettingsWrapper:
         v = self.gs.get_value(key)
         converter = VARIANT_CONVERTERS.get(v.get_type_string(), None)
         if converter is None:
-            self.__type_err()
+            return self.__type_err()
         return converter(v)
 
     def set(self, key: str, value: GSETTINGS_TYPES):
@@ -66,7 +66,7 @@ class GsettingsWrapper:
             case float(value):
                 self.gs.set_double(key, value)
             case _:
-                self.__type_err()
+                return self.__type_err()
 
     def __type_err(self):
         raise TypeError(
