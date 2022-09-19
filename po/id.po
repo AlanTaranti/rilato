@@ -1,0 +1,419 @@
+# Indonesian translation for gfeeds.
+# Copyright (C) 2022 gfeeds's COPYRIGHT HOLDER
+# This file is distributed under the same license as the gfeeds package.
+# Kukuh Syafaat <kukuhsyafaat@gnome.org>, 2022.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gfeeds master\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/gfeeds/issues\n"
+"POT-Creation-Date: 2022-09-16 08:10+0000\n"
+"PO-Revision-Date: 2022-09-19 10:05+0700\n"
+"Last-Translator: Kukuh Syafaat <kukuhsyafaat@gnome.org>\n"
+"Language-Team: Indonesian <gnome-l10n-id@googlegroups.com>\n"
+"Language: id\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 3.1.1\n"
+
+#: data/org.gabmus.gfeeds.appdata.xml.in:4
+msgid "Feeds"
+msgstr "Umpan"
+
+#: data/org.gabmus.gfeeds.appdata.xml.in:6 data/org.gabmus.gfeeds.desktop.in:7
+msgid "News reader for GNOME"
+msgstr "Pembaca berita untuk GNOME"
+
+#: data/org.gabmus.gfeeds.appdata.xml.in:15
+msgid ""
+"Feeds is a minimal RSS/Atom feed reader built with speed and simplicity in "
+"mind."
+msgstr ""
+"Umpan adalah pembaca umpan RSS/Atom minimal yang dibangun dengan "
+"mempertimbangkan kecepatan dan kesederhanaan."
+
+#: data/org.gabmus.gfeeds.appdata.xml.in:16
+msgid ""
+"It offers a simple user interface that only shows the latest news from your "
+"subscriptions."
+msgstr ""
+"Ini menawarkan antarmuka pengguna sederhana yang hanya menampilkan berita "
+"terbaru dari langganan Anda."
+
+#: data/org.gabmus.gfeeds.appdata.xml.in:17
+msgid ""
+"Articles are shown in a web view by default, with javascript disabled for a "
+"faster and less intrusive user experience. There's also a reader mode "
+"included, built from the one GNOME Web/Epiphany uses."
+msgstr ""
+"Artikel ditampilkan dalam tampilan web secara bawaan, dengan javascript "
+"dinonaktifkan untuk pengalaman pengguna yang lebih cepat dan tidak terlalu "
+"mengganggu. Ada juga mode pembaca yang disertakan, dibangun dari yang "
+"digunakan oleh Web/Epiphany GNOME."
+
+#: data/org.gabmus.gfeeds.appdata.xml.in:18
+msgid "Feeds can be imported and exported via OPML."
+msgstr "Umpan dapat diimpor dan diekspor melalui OPML."
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/org.gabmus.gfeeds.desktop.in:16
+msgid "rss;reader;feed;news;"
+msgstr "rss;pembaca;umpan;berita;"
+
+#: gfeeds/feed_item.py:55
+#, python-brace-format
+msgid "Error: unable to parse datetime {0} for feeditem {1}"
+msgstr "Galat: tidak dapat mengurai datetime {0} untuk feeditem {1}"
+
+#: gfeeds/feed_parser.py:61
+#, python-brace-format
+msgid "Errors while parsing feed `{0}`, URL: `{1}`"
+msgstr "Galat saat mengurai umpan '{0}', URL: '{1}'"
+
+#: gfeeds/feed_parser.py:71
+#, python-brace-format
+msgid "`{0}` may not be an RSS or Atom feed"
+msgstr "'{0}' mungkin bukan RSS atau umpan Atom"
+
+#: gfeeds/feeds_manager.py:89
+#, python-brace-format
+msgid "Feed {0} exists already, skipping"
+msgstr "Umpan {0} sudah ada, melewati"
+
+#: gfeeds/feeds_view.py:13
+msgid "All feeds"
+msgstr "Semua umpan"
+
+#: gfeeds/headerbar.py:198
+msgid "There were problems with some feeds. Do you want to remove them?"
+msgstr "Ada masalah dengan beberapa umpan. Apakah Anda ingin menghapusnya?"
+
+#: gfeeds/headerbar.py:203
+msgid "_Keep"
+msgstr "_Pertahankan"
+
+#: gfeeds/headerbar.py:205
+msgid "_Remove"
+msgstr "_Hapus"
+
+#: gfeeds/main_leaflet.py:122
+#, python-brace-format
+msgid "{0} new article"
+msgid_plural "{0} new articles"
+msgstr[0] "{0} artikel baru"
+
+#: gfeeds/__main__.py:225
+msgid "Do you want to import these feeds?"
+msgstr "Apakah Anda ingin mengimpor umpan ini?"
+
+#: gfeeds/__main__.py:252
+msgid "Do you want to import this feed?"
+msgstr "Apakah Anda ingin mengimpor umpan ini?"
+
+#: gfeeds/__main__.py:281
+msgid "url"
+msgstr "url"
+
+#: gfeeds/__main__.py:284
+msgid "opml file local url or rss remote url to import"
+msgstr "opml berkas url lokal atau rss url jauh untuk mengimpor"
+
+#: gfeeds/manage_feeds_window.py:263
+msgid "Manage Feeds"
+msgstr "Mengelola Umpan"
+
+#: gfeeds/manage_feeds_window.py:318
+msgid "Do you want to delete these feeds?"
+msgstr "Apakah Anda ingin menghapus umpan ini?"
+
+#: gfeeds/opml_file_chooser.py:7
+msgid "XML files"
+msgstr "Berkas XML"
+
+#: gfeeds/opml_file_chooser.py:14
+msgid "Choose an OPML file to import"
+msgstr "Pilih berkas OPML untuk diimpor"
+
+#: gfeeds/opml_file_chooser.py:18
+msgid "Open"
+msgstr "Terbuka"
+
+#: gfeeds/opml_file_chooser.py:19 gfeeds/opml_file_chooser.py:31
+msgid "Cancel"
+msgstr "Batal"
+
+#: gfeeds/opml_file_chooser.py:26
+msgid "Choose where to save the exported OPML file"
+msgstr "Pilih tempat untuk menyimpan berkas OPML yang diekspor"
+
+#: gfeeds/opml_file_chooser.py:30
+msgid "Save"
+msgstr "Simpan"
+
+#: gfeeds/preferences_window.py:24
+msgid "General"
+msgstr "Umum"
+
+#: gfeeds/preferences_window.py:27
+msgid "General preferences"
+msgstr "Preferensi umum"
+
+#: gfeeds/preferences_window.py:29
+msgid "Show newer articles first"
+msgstr "Tampilkan artikel yang lebih baru terlebih dahulu"
+
+#: gfeeds/preferences_window.py:34
+msgid "Open links in your browser"
+msgstr "Buka tautan di peramban Anda"
+
+#: gfeeds/preferences_window.py:38
+msgid "Use external video player for YouTube"
+msgstr "Gunakan pemutar video eksternal untuk YouTube"
+
+#: gfeeds/preferences_window.py:40
+msgid "Requires youtube-dl and a compatible video player"
+msgstr "Membutuhkan youtube-dl dan pemutar video yang kompatibel"
+
+#: gfeeds/preferences_window.py:46
+msgid "Preferred video player"
+msgstr "Pemutar video pilihan"
+
+#: gfeeds/preferences_window.py:50
+msgid "Maximum article age"
+msgstr "Usia artikel maksimum"
+
+#: gfeeds/preferences_window.py:51
+msgid "In days"
+msgstr "Dalam beberapa hari"
+
+#: gfeeds/preferences_window.py:58
+msgid "Refresh preferences"
+msgstr "Preferensi penyegaran"
+
+#: gfeeds/preferences_window.py:60
+msgid "Refresh articles on startup"
+msgstr "Segarkan artikel saat awal mulai"
+
+#: gfeeds/preferences_window.py:64
+msgid "New articles notification"
+msgstr "Pemberitahuan artikel baru"
+
+#: gfeeds/preferences_window.py:68
+msgid "Enable auto-refresh"
+msgstr "Aktifkan penyegaran otomatis"
+
+#: gfeeds/preferences_window.py:72
+msgid "Auto-refresh interval"
+msgstr "Interval penyegaran otomatis"
+
+#: gfeeds/preferences_window.py:73
+msgid "In seconds"
+msgstr "Dalam hitungan detik"
+
+#: gfeeds/preferences_window.py:80
+msgid "Cache"
+msgstr "Tembolok"
+
+#: gfeeds/preferences_window.py:82
+msgid "Clear caches"
+msgstr "Hapus singgahan"
+
+#: gfeeds/preferences_window.py:83
+msgid "Clear"
+msgstr "Bersihkan"
+
+#: gfeeds/preferences_window.py:109
+msgid "Appearance"
+msgstr "Penampilan"
+
+#: gfeeds/preferences_window.py:112
+msgid "Appearance preferences"
+msgstr "Preferensi penampilan"
+
+#: gfeeds/preferences_window.py:114
+msgid "Dark mode"
+msgstr "Mode gelap"
+
+#: gfeeds/preferences_window.py:118
+msgid "Reader mode theme"
+msgstr "Tema mode pembaca"
+
+#: gfeeds/preferences_window.py:122
+msgid "Automatic"
+msgstr "Otomatis"
+
+#: gfeeds/preferences_window.py:122
+msgid "Light"
+msgstr "Terang"
+
+#: gfeeds/preferences_window.py:122
+msgid "Dark"
+msgstr "Gelap"
+
+#: gfeeds/preferences_window.py:126
+msgid "Show article thumbnails"
+msgstr "Tampilkan gambar mini artikel"
+
+#: gfeeds/preferences_window.py:131
+msgid "Show full articles titles"
+msgstr "Tampilkan judul artikel lengkap"
+
+#: gfeeds/preferences_window.py:136
+msgid "Show full feeds names"
+msgstr "Tampilkan nama umpan lengkap"
+
+#: gfeeds/preferences_window.py:143
+msgid "Font preferences"
+msgstr "Preferensi fonta"
+
+#: gfeeds/preferences_window.py:145
+msgid "Use system font for titles"
+msgstr "Gunakan fonta sistem untuk judul"
+
+#: gfeeds/preferences_window.py:149
+msgid "Use system font for paragraphs"
+msgstr "Gunakan fonta sistem untuk paragraf"
+
+#: gfeeds/preferences_window.py:153
+msgid "Custom title font"
+msgstr "Fonta judul ubahan"
+
+#: gfeeds/preferences_window.py:157
+msgid "Custom paragraph font"
+msgstr "Fonta paragraf ubahan"
+
+#: gfeeds/preferences_window.py:161
+msgid "Custom monospace font"
+msgstr "Fonta lebar seragam (monospace) ubahan"
+
+#: gfeeds/preferences_window.py:173
+msgid "Privacy"
+msgstr "Privasi"
+
+#: gfeeds/preferences_window.py:176
+msgid "Privacy preferences"
+msgstr "Preferensi privasi"
+
+#: gfeeds/preferences_window.py:178
+msgid "Enable JavaScript"
+msgstr "Aktifkan JavaScript"
+
+#: gfeeds/preferences_window.py:183
+msgid "Try to block advertisements"
+msgstr "Cobalah untuk memblokir iklan"
+
+#: gfeeds/preferences_window.py:185 gfeeds/preferences_window.py:220
+msgid "Requires app restart"
+msgstr "Membutuhkan mulai ulang aplikasi"
+
+#: gfeeds/preferences_window.py:189
+msgid "Update advertisement blocking list"
+msgstr "Pemutakhiran daftar pemblokiran iklan"
+
+#: gfeeds/preferences_window.py:190
+msgid "Updates automatically every 10 days"
+msgstr "Pemutakhiran secara otomatis setiap 10 hari"
+
+#: gfeeds/preferences_window.py:191
+msgid "Update"
+msgstr "Pemutakhiran"
+
+#: gfeeds/preferences_window.py:204
+msgid "Advanced"
+msgstr "Tingkat Lanjut"
+
+#: gfeeds/preferences_window.py:207
+msgid "Advanced preferences"
+msgstr "Preferensi lanjutan"
+
+#: gfeeds/preferences_window.py:209
+msgid "Maximum refresh threads"
+msgstr "Thread maksimum penyegaran"
+
+#: gfeeds/preferences_window.py:211
+msgid "How many threads to use for feeds refresh"
+msgstr "Berapa banyak thread yang akan digunakan untuk menyegarkan umpan"
+
+#: gfeeds/preferences_window.py:218
+msgid "Experimental GtkListView for articles list"
+msgstr "Experimental GtkListView untuk daftar artikel"
+
+#: gfeeds/preferences_window.py:226
+msgid "Troubleshooting"
+msgstr "Penyelesaian Masalah"
+
+#: gfeeds/preferences_window.py:228
+msgid "Export Configuration as JSON"
+msgstr "Ekspor Konfigurasi sebagai JSON"
+
+#: gfeeds/preferences_window.py:229
+msgid "Attach this when reporting bugs"
+msgstr "Lampirkan ini saat melaporkan kutu"
+
+#: gfeeds/preferences_window.py:230
+msgid "Export"
+msgstr "Ekspor"
+
+#. type: ignore
+#: gfeeds/preferences_window.py:243
+msgid "Feeds Configuration"
+msgstr "Konfigurasi Umpan"
+
+#: gfeeds/preferences_window.py:247
+msgid "_Close"
+msgstr "_Tutup"
+
+#: gfeeds/preferences_window.py:250
+msgid "Cop_y"
+msgstr "Sal_in"
+
+#: gfeeds/sidebar.py:21
+msgid "Loading feeds..."
+msgstr "Memuat umpan..."
+
+#: gfeeds/sidebar_row_popover.py:31 gfeeds/sidebar_row_popover.py:58
+msgid "Mark as unread"
+msgstr "Tandai sebagai belum dibaca"
+
+#: gfeeds/sidebar_row_popover.py:38 gfeeds/sidebar_row_popover.py:50
+msgid "Mark as read"
+msgstr "Tandai sebagai sudah dibaca"
+
+#: gfeeds/util/download_manager.py:112
+#, python-brace-format
+msgid "`{0}`: connection timed out"
+msgstr "'{0}': waktu koneksi habis"
+
+#: gfeeds/util/download_manager.py:121
+#, python-brace-format
+msgid "`{0}` might not be a valid address"
+msgstr "'{0}' mungkin bukan alamat yang valid"
+
+#: gfeeds/util/download_manager.py:157
+#, python-brace-format
+msgid "Error downloading `{0}`, code `{1}`"
+msgstr "Galat mengunduh '{0}', kode '{1}'"
+
+#: gfeeds/util/get_favicon.py:48
+#, python-brace-format
+msgid "Error downloading favicon for `{0}`"
+msgstr "Galat mengunduh favicon untuk '{0}'"
+
+#: gfeeds/util/opml_parser.py:33
+msgid "Error: OPML path provided does not exist"
+msgstr "Galat: Path OPML yang disediakan tidak ada"
+
+#: gfeeds/util/opml_parser.py:44
+#, python-brace-format
+msgid "Error parsing OPML file `{0}`"
+msgstr "Galat mengurai berkas OPML '{0}'"
+
+#: gfeeds/webview.py:201
+msgid "Link copied to clipboard!"
+msgstr "Tautan disalin ke papan klip!"
+
+#: gfeeds/webview.py:223
+msgid "Feed content not available for this article"
+msgstr "Konten umpan tidak tersedia untuk artikel ini"
