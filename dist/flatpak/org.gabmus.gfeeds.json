@@ -42,6 +42,17 @@
             ]
         },
         {
+            "name": "blueprint-compiler",
+            "buildsystem": "meson",
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://gitlab.gnome.org/jwestman/blueprint-compiler/-/archive/v0.4.0/blueprint-compiler-v0.4.0.tar.gz",
+                    "sha256": "c1a5efd8562aca7df259679c6d9cd067ea2a78372069fcc01985619ec3963d8f"
+                }
+            ]
+        },
+        {
             "name": "python-pygments",
             "buildsystem": "simple",
             "build-commands": [
@@ -96,11 +107,6 @@
                             "type": "archive",
                             "url": "https://github.com/pybind/pybind11/archive/refs/tags/v2.10.0.tar.gz",
                             "sha256": "eacf582fa8f696227988d08cfc46121770823839fe9e301a20fbce67e7cd70ec"
-                        },
-                        {
-                            "type": "patch",
-                            "path": "pybind11_flatpak_fix.patch",
-                            "sha256": "6c16ce22e230064fedd15b7b68d2bed8a4ecae69f544acaa2f01b43428a4d968"
                         }
                     ]
                 },
@@ -116,11 +122,6 @@
                             "type": "archive",
                             "url": "https://github.com/pybind/pybind11/archive/refs/tags/v2.10.0.tar.gz",
                             "sha256": "eacf582fa8f696227988d08cfc46121770823839fe9e301a20fbce67e7cd70ec"
-                        },
-                        {
-                            "type": "patch",
-                            "path": "pybind11_flatpak_fix.patch",
-                            "sha256": "6c16ce22e230064fedd15b7b68d2bed8a4ecae69f544acaa2f01b43428a4d968"
                         }
                     ]
                 },
@@ -149,6 +150,9 @@
                 {
                     "name": "fmt",
                     "buildsystem": "cmake",
+                    "config-opts": [
+                        "-DCMAKE_POSITION_INDEPENDENT_CODE=ON"
+                    ],
                     "sources": [
                         {
                             "type": "archive",
