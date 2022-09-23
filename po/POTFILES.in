@@ -8,7 +8,6 @@ data/ui/manage_feeds_headerbar.blp
 data/ui/manage_tags_content.blp
 data/ui/right_headerbar.blp
 data/ui/row_popover.blp
-data/ui/scrolled_dialog.blp
 data/ui/shortcutsWindow.blp
 data/ui/webview.blp
 gfeeds/feed_item.py
