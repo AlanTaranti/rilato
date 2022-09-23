@@ -5,7 +5,6 @@ from gfeeds.confManager import ConfManager
 from gfeeds.feeds_manager import FeedsManager
 from xml.sax.saxutils import escape
 from gfeeds.scrolled_dialog import ScrolledDialogResponse, ScrolledDialogV2
-
 from gfeeds.webview import GFeedsWebView
 
 
