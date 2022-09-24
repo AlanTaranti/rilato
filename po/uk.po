@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gfeeds master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/gfeeds/issues\n"
-"POT-Creation-Date: 2022-09-23 21:42+0000\n"
-"PO-Revision-Date: 2022-09-24 14:38+0300\n"
+"POT-Creation-Date: 2022-09-24 15:24+0000\n"
+"PO-Revision-Date: 2022-09-24 18:42+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -84,22 +84,18 @@ msgid "Add new feeds via URL"
 msgstr "Додати нові стрічки за адресою"
 
 #: data/ui/empty_state.blp:27
-#| msgid "Error parsing OPML file `{0}`"
 msgid "Import an OPML file"
 msgstr "Імпортувати файл OPML"
 
 #: data/ui/left_headerbar.blp:6
-#| msgid "Show newer articles first"
 msgid "Show Read Articles"
 msgstr "Показати прочитані статті"
 
 #: data/ui/left_headerbar.blp:7
-#| msgid "Mark as read"
 msgid "Mark All as Read"
 msgstr "Позначити всі як прочитані"
 
 #: data/ui/left_headerbar.blp:8
-#| msgid "Mark as unread"
 msgid "Mark All as Unread"
 msgstr "Позначити всі як непрочитані"
 
@@ -117,12 +113,10 @@ msgid "Import OPML"
 msgstr "Імпортувати OPML"
 
 #: data/ui/left_headerbar.blp:14
-#| msgid "Export"
 msgid "Export OPML"
 msgstr "Експортувати OPML"
 
 #: data/ui/left_headerbar.blp:17
-#| msgid "Font preferences"
 msgid "Preferences"
 msgstr "Налаштування"
 
@@ -131,7 +125,6 @@ msgid "Keyboard Shortcuts"
 msgstr "Клавіатурні скорочення"
 
 #: data/ui/left_headerbar.blp:19
-#| msgid "Feeds"
 msgid "About Feeds"
 msgstr "Про «Стрічки»"
 
@@ -140,7 +133,6 @@ msgid "Filter"
 msgstr "Фільтрувати"
 
 #: data/ui/left_headerbar.blp:32
-#| msgid "Feeds"
 msgid "Add Feed"
 msgstr "Додати стрічку"
 
@@ -157,7 +149,6 @@ msgid "Search"
 msgstr "Пошук"
 
 #: data/ui/left_headerbar.blp:51
-#| msgid "There are some errors"
 msgid "There Are Errors"
 msgstr "Сталися якісь помилки"
 
@@ -186,7 +177,6 @@ msgid "Add Tag"
 msgstr "Додати мітку"
 
 #: data/ui/manage_tags_content.blp:39
-#| msgid "There are some errors"
 msgid "There are no tags yet"
 msgstr "Міток ще немає"
 
@@ -195,7 +185,7 @@ msgid "Add some using the entry above"
 msgstr "Додайте якісь за допомогою наведеного вище запису"
 
 #: data/ui/right_headerbar.blp:9 data/ui/shortcutsWindow.blp:74
-#| msgid "Open links in your browser"
+#: data/ui/sidebar_listbox_row.blp:6
 msgid "Open in Browser"
 msgstr "Відкрити у браузері"
 
@@ -216,12 +206,10 @@ msgid "Web View"
 msgstr "Вебпанель"
 
 #: data/ui/right_headerbar.blp:24
-#| msgid "Reader mode theme"
 msgid "Reader Mode"
 msgstr "Режим читача"
 
 #: data/ui/right_headerbar.blp:29
-#| msgid "Feeds Configuration"
 msgid "Feed Content"
 msgstr "Вміст стрічки"
 
@@ -241,11 +229,6 @@ msgstr "Збільшити"
 msgid "Back to Articles"
 msgstr "Назад до статей"
 
-#: data/ui/row_popover.blp:19
-#| msgid "Mark as read"
-msgid "Mark as Read"
-msgstr "Позначити як прочитане"
-
 #: data/ui/shortcutsWindow.blp:9 gfeeds/preferences_window.py:24
 msgid "General"
 msgstr "Загальне"
@@ -255,12 +238,10 @@ msgid "Open Keyboard Shortcuts"
 msgstr "Відкрити вікно клавіатурних скорочень"
 
 #: data/ui/shortcutsWindow.blp:16
-#| msgid "Open"
 msgid "Open Menu"
 msgstr "Відкрити меню"
 
 #: data/ui/shortcutsWindow.blp:20
-#| msgid "Font preferences"
 msgid "Open Preferences"
 msgstr "Відкрити налаштування"
 
@@ -289,7 +270,6 @@ msgid "Show/Hide Read Articles"
 msgstr "Показати/Приховати прочитані статті"
 
 #: data/ui/shortcutsWindow.blp:55
-#| msgid "Mark as read"
 msgid "Mark All Read"
 msgstr "Позначити всі як прочитані"
 
@@ -297,9 +277,12 @@ msgstr "Позначити всі як прочитані"
 msgid "Article"
 msgstr "Стаття"
 
+#: data/ui/sidebar_listbox_row.blp:5
+#| msgid "Mark as unread"
+msgid "Mark as Read/Unread"
+msgstr "Позначити як прочитане/непрочитане"
+
 #: data/ui/webview.blp:12
-#| msgid "{0} new article"
-#| msgid_plural "{0} new articles"
 msgid "Select an article"
 msgstr "Виберіть статтю"
 
@@ -354,12 +337,10 @@ msgstr "Хочете імпортувати ці стрічки?"
 
 #: gfeeds/__main__.py:239 gfeeds/__main__.py:273
 #: gfeeds/manage_feeds_window.py:330
-#| msgid "Cancel"
 msgid "_Cancel"
 msgstr "_Скасувати"
 
 #: gfeeds/__main__.py:242 gfeeds/__main__.py:276
-#| msgid "Export"
 msgid "_Import"
 msgstr "_Імпортувати"
 
@@ -626,14 +607,6 @@ msgstr "_Копіювати"
 msgid "Loading feeds..."
 msgstr "Завантажуємо стрічки…"
 
-#: gfeeds/sidebar_row_popover.py:31 gfeeds/sidebar_row_popover.py:58
-msgid "Mark as unread"
-msgstr "Позначити як непрочитане"
-
-#: gfeeds/sidebar_row_popover.py:38 gfeeds/sidebar_row_popover.py:50
-msgid "Mark as read"
-msgstr "Позначити як прочитане"
-
 #: gfeeds/util/download_manager.py:112
 #, python-brace-format
 msgid "`{0}`: connection timed out"
@@ -663,13 +636,20 @@ msgstr "Помилка: вказаного шляху до OPML не існує"
 msgid "Error parsing OPML file `{0}`"
 msgstr "Помилка під час обробки файла OPML «{0}»"
 
-#: gfeeds/webview.py:201
+#: gfeeds/webview.py:204
 msgid "Link copied to clipboard!"
 msgstr "Посилання скопійовано до буфера обміну!"
 
-#: gfeeds/webview.py:223
+#: gfeeds/webview.py:226
 msgid "Feed content not available for this article"
 msgstr "Для цієї статті дані стрічки є недоступними"
+
+#~| msgid "Mark as read"
+#~ msgid "Mark as Read"
+#~ msgstr "Позначити як прочитане"
+
+#~ msgid "Mark as read"
+#~ msgstr "Позначити як прочитане"
 
 #~ msgid ""
 #~ "There were problems with some feeds.\n"
