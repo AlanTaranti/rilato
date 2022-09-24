@@ -170,7 +170,8 @@ class AppearancePreferencesPage(MPreferencesPage):
 class PrivacyPreferencesPage(MPreferencesPage):
     def __init__(self):
         super().__init__(
-            title=_('Privacy'), icon_name='eye-not-looking-symbolic',
+            title=_('Privacy'),
+            icon_name='preferences-system-privacy-symbolic',
             pref_groups=[
                 MPreferencesGroup(
                     title=_('Privacy preferences'), rows=[
