@@ -9,7 +9,7 @@ from gfeeds.base_preferences import (
     PreferencesEntryRow, PreferencesFontChooserRow
 )
 from typing import Optional
-from gfeeds.scrolled_dialog import ScrolledDialogResponse, ScrolledDialogV2
+from gfeeds.scrolled_dialog import ScrolledDialogResponse, ScrolledDialog
 from gfeeds.util.paths import CACHE_PATH, THUMBS_CACHE_PATH
 
 
@@ -238,7 +238,7 @@ class AdvancedPreferencesPage(MPreferencesPage):
     def on_export_conf_as_json(self, confman: ConfManager):
         conf_json = confman.conf.to_json_str()
 
-        dialog = ScrolledDialogV2(
+        dialog = ScrolledDialog(
             parent=self.get_root(),  # type: ignore
             title=_('Feeds Configuration'),
             body=conf_json,

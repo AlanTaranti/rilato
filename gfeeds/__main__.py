@@ -15,7 +15,7 @@ from gfeeds.opml_file_chooser import (
     GFeedsOpmlSavePathChooserDialog
 )
 from gfeeds.manage_feeds_window import GFeedsManageFeedsWindow
-from gfeeds.scrolled_dialog import ScrolledDialogResponse, ScrolledDialogV2
+from gfeeds.scrolled_dialog import ScrolledDialogResponse, ScrolledDialog
 from gfeeds.shortcuts_window import show_shortcuts_window
 from gfeeds.util.rss_link_from_file import get_feed_link_from_file
 from gfeeds.base_app import BaseApp, AppAction
@@ -227,7 +227,7 @@ class GFeedsApplication(BaseApp):
                             _dialog.close()
                             self.feedman.import_opml(abspath)
 
-                        dialog = ScrolledDialogV2(
+                        dialog = ScrolledDialog(
                             parent=self.window,
                             title=_('Do you want to import these feeds?'),
                             body=escape('\n'.join([
@@ -264,7 +264,7 @@ class GFeedsApplication(BaseApp):
                     def on_cancel(_dialog, __):
                         _dialog.close()
 
-                    dialog = ScrolledDialogV2(
+                    dialog = ScrolledDialog(
                         parent=self.window,
                         title=_('Do you want to import this feed?'),
                         body=escape(self.args.argurl),

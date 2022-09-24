@@ -14,7 +14,7 @@ class ScrolledDialogResponse:
         self.appearance = appearance
 
 
-class ScrolledDialogV2(Adw.MessageDialog):
+class ScrolledDialog(Adw.MessageDialog):
     def __init__(
             self, parent: Gtk.Window, title: str, body: str,
             responses: List[ScrolledDialogResponse]
@@ -53,7 +53,7 @@ class ScrolledDialogV2(Adw.MessageDialog):
 
         self.connect('response', self.on_response)
 
-    def on_response(self, dialog: 'ScrolledDialogV2', res: str):
+    def on_response(self, dialog: 'ScrolledDialog', res: str):
         for r in self.__responses:
             if r.name == res:
                 if r.callback is not None:

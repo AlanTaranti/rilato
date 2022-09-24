@@ -4,7 +4,7 @@ from gi.repository import Adw, GObject, Gtk
 from gfeeds.confManager import ConfManager
 from gfeeds.feeds_manager import FeedsManager
 from xml.sax.saxutils import escape
-from gfeeds.scrolled_dialog import ScrolledDialogResponse, ScrolledDialogV2
+from gfeeds.scrolled_dialog import ScrolledDialogResponse, ScrolledDialog
 from gfeeds.webview import GFeedsWebView
 
 
@@ -178,7 +178,7 @@ class LeftHeaderbar(Gtk.WindowHandle):
     @Gtk.Template.Callback()
     def show_errors_dialog(self, *__):
 
-        def on_remove(d: ScrolledDialogV2, _):
+        def on_remove(d: ScrolledDialog, _):
             d.close()
             feeds: Dict[str, dict] = self.confman.conf['feeds']
             for pf in self.feedman.problematic_feeds:
@@ -187,11 +187,11 @@ class LeftHeaderbar(Gtk.WindowHandle):
             self.confman.conf['feeds'] = feeds
             self.errors_btn.set_visible(False)
 
-        def on_keep(d: ScrolledDialogV2, _):
+        def on_keep(d: ScrolledDialog, _):
             d.close()
             self.errors_btn.set_visible(True)
 
-        dialog = ScrolledDialogV2(
+        dialog = ScrolledDialog(
             self.get_root(),  # type: ignore
             _(
                 'There were problems with some feeds.'

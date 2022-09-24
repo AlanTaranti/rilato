@@ -1,5 +1,5 @@
 from gettext import gettext as _
-from typing import List, Optional
+from typing import TYPE_CHECKING, List, Optional
 from bs4 import BeautifulSoup
 from gi.repository import GObject, GLib
 from dateutil.tz import gettz
@@ -8,6 +8,8 @@ from dateutil.parser import parse as dateparse
 from gfeeds.util.get_thumb import get_thumb
 from gfeeds.confManager import ConfManager
 import pytz
+if TYPE_CHECKING:
+    from gfeeds.feed import Feed
 
 
 class FeedItem(GObject.Object):
@@ -17,8 +19,9 @@ class FeedItem(GObject.Object):
         )
     }
 
-    def __init__(self, sd_item, parent_feed):
+    def __init__(self, sd_item, parent_feed: 'Feed'):
         self.confman = ConfManager()
+        self.parent_feed = parent_feed
         self.sd_item = sd_item
         title = self.sd_item.get_title()
         self.__title = (
@@ -30,7 +33,6 @@ class FeedItem(GObject.Object):
         self.pub_date_str = self.sd_item.get_pub_date()
         # fallback to avoid errors
         self.__pub_date = datetime.now(timezone.utc)
-        self.parent_feed = parent_feed
 
         # used to identify article for read/unread and thumbs cache
         self.identifier = self.__link or (self.__title + self.pub_date_str)

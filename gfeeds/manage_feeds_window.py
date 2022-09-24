@@ -8,7 +8,7 @@ from gfeeds.feeds_view import (
     FeedsViewListbox,
     FeedsViewListboxRow
 )
-from gfeeds.scrolled_dialog import ScrolledDialogResponse, ScrolledDialogV2
+from gfeeds.scrolled_dialog import ScrolledDialogResponse, ScrolledDialog
 from gfeeds.get_children import get_children
 from gfeeds.tag_store import TagObj
 
@@ -322,7 +322,7 @@ class GFeedsManageFeedsWindow(Adw.Window):
         def on_cancel(_dialog, res):
             _dialog.close()
 
-        dialog = ScrolledDialogV2(
+        dialog = ScrolledDialog(
             parent=self,
             title=_('Do you want to delete these feeds?'),
             body='\n'.join([escape(f.title) for f in selected_feeds]),
