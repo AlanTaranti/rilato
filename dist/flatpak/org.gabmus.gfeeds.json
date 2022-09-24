@@ -78,7 +78,7 @@
                 {
                     "type": "git",
                     "url": "https://gitlab.com/gabmus/syndication-domination",
-                    "commit": "f64caabd6f46be14fdb92085971a7f2d6fa5e61e"
+                    "commit": "459c2f1d0fb8f5a31329bd57fcf686d6a4de52cb"
                 }
             ],
             "modules": [
