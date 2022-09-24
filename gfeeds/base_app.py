@@ -45,7 +45,7 @@ class AppAction:
         return action
 
 
-class BaseApp(Gtk.Application):
+class BaseApp(Adw.Application):
     def __init__(
             self,
             app_id: str,
@@ -61,8 +61,7 @@ class BaseApp(Gtk.Application):
         GLib.set_prgname(app_id)
 
     def do_startup(self):
-        Gtk.Application.do_startup(self)
-        Adw.init()
+        Adw.Application.do_startup(self)
         for a in self.app_actions:
             action = a.get_action()
             self.add_action(action)
