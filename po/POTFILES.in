@@ -7,8 +7,8 @@ data/ui/main_leaflet.blp
 data/ui/manage_feeds_headerbar.blp
 data/ui/manage_tags_content.blp
 data/ui/right_headerbar.blp
-data/ui/row_popover.blp
 data/ui/shortcutsWindow.blp
+data/ui/sidebar_listbox_row.blp
 data/ui/webview.blp
 gfeeds/feed_item.py
 gfeeds/feed_parser.py
@@ -21,7 +21,6 @@ gfeeds/manage_feeds_window.py
 gfeeds/opml_file_chooser.py
 gfeeds/preferences_window.py
 gfeeds/sidebar.py
-gfeeds/sidebar_row_popover.py
 gfeeds/util/download_manager.py
 gfeeds/util/get_favicon.py
 gfeeds/util/opml_parser.py

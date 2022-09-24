@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gfeeds 1.0.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-23 23:41+0200\n"
+"POT-Creation-Date: 2022-09-24 17:24+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,14 +17,6 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
-
-#: ../gfeeds/sidebar_row_popover.py:31 ../gfeeds/sidebar_row_popover.py:58
-msgid "Mark as unread"
-msgstr ""
-
-#: ../gfeeds/sidebar_row_popover.py:38 ../gfeeds/sidebar_row_popover.py:50
-msgid "Mark as read"
-msgstr ""
 
 #: ../gfeeds/feeds_view.py:13
 msgid "All feeds"
@@ -270,11 +262,11 @@ msgstr ""
 msgid "`{0}` may not be an RSS or Atom feed"
 msgstr ""
 
-#: ../gfeeds/webview.py:201
+#: ../gfeeds/webview.py:204
 msgid "Link copied to clipboard!"
 msgstr ""
 
-#: ../gfeeds/webview.py:223
+#: ../gfeeds/webview.py:226
 msgid "Feed content not available for this article"
 msgstr ""
 
@@ -451,6 +443,15 @@ msgstr ""
 msgid "There Are Errors"
 msgstr ""
 
+#: ../data/ui/sidebar_listbox_row.blp:5
+msgid "Mark as Read/Unread"
+msgstr ""
+
+#: ../data/ui/sidebar_listbox_row.blp:6 ../data/ui/right_headerbar.blp:9
+#: ../data/ui/shortcutsWindow.blp:74
+msgid "Open in Browser"
+msgstr ""
+
 #: ../data/ui/manage_feeds_headerbar.blp:11
 msgid "Manage Tags for Selected Feeds"
 msgstr ""
@@ -461,10 +462,6 @@ msgstr ""
 
 #: ../data/ui/manage_feeds_headerbar.blp:21
 msgid "Delete Selected Feeds"
-msgstr ""
-
-#: ../data/ui/right_headerbar.blp:9 ../data/ui/shortcutsWindow.blp:74
-msgid "Open in Browser"
 msgstr ""
 
 #: ../data/ui/right_headerbar.blp:10
@@ -573,10 +570,6 @@ msgstr ""
 
 #: ../data/ui/add_feed_popover.blp:32
 msgid "You're already subscribed to that feed!"
-msgstr ""
-
-#: ../data/ui/row_popover.blp:19
-msgid "Mark as Read"
 msgstr ""
 
 #: ../data/ui/manage_tags_content.blp:17
