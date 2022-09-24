@@ -1,5 +1,12 @@
 using Gtk 4.0;
 
+menu row_menu {
+    section {
+        item(_("Mark as Read/Unread"), 'row.read_unread')
+        item(_("Open in Browser"), 'row.open_in_browser')
+    }
+}
+
 template SidebarRow : Box {
     spacing: 6;
     orientation: vertical;
@@ -46,5 +53,8 @@ template SidebarRow : Box {
                 xalign: 1.0;
             }
         }
+    }
+    PopoverMenu popover {
+        menu-model: row_menu;
     }
 }

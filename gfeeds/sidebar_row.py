@@ -4,22 +4,22 @@ from gfeeds.feed_item import FeedItem
 from gfeeds.util.paths import THUMBS_CACHE_PATH
 from gfeeds.util.sha import shasum
 from gfeeds.util.download_manager import download_raw
-from gi.repository import Gtk, GLib, Pango
+from gi.repository import Gio, Gtk, GLib, Pango
 from gfeeds.confManager import ConfManager
 from gfeeds.simple_avatar import SimpleAvatar
 from gfeeds.util.relative_day_formatter import humanize_datetime
-from gfeeds.sidebar_row_popover import RowPopover
 from gfeeds.accel_manager import add_mouse_button_accel, add_longpress_accel
 
 
 @Gtk.Template(resource_path='/org/gabmus/gfeeds/ui/sidebar_listbox_row.ui')
 class SidebarRow(Gtk.Box):
     __gtype_name__ = 'SidebarRow'
-    title_label = Gtk.Template.Child()
-    origin_label = Gtk.Template.Child()
+    title_label: Gtk.Label = Gtk.Template.Child()
+    origin_label: Gtk.Label = Gtk.Template.Child()
     icon_container = Gtk.Template.Child()
-    date_label = Gtk.Template.Child()
+    date_label: Gtk.Label = Gtk.Template.Child()
     picture_view_container = Gtk.Template.Child()
+    popover: Gtk.PopoverMenu = Gtk.Template.Child()
 
     def __init__(self, fetch_image_thread_pool):
         super().__init__()
@@ -53,8 +53,6 @@ class SidebarRow(Gtk.Box):
 
         self.confman.connect('show_thumbnails_changed', self.set_article_image)
 
-        self.popover = RowPopover(self)
-
         # longpress & right click
         self.longpress = add_longpress_accel(
             self, lambda *_: self.popover.popup()
@@ -66,6 +64,16 @@ class SidebarRow(Gtk.Box):
                 if gesture.get_current_button() == 3  # 3 is right click
                 else None
         )
+
+        self.action_group = Gio.SimpleActionGroup()
+        for act_name, fun in [
+                ('read_unread', self.action_read_unread),
+                ('open_in_browser', self.action_open_in_browser)
+        ]:
+            act = Gio.SimpleAction.new(act_name, None)
+            act.connect('activate', fun)
+            self.action_group.add_action(act)
+        self.insert_action_group('row', self.action_group)
 
     def set_feed_item(self, feed_item: FeedItem):
         if not feed_item or self.feed_item == feed_item:
@@ -91,9 +99,24 @@ class SidebarRow(Gtk.Box):
             self.feed_item.parent_feed.title,
             self.feed_item.parent_feed.favicon_path
         )
+
         self.set_article_image()
         self.set_read()
         self.on_feed_item_changed()
+
+    def action_read_unread(self, *__):
+        self.popover.popdown()
+        if not self.feed_item:
+            return
+        self.set_read(not self.feed_item.read)
+
+    def action_open_in_browser(self, *__):
+        self.popover.popdown()
+        if not self.feed_item:
+            return
+        Gio.AppInfo.launch_default_for_uri(
+            self.feed_item.link
+        )
 
     def on_feed_item_changed(self, *_):
         if self.feed_item is None:
@@ -191,7 +214,6 @@ class SidebarRow(Gtk.Box):
             self.set_dim(True)
         else:
             self.set_dim(False)
-        self.popover.on_feed_item_set()
 
     def set_dim(self, state):
         for w in (
