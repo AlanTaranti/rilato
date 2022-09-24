@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gfeeds master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/gfeeds/issues\n"
-"POT-Creation-Date: 2022-09-08 05:35+0000\n"
-"PO-Revision-Date: 2022-09-08 20:36+0300\n"
+"POT-Creation-Date: 2022-09-23 21:42+0000\n"
+"PO-Revision-Date: 2022-09-24 14:38+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -63,6 +63,246 @@ msgstr "Стрічки можна імпортувати або експорту
 msgid "rss;reader;feed;news;"
 msgstr "rss;reader;feed;news;рсс;читання;стрічка;подача;новини;"
 
+#: data/ui/add_feed_popover.blp:11
+msgid "Enter feed address to add"
+msgstr "Введіть адресу стрічки для додавання"
+
+#: data/ui/add_feed_popover.blp:26
+msgid "Add"
+msgstr "Додати"
+
+#: data/ui/add_feed_popover.blp:32
+msgid "You're already subscribed to that feed!"
+msgstr "Ви вже підписані на цю стрічку!"
+
+#: data/ui/empty_state.blp:7
+msgid "Let's get started"
+msgstr "Почнімо"
+
+#: data/ui/empty_state.blp:22
+msgid "Add new feeds via URL"
+msgstr "Додати нові стрічки за адресою"
+
+#: data/ui/empty_state.blp:27
+#| msgid "Error parsing OPML file `{0}`"
+msgid "Import an OPML file"
+msgstr "Імпортувати файл OPML"
+
+#: data/ui/left_headerbar.blp:6
+#| msgid "Show newer articles first"
+msgid "Show Read Articles"
+msgstr "Показати прочитані статті"
+
+#: data/ui/left_headerbar.blp:7
+#| msgid "Mark as read"
+msgid "Mark All as Read"
+msgstr "Позначити всі як прочитані"
+
+#: data/ui/left_headerbar.blp:8
+#| msgid "Mark as unread"
+msgid "Mark All as Unread"
+msgstr "Позначити всі як непрочитані"
+
+#: data/ui/left_headerbar.blp:11
+msgid "Show Empty Feeds"
+msgstr "Показати порожні стрічки"
+
+#: data/ui/left_headerbar.blp:12 data/ui/manage_feeds_headerbar.blp:7
+#: gfeeds/manage_feeds_window.py:263
+msgid "Manage Feeds"
+msgstr "Керування стрічками"
+
+#: data/ui/left_headerbar.blp:13
+msgid "Import OPML"
+msgstr "Імпортувати OPML"
+
+#: data/ui/left_headerbar.blp:14
+#| msgid "Export"
+msgid "Export OPML"
+msgstr "Експортувати OPML"
+
+#: data/ui/left_headerbar.blp:17
+#| msgid "Font preferences"
+msgid "Preferences"
+msgstr "Налаштування"
+
+#: data/ui/left_headerbar.blp:18
+msgid "Keyboard Shortcuts"
+msgstr "Клавіатурні скорочення"
+
+#: data/ui/left_headerbar.blp:19
+#| msgid "Feeds"
+msgid "About Feeds"
+msgstr "Про «Стрічки»"
+
+#: data/ui/left_headerbar.blp:28
+msgid "Filter"
+msgstr "Фільтрувати"
+
+#: data/ui/left_headerbar.blp:32
+#| msgid "Feeds"
+msgid "Add Feed"
+msgstr "Додати стрічку"
+
+#: data/ui/left_headerbar.blp:36
+msgid "Menu"
+msgstr "Меню"
+
+#: data/ui/left_headerbar.blp:41 data/ui/shortcutsWindow.blp:35
+msgid "Refresh"
+msgstr "Освіжити"
+
+#: data/ui/left_headerbar.blp:46 data/ui/shortcutsWindow.blp:39
+msgid "Search"
+msgstr "Пошук"
+
+#: data/ui/left_headerbar.blp:51
+#| msgid "There are some errors"
+msgid "There Are Errors"
+msgstr "Сталися якісь помилки"
+
+#: data/ui/main_leaflet.blp:40
+msgid "Offline"
+msgstr "Поза мережею"
+
+#: data/ui/manage_feeds_headerbar.blp:11
+msgid "Manage Tags for Selected Feeds"
+msgstr "Керування мітками для позначених стрічок"
+
+#: data/ui/manage_feeds_headerbar.blp:16
+msgid "Select/Unselect All"
+msgstr "Позначити усі/Зняти позначення з усіх"
+
+#: data/ui/manage_feeds_headerbar.blp:21
+msgid "Delete Selected Feeds"
+msgstr "Вилучити позначені стрічки"
+
+#: data/ui/manage_tags_content.blp:17
+msgid "New tag name…"
+msgstr "Назва нової мітки…"
+
+#: data/ui/manage_tags_content.blp:24
+msgid "Add Tag"
+msgstr "Додати мітку"
+
+#: data/ui/manage_tags_content.blp:39
+#| msgid "There are some errors"
+msgid "There are no tags yet"
+msgstr "Міток ще немає"
+
+#: data/ui/manage_tags_content.blp:40
+msgid "Add some using the entry above"
+msgstr "Додайте якісь за допомогою наведеного вище запису"
+
+#: data/ui/right_headerbar.blp:9 data/ui/shortcutsWindow.blp:74
+#| msgid "Open links in your browser"
+msgid "Open in Browser"
+msgstr "Відкрити у браузері"
+
+#: data/ui/right_headerbar.blp:10
+msgid "Open in External Media Player"
+msgstr "Відкрити у зовнішньому програвачі"
+
+#: data/ui/right_headerbar.blp:11
+msgid "Copy Article Link"
+msgstr "Копіювати посилання на статтю"
+
+#: data/ui/right_headerbar.blp:17 data/ui/right_headerbar.blp:92
+msgid "View Mode"
+msgstr "Режим перегляду"
+
+#: data/ui/right_headerbar.blp:19
+msgid "Web View"
+msgstr "Вебпанель"
+
+#: data/ui/right_headerbar.blp:24
+#| msgid "Reader mode theme"
+msgid "Reader Mode"
+msgstr "Режим читача"
+
+#: data/ui/right_headerbar.blp:29
+#| msgid "Feeds Configuration"
+msgid "Feed Content"
+msgstr "Вміст стрічки"
+
+#: data/ui/right_headerbar.blp:43 data/ui/shortcutsWindow.blp:66
+msgid "Zoom Out"
+msgstr "Зменшити"
+
+#: data/ui/right_headerbar.blp:48 data/ui/shortcutsWindow.blp:70
+msgid "Reset Zoom"
+msgstr "Відновити масштаб"
+
+#: data/ui/right_headerbar.blp:53 data/ui/shortcutsWindow.blp:62
+msgid "Zoom In"
+msgstr "Збільшити"
+
+#: data/ui/right_headerbar.blp:86
+msgid "Back to Articles"
+msgstr "Назад до статей"
+
+#: data/ui/row_popover.blp:19
+#| msgid "Mark as read"
+msgid "Mark as Read"
+msgstr "Позначити як прочитане"
+
+#: data/ui/shortcutsWindow.blp:9 gfeeds/preferences_window.py:24
+msgid "General"
+msgstr "Загальне"
+
+#: data/ui/shortcutsWindow.blp:12
+msgid "Open Keyboard Shortcuts"
+msgstr "Відкрити вікно клавіатурних скорочень"
+
+#: data/ui/shortcutsWindow.blp:16
+#| msgid "Open"
+msgid "Open Menu"
+msgstr "Відкрити меню"
+
+#: data/ui/shortcutsWindow.blp:20
+#| msgid "Font preferences"
+msgid "Open Preferences"
+msgstr "Відкрити налаштування"
+
+#: data/ui/shortcutsWindow.blp:24
+msgid "Open Filter"
+msgstr "Відкрити фільтр"
+
+#: data/ui/shortcutsWindow.blp:28
+msgid "Quit"
+msgstr "Вийти"
+
+#: data/ui/shortcutsWindow.blp:32
+msgid "Article List"
+msgstr "Список статей"
+
+#: data/ui/shortcutsWindow.blp:43
+msgid "Next"
+msgstr "Далі"
+
+#: data/ui/shortcutsWindow.blp:47
+msgid "Previous"
+msgstr "Назад"
+
+#: data/ui/shortcutsWindow.blp:51
+msgid "Show/Hide Read Articles"
+msgstr "Показати/Приховати прочитані статті"
+
+#: data/ui/shortcutsWindow.blp:55
+#| msgid "Mark as read"
+msgid "Mark All Read"
+msgstr "Позначити всі як прочитані"
+
+#: data/ui/shortcutsWindow.blp:59
+msgid "Article"
+msgstr "Стаття"
+
+#: data/ui/webview.blp:12
+#| msgid "{0} new article"
+#| msgid_plural "{0} new articles"
+msgid "Select an article"
+msgstr "Виберіть статтю"
+
 #: gfeeds/feed_item.py:55
 #, python-brace-format
 msgid "Error: unable to parse datetime {0} for feeditem {1}"
@@ -87,15 +327,15 @@ msgstr "Запис стрічки {0} вже існує, пропускаємо"
 msgid "All feeds"
 msgstr "Всі стрічки"
 
-#: gfeeds/headerbar.py:198
+#: gfeeds/headerbar.py:197
 msgid "There were problems with some feeds. Do you want to remove them?"
 msgstr "З деякими стрічками виникли проблеми. Хочете вилучити їх?"
 
-#: gfeeds/headerbar.py:203
+#: gfeeds/headerbar.py:202
 msgid "_Keep"
 msgstr "З_берегти"
 
-#: gfeeds/headerbar.py:205
+#: gfeeds/headerbar.py:204
 msgid "_Remove"
 msgstr "Ви_лучити"
 
@@ -108,30 +348,41 @@ msgstr[1] "{0} нові статті"
 msgstr[2] "{0} нових статей"
 msgstr[3] "{0} нова стаття"
 
-#: gfeeds/__main__.py:225
+#: gfeeds/__main__.py:232
 msgid "Do you want to import these feeds?"
 msgstr "Хочете імпортувати ці стрічки?"
 
-#: gfeeds/__main__.py:252
+#: gfeeds/__main__.py:239 gfeeds/__main__.py:273
+#: gfeeds/manage_feeds_window.py:330
+#| msgid "Cancel"
+msgid "_Cancel"
+msgstr "_Скасувати"
+
+#: gfeeds/__main__.py:242 gfeeds/__main__.py:276
+#| msgid "Export"
+msgid "_Import"
+msgstr "_Імпортувати"
+
+#: gfeeds/__main__.py:269
 msgid "Do you want to import this feed?"
 msgstr "Хочете імпортувати цю стрічку?"
 
-#: gfeeds/__main__.py:281
+#: gfeeds/__main__.py:301
 msgid "url"
 msgstr "адреса"
 
-#: gfeeds/__main__.py:284
+#: gfeeds/__main__.py:304
 msgid "opml file local url or rss remote url to import"
 msgstr ""
 "локальна адреса файла opml або віддалена адреса rss для імпортування даних"
 
-#: gfeeds/manage_feeds_window.py:263
-msgid "Manage Feeds"
-msgstr "Керування стрічками"
-
-#: gfeeds/manage_feeds_window.py:318
+#: gfeeds/manage_feeds_window.py:327
 msgid "Do you want to delete these feeds?"
 msgstr "Хочете вилучити ці стрічки?"
+
+#: gfeeds/manage_feeds_window.py:332
+msgid "_Delete"
+msgstr "В_илучити"
 
 #: gfeeds/opml_file_chooser.py:7
 msgid "XML files"
@@ -156,10 +407,6 @@ msgstr "Виберіть місце зберігання експортован�
 #: gfeeds/opml_file_chooser.py:30
 msgid "Save"
 msgstr "Зберегти"
-
-#: gfeeds/preferences_window.py:24
-msgid "General"
-msgstr "Загальне"
 
 #: gfeeds/preferences_window.py:27
 msgid "General preferences"
@@ -364,7 +611,6 @@ msgstr "Експортувати"
 
 #. type: ignore
 #: gfeeds/preferences_window.py:243
-#| msgid "Feed Content"
 msgid "Feeds Configuration"
 msgstr "Налаштування стрічок"
 
@@ -408,11 +654,11 @@ msgstr "Помилка під час отримання «{0}», код «{1}»"
 msgid "Error downloading favicon for `{0}`"
 msgstr "Помилка під час завантаження піктограми для «{0}»"
 
-#: gfeeds/util/opml_parser.py:31
+#: gfeeds/util/opml_parser.py:33
 msgid "Error: OPML path provided does not exist"
 msgstr "Помилка: вказаного шляху до OPML не існує"
 
-#: gfeeds/util/opml_parser.py:42
+#: gfeeds/util/opml_parser.py:44
 #, python-brace-format
 msgid "Error parsing OPML file `{0}`"
 msgstr "Помилка під час обробки файла OPML «{0}»"
@@ -432,9 +678,6 @@ msgstr "Для цієї статті дані стрічки є недоступ
 #~ "З деякими стрічками виникли проблеми.\n"
 #~ "Хочете вилучити їх?"
 
-#~ msgid "Web View"
-#~ msgstr "Вебпанель"
-
 #~ msgid "Choose a folder"
 #~ msgstr "Виберіть теку"
 
@@ -443,9 +686,6 @@ msgstr "Для цієї статті дані стрічки є недоступ
 
 #~ msgid "Maximum thumbnail height"
 #~ msgstr "Максимальна висота мініатюри"
-
-#~ msgid "There are some errors"
-#~ msgstr "Сталися якісь помилки"
 
 #~ msgid "Show"
 #~ msgstr "Показати"
