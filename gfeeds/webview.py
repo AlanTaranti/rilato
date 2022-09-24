@@ -171,8 +171,11 @@ class GFeedsWebView(Gtk.Stack):
         self.webkitview_settings.set_enable_javascript(
             self.confman.conf['enable_js']
         )
-        self.webkitview_settings.set_enable_smooth_scrolling(False)
+        self.webkitview_settings.set_enable_smooth_scrolling(True)
         self.webkitview_settings.set_enable_page_cache(True)
+        self.webkitview_settings.set_enable_back_forward_navigation_gestures(
+            True
+        )
         self.webkitview_settings.set_enable_accelerated_2d_canvas(True)
         self.webkitview.set_settings(self.webkitview_settings)
 
