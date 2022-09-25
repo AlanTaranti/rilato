@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gfeeds master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/gfeeds/issues\n"
-"POT-Creation-Date: 2022-09-24 15:24+0000\n"
-"PO-Revision-Date: 2022-09-24 18:42+0300\n"
+"POT-Creation-Date: 2022-09-24 21:34+0000\n"
+"PO-Revision-Date: 2022-09-25 09:28+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -88,45 +88,53 @@ msgid "Import an OPML file"
 msgstr "Імпортувати файл OPML"
 
 #: data/ui/left_headerbar.blp:6
-msgid "Show Read Articles"
-msgstr "Показати прочитані статті"
+#| msgid "Show Read Articles"
+msgid "_Show Read Articles"
+msgstr "_Показати прочитані статті"
 
 #: data/ui/left_headerbar.blp:7
 msgid "Mark All as Read"
 msgstr "Позначити всі як прочитані"
 
 #: data/ui/left_headerbar.blp:8
-msgid "Mark All as Unread"
-msgstr "Позначити всі як непрочитані"
+#| msgid "Mark All as Unread"
+msgid "Mark All as _Unread"
+msgstr "Позначити всі як _непрочитані"
 
 #: data/ui/left_headerbar.blp:11
-msgid "Show Empty Feeds"
-msgstr "Показати порожні стрічки"
+#| msgid "Show Empty Feeds"
+msgid "Show _Empty Feeds"
+msgstr "Показати поро_жні стрічки"
 
-#: data/ui/left_headerbar.blp:12 data/ui/manage_feeds_headerbar.blp:7
-#: gfeeds/manage_feeds_window.py:263
-msgid "Manage Feeds"
-msgstr "Керування стрічками"
+#: data/ui/left_headerbar.blp:12
+#| msgid "Manage Feeds"
+msgid "_Manage Feeds"
+msgstr "_Керування стрічками"
 
 #: data/ui/left_headerbar.blp:13
-msgid "Import OPML"
-msgstr "Імпортувати OPML"
+#| msgid "Import OPML"
+msgid "_Import OPML"
+msgstr "_Імпортувати OPML"
 
 #: data/ui/left_headerbar.blp:14
-msgid "Export OPML"
-msgstr "Експортувати OPML"
+#| msgid "Export OPML"
+msgid "E_xport OPML"
+msgstr "_Експортувати OPML"
 
 #: data/ui/left_headerbar.blp:17
-msgid "Preferences"
-msgstr "Налаштування"
+#| msgid "Preferences"
+msgid "P_references"
+msgstr "На_лаштування"
 
 #: data/ui/left_headerbar.blp:18
-msgid "Keyboard Shortcuts"
-msgstr "Клавіатурні скорочення"
+#| msgid "Keyboard Shortcuts"
+msgid "_Keyboard Shortcuts"
+msgstr "Кл_авіатурні скорочення"
 
 #: data/ui/left_headerbar.blp:19
-msgid "About Feeds"
-msgstr "Про «Стрічки»"
+#| msgid "About Feeds"
+msgid "_About Feeds"
+msgstr "П_ро «Стрічки»"
 
 #: data/ui/left_headerbar.blp:28
 msgid "Filter"
@@ -156,6 +164,10 @@ msgstr "Сталися якісь помилки"
 msgid "Offline"
 msgstr "Поза мережею"
 
+#: data/ui/manage_feeds_headerbar.blp:7 gfeeds/manage_feeds_window.py:263
+msgid "Manage Feeds"
+msgstr "Керування стрічками"
+
 #: data/ui/manage_feeds_headerbar.blp:11
 msgid "Manage Tags for Selected Feeds"
 msgstr "Керування мітками для позначених стрічок"
@@ -184,20 +196,22 @@ msgstr "Міток ще немає"
 msgid "Add some using the entry above"
 msgstr "Додайте якісь за допомогою наведеного вище запису"
 
-#: data/ui/right_headerbar.blp:9 data/ui/shortcutsWindow.blp:74
-#: data/ui/sidebar_listbox_row.blp:6
-msgid "Open in Browser"
-msgstr "Відкрити у браузері"
+#: data/ui/right_headerbar.blp:9
+#| msgid "Open in Browser"
+msgid "Open in _Browser"
+msgstr "Відкрити у _браузері"
 
 #: data/ui/right_headerbar.blp:10
-msgid "Open in External Media Player"
-msgstr "Відкрити у зовнішньому програвачі"
+#| msgid "Open in External Media Player"
+msgid "Open in External Media _Player"
+msgstr "Відкрити у зовнішньому про_гравачі"
 
 #: data/ui/right_headerbar.blp:11
-msgid "Copy Article Link"
-msgstr "Копіювати посилання на статтю"
+#| msgid "Copy Article Link"
+msgid "_Copy Article Link"
+msgstr "_Копіювати посилання на статтю"
 
-#: data/ui/right_headerbar.blp:17 data/ui/right_headerbar.blp:92
+#: data/ui/right_headerbar.blp:17 data/ui/right_headerbar.blp:96
 msgid "View Mode"
 msgstr "Режим перегляду"
 
@@ -213,19 +227,19 @@ msgstr "Режим читача"
 msgid "Feed Content"
 msgstr "Вміст стрічки"
 
-#: data/ui/right_headerbar.blp:43 data/ui/shortcutsWindow.blp:66
+#: data/ui/right_headerbar.blp:44 data/ui/shortcutsWindow.blp:66
 msgid "Zoom Out"
 msgstr "Зменшити"
 
-#: data/ui/right_headerbar.blp:48 data/ui/shortcutsWindow.blp:70
+#: data/ui/right_headerbar.blp:51 data/ui/shortcutsWindow.blp:70
 msgid "Reset Zoom"
 msgstr "Відновити масштаб"
 
-#: data/ui/right_headerbar.blp:53 data/ui/shortcutsWindow.blp:62
+#: data/ui/right_headerbar.blp:57 data/ui/shortcutsWindow.blp:62
 msgid "Zoom In"
 msgstr "Збільшити"
 
-#: data/ui/right_headerbar.blp:86
+#: data/ui/right_headerbar.blp:90
 msgid "Back to Articles"
 msgstr "Назад до статей"
 
@@ -277,8 +291,11 @@ msgstr "Позначити всі як прочитані"
 msgid "Article"
 msgstr "Стаття"
 
+#: data/ui/shortcutsWindow.blp:74 data/ui/sidebar_listbox_row.blp:6
+msgid "Open in Browser"
+msgstr "Відкрити у браузері"
+
 #: data/ui/sidebar_listbox_row.blp:5
-#| msgid "Mark as unread"
 msgid "Mark as Read/Unread"
 msgstr "Позначити як прочитане/непрочитане"
 
@@ -286,7 +303,7 @@ msgstr "Позначити як прочитане/непрочитане"
 msgid "Select an article"
 msgstr "Виберіть статтю"
 
-#: gfeeds/feed_item.py:55
+#: gfeeds/feed_item.py:57
 #, python-brace-format
 msgid "Error: unable to parse datetime {0} for feeditem {1}"
 msgstr "Помилка: не вдалося обробити позначку часу {0} для запису стрічки {1}"
@@ -525,81 +542,81 @@ msgstr "Нетиповий моноширинний шрифт"
 msgid "Privacy"
 msgstr "Конфіденційність"
 
-#: gfeeds/preferences_window.py:176
+#: gfeeds/preferences_window.py:177
 msgid "Privacy preferences"
 msgstr "Параметри конфіденційності"
 
-#: gfeeds/preferences_window.py:178
+#: gfeeds/preferences_window.py:179
 msgid "Enable JavaScript"
 msgstr "Увімкнути JavaScript"
 
-#: gfeeds/preferences_window.py:183
+#: gfeeds/preferences_window.py:184
 msgid "Try to block advertisements"
 msgstr "Намагатися блокувати рекламу"
 
-#: gfeeds/preferences_window.py:185 gfeeds/preferences_window.py:220
+#: gfeeds/preferences_window.py:186 gfeeds/preferences_window.py:221
 msgid "Requires app restart"
 msgstr "Потребує перезапуску програми"
 
-#: gfeeds/preferences_window.py:189
+#: gfeeds/preferences_window.py:190
 msgid "Update advertisement blocking list"
 msgstr "Оновити список блокування реклами"
 
-#: gfeeds/preferences_window.py:190
+#: gfeeds/preferences_window.py:191
 msgid "Updates automatically every 10 days"
 msgstr "Автоматично оновлюється кожні 10 днів"
 
-#: gfeeds/preferences_window.py:191
+#: gfeeds/preferences_window.py:192
 msgid "Update"
 msgstr "Оновити"
 
-#: gfeeds/preferences_window.py:204
+#: gfeeds/preferences_window.py:205
 msgid "Advanced"
 msgstr "Додатково"
 
-#: gfeeds/preferences_window.py:207
+#: gfeeds/preferences_window.py:208
 msgid "Advanced preferences"
 msgstr "Додаткові налаштування"
 
-#: gfeeds/preferences_window.py:209
+#: gfeeds/preferences_window.py:210
 msgid "Maximum refresh threads"
 msgstr "Максимальна кількість потоків оновлення"
 
-#: gfeeds/preferences_window.py:211
+#: gfeeds/preferences_window.py:212
 msgid "How many threads to use for feeds refresh"
 msgstr ""
 "Кількість потоків обробки, яку можна використовувати для оновлення стрічок"
 
-#: gfeeds/preferences_window.py:218
+#: gfeeds/preferences_window.py:219
 msgid "Experimental GtkListView for articles list"
 msgstr "Експериментальний GtkListView для списку статей"
 
-#: gfeeds/preferences_window.py:226
+#: gfeeds/preferences_window.py:227
 msgid "Troubleshooting"
 msgstr "Усування проблем"
 
-#: gfeeds/preferences_window.py:228
+#: gfeeds/preferences_window.py:229
 msgid "Export Configuration as JSON"
 msgstr "Експортувати налаштування як JSON"
 
-#: gfeeds/preferences_window.py:229
+#: gfeeds/preferences_window.py:230
 msgid "Attach this when reporting bugs"
 msgstr "Долучіть ці дані при звітуванні щодо вад"
 
-#: gfeeds/preferences_window.py:230
+#: gfeeds/preferences_window.py:231
 msgid "Export"
 msgstr "Експортувати"
 
 #. type: ignore
-#: gfeeds/preferences_window.py:243
+#: gfeeds/preferences_window.py:244
 msgid "Feeds Configuration"
 msgstr "Налаштування стрічок"
 
-#: gfeeds/preferences_window.py:247
+#: gfeeds/preferences_window.py:248
 msgid "_Close"
 msgstr "_Закрити"
 
-#: gfeeds/preferences_window.py:250
+#: gfeeds/preferences_window.py:251
 msgid "Cop_y"
 msgstr "_Копіювати"
 
