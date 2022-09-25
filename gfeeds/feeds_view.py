@@ -10,8 +10,7 @@ class FeedsViewAllListboxRow(Gtk.ListBoxRow):
     def __init__(self):
         super().__init__()
         self.label = Gtk.Label(
-            label='<b>' + _('All feeds') + '</b>',
-            use_markup=True,
+            label=_('All feeds'),
             margin_top=12, margin_bottom=12
         )
         self.set_child(self.label)
@@ -99,12 +98,15 @@ class FeedsViewTagListboxRow(Gtk.ListBoxRow):
         self.checkbox = self.builder.get_object('check')
         self.checkbox.set_visible(False)
         self.icon_container = self.builder.get_object('icon_container')
-        self.icon = Gtk.Image.new_from_icon_name('tag-symbolic')
-        self.icon.set_pixel_size(32)
+        self.icon = Gtk.Image(
+            icon_name='tag-symbolic', pixel_size=24,
+            halign=Gtk.Align.CENTER, valign=Gtk.Align.CENTER,
+            margin_start=4, margin_end=4
+        )
         self.icon_container.append(self.icon)
 
         self.name_label = self.builder.get_object('title_label')
-        self.name_label.set_text(tag.name)
+        self.name_label.set_text(tag.name.capitalize())
         self.desc_label = self.builder.get_object('description_label')
         self.desc_label.set_visible(False)
         self.set_child(self.hbox)
@@ -155,7 +157,7 @@ class FeedsViewListbox(Gtk.ListBox):
             None
         )
 
-    def __create_feed_row(self, feed: Feed, *args) -> Gtk.ListBoxRow:
+    def __create_feed_row(self, feed: Feed, *__) -> Gtk.ListBoxRow:
         row = self.row_class(feed, description=self.description)
         return row
 
@@ -169,7 +171,4 @@ class FeedsViewScrolledWindow(Gtk.ScrolledWindow):
         )
         self.listbox = FeedsViewListbox(description)
         self.all_row = FeedsViewAllListboxRow()
-        # self.listbox.append(self.all_row)
-        # self.listbox.select_row(self.all_row)
-        # self.set_size_request(360, 500)
         self.set_child(self.listbox)
