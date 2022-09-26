@@ -121,15 +121,19 @@ def download_feed(
             _('`{0}` might not be a valid address').format(link)
         )
     if 'last-modified' in res.headers.keys():
-        confman.conf['feeds'][link]['last-modified'] = \
-            res.headers['last-modified']
+        # TODO fix when switching to non-json feeds in gsettings
+        feeds: dict = confman.conf['feeds']
+        feeds[link]['last-modified'] = res.headers['last-modified']
+        confman.conf['feeds'] = feeds
 
     def handle_200():
         if (
                 'last-modified' not in res.headers.keys() and
                 'last-modified' in confman.conf['feeds'][link].keys()
         ):
-            confman.conf['feeds'][link].pop('last-modified')
+            feeds: dict = confman.conf['feeds']
+            feeds[link].pop('last-modified')
+            confman.conf['feeds'] = feeds
         with open(dest_path, 'wb') as fd:
             fd.write(res.content)  # res.text is str, res.content is bytes
         to_unicode(dest_path)
@@ -143,7 +147,7 @@ def download_feed(
 
     def handle_301_302():
         n_link = res.headers.get('location', link)
-        feeds: Dict[str, dict] = confman.conf['feeds']
+        feeds: dict = confman.conf['feeds']
         feeds[n_link] = feeds[link]
         feeds.pop(link)
         confman.conf['feeds'] = feeds
