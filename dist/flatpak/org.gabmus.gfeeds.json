@@ -2,9 +2,9 @@
     "app-id": "org.gabmus.gfeeds",
     "command": "gfeeds",
     "runtime": "org.gnome.Platform",
-    "runtime-version": "master",
+    "runtime-version": "43",
     "sdk": "org.gnome.Sdk",
-    "sdk-version": "master",
+    "sdk-version": "43",
     "finish-args": [
         "--device=dri",
         "--share=ipc",
