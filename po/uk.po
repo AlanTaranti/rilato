@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gfeeds master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/gfeeds/issues\n"
-"POT-Creation-Date: 2022-09-24 21:34+0000\n"
-"PO-Revision-Date: 2022-09-25 09:28+0300\n"
+"POT-Creation-Date: 2022-10-02 17:13+0000\n"
+"PO-Revision-Date: 2022-10-02 22:32+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -63,6 +63,10 @@ msgstr "Стрічки можна імпортувати або експорту
 msgid "rss;reader;feed;news;"
 msgstr "rss;reader;feed;news;рсс;читання;стрічка;подача;новини;"
 
+#: data/ui/aboutdialog.ui.in:10
+msgid "translator-credits"
+msgstr "Юрій Чорноіван <yurchor@ukr.net>, 2022"
+
 #: data/ui/add_feed_popover.blp:11
 msgid "Enter feed address to add"
 msgstr "Введіть адресу стрічки для додавання"
@@ -88,7 +92,6 @@ msgid "Import an OPML file"
 msgstr "Імпортувати файл OPML"
 
 #: data/ui/left_headerbar.blp:6
-#| msgid "Show Read Articles"
 msgid "_Show Read Articles"
 msgstr "_Показати прочитані статті"
 
@@ -97,42 +100,34 @@ msgid "Mark All as Read"
 msgstr "Позначити всі як прочитані"
 
 #: data/ui/left_headerbar.blp:8
-#| msgid "Mark All as Unread"
 msgid "Mark All as _Unread"
 msgstr "Позначити всі як _непрочитані"
 
 #: data/ui/left_headerbar.blp:11
-#| msgid "Show Empty Feeds"
 msgid "Show _Empty Feeds"
 msgstr "Показати поро_жні стрічки"
 
 #: data/ui/left_headerbar.blp:12
-#| msgid "Manage Feeds"
 msgid "_Manage Feeds"
 msgstr "_Керування стрічками"
 
 #: data/ui/left_headerbar.blp:13
-#| msgid "Import OPML"
 msgid "_Import OPML"
 msgstr "_Імпортувати OPML"
 
 #: data/ui/left_headerbar.blp:14
-#| msgid "Export OPML"
 msgid "E_xport OPML"
 msgstr "_Експортувати OPML"
 
 #: data/ui/left_headerbar.blp:17
-#| msgid "Preferences"
 msgid "P_references"
 msgstr "На_лаштування"
 
 #: data/ui/left_headerbar.blp:18
-#| msgid "Keyboard Shortcuts"
 msgid "_Keyboard Shortcuts"
 msgstr "Кл_авіатурні скорочення"
 
 #: data/ui/left_headerbar.blp:19
-#| msgid "About Feeds"
 msgid "_About Feeds"
 msgstr "П_ро «Стрічки»"
 
@@ -197,17 +192,14 @@ msgid "Add some using the entry above"
 msgstr "Додайте якісь за допомогою наведеного вище запису"
 
 #: data/ui/right_headerbar.blp:9
-#| msgid "Open in Browser"
 msgid "Open in _Browser"
 msgstr "Відкрити у _браузері"
 
 #: data/ui/right_headerbar.blp:10
-#| msgid "Open in External Media Player"
 msgid "Open in External Media _Player"
 msgstr "Відкрити у зовнішньому про_гравачі"
 
 #: data/ui/right_headerbar.blp:11
-#| msgid "Copy Article Link"
 msgid "_Copy Article Link"
 msgstr "_Копіювати посилання на статтю"
 
@@ -318,7 +310,7 @@ msgstr "Помилки під час обробки стрічки «{0}», ад
 msgid "`{0}` may not be an RSS or Atom feed"
 msgstr "«{0}», можливо, не є стрічкою RSS або Atom"
 
-#: gfeeds/feeds_manager.py:89
+#: gfeeds/feeds_manager.py:97
 #, python-brace-format
 msgid "Feed {0} exists already, skipping"
 msgstr "Запис стрічки {0} вже існує, пропускаємо"
@@ -620,10 +612,6 @@ msgstr "_Закрити"
 msgid "Cop_y"
 msgstr "_Копіювати"
 
-#: gfeeds/sidebar.py:21
-msgid "Loading feeds..."
-msgstr "Завантажуємо стрічки…"
-
 #: gfeeds/util/download_manager.py:112
 #, python-brace-format
 msgid "`{0}`: connection timed out"
@@ -634,7 +622,7 @@ msgstr "`{0}`: перевищено час очікування відповід
 msgid "`{0}` might not be a valid address"
 msgstr "«{0}», ймовірно, не є коректною адресою"
 
-#: gfeeds/util/download_manager.py:157
+#: gfeeds/util/download_manager.py:161
 #, python-brace-format
 msgid "Error downloading `{0}`, code `{1}`"
 msgstr "Помилка під час отримання «{0}», код «{1}»"
@@ -660,6 +648,9 @@ msgstr "Посилання скопійовано до буфера обміну
 #: gfeeds/webview.py:226
 msgid "Feed content not available for this article"
 msgstr "Для цієї статті дані стрічки є недоступними"
+
+#~ msgid "Loading feeds..."
+#~ msgstr "Завантажуємо стрічки…"
 
 #~| msgid "Mark as read"
 #~ msgid "Mark as Read"
