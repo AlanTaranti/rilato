@@ -4,10 +4,10 @@
   <object class="AdwAboutWindow" id="aboutdialog">
     <property name="application_name">@prettyname@</property>
     <property name="version">@VERSION@</property>
-    <property name="copyright" translatable="yes">@authorfullname@, et al.</property>
+    <property name="copyright">@authorfullname@, et al.</property>
     <property name="website">@PACKAGE_URL@</property>
     <property name="developers">@CONTRIBUTORS@</property>
-    <property name="translator_credits" translatable="yes">@TRANSLATORS@</property>
+    <property name="translator_credits" translatable="yes">translator-credits</property>
     <property name="application_icon">@APPID@</property>
     <property name="license_type">gpl-3-0</property>
   </object>

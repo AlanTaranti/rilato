@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gfeeds 1.0.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-24 17:24+0200\n"
+"POT-Creation-Date: 2022-10-02 19:11+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,16 +22,12 @@ msgstr ""
 msgid "All feeds"
 msgstr ""
 
-#: ../gfeeds/sidebar.py:21
-msgid "Loading feeds..."
-msgstr ""
-
-#: ../gfeeds/feed_item.py:55
+#: ../gfeeds/feed_item.py:57
 #, python-brace-format
 msgid "Error: unable to parse datetime {0} for feeditem {1}"
 msgstr ""
 
-#: ../gfeeds/feeds_manager.py:89
+#: ../gfeeds/feeds_manager.py:97
 #, python-brace-format
 msgid "Feed {0} exists already, skipping"
 msgstr ""
@@ -176,79 +172,79 @@ msgstr ""
 msgid "Privacy"
 msgstr ""
 
-#: ../gfeeds/preferences_window.py:176
+#: ../gfeeds/preferences_window.py:177
 msgid "Privacy preferences"
 msgstr ""
 
-#: ../gfeeds/preferences_window.py:178
+#: ../gfeeds/preferences_window.py:179
 msgid "Enable JavaScript"
 msgstr ""
 
-#: ../gfeeds/preferences_window.py:183
+#: ../gfeeds/preferences_window.py:184
 msgid "Try to block advertisements"
 msgstr ""
 
-#: ../gfeeds/preferences_window.py:185 ../gfeeds/preferences_window.py:220
+#: ../gfeeds/preferences_window.py:186 ../gfeeds/preferences_window.py:221
 msgid "Requires app restart"
 msgstr ""
 
-#: ../gfeeds/preferences_window.py:189
+#: ../gfeeds/preferences_window.py:190
 msgid "Update advertisement blocking list"
 msgstr ""
 
-#: ../gfeeds/preferences_window.py:190
+#: ../gfeeds/preferences_window.py:191
 msgid "Updates automatically every 10 days"
 msgstr ""
 
-#: ../gfeeds/preferences_window.py:191
+#: ../gfeeds/preferences_window.py:192
 msgid "Update"
 msgstr ""
 
-#: ../gfeeds/preferences_window.py:204
+#: ../gfeeds/preferences_window.py:205
 msgid "Advanced"
 msgstr ""
 
-#: ../gfeeds/preferences_window.py:207
+#: ../gfeeds/preferences_window.py:208
 msgid "Advanced preferences"
 msgstr ""
 
-#: ../gfeeds/preferences_window.py:209
+#: ../gfeeds/preferences_window.py:210
 msgid "Maximum refresh threads"
 msgstr ""
 
-#: ../gfeeds/preferences_window.py:211
+#: ../gfeeds/preferences_window.py:212
 msgid "How many threads to use for feeds refresh"
 msgstr ""
 
-#: ../gfeeds/preferences_window.py:218
+#: ../gfeeds/preferences_window.py:219
 msgid "Experimental GtkListView for articles list"
 msgstr ""
 
-#: ../gfeeds/preferences_window.py:226
+#: ../gfeeds/preferences_window.py:227
 msgid "Troubleshooting"
 msgstr ""
 
-#: ../gfeeds/preferences_window.py:228
+#: ../gfeeds/preferences_window.py:229
 msgid "Export Configuration as JSON"
 msgstr ""
 
-#: ../gfeeds/preferences_window.py:229
+#: ../gfeeds/preferences_window.py:230
 msgid "Attach this when reporting bugs"
 msgstr ""
 
-#: ../gfeeds/preferences_window.py:230
+#: ../gfeeds/preferences_window.py:231
 msgid "Export"
 msgstr ""
 
-#: ../gfeeds/preferences_window.py:243
+#: ../gfeeds/preferences_window.py:244
 msgid "Feeds Configuration"
 msgstr ""
 
-#: ../gfeeds/preferences_window.py:247
+#: ../gfeeds/preferences_window.py:248
 msgid "_Close"
 msgstr ""
 
-#: ../gfeeds/preferences_window.py:250
+#: ../gfeeds/preferences_window.py:251
 msgid "Cop_y"
 msgstr ""
 
@@ -369,7 +365,7 @@ msgstr ""
 msgid "`{0}` might not be a valid address"
 msgstr ""
 
-#: ../gfeeds/util/download_manager.py:157
+#: ../gfeeds/util/download_manager.py:161
 #, python-brace-format
 msgid "Error downloading `{0}`, code `{1}`"
 msgstr ""
@@ -384,7 +380,7 @@ msgid "Offline"
 msgstr ""
 
 #: ../data/ui/left_headerbar.blp:6
-msgid "Show Read Articles"
+msgid "_Show Read Articles"
 msgstr ""
 
 #: ../data/ui/left_headerbar.blp:7
@@ -392,31 +388,35 @@ msgid "Mark All as Read"
 msgstr ""
 
 #: ../data/ui/left_headerbar.blp:8
-msgid "Mark All as Unread"
+msgid "Mark All as _Unread"
 msgstr ""
 
 #: ../data/ui/left_headerbar.blp:11
-msgid "Show Empty Feeds"
+msgid "Show _Empty Feeds"
+msgstr ""
+
+#: ../data/ui/left_headerbar.blp:12
+msgid "_Manage Feeds"
 msgstr ""
 
 #: ../data/ui/left_headerbar.blp:13
-msgid "Import OPML"
+msgid "_Import OPML"
 msgstr ""
 
 #: ../data/ui/left_headerbar.blp:14
-msgid "Export OPML"
+msgid "E_xport OPML"
 msgstr ""
 
 #: ../data/ui/left_headerbar.blp:17
-msgid "Preferences"
+msgid "P_references"
 msgstr ""
 
 #: ../data/ui/left_headerbar.blp:18
-msgid "Keyboard Shortcuts"
+msgid "_Keyboard Shortcuts"
 msgstr ""
 
 #: ../data/ui/left_headerbar.blp:19
-msgid "About Feeds"
+msgid "_About Feeds"
 msgstr ""
 
 #: ../data/ui/left_headerbar.blp:28
@@ -447,8 +447,7 @@ msgstr ""
 msgid "Mark as Read/Unread"
 msgstr ""
 
-#: ../data/ui/sidebar_listbox_row.blp:6 ../data/ui/right_headerbar.blp:9
-#: ../data/ui/shortcutsWindow.blp:74
+#: ../data/ui/sidebar_listbox_row.blp:6 ../data/ui/shortcutsWindow.blp:74
 msgid "Open in Browser"
 msgstr ""
 
@@ -464,15 +463,19 @@ msgstr ""
 msgid "Delete Selected Feeds"
 msgstr ""
 
+#: ../data/ui/right_headerbar.blp:9
+msgid "Open in _Browser"
+msgstr ""
+
 #: ../data/ui/right_headerbar.blp:10
-msgid "Open in External Media Player"
+msgid "Open in External Media _Player"
 msgstr ""
 
 #: ../data/ui/right_headerbar.blp:11
-msgid "Copy Article Link"
+msgid "_Copy Article Link"
 msgstr ""
 
-#: ../data/ui/right_headerbar.blp:17 ../data/ui/right_headerbar.blp:92
+#: ../data/ui/right_headerbar.blp:17 ../data/ui/right_headerbar.blp:96
 msgid "View Mode"
 msgstr ""
 
@@ -488,19 +491,19 @@ msgstr ""
 msgid "Feed Content"
 msgstr ""
 
-#: ../data/ui/right_headerbar.blp:43 ../data/ui/shortcutsWindow.blp:66
+#: ../data/ui/right_headerbar.blp:44 ../data/ui/shortcutsWindow.blp:66
 msgid "Zoom Out"
 msgstr ""
 
-#: ../data/ui/right_headerbar.blp:48 ../data/ui/shortcutsWindow.blp:70
+#: ../data/ui/right_headerbar.blp:51 ../data/ui/shortcutsWindow.blp:70
 msgid "Reset Zoom"
 msgstr ""
 
-#: ../data/ui/right_headerbar.blp:53 ../data/ui/shortcutsWindow.blp:62
+#: ../data/ui/right_headerbar.blp:57 ../data/ui/shortcutsWindow.blp:62
 msgid "Zoom In"
 msgstr ""
 
-#: ../data/ui/right_headerbar.blp:86
+#: ../data/ui/right_headerbar.blp:90
 msgid "Back to Articles"
 msgstr ""
 
@@ -590,6 +593,10 @@ msgstr ""
 
 #: ../data/ui/webview.blp:12
 msgid "Select an article"
+msgstr ""
+
+#: ../data/ui/aboutdialog.ui.in:10
+msgid "translator-credits"
 msgstr ""
 
 #: ../data/org.gabmus.gfeeds.desktop.in:6

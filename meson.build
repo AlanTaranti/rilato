@@ -26,16 +26,6 @@ contributors = '\n'.join([
     'Éloi Rivard (azmeuk)'
 ])
 
-translators = '\n'.join([
-    'Polish: Michał Nowakowski &lt;nowakowski@offshore.rocks&gt;',
-    'German: Onno Giesmann (Etamuk) &lt;nutzer3105@gmail.com&gt;',
-    'Russian: Alessandra Gallia &lt;alessandragalliaaru@gmail.com&gt;',
-    'Brazilian Portoguese: Gleisson Joaquim (gleissonjoaquim3) &lt;gleisscg2@gmail.com&gt;',
-    'Spanish: Juan Campos (juan.campos) &lt;juan.camposzambrana@gmail.com&gt;',
-    'Dutch: Heimen Stoffels (Vistaus)',
-    'Italian: Gabriele Musco (GabMus) &lt;emaildigabry@gmail.com&gt;'
-])
-
 message('Looking for dependencies')
 dependency('glib-2.0')
 dependency('gobject-introspection-1.0', version: '>=1.35.9')
