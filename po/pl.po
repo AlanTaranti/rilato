@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gfeeds\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/gfeeds/issues\n"
-"POT-Creation-Date: 2022-09-24 21:34+0000\n"
-"PO-Revision-Date: 2022-09-25 16:10+0200\n"
+"POT-Creation-Date: 2022-10-02 17:13+0000\n"
+"PO-Revision-Date: 2022-10-02 23:12+0200\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <community-poland@mozilla.org>\n"
 "Language: pl\n"
@@ -63,6 +63,12 @@ msgstr "Można importować i eksportować kanały za pomocą formatu OPML."
 msgid "rss;reader;feed;news;"
 msgstr ""
 "rss;atom;czytnik;reader;kanały;feeds;aktualności;wiadomości;news;newsy;niusy;"
+
+#: data/ui/aboutdialog.ui.in:10
+msgid "translator-credits"
+msgstr ""
+"Piotr Drąg <piotrdrag@gmail.com>, 2022\n"
+"Aviary.pl <community-poland@mozilla.org>, 2022"
 
 #: data/ui/add_feed_popover.blp:11
 msgid "Enter feed address to add"
@@ -307,7 +313,7 @@ msgstr "Błędy podczas przetwarzania kanału „{0}”, adres URL: „{1}”"
 msgid "`{0}` may not be an RSS or Atom feed"
 msgstr "„{0}” może nie być kanałem RSS ani Atom"
 
-#: gfeeds/feeds_manager.py:89
+#: gfeeds/feeds_manager.py:97
 #, python-brace-format
 msgid "Feed {0} exists already, skipping"
 msgstr "Kanał {0} już istnieje, pomijanie"
@@ -607,10 +613,6 @@ msgstr "Za_mknij"
 msgid "Cop_y"
 msgstr "S_kopiuj"
 
-#: gfeeds/sidebar.py:21
-msgid "Loading feeds..."
-msgstr "Wczytywanie kanałów…"
-
 #: gfeeds/util/download_manager.py:112
 #, python-brace-format
 msgid "`{0}`: connection timed out"
@@ -621,7 +623,7 @@ msgstr "„{0}”: połączenie przekroczyło czas oczekiwania"
 msgid "`{0}` might not be a valid address"
 msgstr "„{0}” może nie być prawidłowym adresem"
 
-#: gfeeds/util/download_manager.py:157
+#: gfeeds/util/download_manager.py:161
 #, python-brace-format
 msgid "Error downloading `{0}`, code `{1}`"
 msgstr "Błąd podczas pobierania „{0}”, kod „{1}”"
