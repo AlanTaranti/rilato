@@ -7,7 +7,7 @@ from gfeeds.util.create_full_url import create_full_url
 from gfeeds.util.paths import CACHE_PATH
 from gfeeds.util.sha import shasum
 from syndom import Html
-from typing import Dict, Literal, Optional, Union
+from typing import Literal, Optional, Union
 from gfeeds.util.to_unicode import to_unicode, bytes_to_unicode
 
 GET_HEADERS = {

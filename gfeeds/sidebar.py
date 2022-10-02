@@ -1,4 +1,3 @@
-from gettext import gettext as _
 from gi.repository import Gtk
 from gfeeds.confManager import ConfManager
 from gfeeds.feeds_manager import FeedsManager
