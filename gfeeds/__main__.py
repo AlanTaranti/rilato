@@ -137,7 +137,7 @@ class GFeedsApplication(BaseApp):
     ):
         action.change_state(target)
         target_s = str(target).strip("'")
-        if target_s not in ['webview', 'reader', 'rsscont']:
+        if target_s not in ['webview', 'reader', 'feedcont']:
             target_s = 'webview'
         self.window.leaflet.on_view_mode_change(target_s)
         self.confman.conf['default_view'] = target_s

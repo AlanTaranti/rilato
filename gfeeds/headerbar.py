@@ -11,7 +11,7 @@ from gfeeds.webview import GFeedsWebView
 VIEW_MODE_ICONS = {
     'webview': 'globe-alt-symbolic',
     'reader': 'ephy-reader-mode-symbolic',
-    'rsscont': 'application-rss+xml-symbolic'
+    'feedcont': 'application-rss+xml-symbolic'
 }
 
 

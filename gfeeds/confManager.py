@@ -118,48 +118,6 @@ def json_to_gsettings(gw: GsettingsWrapper, path: Path):
 
 
 class ConfManager(metaclass=Singleton):
-
-    _background_color = None
-
-    BASE_SCHEMA = {
-        'feeds': {},
-        'dark_mode': False,
-        'reader_theme': 'auto',  # 'auto', 'light', 'dark'
-        'new_first': True,
-        'windowsize': {
-            'width': 350,
-            'height': 650
-        },
-        'max_article_age_days': 30,
-        'enable_js': False,
-        'max_refresh_threads': 2,
-        'read_items': [],
-        'show_read_items': True,
-        'show_empty_feeds': False,
-        'full_article_title': True,
-        # valid values: 'webview', 'reader', 'rsscont'
-        'default_view': 'webview',
-        'open_links_externally': True,
-        'full_feed_name': False,
-        'refresh_on_startup': False,
-        'tags': [],
-        'open_youtube_externally': False,
-        'media_player': 'mpv',
-        'show_thumbnails': True,
-        'use_experimental_listview': False,
-        'auto_refresh_enabled': False,
-        'notify_new_articles': True,
-        'auto_refresh_time_seconds': 300,
-        'enable_adblock': True,
-        'blocklist_last_update': 0.0,
-        'webview_zoom': 1.0,
-        'font_use_system_for_titles': False,
-        'font_use_system_for_paragraphs': True,
-        'font_titles_custom': 'DejaVu Serif',
-        'font_paragraphs_custom': 'Cantarell',
-        'font_monospace_custom': 'DejaVu Sans Mono'
-    }
-
     def __init__(self):
         self.signaler = ConfManagerSignaler()
         self.emit = self.signaler.emit

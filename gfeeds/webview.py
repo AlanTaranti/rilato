@@ -157,14 +157,14 @@ class GFeedsWebView(Gtk.Stack):
             if not self.uri:
                 if not self.feeditem:
                     return
-                return self.load_feeditem(self.feeditem, force_rsscont=True)
+                return self.load_feeditem(self.feeditem, force_feedcont=True)
             self.webkitview.load_uri(self.uri)
         elif target == 'reader':
             Thread(
                 target=self._load_reader_async,
                 args=(self.load_reader,), daemon=True
             ).start()
-        elif target == 'rsscont':
+        elif target == 'feedcont':
             self.set_enable_rss_content(True)
 
     def apply_webview_settings(self, *args):
@@ -235,7 +235,7 @@ class GFeedsWebView(Gtk.Stack):
         if not self.uri:
             if not self.feeditem:
                 return
-            return self.load_feeditem(self.feeditem, force_rsscont=True)
+            return self.load_feeditem(self.feeditem, force_feedcont=True)
         try:
             self.html = download_text(self.uri)
         except DownloadError as err:
@@ -249,7 +249,7 @@ class GFeedsWebView(Gtk.Stack):
     def load_feeditem(
             self, feeditem: FeedItem,
             trigger_on_load_start: Optional[bool] = True,
-            force_rsscont: Optional[bool] = False
+            force_feedcont: Optional[bool] = False
     ):
         self.webkitview.stop_loading()
         uri = feeditem.link
@@ -258,8 +258,8 @@ class GFeedsWebView(Gtk.Stack):
         self.set_visible_child(self.main_view)
         target = self.confman.conf['default_view']
         # if uri is empty, fallback to rss content
-        if not uri or force_rsscont:
-            target = 'rsscont'
+        if not uri or force_feedcont:
+            target = 'feedcont'
         if target == 'reader':
             Thread(
                 target=self._load_reader_async,
@@ -268,7 +268,7 @@ class GFeedsWebView(Gtk.Stack):
             ).start()
             if trigger_on_load_start:
                 self.on_load_start()
-        elif target == 'rsscont':
+        elif target == 'feedcont':
             self.on_load_start()
             self.set_enable_rss_content(True, feeditem)
         else:
