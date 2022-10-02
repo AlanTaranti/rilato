@@ -1,8 +1,5 @@
 include: 'https://gitlab.gnome.org/GNOME/citemplates/raw/master/flatpak/flatpak_ci_initiative.yml'
 
-variables:
-    BUNDLE: "gfeeds.flatpak"
-
 flake8:
     image: python:3.10
     script:
@@ -16,6 +13,7 @@ flatpak:
         FLATPAK_MODULE: "gfeeds"
         RUNTIME_REPO: "https://flathub.org/repo/flathub.flatpakrepo"
         APP_ID: "org.gabmus.gfeeds"
+        BUNDLE: "gfeeds.flatpak"
     extends: .flatpak
     rules:
         - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
