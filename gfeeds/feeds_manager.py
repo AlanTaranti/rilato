@@ -38,6 +38,11 @@ class FeedsManagerSignaler(GObject.Object):
             None,
             (bool,)
         ),
+        'feedmanager_feeds_loaded_changed': (
+            GObject.SignalFlags.RUN_LAST,
+            None,
+            (float,)
+        ),
     }
 
 
@@ -67,6 +72,8 @@ class FeedsManager(metaclass=Singleton):
             self.on_refresh_end
         )
 
+        self.__feeds_loaded = 0
+
     def on_refresh_end(self, *__):
         # new articles notified in app_window
         self.start_auto_refresh()
@@ -82,6 +89,7 @@ class FeedsManager(metaclass=Singleton):
             refresh: bool = False,
             get_cached: bool = False
     ):
+        self.__tick_feeds_loaded()
         if not refresh:
             if not (uri.startswith('http://') or uri.startswith('https://')):
                 uri = 'http://' + uri
@@ -172,6 +180,7 @@ class FeedsManager(metaclass=Singleton):
             get_cached: bool = False,
             is_startup: bool = False
     ):
+        self.__feeds_loaded = 0
         self.emit(
             'feedmanager_refresh_start',
             'startup' if is_startup else ''
@@ -294,3 +303,10 @@ class FeedsManager(metaclass=Singleton):
         Thread(
             target=af, args=(opml_path,), daemon=True
         ).start()
+
+    def __tick_feeds_loaded(self):
+        self.__feeds_loaded += 1
+        self.emit(
+            'feedmanager_feeds_loaded_changed',
+            self.__feeds_loaded / len(self.confman.conf['feeds'])
+        )

@@ -8,26 +8,21 @@ from gfeeds.articles_listview import ArticlesListView, ArticlesListBox
 class LoadingRevealer(Gtk.Revealer):
     def __init__(self):
         super().__init__(
-            transition_type=Gtk.RevealerTransitionType.SLIDE_DOWN,
+            transition_type=Gtk.RevealerTransitionType.CROSSFADE,
             reveal_child=False, vexpand=False, hexpand=True,
-            valign=Gtk.Align.START, halign=Gtk.Align.CENTER
+            valign=Gtk.Align.START, halign=Gtk.Align.FILL
         )
-        self.main_box = Gtk.Box(
-            orientation=Gtk.Orientation.HORIZONTAL, spacing=12,
-            vexpand=False, hexpand=True
-        )
-        self.main_box.get_style_context().add_class('app-notification')
-        self.label = Gtk.Label(
-            label=_('Loading feeds...'), hexpand=True, vexpand=False,
-            halign=Gtk.Align.CENTER
-        )
-        self.spinner = Gtk.Spinner(spinning=True)
-        self.main_box.append(self.label)
-        self.main_box.append(self.spinner)
-        self.set_child(self.main_box)
+        self.progress_bar = Gtk.ProgressBar(hexpand=True, vexpand=False)
+        self.progress_bar.get_style_context().add_class('osd')
+        self.set_child(self.progress_bar)
 
-    def set_running(self, state):
+    def set_running(self, state: bool):
         self.set_reveal_child(state)
+
+    def set_progress(self, progress: float):
+        '''progress: float between 0.0 and 1.0'''
+
+        self.progress_bar.set_fraction(progress)
 
 
 class GFeedsSidebar(Gtk.Overlay):
@@ -58,6 +53,13 @@ class GFeedsSidebar(Gtk.Overlay):
             'feedmanager_refresh_end',
             self.on_refresh_end
         )
+        self.feedman.connect(
+            'feedmanager_feeds_loaded_changed',
+            self.on_feeds_loaded_changed
+        )
+
+    def on_feeds_loaded_changed(self, _, progress: float):
+        self.loading_revealer.set_progress(progress)
 
     def on_refresh_start(self, *_):
         self.loading_revealer.set_running(True)
