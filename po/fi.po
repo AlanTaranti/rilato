@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gfeeds master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/gfeeds/issues\n"
-"POT-Creation-Date: 2022-07-12 05:28+0000\n"
-"PO-Revision-Date: 2022-08-30 20:18+0300\n"
+"POT-Creation-Date: 2022-10-02 17:13+0000\n"
+"PO-Revision-Date: 2022-10-05 12:20+0300\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos+l10n@iki.fi>\n"
 "Language-Team: Finnish <lokalisointi-lista@googlegroups.com>\n"
 "Language: fi\n"
@@ -61,23 +61,254 @@ msgstr "Syötteitä on mahdollista tuoda ja viedä käyttäen OPML:ää."
 msgid "rss;reader;feed;news;"
 msgstr "rss;reader;feed;news;syötteet;lukija;uutiset;"
 
-#: gfeeds/feed_item.py:49
+#: data/ui/aboutdialog.ui.in:10
+msgid "translator-credits"
+msgstr "Jiri Grönroos"
+
+#: data/ui/add_feed_popover.blp:11
+msgid "Enter feed address to add"
+msgstr "Anna lisättävän syötteen osoite"
+
+#: data/ui/add_feed_popover.blp:26
+msgid "Add"
+msgstr "Lisää"
+
+#: data/ui/add_feed_popover.blp:32
+msgid "You're already subscribed to that feed!"
+msgstr "Olet jo tilannut kyseisen syötteen!"
+
+#: data/ui/empty_state.blp:7
+msgid "Let's get started"
+msgstr "Aloitetaan"
+
+#: data/ui/empty_state.blp:22
+msgid "Add new feeds via URL"
+msgstr "Lisää uusia syötteitä URL-osoitteen avulla"
+
+#: data/ui/empty_state.blp:27
+msgid "Import an OPML file"
+msgstr "Tuo OPML-tiedosto"
+
+#: data/ui/left_headerbar.blp:6
+msgid "_Show Read Articles"
+msgstr "_Näytä luetut artikkelit"
+
+#: data/ui/left_headerbar.blp:7
+msgid "Mark All as Read"
+msgstr "Merkitse kaikki luetuiksi"
+
+#: data/ui/left_headerbar.blp:8
+msgid "Mark All as _Unread"
+msgstr "Merkitse _kaikki lukemattomiksi"
+
+#: data/ui/left_headerbar.blp:11
+msgid "Show _Empty Feeds"
+msgstr "Näytä _tyhjät syötteet"
+
+#: data/ui/left_headerbar.blp:12
+msgid "_Manage Feeds"
+msgstr "_Hallitse syötteitä"
+
+#: data/ui/left_headerbar.blp:13
+msgid "_Import OPML"
+msgstr "_Tuo OPML"
+
+#: data/ui/left_headerbar.blp:14
+msgid "E_xport OPML"
+msgstr "_Vie OPML"
+
+#: data/ui/left_headerbar.blp:17
+msgid "P_references"
+msgstr "_Asetukset"
+
+#: data/ui/left_headerbar.blp:18
+msgid "_Keyboard Shortcuts"
+msgstr "_Pikanäppäimet"
+
+#: data/ui/left_headerbar.blp:19
+msgid "_About Feeds"
+msgstr "Tietoja - _Syötteet"
+
+#: data/ui/left_headerbar.blp:28
+msgid "Filter"
+msgstr "Suodata"
+
+#: data/ui/left_headerbar.blp:32
+msgid "Add Feed"
+msgstr "Lisää syöte"
+
+#: data/ui/left_headerbar.blp:36
+msgid "Menu"
+msgstr "Valikko"
+
+#: data/ui/left_headerbar.blp:41 data/ui/shortcutsWindow.blp:35
+msgid "Refresh"
+msgstr "Päivitä"
+
+#: data/ui/left_headerbar.blp:46 data/ui/shortcutsWindow.blp:39
+msgid "Search"
+msgstr "Etsi"
+
+#: data/ui/left_headerbar.blp:51
+msgid "There Are Errors"
+msgstr "Ilmeni virheitä"
+
+#: data/ui/main_leaflet.blp:40
+msgid "Offline"
+msgstr "Ei verkossa"
+
+#: data/ui/manage_feeds_headerbar.blp:7 gfeeds/manage_feeds_window.py:263
+msgid "Manage Feeds"
+msgstr "Hallitse syötteitä"
+
+#: data/ui/manage_feeds_headerbar.blp:11
+msgid "Manage Tags for Selected Feeds"
+msgstr "Hallitse valittujen syötteiden tunnisteita"
+
+#: data/ui/manage_feeds_headerbar.blp:16
+msgid "Select/Unselect All"
+msgstr "Valitse kaikki tai ei mitään"
+
+#: data/ui/manage_feeds_headerbar.blp:21
+msgid "Delete Selected Feeds"
+msgstr "Poista valitut syötteet"
+
+#: data/ui/manage_tags_content.blp:17
+msgid "New tag name…"
+msgstr "Uuden tunnisteen nimi…"
+
+#: data/ui/manage_tags_content.blp:24
+msgid "Add Tag"
+msgstr "Lisää tunniste"
+
+#: data/ui/manage_tags_content.blp:39
+msgid "There are no tags yet"
+msgstr "Tunnisteita ei vielä ole"
+
+#: data/ui/manage_tags_content.blp:40
+msgid "Add some using the entry above"
+msgstr "Lisää tunnisteita yläpuolelta"
+
+#: data/ui/right_headerbar.blp:9
+msgid "Open in _Browser"
+msgstr "Avaa _selaimessa"
+
+#: data/ui/right_headerbar.blp:10
+msgid "Open in External Media _Player"
+msgstr "Avaa ulkoisessa _mediasoittimessa"
+
+#: data/ui/right_headerbar.blp:11
+msgid "_Copy Article Link"
+msgstr "Kopioi _artikkelin linkki"
+
+#: data/ui/right_headerbar.blp:17 data/ui/right_headerbar.blp:96
+msgid "View Mode"
+msgstr "Katselunäkymä"
+
+#: data/ui/right_headerbar.blp:19
+msgid "Web View"
+msgstr "Web-näkymä"
+
+#: data/ui/right_headerbar.blp:24
+msgid "Reader Mode"
+msgstr "Lukunäkymä"
+
+#: data/ui/right_headerbar.blp:29
+msgid "Feed Content"
+msgstr "Syötteen sisältö"
+
+#: data/ui/right_headerbar.blp:44 data/ui/shortcutsWindow.blp:66
+msgid "Zoom Out"
+msgstr "Loitonna"
+
+#: data/ui/right_headerbar.blp:51 data/ui/shortcutsWindow.blp:70
+msgid "Reset Zoom"
+msgstr "Palauta mittakaava"
+
+#: data/ui/right_headerbar.blp:57 data/ui/shortcutsWindow.blp:62
+msgid "Zoom In"
+msgstr "Lähennä"
+
+#: data/ui/right_headerbar.blp:90
+msgid "Back to Articles"
+msgstr "Takaisin artikkeleihin"
+
+#: data/ui/shortcutsWindow.blp:9 gfeeds/preferences_window.py:24
+msgid "General"
+msgstr "Yleiset"
+
+#: data/ui/shortcutsWindow.blp:12
+msgid "Open Keyboard Shortcuts"
+msgstr "Avaa pikanäppäimet"
+
+#: data/ui/shortcutsWindow.blp:16
+msgid "Open Menu"
+msgstr "Avaa valikko"
+
+#: data/ui/shortcutsWindow.blp:20
+msgid "Open Preferences"
+msgstr "Avaa asetukset"
+
+#: data/ui/shortcutsWindow.blp:24
+msgid "Open Filter"
+msgstr "Avaa suodatin"
+
+#: data/ui/shortcutsWindow.blp:28
+msgid "Quit"
+msgstr "Lopeta"
+
+#: data/ui/shortcutsWindow.blp:32
+msgid "Article List"
+msgstr "Artikkeliluettelo"
+
+#: data/ui/shortcutsWindow.blp:43
+msgid "Next"
+msgstr "Seuraava"
+
+#: data/ui/shortcutsWindow.blp:47
+msgid "Previous"
+msgstr "Edellinen"
+
+#: data/ui/shortcutsWindow.blp:51
+msgid "Show/Hide Read Articles"
+msgstr "Näytä/piilota luetut artikkelit"
+
+#: data/ui/shortcutsWindow.blp:55
+msgid "Mark All Read"
+msgstr "Merkitse kaikki luetuiksi"
+
+#: data/ui/shortcutsWindow.blp:59
+msgid "Article"
+msgstr "Artikkeli"
+
+#: data/ui/shortcutsWindow.blp:74 data/ui/sidebar_listbox_row.blp:6
+msgid "Open in Browser"
+msgstr "Avaa selaimessa"
+
+#: data/ui/sidebar_listbox_row.blp:5
+msgid "Mark as Read/Unread"
+msgstr "Merkitse luetuksi/lukemattomaksi"
+
+#: data/ui/webview.blp:12
+msgid "Select an article"
+msgstr "Valitse artikkeli"
+
+#: gfeeds/feed_item.py:57
 #, python-brace-format
 msgid "Error: unable to parse datetime {0} for feeditem {1}"
 msgstr "Virhe: ei voitu jäsentää datetimea {0} syötekohteelle {1}"
 
-#: gfeeds/feed_parser.py:37
+#: gfeeds/feed_parser.py:61
 #, python-brace-format
-#| msgid "Errors while parsing feed `{0}`"
 msgid "Errors while parsing feed `{0}`, URL: `{1}`"
 msgstr "Virhe jäsentäessä syötettä `{0}`, URL: `{1}`"
 
-#: gfeeds/feed_parser.py:55
+#: gfeeds/feed_parser.py:71
 #, python-brace-format
 msgid "`{0}` may not be an RSS or Atom feed"
 msgstr "`{0}` ei välttämättä ole RSS- tai Atom-syöte"
 
-#: gfeeds/feeds_manager.py:88
+#: gfeeds/feeds_manager.py:97
 #, python-brace-format
 msgid "Feed {0} exists already, skipping"
 msgstr "Syöte {0} on jo olemassa, ohitetaan"
@@ -86,44 +317,57 @@ msgstr "Syöte {0} on jo olemassa, ohitetaan"
 msgid "All feeds"
 msgstr "Kaikki syötteet"
 
-#: gfeeds/headerbar.py:184
-msgid ""
-"There were problems with some feeds.\n"
-"Do you want to remove them?"
-msgstr ""
-"Joidenkin syötteiden kohdalla ilmeni virheitä.\n"
-"Haluatko poistaa ne?"
+#: gfeeds/headerbar.py:197
+msgid "There were problems with some feeds. Do you want to remove them?"
+msgstr "Joidenkin syötteiden kanssa ilmeni ongelmia. Haluatko poistaa ne?"
 
-#: gfeeds/main_leaflet.py:119
+#: gfeeds/headerbar.py:202
+msgid "_Keep"
+msgstr "_Säilytä"
+
+#: gfeeds/headerbar.py:204
+msgid "_Remove"
+msgstr "_Poista"
+
+#: gfeeds/main_leaflet.py:122
 #, python-brace-format
 msgid "{0} new article"
 msgid_plural "{0} new articles"
 msgstr[0] "{0} uusi artikkeli"
 msgstr[1] "{0} uutta artikkelia"
 
-#: gfeeds/__main__.py:229
+#: gfeeds/__main__.py:232
 msgid "Do you want to import these feeds?"
 msgstr "Haluatko tuoda nämä syötteet?"
 
-#: gfeeds/__main__.py:256
+#: gfeeds/__main__.py:239 gfeeds/__main__.py:273
+#: gfeeds/manage_feeds_window.py:330
+msgid "_Cancel"
+msgstr "_Peru"
+
+#: gfeeds/__main__.py:242 gfeeds/__main__.py:276
+msgid "_Import"
+msgstr "_Tuo"
+
+#: gfeeds/__main__.py:269
 msgid "Do you want to import this feed?"
 msgstr "Haluatko tuoda tämän syötteen?"
 
-#: gfeeds/__main__.py:285
+#: gfeeds/__main__.py:301
 msgid "url"
 msgstr "url"
 
-#: gfeeds/__main__.py:288
+#: gfeeds/__main__.py:304
 msgid "opml file local url or rss remote url to import"
 msgstr "opml-tiedoston paikallinen osoite tai rss-etäosoite tuotavaksi"
 
-#: gfeeds/manage_feeds_window.py:263
-msgid "Manage Feeds"
-msgstr "Hallitse syötteitä"
-
-#: gfeeds/manage_feeds_window.py:318
+#: gfeeds/manage_feeds_window.py:327
 msgid "Do you want to delete these feeds?"
 msgstr "Haluatko poistaa nämä syötteet?"
+
+#: gfeeds/manage_feeds_window.py:332
+msgid "_Delete"
+msgstr "_Poista"
 
 #: gfeeds/opml_file_chooser.py:7
 msgid "XML files"
@@ -149,84 +393,71 @@ msgstr "Valitse mihin vietävä OPML-tiedosto tallennetaan"
 msgid "Save"
 msgstr "Tallenna"
 
-#: gfeeds/opml_manager.py:42
-msgid "Error: OPML path provided does not exist"
-msgstr "Virhe: Määritettyä OPML-polkua ei ole olemassa"
-
-#: gfeeds/opml_manager.py:53
-#, python-brace-format
-msgid "Error parsing OPML file `{0}`"
-msgstr "Virhe jäsentäessä OPML-tiedostoa `{0}`"
-
-#: gfeeds/preferences_window.py:22
-msgid "General"
-msgstr "Yleiset"
-
-#: gfeeds/preferences_window.py:25
+#: gfeeds/preferences_window.py:27
 msgid "General preferences"
 msgstr "Yleiset asetukset"
 
-#: gfeeds/preferences_window.py:27
+#: gfeeds/preferences_window.py:29
 msgid "Show newer articles first"
 msgstr "Näytä uusimmat artikkelit ensin"
 
-#: gfeeds/preferences_window.py:32
+#: gfeeds/preferences_window.py:34
 msgid "Open links in your browser"
 msgstr "Avaa linkit selaimessa"
 
-#: gfeeds/preferences_window.py:36
+#: gfeeds/preferences_window.py:38
 msgid "Use external video player for YouTube"
 msgstr "Käytä erillistä videosoitinta YouTube-katseluun"
 
-#: gfeeds/preferences_window.py:38
+#: gfeeds/preferences_window.py:40
 msgid "Requires youtube-dl and a compatible video player"
 msgstr "Vaatii youtube-dl:n ja yhteensopivan videosoittimen"
 
-#: gfeeds/preferences_window.py:44
+#: gfeeds/preferences_window.py:46
 msgid "Preferred video player"
 msgstr "Ensisijainen videosoitin"
 
-#: gfeeds/preferences_window.py:48
+#: gfeeds/preferences_window.py:50
 msgid "Maximum article age"
 msgstr "Artikkelin enimmäisikä"
 
-#: gfeeds/preferences_window.py:49
+#: gfeeds/preferences_window.py:51
 msgid "In days"
 msgstr "Päivissä"
 
-#: gfeeds/preferences_window.py:56
+#: gfeeds/preferences_window.py:58
 msgid "Refresh preferences"
 msgstr "Päivityksen asetukset"
 
-#: gfeeds/preferences_window.py:58
+#: gfeeds/preferences_window.py:60
 msgid "Refresh articles on startup"
 msgstr "Päivitä artikkelit käynnistyksen yhteydessä"
 
-#: gfeeds/preferences_window.py:62
+#: gfeeds/preferences_window.py:64
 msgid "New articles notification"
 msgstr "Uusien artikkelien ilmoitus"
 
-#: gfeeds/preferences_window.py:66
+#: gfeeds/preferences_window.py:68
 msgid "Enable auto-refresh"
 msgstr "Käytä automaattista päivitystä"
 
-#: gfeeds/preferences_window.py:70
+#: gfeeds/preferences_window.py:72
 msgid "Auto-refresh interval"
 msgstr "Automaattisen päivityksen väli"
 
-#: gfeeds/preferences_window.py:71
+#: gfeeds/preferences_window.py:73
 msgid "In seconds"
 msgstr "Sekunneissa"
 
-#: gfeeds/preferences_window.py:78
+#: gfeeds/preferences_window.py:80
 msgid "Cache"
 msgstr "Välimuisti"
 
-#: gfeeds/preferences_window.py:80
+#: gfeeds/preferences_window.py:82
 msgid "Clear caches"
 msgstr "Tyhjennä välimuistit"
 
-#: gfeeds/preferences_window.py:81
+#: gfeeds/preferences_window.py:83
 msgid "Clear"
 msgstr "Tyhjennä"
 
@@ -298,99 +529,129 @@ msgstr "Mukautettu tasalevyinen fontti"
 msgid "Privacy"
 msgstr "Yksityisyys"
 
-#: gfeeds/preferences_window.py:176
+#: gfeeds/preferences_window.py:177
 msgid "Privacy preferences"
 msgstr "Yksityisyyden asetukset"
 
-#: gfeeds/preferences_window.py:178
+#: gfeeds/preferences_window.py:179
 msgid "Enable JavaScript"
 msgstr "Käytä JavaScriptiä"
 
-#: gfeeds/preferences_window.py:183
+#: gfeeds/preferences_window.py:184
 msgid "Try to block advertisements"
 msgstr "Yritä estää mainokset"
 
-#: gfeeds/preferences_window.py:185 gfeeds/preferences_window.py:220
+#: gfeeds/preferences_window.py:186 gfeeds/preferences_window.py:221
 msgid "Requires app restart"
 msgstr "Vaatii sovelluksen käynnistämisen uudelleen"
 
-#: gfeeds/preferences_window.py:189
+#: gfeeds/preferences_window.py:190
 msgid "Update advertisement blocking list"
 msgstr "Päivitä mainosestolista"
 
-#: gfeeds/preferences_window.py:190
+#: gfeeds/preferences_window.py:191
 msgid "Updates automatically every 10 days"
 msgstr "Päivittyy automaattisesti 10 päivän välein"
 
-#: gfeeds/preferences_window.py:191
+#: gfeeds/preferences_window.py:192
 msgid "Update"
 msgstr "Päivitä"
 
-#: gfeeds/preferences_window.py:204
+#: gfeeds/preferences_window.py:205
 msgid "Advanced"
 msgstr "Lisäasetukset"
 
-#: gfeeds/preferences_window.py:207
+#: gfeeds/preferences_window.py:208
 msgid "Advanced preferences"
 msgstr "Edistyneet asetukset"
 
-#: gfeeds/preferences_window.py:209
+#: gfeeds/preferences_window.py:210
 msgid "Maximum refresh threads"
 msgstr "Säikeiden enimmäismäärä päivityksessä"
 
-#: gfeeds/preferences_window.py:211
+#: gfeeds/preferences_window.py:212
 msgid "How many threads to use for feeds refresh"
 msgstr "Kuinka montaa säiettä syötteiden päivittämiseen käytetään"
 
-#: gfeeds/preferences_window.py:218
+#: gfeeds/preferences_window.py:219
 msgid "Experimental GtkListView for articles list"
 msgstr "Kokeellinen GtkListView artikkeliluettelolle"
 
-#: gfeeds/sidebar.py:21
-msgid "Loading feeds..."
-msgstr "Ladataan syötteitä..."
+#: gfeeds/preferences_window.py:227
+msgid "Troubleshooting"
+msgstr "Ongelmanratkaisu"
 
-#: gfeeds/sidebar_row_popover.py:31 gfeeds/sidebar_row_popover.py:58
-msgid "Mark as unread"
-msgstr "Merkitse lukemattomaksi"
+#: gfeeds/preferences_window.py:229
+msgid "Export Configuration as JSON"
+msgstr "Vie asetukset JSON-muotoon"
 
-#: gfeeds/sidebar_row_popover.py:38 gfeeds/sidebar_row_popover.py:50
-msgid "Mark as read"
-msgstr "Merkitse luetuksi"
+#: gfeeds/preferences_window.py:230
+msgid "Attach this when reporting bugs"
+msgstr "Liitä tämä, kun ilmoitat ongelmista"
 
-#: gfeeds/util/download_manager.py:102
+#: gfeeds/preferences_window.py:231
+msgid "Export"
+msgstr "Vie"
+
+#. type: ignore
+#: gfeeds/preferences_window.py:244
+msgid "Feeds Configuration"
+msgstr "Syötteet-sovelluksen asetukset"
+
+#: gfeeds/preferences_window.py:248
+msgid "_Close"
+msgstr "_Sulje"
+
+#: gfeeds/preferences_window.py:251
+msgid "Cop_y"
+msgstr "Ko_pioi"
+
+#: gfeeds/util/download_manager.py:112
 #, python-brace-format
 msgid "`{0}`: connection timed out"
 msgstr "`{0}`: yhteys aikakatkaistiin"
 
-#: gfeeds/util/download_manager.py:111
+#: gfeeds/util/download_manager.py:121
 #, python-brace-format
 msgid "`{0}` might not be a valid address"
 msgstr "`{0}` ei ole välttämättä kelvollinen osoite"
 
-#: gfeeds/util/download_manager.py:150
+#: gfeeds/util/download_manager.py:161
 #, python-brace-format
 msgid "Error downloading `{0}`, code `{1}`"
 msgstr "Virhe ladatessa `{0}`, koodi `{1}`"
 
-#: gfeeds/util/get_favicon.py:53
+#: gfeeds/util/get_favicon.py:48
 #, python-brace-format
 msgid "Error downloading favicon for `{0}`"
 msgstr "Virhe ladatessa favicon-kuvaketta kohteelle `{0}`"
 
-#: gfeeds/webview.py:201
+#: gfeeds/util/opml_parser.py:33
+msgid "Error: OPML path provided does not exist"
+msgstr "Virhe: Määritettyä OPML-polkua ei ole olemassa"
+
+#: gfeeds/util/opml_parser.py:44
+#, python-brace-format
+msgid "Error parsing OPML file `{0}`"
+msgstr "Virhe jäsentäessä OPML-tiedostoa `{0}`"
+
+#: gfeeds/webview.py:204
 msgid "Link copied to clipboard!"
 msgstr "Linkki kopioitu leikepöydälle!"
 
-#: gfeeds/webview.py:223
+#: gfeeds/webview.py:226
 msgid "Feed content not available for this article"
 msgstr "Syötteen sisältöä tälle artikkelille ei ole saatavilla"
 
-#~ msgid "Web View"
-#~ msgstr "Web-näkymä"
+#~ msgid ""
+#~ "There were problems with some feeds.\n"
+#~ "Do you want to remove them?"
+#~ msgstr ""
+#~ "Joidenkin syötteiden kohdalla ilmeni virheitä.\n"
+#~ "Haluatko poistaa ne?"
 
-#~ msgid "Feed Content"
-#~ msgstr "Syötteen sisältö"
+#~ msgid "Loading feeds..."
+#~ msgstr "Ladataan syötteitä..."
 
 #~ msgid "Use dark theme for reader mode"
 #~ msgstr "Käytä tummaa teemaa lukunäkymässä"
@@ -398,17 +659,11 @@ msgstr "Syötteen sisältöä tälle artikkelille ei ole saatavilla"
 #~ msgid "Maximum thumbnail height"
 #~ msgstr "Pienoiskuvan suurin korkeus"
 
-#~ msgid "There are some errors"
-#~ msgstr "Joitain virheitä ilmeni"
-
 #~ msgid "Show"
 #~ msgstr "Näytä"
 
 #~ msgid "Ignore"
 #~ msgstr "Ohita"
-
-#~ msgid "There were problems with some feeds. Do you want to remove them?"
-#~ msgstr "Joidenkin syötteiden kanssa ilmeni ongelmia. Haluatko poistaa ne?"
 
 #~ msgid "You are offline"
 #~ msgstr "Et ole yhteydessä verkkoon"
