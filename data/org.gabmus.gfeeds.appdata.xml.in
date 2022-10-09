@@ -53,6 +53,22 @@
     <url type="donation">https://liberapay.com/gabmus/donate</url>
     <update_contact>gabmus@disroot.org</update_contact>
     <releases>
+        <release version="2.0.0" date="2022-10-09">
+            <description>
+                <ul>
+                    <li>Reader mode color scheme can adapt to system theme</li>
+                    <li>Fix high CPU usage in web view</li>
+                    <li>New message dialog</li>
+                    <li>Can open articles in browser from right click menu</li>
+                    <li>Added a progress bar to show loading state</li>
+                    <li>Small UI improvements</li>
+                    <li>Fixes for thumbnail extraction</li>
+                    <li>Fix OPML export edge cases</li>
+                    <li>Various improvements and bug fixes</li>
+                </ul>
+            </description>
+        </release>
+
         <release version="1.0.3" date="2022-04-30">
             <description>
                 <ul>
