@@ -308,5 +308,5 @@ class FeedsManager(metaclass=Singleton):
         self.__feeds_loaded += 1
         self.emit(
             'feedmanager_feeds_loaded_changed',
-            self.__feeds_loaded / len(self.confman.conf['feeds'])
+            self.__feeds_loaded / max(len(self.confman.conf['feeds']), 1)
         )
