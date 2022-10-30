@@ -1,13 +1,13 @@
 @define-color unread-count #c0bfbc; /* Palette Light 4 */
 
 .unread-count {
-    padding: 4px 8px 3px;
+    padding: 3px 12px;
     border-radius: 12px;
     background-color: @unread-count; 
     color: @theme_bg_color;
-    min-width: 12px;
+    min-width: 6px;
     font-weight: bold;
-    font-size: 0.8em;
+    font-size: 0.7em;
 }
 
 .link-preview-osd {
