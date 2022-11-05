@@ -2,14 +2,14 @@
 # Copyright (C) 2021, 2022 Free Software Foundation, Inc.
 # This file is distributed under the same license as the gfeeds package.
 #
-# Meskó Balázs <mesko.balazs at fsf dot hu>, 2021.
+# Meskó Balázs <mesko.balazs at fsf dot hu>, 2021, 2022.
 # Balázs Úr <ur.balazs at fsf dot hu>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: gfeeds master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/gfeeds/issues\n"
-"POT-Creation-Date: 2022-09-08 05:35+0000\n"
-"PO-Revision-Date: 2022-09-10 21:21+0200\n"
+"POT-Creation-Date: 2022-10-02 17:13+0000\n"
+"PO-Revision-Date: 2022-11-05 19:01+0100\n"
 "Last-Translator: Balázs Úr <ur.balazs at fsf dot hu>\n"
 "Language-Team: Hungarian <gnome-hu-list at gnome dot org>\n"
 "Language: hu\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 19.12.3\n"
+"X-Generator: Lokalize 22.08.2\n"
 
 #: data/org.gabmus.gfeeds.appdata.xml.in:4
 msgid "Feeds"
@@ -63,7 +63,259 @@ msgstr "A hírforrások OPML-ből importálhatók és abba exportálhatók."
 msgid "rss;reader;feed;news;"
 msgstr "rss;olvasó;hírforrás;hírek;"
 
-#: gfeeds/feed_item.py:55
+#: data/ui/aboutdialog.ui.in:10
+msgid "translator-credits"
+msgstr ""
+"Meskó Balázs <mesko dot balazs at fsf dot hu>, 2021, 2022.\n"
+"Úr Balázs <ur dot balazs at fsf dot hu>, 2022."
+
+#: data/ui/add_feed_popover.blp:11
+msgid "Enter feed address to add"
+msgstr "Adja meg a hozzáadandó hírforrás címét"
+
+#: data/ui/add_feed_popover.blp:26
+msgid "Add"
+msgstr "Hozzáadás"
+
+#: data/ui/add_feed_popover.blp:32
+msgid "You're already subscribed to that feed!"
+msgstr "Már feliratkozott erre a hírforrásra!"
+
+#: data/ui/empty_state.blp:7
+msgid "Let's get started"
+msgstr "Kezdjen hozzá"
+
+#: data/ui/empty_state.blp:22
+msgid "Add new feeds via URL"
+msgstr "Új hírforrások hozzáadása URL-lel"
+
+#: data/ui/empty_state.blp:27
+#| msgid "Error parsing OPML file `{0}`"
+msgid "Import an OPML file"
+msgstr "OPML-fájl importálása"
+
+#: data/ui/left_headerbar.blp:6
+#| msgid "Show newer articles first"
+msgid "_Show Read Articles"
+msgstr "Olvasott cikkek meg_jelenítése"
+
+#: data/ui/left_headerbar.blp:7
+#| msgid "Mark as read"
+msgid "Mark All as Read"
+msgstr "Összes megjelölése olvasottként"
+
+#: data/ui/left_headerbar.blp:8
+#| msgid "Mark as unread"
+msgid "Mark All as _Unread"
+msgstr "Összes megjelölése _olvasatlanként"
+
+#: data/ui/left_headerbar.blp:11
+msgid "Show _Empty Feeds"
+msgstr "Ü_res hírforrások megjelenítése"
+
+#: data/ui/left_headerbar.blp:12
+#| msgid "Manage Feeds"
+msgid "_Manage Feeds"
+msgstr "_Hírforrások kezelése"
+
+#: data/ui/left_headerbar.blp:13
+msgid "_Import OPML"
+msgstr "OPML _importálása"
+
+#: data/ui/left_headerbar.blp:14
+#| msgid "Export"
+msgid "E_xport OPML"
+msgstr "OPML e_xportálása"
+
+#: data/ui/left_headerbar.blp:17
+#| msgid "Font preferences"
+msgid "P_references"
+msgstr "_Beállítások"
+
+#: data/ui/left_headerbar.blp:18
+msgid "_Keyboard Shortcuts"
+msgstr "_Gyorsbillentyűk"
+
+#: data/ui/left_headerbar.blp:19
+msgid "_About Feeds"
+msgstr "A Hírforrások _névjegye"
+
+#: data/ui/left_headerbar.blp:28
+msgid "Filter"
+msgstr "Szűrő"
+
+#: data/ui/left_headerbar.blp:32
+#| msgid "Feeds"
+msgid "Add Feed"
+msgstr "Hírforrás hozzáadása"
+
+#: data/ui/left_headerbar.blp:36
+msgid "Menu"
+msgstr "Menü"
+
+#: data/ui/left_headerbar.blp:41 data/ui/shortcutsWindow.blp:35
+msgid "Refresh"
+msgstr "Frissítés"
+
+#: data/ui/left_headerbar.blp:46 data/ui/shortcutsWindow.blp:39
+msgid "Search"
+msgstr "Keresés"
+
+#: data/ui/left_headerbar.blp:51
+msgid "There Are Errors"
+msgstr "Hibák találhatók"
+
+#: data/ui/main_leaflet.blp:40
+msgid "Offline"
+msgstr "Kapcsolat nélkül"
+
+#: data/ui/manage_feeds_headerbar.blp:7 gfeeds/manage_feeds_window.py:263
+msgid "Manage Feeds"
+msgstr "Hírforrások kezelése"
+
+#: data/ui/manage_feeds_headerbar.blp:11
+msgid "Manage Tags for Selected Feeds"
+msgstr "Kiválasztott hírforrások címkéinek kezelése"
+
+#: data/ui/manage_feeds_headerbar.blp:16
+msgid "Select/Unselect All"
+msgstr "Összes kiválasztása be/ki"
+
+#: data/ui/manage_feeds_headerbar.blp:21
+msgid "Delete Selected Feeds"
+msgstr "Kiválasztott hírforrások törlése"
+
+#: data/ui/manage_tags_content.blp:17
+msgid "New tag name…"
+msgstr "Új címke neve…"
+
+#: data/ui/manage_tags_content.blp:24
+msgid "Add Tag"
+msgstr "Címke hozzáadása"
+
+#: data/ui/manage_tags_content.blp:39
+msgid "There are no tags yet"
+msgstr "Még nincsenek címkék"
+
+#: data/ui/manage_tags_content.blp:40
+msgid "Add some using the entry above"
+msgstr "Adjon hozzá párat a fenti beviteli mezővel"
+
+#: data/ui/right_headerbar.blp:9
+#| msgid "Open links in your browser"
+msgid "Open in _Browser"
+msgstr "Megnyitás _böngészőben"
+
+#: data/ui/right_headerbar.blp:10
+msgid "Open in External Media _Player"
+msgstr "Megnyitás külső média_lejátszóban"
+
+#: data/ui/right_headerbar.blp:11
+msgid "_Copy Article Link"
+msgstr "Cikk hivatkozásának _másolása"
+
+#: data/ui/right_headerbar.blp:17 data/ui/right_headerbar.blp:96
+msgid "View Mode"
+msgstr "Nézet mód"
+
+#: data/ui/right_headerbar.blp:19
+msgid "Web View"
+msgstr "Webnézet"
+
+#: data/ui/right_headerbar.blp:24
+#| msgid "Reader mode theme"
+msgid "Reader Mode"
+msgstr "Olvasó mód"
+
+#: data/ui/right_headerbar.blp:29
+#| msgid "Feeds Configuration"
+msgid "Feed Content"
+msgstr "Hírforrás tartalma"
+
+#: data/ui/right_headerbar.blp:44 data/ui/shortcutsWindow.blp:66
+msgid "Zoom Out"
+msgstr "Kicsinyítés"
+
+#: data/ui/right_headerbar.blp:51 data/ui/shortcutsWindow.blp:70
+msgid "Reset Zoom"
+msgstr "Nagyítás visszaállítása"
+
+#: data/ui/right_headerbar.blp:57 data/ui/shortcutsWindow.blp:62
+msgid "Zoom In"
+msgstr "Nagyítás"
+
+#: data/ui/right_headerbar.blp:90
+msgid "Back to Articles"
+msgstr "Vissza a cikkekhez"
+
+#: data/ui/shortcutsWindow.blp:9 gfeeds/preferences_window.py:24
+msgid "General"
+msgstr "Általános"
+
+#: data/ui/shortcutsWindow.blp:12
+msgid "Open Keyboard Shortcuts"
+msgstr "Gyorsbillentyűk megnyitása"
+
+#: data/ui/shortcutsWindow.blp:16
+#| msgid "Open"
+msgid "Open Menu"
+msgstr "Menü megnyitása"
+
+#: data/ui/shortcutsWindow.blp:20
+#| msgid "Font preferences"
+msgid "Open Preferences"
+msgstr "Beállítások megnyitása"
+
+#: data/ui/shortcutsWindow.blp:24
+msgid "Open Filter"
+msgstr "Szűrő megnyitása"
+
+#: data/ui/shortcutsWindow.blp:28
+msgid "Quit"
+msgstr "Kilépés"
+
+#: data/ui/shortcutsWindow.blp:32
+msgid "Article List"
+msgstr "Cikklista"
+
+#: data/ui/shortcutsWindow.blp:43
+msgid "Next"
+msgstr "Következő"
+
+#: data/ui/shortcutsWindow.blp:47
+msgid "Previous"
+msgstr "Előző"
+
+#: data/ui/shortcutsWindow.blp:51
+msgid "Show/Hide Read Articles"
+msgstr "Olvasott cikkek megjelenítése/elrejtése"
+
+#: data/ui/shortcutsWindow.blp:55
+#| msgid "Mark as read"
+msgid "Mark All Read"
+msgstr "Összes megjelölése olvasottként"
+
+#: data/ui/shortcutsWindow.blp:59
+msgid "Article"
+msgstr "Cikk"
+
+#: data/ui/shortcutsWindow.blp:74 data/ui/sidebar_listbox_row.blp:6
+#| msgid "Open links in your browser"
+msgid "Open in Browser"
+msgstr "Megnyitás böngészőben"
+
+#: data/ui/sidebar_listbox_row.blp:5
+#| msgid "Mark as unread"
+msgid "Mark as Read/Unread"
+msgstr "Megjelölés olvasottként/olvasatlanként"
+
+#: data/ui/webview.blp:12
+#| msgid "{0} new article"
+#| msgid_plural "{0} new articles"
+msgid "Select an article"
+msgstr "Válasszon egy cikket"
+
+#: gfeeds/feed_item.py:57
 #, python-brace-format
 msgid "Error: unable to parse datetime {0} for feeditem {1}"
 msgstr "Hiba: a(z) {0} dátum nem dolgozható fel ennél a hírforráselemnél: {1}"
@@ -78,7 +330,7 @@ msgstr "Hibák történtek a(z) „{0}” hírforrás feldolgozásakor, URL: „
 msgid "`{0}` may not be an RSS or Atom feed"
 msgstr "A(z) „{0}” lehet, hogy nem RSS vagy Atom hírforrás"
 
-#: gfeeds/feeds_manager.py:89
+#: gfeeds/feeds_manager.py:97
 #, python-brace-format
 msgid "Feed {0} exists already, skipping"
 msgstr "A(z) „{0}” hírforrás már létezik, kihagyás"
@@ -87,15 +339,15 @@ msgstr "A(z) „{0}” hírforrás már létezik, kihagyás"
 msgid "All feeds"
 msgstr "Összes hírforrás"
 
-#: gfeeds/headerbar.py:198
+#: gfeeds/headerbar.py:197
 msgid "There were problems with some feeds. Do you want to remove them?"
 msgstr "Problémák voltak egyes hírforrásokkal. Szeretné eltávolítani azokat?"
 
-#: gfeeds/headerbar.py:203
+#: gfeeds/headerbar.py:202
 msgid "_Keep"
 msgstr "_Megtartás"
 
-#: gfeeds/headerbar.py:205
+#: gfeeds/headerbar.py:204
 msgid "_Remove"
 msgstr "_Eltávolítás"
 
@@ -106,29 +358,40 @@ msgid_plural "{0} new articles"
 msgstr[0] "{0} új cikk"
 msgstr[1] "{0} új cikk"
 
-#: gfeeds/__main__.py:225
+#: gfeeds/__main__.py:232
 msgid "Do you want to import these feeds?"
 msgstr "Szeretné importálni ezeket a hírforrásokat?"
 
-#: gfeeds/__main__.py:252
+#: gfeeds/__main__.py:239 gfeeds/__main__.py:273
+#: gfeeds/manage_feeds_window.py:330
+#| msgid "Cancel"
+msgid "_Cancel"
+msgstr "_Mégse"
+
+#: gfeeds/__main__.py:242 gfeeds/__main__.py:276
+#| msgid "Export"
+msgid "_Import"
+msgstr "_Importálás"
+
+#: gfeeds/__main__.py:269
 msgid "Do you want to import this feed?"
 msgstr "Szeretné importálni ezt a hírforrást?"
 
-#: gfeeds/__main__.py:281
+#: gfeeds/__main__.py:301
 msgid "url"
 msgstr "URL"
 
-#: gfeeds/__main__.py:284
+#: gfeeds/__main__.py:304
 msgid "opml file local url or rss remote url to import"
 msgstr "importálandó helyi OPML-fájl vagy távoli RSS URL"
 
-#: gfeeds/manage_feeds_window.py:263
-msgid "Manage Feeds"
-msgstr "Hírforrások kezelése"
-
-#: gfeeds/manage_feeds_window.py:318
+#: gfeeds/manage_feeds_window.py:327
 msgid "Do you want to delete these feeds?"
 msgstr "Szeretné törölni ezeket a hírforrásokat?"
+
+#: gfeeds/manage_feeds_window.py:332
+msgid "_Delete"
+msgstr "_Törlés"
 
 #: gfeeds/opml_file_chooser.py:7
 msgid "XML files"
@@ -153,10 +416,6 @@ msgstr "Válassza ki, hogy hová mentse az exportálandó OPML-fájlt"
 #: gfeeds/opml_file_chooser.py:30
 msgid "Save"
 msgstr "Mentés"
-
-#: gfeeds/preferences_window.py:24
-msgid "General"
-msgstr "Általános"
 
 #: gfeeds/preferences_window.py:27
 msgid "General preferences"
@@ -294,94 +553,82 @@ msgstr "Egyéni rögzített szélességű betűkészlet"
 msgid "Privacy"
 msgstr "Adatvédelem"
 
-#: gfeeds/preferences_window.py:176
+#: gfeeds/preferences_window.py:177
 msgid "Privacy preferences"
 msgstr "Adatvédelmi beállítások"
 
-#: gfeeds/preferences_window.py:178
+#: gfeeds/preferences_window.py:179
 msgid "Enable JavaScript"
 msgstr "JavaScript engedélyezése"
 
-#: gfeeds/preferences_window.py:183
+#: gfeeds/preferences_window.py:184
 msgid "Try to block advertisements"
 msgstr "Hirdetések tiltásának kísérlete"
 
-#: gfeeds/preferences_window.py:185 gfeeds/preferences_window.py:220
+#: gfeeds/preferences_window.py:186 gfeeds/preferences_window.py:221
 msgid "Requires app restart"
 msgstr "Az alkalmazás újraindítását igényli"
 
-#: gfeeds/preferences_window.py:189
+#: gfeeds/preferences_window.py:190
 msgid "Update advertisement blocking list"
 msgstr "Hirdetések tiltólistájának frissítése"
 
-#: gfeeds/preferences_window.py:190
+#: gfeeds/preferences_window.py:191
 msgid "Updates automatically every 10 days"
 msgstr "Automatikusan frissíti 10 naponként"
 
-#: gfeeds/preferences_window.py:191
+#: gfeeds/preferences_window.py:192
 msgid "Update"
 msgstr "Frissítés"
 
-#: gfeeds/preferences_window.py:204
+#: gfeeds/preferences_window.py:205
 msgid "Advanced"
 msgstr "Speciális"
 
-#: gfeeds/preferences_window.py:207
+#: gfeeds/preferences_window.py:208
 msgid "Advanced preferences"
 msgstr "Speciális beállítások"
 
-#: gfeeds/preferences_window.py:209
+#: gfeeds/preferences_window.py:210
 msgid "Maximum refresh threads"
 msgstr "Frissítési szálak legnagyobb száma"
 
-#: gfeeds/preferences_window.py:211
+#: gfeeds/preferences_window.py:212
 msgid "How many threads to use for feeds refresh"
 msgstr "Hány szálat használjon a hírforrások frissítéséhez"
 
-#: gfeeds/preferences_window.py:218
+#: gfeeds/preferences_window.py:219
 msgid "Experimental GtkListView for articles list"
 msgstr "Kísérleti GtkListView a cikkek listájához"
 
-#: gfeeds/preferences_window.py:226
+#: gfeeds/preferences_window.py:227
 msgid "Troubleshooting"
 msgstr "Hibaelhárítás"
 
-#: gfeeds/preferences_window.py:228
+#: gfeeds/preferences_window.py:229
 msgid "Export Configuration as JSON"
 msgstr "Beállítások exportálása JSON-ként"
 
-#: gfeeds/preferences_window.py:229
+#: gfeeds/preferences_window.py:230
 msgid "Attach this when reporting bugs"
 msgstr "Ennek csatolása a hibák jelentésekor"
 
-#: gfeeds/preferences_window.py:230
+#: gfeeds/preferences_window.py:231
 msgid "Export"
 msgstr "Exportálás"
 
 #. type: ignore
-#: gfeeds/preferences_window.py:243
+#: gfeeds/preferences_window.py:244
 msgid "Feeds Configuration"
 msgstr "Hírforrások beállításai"
 
-#: gfeeds/preferences_window.py:247
+#: gfeeds/preferences_window.py:248
 msgid "_Close"
 msgstr "_Bezárás"
 
-#: gfeeds/preferences_window.py:250
+#: gfeeds/preferences_window.py:251
 msgid "Cop_y"
 msgstr "_Másolás"
-
-#: gfeeds/sidebar.py:21
-msgid "Loading feeds..."
-msgstr "Hírforrások betöltése…"
-
-#: gfeeds/sidebar_row_popover.py:31 gfeeds/sidebar_row_popover.py:58
-msgid "Mark as unread"
-msgstr "Megjelölés olvasatlanként"
-
-#: gfeeds/sidebar_row_popover.py:38 gfeeds/sidebar_row_popover.py:50
-msgid "Mark as read"
-msgstr "Megjelölés olvasottként"
 
 #: gfeeds/util/download_manager.py:112
 #, python-brace-format
@@ -393,7 +640,7 @@ msgstr "„{0}”: időtúllépés a kapcsolatban"
 msgid "`{0}` might not be a valid address"
 msgstr "A „{0}” lehet, hogy nem érvényes cím"
 
-#: gfeeds/util/download_manager.py:157
+#: gfeeds/util/download_manager.py:161
 #, python-brace-format
 msgid "Error downloading `{0}`, code `{1}`"
 msgstr "Hiba a(z) „{0}” letöltésekor, kód: „{1}”"
@@ -403,19 +650,19 @@ msgstr "Hiba a(z) „{0}” letöltésekor, kód: „{1}”"
 msgid "Error downloading favicon for `{0}`"
 msgstr "Hiba a(z) „{0}” böngészőikonjának letöltésekor"
 
-#: gfeeds/util/opml_parser.py:31
+#: gfeeds/util/opml_parser.py:33
 msgid "Error: OPML path provided does not exist"
 msgstr "Hiba: A megadott OPML útvonal nem létezik"
 
-#: gfeeds/util/opml_parser.py:42
+#: gfeeds/util/opml_parser.py:44
 #, python-brace-format
 msgid "Error parsing OPML file `{0}`"
 msgstr "Hiba a(z) „{0}” OPML-fájl feldolgozásakor"
 
-#: gfeeds/webview.py:201
+#: gfeeds/webview.py:204
 msgid "Link copied to clipboard!"
 msgstr "Hivatkozás a vágólapra másolva!"
 
-#: gfeeds/webview.py:223
+#: gfeeds/webview.py:226
 msgid "Feed content not available for this article"
 msgstr "Nem érhető el hírforrástartalom ennél a cikknél"
