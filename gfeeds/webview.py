@@ -220,7 +220,7 @@ class GFeedsWebView(Gtk.Stack):
         self.set_visible_child(self.main_view)
         self.feeditem = feeditem
         self.uri = feeditem.link
-        content = feeditem.sd_item.get_content()
+        content = feeditem.content
         if not content:
             content = '<h1><i>'+_(
                 'Feed content not available for this article'

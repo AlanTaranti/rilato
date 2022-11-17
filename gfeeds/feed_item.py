@@ -38,6 +38,8 @@ class FeedItem(GObject.Object):
         self.identifier = self.__link or (self.__title + self.pub_date_str)
         self.__read = self.identifier in self.confman.conf['read_items']
 
+        self.content = self.sd_item.get_content()
+
         try:
             self.__pub_date = dateparse(self.pub_date_str, tzinfos={
                 'UT': gettz('GMT'),
