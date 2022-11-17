@@ -318,11 +318,11 @@ class GFeedsWebView(Gtk.Stack):
             dark = self.confman.conf['reader_theme'] == 'dark'
         self.webkitview.load_html(build_reader_html(
             self.html,
+            self.feeditem,
             dark,
-            self.feeditem.sd_item
         ), self.uri)
 
-    def _get_data_cb(self, resource, result, user_data=None):
+    def _get_data_cb(self, resource, result, __=None):
         self.html = resource.get_data_finish(result)
 
     def open_url_in_media_player(self, url: Optional[str]):

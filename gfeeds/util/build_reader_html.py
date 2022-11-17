@@ -1,4 +1,5 @@
 from typing import List, Tuple, Union
+from gfeeds.feed_item import FeedItem
 from gfeeds.util.readability_wrapper import RDoc
 import pygments
 import pygments.lexers
@@ -87,13 +88,9 @@ def build_syntax_highlight_from_raw_html(
     )
 
 
-def build_reader_html(og_html, dark_mode: bool = False, sd_item=None) -> str:
-    def build_media_block():
-        if not sd_item:
-            return ''
-        img_url = sd_item.get_img_url()
-        return '<hr />' + img_url if img_url else ''
-
+def build_reader_html(
+        og_html, feed_item: FeedItem, dark_mode: bool = False
+) -> str:
     doc = RDoc(og_html)
     content = doc.summary(html_partial=True)
     syntax_highlight_css, root = build_syntax_highlight_from_raw_html(content)
@@ -102,7 +99,6 @@ def build_reader_html(og_html, dark_mode: bool = False, sd_item=None) -> str:
     )
     if not isinstance(content, str):
         content = content.decode()
-    content += build_media_block()
     return f'''<html>
         <head>
             <meta charset="UTF-8" />
@@ -110,14 +106,16 @@ def build_reader_html(og_html, dark_mode: bool = False, sd_item=None) -> str:
                 {get_css()}
                 {syntax_highlight_css}
             </style>
-            <title>{doc.short_title() or sd_item.title}</title>
+            <title>{doc.short_title() or feed_item.title}</title>
         </head>
         <body {'class="dark"' if dark_mode else ''} dir=auto>
             <article>
-                <h1>{doc.short_title() or sd_item.title}</h1>
+                <h1>{doc.short_title() or feed_item.title}</h1>
                 {
-                    f'<img src="{sd_item.img_url}" /> <hr />'
-                    if sd_item.img_url else ''
+                    f'<img src="{feed_item.image_url}" /> <hr />'
+                    if feed_item.image_url
+                    and feed_item.image_url not in content
+                    else ''
                 }
                 {content}
             </article>
