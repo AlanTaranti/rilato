@@ -133,8 +133,6 @@ class BaseWindow(Adw.ApplicationWindow):
     @dark_mode.setter
     def dark_mode(self, nval: bool):
         self.__dark_mode = nval
-        sm: Adw.StyleManager = Adw.StyleManager.get_default()
-        sm.props.co
         Adw.StyleManager.get_default().set_color_scheme(
             Adw.ColorScheme.FORCE_DARK if nval
             else Adw.ColorScheme.DEFAULT
