@@ -240,15 +240,9 @@ class GFeedsManageFeedsWindow(Adw.Window):
         self.flap.set_content(self.scrolled_window)
         self.flap.set_flap(self.tags_flap)
         self.headerbar = ManageFeedsHeaderbar(self.flap)
-        self.headerbar.tags_btn.connect(
-            'toggled', lambda btn:
-                self.tags_flap.set_reveal(btn.get_active())
-        )
-        self.flap.connect(
-            'notify::reveal-flap', lambda *args:
-                self.headerbar.tags_btn.set_active(
-                    self.flap.get_reveal_flap()
-                )
+        self.flap.bind_property(
+            'reveal-flap', self.headerbar.tags_btn, 'active',
+            GObject.BindingFlags.BIDIRECTIONAL
         )
 
         self.headerbar.delete_btn.connect(

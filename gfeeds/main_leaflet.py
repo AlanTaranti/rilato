@@ -6,7 +6,7 @@ from gfeeds.feed_item import FeedItem
 from gfeeds.stack_with_empty_state import StackWithEmptyState
 from operator import or_
 from subprocess import Popen
-from gi.repository import Gtk, Adw, Gio
+from gi.repository import GObject, Gtk, Adw, Gio
 from gfeeds.sidebar import GFeedsSidebar
 from gfeeds.webview import GFeedsWebView
 from gfeeds.headerbar import LeftHeaderbar, RightHeaderbar
@@ -39,9 +39,9 @@ class MainLeaflet(Adw.Bin):
         self.sidebar.listview_sw.connect_activate(
             self.on_sidebar_row_activated
         )
-        self.left_headerbar.filter_btn.connect(
-            'toggled', lambda btn:
-                self.filter_flap.set_reveal_flap(btn.get_active())
+        self.filter_flap.bind_property(
+            'reveal-flap', self.left_headerbar.filter_btn, 'active',
+            GObject.BindingFlags.BIDIRECTIONAL
         )
 
         self.confman.connect(
@@ -53,7 +53,7 @@ class MainLeaflet(Adw.Bin):
         )
         self.searchbar.connect(
             'notify::search-mode-enabled',
-            lambda caller, enabled: self.left_headerbar.search_btn.set_active(
+            lambda caller, _: self.left_headerbar.search_btn.set_active(
                 caller.get_search_mode()
             )
         )
@@ -67,12 +67,6 @@ class MainLeaflet(Adw.Bin):
         )
 
         self.on_leaflet_folded()
-
-    @Gtk.Template.Callback()
-    def on_reveal_flap_changed(self, *_):
-        self.left_headerbar.filter_btn.set_active(
-            self.filter_flap.get_reveal_flap()
-        )
 
     def on_filter_changed(self, *_):
         self.left_headerbar.filter_btn.set_active(False)

@@ -50,7 +50,6 @@ template MainLeaflet : Adw.Bin {
                     reveal-flap: false;
                     swipe-to-open: true;
                     swipe-to-close: true;
-                    notify::reveal-flap => on_reveal_flap_changed();
                     [flap] .FilterView filter_view {}
                     [content] .StackWithEmptyState sidebar_stack {
                         main-widget: .GFeedsSidebar sidebar {
