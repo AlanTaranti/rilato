@@ -1,10 +1,11 @@
 from math import ceil
 from os.path import isfile
+from typing import List
 from gfeeds.feed_item import FeedItem
 from gfeeds.util.paths import THUMBS_CACHE_PATH
 from gfeeds.util.sha import shasum
 from gfeeds.util.download_manager import download_raw
-from gi.repository import Gio, Gtk, GLib, Pango
+from gi.repository import Gio, Gtk, GLib, Pango, GObject
 from gfeeds.confManager import ConfManager
 from gfeeds.simple_avatar import SimpleAvatar
 from gfeeds.util.relative_day_formatter import humanize_datetime
@@ -21,11 +22,14 @@ class SidebarRow(Gtk.Box):
     picture_view_container = Gtk.Template.Child()
     popover: Gtk.PopoverMenu = Gtk.Template.Child()
 
+    __dim = False
+
     def __init__(self, fetch_image_thread_pool):
         super().__init__()
         self.fetch_image_thread_pool = fetch_image_thread_pool
         self.feed_item = None
         self.signal_ids = list()
+        self.prop_bindings: List[GObject.Binding] = list()
         self.confman = ConfManager()
 
         self.confman.connect(
@@ -42,7 +46,6 @@ class SidebarRow(Gtk.Box):
         self.icon = SimpleAvatar()
         self.icon_container.append(self.icon)
 
-        self.datestr = ''
         self.picture_view = Gtk.Picture(
             overflow=Gtk.Overflow.HIDDEN,
             halign=Gtk.Align.CENTER, hexpand=True
@@ -81,12 +84,22 @@ class SidebarRow(Gtk.Box):
         if self.feed_item is not None:
             for sig_id in self.signal_ids:
                 self.feed_item.disconnect(sig_id)
+            for binding in self.prop_bindings:
+                binding.unbind()
         self.signal_ids = list()
+        self.prop_bindings = list()
 
         self.feed_item = feed_item
-        self.signal_ids.append(
-            self.feed_item.connect(
-                'notify::read', lambda *_: self.set_read()
+        self.prop_bindings.append(
+            self.feed_item.bind_property(
+                'read', self, 'dim', GObject.BindingFlags.DEFAULT
+            )
+        )
+        self.dim = self.feed_item.read
+        self.prop_bindings.append(
+            self.feed_item.bind_property_full(
+                'pub_date', self.date_label, 'label',
+                GObject.BindingFlags.DEFAULT
             )
         )
         self.signal_ids.append(
@@ -121,8 +134,7 @@ class SidebarRow(Gtk.Box):
     def on_feed_item_changed(self, *_):
         if self.feed_item is None:
             return
-        self.datestr = humanize_datetime(self.feed_item.pub_date)
-        self.date_label.set_text(self.datestr)
+        self.date_label.set_text(humanize_datetime(self.feed_item.pub_date))
 
     def set_article_image(self, *_):
         if not self.confman.conf['show_thumbnails'] or self.feed_item is None:
@@ -210,15 +222,17 @@ class SidebarRow(Gtk.Box):
             return
         if read is not None:
             self.feed_item.read = read
-        if self.feed_item.read:
-            self.set_dim(True)
-        else:
-            self.set_dim(False)
 
-    def set_dim(self, state):
+    @GObject.Property(type=bool, default=False)
+    def dim(self) -> bool:
+        return self.__dim
+
+    @dim.setter
+    def dim(self, state: bool):
+        self.__dim = state
         for w in (
                 self.title_label,
-                self.icon
+                self.icon,
         ):
             if state:
                 w.get_style_context().add_class('dim-label')
