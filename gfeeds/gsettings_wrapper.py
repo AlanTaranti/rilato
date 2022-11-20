@@ -1,6 +1,29 @@
 import json
 from typing import Callable, Dict, Union
 from gi.repository import GLib, Gio
+from datetime import datetime
+
+
+class CustomJSONEncoder(json.JSONEncoder):
+    def default(self, o):
+        if isinstance(o, datetime):
+            return o.isoformat()
+
+        return super().default(o)
+
+
+class CustomJSONDecoder(json.JSONDecoder):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, object_hook=self.obj_hook, **kwargs)
+
+    def obj_hook(self, jdict):
+        for (key, value) in jdict.items():
+            if isinstance(value, str) and '-' in value and ':' in value:
+                try:
+                    jdict[key] = datetime.fromisoformat(value)
+                except Exception:
+                    pass
+        return jdict
 
 
 def __convert_string_variant(v: GLib.Variant) -> Union[str, dict, list]:
@@ -9,7 +32,7 @@ def __convert_string_variant(v: GLib.Variant) -> Union[str, dict, list]:
             (res.startswith('{') and res.endswith('}')) or
             (res.startswith('[') and res.endswith(']'))
     ):
-        return json.loads(res)
+        return json.loads(res, cls=CustomJSONDecoder)
     return res
 
 
@@ -58,7 +81,7 @@ class GsettingsWrapper:
             case str(value):
                 self.gs.set_string(key, value)
             case dict(value) | list(value):
-                self.set(key, json.dumps(value))
+                self.set(key, json.dumps(value, cls=CustomJSONEncoder))
             case bool(value):
                 self.gs.set_boolean(key, value)
             case int(value):
@@ -82,4 +105,4 @@ class GsettingsWrapper:
     def to_json_str(self) -> str:
         return json.dumps({
             k: self.get(k) for k in self.__keys
-        }, indent=4)
+        }, indent=4, cls=CustomJSONEncoder)

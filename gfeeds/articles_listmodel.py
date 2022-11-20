@@ -26,10 +26,10 @@ class ArticlesListModel(Gtk.SortListModel):
         super().__init__(model=self.filter_store, sorter=self.sorter)
 
         self.confman.connect(
-            'gfeeds_show_read_changed', lambda *args: self.invalidate_filter()
+            'gfeeds_show_read_changed', lambda *_: self.invalidate_filter()
         )
         self.confman.connect(
-            'gfeeds_new_first_changed', lambda *args: self.invalidate_sort()
+            'gfeeds_new_first_changed', lambda *_: self.invalidate_sort()
         )
         self.confman.connect(
             'gfeeds_filter_changed', self._change_filter
@@ -63,7 +63,7 @@ class ArticlesListModel(Gtk.SortListModel):
         self.selected_article = n_selected
         self.invalidate_filter()
 
-    def _filter_func(self, item: FeedItem, *args) -> bool:
+    def _filter_func(self, item: FeedItem, *_) -> bool:
         res = self.__filter_by_feed_and_search(item)
         if not self.confman.conf['show_read_items']:
             res = res and (
@@ -82,9 +82,7 @@ class ArticlesListModel(Gtk.SortListModel):
             )
         return res
 
-    def _sort_func(
-            self, item1: FeedItem, item2: FeedItem, *args
-    ) -> int:
+    def _sort_func(self, item1: FeedItem, item2: FeedItem, *_) -> int:
         # item1 first -> -1
         # item2 first -> +1
         # equal (unused) -> 0
@@ -123,16 +121,16 @@ class ArticlesListModel(Gtk.SortListModel):
     def remove_items(self, to_remove_l: List[FeedItem]):
         to_rm_ids = [i.identifier for i in to_remove_l]
         to_rm_indices = []
-        for index, item in enumerate(self.list_store):
+        for idx, item in enumerate(self.list_store):
             if len(to_rm_ids) <= 0:
                 break
             if not item:
                 continue
             if item.identifier in to_rm_ids:
                 to_rm_ids.remove(item.identifier)
-                to_rm_indices.append(index)
-        for index in sorted(to_rm_indices, reverse=True):
-            self.list_store.remove(index)
+                to_rm_indices.append(idx)
+        for idx in sorted(to_rm_indices, reverse=True):
+            self.list_store.remove(idx)
 
     def set_search_term(self, term):
         self.__search_term = term.strip().lower()

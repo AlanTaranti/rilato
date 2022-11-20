@@ -74,11 +74,12 @@ class Feed(GObject.Object):
             if valid_age and not n_item.read:
                 unread_count += 1
             if not valid_age and n_item.read:
-                read_items: List[str] = self.confman.conf['read_items']
+                read_items: List[str] = \
+                    self.confman.conf['read_items']  # type: ignore
                 read_items.remove(n_item.identifier)
                 self.confman.conf['read_items'] = read_items
 
-        if self.rss_link in self.confman.conf['feeds']:
+        if self.rss_link in self.confman.conf['feeds']:  # type: ignore
             feed_conf = (self.get_conf_dict() or dict())
             for tag_name in feed_conf.get('tags', []):
                 tag_obj = self.tag_store.get_tag(tag_name)
@@ -92,7 +93,9 @@ class Feed(GObject.Object):
             GLib.idle_add(do)
 
     def get_conf_dict(self) -> Optional[dict]:
-        return self.confman.conf['feeds'].get(self.rss_link, None)
+        return self.confman.conf['feeds'].get(  # type: ignore
+                self.rss_link, None
+        )
 
     @GObject.Property(type=str)
     def title(self) -> str:  # type: ignore
@@ -133,3 +136,13 @@ class Feed(GObject.Object):
 
     def __repr__(self):
         return f'Feed Object `{self.__title}`; {len(self.items)} items'
+
+    def to_dict(self) -> dict:
+        return {
+            'title': self.title,
+            'link': self.link,
+            'description': self.description,
+            'image_url': self.image_url,
+            'rss_link': self.rss_link,
+            'favicon_path': self.favicon_path,
+        }

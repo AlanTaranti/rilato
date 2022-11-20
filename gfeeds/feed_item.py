@@ -22,15 +22,15 @@ class FeedItem(GObject.Object):
     def __init__(self, sd_item, parent_feed: 'Feed'):
         self.confman = ConfManager()
         self.parent_feed = parent_feed
-        self.sd_item = sd_item
-        title = self.sd_item.get_title()
+        self.__sd_item = sd_item
+        title = self.__sd_item.get_title()
         self.__title = (
             BeautifulSoup(title, features='lxml').text
             if title and '</' in title
             else title
         )
-        self.__link = self.sd_item.get_url()
-        self.pub_date_str = self.sd_item.get_pub_date()
+        self.__link = self.__sd_item.get_url()
+        self.pub_date_str = self.__sd_item.get_pub_date()
         # fallback to avoid errors
         self.__pub_date = datetime.now(timezone.utc)
 
@@ -38,7 +38,7 @@ class FeedItem(GObject.Object):
         self.identifier = self.__link or (self.__title + self.pub_date_str)
         self.__read = self.identifier in self.confman.conf['read_items']
 
-        self.content = self.sd_item.get_content()
+        self.content = self.__sd_item.get_content()
 
         try:
             self.__pub_date = dateparse(self.pub_date_str, tzinfos={
@@ -104,7 +104,7 @@ class FeedItem(GObject.Object):
         if read == self.__read:
             return
         self.parent_feed.unread_count += -1 if read else 1
-        read_items: List[str] = self.confman.conf['read_items']
+        read_items: List[str] = self.confman.conf['read_items']  # type: ignore
         if read and self.identifier not in read_items:
             read_items.append(self.identifier)
         elif not read and self.identifier in read_items:
@@ -117,3 +117,14 @@ class FeedItem(GObject.Object):
             self.__title,
             self.parent_feed.title
         )
+
+    def to_dict(self) -> dict:
+        return {
+            'title': self.title,
+            'link': self.link,
+            'identifier': self.identifier,
+            'pub_date': self.pub_date,
+            'image_url': self.image_url,
+            'content': self.content,
+            'parent_feed': self.parent_feed.to_dict(),
+        }
