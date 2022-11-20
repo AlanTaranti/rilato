@@ -1,15 +1,15 @@
 # Serbian translation for gfeeds.
 # Copyright © 2022 gfeeds's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gfeeds package.
-# Мирослав Николић <miroslavnikolić@rocketmail.com>, 2022.
+# Мирослав Николић <miroslavnikolic@rocketmail.com>, 2022.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gfeeds master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/gfeeds/issues\n"
-"POT-Creation-Date: 2022-06-02 09:20+0000\n"
-"PO-Revision-Date: 2022-06-18 09:36+0200\n"
-"Last-Translator: Мирослав Николић <miroslavnikolić@rocketmail.com>\n"
+"POT-Creation-Date: 2022-10-02 17:13+0000\n"
+"PO-Revision-Date: 2022-10-26 12:32+0200\n"
+"Last-Translator: Мирослав Николић <miroslavnikolic@rocketmail.com>\n"
 "Language-Team: Serbian <српски <gnome-sr@googlegroups.org>>\n"
 "Language: sr\n"
 "MIME-Version: 1.0\n"
@@ -17,6 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=n==1? 3 : n%10==1 && n%100!=11 ? 0 : n"
 "%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2\n"
+"X-Generator: Gtranslator 3.36.0\n"
 
 #: data/org.gabmus.gfeeds.appdata.xml.in:4
 msgid "Feeds"
@@ -54,30 +55,279 @@ msgstr ""
 
 #: data/org.gabmus.gfeeds.appdata.xml.in:18
 msgid "Feeds can be imported and exported via OPML."
-msgstr "Токовник се може увести и извести путем ОПМЛ-а."
+msgstr "Токови се могу увести и извести путем ОПМЛ-а."
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gabmus.gfeeds.desktop.in:16
 msgid "rss;reader;feed;news;"
 msgstr "рсс;читач;ток;вести;rss;reader;feed;news;"
 
-#: gfeeds/feed_item.py:49
+#: data/ui/aboutdialog.ui.in:10
+msgid "translator-credits"
+msgstr "Мирослав Николић <miroslavnikolic@rocketmail.com>"
+
+#: data/ui/add_feed_popover.blp:11
+msgid "Enter feed address to add"
+msgstr "Унесите адресу тока за додавање"
+
+#: data/ui/add_feed_popover.blp:26
+msgid "Add"
+msgstr "Додај"
+
+#: data/ui/add_feed_popover.blp:32
+msgid "You're already subscribed to that feed!"
+msgstr "Већ сте се претплатили на тај ток!"
+
+#: data/ui/empty_state.blp:7
+msgid "Let's get started"
+msgstr "Хајде да почнемо"
+
+#: data/ui/empty_state.blp:22
+msgid "Add new feeds via URL"
+msgstr "Додајте нове токове путем адресе"
+
+#: data/ui/empty_state.blp:27
+#| msgid "Error parsing OPML file `{0}`"
+msgid "Import an OPML file"
+msgstr "Увезите ОПМЛ датотеку"
+
+#: data/ui/left_headerbar.blp:6
+#| msgid "Show newer articles first"
+msgid "_Show Read Articles"
+msgstr "_Прикажи чланке за читање"
+
+#: data/ui/left_headerbar.blp:7
+#| msgid "Mark as read"
+msgid "Mark All as Read"
+msgstr "Означи све као прочитано"
+
+#: data/ui/left_headerbar.blp:8
+#| msgid "Mark as unread"
+msgid "Mark All as _Unread"
+msgstr "Означи све као _непрочитано"
+
+#: data/ui/left_headerbar.blp:11
+msgid "Show _Empty Feeds"
+msgstr "Прикажи _празне токове"
+
+#: data/ui/left_headerbar.blp:12
+#| msgid "Manage Feeds"
+msgid "_Manage Feeds"
+msgstr "Управљај _токовима"
+
+#: data/ui/left_headerbar.blp:13
+msgid "_Import OPML"
+msgstr "_Увези ОПМЛ"
+
+#: data/ui/left_headerbar.blp:14
+msgid "E_xport OPML"
+msgstr "_Извези ОПМЛ"
+
+#: data/ui/left_headerbar.blp:17
+#| msgid "Font preferences"
+msgid "P_references"
+msgstr "_Поставке"
+
+#: data/ui/left_headerbar.blp:18
+msgid "_Keyboard Shortcuts"
+msgstr "Пречице _тастатуре"
+
+#: data/ui/left_headerbar.blp:19
+msgid "_About Feeds"
+msgstr "_О Токовнику"
+
+#: data/ui/left_headerbar.blp:28
+msgid "Filter"
+msgstr "Филтрирај"
+
+#: data/ui/left_headerbar.blp:32
+#| msgid "Feeds"
+msgid "Add Feed"
+msgstr "Додај ток"
+
+#: data/ui/left_headerbar.blp:36
+msgid "Menu"
+msgstr "Изборник"
+
+#: data/ui/left_headerbar.blp:41 data/ui/shortcutsWindow.blp:35
+msgid "Refresh"
+msgstr "Освежи"
+
+#: data/ui/left_headerbar.blp:46 data/ui/shortcutsWindow.blp:39
+msgid "Search"
+msgstr "Тражи"
+
+#: data/ui/left_headerbar.blp:51
+#| msgid "There are some errors"
+msgid "There Are Errors"
+msgstr "Постоје грешке"
+
+#: data/ui/main_leaflet.blp:40
+msgid "Offline"
+msgstr "Ван мреже"
+
+#: data/ui/manage_feeds_headerbar.blp:7 gfeeds/manage_feeds_window.py:263
+msgid "Manage Feeds"
+msgstr "Управљај токовима"
+
+#: data/ui/manage_feeds_headerbar.blp:11
+msgid "Manage Tags for Selected Feeds"
+msgstr "Управљај ознакама за изабране токове"
+
+#: data/ui/manage_feeds_headerbar.blp:16
+msgid "Select/Unselect All"
+msgstr "Изабери/поништи све"
+
+#: data/ui/manage_feeds_headerbar.blp:21
+msgid "Delete Selected Feeds"
+msgstr "Обриши изабране токове"
+
+#: data/ui/manage_tags_content.blp:17
+msgid "New tag name…"
+msgstr "Нови назив  ознаке…"
+
+#: data/ui/manage_tags_content.blp:24
+msgid "Add Tag"
+msgstr "Додај ознаку"
+
+#: data/ui/manage_tags_content.blp:39
+#| msgid "There are some errors"
+msgid "There are no tags yet"
+msgstr "Још нема ознака"
+
+#: data/ui/manage_tags_content.blp:40
+msgid "Add some using the entry above"
+msgstr "Додајте неку користећи унос изнад"
+
+#: data/ui/right_headerbar.blp:9
+#| msgid "Open links in your browser"
+msgid "Open in _Browser"
+msgstr "Отвори у _прегледнику"
+
+#: data/ui/right_headerbar.blp:10
+msgid "Open in External Media _Player"
+msgstr "Отвори у спољном медијском _пуштачу"
+
+#: data/ui/right_headerbar.blp:11
+msgid "_Copy Article Link"
+msgstr "_Умножи везу чланка"
+
+#: data/ui/right_headerbar.blp:17 data/ui/right_headerbar.blp:96
+msgid "View Mode"
+msgstr "Режим прегледа"
+
+#: data/ui/right_headerbar.blp:19
+msgid "Web View"
+msgstr "Веб преглед"
+
+#: data/ui/right_headerbar.blp:24
+#| msgid "Reader mode theme"
+msgid "Reader Mode"
+msgstr "Режим читача"
+
+#: data/ui/right_headerbar.blp:29
+msgid "Feed Content"
+msgstr "Садржај тока"
+
+#: data/ui/right_headerbar.blp:44 data/ui/shortcutsWindow.blp:66
+msgid "Zoom Out"
+msgstr "Одзумирај"
+
+#: data/ui/right_headerbar.blp:51 data/ui/shortcutsWindow.blp:70
+msgid "Reset Zoom"
+msgstr "Врати зум"
+
+#: data/ui/right_headerbar.blp:57 data/ui/shortcutsWindow.blp:62
+msgid "Zoom In"
+msgstr "Зумирај"
+
+#: data/ui/right_headerbar.blp:90
+msgid "Back to Articles"
+msgstr "Назад на чланке"
+
+#: data/ui/shortcutsWindow.blp:9 gfeeds/preferences_window.py:24
+msgid "General"
+msgstr "Опште"
+
+#: data/ui/shortcutsWindow.blp:12
+msgid "Open Keyboard Shortcuts"
+msgstr "Отвори прећице тастатуре"
+
+#: data/ui/shortcutsWindow.blp:16
+#| msgid "Open"
+msgid "Open Menu"
+msgstr "Отвори изборник"
+
+#: data/ui/shortcutsWindow.blp:20
+#| msgid "Font preferences"
+msgid "Open Preferences"
+msgstr "Отвори поставке"
+
+#: data/ui/shortcutsWindow.blp:24
+msgid "Open Filter"
+msgstr "Отвори филтер"
+
+#: data/ui/shortcutsWindow.blp:28
+msgid "Quit"
+msgstr "Изађи"
+
+#: data/ui/shortcutsWindow.blp:32
+msgid "Article List"
+msgstr "Списак чланака"
+
+#: data/ui/shortcutsWindow.blp:43
+msgid "Next"
+msgstr "Следеће"
+
+#: data/ui/shortcutsWindow.blp:47
+msgid "Previous"
+msgstr "Претходно"
+
+#: data/ui/shortcutsWindow.blp:51
+msgid "Show/Hide Read Articles"
+msgstr "Прикажи/сакриј чланке за читање"
+
+#: data/ui/shortcutsWindow.blp:55
+#| msgid "Mark as read"
+msgid "Mark All Read"
+msgstr "Означи све као прочитано"
+
+#: data/ui/shortcutsWindow.blp:59
+msgid "Article"
+msgstr "Чланак"
+
+#: data/ui/shortcutsWindow.blp:74 data/ui/sidebar_listbox_row.blp:6
+#| msgid "Open links in your browser"
+msgid "Open in Browser"
+msgstr "Отвори у прегледнику"
+
+#: data/ui/sidebar_listbox_row.blp:5
+#| msgid "Mark as unread"
+msgid "Mark as Read/Unread"
+msgstr "Означи као прочитано/непрочитано"
+
+#: data/ui/webview.blp:12
+#| msgid "{0} new article"
+#| msgid_plural "{0} new articles"
+msgid "Select an article"
+msgstr "Изаберите чланак"
+
+#: gfeeds/feed_item.py:57
 #, python-brace-format
 msgid "Error: unable to parse datetime {0} for feeditem {1}"
 msgstr "Грешка: не могу да обрадим време датума „{0}“ за ставку тока „{1}“"
 
-#: gfeeds/feed_parser.py:37
+#: gfeeds/feed_parser.py:61
 #, python-brace-format
-#| msgid "Errors while parsing feed `{0}`"
 msgid "Errors while parsing feed `{0}`, URL: `{1}`"
 msgstr "Грешка приликом обраде тока „{0}“, адреса „{1}“"
 
-#: gfeeds/feed_parser.py:55
+#: gfeeds/feed_parser.py:71
 #, python-brace-format
 msgid "`{0}` may not be an RSS or Atom feed"
 msgstr "„{0}“ не може бити РСС или Атом ток"
 
-#: gfeeds/feeds_manager.py:88
+#: gfeeds/feeds_manager.py:97
 #, python-brace-format
 msgid "Feed {0} exists already, skipping"
 msgstr "Већ постоји ток „{0}“, прескачем"
@@ -86,15 +336,19 @@ msgstr "Већ постоји ток „{0}“, прескачем"
 msgid "All feeds"
 msgstr "Сви токови"
 
-#: gfeeds/headerbar.py:184
-msgid ""
-"There were problems with some feeds.\n"
-"Do you want to remove them?"
-msgstr ""
-"Било  је проблема са неким токовима.\n"
-"Да ли желите да их уклоните?"
+#: gfeeds/headerbar.py:197
+msgid "There were problems with some feeds. Do you want to remove them?"
+msgstr "Било је проблема са неким токовима. Да ли желите да их уклоните?"
 
-#: gfeeds/main_leaflet.py:119
+#: gfeeds/headerbar.py:202
+msgid "_Keep"
+msgstr "_Задржи"
+
+#: gfeeds/headerbar.py:204
+msgid "_Remove"
+msgstr "_Уклони"
+
+#: gfeeds/main_leaflet.py:122
 #, python-brace-format
 msgid "{0} new article"
 msgid_plural "{0} new articles"
@@ -103,29 +357,39 @@ msgstr[1] "{0} нова чланка"
 msgstr[2] "{0} нових чланака"
 msgstr[3] "Један нови чланак"
 
-#: gfeeds/__main__.py:229
+#: gfeeds/__main__.py:232
 msgid "Do you want to import these feeds?"
 msgstr "Да ли желите да увезете ове токове?"
 
-#: gfeeds/__main__.py:256
+#: gfeeds/__main__.py:239 gfeeds/__main__.py:273
+#: gfeeds/manage_feeds_window.py:330
+#| msgid "Cancel"
+msgid "_Cancel"
+msgstr "_Откажи"
+
+#: gfeeds/__main__.py:242 gfeeds/__main__.py:276
+msgid "_Import"
+msgstr "_Увези"
+
+#: gfeeds/__main__.py:269
 msgid "Do you want to import this feed?"
 msgstr "Да ли желите да увезете овај ток?"
 
-#: gfeeds/__main__.py:285
+#: gfeeds/__main__.py:301
 msgid "url"
 msgstr "адреса"
 
-#: gfeeds/__main__.py:288
+#: gfeeds/__main__.py:304
 msgid "opml file local url or rss remote url to import"
 msgstr "локална адреса опм датотеке или адреса удаљеног рсс-а за увоз"
 
-#: gfeeds/manage_feeds_window.py:263
-msgid "Manage Feeds"
-msgstr "Управљај Токовником"
-
-#: gfeeds/manage_feeds_window.py:318
+#: gfeeds/manage_feeds_window.py:327
 msgid "Do you want to delete these feeds?"
 msgstr "Да ли желите да обришете ове токове?"
+
+#: gfeeds/manage_feeds_window.py:332
+msgid "_Delete"
+msgstr "_Обриши"
 
 #: gfeeds/opml_file_chooser.py:7
 msgid "XML files"
@@ -151,84 +415,71 @@ msgstr "Изаберите где ћете сачувати извезену О�
 msgid "Save"
 msgstr "Сачувај"
 
-#: gfeeds/opml_manager.py:42
-msgid "Error: OPML path provided does not exist"
-msgstr "Грешка: достављена ОПМЛ путања не постоји"
-
-#: gfeeds/opml_manager.py:53
-#, python-brace-format
-msgid "Error parsing OPML file `{0}`"
-msgstr "Грешка обраде ОПМЛ датотеке „{0}“"
-
-#: gfeeds/preferences_window.py:22
-msgid "General"
-msgstr "Опште"
-
-#: gfeeds/preferences_window.py:25
+#: gfeeds/preferences_window.py:27
 msgid "General preferences"
 msgstr "Опште поставке"
 
-#: gfeeds/preferences_window.py:27
+#: gfeeds/preferences_window.py:29
 msgid "Show newer articles first"
 msgstr "Прикажи прво новије чланке"
 
-#: gfeeds/preferences_window.py:32
+#: gfeeds/preferences_window.py:34
 msgid "Open links in your browser"
 msgstr "Отвори везе у прегледнику"
 
-#: gfeeds/preferences_window.py:36
+#: gfeeds/preferences_window.py:38
 msgid "Use external video player for YouTube"
 msgstr "Користи спољни видео пуштач за Јутјуб"
 
-#: gfeeds/preferences_window.py:38
+#: gfeeds/preferences_window.py:40
 msgid "Requires youtube-dl and a compatible video player"
 msgstr "Захтева „youtube-dl“ и сагласан видео пуштач"
 
-#: gfeeds/preferences_window.py:44
+#: gfeeds/preferences_window.py:46
 msgid "Preferred video player"
 msgstr "Омиљени видео пуштач"
 
-#: gfeeds/preferences_window.py:48
+#: gfeeds/preferences_window.py:50
 msgid "Maximum article age"
 msgstr "Највећа старост чланка"
 
-#: gfeeds/preferences_window.py:49
+#: gfeeds/preferences_window.py:51
 msgid "In days"
 msgstr "У данима"
 
-#: gfeeds/preferences_window.py:56
+#: gfeeds/preferences_window.py:58
 msgid "Refresh preferences"
 msgstr "Освежи поставке"
 
-#: gfeeds/preferences_window.py:58
+#: gfeeds/preferences_window.py:60
 msgid "Refresh articles on startup"
 msgstr "Освежи чланке при покретању"
 
-#: gfeeds/preferences_window.py:62
+#: gfeeds/preferences_window.py:64
 msgid "New articles notification"
 msgstr "Обавештење нових чланака"
 
-#: gfeeds/preferences_window.py:66
+#: gfeeds/preferences_window.py:68
 msgid "Enable auto-refresh"
 msgstr "Укључи само-освежавање"
 
-#: gfeeds/preferences_window.py:70
+#: gfeeds/preferences_window.py:72
 msgid "Auto-refresh interval"
 msgstr "Период само-освежавања"
 
-#: gfeeds/preferences_window.py:71
+#: gfeeds/preferences_window.py:73
 msgid "In seconds"
 msgstr "У секундама"
 
-#: gfeeds/preferences_window.py:78
+#: gfeeds/preferences_window.py:80
 msgid "Cache"
 msgstr "Остава"
 
-#: gfeeds/preferences_window.py:80
+#: gfeeds/preferences_window.py:82
 msgid "Clear caches"
 msgstr "Очисти оставу"
 
-#: gfeeds/preferences_window.py:81
+#: gfeeds/preferences_window.py:83
 msgid "Clear"
 msgstr "Очисти"
 
@@ -245,7 +496,6 @@ msgid "Dark mode"
 msgstr "Тамни режим"
 
 #: gfeeds/preferences_window.py:118
-#| msgid "Reader Mode"
 msgid "Reader mode theme"
 msgstr "Режим теме читача"
 
@@ -258,7 +508,6 @@ msgid "Light"
 msgstr "Светла"
 
 #: gfeeds/preferences_window.py:122
-#| msgid "Dark mode"
 msgid "Dark"
 msgstr "Тамна"
 
@@ -302,99 +551,130 @@ msgstr "Произвољна слова сталне ширине"
 msgid "Privacy"
 msgstr "Приватност"
 
-#: gfeeds/preferences_window.py:176
+#: gfeeds/preferences_window.py:177
 msgid "Privacy preferences"
 msgstr "Поставке приватности"
 
-#: gfeeds/preferences_window.py:178
+#: gfeeds/preferences_window.py:179
 msgid "Enable JavaScript"
 msgstr "Укључи Јава скрипт"
 
-#: gfeeds/preferences_window.py:183
+#: gfeeds/preferences_window.py:184
 msgid "Try to block advertisements"
 msgstr "Покушај да блокираш оглашавања"
 
-#: gfeeds/preferences_window.py:185 gfeeds/preferences_window.py:220
+#: gfeeds/preferences_window.py:186 gfeeds/preferences_window.py:221
 msgid "Requires app restart"
 msgstr "Захтева поновно покретање"
 
-#: gfeeds/preferences_window.py:189
+#: gfeeds/preferences_window.py:190
 msgid "Update advertisement blocking list"
 msgstr "Освежи списак блокирања оглашавања"
 
-#: gfeeds/preferences_window.py:190
+#: gfeeds/preferences_window.py:191
 msgid "Updates automatically every 10 days"
 msgstr "Сам освежи сваких 10 дана"
 
-#: gfeeds/preferences_window.py:191
+#: gfeeds/preferences_window.py:192
 msgid "Update"
 msgstr "Освежи"
 
-#: gfeeds/preferences_window.py:204
+#: gfeeds/preferences_window.py:205
 msgid "Advanced"
 msgstr "Напредно"
 
-#: gfeeds/preferences_window.py:207
+#: gfeeds/preferences_window.py:208
 msgid "Advanced preferences"
 msgstr "Напредне поставке"
 
-#: gfeeds/preferences_window.py:209
+#: gfeeds/preferences_window.py:210
 msgid "Maximum refresh threads"
 msgstr "Највише нити освежавања"
 
-#: gfeeds/preferences_window.py:211
+#: gfeeds/preferences_window.py:212
 msgid "How many threads to use for feeds refresh"
 msgstr "Колико ће нити користити за освежавање токова"
 
-#: gfeeds/preferences_window.py:218
+#: gfeeds/preferences_window.py:219
 msgid "Experimental GtkListView for articles list"
 msgstr "Експериментални „GtkListView“ за списак чланака"
 
-#: gfeeds/sidebar.py:21
-msgid "Loading feeds..."
-msgstr "Учитавам токове..."
+#: gfeeds/preferences_window.py:227
+msgid "Troubleshooting"
+msgstr "Решавање проблема"
 
-#: gfeeds/sidebar_row_popover.py:31 gfeeds/sidebar_row_popover.py:58
-msgid "Mark as unread"
-msgstr "Означи као непрочитано"
+#: gfeeds/preferences_window.py:229
+msgid "Export Configuration as JSON"
+msgstr "Извези подешавање као ЈСОН"
 
-#: gfeeds/sidebar_row_popover.py:38 gfeeds/sidebar_row_popover.py:50
-msgid "Mark as read"
-msgstr "Означи као прочитано"
+#: gfeeds/preferences_window.py:230
+msgid "Attach this when reporting bugs"
+msgstr "Приложите ово приликом пријављивања грешака"
 
-#: gfeeds/util/download_manager.py:102
+#: gfeeds/preferences_window.py:231
+msgid "Export"
+msgstr "Извези"
+
+#. type: ignore
+#: gfeeds/preferences_window.py:244
+#| msgid "Feed Content"
+msgid "Feeds Configuration"
+msgstr "Подешавање токова"
+
+#: gfeeds/preferences_window.py:248
+msgid "_Close"
+msgstr "_Затвори"
+
+#: gfeeds/preferences_window.py:251
+msgid "Cop_y"
+msgstr "_Умножи"
+
+#: gfeeds/util/download_manager.py:112
 #, python-brace-format
 msgid "`{0}`: connection timed out"
 msgstr "„{0}“: истекло је време повезивања"
 
-#: gfeeds/util/download_manager.py:111
+#: gfeeds/util/download_manager.py:121
 #, python-brace-format
 msgid "`{0}` might not be a valid address"
 msgstr "„{0}“ не може бити исправна адреса"
 
-#: gfeeds/util/download_manager.py:150
+#: gfeeds/util/download_manager.py:161
 #, python-brace-format
 msgid "Error downloading `{0}`, code `{1}`"
 msgstr "Грешка преузимања „{0}“, шифра „{1}“"
 
-#: gfeeds/util/get_favicon.py:53
+#: gfeeds/util/get_favicon.py:48
 #, python-brace-format
 msgid "Error downloading favicon for `{0}`"
 msgstr "Грешка преузимања фавиконице за „{0}“"
 
-#: gfeeds/webview.py:201
+#: gfeeds/util/opml_parser.py:33
+msgid "Error: OPML path provided does not exist"
+msgstr "Грешка: достављена ОПМЛ путања не постоји"
+
+#: gfeeds/util/opml_parser.py:44
+#, python-brace-format
+msgid "Error parsing OPML file `{0}`"
+msgstr "Грешка обраде ОПМЛ датотеке „{0}“"
+
+#: gfeeds/webview.py:204
 msgid "Link copied to clipboard!"
 msgstr "Веза је умножена у оставу!"
 
-#: gfeeds/webview.py:223
+#: gfeeds/webview.py:226
 msgid "Feed content not available for this article"
 msgstr "Садржај тока није доступан за овај чланак"
 
-#~ msgid "Web View"
-#~ msgstr "Веб преглед"
+#~ msgid ""
+#~ "There were problems with some feeds.\n"
+#~ "Do you want to remove them?"
+#~ msgstr ""
+#~ "Било  је проблема са неким токовима.\n"
+#~ "Да ли желите да их уклоните?"
 
-#~ msgid "Feed Content"
-#~ msgstr "Садржај тока"
+#~ msgid "Loading feeds..."
+#~ msgstr "Учитавам токове..."
 
 #~ msgid "Use dark theme for reader mode"
 #~ msgstr "Користи тамну тему за режим читача"
@@ -402,17 +682,11 @@ msgstr "Садржај тока није доступан за овај члан
 #~ msgid "Maximum thumbnail height"
 #~ msgstr "Највећа висина сличице"
 
-#~ msgid "There are some errors"
-#~ msgstr "Постоје неке грешке"
-
 #~ msgid "Show"
 #~ msgstr "Прикажи"
 
 #~ msgid "Ignore"
 #~ msgstr "Занемари"
-
-#~ msgid "There were problems with some feeds. Do you want to remove them?"
-#~ msgstr "Било  је проблема са неким токовима. Да ли желите да их уклоните?"
 
 #~ msgid "You are offline"
 #~ msgstr "Ван мреже сте"
