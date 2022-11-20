@@ -52,7 +52,7 @@ class GsettingsWrapper:
             raise KeyError(
                 f'GsettingsWrapper: Schema {self.package} not installed'
             )
-        self.gs = Gio.Settings.new(self.package)
+        self.gs: Gio.Settings = Gio.Settings.new(self.package)
         self.__keys = self.gs.keys()
 
     @property

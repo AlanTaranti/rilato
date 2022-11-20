@@ -1,4 +1,4 @@
-from gi.repository import Adw, Gtk, GLib, Gio, Gdk
+from gi.repository import Adw, GObject, Gtk, GLib, Gio, Gdk
 from typing import Callable, Optional, List, Any
 from enum import Enum, auto
 
@@ -104,6 +104,7 @@ class AppShortcut:
 
 class BaseWindow(Adw.ApplicationWindow):
     shortcut_controller: Gtk.ShortcutController
+    __dark_mode = False
 
     def __init__(
             self,
@@ -125,8 +126,16 @@ class BaseWindow(Adw.ApplicationWindow):
         self.prepend = self.main_box.prepend
         self.remove = self.main_box.remove
 
-    def set_dark_mode(self, dark_mode: bool = False):
+    @GObject.Property(type=bool, default=False)
+    def dark_mode(self) -> bool:
+        return self.__dark_mode
+
+    @dark_mode.setter
+    def dark_mode(self, nval: bool):
+        self.__dark_mode = nval
+        sm: Adw.StyleManager = Adw.StyleManager.get_default()
+        sm.props.co
         Adw.StyleManager.get_default().set_color_scheme(
-            Adw.ColorScheme.FORCE_DARK if dark_mode
+            Adw.ColorScheme.FORCE_DARK if nval
             else Adw.ColorScheme.DEFAULT
         )

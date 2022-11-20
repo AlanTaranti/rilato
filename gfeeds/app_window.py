@@ -1,3 +1,4 @@
+from gi.repository import Gio
 from gfeeds.main_leaflet import MainLeaflet
 from gfeeds.confManager import ConfManager
 from gfeeds.feeds_manager import FeedsManager
@@ -57,11 +58,10 @@ class GFeedsAppWindow(BaseWindow):
 
         self.append(self.leaflet)
 
-        self.confman.connect(
-            'dark_mode_changed',
-            lambda *_: self.set_dark_mode(self.confman.conf['dark_mode'])
+        self.confman.conf.gs.bind(
+            'dark-mode', self, 'dark_mode', Gio.SettingsBindFlags.DEFAULT
         )
-        self.set_dark_mode(self.confman.conf['dark_mode'])
+        self.dark_mode = self.confman.conf['dark_mode']
 
     def present(self):
         super().present_with_time(int(datetime.now().timestamp()))
