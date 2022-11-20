@@ -208,12 +208,6 @@ class LeftHeaderbar(Gtk.WindowHandle):
         )
         dialog.present()
 
-    @Gtk.Template.Callback()
-    def on_search_btn_toggled(self, togglebtn):
-        if self.searchbar is None:
-            return
-        self.searchbar.set_search_mode(togglebtn.get_active())
-
     def on_new_feed_add_start(self, *_):
         self.refresh_btn.set_sensitive(False)
         self.add_popover.confirm_btn.set_sensitive(False)

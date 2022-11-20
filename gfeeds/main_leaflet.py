@@ -51,11 +51,9 @@ class MainLeaflet(Adw.Bin):
             'changed',
             lambda entry: self.sidebar.set_search(entry.get_text())
         )
-        self.searchbar.connect(
-            'notify::search-mode-enabled',
-            lambda caller, _: self.left_headerbar.search_btn.set_active(
-                caller.get_search_mode()
-            )
+        self.searchbar.bind_property(
+            'search-mode-enabled', self.left_headerbar.search_btn,
+            'active', GObject.BindingFlags.BIDIRECTIONAL
         )
 
         self.feedman.connect(
