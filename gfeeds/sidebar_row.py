@@ -96,12 +96,6 @@ class SidebarRow(Gtk.Box):
             )
         )
         self.dim = self.feed_item.read
-        self.prop_bindings.append(
-            self.feed_item.bind_property_full(
-                'pub_date', self.date_label, 'label',
-                GObject.BindingFlags.DEFAULT
-            )
-        )
         self.signal_ids.append(
             self.feed_item.connect('changed', self.on_feed_item_changed)
         )
