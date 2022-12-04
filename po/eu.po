@@ -6,8 +6,8 @@
 msgid ""
 msgstr "Project-Id-Version: gfeeds master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/gfeeds/issues\n"
-"POT-Creation-Date: 2022-05-09 14:29+0000\n"
-"PO-Revision-Date: 2022-05-15 20:28+0000\n"
+"POT-Creation-Date: 2022-10-02 17:13+0000\n"
+"PO-Revision-Date: 2022-12-04 20:28+0000\n"
 "Last-Translator: Asier Sarasua Garmendia <asiersarasua@ni.eus>\n"
 "Language-Team: Basque <librezale@librezale.eus>\n"
 "Language: eu\n"
@@ -41,7 +41,7 @@ msgid ""
 "Articles are shown in a web view by default, with javascript disabled for a "
 "faster and less intrusive user experience. There's also a reader mode "
 "included, built from the one GNOME Web/Epiphany uses."
-msgstr "Artikuluak web motako bista batean erakusten dira modu lehenetsian, eta Javascript desgaituta izaten da erabiltzaile-esperientzia azkarragoa eta pribatuagoa izan dadin. Irakurle-modu bat ere badu, GNOME Weba aplikazioak erabiltzen duena baliatuta sortu dena. "
+msgstr "Artikuluak web motako bista batean erakusten dira modu lehenetsian, eta Javascript desgaituta izaten da erabiltzaile-esperientzia azkarragoa eta pribatuagoa izan dadin. Irakurle-modu bat ere badu, GNOME Weba aplikazioak erabiltzen duena baliatuta sortu dena."
 
 #: data/org.gabmus.gfeeds.appdata.xml.in:18
 msgid "Feeds can be imported and exported via OPML."
@@ -52,22 +52,254 @@ msgstr "Jarioak OPML bidez inportatu eta esportatu daitezke."
 msgid "rss;reader;feed;news;"
 msgstr "rss;irakurlea;jarioa;albisteak;"
 
-#: gfeeds/feed_item.py:49
+#: data/ui/aboutdialog.ui.in:10
+msgid "translator-credits"
+msgstr "translator-credits"
+
+#: data/ui/add_feed_popover.blp:11
+msgid "Enter feed address to add"
+msgstr "Sartu gehituko den jarioaren helbidea"
+
+#: data/ui/add_feed_popover.blp:26
+msgid "Add"
+msgstr "Gehitu"
+
+#: data/ui/add_feed_popover.blp:32
+msgid "You're already subscribed to that feed!"
+msgstr "Dagoeneko harpidetuta zaude jario horretara"
+
+#: data/ui/empty_state.blp:7
+msgid "Let's get started"
+msgstr "Hasi"
+
+#: data/ui/empty_state.blp:22
+msgid "Add new feeds via URL"
+msgstr "Gehitu jario berriak URL baten bidez"
+
+#: data/ui/empty_state.blp:27
+msgid "Import an OPML file"
+msgstr "Inportatu OPML fitxategia"
+
+#: data/ui/left_headerbar.blp:6
+msgid "_Show Read Articles"
+msgstr "E_rakutsi irakurritako artikuluak"
+
+#: data/ui/left_headerbar.blp:7
+msgid "Mark All as Read"
+msgstr "Markatu dena irakurrita gisa"
+
+#: data/ui/left_headerbar.blp:8
+msgid "Mark All as _Unread"
+msgstr "Markatu dena i_rakurri gabe gisa"
+
+#: data/ui/left_headerbar.blp:11
+msgid "Show _Empty Feeds"
+msgstr "Erakutsi _hutsik dauden jarioak"
+
+#: data/ui/left_headerbar.blp:12
+msgid "_Manage Feeds"
+msgstr "_Kudeatu jarioak"
+
+#: data/ui/left_headerbar.blp:13
+msgid "_Import OPML"
+msgstr "_Inportatu OPML"
+
+#: data/ui/left_headerbar.blp:14
+msgid "E_xport OPML"
+msgstr "E_sportatu OPML"
+
+#: data/ui/left_headerbar.blp:17
+msgid "P_references"
+msgstr "H_obespenak"
+
+#: data/ui/left_headerbar.blp:18
+msgid "_Keyboard Shortcuts"
+msgstr "Las_ter-teklak"
+
+#: data/ui/left_headerbar.blp:19
+msgid "_About Feeds"
+msgstr "Jarioak aplikazioari _buruz"
+
+#: data/ui/left_headerbar.blp:28
+msgid "Filter"
+msgstr "Iragazi"
+
+#: data/ui/left_headerbar.blp:32
+msgid "Add Feed"
+msgstr "Gehitu jarioa"
+
+#: data/ui/left_headerbar.blp:36
+msgid "Menu"
+msgstr "Menua"
+
+#: data/ui/left_headerbar.blp:41 data/ui/shortcutsWindow.blp:35
+msgid "Refresh"
+msgstr "Freskatu"
+
+#: data/ui/left_headerbar.blp:46 data/ui/shortcutsWindow.blp:39
+msgid "Search"
+msgstr "Bilatu"
+
+#: data/ui/left_headerbar.blp:51
+msgid "There Are Errors"
+msgstr "Erroreak daude"
+
+#: data/ui/main_leaflet.blp:40
+msgid "Offline"
+msgstr "Lineaz kanpo"
+
+#: data/ui/manage_feeds_headerbar.blp:7 gfeeds/manage_feeds_window.py:263
+msgid "Manage Feeds"
+msgstr "Kudeatu jarioak"
+
+#: data/ui/manage_feeds_headerbar.blp:11
+msgid "Manage Tags for Selected Feeds"
+msgstr "Kudeatu hautatutako jarioen etiketak"
+
+#: data/ui/manage_feeds_headerbar.blp:16
+msgid "Select/Unselect All"
+msgstr "Hautatu/Desautatu dena"
+
+#: data/ui/manage_feeds_headerbar.blp:21
+msgid "Delete Selected Feeds"
+msgstr "Ezabatu hautatutako jarioak"
+
+#: data/ui/manage_tags_content.blp:17
+msgid "New tag name…"
+msgstr "Etiketa-izen berria…"
+
+#: data/ui/manage_tags_content.blp:24
+msgid "Add Tag"
+msgstr "Gehitu etiketa"
+
+#: data/ui/manage_tags_content.blp:39
+msgid "There are no tags yet"
+msgstr "Ez dago etiketarik oraindik"
+
+#: data/ui/manage_tags_content.blp:40
+msgid "Add some using the entry above"
+msgstr "Gehitu zenbait goiko sarrera erabiliz"
+
+#: data/ui/right_headerbar.blp:9
+msgid "Open in _Browser"
+msgstr "Ireki _nabigatzailean"
+
+#: data/ui/right_headerbar.blp:10
+msgid "Open in External Media _Player"
+msgstr "Ireki kanpoko _erreproduzitzailean"
+
+#: data/ui/right_headerbar.blp:11
+msgid "_Copy Article Link"
+msgstr "K_opiatu artikuluaren esteka"
+
+#: data/ui/right_headerbar.blp:17 data/ui/right_headerbar.blp:96
+msgid "View Mode"
+msgstr "Ikusteko modua"
+
+#: data/ui/right_headerbar.blp:19
+msgid "Web View"
+msgstr "Web ikuspegia"
+
+#: data/ui/right_headerbar.blp:24
+msgid "Reader Mode"
+msgstr "Irakurle modua"
+
+#: data/ui/right_headerbar.blp:29
+msgid "Feed Content"
+msgstr "Jarioaren edukia"
+
+#: data/ui/right_headerbar.blp:44 data/ui/shortcutsWindow.blp:66
+msgid "Zoom Out"
+msgstr "Txikiagotu"
+
+#: data/ui/right_headerbar.blp:51 data/ui/shortcutsWindow.blp:70
+msgid "Reset Zoom"
+msgstr "Berrezarri zooma"
+
+#: data/ui/right_headerbar.blp:57 data/ui/shortcutsWindow.blp:62
+msgid "Zoom In"
+msgstr "Handiagotu"
+
+#: data/ui/right_headerbar.blp:90
+msgid "Back to Articles"
+msgstr "Itzuli artikuluetara"
+
+#: data/ui/shortcutsWindow.blp:9 gfeeds/preferences_window.py:24
+msgid "General"
+msgstr "Orokorra"
+
+#: data/ui/shortcutsWindow.blp:12
+msgid "Open Keyboard Shortcuts"
+msgstr "Ireki laster-teklak"
+
+#: data/ui/shortcutsWindow.blp:16
+msgid "Open Menu"
+msgstr "Ireki menua"
+
+#: data/ui/shortcutsWindow.blp:20
+msgid "Open Preferences"
+msgstr "Ireki hobespenak"
+
+#: data/ui/shortcutsWindow.blp:24
+msgid "Open Filter"
+msgstr "Ireki iragazkia"
+
+#: data/ui/shortcutsWindow.blp:28
+msgid "Quit"
+msgstr "Irten"
+
+#: data/ui/shortcutsWindow.blp:32
+msgid "Article List"
+msgstr "Artikulu-zerrenda"
+
+#: data/ui/shortcutsWindow.blp:43
+msgid "Next"
+msgstr "Hurrengoa"
+
+#: data/ui/shortcutsWindow.blp:47
+msgid "Previous"
+msgstr "Aurrekoa"
+
+#: data/ui/shortcutsWindow.blp:51
+msgid "Show/Hide Read Articles"
+msgstr "Erakutsi/Ezkutatu irakurritako artikuluak"
+
+#: data/ui/shortcutsWindow.blp:55
+msgid "Mark All Read"
+msgstr "Markatu dena irakurrita gisa"
+
+#: data/ui/shortcutsWindow.blp:59
+msgid "Article"
+msgstr "Artikulua"
+
+#: data/ui/shortcutsWindow.blp:74 data/ui/sidebar_listbox_row.blp:6
+msgid "Open in Browser"
+msgstr "Ireki nabigatzailean"
+
+#: data/ui/sidebar_listbox_row.blp:5
+msgid "Mark as Read/Unread"
+msgstr "Markatu irakurrita/irakurri gabeko gisa"
+
+#: data/ui/webview.blp:12
+msgid "Select an article"
+msgstr "Hautatu artikulu bat"
+
+#: gfeeds/feed_item.py:57
 #, python-brace-format
 msgid "Error: unable to parse datetime {0} for feeditem {1}"
 msgstr "Errorea: Ezin da {0} data analizatu {1} jario-elementurako"
 
-#: gfeeds/feed_parser.py:37
+#: gfeeds/feed_parser.py:61
 #, python-brace-format
-msgid "Errors while parsing feed `{0}`"
-msgstr "Erroreak `{0}` jarioa analizatzean"
+msgid "Errors while parsing feed `{0}`, URL: `{1}`"
+msgstr "Erroreak `{0}` jarioa, URL: `{1}` analizatzean"
 
-#: gfeeds/feed_parser.py:55
+#: gfeeds/feed_parser.py:71
 #, python-brace-format
 msgid "`{0}` may not be an RSS or Atom feed"
 msgstr "`{0}` agian ez da RSS edo Atom jario bat"
 
-#: gfeeds/feeds_manager.py:88
+#: gfeeds/feeds_manager.py:97
 #, python-brace-format
 msgid "Feed {0} exists already, skipping"
 msgstr "{0} jarioa badago lehendik, saltatzen"
@@ -76,43 +308,57 @@ msgstr "{0} jarioa badago lehendik, saltatzen"
 msgid "All feeds"
 msgstr "Jario guztiak"
 
-#: gfeeds/headerbar.py:184
-msgid ""
-"There were problems with some feeds.\n"
-"Do you want to remove them?"
-msgstr "Arazoak daude zenbait jariorekin.\n"
-"Haiek kendu nahi al dituzu?"
+#: gfeeds/headerbar.py:197
+msgid "There were problems with some feeds. Do you want to remove them?"
+msgstr "Arazoak egon dira zenbat jariorekin. Haiek kendu nahi al dituzu?"
 
-#: gfeeds/main_leaflet.py:119
+#: gfeeds/headerbar.py:202
+msgid "_Keep"
+msgstr "_Mantendu"
+
+#: gfeeds/headerbar.py:204
+msgid "_Remove"
+msgstr "_Kendu"
+
+#: gfeeds/main_leaflet.py:122
 #, python-brace-format
 msgid "{0} new article"
 msgid_plural "{0} new articles"
 msgstr[0] "Artikulu berri {0}"
 msgstr[1] "{0} artikulu berri"
 
-#: gfeeds/__main__.py:229
+#: gfeeds/__main__.py:232
 msgid "Do you want to import these feeds?"
 msgstr "Jario hauek inportatu nahi dituzu?"
 
-#: gfeeds/__main__.py:256
+#: gfeeds/__main__.py:239 gfeeds/__main__.py:273
+#: gfeeds/manage_feeds_window.py:330
+msgid "_Cancel"
+msgstr "_Utzi"
+
+#: gfeeds/__main__.py:242 gfeeds/__main__.py:276
+msgid "_Import"
+msgstr "_Inportatu"
+
+#: gfeeds/__main__.py:269
 msgid "Do you want to import this feed?"
 msgstr "Jario hau inportatu nahi duzu?"
 
-#: gfeeds/__main__.py:285
+#: gfeeds/__main__.py:301
 msgid "url"
 msgstr "URLa"
 
-#: gfeeds/__main__.py:288
+#: gfeeds/__main__.py:304
 msgid "opml file local url or rss remote url to import"
 msgstr "inportatuko den OPML fitxategiaren URL lokala edo urruneko RSSaren URLa"
 
-#: gfeeds/manage_feeds_window.py:263
-msgid "Manage Feeds"
-msgstr "Kudeatu jarioak"
-
-#: gfeeds/manage_feeds_window.py:318
+#: gfeeds/manage_feeds_window.py:327
 msgid "Do you want to delete these feeds?"
 msgstr "Jario horiek ezabatu nahi al dituzu?"
+
+#: gfeeds/manage_feeds_window.py:332
+msgid "_Delete"
+msgstr "Ez_abatu"
 
 #: gfeeds/opml_file_chooser.py:7
 msgid "XML files"
@@ -138,84 +384,71 @@ msgstr "Aukeratu non gordeko den esportatutako OPML fitxategia"
 msgid "Save"
 msgstr "Gorde"
 
-#: gfeeds/opml_manager.py:42
-msgid "Error: OPML path provided does not exist"
-msgstr "Errorea: emandako OPML bide-izena ez da existitzen"
-
-#: gfeeds/opml_manager.py:53
-#, python-brace-format
-msgid "Error parsing OPML file `{0}`"
-msgstr "Errorea `{0}` OPML fitxategia analizatzean"
-
-#: gfeeds/preferences_window.py:22
-msgid "General"
-msgstr "Orokorra"
-
-#: gfeeds/preferences_window.py:25
+#: gfeeds/preferences_window.py:27
 msgid "General preferences"
 msgstr "Hobespen orokorrak"
 
-#: gfeeds/preferences_window.py:27
+#: gfeeds/preferences_window.py:29
 msgid "Show newer articles first"
 msgstr "Erakutsi artikulu berriak lehenengo"
 
-#: gfeeds/preferences_window.py:32
+#: gfeeds/preferences_window.py:34
 msgid "Open links in your browser"
 msgstr "Ireki estekak zure nabigatzailean"
 
-#: gfeeds/preferences_window.py:36
+#: gfeeds/preferences_window.py:38
 msgid "Use external video player for YouTube"
 msgstr "Erabili kanpoko bideo-erreproduzigailua YouTuberako"
 
-#: gfeeds/preferences_window.py:38
+#: gfeeds/preferences_window.py:40
 msgid "Requires youtube-dl and a compatible video player"
 msgstr "youtube-dl eta bideo-erreproduzigailu bateragarri bat behar ditu"
 
-#: gfeeds/preferences_window.py:44
+#: gfeeds/preferences_window.py:46
 msgid "Preferred video player"
 msgstr "Hobetsitako bideo-erreproduzigailua"
 
-#: gfeeds/preferences_window.py:48
+#: gfeeds/preferences_window.py:50
 msgid "Maximum article age"
 msgstr "Artikuluen gehieneko adina"
 
-#: gfeeds/preferences_window.py:49
+#: gfeeds/preferences_window.py:51
 msgid "In days"
 msgstr "Egunetan"
 
-#: gfeeds/preferences_window.py:56
+#: gfeeds/preferences_window.py:58
 msgid "Refresh preferences"
 msgstr "Freskatu hobespenak"
 
-#: gfeeds/preferences_window.py:58
+#: gfeeds/preferences_window.py:60
 msgid "Refresh articles on startup"
 msgstr "Freskatu artikuluak abioan"
 
-#: gfeeds/preferences_window.py:62
+#: gfeeds/preferences_window.py:64
 msgid "New articles notification"
 msgstr "Artikulu berrien jakinarazpena"
 
-#: gfeeds/preferences_window.py:66
+#: gfeeds/preferences_window.py:68
 msgid "Enable auto-refresh"
 msgstr "Gaitu freskatze automatikoa"
 
-#: gfeeds/preferences_window.py:70
+#: gfeeds/preferences_window.py:72
 msgid "Auto-refresh interval"
 msgstr "Freskatze automatikoko tartea"
 
-#: gfeeds/preferences_window.py:71
+#: gfeeds/preferences_window.py:73
 msgid "In seconds"
 msgstr "Segundotan"
 
-#: gfeeds/preferences_window.py:78
+#: gfeeds/preferences_window.py:80
 msgid "Cache"
 msgstr "Cachea"
 
-#: gfeeds/preferences_window.py:80
+#: gfeeds/preferences_window.py:82
 msgid "Clear caches"
 msgstr "Garbitu cacheak"
 
-#: gfeeds/preferences_window.py:81
+#: gfeeds/preferences_window.py:83
 msgid "Clear"
 msgstr "Garbitu"
 
@@ -287,99 +520,129 @@ msgstr "Tarte bakarreko letra-tipo pertsonalizatua"
 msgid "Privacy"
 msgstr "Pribatutasuna"
 
-#: gfeeds/preferences_window.py:176
+#: gfeeds/preferences_window.py:177
 msgid "Privacy preferences"
 msgstr "Pribatutasun-hobespenak"
 
-#: gfeeds/preferences_window.py:178
+#: gfeeds/preferences_window.py:179
 msgid "Enable JavaScript"
 msgstr "Gaitu JavaScript"
 
-#: gfeeds/preferences_window.py:183
+#: gfeeds/preferences_window.py:184
 msgid "Try to block advertisements"
 msgstr "Saiatu iragarkiak blokeatzen"
 
-#: gfeeds/preferences_window.py:185 gfeeds/preferences_window.py:220
+#: gfeeds/preferences_window.py:186 gfeeds/preferences_window.py:221
 msgid "Requires app restart"
 msgstr "Aplikazioa berrabiarazi behar da"
 
-#: gfeeds/preferences_window.py:189
+#: gfeeds/preferences_window.py:190
 msgid "Update advertisement blocking list"
 msgstr "Eguneratu iragarkien blokeatze-zerrenda"
 
-#: gfeeds/preferences_window.py:190
+#: gfeeds/preferences_window.py:191
 msgid "Updates automatically every 10 days"
 msgstr "10 egunetik behin automatikoki eguneratzen da"
 
-#: gfeeds/preferences_window.py:191
+#: gfeeds/preferences_window.py:192
 msgid "Update"
 msgstr "Eguneratu"
 
-#: gfeeds/preferences_window.py:204
+#: gfeeds/preferences_window.py:205
 msgid "Advanced"
 msgstr "Aurreratua"
 
-#: gfeeds/preferences_window.py:207
+#: gfeeds/preferences_window.py:208
 msgid "Advanced preferences"
 msgstr "Hobespen aurreratuak"
 
-#: gfeeds/preferences_window.py:209
+#: gfeeds/preferences_window.py:210
 msgid "Maximum refresh threads"
 msgstr "Gehieneko freskatze-hariak"
 
-#: gfeeds/preferences_window.py:211
+#: gfeeds/preferences_window.py:212
 msgid "How many threads to use for feeds refresh"
 msgstr "Zenbat hari erabiliko diren jarioak freskatzeko"
 
-#: gfeeds/preferences_window.py:218
+#: gfeeds/preferences_window.py:219
 msgid "Experimental GtkListView for articles list"
 msgstr "GtkListView esperimentala artikuluen zerrendetarako"
 
-#: gfeeds/sidebar.py:21
-msgid "Loading feeds..."
-msgstr "Jarioak kargatzen..."
+#: gfeeds/preferences_window.py:227
+msgid "Troubleshooting"
+msgstr "Arazoen ebazpena"
 
-#: gfeeds/sidebar_row_popover.py:31 gfeeds/sidebar_row_popover.py:58
-msgid "Mark as unread"
-msgstr "Markatu irakurri gabeko gisa"
+#: gfeeds/preferences_window.py:229
+msgid "Export Configuration as JSON"
+msgstr "Esportatu konfigurazioa JSON gisa"
 
-#: gfeeds/sidebar_row_popover.py:38 gfeeds/sidebar_row_popover.py:50
-msgid "Mark as read"
-msgstr "Markatu irakurrita gisa"
+#: gfeeds/preferences_window.py:230
+msgid "Attach this when reporting bugs"
+msgstr "Erantsi hau akatsak jakinaraztean"
 
-#: gfeeds/util/download_manager.py:96
+#: gfeeds/preferences_window.py:231
+msgid "Export"
+msgstr "Esportatu"
+
+#. type: ignore
+#: gfeeds/preferences_window.py:244
+msgid "Feeds Configuration"
+msgstr "Jarioen konfigurazioa"
+
+#: gfeeds/preferences_window.py:248
+msgid "_Close"
+msgstr "It_xi"
+
+#: gfeeds/preferences_window.py:251
+msgid "Cop_y"
+msgstr "_Kopiatu"
+
+#: gfeeds/util/download_manager.py:112
 #, python-brace-format
 msgid "`{0}`: connection timed out"
 msgstr "`{0}`: konexioaren denbora agortu da"
 
-#: gfeeds/util/download_manager.py:105
+#: gfeeds/util/download_manager.py:121
 #, python-brace-format
 msgid "`{0}` might not be a valid address"
 msgstr "`{0}` beharbada ez da baliozko helbidea"
 
-#: gfeeds/util/download_manager.py:144
+#: gfeeds/util/download_manager.py:161
 #, python-brace-format
 msgid "Error downloading `{0}`, code `{1}`"
 msgstr "Errorea `{0}` deskargatzen, `{1}` kodea"
 
-#: gfeeds/util/get_favicon.py:53
+#: gfeeds/util/get_favicon.py:48
 #, python-brace-format
 msgid "Error downloading favicon for `{0}`"
 msgstr "Errorea favicona deskargatzen `{0}` jariorako"
 
-#: gfeeds/webview.py:201
+#: gfeeds/util/opml_parser.py:33
+msgid "Error: OPML path provided does not exist"
+msgstr "Errorea: emandako OPML bide-izena ez da existitzen"
+
+#: gfeeds/util/opml_parser.py:44
+#, python-brace-format
+msgid "Error parsing OPML file `{0}`"
+msgstr "Errorea `{0}` OPML fitxategia analizatzean"
+
+#: gfeeds/webview.py:204
 msgid "Link copied to clipboard!"
 msgstr "Esteka arbelean kopiatu da!"
 
-#: gfeeds/webview.py:223
+#: gfeeds/webview.py:226
 msgid "Feed content not available for this article"
 msgstr "Jarioaren edukia ez dago erabilgarri artikulu honetarako"
 
-#~ msgid "Web View"
-#~ msgstr "Web-ikuspegia"
+#~ msgid ""
+#~ "There were problems with some feeds.\n"
+#~ "Do you want to remove them?"
+#~ msgstr ""
+#~ "Arazoak daude zenbait jariorekin.\n"
+#~ "Haiek kendu nahi al dituzu?"
 
-#~ msgid "Feed Content"
-#~ msgstr "Jario-edukia"
+#~ msgid "Loading feeds..."
+#~ msgstr "Jarioak kargatzen..."
 
 #~ msgid "Use dark theme for reader mode"
 #~ msgstr "Erabili gai iluna irakurle modurako"
@@ -387,17 +650,11 @@ msgstr "Jarioaren edukia ez dago erabilgarri artikulu honetarako"
 #~ msgid "Maximum thumbnail height"
 #~ msgstr "Koadro txikien gehieneko altuera"
 
-#~ msgid "There are some errors"
-#~ msgstr "Erroreak daude"
-
 #~ msgid "Show"
 #~ msgstr "Erakutsi"
 
 #~ msgid "Ignore"
 #~ msgstr "Ez ikusi egin"
-
-#~ msgid "There were problems with some feeds. Do you want to remove them?"
-#~ msgstr "Arazoak egon dira zenbat jariorekin. Haiek kendu nahi al dituzu?"
 
 #~ msgid "You are offline"
 #~ msgstr "Lineaz kanpo zaude"
