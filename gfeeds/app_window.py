@@ -61,13 +61,13 @@ class GFeedsAppWindow(BaseWindow):
         self.confman.conf.gs.bind(
             'dark-mode', self, 'dark_mode', Gio.SettingsBindFlags.DEFAULT
         )
-        self.dark_mode = self.confman.conf['dark_mode']
+        self.dark_mode = self.confman.nconf.dark_mode
 
     def present(self):
         super().present_with_time(int(datetime.now().timestamp()))
         self.set_default_size(
-            self.confman.conf['window-width'],
-            self.confman.conf['window-height']
+            self.confman.nconf.window_width,
+            self.confman.nconf.window_height
         )
 
     def emit_destroy(self, *_):
@@ -75,18 +75,7 @@ class GFeedsAppWindow(BaseWindow):
 
     def on_destroy(self, *_):
         self.leaflet.sidebar.listview_sw.shutdown_thread_pool()
-        self.confman.conf['window-width'] = self.get_width()
-        self.confman.conf['window-height'] = self.get_height()
-        # cleanup old read items
-        feeds_items_ids = [
-            fi.identifier for fi in self.feedman.article_store.list_store
-        ]
-        to_rm = []
-        for ri in self.confman.conf['read_items']:
-            if ri not in feeds_items_ids:
-                to_rm.append(ri)
-        read_items: list = self.confman.conf['read_items']
-        for ri in to_rm:
-            read_items.remove(ri)
-        self.confman.conf['read_items'] = read_items
+        self.confman.nconf.window_width = self.get_width()
+        self.confman.nconf.window_height = self.get_height()
+        self.feedman.cleanup_read_items()
         self.confman.save_article_thumb_cache()

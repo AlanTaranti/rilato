@@ -1,7 +1,7 @@
 from pathlib import Path
 from threading import Thread, Event
 from gettext import gettext as _
-from typing import Dict, List, Union
+from typing import Iterable, List, Union, cast
 from gi.repository import GLib, GObject
 from gfeeds.articles_listmodel import ArticlesListModel
 from gfeeds.util.opml_parser import opml_to_rss_list
@@ -17,32 +17,17 @@ from gfeeds.tag_store import TagStore
 from gfeeds.util.test_connection import is_online
 from gfeeds.util.thread_pool import ThreadPool
 from gfeeds.feed_store import FeedStore
+from gfeeds.signal_helper import signal_tuple
 import pytz
 from datetime import datetime
 
 
 class FeedsManagerSignaler(GObject.Object):
     __gsignals__ = {
-        'feedmanager_refresh_start': (
-            GObject.SignalFlags.RUN_LAST,
-            None,
-            (str,)
-        ),
-        'feedmanager_refresh_end': (
-            GObject.SignalFlags.RUN_LAST,
-            None,
-            (str,)
-        ),
-        'feedmanager_online_changed': (
-            GObject.SignalFlags.RUN_LAST,
-            None,
-            (bool,)
-        ),
-        'feedmanager_feeds_loaded_changed': (
-            GObject.SignalFlags.RUN_LAST,
-            None,
-            (float,)
-        ),
+        'feedmanager_refresh_start': signal_tuple(params=(str,)),
+        'feedmanager_refresh_end': signal_tuple(params=(str,)),
+        'feedmanager_online_changed': signal_tuple(params=(bool,)),
+        'feedmanager_feeds_loaded_changed': signal_tuple(params=(float,)),
     }
 
 
@@ -65,6 +50,7 @@ class FeedsManager(metaclass=Singleton):
         self.problematic_feeds = []
         self.new_items_num = 0  # for the notification, resets on refresh
 
+        self.is_refreshing = False
         self.__auto_refresh_event = Event()
         self.auto_refresh_thread = None
         self.connect(
@@ -93,15 +79,15 @@ class FeedsManager(metaclass=Singleton):
         if not refresh:
             if not (uri.startswith('http://') or uri.startswith('https://')):
                 uri = 'http://' + uri
-            if uri in self.confman.conf['feeds'].keys():
+            if uri in self.confman.nconf.feeds.keys():
                 print(_('Feed {0} exists already, skipping').format(uri))
                 GLib.idle_add(
                     self.emit, 'feedmanager_refresh_end', ''
                 )
                 return
-            feeds: Dict[str, dict] = self.confman.conf['feeds']
+            feeds = self.confman.nconf.feeds
             feeds[uri] = {}
-            self.confman.conf['feeds'] = feeds
+            self.confman.nconf.feeds = feeds
         download_res = download_feed(uri, get_cached=get_cached)
         if get_cached and download_res.feedpath == 'not_cached':
             return
@@ -115,10 +101,10 @@ class FeedsManager(metaclass=Singleton):
         if parser_res.is_null:
             feed_uri_from_html = extract_feed_url_from_html(uri)
             if feed_uri_from_html is not None:
-                feeds: Dict[str, dict] = self.confman.conf['feeds']
+                feeds = self.confman.nconf.feeds
                 if uri in feeds.keys():
                     feeds.pop(uri)
-                self.confman.conf['feeds'] = feeds
+                self.confman.nconf.feeds = feeds
                 self._add_feed_async_worker(feed_uri_from_html, refresh)
                 return
             self.errors.append(parser_res.error)
@@ -181,6 +167,7 @@ class FeedsManager(metaclass=Singleton):
             is_startup: bool = False
     ):
         self.__feeds_loaded = 0
+        self.is_refreshing = True
         self.emit(
             'feedmanager_refresh_start',
             'startup' if is_startup else ''
@@ -202,24 +189,28 @@ class FeedsManager(metaclass=Singleton):
 
         is_online(cb)
 
+    def __signal_refresh_end(self):
+        self.emit('feedmanager_refresh_end', '')
+        self.is_refreshing = False
+
     def continue_refresh(self, get_cached):
         self.trim_feeds_items_by_age()
         tp = ThreadPool(
-            self.confman.conf['max_refresh_threads'],
+            self.confman.nconf.max_refresh_threads,
             self._add_feed_async_worker,
             [
                 (f_link, True, get_cached)
-                for f_link in self.confman.conf['feeds'].keys()
+                for f_link in self.confman.nconf.feeds.keys()
             ],
-            self.emit,
-            ('feedmanager_refresh_end', '')
+            self.__signal_refresh_end,
+            tuple()
         )
         tp.start()
 
     def trim_feeds_items_by_age(self):
         now = pytz.UTC.localize(datetime.utcnow())
         to_rm = []
-        for item in self.article_store.list_store:
+        for item in cast(Iterable, self.article_store.list_store):
             item_age = now - item.pub_date
             if item_age > self.confman.max_article_age:
                 to_rm.append(item)
@@ -231,20 +222,20 @@ class FeedsManager(metaclass=Singleton):
                 self.__auto_refresh_event.set()
                 self.auto_refresh_thread.join()
         self.__auto_refresh_event.clear()
-        if self.confman.conf['auto_refresh_enabled']:
+        if self.confman.nconf.auto_refresh_enabled:
             self.auto_refresh_thread = Thread(
                 target=self._auto_refresh_worker, daemon=True
             ).start()
 
     def _auto_refresh_worker(self):
-        if not self.confman.conf['auto_refresh_enabled']:
+        if not self.confman.nconf.auto_refresh_enabled:
             self.__auto_refresh_event.clear()
             return
         # when event.wait returns True the flag has been manually set, so in
         # case, it means a manual refresh occurred, so we can terminate the
         # auto-refresh for now
         if self.__auto_refresh_event.wait(
-                self.confman.conf['auto_refresh_time_seconds']
+                self.confman.nconf.auto_refresh_time_seconds
         ):
             self.__auto_refresh_event.clear()
             return
@@ -253,7 +244,7 @@ class FeedsManager(metaclass=Singleton):
         GLib.idle_add(self.refresh)
 
     def add_feed(self, uri: str, is_new: bool = False) -> bool:
-        if is_new and uri in self.confman.conf['feeds'].keys():
+        if is_new and uri in self.confman.nconf.feeds.keys():
             return False
         self.emit('feedmanager_refresh_start', '')
         self.errors = []
@@ -273,7 +264,7 @@ class FeedsManager(metaclass=Singleton):
                 raise TypeError('delete_feed: targets must be list or Feed')
         articles_to_rm = []
         n_selected_feeds = self.article_store.selected_feeds.copy()
-        feeds: Dict[str, dict] = self.confman.conf['feeds']
+        feeds = self.confman.nconf.feeds
         for to_rm in targets:
             articles_to_rm.extend(to_rm.items.values())
             if to_rm.rss_link in n_selected_feeds:
@@ -282,7 +273,7 @@ class FeedsManager(metaclass=Singleton):
             feeds.pop(
                 to_rm.rss_link
             )
-        self.confman.conf['feeds'] = feeds
+        self.confman.nconf.feeds = feeds
         self.article_store.set_selected_feeds(n_selected_feeds)
         self.article_store.remove_items(articles_to_rm)
 
@@ -292,12 +283,12 @@ class FeedsManager(metaclass=Singleton):
             n_feeds_urls_l = opml_to_rss_list(p)
             for tag in [t for f in n_feeds_urls_l for t in f.tags]:
                 GLib.idle_add(self.tag_store.add_tag, tag)
-            feeds: Dict[str, dict] = self.confman.conf['feeds']
+            feeds = self.confman.nconf.feeds
             for f in n_feeds_urls_l:
                 url = f.feed
                 if url not in feeds.keys():
                     feeds[url] = {'tags': f.tags}
-            self.confman.conf['feeds'] = feeds
+            self.confman.nconf.feeds = feeds
             GLib.idle_add(self.refresh)
 
         Thread(
@@ -308,5 +299,21 @@ class FeedsManager(metaclass=Singleton):
         self.__feeds_loaded += 1
         self.emit(
             'feedmanager_feeds_loaded_changed',
-            self.__feeds_loaded / max(len(self.confman.conf['feeds']), 1)
+            self.__feeds_loaded / max(
+                len(self.confman.nconf.feeds), 1
+            )
         )
+
+    def cleanup_read_items(self):
+        if self.is_refreshing:
+            return
+        avail_feed_ids = [
+            fi.identifier for fi in cast(
+                Iterable, self.article_store.list_store
+            )
+        ]
+        clean_read_items = [
+            item for item in self.confman.nconf.read_items
+            if item in avail_feed_ids
+        ]
+        self.confman.nconf.read_items = clean_read_items

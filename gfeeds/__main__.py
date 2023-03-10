@@ -35,21 +35,21 @@ class GFeedsApplication(BaseApp):
                     accel='<Control>h',
                     stateful=True,
                     state_type=AppAction.StateType.BOOL,
-                    state_default=self.confman.conf['show_read_items']
+                    state_default=self.confman.nconf.show_read_items
                 ),
                 AppAction(
                     name='show_empty_feeds',
                     func=self.show_empty_feeds,
                     stateful=True,
                     state_type=AppAction.StateType.BOOL,
-                    state_default=self.confman.conf['show_empty_feeds']
+                    state_default=self.confman.nconf.show_empty_feeds
                 ),
                 AppAction(
                     name='view_mode_change',
                     func=self.view_mode_change,
                     stateful=True,
                     state_type=AppAction.StateType.RADIO,
-                    state_default=self.confman.conf['default_view']
+                    state_default=self.confman.nconf.default_view
                 ),
                 AppAction(
                     name='set_all_read',
@@ -116,7 +116,7 @@ class GFeedsApplication(BaseApp):
         self.window.connect('close-request', self.on_destroy_window)
         self.add_window(self.window)
         self.feedman.refresh(
-            get_cached=not self.confman.conf['refresh_on_startup'],
+            get_cached=not self.confman.nconf.refresh_on_startup,
             is_startup=True
         )
 
@@ -140,20 +140,20 @@ class GFeedsApplication(BaseApp):
         if target_s not in ['webview', 'reader', 'feedcont']:
             target_s = 'webview'
         self.window.leaflet.on_view_mode_change(target_s)
-        self.confman.conf['default_view'] = target_s
+        self.confman.nconf.default_view = target_s
 
     def show_read_items(self, action: Gio.SimpleAction, *__):
         action.change_state(
             GLib.Variant.new_boolean(not action.get_state().get_boolean())
         )
-        self.confman.conf['show_read_items'] = action.get_state().get_boolean()
+        self.confman.nconf.show_read_items = action.get_state().get_boolean()
         self.confman.emit('gfeeds_show_read_changed', '')
 
     def show_empty_feeds(self, action: Gio.SimpleAction, *__):
         action.change_state(
             GLib.Variant.new_boolean(not action.get_state().get_boolean())
         )
-        self.confman.conf['show_empty_feeds'] = \
+        self.confman.nconf.show_empty_feeds = \
             action.get_state().get_boolean()
         self.confman.emit('gfeeds_show_empty_feeds_changed', '')
 

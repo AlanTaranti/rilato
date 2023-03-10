@@ -69,6 +69,9 @@ class GsettingsWrapper:
 
     def get(self, key: str) -> GSETTINGS_TYPES:
         key = self.convert_and_check_key(key)
+        return self.raw_get(key)
+
+    def raw_get(self, key: str) -> GSETTINGS_TYPES:
         v = self.gs.get_value(key)
         converter = VARIANT_CONVERTERS.get(v.get_type_string(), None)
         if converter is None:

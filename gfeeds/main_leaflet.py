@@ -106,7 +106,7 @@ class MainLeaflet(Adw.Bin):
         self.sidebar.listview_sw.all_items_changed()
         self.sidebar.loading_revealer.set_running(False)
         if (
-                self.confman.conf['notify_new_articles'] and
+                self.confman.nconf.notify_new_articles and
                 not self.get_root().is_active() and  # window is not focused
                 self.feedman.new_items_num > 0
         ):
@@ -126,7 +126,7 @@ class MainLeaflet(Adw.Bin):
             return
         feed_item.read = True
         if (
-                self.confman.conf['open_youtube_externally'] and
+                self.confman.nconf.open_youtube_externally and
                 reduce(or_, [
                     f'://{pfx}' in feed_item.link  # type: ignore
                     for pfx in [
@@ -136,7 +136,7 @@ class MainLeaflet(Adw.Bin):
                 ])
         ):
             cmd_parts = [
-                self.confman.conf['media_player'], f'"{feed_item.link}"'
+                self.confman.nconf.media_player, f'"{feed_item.link}"'
             ]
             if self.confman.is_flatpak:
                 cmd_parts.insert(0, 'flatpak-spawn --host')

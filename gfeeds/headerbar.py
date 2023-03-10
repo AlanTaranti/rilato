@@ -76,8 +76,8 @@ class RightHeaderbar(Gtk.WindowHandle):
         super().__init__()
         self.confman = ConfManager()
         self.webview = webview
-        self.set_view_mode_icon(self.confman.conf['default_view'])
-        self.on_zoom_changed(None, self.confman.conf['webview_zoom'])
+        self.set_view_mode_icon(self.confman.nconf.default_view)
+        self.on_zoom_changed(None, self.confman.nconf.webview_zoom)
 
     @GObject.Property(type=GFeedsWebView, default=None, nick='webview')
     def webview(self) -> GFeedsWebView:  # type: ignore
@@ -180,11 +180,11 @@ class LeftHeaderbar(Gtk.WindowHandle):
 
         def on_remove(d: ScrolledDialog, _):
             d.close()
-            feeds: Dict[str, dict] = self.confman.conf['feeds']
+            feeds: Dict[str, dict] = self.confman.nconf.feeds
             for pf in self.feedman.problematic_feeds:
                 if pf in feeds.keys():
                     feeds.pop(pf)
-            self.confman.conf['feeds'] = feeds
+            self.confman.nconf.feeds = feeds
             self.errors_btn.set_visible(False)
 
         def on_keep(d: ScrolledDialog, _):

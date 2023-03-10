@@ -51,7 +51,7 @@ class PreferencesButtonRow(MActionRow):
     def on_button_clicked(self, btn):
         self.onclick(self.confman)
         if self.signal:
-            self.confman.emit(self.signal, '')
+            self.confman.emit(self.signal)
 
 
 class PreferencesEntryRow(MActionRow):
@@ -83,7 +83,7 @@ class PreferencesEntryRow(MActionRow):
         if self.onchange is not None:
             self.onchange(self.confman)
         if self.signal:
-            self.confman.emit(self.signal, '')
+            self.confman.emit(self.signal)
 
 
 class PreferencesSpinButtonRow(MActionRow):
@@ -195,7 +195,7 @@ class PreferencesComboRow(Adw.ComboRow):
         if value is not None:
             self.confman.conf[self.conf_key] = value
             if self.signal:
-                self.confman.emit(self.signal, '')
+                self.confman.emit(self.signal)
 
 
 class PreferencesToggleRow(MActionRow):
@@ -225,7 +225,7 @@ class PreferencesToggleRow(MActionRow):
     def on_toggle_state_set(self, toggle, state):
         self.confman.conf[self.conf_key] = state
         if self.signal is not None:
-            self.confman.emit(self.signal, '')
+            self.confman.emit(self.signal)
 
 
 class PreferencesFontChooserRow(MActionRow):
@@ -254,7 +254,7 @@ class PreferencesFontChooserRow(MActionRow):
         n_font = ' '.join(self.font_btn.get_font().split(' ')[:-1]).strip()
         self.confman.conf[self.conf_key] = n_font
         if self.signal:
-            self.confman.emit(self.signal, '')
+            self.confman.emit(self.signal)
 
 
 class MPreferencesGroup(Adw.PreferencesGroup):

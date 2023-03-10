@@ -2,9 +2,10 @@ from pathlib import Path
 from os.path import isfile
 import json
 from datetime import timedelta
-from typing import List
 from gi.repository import GObject
+from gfeeds.conf_mapper import ConfMapper
 from gfeeds.gsettings_wrapper import GsettingsWrapper
+from gfeeds.signal_helper import signal_tuple
 from gfeeds.util.paths import (
     ARTICLE_THUMB_CACHE_PATH,
     CACHE_HOME,
@@ -18,77 +19,21 @@ from gfeeds.util.singleton import Singleton
 class ConfManagerSignaler(GObject.Object):
 
     __gsignals__ = {
-        'gfeeds_new_first_changed': (
-            GObject.SignalFlags.RUN_FIRST,
-            None,
-            (str,)
-        ),
-        'gfeeds_repopulation_required': (
-            GObject.SignalFlags.RUN_FIRST,
-            None,
-            (str,)
-        ),
-        'gfeeds_webview_settings_changed': (
-            GObject.SignalFlags.RUN_FIRST,
-            None,
-            (str,)
-        ),
-        'gfeeds_show_read_changed': (
-            GObject.SignalFlags.RUN_FIRST,
-            None,
-            (str,)
-        ),
-        'gfeeds_full_article_title_changed': (
-            GObject.SignalFlags.RUN_FIRST,
-            None,
-            (str,)
-        ),
-        'gfeeds_show_empty_feeds_changed': (
-            GObject.SignalFlags.RUN_FIRST,
-            None,
-            (str,)
-        ),
+        'gfeeds_new_first_changed': signal_tuple(),
+        'gfeeds_repopulation_required': signal_tuple(),
+        'gfeeds_webview_settings_changed': signal_tuple(),
+        'gfeeds_show_read_changed': signal_tuple(),
+        'gfeeds_full_article_title_changed': signal_tuple(),
+        'gfeeds_show_empty_feeds_changed': signal_tuple(),
+        'gfeeds_full_feed_name_changed': signal_tuple(),
+        'dark_mode_changed': signal_tuple(),
+        'show_thumbnails_changed': signal_tuple(),
+        'on_apply_adblock_changed': signal_tuple(),
+        'on_refresh_blocklist': signal_tuple(),
         # Signals down here don't have to do with the config
-        'gfeeds_filter_changed': (
-            GObject.SignalFlags.RUN_FIRST,
-            None,
-            (GObject.TYPE_PYOBJECT,)
-        ),
-        'gfeeds_full_feed_name_changed': (
-            GObject.SignalFlags.RUN_FIRST,
-            None,
-            (str,)
-        ),
-        'gfeeds_tags_append': (
-            GObject.SignalFlags.RUN_FIRST,
-            None,
-            (str,)
-        ),
-        'gfeeds_tags_pop': (
-            GObject.SignalFlags.RUN_FIRST,
-            None,
-            (str,)
-        ),
-        'dark_mode_changed': (
-            GObject.SignalFlags.RUN_FIRST,
-            None,
-            (str,)
-        ),
-        'show_thumbnails_changed': (
-            GObject.SignalFlags.RUN_LAST,
-            None,
-            (str,)
-        ),
-        'on_apply_adblock_changed': (
-            GObject.SignalFlags.RUN_LAST,
-            None,
-            (str,)
-        ),
-        'on_refresh_blocklist': (
-            GObject.SignalFlags.RUN_LAST,
-            None,
-            (str,)
-        )
+        'gfeeds_filter_changed': signal_tuple(params=(GObject.TYPE_PYOBJECT,)),
+        'gfeeds_tags_append': signal_tuple(params=(str,)),
+        'gfeeds_tags_pop': signal_tuple(params=(str,)),
     }
 
 
@@ -140,8 +85,10 @@ class ConfManager(metaclass=Singleton):
             'org.gabmus.gfeeds.json'
         )
 
-        self.conf = GsettingsWrapper('org.gabmus.gfeeds')
-        json_to_gsettings(self.conf, self.legacy_conf_path)
+        self.gsettings_conf = GsettingsWrapper('org.gabmus.gfeeds')
+        self.conf = self.gsettings_conf
+        self.nconf = ConfMapper(self.gsettings_conf)
+        json_to_gsettings(self.gsettings_conf, self.legacy_conf_path)
 
         self.article_thumb_cache_path = ARTICLE_THUMB_CACHE_PATH
         if not self.article_thumb_cache_path.is_file():
@@ -157,39 +104,39 @@ class ConfManager(metaclass=Singleton):
 
     @property
     def max_article_age(self) -> timedelta:
-        return timedelta(days=self.conf['max_article_age_days'])
+        return timedelta(days=self.nconf.max_article_age_days)
 
     def add_tag(self, tag: str, target_feeds=[]):
-        tags: list = self.conf['tags']
+        tags = self.nconf.tags
         lowercase_tags = [t.lower() for t in tags]
         if tag.lower() not in lowercase_tags:
             tags.append(tag)
-            self.conf['tags'] = tags
+            self.nconf.tags = tags
             self.emit('gfeeds_tags_append', tag)
-        feeds: dict = self.conf['feeds']
+        feeds = self.nconf.feeds
         for feed in target_feeds:
             if 'tags' not in feeds[feed].keys():
                 feeds[feed]['tags'] = []
             if tag not in feeds[feed]['tags']:
                 feeds[feed]['tags'].append(tag)
-        self.conf['feeds'] = feeds
+        self.nconf.feeds = feeds
 
     def delete_tag(self, tag: str):
-        tags: List[str] = self.conf['tags']
+        tags = self.nconf.tags
         while tag in tags:
             tags.remove(tag)
         self.emit('gfeeds_tags_pop', tag)
-        self.conf['tags'] = tags
-        self.remove_tag(tag, self.conf['feeds'].keys())
+        self.nconf.tags = tags
+        self.remove_tag(tag, self.nconf.feeds.keys())
 
     def remove_tag(self, tag: str, target_feeds: list):
-        feeds: dict = self.conf['feeds']
+        feeds: dict = self.nconf.feeds
         for feed in target_feeds:
             if 'tags' not in feeds[feed].keys():
                 continue
             if tag in feeds[feed]['tags']:
                 feeds[feed].remove(tag)
-        self.conf['feeds'] = feeds
+        self.nconf.feeds = feeds
 
     # TODO: legacy; remove
     def save_conf(self, *_):

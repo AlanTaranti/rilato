@@ -133,13 +133,13 @@ class ManageTagsContent(Adw.Bin):
         self.add_tag_btn.set_sensitive(False)
         self.tags_entry.set_text('')
         selected_feeds = [f.rss_link for f in self.window.get_selected_feeds()]
-        for tag in self.confman.conf['tags']:
+        for tag in self.confman.nconf.tags:
             all_have_tag = True
             some_have_tag = False
             for feed in selected_feeds:
                 if (
-                        'tags' in self.confman.conf['feeds'][feed].keys() and
-                        tag in self.confman.conf['feeds'][feed]['tags']
+                        'tags' in self.confman.nconf.feeds[feed].keys() and
+                        tag in self.confman.nconf.feeds[feed]['tags']
                 ):
                     some_have_tag = True
                 else:

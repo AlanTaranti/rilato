@@ -43,8 +43,8 @@ class FeedStore(Gtk.FilterListModel):
 
     def _filter_func(self, feed: Feed, *_) -> bool:
         res = True
-        if not self.confman.conf['show_empty_feeds']:
-            if self.confman.conf['show_read_items']:
+        if not self.confman.nconf.show_empty_feeds:
+            if self.confman.nconf.show_read_items:
                 res = res and len(feed.items) > 0
             else:
                 res = res and feed.unread_count > 0

@@ -131,7 +131,7 @@ class SidebarRow(Gtk.Box):
         self.date_label.set_text(humanize_datetime(self.feed_item.pub_date))
 
     def set_article_image(self, *_):
-        if not self.confman.conf['show_thumbnails'] or self.feed_item is None:
+        if not self.confman.nconf.show_thumbnails or self.feed_item is None:
             self.picture_view_container.set_visible(False)
             return
 
@@ -201,13 +201,13 @@ class SidebarRow(Gtk.Box):
 
     def on_full_article_title_changed(self, *_):
         self.title_label.set_ellipsize(
-            Pango.EllipsizeMode.NONE if self.confman.conf['full_article_title']
+            Pango.EllipsizeMode.NONE if self.confman.nconf.full_article_title
             else Pango.EllipsizeMode.END
         )
 
     def on_full_feed_name_changed(self, *_):
         self.origin_label.set_ellipsize(
-            Pango.EllipsizeMode.NONE if self.confman.conf['full_feed_name']
+            Pango.EllipsizeMode.NONE if self.confman.nconf.full_feed_name
             else Pango.EllipsizeMode.END
         )
 

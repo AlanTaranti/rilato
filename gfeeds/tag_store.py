@@ -67,7 +67,7 @@ class TagStore(Gtk.FilterListModel):
 
     def populate(self):
         self.empty()
-        for tag in self.confman.conf['tags']:
+        for tag in self.confman.nconf.tags:
             n_tag = TagObj(tag)
             self.list_store.append(n_tag)
             n_tag.connect(
@@ -115,8 +115,8 @@ class TagStore(Gtk.FilterListModel):
                 return
 
     def _filter_func(self, item: TagObj, *_) -> bool:
-        if not self.confman.conf['show_empty_feeds'] and \
-                not self.confman.conf['show_read_items']:
+        if not self.confman.nconf.show_empty_feeds and \
+                not self.confman.nconf.show_read_items:
             return item.unread_count > 0
         return True
 

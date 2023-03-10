@@ -15,11 +15,11 @@ def get_css():
     gtk_font = get_gtk_font()
     sans_font = gtk_font
     serif_font = gtk_font
-    mono_font = confman.conf['font_monospace_custom']
-    if not confman.conf['font_use_system_for_titles']:
-        serif_font = confman.conf['font_titles_custom']
-    if not confman.conf['font_use_system_for_paragraphs']:
-        sans_font = confman.conf['font_paragraphs_custom']
+    mono_font = confman.nconf.font_monospace_custom
+    if not confman.nconf.font_use_system_for_titles:
+        serif_font = confman.nconf.font_titles_custom
+    if not confman.nconf.font_use_system_for_paragraphs:
+        sans_font = confman.nconf.font_paragraphs_custom
     css = ''
     for typ, var in zip(
             ('sans',   'serif',     'mono'),

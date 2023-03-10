@@ -78,7 +78,7 @@ class FeedsViewListboxRow(Gtk.ListBoxRow):
 
     def on_full_feed_name_changed(self, *args):
         self.name_label.set_ellipsize(
-            Pango.EllipsizeMode.NONE if self.confman.conf['full_feed_name']
+            Pango.EllipsizeMode.NONE if self.confman.nconf.full_feed_name
             else Pango.EllipsizeMode.END
         )
 

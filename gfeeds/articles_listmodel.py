@@ -41,7 +41,7 @@ class ArticlesListModel(Gtk.SortListModel):
                 continue
             if self.__filter_by_feed_and_search(feed_item):
                 feed_item.read = state
-        if not self.confman.conf['show_read_items'] and not state:
+        if not self.confman.nconf.show_read_items and not state:
             self.invalidate_filter()
 
     def _change_filter(self, caller, n_filter):
@@ -51,9 +51,9 @@ class ArticlesListModel(Gtk.SortListModel):
             n_filter = n_filter[0]
             # filter by tag
             self.selected_feeds = [
-                f for f in self.confman.conf['feeds'].keys()
-                if 'tags' in self.confman.conf['feeds'][f].keys() and
-                n_filter in self.confman.conf['feeds'][f]['tags']
+                f for f in self.confman.nconf.feeds.keys()
+                if 'tags' in self.confman.nconf.feeds[f].keys() and
+                n_filter in self.confman.nconf.feeds[f]['tags']
             ]
         else:
             self.selected_feeds = [n_filter.rss_link]
@@ -65,7 +65,7 @@ class ArticlesListModel(Gtk.SortListModel):
 
     def _filter_func(self, item: FeedItem, *_) -> bool:
         res = self.__filter_by_feed_and_search(item)
-        if not self.confman.conf['show_read_items']:
+        if not self.confman.nconf.show_read_items:
             res = res and (
                 item == self.selected_article or
                 not item.read
@@ -86,7 +86,7 @@ class ArticlesListModel(Gtk.SortListModel):
         # item1 first -> -1
         # item2 first -> +1
         # equal (unused) -> 0
-        if self.confman.conf['new_first']:
+        if self.confman.nconf.new_first:
             return (
                 -1 if item1.pub_date > item2.pub_date  # type: ignore
                 else 1

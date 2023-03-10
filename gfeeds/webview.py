@@ -64,10 +64,10 @@ class GFeedsWebView(Gtk.Stack):
                 'webkit_user_content_filter_store'
             ))
         )
-        if self.confman.conf['enable_adblock']:
+        if self.confman.nconf.enable_adblock:
             self.apply_adblock()
 
-        self.webkitview.set_zoom_level(self.confman.conf['webview_zoom'])
+        self.webkitview.set_zoom_level(self.confman.nconf.webview_zoom)
 
         self.new_page_loaded = False
         self.uri = ''
@@ -94,13 +94,13 @@ class GFeedsWebView(Gtk.Stack):
 
     def on_apply_adblock_changed(self, refresh: bool):
         self.apply_adblock(
-            refresh=refresh, remove=not self.confman.conf['enable_adblock']
+            refresh=refresh, remove=not self.confman.nconf.enable_adblock
         )
 
     def apply_adblock(self, refresh: bool = False, remove: bool = False):
         refresh = refresh or (
             datetime.fromtimestamp(
-                self.confman.conf['blocklist_last_update']
+                self.confman.nconf.blocklist_last_update
             ) - datetime.now()
         ).days >= 10
 
@@ -132,7 +132,7 @@ class GFeedsWebView(Gtk.Stack):
             )
             now = datetime.now()
             print(f'Downloaded updated blocklist at {now}')
-            self.confman.conf['blocklist_last_update'] = now.timestamp()
+            self.confman.nconf.blocklist_last_update = now.timestamp()
             GLib.idle_add(download_blocklist_cb, res)
 
         def filter_load_cb(caller, res, *args):
@@ -169,7 +169,7 @@ class GFeedsWebView(Gtk.Stack):
 
     def apply_webview_settings(self, *args):
         self.webkitview_settings.set_enable_javascript(
-            self.confman.conf['enable_js']
+            self.confman.nconf.enable_js
         )
         self.webkitview_settings.set_enable_smooth_scrolling(True)
         self.webkitview_settings.set_enable_page_cache(True)
@@ -198,7 +198,7 @@ class GFeedsWebView(Gtk.Stack):
     def on_zoom_changed(self):
         zoom = self.webkitview.get_zoom_level()
         self.emit('zoom_changed', zoom)
-        self.confman.conf['webview_zoom'] = zoom
+        self.confman.nconf.webview_zoom = zoom
 
     def show_notif(self, *args):
         toast = Adw.Toast(title=_('Link copied to clipboard!'))
@@ -256,7 +256,7 @@ class GFeedsWebView(Gtk.Stack):
         self.feeditem = feeditem
         self.uri = uri
         self.set_visible_child(self.main_view)
-        target = self.confman.conf['default_view']
+        target = self.confman.nconf.default_view
         # if uri is empty, fallback to rss content
         if not uri or force_feedcont:
             target = 'feedcont'
@@ -312,10 +312,10 @@ class GFeedsWebView(Gtk.Stack):
         if not self.feeditem:
             return
         dark = False
-        if self.confman.conf['reader_theme'] == 'auto':
+        if self.confman.nconf.reader_theme == 'auto':
             dark = Adw.StyleManager.get_default().get_dark()
         else:
-            dark = self.confman.conf['reader_theme'] == 'dark'
+            dark = self.confman.nconf.reader_theme == 'dark'
         self.webkitview.load_html(build_reader_html(
             self.html,
             self.feeditem,
@@ -329,7 +329,7 @@ class GFeedsWebView(Gtk.Stack):
         if not url:
             return
         cmd_parts = [
-            self.confman.conf['media_player'], f"'{url}'"
+            self.confman.nconf.media_player, f"'{url}'"
         ]
         if IS_FLATPAK:
             cmd_parts.insert(0, 'flatpak-spawn --host')
@@ -348,7 +348,7 @@ class GFeedsWebView(Gtk.Stack):
         ):
             uri = decision.get_navigation_action().get_request().get_uri()
             if (
-                    self.confman.conf['open_youtube_externally'] and
+                    self.confman.nconf.open_youtube_externally and
                     reduce(or_, [
                         f'://{pfx}' in uri
                         for pfx in [
@@ -360,7 +360,7 @@ class GFeedsWebView(Gtk.Stack):
                 decision.ignore()
                 self.open_url_in_media_player(uri)
             else:
-                if not self.confman.conf['open_links_externally']:
+                if not self.confman.nconf.open_links_externally:
                     return False
                 decision.ignore()
                 Gio.AppInfo.launch_default_for_uri(uri)

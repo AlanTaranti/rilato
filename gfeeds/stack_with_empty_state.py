@@ -28,7 +28,7 @@ class StackWithEmptyState(Gtk.Stack):
             self.add_named(self.main_widget, 'main_widget')
         self.add_named(self.empty_state, 'empty_state')
         self.set_visible_child(
-            self.main_widget if len(self.confman.conf['feeds']) > 0
+            self.main_widget if len(self.confman.nconf.feeds) > 0
             and self.main_widget is not None
             else self.empty_state
         )

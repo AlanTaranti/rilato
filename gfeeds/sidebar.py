@@ -34,7 +34,7 @@ class GFeedsSidebar(Gtk.Overlay):
 
         self.listview_sw = (
             ArticlesListView()
-            if self.confman.conf['use_experimental_listview']
+            if self.confman.nconf.use_experimental_listview
             else ArticlesListBox()
         )
         self.empty = self.listview_sw.empty

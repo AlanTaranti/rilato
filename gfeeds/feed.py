@@ -75,11 +75,11 @@ class Feed(GObject.Object):
                 unread_count += 1
             if not valid_age and n_item.read:
                 read_items: List[str] = \
-                    self.confman.conf['read_items']  # type: ignore
+                    self.confman.nconf.read_items  # type: ignore
                 read_items.remove(n_item.identifier)
-                self.confman.conf['read_items'] = read_items
+                self.confman.nconf.read_items = read_items
 
-        if self.rss_link in self.confman.conf['feeds']:  # type: ignore
+        if self.rss_link in self.confman.nconf.feeds:  # type: ignore
             feed_conf = (self.get_conf_dict() or dict())
             for tag_name in feed_conf.get('tags', []):
                 tag_obj = self.tag_store.get_tag(tag_name)
@@ -93,7 +93,7 @@ class Feed(GObject.Object):
             GLib.idle_add(do)
 
     def get_conf_dict(self) -> Optional[dict]:
-        return self.confman.conf['feeds'].get(  # type: ignore
+        return self.confman.nconf.feeds.get(  # type: ignore
                 self.rss_link, None
         )
 

@@ -36,7 +36,7 @@ class FeedItem(GObject.Object):
 
         # used to identify article for read/unread and thumbs cache
         self.identifier = self.__link or (self.__title + self.pub_date_str)
-        self.__read = self.identifier in self.confman.conf['read_items']
+        self.__read = self.identifier in self.confman.nconf.read_items
 
         self.content = self.__sd_item.get_content()
 
@@ -104,12 +104,12 @@ class FeedItem(GObject.Object):
         if read == self.__read:
             return
         self.parent_feed.unread_count += -1 if read else 1
-        read_items: List[str] = self.confman.conf['read_items']  # type: ignore
+        read_items: List[str] = self.confman.nconf.read_items  # type: ignore
         if read and self.identifier not in read_items:
             read_items.append(self.identifier)
         elif not read and self.identifier in read_items:
             read_items.remove(self.identifier)
-        self.confman.conf['read_items'] = read_items
+        self.confman.nconf.read_items = read_items
         self.__read = read
 
     def __repr__(self):

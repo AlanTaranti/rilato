@@ -17,9 +17,7 @@ class CommonListScrolledWin(Gtk.ScrolledWindow):
         self.articles_store = self.feedman.article_store
 
         self.fetch_image_thread_pool = ThreadPoolExecutor(
-            max_workers=self.articles_store.confman.conf[
-                'max_refresh_threads'
-            ]
+            max_workers=self.articles_store.confman.nconf.max_refresh_threads
         )
 
         # API bindings

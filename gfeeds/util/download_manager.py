@@ -95,11 +95,11 @@ def download_feed(
         )
     headers = GET_HEADERS.copy()
     if (
-            'last-modified' in confman.conf['feeds'][link].keys() and
+            'last-modified' in confman.nconf.feeds[link].keys() and
             isfile(dest_path)
     ):
         headers['If-Modified-Since'] = \
-            confman.conf['feeds'][link]['last-modified']
+            confman.nconf.feeds[link]['last-modified']
     try:
         res = requests.get(
             link, headers=headers, allow_redirects=True, timeout=TIMEOUT
@@ -122,18 +122,18 @@ def download_feed(
         )
     if 'last-modified' in res.headers.keys():
         # TODO fix when switching to non-json feeds in gsettings
-        feeds: dict = confman.conf['feeds']
+        feeds: dict = confman.nconf.feeds
         feeds[link]['last-modified'] = res.headers['last-modified']
-        confman.conf['feeds'] = feeds
+        confman.nconf.feeds = feeds
 
     def handle_200():
         if (
                 'last-modified' not in res.headers.keys() and
-                'last-modified' in confman.conf['feeds'][link].keys()
+                'last-modified' in confman.nconf.feeds[link].keys()
         ):
-            feeds: dict = confman.conf['feeds']
+            feeds: dict = confman.nconf.feeds
             feeds[link].pop('last-modified')
-            confman.conf['feeds'] = feeds
+            confman.nconf.feeds = feeds
         with open(dest_path, 'wb') as fd:
             fd.write(res.content)  # res.text is str, res.content is bytes
         to_unicode(dest_path)
@@ -147,10 +147,10 @@ def download_feed(
 
     def handle_301_302():
         n_link = res.headers.get('location', link)
-        feeds: dict = confman.conf['feeds']
+        feeds: dict = confman.nconf.feeds
         feeds[n_link] = feeds[link]
         feeds.pop(link)
-        confman.conf['feeds'] = feeds
+        confman.nconf.feeds = feeds
         return download_feed(n_link)
 
     def handle_everything_else():
