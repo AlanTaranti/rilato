@@ -53,6 +53,17 @@
     <url type="donation">https://liberapay.com/gabmus/donate</url>
     <update_contact>gabmus@disroot.org</update_contact>
     <releases>
+<release version="2.1.0" date="2023-03-11">
+            <description>
+                <ul>
+                    <li>Improved configuration management</li>
+                    <li>Refactoring around GObject property binding</li>
+                    <li>Removed top/bottom margin in reader mode</li>
+                    <li>Catch text decoding errors</li>
+                </ul>
+            </description>
+        </release>
+
 <release version="2.0.1" date="2022-10-10">
             <description>
                 <ul>
