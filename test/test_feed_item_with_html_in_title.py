@@ -49,10 +49,14 @@ def run_around_tests():
     remove(RSS_PATH)
 
 
+class MockNConf:
+    read_items = []
+
+
 def __mock_confman(monkeypatch):
     class MockConfManager:
         def __init__(self):
-            self.conf = {'read_items': []}
+            self.nconf = MockNConf()
 
     monkeypatch.setattr(
         'gfeeds.feed_item.ConfManager', MockConfManager
