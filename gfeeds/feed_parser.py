@@ -61,8 +61,27 @@ def parse_feed(
                 'Errors while parsing feed `{0}`, URL: `{1}`'
             ).format(feedpath, rss_link_)
         )
-    title = sd_feed.get_title()
-    raw_entries = sd_feed.get_items()
+    try:
+        title = sd_feed.get_title()
+        raw_entries = sd_feed.get_items()
+        link = sd_feed.get_url()
+        rss_link = rss_link_ or sd_feed.get_rss_url()
+        image_url = sd_feed.get_img_url()
+        description = sd_feed.get_description()
+    except UnicodeDecodeError:
+        return FeedParserRes(
+            is_null=True,
+            error=_(
+                'Error decoding unicode data from feed `{0}`, URL: `{1}`'
+            ).format(feedpath, rss_link_)
+        )
+    except Exception:
+        return FeedParserRes(
+            is_null=True,
+            error=_(
+                'Error extracting data from feed `{0}`, URL: `{1}`'
+            ).format(feedpath, rss_link_)
+        )
     if not title and len(raw_entries) == 0:
         # if these conditions are met, there's reason to believe
         # this is not an rss/atom feed
@@ -71,14 +90,11 @@ def parse_feed(
                 '`{0}` may not be an RSS or Atom feed'
             ).format(rss_link_)
         )
-    link = sd_feed.get_url()
-    rss_link = rss_link_ or sd_feed.get_rss_url()
     if not title:
         title = rss_link
     favicon_path: Optional[str] = str(THUMBS_CACHE_PATH.joinpath(
         shasum(rss_link+'v2')+'.png'
     ))
-    image_url = sd_feed.get_img_url()
     if not isfile(favicon_path):
         if image_url:
             try:
@@ -104,7 +120,7 @@ def parse_feed(
         rss_link=rss_link,
         title=title,
         link=link,
-        description=sd_feed.get_description(),
+        description=description,
         image_url=image_url,
         favicon_path=favicon_path,
         raw_entries=raw_entries
