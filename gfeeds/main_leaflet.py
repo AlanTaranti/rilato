@@ -74,7 +74,7 @@ class MainLeaflet(Adw.Bin):
         self.sidebar.listview_sw.set_vadjustment(adjustment)
 
     @Gtk.Template.Callback()
-    def on_leaflet_folded(self, *args):
+    def on_leaflet_folded(self, *_):
         rh = self.right_headerbar.right_headerbar
         lh = self.left_headerbar.left_headerbar
         if self.leaflet.get_folded():
@@ -99,7 +99,7 @@ class MainLeaflet(Adw.Bin):
         self.right_headerbar.on_view_mode_change(target)
         self.webview.change_view_mode(target)
 
-    def on_refresh_end(self, *args):
+    def on_refresh_end(self, *_):
         self.left_headerbar.errors_btn.set_visible(
             len(self.feedman.errors) > 0
         )
