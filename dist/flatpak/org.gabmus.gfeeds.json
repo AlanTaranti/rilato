@@ -35,8 +35,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/lxml/lxml/releases/download/lxml-4.9.1/lxml-4.9.1.tar.gz",
-                    "sha256": "fe749b052bb7233fe5d072fcb549221a8cb1a16725c47c37e42b0b9cb3ff2c3f"
+                    "url": "https://github.com/lxml/lxml/releases/download/lxml-4.9.2/lxml-4.9.2.tar.gz",
+                    "sha256": "d3fe33ffef3637e053cce7aa0bf26ad0943911c808e27962ba1202198e21a212"
                 }
             ]
         },
@@ -46,8 +46,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://gitlab.gnome.org/jwestman/blueprint-compiler/-/archive/v0.4.0/blueprint-compiler-v0.4.0.tar.gz",
-                    "sha256": "c1a5efd8562aca7df259679c6d9cd067ea2a78372069fcc01985619ec3963d8f"
+                    "url": "https://gitlab.gnome.org/jwestman/blueprint-compiler/-/archive/v0.6.0/blueprint-compiler-v0.6.0.tar.gz",
+                    "sha256": "c9e3652b66803c1de6a24b71f4fa4638b32260b4b04b93c2f3d958e1ce2a175e"
                 }
             ]
         },
@@ -60,8 +60,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/pygments/pygments/archive/refs/tags/2.13.0.tar.gz",
-                    "sha256": "15a76f8c2c47f6931bf5ce22e40ee0636b8f72f371d8693210b4b85fe99d535a"
+                    "url": "https://github.com/pygments/pygments/archive/refs/tags/2.14.0.tar.gz",
+                    "sha256": "7cb39366ee4418e8d0fbe16cba940c1a7bb01361c9ac81abaedc90e05806d469"
                 }
             ]
         },
@@ -106,8 +106,8 @@
                     "sources": [
                         {
                             "type": "archive",
-                            "url": "https://github.com/pybind/pybind11/archive/refs/tags/v2.10.0.tar.gz",
-                            "sha256": "eacf582fa8f696227988d08cfc46121770823839fe9e301a20fbce67e7cd70ec"
+                            "url": "https://github.com/pybind/pybind11/archive/refs/tags/v2.10.3.tar.gz",
+                            "sha256": "5d8c4c5dda428d3a944ba3d2a5212cb988c2fae4670d58075a5a49075a6ca315"
                         }
                     ]
                 },
@@ -121,8 +121,8 @@
                     "sources": [
                         {
                             "type": "archive",
-                            "url": "https://github.com/pybind/pybind11/archive/refs/tags/v2.10.0.tar.gz",
-                            "sha256": "eacf582fa8f696227988d08cfc46121770823839fe9e301a20fbce67e7cd70ec"
+                            "url": "https://github.com/pybind/pybind11/archive/refs/tags/v2.10.3.tar.gz",
+                            "sha256": "5d8c4c5dda428d3a944ba3d2a5212cb988c2fae4670d58075a5a49075a6ca315"
                         }
                     ]
                 },
@@ -133,7 +133,7 @@
                         {
                             "type": "git",
                             "url": "https://github.com/zeux/pugixml",
-                            "tag": "v1.12.1"
+                            "tag": "v1.13"
                         }
                     ]
                 },
