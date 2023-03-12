@@ -2,13 +2,13 @@
 # Copyright (C) 2021 gfeeds's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gfeeds package.
 #
-# Yuri Chornoivan <yurchor@ukr.net>, 2021, 2022.
+# Yuri Chornoivan <yurchor@ukr.net>, 2021, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: gfeeds master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/gfeeds/issues\n"
-"POT-Creation-Date: 2022-10-02 17:13+0000\n"
-"PO-Revision-Date: 2022-10-02 22:32+0300\n"
+"POT-Creation-Date: 2023-03-11 08:34+0000\n"
+"PO-Revision-Date: 2023-03-12 20:06+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -151,7 +151,7 @@ msgstr "Освіжити"
 msgid "Search"
 msgstr "Пошук"
 
-#: data/ui/left_headerbar.blp:51
+#: data/ui/left_headerbar.blp:50
 msgid "There Are Errors"
 msgstr "Сталися якісь помилки"
 
@@ -159,7 +159,7 @@ msgstr "Сталися якісь помилки"
 msgid "Offline"
 msgstr "Поза мережею"
 
-#: data/ui/manage_feeds_headerbar.blp:7 gfeeds/manage_feeds_window.py:263
+#: data/ui/manage_feeds_headerbar.blp:7 gfeeds/manage_feeds_window.py:257
 msgid "Manage Feeds"
 msgstr "Керування стрічками"
 
@@ -295,7 +295,7 @@ msgstr "Позначити як прочитане/непрочитане"
 msgid "Select an article"
 msgstr "Виберіть статтю"
 
-#: gfeeds/feed_item.py:57
+#: gfeeds/feed_item.py:59
 #, python-brace-format
 msgid "Error: unable to parse datetime {0} for feeditem {1}"
 msgstr "Помилка: не вдалося обробити позначку часу {0} для запису стрічки {1}"
@@ -305,12 +305,25 @@ msgstr "Помилка: не вдалося обробити позначку ч
 msgid "Errors while parsing feed `{0}`, URL: `{1}`"
 msgstr "Помилки під час обробки стрічки «{0}», адреса: «{1}»"
 
-#: gfeeds/feed_parser.py:71
+#: gfeeds/feed_parser.py:75
+#, python-brace-format
+#| msgid "Errors while parsing feed `{0}`, URL: `{1}`"
+msgid "Error decoding unicode data from feed `{0}`, URL: `{1}`"
+msgstr ""
+"Помилка під час декодування даних Unicode зі стрічки «{0}», адреса: «{1}»"
+
+#: gfeeds/feed_parser.py:82
+#, python-brace-format
+#| msgid "Errors while parsing feed `{0}`, URL: `{1}`"
+msgid "Error extracting data from feed `{0}`, URL: `{1}`"
+msgstr "Помилки під час видобування даних зі стрічки «{0}», адреса: «{1}»"
+
+#: gfeeds/feed_parser.py:90
 #, python-brace-format
 msgid "`{0}` may not be an RSS or Atom feed"
 msgstr "«{0}», можливо, не є стрічкою RSS або Atom"
 
-#: gfeeds/feeds_manager.py:97
+#: gfeeds/feeds_manager.py:83
 #, python-brace-format
 msgid "Feed {0} exists already, skipping"
 msgstr "Запис стрічки {0} вже існує, пропускаємо"
@@ -331,7 +344,7 @@ msgstr "З_берегти"
 msgid "_Remove"
 msgstr "Ви_лучити"
 
-#: gfeeds/main_leaflet.py:122
+#: gfeeds/main_leaflet.py:114
 #, python-brace-format
 msgid "{0} new article"
 msgid_plural "{0} new articles"
@@ -345,7 +358,7 @@ msgid "Do you want to import these feeds?"
 msgstr "Хочете імпортувати ці стрічки?"
 
 #: gfeeds/__main__.py:239 gfeeds/__main__.py:273
-#: gfeeds/manage_feeds_window.py:330
+#: gfeeds/manage_feeds_window.py:324
 msgid "_Cancel"
 msgstr "_Скасувати"
 
@@ -366,11 +379,11 @@ msgid "opml file local url or rss remote url to import"
 msgstr ""
 "локальна адреса файла opml або віддалена адреса rss для імпортування даних"
 
-#: gfeeds/manage_feeds_window.py:327
+#: gfeeds/manage_feeds_window.py:321
 msgid "Do you want to delete these feeds?"
 msgstr "Хочете вилучити ці стрічки?"
 
-#: gfeeds/manage_feeds_window.py:332
+#: gfeeds/manage_feeds_window.py:326
 msgid "_Delete"
 msgstr "В_илучити"
 
