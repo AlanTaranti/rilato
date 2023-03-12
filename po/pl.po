@@ -1,15 +1,15 @@
 # Polish translation for gfeeds.
-# Copyright © 2022 the gfeeds authors.
+# Copyright © 2022-2023 the gfeeds authors.
 # This file is distributed under the same license as the gfeeds package.
-# Piotr Drąg <piotrdrag@gmail.com>, 2022.
-# Aviary.pl <community-poland@mozilla.org>, 2022.
+# Piotr Drąg <piotrdrag@gmail.com>, 2022-2023.
+# Aviary.pl <community-poland@mozilla.org>, 2022-2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gfeeds\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/gfeeds/issues\n"
-"POT-Creation-Date: 2022-10-02 17:13+0000\n"
-"PO-Revision-Date: 2022-10-02 23:12+0200\n"
+"POT-Creation-Date: 2023-03-11 08:34+0000\n"
+"PO-Revision-Date: 2023-03-12 15:00+0100\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <community-poland@mozilla.org>\n"
 "Language: pl\n"
@@ -67,8 +67,8 @@ msgstr ""
 #: data/ui/aboutdialog.ui.in:10
 msgid "translator-credits"
 msgstr ""
-"Piotr Drąg <piotrdrag@gmail.com>, 2022\n"
-"Aviary.pl <community-poland@mozilla.org>, 2022"
+"Piotr Drąg <piotrdrag@gmail.com>, 2022-2023\n"
+"Aviary.pl <community-poland@mozilla.org>, 2022-2023"
 
 #: data/ui/add_feed_popover.blp:11
 msgid "Enter feed address to add"
@@ -154,7 +154,7 @@ msgstr "Odświeża"
 msgid "Search"
 msgstr "Wyszukuje"
 
-#: data/ui/left_headerbar.blp:51
+#: data/ui/left_headerbar.blp:50
 msgid "There Are Errors"
 msgstr "Wystąpiły błędy"
 
@@ -162,7 +162,7 @@ msgstr "Wystąpiły błędy"
 msgid "Offline"
 msgstr "Offline"
 
-#: data/ui/manage_feeds_headerbar.blp:7 gfeeds/manage_feeds_window.py:263
+#: data/ui/manage_feeds_headerbar.blp:7 gfeeds/manage_feeds_window.py:257
 msgid "Manage Feeds"
 msgstr "Zarządzanie kanałami"
 
@@ -298,7 +298,7 @@ msgstr "Oznacz jako przeczytane/nieprzeczytane"
 msgid "Select an article"
 msgstr "Wybór artykułu"
 
-#: gfeeds/feed_item.py:57
+#: gfeeds/feed_item.py:59
 #, python-brace-format
 msgid "Error: unable to parse datetime {0} for feeditem {1}"
 msgstr "Błąd: nie można przetworzyć daty i czasu {0} dla elementu kanału {1}"
@@ -308,12 +308,23 @@ msgstr "Błąd: nie można przetworzyć daty i czasu {0} dla elementu kanału {
 msgid "Errors while parsing feed `{0}`, URL: `{1}`"
 msgstr "Błędy podczas przetwarzania kanału „{0}”, adres URL: „{1}”"
 
-#: gfeeds/feed_parser.py:71
+#: gfeeds/feed_parser.py:75
+#, python-brace-format
+msgid "Error decoding unicode data from feed `{0}`, URL: `{1}`"
+msgstr ""
+"Błąd podczas dekodowania danych Unicode z kanału „{0}”, adres URL: „{1}”"
+
+#: gfeeds/feed_parser.py:82
+#, python-brace-format
+msgid "Error extracting data from feed `{0}`, URL: `{1}`"
+msgstr "Błąd podczas rozpakowywania danych z kanału „{0}”, adres URL: „{1}”"
+
+#: gfeeds/feed_parser.py:90
 #, python-brace-format
 msgid "`{0}` may not be an RSS or Atom feed"
 msgstr "„{0}” może nie być kanałem RSS ani Atom"
 
-#: gfeeds/feeds_manager.py:97
+#: gfeeds/feeds_manager.py:83
 #, python-brace-format
 msgid "Feed {0} exists already, skipping"
 msgstr "Kanał {0} już istnieje, pomijanie"
@@ -334,7 +345,7 @@ msgstr "_Nie usuwaj"
 msgid "_Remove"
 msgstr "_Usuń"
 
-#: gfeeds/main_leaflet.py:122
+#: gfeeds/main_leaflet.py:114
 #, python-brace-format
 msgid "{0} new article"
 msgid_plural "{0} new articles"
@@ -347,7 +358,7 @@ msgid "Do you want to import these feeds?"
 msgstr "Zaimportować te kanały?"
 
 #: gfeeds/__main__.py:239 gfeeds/__main__.py:273
-#: gfeeds/manage_feeds_window.py:330
+#: gfeeds/manage_feeds_window.py:324
 msgid "_Cancel"
 msgstr "_Anuluj"
 
@@ -368,11 +379,11 @@ msgid "opml file local url or rss remote url to import"
 msgstr ""
 "adres URL lokalnego pliku OPML lub zdalnego kanału RSS do zaimportowania"
 
-#: gfeeds/manage_feeds_window.py:327
+#: gfeeds/manage_feeds_window.py:321
 msgid "Do you want to delete these feeds?"
 msgstr "Usunąć te kanały?"
 
-#: gfeeds/manage_feeds_window.py:332
+#: gfeeds/manage_feeds_window.py:326
 msgid "_Delete"
 msgstr "_Usuń"
 
