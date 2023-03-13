@@ -10,9 +10,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gfeeds 0.16.2\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/gfeeds/issues\n"
-"POT-Creation-Date: 2022-10-02 17:13+0000\n"
-"PO-Revision-Date: 2022-10-03 21:19+0300\n"
-"Last-Translator: Emin Tufan Çetin <etcetin@gmail.com>\n"
+"POT-Creation-Date: 2023-03-12 18:06+0000\n"
+"PO-Revision-Date: 2023-03-13 05:49+0300\n"
+"Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
 "Language-Team: Turkish <gnome-turk@gnome.org>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
@@ -50,10 +50,10 @@ msgid ""
 "faster and less intrusive user experience. There's also a reader mode "
 "included, built from the one GNOME Web/Epiphany uses."
 msgstr ""
-"Makaleler, daha hızlı ve daha az kesintili kullanıcı deneyimi için "
-"öntanımlı olarak web görünümünde javascript devre dışı bırakılarak "
-"gösterilir. Ayrıca GNOME Web/Epiphany uygulamasını baz alarak oluşturulmuş "
-"okuyucu kipi de vardır."
+"Makaleler, daha hızlı ve daha az kesintili kullanıcı deneyimi için öntanımlı "
+"olarak web görünümünde javascript devre dışı bırakılarak gösterilir. Ayrıca "
+"GNOME Web/Epiphany uygulamasını baz alarak oluşturulmuş okuyucu kipi de "
+"vardır."
 
 #: data/org.gabmus.gfeeds.appdata.xml.in:18
 msgid "Feeds can be imported and exported via OPML."
@@ -155,7 +155,7 @@ msgstr "Yenile"
 msgid "Search"
 msgstr "Ara"
 
-#: data/ui/left_headerbar.blp:51
+#: data/ui/left_headerbar.blp:50
 msgid "There Are Errors"
 msgstr "Hatalar Var"
 
@@ -163,7 +163,7 @@ msgstr "Hatalar Var"
 msgid "Offline"
 msgstr "Çevrim Dışı"
 
-#: data/ui/manage_feeds_headerbar.blp:7 gfeeds/manage_feeds_window.py:263
+#: data/ui/manage_feeds_headerbar.blp:7 gfeeds/manage_feeds_window.py:257
 msgid "Manage Feeds"
 msgstr "Beslemeleri Yönet"
 
@@ -299,7 +299,7 @@ msgstr "Okundu/Okunmadı İmle"
 msgid "Select an article"
 msgstr "Makale seç"
 
-#: gfeeds/feed_item.py:57
+#: gfeeds/feed_item.py:59
 #, python-brace-format
 msgid "Error: unable to parse datetime {0} for feeditem {1}"
 msgstr "Hata: feeditem {1} için datetime verisi {0} ayrıştırılamadı"
@@ -309,12 +309,23 @@ msgstr "Hata: feeditem {1} için datetime verisi {0} ayrıştırılamadı"
 msgid "Errors while parsing feed `{0}`, URL: `{1}`"
 msgstr "`{0}`, URL: `{1}` beslemesi ayrıştırılırken hata oluştu"
 
-#: gfeeds/feed_parser.py:71
+#: gfeeds/feed_parser.py:75
+#, python-brace-format
+msgid "Error decoding unicode data from feed `{0}`, URL: `{1}`"
+msgstr ""
+"`{0}` beslemesinden unikod verisi ayrıştırılırken hata oluştu, URL: `{1}`"
+
+#: gfeeds/feed_parser.py:82
+#, python-brace-format
+msgid "Error extracting data from feed `{0}`, URL: `{1}`"
+msgstr "`{0}` beslemesinden veri ayrıştırılırken hata oluştu, URL: `{1}`"
+
+#: gfeeds/feed_parser.py:90
 #, python-brace-format
 msgid "`{0}` may not be an RSS or Atom feed"
 msgstr "`{0}` bir RSS veya Atom beslemesi olmayabilir"
 
-#: gfeeds/feeds_manager.py:97
+#: gfeeds/feeds_manager.py:83
 #, python-brace-format
 msgid "Feed {0} exists already, skipping"
 msgstr "{0} beslemesi zaten var, atlanıyor"
@@ -335,7 +346,7 @@ msgstr "_Koru"
 msgid "_Remove"
 msgstr "Kaldı_r"
 
-#: gfeeds/main_leaflet.py:122
+#: gfeeds/main_leaflet.py:114
 #, python-brace-format
 msgid "{0} new article"
 msgid_plural "{0} new articles"
@@ -346,7 +357,7 @@ msgid "Do you want to import these feeds?"
 msgstr "Bu beslemeleri içeri aktarmak istiyor musunuz?"
 
 #: gfeeds/__main__.py:239 gfeeds/__main__.py:273
-#: gfeeds/manage_feeds_window.py:330
+#: gfeeds/manage_feeds_window.py:324
 msgid "_Cancel"
 msgstr "_İptal Et"
 
@@ -366,11 +377,11 @@ msgstr "url"
 msgid "opml file local url or rss remote url to import"
 msgstr "İçeri aktarılacak yerel ompl dosyası url’si veya uzak rss url’si"
 
-#: gfeeds/manage_feeds_window.py:327
+#: gfeeds/manage_feeds_window.py:321
 msgid "Do you want to delete these feeds?"
 msgstr "Bu beslemeleri silmek istiyor musunuz?"
 
-#: gfeeds/manage_feeds_window.py:332
+#: gfeeds/manage_feeds_window.py:326
 msgid "_Delete"
 msgstr "_Sil"
 
