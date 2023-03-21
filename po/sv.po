@@ -1,15 +1,15 @@
 # Swedish translations for gfeeds package.
-# Copyright © 2021, 2022 gfeeds's COPYRIGHT HOLDER
+# Copyright © 2021-2023 gfeeds's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gfeeds package.
 # Åke Engelbrektson <eson@svenskasprakfiler.se>, 2021.
-# Anders Jonsson <anders.jonsson@norsjovallen.se>, 2021, 2022.
+# Anders Jonsson <anders.jonsson@norsjovallen.se>, 2021, 2022, 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gfeeds master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/gfeeds/issues\n"
-"POT-Creation-Date: 2022-10-02 17:13+0000\n"
-"PO-Revision-Date: 2022-10-02 21:10+0200\n"
+"POT-Creation-Date: 2023-03-11 08:34+0000\n"
+"PO-Revision-Date: 2023-03-11 13:36+0100\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.1.1\n"
+"X-Generator: Poedit 3.2.2\n"
 
 #: data/org.gabmus.gfeeds.appdata.xml.in:4
 msgid "Feeds"
@@ -154,7 +154,7 @@ msgstr "Uppdatera"
 msgid "Search"
 msgstr "Sök"
 
-#: data/ui/left_headerbar.blp:51
+#: data/ui/left_headerbar.blp:50
 msgid "There Are Errors"
 msgstr "Det finns fel"
 
@@ -162,7 +162,7 @@ msgstr "Det finns fel"
 msgid "Offline"
 msgstr "Frånkopplad"
 
-#: data/ui/manage_feeds_headerbar.blp:7 gfeeds/manage_feeds_window.py:263
+#: data/ui/manage_feeds_headerbar.blp:7 gfeeds/manage_feeds_window.py:257
 msgid "Manage Feeds"
 msgstr "Hantera flöden"
 
@@ -298,7 +298,7 @@ msgstr "Märk som läst/oläst"
 msgid "Select an article"
 msgstr "Välj en artikel"
 
-#: gfeeds/feed_item.py:57
+#: gfeeds/feed_item.py:59
 #, python-brace-format
 msgid "Error: unable to parse datetime {0} for feeditem {1}"
 msgstr "Fel: Kan inte tolka datumtid {0} för flödesobjekt {1}"
@@ -308,12 +308,22 @@ msgstr "Fel: Kan inte tolka datumtid {0} för flödesobjekt {1}"
 msgid "Errors while parsing feed `{0}`, URL: `{1}`"
 msgstr "Fel vid tolkning av flödet \"{0}\", URL: \"{1}\""
 
-#: gfeeds/feed_parser.py:71
+#: gfeeds/feed_parser.py:75
+#, python-brace-format
+msgid "Error decoding unicode data from feed `{0}`, URL: `{1}`"
+msgstr "Fel vid avkodning av Unicode-data från flödet \"{0}\", URL: \"{1}\""
+
+#: gfeeds/feed_parser.py:82
+#, python-brace-format
+msgid "Error extracting data from feed `{0}`, URL: `{1}`"
+msgstr "Fel vid extraktion av data från flödet \"{0}\", URL: \"{1}\""
+
+#: gfeeds/feed_parser.py:90
 #, python-brace-format
 msgid "`{0}` may not be an RSS or Atom feed"
 msgstr "\"{0}\" kanske inte är ett RSS- eller Atom-flöde"
 
-#: gfeeds/feeds_manager.py:97
+#: gfeeds/feeds_manager.py:83
 #, python-brace-format
 msgid "Feed {0} exists already, skipping"
 msgstr "Flödet {0} finns redan, hoppar över"
@@ -334,7 +344,7 @@ msgstr "_Behåll"
 msgid "_Remove"
 msgstr "_Ta bort"
 
-#: gfeeds/main_leaflet.py:122
+#: gfeeds/main_leaflet.py:114
 #, python-brace-format
 msgid "{0} new article"
 msgid_plural "{0} new articles"
@@ -346,7 +356,7 @@ msgid "Do you want to import these feeds?"
 msgstr "Vill du importera dessa flöden?"
 
 #: gfeeds/__main__.py:239 gfeeds/__main__.py:273
-#: gfeeds/manage_feeds_window.py:330
+#: gfeeds/manage_feeds_window.py:324
 msgid "_Cancel"
 msgstr "A_vbryt"
 
@@ -366,11 +376,11 @@ msgstr "URL"
 msgid "opml file local url or rss remote url to import"
 msgstr "OPML-fil, lokal URL eller RSS-URL för att importera"
 
-#: gfeeds/manage_feeds_window.py:327
+#: gfeeds/manage_feeds_window.py:321
 msgid "Do you want to delete these feeds?"
 msgstr "Vill du ta bort dessa flöden?"
 
-#: gfeeds/manage_feeds_window.py:332
+#: gfeeds/manage_feeds_window.py:326
 msgid "_Delete"
 msgstr "Ta _bort"
 
