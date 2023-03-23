@@ -12,8 +12,8 @@
         },
         {
             "type": "file",
-            "url": "https://files.pythonhosted.org/packages/c6/ee/16d6f808f5668317d7c23f942091fbc694bcded6aa39678e5167f61b2ba0/beautifulsoup4-4.11.2-py3-none-any.whl",
-            "sha256": "0e79446b10b3ecb499c1556f7e228a53e64a2bfcebd455f370d8927cb5b59e39"
+            "url": "https://files.pythonhosted.org/packages/ee/a7/06b189a2e280e351adcef25df532af3c59442123187e228b960ab3238687/beautifulsoup4-4.12.0-py3-none-any.whl",
+            "sha256": "2130a5ad7f513200fae61a17abb5e338ca980fa28c439c0571014bc0217e9591"
         },
         {
             "type": "file",
@@ -42,8 +42,8 @@
         },
         {
             "type": "file",
-            "url": "https://files.pythonhosted.org/packages/e8/14/9c6a7e5f12294ccd6975a45e02899ed25468cd7c2c86f3d9725f387f9f5f/exceptiongroup-1.1.0-py3-none-any.whl",
-            "sha256": "327cbda3da756e2de031a3107b81ab7b3770a602c4d16ca618298c526f4bec1e"
+            "url": "https://files.pythonhosted.org/packages/61/97/17ed81b7a8d24d8f69b62c0db37abbd8c0042d4b3fc429c73dab986e7483/exceptiongroup-1.1.1-py3-none-any.whl",
+            "sha256": "232c37c63e4f682982c8b6459f33a8981039e5fb8756b2074364e5055c498c9e"
         },
         {
             "type": "file",
