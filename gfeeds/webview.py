@@ -8,7 +8,7 @@ from functools import reduce
 from operator import or_
 from subprocess import Popen
 from datetime import datetime
-from typing import Optional
+from typing import Optional, cast
 from gfeeds.feed_item import FeedItem
 from gfeeds.util.paths import CACHE_PATH, IS_FLATPAK
 
@@ -16,13 +16,13 @@ from gfeeds.util.paths import CACHE_PATH, IS_FLATPAK
 @Gtk.Template(resource_path='/org/gabmus/gfeeds/ui/webview.ui')
 class GFeedsWebView(Gtk.Stack):
     __gtype_name__ = 'GFeedsWebView'
-    webkitview: WebKit.WebView = Gtk.Template.Child()
-    loading_bar_revealer: Gtk.Revealer = Gtk.Template.Child()
-    loading_bar: Gtk.ProgressBar = Gtk.Template.Child()
-    main_view = Gtk.Template.Child()
-    toast_overlay = Gtk.Template.Child()
-    link_preview_revealer: Gtk.Revealer = Gtk.Template.Child()
-    link_preview_label: Gtk.Label = Gtk.Template.Child()
+    webkitview = cast(WebKit.WebView, Gtk.Template.Child())
+    loading_bar_revealer = cast(Gtk.Revealer, Gtk.Template.Child())
+    loading_bar = cast(Gtk.ProgressBar, Gtk.Template.Child())
+    main_view = cast(Gtk.Overlay, Gtk.Template.Child())
+    toast_overlay = cast(Adw.ToastOverlay, Gtk.Template.Child())
+    link_preview_revealer = cast(Gtk.Revealer, Gtk.Template.Child())
+    link_preview_label = cast(Gtk.Label, Gtk.Template.Child())
 
     __gsignals__ = {
         'gfeeds_webview_load_start': (
