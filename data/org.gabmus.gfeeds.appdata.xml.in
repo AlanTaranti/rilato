@@ -53,6 +53,15 @@
     <url type="donation">https://liberapay.com/gabmus/donate</url>
     <update_contact>gabmus@disroot.org</update_contact>
     <releases>
+<release version="2.2.0" date="2023-03-25">
+            <description>
+                <ul>
+                    <li>Article author in reader mode</li>
+                    <li>Updated WebKit to API version 6.0</li>
+                </ul>
+            </description>
+        </release>
+
 <release version="2.1.0" date="2023-03-11">
             <description>
                 <ul>
