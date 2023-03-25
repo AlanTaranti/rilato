@@ -147,7 +147,7 @@ class GFeedsApplication(BaseApp):
             GLib.Variant.new_boolean(not action.get_state().get_boolean())
         )
         self.confman.nconf.show_read_items = action.get_state().get_boolean()
-        self.confman.emit('gfeeds_show_read_changed', '')
+        self.confman.emit('gfeeds_show_read_changed')
 
     def show_empty_feeds(self, action: Gio.SimpleAction, *__):
         action.change_state(
@@ -155,7 +155,7 @@ class GFeedsApplication(BaseApp):
         )
         self.confman.nconf.show_empty_feeds = \
             action.get_state().get_boolean()
-        self.confman.emit('gfeeds_show_empty_feeds_changed', '')
+        self.confman.emit('gfeeds_show_empty_feeds_changed')
 
     def set_all_read(self, *__):
         self.window.leaflet.sidebar.listview_sw.set_all_read_state(True)

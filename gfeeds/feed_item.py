@@ -38,6 +38,9 @@ class FeedItem(GObject.Object):
         self.identifier = self.__link or (self.__title + self.pub_date_str)
         self.__read = self.identifier in self.confman.nconf.read_items
 
+        self.__author_url = self.__sd_item.get_author_url()
+        self.__author_name = self.__sd_item.get_author_name()
+
         self.content = self.__sd_item.get_content()
 
         try:
@@ -86,6 +89,14 @@ class FeedItem(GObject.Object):
     @GObject.Property(type=str)
     def image_url(self) -> str:  # type: ignore
         return self.__image_url
+
+    @GObject.Property(type=str)
+    def author_url(self) -> str:  # type: ignore
+        return self.__author_url
+
+    @GObject.Property(type=str)
+    def author_name(self) -> str:  # type: ignore
+        return self.__author_name
 
     @image_url.setter
     def image_url(self, n_image_url: str):

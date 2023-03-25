@@ -1,3 +1,4 @@
+from gettext import gettext
 from typing import List, Tuple, Union
 from gfeeds.feed_item import FeedItem
 from gfeeds.util.readability_wrapper import RDoc
@@ -97,6 +98,14 @@ def build_reader_html(
     content = html_tostring(
         root, encoding='utf-8'
     )
+    author_html = ''
+    if feed_item.author_name:
+        if feed_item.author_url:
+            author_html = gettext('Author: <a href="{0}">{1}</a>').format(
+                feed_item.author_url, feed_item.author_name
+            )
+        else:
+            author_html = gettext('Author: {0}'.format(feed_item.author_name))
     if not isinstance(content, str):
         content = content.decode()
     return f'''<html>
@@ -111,6 +120,7 @@ def build_reader_html(
         <body {'class="dark"' if dark_mode else ''} dir=auto>
             <article>
                 <h1>{doc.short_title() or feed_item.title}</h1>
+                <p>{author_html}</p>
                 {
                     f'<img src="{feed_item.image_url}" /> <hr />'
                     if feed_item.image_url
