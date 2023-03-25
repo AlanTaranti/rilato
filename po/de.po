@@ -4,16 +4,16 @@
 # Gabriele Musco <emaildigabry@gmail.com>, 2019.
 # Onno Giesmann <nutzer3105@gmail.com>, 2019-2021.
 # Philipp Kiemle <philipp.kiemle@gmail.com>, 2022.
-# Jürgen Benvenuti <gastornis@posteo.org>, 2022.
+# Jürgen Benvenuti <gastornis@posteo.org>, 2022, 2023.
 # Tim Sabsch <tim@sabsch.com>, 2022.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/gfeeds/issues\n"
-"POT-Creation-Date: 2022-10-02 17:13+0000\n"
-"PO-Revision-Date: 2022-10-07 21:36+0200\n"
-"Last-Translator: Tim Sabsch <tim@sabsch.com>\n"
+"POT-Creation-Date: 2023-03-13 17:33+0000\n"
+"PO-Revision-Date: 2023-03-14 19:02+0100\n"
+"Last-Translator: Jürgen Benvenuti <gastornis@posteo.org>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -136,7 +136,7 @@ msgstr "_Einstellungen"
 
 #: data/ui/left_headerbar.blp:18
 msgid "_Keyboard Shortcuts"
-msgstr "Tasten_kombinationen"
+msgstr "Tasten_kürzel"
 
 #: data/ui/left_headerbar.blp:19
 msgid "_About Feeds"
@@ -162,7 +162,7 @@ msgstr "Aktualisieren"
 msgid "Search"
 msgstr "Suchen"
 
-#: data/ui/left_headerbar.blp:51
+#: data/ui/left_headerbar.blp:50
 msgid "There Are Errors"
 msgstr "Es gibt Fehler"
 
@@ -170,7 +170,7 @@ msgstr "Es gibt Fehler"
 msgid "Offline"
 msgstr "Offline"
 
-#: data/ui/manage_feeds_headerbar.blp:7 gfeeds/manage_feeds_window.py:263
+#: data/ui/manage_feeds_headerbar.blp:7 gfeeds/manage_feeds_window.py:257
 msgid "Manage Feeds"
 msgstr "Feeds verwalten"
 
@@ -252,7 +252,7 @@ msgstr "Allgemein"
 
 #: data/ui/shortcutsWindow.blp:12
 msgid "Open Keyboard Shortcuts"
-msgstr "Tastenkombinationen öffnen"
+msgstr "Tastenkürzel öffnen"
 
 #: data/ui/shortcutsWindow.blp:16
 msgid "Open Menu"
@@ -308,7 +308,7 @@ msgstr "Als gelesen/ungelesen markieren"
 msgid "Select an article"
 msgstr "Wählen Sie einen Artikel aus"
 
-#: gfeeds/feed_item.py:57
+#: gfeeds/feed_item.py:59
 #, python-brace-format
 msgid "Error: unable to parse datetime {0} for feeditem {1}"
 msgstr ""
@@ -320,12 +320,23 @@ msgstr ""
 msgid "Errors while parsing feed `{0}`, URL: `{1}`"
 msgstr "Fehler beim Analysieren des Feeds »{0}«, Adresse: »{1}«"
 
-#: gfeeds/feed_parser.py:71
+#: gfeeds/feed_parser.py:75
+#, python-brace-format
+msgid "Error decoding unicode data from feed `{0}`, URL: `{1}`"
+msgstr ""
+"Fehler beim Dekodieren von Unicode-Daten des Feeds »{0}«, Adresse: »{1}«"
+
+#: gfeeds/feed_parser.py:82
+#, python-brace-format
+msgid "Error extracting data from feed `{0}`, URL: `{1}`"
+msgstr "Fehler beim Extrahieren von Daten des Feeds »{0}«, Adresse: »{1}«"
+
+#: gfeeds/feed_parser.py:90
 #, python-brace-format
 msgid "`{0}` may not be an RSS or Atom feed"
 msgstr "»{0}« ist möglicherweise kein RSS- oder Atom-Feed"
 
-#: gfeeds/feeds_manager.py:97
+#: gfeeds/feeds_manager.py:83
 #, python-brace-format
 msgid "Feed {0} exists already, skipping"
 msgstr "Feed {0} existiert bereits, wird übersprungen"
@@ -346,7 +357,7 @@ msgstr "_Behalten"
 msgid "_Remove"
 msgstr "_Entfernen"
 
-#: gfeeds/main_leaflet.py:122
+#: gfeeds/main_leaflet.py:114
 #, python-brace-format
 msgid "{0} new article"
 msgid_plural "{0} new articles"
@@ -358,7 +369,7 @@ msgid "Do you want to import these feeds?"
 msgstr "Möchten Sie diese Feeds importieren?"
 
 #: gfeeds/__main__.py:239 gfeeds/__main__.py:273
-#: gfeeds/manage_feeds_window.py:330
+#: gfeeds/manage_feeds_window.py:324
 msgid "_Cancel"
 msgstr "_Abbrechen"
 
@@ -380,11 +391,11 @@ msgid "opml file local url or rss remote url to import"
 msgstr ""
 "Lokale Adresse für opml-Datei oder entfernte RSS-Adresse zum Importieren"
 
-#: gfeeds/manage_feeds_window.py:327
+#: gfeeds/manage_feeds_window.py:321
 msgid "Do you want to delete these feeds?"
 msgstr "Möchten Sie diese Feeds löschen?"
 
-#: gfeeds/manage_feeds_window.py:332
+#: gfeeds/manage_feeds_window.py:326
 msgid "_Delete"
 msgstr "_Löschen"
 

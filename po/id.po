@@ -2,25 +2,26 @@
 # Copyright (C) 2022 gfeeds's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gfeeds package.
 # Kukuh Syafaat <kukuhsyafaat@gnome.org>, 2022.
+# Andika Triwidada <andika@gmail.com>, 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gfeeds master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/gfeeds/issues\n"
-"POT-Creation-Date: 2022-09-16 08:10+0000\n"
-"PO-Revision-Date: 2022-09-19 10:05+0700\n"
-"Last-Translator: Kukuh Syafaat <kukuhsyafaat@gnome.org>\n"
+"POT-Creation-Date: 2023-03-11 08:34+0000\n"
+"PO-Revision-Date: 2023-03-22 17:53+0700\n"
+"Last-Translator: Andika Triwidada <andika@gmail.com>\n"
 "Language-Team: Indonesian <gnome-l10n-id@googlegroups.com>\n"
 "Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.1.1\n"
+"X-Generator: Poedit 3.2.2\n"
 
 #: data/org.gabmus.gfeeds.appdata.xml.in:4
 msgid "Feeds"
-msgstr "Umpan"
+msgstr "Asupan"
 
 #: data/org.gabmus.gfeeds.appdata.xml.in:6 data/org.gabmus.gfeeds.desktop.in:7
 msgid "News reader for GNOME"
@@ -31,7 +32,7 @@ msgid ""
 "Feeds is a minimal RSS/Atom feed reader built with speed and simplicity in "
 "mind."
 msgstr ""
-"Umpan adalah pembaca umpan RSS/Atom minimal yang dibangun dengan "
+"Asupan adalah pembaca asupan RSS/Atom minimal yang dibangun dengan "
 "mempertimbangkan kecepatan dan kesederhanaan."
 
 #: data/org.gabmus.gfeeds.appdata.xml.in:16
@@ -55,14 +56,248 @@ msgstr ""
 
 #: data/org.gabmus.gfeeds.appdata.xml.in:18
 msgid "Feeds can be imported and exported via OPML."
-msgstr "Umpan dapat diimpor dan diekspor melalui OPML."
+msgstr "Asupan dapat diimpor dan diekspor melalui OPML."
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gabmus.gfeeds.desktop.in:16
 msgid "rss;reader;feed;news;"
-msgstr "rss;pembaca;umpan;berita;"
+msgstr "rss;pembaca;asupan;umpan;berita;"
 
-#: gfeeds/feed_item.py:55
+#: data/ui/aboutdialog.ui.in:10
+msgid "translator-credits"
+msgstr ""
+"Kukuh Syafaat <kukuhsyafaat@gnome.org>, 2022.\n"
+"Andika Triwidada <andika@gmail.com>, 2023."
+
+#: data/ui/add_feed_popover.blp:11
+msgid "Enter feed address to add"
+msgstr "Masukkan alamat asupan untuk ditambahkan"
+
+#: data/ui/add_feed_popover.blp:26
+msgid "Add"
+msgstr "Tambah"
+
+#: data/ui/add_feed_popover.blp:32
+msgid "You're already subscribed to that feed!"
+msgstr "Anda sudah berlangganan asupan itu!"
+
+#: data/ui/empty_state.blp:7
+msgid "Let's get started"
+msgstr "Mari kita mulai"
+
+#: data/ui/empty_state.blp:22
+msgid "Add new feeds via URL"
+msgstr "Menambahkan asupan baru melalui URL"
+
+#: data/ui/empty_state.blp:27
+msgid "Import an OPML file"
+msgstr "Galat mengurai berkas OPML"
+
+#: data/ui/left_headerbar.blp:6
+msgid "_Show Read Articles"
+msgstr "_Tampilkan Artikel yang Telah Dibaca"
+
+#: data/ui/left_headerbar.blp:7
+msgid "Mark All as Read"
+msgstr "Tandai Semua sebagai Sudah Dibaca"
+
+#: data/ui/left_headerbar.blp:8
+msgid "Mark All as _Unread"
+msgstr "Tandai Semua sebagai Bel_um Dibaca"
+
+#: data/ui/left_headerbar.blp:11
+msgid "Show _Empty Feeds"
+msgstr "Tampilkan Asupan K_osong"
+
+#: data/ui/left_headerbar.blp:12
+msgid "_Manage Feeds"
+msgstr "Kelola Asupan"
+
+#: data/ui/left_headerbar.blp:13
+msgid "_Import OPML"
+msgstr "_Impor OPML"
+
+#: data/ui/left_headerbar.blp:14
+msgid "E_xport OPML"
+msgstr "E_kspor OPML"
+
+#: data/ui/left_headerbar.blp:17
+msgid "P_references"
+msgstr "P_referensi"
+
+#: data/ui/left_headerbar.blp:18
+msgid "_Keyboard Shortcuts"
+msgstr "Pintasan Papan _Ketik"
+
+#: data/ui/left_headerbar.blp:19
+msgid "_About Feeds"
+msgstr "Tentang _Asupan"
+
+#: data/ui/left_headerbar.blp:28
+msgid "Filter"
+msgstr "Tapis"
+
+#: data/ui/left_headerbar.blp:32
+msgid "Add Feed"
+msgstr "Tambah Asupan"
+
+#: data/ui/left_headerbar.blp:36
+msgid "Menu"
+msgstr "Menu"
+
+#: data/ui/left_headerbar.blp:41 data/ui/shortcutsWindow.blp:35
+msgid "Refresh"
+msgstr "Segarkan"
+
+#: data/ui/left_headerbar.blp:46 data/ui/shortcutsWindow.blp:39
+msgid "Search"
+msgstr "Cari"
+
+#: data/ui/left_headerbar.blp:50
+msgid "There Are Errors"
+msgstr "Ada Kesalahan"
+
+#: data/ui/main_leaflet.blp:40
+msgid "Offline"
+msgstr "Luring"
+
+#: data/ui/manage_feeds_headerbar.blp:7 gfeeds/manage_feeds_window.py:257
+msgid "Manage Feeds"
+msgstr "Mengelola Asupan"
+
+#: data/ui/manage_feeds_headerbar.blp:11
+msgid "Manage Tags for Selected Feeds"
+msgstr "Kelola Tag untuk Asupan yang Dipilih"
+
+#: data/ui/manage_feeds_headerbar.blp:16
+msgid "Select/Unselect All"
+msgstr "Pilih/Batalkan Pilihan Semua"
+
+#: data/ui/manage_feeds_headerbar.blp:21
+msgid "Delete Selected Feeds"
+msgstr "Hapus Asupan yang Dipilih"
+
+#: data/ui/manage_tags_content.blp:17
+msgid "New tag name…"
+msgstr "Nama tag baru…"
+
+#: data/ui/manage_tags_content.blp:24
+msgid "Add Tag"
+msgstr "Tambah Tag"
+
+#: data/ui/manage_tags_content.blp:39
+msgid "There are no tags yet"
+msgstr "Belum ada tag"
+
+#: data/ui/manage_tags_content.blp:40
+msgid "Add some using the entry above"
+msgstr "Tambahkan beberapa menggunakan entri di atas"
+
+#: data/ui/right_headerbar.blp:9
+msgid "Open in _Browser"
+msgstr "Buka di Peram_ban"
+
+#: data/ui/right_headerbar.blp:10
+msgid "Open in External Media _Player"
+msgstr "Buka di _Pemutar Media Eksternal"
+
+#: data/ui/right_headerbar.blp:11
+msgid "_Copy Article Link"
+msgstr "_Salin Tautan Artikel"
+
+#: data/ui/right_headerbar.blp:17 data/ui/right_headerbar.blp:96
+msgid "View Mode"
+msgstr "Mode Tampilan"
+
+#: data/ui/right_headerbar.blp:19
+msgid "Web View"
+msgstr "Tampilan Web"
+
+#: data/ui/right_headerbar.blp:24
+msgid "Reader Mode"
+msgstr "Mode Pembaca"
+
+#: data/ui/right_headerbar.blp:29
+msgid "Feed Content"
+msgstr "Konten Asupan"
+
+#: data/ui/right_headerbar.blp:44 data/ui/shortcutsWindow.blp:66
+msgid "Zoom Out"
+msgstr "Perkecil"
+
+#: data/ui/right_headerbar.blp:51 data/ui/shortcutsWindow.blp:70
+msgid "Reset Zoom"
+msgstr "Setel Ulang Zoom"
+
+#: data/ui/right_headerbar.blp:57 data/ui/shortcutsWindow.blp:62
+msgid "Zoom In"
+msgstr "Perbesar"
+
+#: data/ui/right_headerbar.blp:90
+msgid "Back to Articles"
+msgstr "Kembali ke Artikel"
+
+#: data/ui/shortcutsWindow.blp:9 gfeeds/preferences_window.py:24
+msgid "General"
+msgstr "Umum"
+
+#: data/ui/shortcutsWindow.blp:12
+msgid "Open Keyboard Shortcuts"
+msgstr "Buka Pintasan Papan Tik"
+
+#: data/ui/shortcutsWindow.blp:16
+msgid "Open Menu"
+msgstr "Buka Menu"
+
+#: data/ui/shortcutsWindow.blp:20
+msgid "Open Preferences"
+msgstr "Buka Preferensi"
+
+#: data/ui/shortcutsWindow.blp:24
+msgid "Open Filter"
+msgstr "Buka Filter"
+
+#: data/ui/shortcutsWindow.blp:28
+msgid "Quit"
+msgstr "Keluar"
+
+#: data/ui/shortcutsWindow.blp:32
+msgid "Article List"
+msgstr "Daftar Artikel"
+
+#: data/ui/shortcutsWindow.blp:43
+msgid "Next"
+msgstr "Selanjutnya"
+
+#: data/ui/shortcutsWindow.blp:47
+msgid "Previous"
+msgstr "Sebelumnya"
+
+#: data/ui/shortcutsWindow.blp:51
+msgid "Show/Hide Read Articles"
+msgstr "Tampilkan/Sembunyikan Artikel yang Sudah Dibaca"
+
+#: data/ui/shortcutsWindow.blp:55
+msgid "Mark All Read"
+msgstr "Tandai Semua Dibaca"
+
+#: data/ui/shortcutsWindow.blp:59
+msgid "Article"
+msgstr "Artikel"
+
+#: data/ui/shortcutsWindow.blp:74 data/ui/sidebar_listbox_row.blp:6
+msgid "Open in Browser"
+msgstr "Buka di Peramban"
+
+#: data/ui/sidebar_listbox_row.blp:5
+msgid "Mark as Read/Unread"
+msgstr "Tandai sebagai Sudah/Belum Dibaca"
+
+#: data/ui/webview.blp:12
+msgid "Select an article"
+msgstr "Pilih artikel"
+
+#: gfeeds/feed_item.py:59
 #, python-brace-format
 msgid "Error: unable to parse datetime {0} for feeditem {1}"
 msgstr "Galat: tidak dapat mengurai datetime {0} untuk feeditem {1}"
@@ -70,63 +305,82 @@ msgstr "Galat: tidak dapat mengurai datetime {0} untuk feeditem {1}"
 #: gfeeds/feed_parser.py:61
 #, python-brace-format
 msgid "Errors while parsing feed `{0}`, URL: `{1}`"
-msgstr "Galat saat mengurai umpan '{0}', URL: '{1}'"
+msgstr "Galat saat mengurai asupan '{0}', URL: '{1}'"
 
-#: gfeeds/feed_parser.py:71
+#: gfeeds/feed_parser.py:75
+#, python-brace-format
+msgid "Error decoding unicode data from feed `{0}`, URL: `{1}`"
+msgstr "Galat saat mengurai asupan '{0}', URL: '{1}'"
+
+#: gfeeds/feed_parser.py:82
+#, python-brace-format
+msgid "Error extracting data from feed `{0}`, URL: `{1}`"
+msgstr "Galat saat mengurai asupan '{0}', URL: '{1}'"
+
+#: gfeeds/feed_parser.py:90
 #, python-brace-format
 msgid "`{0}` may not be an RSS or Atom feed"
-msgstr "'{0}' mungkin bukan RSS atau umpan Atom"
+msgstr "'{0}' mungkin bukan RSS atau asupan Atom"
 
-#: gfeeds/feeds_manager.py:89
+#: gfeeds/feeds_manager.py:83
 #, python-brace-format
 msgid "Feed {0} exists already, skipping"
-msgstr "Umpan {0} sudah ada, melewati"
+msgstr "Asupan {0} sudah ada, melewati"
 
 #: gfeeds/feeds_view.py:13
 msgid "All feeds"
-msgstr "Semua umpan"
+msgstr "Semua asupan"
 
-#: gfeeds/headerbar.py:198
+#: gfeeds/headerbar.py:197
 msgid "There were problems with some feeds. Do you want to remove them?"
-msgstr "Ada masalah dengan beberapa umpan. Apakah Anda ingin menghapusnya?"
+msgstr "Ada masalah dengan beberapa asupan. Apakah Anda ingin menghapusnya?"
 
-#: gfeeds/headerbar.py:203
+#: gfeeds/headerbar.py:202
 msgid "_Keep"
 msgstr "_Pertahankan"
 
-#: gfeeds/headerbar.py:205
+#: gfeeds/headerbar.py:204
 msgid "_Remove"
 msgstr "_Hapus"
 
-#: gfeeds/main_leaflet.py:122
+#: gfeeds/main_leaflet.py:114
 #, python-brace-format
 msgid "{0} new article"
 msgid_plural "{0} new articles"
 msgstr[0] "{0} artikel baru"
 
-#: gfeeds/__main__.py:225
+#: gfeeds/__main__.py:232
 msgid "Do you want to import these feeds?"
-msgstr "Apakah Anda ingin mengimpor umpan ini?"
+msgstr "Apakah Anda ingin mengimpor asupan ini?"
 
-#: gfeeds/__main__.py:252
+#: gfeeds/__main__.py:239 gfeeds/__main__.py:273
+#: gfeeds/manage_feeds_window.py:324
+msgid "_Cancel"
+msgstr "_Batal"
+
+#: gfeeds/__main__.py:242 gfeeds/__main__.py:276
+msgid "_Import"
+msgstr "_Impor"
+
+#: gfeeds/__main__.py:269
 msgid "Do you want to import this feed?"
-msgstr "Apakah Anda ingin mengimpor umpan ini?"
+msgstr "Apakah Anda ingin mengimpor asupan ini?"
 
-#: gfeeds/__main__.py:281
+#: gfeeds/__main__.py:301
 msgid "url"
 msgstr "url"
 
-#: gfeeds/__main__.py:284
+#: gfeeds/__main__.py:304
 msgid "opml file local url or rss remote url to import"
 msgstr "opml berkas url lokal atau rss url jauh untuk mengimpor"
 
-#: gfeeds/manage_feeds_window.py:263
-msgid "Manage Feeds"
-msgstr "Mengelola Umpan"
-
-#: gfeeds/manage_feeds_window.py:318
+#: gfeeds/manage_feeds_window.py:321
 msgid "Do you want to delete these feeds?"
-msgstr "Apakah Anda ingin menghapus umpan ini?"
+msgstr "Apakah Anda ingin menghapus asupan ini?"
+
+#: gfeeds/manage_feeds_window.py:326
+msgid "_Delete"
+msgstr "_Hapus"
 
 #: gfeeds/opml_file_chooser.py:7
 msgid "XML files"
@@ -138,7 +392,7 @@ msgstr "Pilih berkas OPML untuk diimpor"
 
 #: gfeeds/opml_file_chooser.py:18
 msgid "Open"
-msgstr "Terbuka"
+msgstr "Buka"
 
 #: gfeeds/opml_file_chooser.py:19 gfeeds/opml_file_chooser.py:31
 msgid "Cancel"
@@ -151,10 +405,6 @@ msgstr "Pilih tempat untuk menyimpan berkas OPML yang diekspor"
 #: gfeeds/opml_file_chooser.py:30
 msgid "Save"
 msgstr "Simpan"
-
-#: gfeeds/preferences_window.py:24
-msgid "General"
-msgstr "Umum"
 
 #: gfeeds/preferences_window.py:27
 msgid "General preferences"
@@ -210,11 +460,11 @@ msgstr "Interval penyegaran otomatis"
 
 #: gfeeds/preferences_window.py:73
 msgid "In seconds"
-msgstr "Dalam hitungan detik"
+msgstr "Dalam detik"
 
 #: gfeeds/preferences_window.py:80
 msgid "Cache"
-msgstr "Tembolok"
+msgstr "Singgahan"
 
 #: gfeeds/preferences_window.py:82
 msgid "Clear caches"
@@ -262,7 +512,7 @@ msgstr "Tampilkan judul artikel lengkap"
 
 #: gfeeds/preferences_window.py:136
 msgid "Show full feeds names"
-msgstr "Tampilkan nama umpan lengkap"
+msgstr "Tampilkan nama asupan lengkap"
 
 #: gfeeds/preferences_window.py:143
 msgid "Font preferences"
@@ -292,94 +542,82 @@ msgstr "Fonta lebar seragam (monospace) ubahan"
 msgid "Privacy"
 msgstr "Privasi"
 
-#: gfeeds/preferences_window.py:176
+#: gfeeds/preferences_window.py:177
 msgid "Privacy preferences"
 msgstr "Preferensi privasi"
 
-#: gfeeds/preferences_window.py:178
+#: gfeeds/preferences_window.py:179
 msgid "Enable JavaScript"
 msgstr "Aktifkan JavaScript"
 
-#: gfeeds/preferences_window.py:183
+#: gfeeds/preferences_window.py:184
 msgid "Try to block advertisements"
 msgstr "Cobalah untuk memblokir iklan"
 
-#: gfeeds/preferences_window.py:185 gfeeds/preferences_window.py:220
+#: gfeeds/preferences_window.py:186 gfeeds/preferences_window.py:221
 msgid "Requires app restart"
 msgstr "Membutuhkan mulai ulang aplikasi"
 
-#: gfeeds/preferences_window.py:189
+#: gfeeds/preferences_window.py:190
 msgid "Update advertisement blocking list"
 msgstr "Pemutakhiran daftar pemblokiran iklan"
 
-#: gfeeds/preferences_window.py:190
+#: gfeeds/preferences_window.py:191
 msgid "Updates automatically every 10 days"
 msgstr "Pemutakhiran secara otomatis setiap 10 hari"
 
-#: gfeeds/preferences_window.py:191
+#: gfeeds/preferences_window.py:192
 msgid "Update"
 msgstr "Pemutakhiran"
 
-#: gfeeds/preferences_window.py:204
+#: gfeeds/preferences_window.py:205
 msgid "Advanced"
 msgstr "Tingkat Lanjut"
 
-#: gfeeds/preferences_window.py:207
+#: gfeeds/preferences_window.py:208
 msgid "Advanced preferences"
 msgstr "Preferensi lanjutan"
 
-#: gfeeds/preferences_window.py:209
+#: gfeeds/preferences_window.py:210
 msgid "Maximum refresh threads"
 msgstr "Thread maksimum penyegaran"
 
-#: gfeeds/preferences_window.py:211
+#: gfeeds/preferences_window.py:212
 msgid "How many threads to use for feeds refresh"
-msgstr "Berapa banyak thread yang akan digunakan untuk menyegarkan umpan"
+msgstr "Berapa banyak thread yang akan digunakan untuk menyegarkan asupan"
 
-#: gfeeds/preferences_window.py:218
+#: gfeeds/preferences_window.py:219
 msgid "Experimental GtkListView for articles list"
 msgstr "Experimental GtkListView untuk daftar artikel"
 
-#: gfeeds/preferences_window.py:226
+#: gfeeds/preferences_window.py:227
 msgid "Troubleshooting"
 msgstr "Penyelesaian Masalah"
 
-#: gfeeds/preferences_window.py:228
+#: gfeeds/preferences_window.py:229
 msgid "Export Configuration as JSON"
 msgstr "Ekspor Konfigurasi sebagai JSON"
 
-#: gfeeds/preferences_window.py:229
+#: gfeeds/preferences_window.py:230
 msgid "Attach this when reporting bugs"
 msgstr "Lampirkan ini saat melaporkan kutu"
 
-#: gfeeds/preferences_window.py:230
+#: gfeeds/preferences_window.py:231
 msgid "Export"
 msgstr "Ekspor"
 
 #. type: ignore
-#: gfeeds/preferences_window.py:243
+#: gfeeds/preferences_window.py:244
 msgid "Feeds Configuration"
-msgstr "Konfigurasi Umpan"
+msgstr "Konfigurasi Asupan"
 
-#: gfeeds/preferences_window.py:247
+#: gfeeds/preferences_window.py:248
 msgid "_Close"
 msgstr "_Tutup"
 
-#: gfeeds/preferences_window.py:250
+#: gfeeds/preferences_window.py:251
 msgid "Cop_y"
 msgstr "Sal_in"
-
-#: gfeeds/sidebar.py:21
-msgid "Loading feeds..."
-msgstr "Memuat umpan..."
-
-#: gfeeds/sidebar_row_popover.py:31 gfeeds/sidebar_row_popover.py:58
-msgid "Mark as unread"
-msgstr "Tandai sebagai belum dibaca"
-
-#: gfeeds/sidebar_row_popover.py:38 gfeeds/sidebar_row_popover.py:50
-msgid "Mark as read"
-msgstr "Tandai sebagai sudah dibaca"
 
 #: gfeeds/util/download_manager.py:112
 #, python-brace-format
@@ -391,7 +629,7 @@ msgstr "'{0}': waktu koneksi habis"
 msgid "`{0}` might not be a valid address"
 msgstr "'{0}' mungkin bukan alamat yang valid"
 
-#: gfeeds/util/download_manager.py:157
+#: gfeeds/util/download_manager.py:161
 #, python-brace-format
 msgid "Error downloading `{0}`, code `{1}`"
 msgstr "Galat mengunduh '{0}', kode '{1}'"
@@ -410,10 +648,10 @@ msgstr "Galat: Path OPML yang disediakan tidak ada"
 msgid "Error parsing OPML file `{0}`"
 msgstr "Galat mengurai berkas OPML '{0}'"
 
-#: gfeeds/webview.py:201
+#: gfeeds/webview.py:204
 msgid "Link copied to clipboard!"
 msgstr "Tautan disalin ke papan klip!"
 
-#: gfeeds/webview.py:223
+#: gfeeds/webview.py:226
 msgid "Feed content not available for this article"
-msgstr "Konten umpan tidak tersedia untuk artikel ini"
+msgstr "Konten asupan tidak tersedia untuk artikel ini"

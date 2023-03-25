@@ -1,15 +1,15 @@
 # Hungarian translations for gfeeds package.
-# Copyright (C) 2021, 2022 Free Software Foundation, Inc.
+# Copyright (C) 2021, 2022, 2023 Free Software Foundation, Inc.
 # This file is distributed under the same license as the gfeeds package.
 #
 # Meskó Balázs <mesko.balazs at fsf dot hu>, 2021, 2022.
-# Balázs Úr <ur.balazs at fsf dot hu>, 2022.
+# Balázs Úr <ur.balazs at fsf dot hu>, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: gfeeds master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/gfeeds/issues\n"
-"POT-Creation-Date: 2022-10-02 17:13+0000\n"
-"PO-Revision-Date: 2022-11-05 19:01+0100\n"
+"POT-Creation-Date: 2023-03-11 08:34+0000\n"
+"PO-Revision-Date: 2023-03-11 10:27+0100\n"
 "Last-Translator: Balázs Úr <ur.balazs at fsf dot hu>\n"
 "Language-Team: Hungarian <gnome-hu-list at gnome dot org>\n"
 "Language: hu\n"
@@ -90,22 +90,18 @@ msgid "Add new feeds via URL"
 msgstr "Új hírforrások hozzáadása URL-lel"
 
 #: data/ui/empty_state.blp:27
-#| msgid "Error parsing OPML file `{0}`"
 msgid "Import an OPML file"
 msgstr "OPML-fájl importálása"
 
 #: data/ui/left_headerbar.blp:6
-#| msgid "Show newer articles first"
 msgid "_Show Read Articles"
 msgstr "Olvasott cikkek meg_jelenítése"
 
 #: data/ui/left_headerbar.blp:7
-#| msgid "Mark as read"
 msgid "Mark All as Read"
 msgstr "Összes megjelölése olvasottként"
 
 #: data/ui/left_headerbar.blp:8
-#| msgid "Mark as unread"
 msgid "Mark All as _Unread"
 msgstr "Összes megjelölése _olvasatlanként"
 
@@ -114,7 +110,6 @@ msgid "Show _Empty Feeds"
 msgstr "Ü_res hírforrások megjelenítése"
 
 #: data/ui/left_headerbar.blp:12
-#| msgid "Manage Feeds"
 msgid "_Manage Feeds"
 msgstr "_Hírforrások kezelése"
 
@@ -123,12 +118,10 @@ msgid "_Import OPML"
 msgstr "OPML _importálása"
 
 #: data/ui/left_headerbar.blp:14
-#| msgid "Export"
 msgid "E_xport OPML"
 msgstr "OPML e_xportálása"
 
 #: data/ui/left_headerbar.blp:17
-#| msgid "Font preferences"
 msgid "P_references"
 msgstr "_Beállítások"
 
@@ -145,7 +138,6 @@ msgid "Filter"
 msgstr "Szűrő"
 
 #: data/ui/left_headerbar.blp:32
-#| msgid "Feeds"
 msgid "Add Feed"
 msgstr "Hírforrás hozzáadása"
 
@@ -161,7 +153,7 @@ msgstr "Frissítés"
 msgid "Search"
 msgstr "Keresés"
 
-#: data/ui/left_headerbar.blp:51
+#: data/ui/left_headerbar.blp:50
 msgid "There Are Errors"
 msgstr "Hibák találhatók"
 
@@ -169,7 +161,7 @@ msgstr "Hibák találhatók"
 msgid "Offline"
 msgstr "Kapcsolat nélkül"
 
-#: data/ui/manage_feeds_headerbar.blp:7 gfeeds/manage_feeds_window.py:263
+#: data/ui/manage_feeds_headerbar.blp:7 gfeeds/manage_feeds_window.py:257
 msgid "Manage Feeds"
 msgstr "Hírforrások kezelése"
 
@@ -202,7 +194,6 @@ msgid "Add some using the entry above"
 msgstr "Adjon hozzá párat a fenti beviteli mezővel"
 
 #: data/ui/right_headerbar.blp:9
-#| msgid "Open links in your browser"
 msgid "Open in _Browser"
 msgstr "Megnyitás _böngészőben"
 
@@ -223,12 +214,10 @@ msgid "Web View"
 msgstr "Webnézet"
 
 #: data/ui/right_headerbar.blp:24
-#| msgid "Reader mode theme"
 msgid "Reader Mode"
 msgstr "Olvasó mód"
 
 #: data/ui/right_headerbar.blp:29
-#| msgid "Feeds Configuration"
 msgid "Feed Content"
 msgstr "Hírforrás tartalma"
 
@@ -257,12 +246,10 @@ msgid "Open Keyboard Shortcuts"
 msgstr "Gyorsbillentyűk megnyitása"
 
 #: data/ui/shortcutsWindow.blp:16
-#| msgid "Open"
 msgid "Open Menu"
 msgstr "Menü megnyitása"
 
 #: data/ui/shortcutsWindow.blp:20
-#| msgid "Font preferences"
 msgid "Open Preferences"
 msgstr "Beállítások megnyitása"
 
@@ -291,7 +278,6 @@ msgid "Show/Hide Read Articles"
 msgstr "Olvasott cikkek megjelenítése/elrejtése"
 
 #: data/ui/shortcutsWindow.blp:55
-#| msgid "Mark as read"
 msgid "Mark All Read"
 msgstr "Összes megjelölése olvasottként"
 
@@ -300,22 +286,18 @@ msgid "Article"
 msgstr "Cikk"
 
 #: data/ui/shortcutsWindow.blp:74 data/ui/sidebar_listbox_row.blp:6
-#| msgid "Open links in your browser"
 msgid "Open in Browser"
 msgstr "Megnyitás böngészőben"
 
 #: data/ui/sidebar_listbox_row.blp:5
-#| msgid "Mark as unread"
 msgid "Mark as Read/Unread"
 msgstr "Megjelölés olvasottként/olvasatlanként"
 
 #: data/ui/webview.blp:12
-#| msgid "{0} new article"
-#| msgid_plural "{0} new articles"
 msgid "Select an article"
 msgstr "Válasszon egy cikket"
 
-#: gfeeds/feed_item.py:57
+#: gfeeds/feed_item.py:59
 #, python-brace-format
 msgid "Error: unable to parse datetime {0} for feeditem {1}"
 msgstr "Hiba: a(z) {0} dátum nem dolgozható fel ennél a hírforráselemnél: {1}"
@@ -325,12 +307,25 @@ msgstr "Hiba: a(z) {0} dátum nem dolgozható fel ennél a hírforráselemnél: 
 msgid "Errors while parsing feed `{0}`, URL: `{1}`"
 msgstr "Hibák történtek a(z) „{0}” hírforrás feldolgozásakor, URL: „{1}”"
 
-#: gfeeds/feed_parser.py:71
+#: gfeeds/feed_parser.py:75
+#, python-brace-format
+#| msgid "Errors while parsing feed `{0}`, URL: `{1}`"
+msgid "Error decoding unicode data from feed `{0}`, URL: `{1}`"
+msgstr ""
+"Hiba a(z) „{0}” hírforrásból származó Unicode adatok dekódolásakor, URL: „{1}”"
+
+#: gfeeds/feed_parser.py:82
+#, python-brace-format
+#| msgid "Errors while parsing feed `{0}`, URL: `{1}`"
+msgid "Error extracting data from feed `{0}`, URL: `{1}`"
+msgstr "Hiba a(z) „{0}” hírforrásból származó adatok kinyerésekor, URL: „{1}”"
+
+#: gfeeds/feed_parser.py:90
 #, python-brace-format
 msgid "`{0}` may not be an RSS or Atom feed"
 msgstr "A(z) „{0}” lehet, hogy nem RSS vagy Atom hírforrás"
 
-#: gfeeds/feeds_manager.py:97
+#: gfeeds/feeds_manager.py:83
 #, python-brace-format
 msgid "Feed {0} exists already, skipping"
 msgstr "A(z) „{0}” hírforrás már létezik, kihagyás"
@@ -351,7 +346,7 @@ msgstr "_Megtartás"
 msgid "_Remove"
 msgstr "_Eltávolítás"
 
-#: gfeeds/main_leaflet.py:122
+#: gfeeds/main_leaflet.py:114
 #, python-brace-format
 msgid "{0} new article"
 msgid_plural "{0} new articles"
@@ -363,13 +358,11 @@ msgid "Do you want to import these feeds?"
 msgstr "Szeretné importálni ezeket a hírforrásokat?"
 
 #: gfeeds/__main__.py:239 gfeeds/__main__.py:273
-#: gfeeds/manage_feeds_window.py:330
-#| msgid "Cancel"
+#: gfeeds/manage_feeds_window.py:324
 msgid "_Cancel"
 msgstr "_Mégse"
 
 #: gfeeds/__main__.py:242 gfeeds/__main__.py:276
-#| msgid "Export"
 msgid "_Import"
 msgstr "_Importálás"
 
@@ -385,11 +378,11 @@ msgstr "URL"
 msgid "opml file local url or rss remote url to import"
 msgstr "importálandó helyi OPML-fájl vagy távoli RSS URL"
 
-#: gfeeds/manage_feeds_window.py:327
+#: gfeeds/manage_feeds_window.py:321
 msgid "Do you want to delete these feeds?"
 msgstr "Szeretné törölni ezeket a hírforrásokat?"
 
-#: gfeeds/manage_feeds_window.py:332
+#: gfeeds/manage_feeds_window.py:326
 msgid "_Delete"
 msgstr "_Törlés"
 
