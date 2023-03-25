@@ -64,11 +64,11 @@ if __name__ == '__main__':
     gi.require_version('Gtk', '4.0')
     gi.require_version('Gdk', '4.0')
     gi.require_version('Adw', '1')
-    gi.require_version('WebKit2', '5.0')
+    gi.require_version('WebKit', '6.0')
 
 
-    from gi.repository import Gio, GObject, WebKit2
-    GObject.type_ensure(WebKit2.WebView)
+    from gi.repository import Gio, GObject, WebKit
+    GObject.type_ensure(WebKit.WebView)
     resource = Gio.Resource.load(os.path.join(pkgdatadir, '@appid@.gresource'))
     resource._register()
 

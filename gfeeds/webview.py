@@ -1,6 +1,6 @@
 from gettext import gettext as _
 from threading import Thread
-from gi.repository import Gtk, GLib, WebKit2, GObject, Gio, Adw
+from gi.repository import Gtk, GLib, WebKit, GObject, Gio, Adw
 from gfeeds.util.build_reader_html import build_reader_html
 from gfeeds.confManager import ConfManager
 from gfeeds.util.download_manager import DownloadError, download_text
@@ -16,13 +16,13 @@ from gfeeds.util.paths import CACHE_PATH, IS_FLATPAK
 @Gtk.Template(resource_path='/org/gabmus/gfeeds/ui/webview.ui')
 class GFeedsWebView(Gtk.Stack):
     __gtype_name__ = 'GFeedsWebView'
-    webkitview = Gtk.Template.Child()
-    loading_bar_revealer = Gtk.Template.Child()
-    loading_bar = Gtk.Template.Child()
+    webkitview: WebKit.WebView = Gtk.Template.Child()
+    loading_bar_revealer: Gtk.Revealer = Gtk.Template.Child()
+    loading_bar: Gtk.ProgressBar = Gtk.Template.Child()
     main_view = Gtk.Template.Child()
     toast_overlay = Gtk.Template.Child()
-    link_preview_revealer = Gtk.Template.Child()
-    link_preview_label = Gtk.Template.Child()
+    link_preview_revealer: Gtk.Revealer = Gtk.Template.Child()
+    link_preview_label: Gtk.Label = Gtk.Template.Child()
 
     __gsignals__ = {
         'gfeeds_webview_load_start': (
@@ -41,7 +41,7 @@ class GFeedsWebView(Gtk.Stack):
         super().__init__()
         self.confman = ConfManager()
 
-        self.webkitview_settings = WebKit2.Settings()
+        self.webkitview_settings = WebKit.Settings()
         self.apply_webview_settings()
 
         self.confman.connect(
@@ -59,7 +59,7 @@ class GFeedsWebView(Gtk.Stack):
         )
 
         self.content_manager = self.webkitview.get_user_content_manager()
-        self.user_content_filter_store = WebKit2.UserContentFilterStore.new(
+        self.user_content_filter_store = WebKit.UserContentFilterStore.new(
             str(CACHE_PATH.joinpath(
                 'webkit_user_content_filter_store'
             ))
@@ -109,7 +109,7 @@ class GFeedsWebView(Gtk.Stack):
         if remove:
             return
 
-        def apply_filter(filter: WebKit2.UserContentFilter):
+        def apply_filter(filter: WebKit.UserContentFilter):
             self.content_manager.add_filter(filter)
 
         def save_blocklist_cb(caller, res, *args):
@@ -173,10 +173,6 @@ class GFeedsWebView(Gtk.Stack):
         )
         self.webkitview_settings.set_enable_smooth_scrolling(True)
         self.webkitview_settings.set_enable_page_cache(True)
-        self.webkitview_settings.set_enable_back_forward_navigation_gestures(
-            True
-        )
-        self.webkitview_settings.set_enable_accelerated_2d_canvas(True)
         self.webkitview.set_settings(self.webkitview_settings)
 
     def key_zoom_in(self, *args):
@@ -288,15 +284,15 @@ class GFeedsWebView(Gtk.Stack):
 
     @Gtk.Template.Callback()
     def on_load_changed(self, webview, event):
-        if event != WebKit2.LoadEvent.FINISHED:
+        if event != WebKit.LoadEvent.FINISHED:
             self.loading_bar_revealer.set_reveal_child(True)
-        if event == WebKit2.LoadEvent.STARTED:
+        if event == WebKit.LoadEvent.STARTED:
             self.loading_bar.set_fraction(.25)
-        elif event == WebKit2.LoadEvent.REDIRECTED:
+        elif event == WebKit.LoadEvent.REDIRECTED:
             self.loading_bar.set_fraction(.50)
-        elif event == WebKit2.LoadEvent.COMMITTED:
+        elif event == WebKit.LoadEvent.COMMITTED:
             self.loading_bar.set_fraction(.75)
-        elif event == WebKit2.LoadEvent.FINISHED:
+        elif event == WebKit.LoadEvent.FINISHED:
             self.loading_bar.set_fraction(1.0)
             # waits 1 seconds async then hides the loading bar
             GLib.timeout_add_seconds(
@@ -341,8 +337,8 @@ class GFeedsWebView(Gtk.Stack):
         if (
                 decisionType in
                 (
-                    WebKit2.PolicyDecisionType.NAVIGATION_ACTION,
-                    WebKit2.PolicyDecisionType.NEW_WINDOW_ACTION
+                    WebKit.PolicyDecisionType.NAVIGATION_ACTION,
+                    WebKit.PolicyDecisionType.NEW_WINDOW_ACTION
                 ) and
                 decision.get_navigation_action().get_mouse_button() != 0
         ):

@@ -1,5 +1,5 @@
 using Gtk 4.0;
-using WebKit2 5.0;
+using WebKit 6.0;
 using Adw 1;
 
 template GFeedsWebView : Stack {
@@ -38,7 +38,7 @@ template GFeedsWebView : Stack {
         }
         Adw.ToastOverlay toast_overlay {
             hexpand: true; vexpand: true;
-            WebKit2.WebView webkitview {
+            WebKit.WebView webkitview {
                 hexpand: true; vexpand: true;
                 load-changed => on_load_changed();
                 decide-policy => on_decide_policy();
