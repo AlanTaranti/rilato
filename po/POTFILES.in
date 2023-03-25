@@ -21,6 +21,7 @@ gfeeds/__main__.py
 gfeeds/manage_feeds_window.py
 gfeeds/opml_file_chooser.py
 gfeeds/preferences_window.py
+gfeeds/util/build_reader_html.py
 gfeeds/util/download_manager.py
 gfeeds/util/get_favicon.py
 gfeeds/util/opml_parser.py
