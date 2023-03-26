@@ -5,7 +5,7 @@ include:
 variables:
   APP_ID: "org.gabmus.gfeeds"
   BUNDLE: "org.gabmus.gfeeds.flatpak"
-  CONFIG_OPTS: "-Dprofile=development"
+  # CONFIG_OPTS: "-Dprofile=development"
   FLATPAK_MODULE: "gfeeds"
   MANIFEST_PATH: "dist/flatpak/org.gabmus.gfeeds.json"
   RUNTIME_REPO: "https://flathub.org/repo/flathub.flatpakrepo"
