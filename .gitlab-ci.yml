@@ -7,6 +7,7 @@ flake8:
         - flake8 gfeeds
 
 flatpak:
+    image: 'quay.io/gnome_infrastructure/gnome-runtime-images:gnome-44'
     variables:
         MANIFEST_PATH: "dist/flatpak/org.gabmus.gfeeds.json"
         MESON_ARGS: "-Dprofile=Devel"
@@ -14,7 +15,6 @@ flatpak:
         RUNTIME_REPO: "https://flathub.org/repo/flathub.flatpakrepo"
         APP_ID: "org.gabmus.gfeeds"
         BUNDLE: "gfeeds.flatpak"
-    image: 'quay.io/gnome_infrastructure/gnome-runtime-images:gnome-43'
     extends: .flatpak
     rules:
         - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
