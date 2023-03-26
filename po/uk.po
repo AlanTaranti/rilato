@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gfeeds master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/gfeeds/issues\n"
-"POT-Creation-Date: 2023-03-11 08:34+0000\n"
-"PO-Revision-Date: 2023-03-12 20:06+0200\n"
+"POT-Creation-Date: 2023-03-26 11:12+0000\n"
+"PO-Revision-Date: 2023-03-26 15:23+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -295,7 +295,7 @@ msgstr "Позначити як прочитане/непрочитане"
 msgid "Select an article"
 msgstr "Виберіть статтю"
 
-#: gfeeds/feed_item.py:59
+#: gfeeds/feed_item.py:62
 #, python-brace-format
 msgid "Error: unable to parse datetime {0} for feeditem {1}"
 msgstr "Помилка: не вдалося обробити позначку часу {0} для запису стрічки {1}"
@@ -307,14 +307,12 @@ msgstr "Помилки під час обробки стрічки «{0}», ад
 
 #: gfeeds/feed_parser.py:75
 #, python-brace-format
-#| msgid "Errors while parsing feed `{0}`, URL: `{1}`"
 msgid "Error decoding unicode data from feed `{0}`, URL: `{1}`"
 msgstr ""
 "Помилка під час декодування даних Unicode зі стрічки «{0}», адреса: «{1}»"
 
 #: gfeeds/feed_parser.py:82
 #, python-brace-format
-#| msgid "Errors while parsing feed `{0}`, URL: `{1}`"
 msgid "Error extracting data from feed `{0}`, URL: `{1}`"
 msgstr "Помилки під час видобування даних зі стрічки «{0}», адреса: «{1}»"
 
@@ -625,6 +623,16 @@ msgstr "_Закрити"
 msgid "Cop_y"
 msgstr "_Копіювати"
 
+#: gfeeds/util/build_reader_html.py:104
+#, python-brace-format
+msgid "Author: <a href=\"{0}\">{1}</a>"
+msgstr "Автор: <a href=\"{0}\">{1}</a>"
+
+#: gfeeds/util/build_reader_html.py:108
+#, python-brace-format
+msgid "Author: {0}"
+msgstr "Автор: {0}"
+
 #: gfeeds/util/download_manager.py:112
 #, python-brace-format
 msgid "`{0}`: connection timed out"
@@ -654,11 +662,11 @@ msgstr "Помилка: вказаного шляху до OPML не існує"
 msgid "Error parsing OPML file `{0}`"
 msgstr "Помилка під час обробки файла OPML «{0}»"
 
-#: gfeeds/webview.py:204
+#: gfeeds/webview.py:200
 msgid "Link copied to clipboard!"
 msgstr "Посилання скопійовано до буфера обміну!"
 
-#: gfeeds/webview.py:226
+#: gfeeds/webview.py:222
 msgid "Feed content not available for this article"
 msgstr "Для цієї статті дані стрічки є недоступними"
 
