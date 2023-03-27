@@ -10,16 +10,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gfeeds 0.16.2\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/gfeeds/issues\n"
-"POT-Creation-Date: 2023-03-12 18:06+0000\n"
-"PO-Revision-Date: 2023-03-13 05:49+0300\n"
-"Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
+"POT-Creation-Date: 2023-03-26 11:12+0000\n"
+"PO-Revision-Date: 2023-03-27 15:29+0300\n"
+"Last-Translator: Emin Tufan Çetin <etcetin@gmail.com>\n"
 "Language-Team: Turkish <gnome-turk@gnome.org>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.1.1\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #: data/org.gabmus.gfeeds.appdata.xml.in:4
 msgid "Feeds"
@@ -73,7 +73,7 @@ msgstr ""
 
 #: data/ui/add_feed_popover.blp:11
 msgid "Enter feed address to add"
-msgstr "Eklenecek besleme adresini giriniz"
+msgstr "Eklenecek besleme adresini girin"
 
 #: data/ui/add_feed_popover.blp:26
 msgid "Add"
@@ -89,7 +89,7 @@ msgstr "Hadi başlayalım"
 
 #: data/ui/empty_state.blp:22
 msgid "Add new feeds via URL"
-msgstr "URL kullanarak yeni beslemeler ekleyiniz"
+msgstr "URL kullanarak yeni beslemeler ekleyin"
 
 #: data/ui/empty_state.blp:27
 msgid "Import an OPML file"
@@ -299,7 +299,7 @@ msgstr "Okundu/Okunmadı İmle"
 msgid "Select an article"
 msgstr "Makale seç"
 
-#: gfeeds/feed_item.py:59
+#: gfeeds/feed_item.py:62
 #, python-brace-format
 msgid "Error: unable to parse datetime {0} for feeditem {1}"
 msgstr "Hata: feeditem {1} için datetime verisi {0} ayrıştırılamadı"
@@ -391,7 +391,7 @@ msgstr "XML dosyaları"
 
 #: gfeeds/opml_file_chooser.py:14
 msgid "Choose an OPML file to import"
-msgstr "İçe aktarılacak OPML dosyası seçiniz"
+msgstr "İçe aktarılacak OPML dosyası seçin"
 
 #: gfeeds/opml_file_chooser.py:18
 msgid "Open"
@@ -403,7 +403,7 @@ msgstr "İptal Et"
 
 #: gfeeds/opml_file_chooser.py:26
 msgid "Choose where to save the exported OPML file"
-msgstr "Dışarı aktarılan OPML dosyasının nereye kaydedileceğini seçiniz"
+msgstr "Dışarı aktarılan OPML dosyasının nereye kaydedileceğini seçin"
 
 #: gfeeds/opml_file_chooser.py:30
 msgid "Save"
@@ -622,6 +622,16 @@ msgstr "_Kapat"
 msgid "Cop_y"
 msgstr "Kop_yala"
 
+#: gfeeds/util/build_reader_html.py:104
+#, python-brace-format
+msgid "Author: <a href=\"{0}\">{1}</a>"
+msgstr "Yazar: <a href=\"{0}\">{1}</a>"
+
+#: gfeeds/util/build_reader_html.py:108
+#, python-brace-format
+msgid "Author: {0}"
+msgstr "Yazar: {0}"
+
 #: gfeeds/util/download_manager.py:112
 #, python-brace-format
 msgid "`{0}`: connection timed out"
@@ -651,10 +661,10 @@ msgstr "Hata: Verilen OPML yolu yok"
 msgid "Error parsing OPML file `{0}`"
 msgstr "`{0}` OPML dosyası ayrıştırılırken hata oluştu"
 
-#: gfeeds/webview.py:204
+#: gfeeds/webview.py:200
 msgid "Link copied to clipboard!"
 msgstr "Bağlantı panoya kopyalandı!"
 
-#: gfeeds/webview.py:226
+#: gfeeds/webview.py:222
 msgid "Feed content not available for this article"
 msgstr "Besleme içeriği bu makale için kullanılamıyor"
