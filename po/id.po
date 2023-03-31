@@ -1,16 +1,16 @@
 # Indonesian translation for gfeeds.
 # Copyright (C) 2022 gfeeds's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gfeeds package.
-# Kukuh Syafaat <kukuhsyafaat@gnome.org>, 2022.
+# Kukuh Syafaat <kukuhsyafaat@gnome.org>, 2022-2023.
 # Andika Triwidada <andika@gmail.com>, 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gfeeds master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/gfeeds/issues\n"
-"POT-Creation-Date: 2023-03-11 08:34+0000\n"
-"PO-Revision-Date: 2023-03-22 17:53+0700\n"
-"Last-Translator: Andika Triwidada <andika@gmail.com>\n"
+"POT-Creation-Date: 2023-03-26 11:12+0000\n"
+"PO-Revision-Date: 2023-03-31 07:58+0700\n"
+"Last-Translator: Kukuh Syafaat <kukuhsyafaat@gnome.org>\n"
 "Language-Team: Indonesian <gnome-l10n-id@googlegroups.com>\n"
 "Language: id\n"
 "MIME-Version: 1.0\n"
@@ -66,7 +66,7 @@ msgstr "rss;pembaca;asupan;umpan;berita;"
 #: data/ui/aboutdialog.ui.in:10
 msgid "translator-credits"
 msgstr ""
-"Kukuh Syafaat <kukuhsyafaat@gnome.org>, 2022.\n"
+"Kukuh Syafaat <kukuhsyafaat@gnome.org>, 2022-2023.\n"
 "Andika Triwidada <andika@gmail.com>, 2023."
 
 #: data/ui/add_feed_popover.blp:11
@@ -297,7 +297,7 @@ msgstr "Tandai sebagai Sudah/Belum Dibaca"
 msgid "Select an article"
 msgstr "Pilih artikel"
 
-#: gfeeds/feed_item.py:59
+#: gfeeds/feed_item.py:62
 #, python-brace-format
 msgid "Error: unable to parse datetime {0} for feeditem {1}"
 msgstr "Galat: tidak dapat mengurai datetime {0} untuk feeditem {1}"
@@ -619,6 +619,16 @@ msgstr "_Tutup"
 msgid "Cop_y"
 msgstr "Sal_in"
 
+#: gfeeds/util/build_reader_html.py:104
+#, python-brace-format
+msgid "Author: <a href=\"{0}\">{1}</a>"
+msgstr "Penulis: <a href=\"{0}\">{1}</a>"
+
+#: gfeeds/util/build_reader_html.py:108
+#, python-brace-format
+msgid "Author: {0}"
+msgstr "Penulis: {0}"
+
 #: gfeeds/util/download_manager.py:112
 #, python-brace-format
 msgid "`{0}`: connection timed out"
@@ -648,10 +658,10 @@ msgstr "Galat: Path OPML yang disediakan tidak ada"
 msgid "Error parsing OPML file `{0}`"
 msgstr "Galat mengurai berkas OPML '{0}'"
 
-#: gfeeds/webview.py:204
+#: gfeeds/webview.py:200
 msgid "Link copied to clipboard!"
 msgstr "Tautan disalin ke papan klip!"
 
-#: gfeeds/webview.py:226
+#: gfeeds/webview.py:222
 msgid "Feed content not available for this article"
 msgstr "Konten asupan tidak tersedia untuk artikel ini"
