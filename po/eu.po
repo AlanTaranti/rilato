@@ -1,13 +1,13 @@
 # Basque translation for gfeeds.
 # Copyright (C) 2022 gfeeds's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gfeeds package.
-# Asier Sarasua Garmendia <asiersarasua@ni.eus>, 2022.
+# Asier Sarasua Garmendia <asiersarasua@ni.eus>, 2022, 2023.
 #
 msgid ""
 msgstr "Project-Id-Version: gfeeds master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/gfeeds/issues\n"
-"POT-Creation-Date: 2022-10-02 17:13+0000\n"
-"PO-Revision-Date: 2022-12-04 20:28+0000\n"
+"POT-Creation-Date: 2023-03-26 11:12+0000\n"
+"PO-Revision-Date: 2023-04-04 20:28+0000\n"
 "Last-Translator: Asier Sarasua Garmendia <asiersarasua@ni.eus>\n"
 "Language-Team: Basque <librezale@librezale.eus>\n"
 "Language: eu\n"
@@ -140,7 +140,7 @@ msgstr "Freskatu"
 msgid "Search"
 msgstr "Bilatu"
 
-#: data/ui/left_headerbar.blp:51
+#: data/ui/left_headerbar.blp:50
 msgid "There Are Errors"
 msgstr "Erroreak daude"
 
@@ -148,7 +148,7 @@ msgstr "Erroreak daude"
 msgid "Offline"
 msgstr "Lineaz kanpo"
 
-#: data/ui/manage_feeds_headerbar.blp:7 gfeeds/manage_feeds_window.py:263
+#: data/ui/manage_feeds_headerbar.blp:7 gfeeds/manage_feeds_window.py:257
 msgid "Manage Feeds"
 msgstr "Kudeatu jarioak"
 
@@ -284,7 +284,7 @@ msgstr "Markatu irakurrita/irakurri gabeko gisa"
 msgid "Select an article"
 msgstr "Hautatu artikulu bat"
 
-#: gfeeds/feed_item.py:57
+#: gfeeds/feed_item.py:62
 #, python-brace-format
 msgid "Error: unable to parse datetime {0} for feeditem {1}"
 msgstr "Errorea: Ezin da {0} data analizatu {1} jario-elementurako"
@@ -294,12 +294,22 @@ msgstr "Errorea: Ezin da {0} data analizatu {1} jario-elementurako"
 msgid "Errors while parsing feed `{0}`, URL: `{1}`"
 msgstr "Erroreak `{0}` jarioa, URL: `{1}` analizatzean"
 
-#: gfeeds/feed_parser.py:71
+#: gfeeds/feed_parser.py:75
+#, python-brace-format
+msgid "Error decoding unicode data from feed `{0}`, URL: `{1}`"
+msgstr "Errorea `{0}`, URL: `{1}` jarioko unicode datuak deskodetzean"
+
+#: gfeeds/feed_parser.py:82
+#, python-brace-format
+msgid "Error extracting data from feed `{0}`, URL: `{1}`"
+msgstr "Errorea `{0}`, URL: `{1}` jarioko datuak erauztean"
+
+#: gfeeds/feed_parser.py:90
 #, python-brace-format
 msgid "`{0}` may not be an RSS or Atom feed"
 msgstr "`{0}` agian ez da RSS edo Atom jario bat"
 
-#: gfeeds/feeds_manager.py:97
+#: gfeeds/feeds_manager.py:83
 #, python-brace-format
 msgid "Feed {0} exists already, skipping"
 msgstr "{0} jarioa badago lehendik, saltatzen"
@@ -320,7 +330,7 @@ msgstr "_Mantendu"
 msgid "_Remove"
 msgstr "_Kendu"
 
-#: gfeeds/main_leaflet.py:122
+#: gfeeds/main_leaflet.py:114
 #, python-brace-format
 msgid "{0} new article"
 msgid_plural "{0} new articles"
@@ -332,7 +342,7 @@ msgid "Do you want to import these feeds?"
 msgstr "Jario hauek inportatu nahi dituzu?"
 
 #: gfeeds/__main__.py:239 gfeeds/__main__.py:273
-#: gfeeds/manage_feeds_window.py:330
+#: gfeeds/manage_feeds_window.py:324
 msgid "_Cancel"
 msgstr "_Utzi"
 
@@ -352,11 +362,11 @@ msgstr "URLa"
 msgid "opml file local url or rss remote url to import"
 msgstr "inportatuko den OPML fitxategiaren URL lokala edo urruneko RSSaren URLa"
 
-#: gfeeds/manage_feeds_window.py:327
+#: gfeeds/manage_feeds_window.py:321
 msgid "Do you want to delete these feeds?"
 msgstr "Jario horiek ezabatu nahi al dituzu?"
 
-#: gfeeds/manage_feeds_window.py:332
+#: gfeeds/manage_feeds_window.py:326
 msgid "_Delete"
 msgstr "Ez_abatu"
 
@@ -597,6 +607,16 @@ msgstr "It_xi"
 msgid "Cop_y"
 msgstr "_Kopiatu"
 
+#: gfeeds/util/build_reader_html.py:104
+#, python-brace-format
+msgid "Author: <a href=\"{0}\">{1}</a>"
+msgstr "Egilea: <a href=\"{0}\">{1}</a>"
+
+#: gfeeds/util/build_reader_html.py:108
+#, python-brace-format
+msgid "Author: {0}"
+msgstr "Egilea: {0}"
+
 #: gfeeds/util/download_manager.py:112
 #, python-brace-format
 msgid "`{0}`: connection timed out"
@@ -626,11 +646,11 @@ msgstr "Errorea: emandako OPML bide-izena ez da existitzen"
 msgid "Error parsing OPML file `{0}`"
 msgstr "Errorea `{0}` OPML fitxategia analizatzean"
 
-#: gfeeds/webview.py:204
+#: gfeeds/webview.py:200
 msgid "Link copied to clipboard!"
 msgstr "Esteka arbelean kopiatu da!"
 
-#: gfeeds/webview.py:226
+#: gfeeds/webview.py:222
 msgid "Feed content not available for this article"
 msgstr "Jarioaren edukia ez dago erabilgarri artikulu honetarako"
 
