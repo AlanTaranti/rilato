@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gfeeds master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/gfeeds/issues\n"
-"POT-Creation-Date: 2023-03-11 08:34+0000\n"
-"PO-Revision-Date: 2023-03-11 13:36+0100\n"
+"POT-Creation-Date: 2023-03-26 11:12+0000\n"
+"PO-Revision-Date: 2023-03-26 14:02+0200\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -298,7 +298,7 @@ msgstr "Märk som läst/oläst"
 msgid "Select an article"
 msgstr "Välj en artikel"
 
-#: gfeeds/feed_item.py:59
+#: gfeeds/feed_item.py:62
 #, python-brace-format
 msgid "Error: unable to parse datetime {0} for feeditem {1}"
 msgstr "Fel: Kan inte tolka datumtid {0} för flödesobjekt {1}"
@@ -621,6 +621,16 @@ msgstr "S_täng"
 msgid "Cop_y"
 msgstr "_Kopiera"
 
+#: gfeeds/util/build_reader_html.py:104
+#, python-brace-format
+msgid "Author: <a href=\"{0}\">{1}</a>"
+msgstr "Författare: <a href=\"{0}\">{1}</a>"
+
+#: gfeeds/util/build_reader_html.py:108
+#, python-brace-format
+msgid "Author: {0}"
+msgstr "Författare: {0}"
+
 #: gfeeds/util/download_manager.py:112
 #, python-brace-format
 msgid "`{0}`: connection timed out"
@@ -650,11 +660,11 @@ msgstr "Fel: Angiven OPML-sökväg finns inte"
 msgid "Error parsing OPML file `{0}`"
 msgstr "Kunde inte tolka OPML-fil \"{0}\""
 
-#: gfeeds/webview.py:204
+#: gfeeds/webview.py:200
 msgid "Link copied to clipboard!"
 msgstr "Länk kopierad till urklipp!"
 
-#: gfeeds/webview.py:226
+#: gfeeds/webview.py:222
 msgid "Feed content not available for this article"
 msgstr "Flödesinnehåll ej tillgängligt för den här artikeln"
 
