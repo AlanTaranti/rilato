@@ -3,21 +3,22 @@
 # This file is distributed under the same license as the gfeeds package.
 # Heimen Stoffels <vistausss@outlook.com>, 2020.
 # Nathan Follens <nfollens@gnome.org>, 2022.
+# Philip Goto <philip.goto@gmail.com>, 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gfeeds 0.14.1\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/gfeeds/issues\n"
-"POT-Creation-Date: 2022-02-09 10:26+0000\n"
-"PO-Revision-Date: 2022-03-26 23:53+0100\n"
-"Last-Translator: Nathan Follens <nfollens@gnome.org>\n"
-"Language-Team: Dutch <gnome-nl-list@gnome.org>\n"
+"POT-Creation-Date: 2023-04-11 13:51+0000\n"
+"PO-Revision-Date: 2023-04-11 17:40+0200\n"
+"Last-Translator: Philip Goto <philip.goto@gmail.com>\n"
+"Language-Team: GNOME-NL https://matrix.to/#/#nl:gnome.org\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.1.1\n"
 
 #: data/org.gabmus.gfeeds.appdata.xml.in:4
 msgid "Feeds"
@@ -61,87 +62,329 @@ msgstr "U kunt feeds importeren uit en exporteren naar OPML."
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gabmus.gfeeds.desktop.in:16
 msgid "rss;reader;feed;news;"
-msgstr "rss;lezer;feed;nieuws;"
+msgstr "rss;reader;feed;news;lezer;nieuws;"
 
-#: data/ui/extra_popover_menu.ui:19
+#: data/ui/aboutdialog.ui.in:10
+msgid "translator-credits"
+msgstr ""
+"Heimen Stoffels <vistausss@outlook.com>\n"
+"Nathan Follens <nfollens@gnome.org>\n"
+"Philip Goto flipflop97.github.io/\n"
+"Meer info over GNOME-NL https://nl.gnome.org"
+
+#: data/ui/add_feed_popover.blp:11
+msgid "Enter feed address to add"
+msgstr "Voer een feedadres in"
+
+#: data/ui/add_feed_popover.blp:26
+msgid "Add"
+msgstr "Toevoegen"
+
+#: data/ui/add_feed_popover.blp:32
+msgid "You're already subscribed to that feed!"
+msgstr "U bent al geabonneerd op deze feed!"
+
+#: data/ui/empty_state.blp:7
+msgid "Let's get started"
+msgstr "Aan de slag"
+
+#: data/ui/empty_state.blp:22
+msgid "Add new feeds via URL"
+msgstr "Feeds toevoegen middels url"
+
+#: data/ui/empty_state.blp:27
+msgid "Import an OPML file"
+msgstr "OPML-bestand importeren"
+
+#: data/ui/left_headerbar.blp:6
+msgid "_Show Read Articles"
+msgstr "_Gelezen artikelen tonen"
+
+#: data/ui/left_headerbar.blp:7
+msgid "Mark All as Read"
+msgstr "Alles markeren als gelezen"
+
+#: data/ui/left_headerbar.blp:8
+msgid "Mark All as _Unread"
+msgstr "Alles markeren als _ongelezen"
+
+#: data/ui/left_headerbar.blp:11
+msgid "Show _Empty Feeds"
+msgstr "_Lege feeds tonen"
+
+#: data/ui/left_headerbar.blp:12
+msgid "_Manage Feeds"
+msgstr "Feeds _beheren"
+
+#: data/ui/left_headerbar.blp:13
+msgid "_Import OPML"
+msgstr "OPML-bestand _importeren"
+
+#: data/ui/left_headerbar.blp:14
+msgid "E_xport OPML"
+msgstr "OPML-bestand _exporteren"
+
+#: data/ui/left_headerbar.blp:17
+msgid "P_references"
+msgstr "_Voorkeuren"
+
+#: data/ui/left_headerbar.blp:18
+msgid "_Keyboard Shortcuts"
+msgstr "Snel_toetsen"
+
+#: data/ui/left_headerbar.blp:19
+msgid "_About Feeds"
+msgstr "_Over Feeds"
+
+#: data/ui/left_headerbar.blp:28
+msgid "Filter"
+msgstr "Filteren"
+
+#: data/ui/left_headerbar.blp:32
+msgid "Add Feed"
+msgstr "Feed toevoegen"
+
+#: data/ui/left_headerbar.blp:36
+msgid "Menu"
+msgstr "Menu"
+
+#: data/ui/left_headerbar.blp:41 data/ui/shortcutsWindow.blp:35
+msgid "Refresh"
+msgstr "Verversen"
+
+#: data/ui/left_headerbar.blp:46 data/ui/shortcutsWindow.blp:39
+msgid "Search"
+msgstr "Zoeken"
+
+#: data/ui/left_headerbar.blp:50
+msgid "There Are Errors"
+msgstr "Er zijn fouten opgetreden"
+
+#: data/ui/main_leaflet.blp:40
+msgid "Offline"
+msgstr "Offline"
+
+#: data/ui/manage_feeds_headerbar.blp:7 gfeeds/manage_feeds_window.py:257
+msgid "Manage Feeds"
+msgstr "Feeds beheren"
+
+#: data/ui/manage_feeds_headerbar.blp:11
+msgid "Manage Tags for Selected Feeds"
+msgstr "Labels van geselecteerde feeds beheren"
+
+#: data/ui/manage_feeds_headerbar.blp:16
+msgid "Select/Unselect All"
+msgstr "Alles/niets selecteren"
+
+#: data/ui/manage_feeds_headerbar.blp:21
+msgid "Delete Selected Feeds"
+msgstr "Geselecteerde feeds verwijderen"
+
+#: data/ui/manage_tags_content.blp:17
+msgid "New tag name…"
+msgstr "Nieuwe labelnaam…"
+
+#: data/ui/manage_tags_content.blp:24
+msgid "Add Tag"
+msgstr "Label toevoegen"
+
+#: data/ui/manage_tags_content.blp:39
+msgid "There are no tags yet"
+msgstr "Er zijn nog geen labels toegekend"
+
+#: data/ui/manage_tags_content.blp:40
+msgid "Add some using the entry above"
+msgstr "Voeg labels toe middels het vak hierboven"
+
+#: data/ui/right_headerbar.blp:9
+msgid "Open in _Browser"
+msgstr "Openen in _browser"
+
+#: data/ui/right_headerbar.blp:10
+msgid "Open in External Media _Player"
+msgstr "Openen in externe _mediaspeler"
+
+#: data/ui/right_headerbar.blp:11
+msgid "_Copy Article Link"
+msgstr "Artikellink _kopiëren"
+
+#: data/ui/right_headerbar.blp:17 data/ui/right_headerbar.blp:96
+msgid "View Mode"
+msgstr "Weergavemodus"
+
+#: data/ui/right_headerbar.blp:19
 msgid "Web View"
 msgstr "Webweergave"
 
-#: data/ui/extra_popover_menu.ui:26
+#: data/ui/right_headerbar.blp:24
 msgid "Reader Mode"
 msgstr "Leesmodus"
 
-#: data/ui/extra_popover_menu.ui:33
+#: data/ui/right_headerbar.blp:29
 msgid "Feed Content"
 msgstr "Feedinhoud"
 
-#: gfeeds/confirm_add_dialog.py:16
-msgid "Do you want to import these feeds?"
-msgstr "Wilt u deze feeds importeren?"
+#: data/ui/right_headerbar.blp:44 data/ui/shortcutsWindow.blp:66
+msgid "Zoom Out"
+msgstr "Uitzoomen"
 
-#: gfeeds/confirm_add_dialog.py:17
-msgid "Do you want to import this feed?"
-msgstr "Wilt u deze feed importeren?"
+#: data/ui/right_headerbar.blp:51 data/ui/shortcutsWindow.blp:70
+msgid "Reset Zoom"
+msgstr "Zoomniveau resetten"
 
-#: gfeeds/download_manager.py:88
+#: data/ui/right_headerbar.blp:57 data/ui/shortcutsWindow.blp:62
+msgid "Zoom In"
+msgstr "Inzoomen"
+
+#: data/ui/right_headerbar.blp:90
+msgid "Back to Articles"
+msgstr "Terug naar artikelen"
+
+#: data/ui/shortcutsWindow.blp:9 gfeeds/preferences_window.py:24
+msgid "General"
+msgstr "Algemeen"
+
+#: data/ui/shortcutsWindow.blp:12
+msgid "Open Keyboard Shortcuts"
+msgstr "Sneltoetsoverzicht tonen"
+
+#: data/ui/shortcutsWindow.blp:16
+msgid "Open Menu"
+msgstr "Menu openen"
+
+#: data/ui/shortcutsWindow.blp:20
+msgid "Open Preferences"
+msgstr "Voorkeuren openen"
+
+#: data/ui/shortcutsWindow.blp:24
+msgid "Open Filter"
+msgstr "Filter openen"
+
+#: data/ui/shortcutsWindow.blp:28
+msgid "Quit"
+msgstr "Afsluiten"
+
+#: data/ui/shortcutsWindow.blp:32
+msgid "Article List"
+msgstr "Artikellijst"
+
+#: data/ui/shortcutsWindow.blp:43
+msgid "Next"
+msgstr "Volgende"
+
+#: data/ui/shortcutsWindow.blp:47
+msgid "Previous"
+msgstr "Vorige"
+
+#: data/ui/shortcutsWindow.blp:51
+msgid "Show/Hide Read Articles"
+msgstr "Gelezen artikelen tonen/verbergen"
+
+#: data/ui/shortcutsWindow.blp:55
+msgid "Mark All Read"
+msgstr "Alles markeren als gelezen"
+
+#: data/ui/shortcutsWindow.blp:59
+msgid "Article"
+msgstr "Artikel"
+
+#: data/ui/shortcutsWindow.blp:74 data/ui/sidebar_listbox_row.blp:6
+msgid "Open in Browser"
+msgstr "Openen in browser"
+
+#: data/ui/sidebar_listbox_row.blp:5
+msgid "Mark as Read/Unread"
+msgstr "Markeren als (on)gelezen"
+
+#: data/ui/webview.blp:12
+msgid "Select an article"
+msgstr "Selecteer een artikel"
+
+#: gfeeds/feed_item.py:62
 #, python-brace-format
-msgid "`{0}`: connection timed out"
-msgstr "`{0}`: verbinding verlopen"
+msgid "Error: unable to parse datetime {0} for feeditem {1}"
+msgstr "Fout: kan de datum en tijd ‘{0}’ van feed-item ‘{1}’ niet verwerken"
 
-#: gfeeds/download_manager.py:92
+#: gfeeds/feed_parser.py:61
 #, python-brace-format
-msgid "`{0}` might not be a valid address"
-msgstr "`{0}` is misschien geen geldig adres"
+msgid "Errors while parsing feed `{0}`, URL: `{1}`"
+msgstr "Fouten tijdens verwerken van feed ‘{0}’, URL: ‘{1}’"
 
-#: gfeeds/download_manager.py:117
+#: gfeeds/feed_parser.py:75
 #, python-brace-format
-msgid "Error downloading `{0}`, code `{1}`"
-msgstr "Fout tijdens ophalen van `{0}` - code `{1}`"
+msgid "Error decoding unicode data from feed `{0}`, URL: `{1}`"
+msgstr "Fout bij decoderen van unicode-gegevens uit feed ‘{0}’, URL: ‘{1}’"
 
-#: gfeeds/feeds_manager.py:87
+#: gfeeds/feed_parser.py:82
+#, python-brace-format
+msgid "Error extracting data from feed `{0}`, URL: `{1}`"
+msgstr "Fout bij extraheren van gegevens uit feed ‘{0}’, URL: ‘{1}’"
+
+#: gfeeds/feed_parser.py:90
+#, python-brace-format
+msgid "`{0}` may not be an RSS or Atom feed"
+msgstr "‘{0}’ is mogelijk geen RSS- of Atom-feed"
+
+#: gfeeds/feeds_manager.py:83
 #, python-brace-format
 msgid "Feed {0} exists already, skipping"
-msgstr "'{0}' bestaat al - deze wordt overgeslagen"
+msgstr "Feed ‘{0}’ bestaat al - deze wordt overgeslagen"
 
-#: gfeeds/feeds_view.py:14
+#: gfeeds/feeds_view.py:13
 msgid "All feeds"
 msgstr "Alle feeds"
 
-#: gfeeds/get_favicon.py:45
-#, python-brace-format
-msgid "Error downloading favicon for `{0}`"
-msgstr "De favicon van `{0}` kan niet worden opgehaald"
+#: gfeeds/headerbar.py:197
+msgid "There were problems with some feeds. Do you want to remove them?"
+msgstr "Er zijn problemen opgetreden met enkele feeds. Wilt u ze verwijderen?"
 
-#: gfeeds/headerbar.py:171
-msgid ""
-"There were problems with some feeds.\n"
-"Do you want to remove them?"
-msgstr ""
-"Er zijn problemen opgetreden met enkele feeds.\n"
-"Wilt u ze verwijderen?"
+#: gfeeds/headerbar.py:202
+msgid "_Keep"
+msgstr "_Bewaren"
 
-#: gfeeds/main_leaflet.py:118
+#: gfeeds/headerbar.py:204
+msgid "_Remove"
+msgstr "_Verwijderen"
+
+#: gfeeds/main_leaflet.py:114
 #, python-brace-format
 msgid "{0} new article"
 msgid_plural "{0} new articles"
 msgstr[0] "{0} nieuw artikel"
 msgstr[1] "{0} nieuwe artikelen"
 
-#: gfeeds/__main__.py:251
+#: gfeeds/__main__.py:232
+msgid "Do you want to import these feeds?"
+msgstr "Wilt u deze feeds importeren?"
+
+#: gfeeds/__main__.py:239 gfeeds/__main__.py:273
+#: gfeeds/manage_feeds_window.py:324
+msgid "_Cancel"
+msgstr "_Annuleren"
+
+#: gfeeds/__main__.py:242 gfeeds/__main__.py:276
+msgid "_Import"
+msgstr "_Importeren"
+
+#: gfeeds/__main__.py:269
+msgid "Do you want to import this feed?"
+msgstr "Wilt u deze feed importeren?"
+
+#: gfeeds/__main__.py:301
 msgid "url"
 msgstr "URL"
 
-#: gfeeds/__main__.py:254
+#: gfeeds/__main__.py:304
 msgid "opml file local url or rss remote url to import"
 msgstr "het te importeren opmlbestand, een lokale of rss-url"
 
-#: gfeeds/manage_feeds_window.py:229
+#: gfeeds/manage_feeds_window.py:321
 msgid "Do you want to delete these feeds?"
 msgstr "Weet u zeker dat u deze feeds wilt verwijderen?"
 
-#: gfeeds/manage_feeds_window.py:281
-msgid "Manage Feeds"
-msgstr "Feeds beheren"
+#: gfeeds/manage_feeds_window.py:326
+msgid "_Delete"
+msgstr "_Verwijderen"
 
 #: gfeeds/opml_file_chooser.py:7
 msgid "XML files"
@@ -167,84 +410,71 @@ msgstr "Kies een locatie voor het OPML-bestand"
 msgid "Save"
 msgstr "Opslaan"
 
-#: gfeeds/opml_manager.py:42
-msgid "Error: OPML path provided does not exist"
-msgstr "Fout: het opgegeven OPML-pad bestaat niet"
-
-#: gfeeds/opml_manager.py:53
-#, python-brace-format
-msgid "Error parsing OPML file `{0}`"
-msgstr "Fout tijdens verwerken van `{0}`"
-
-#: gfeeds/preferences_window.py:22
-msgid "General"
-msgstr "Algemeen"
-
-#: gfeeds/preferences_window.py:25
+#: gfeeds/preferences_window.py:27
 msgid "General preferences"
 msgstr "Algemene voorkeuren"
 
-#: gfeeds/preferences_window.py:27
+#: gfeeds/preferences_window.py:29
 msgid "Show newer articles first"
 msgstr "Nieuwste artikelen bovenaan"
 
-#: gfeeds/preferences_window.py:32
+#: gfeeds/preferences_window.py:34
 msgid "Open links in your browser"
 msgstr "Links openen in webbrowser"
 
-#: gfeeds/preferences_window.py:36
+#: gfeeds/preferences_window.py:38
 msgid "Use external video player for YouTube"
 msgstr "Externe videospeler gebruiken voor YouTube"
 
-#: gfeeds/preferences_window.py:38
+#: gfeeds/preferences_window.py:40
 msgid "Requires youtube-dl and a compatible video player"
 msgstr "Vereist youtube-dl en een compatibele videospeler"
 
-#: gfeeds/preferences_window.py:44
+#: gfeeds/preferences_window.py:46
 msgid "Preferred video player"
 msgstr "Voorkeursvideospeler"
 
-#: gfeeds/preferences_window.py:48
+#: gfeeds/preferences_window.py:50
 msgid "Maximum article age"
 msgstr "Maximale artikelouderdom"
 
-#: gfeeds/preferences_window.py:49
+#: gfeeds/preferences_window.py:51
 msgid "In days"
 msgstr "In dagen"
 
-#: gfeeds/preferences_window.py:56
+#: gfeeds/preferences_window.py:58
 msgid "Refresh preferences"
 msgstr "Voorkeuren bijwerken"
 
-#: gfeeds/preferences_window.py:58
+#: gfeeds/preferences_window.py:60
 msgid "Refresh articles on startup"
 msgstr "Artikelen verversen na opstarten"
 
-#: gfeeds/preferences_window.py:62
+#: gfeeds/preferences_window.py:64
 msgid "New articles notification"
 msgstr "Melding voor nieuwe artikelen"
 
-#: gfeeds/preferences_window.py:66
+#: gfeeds/preferences_window.py:68
 msgid "Enable auto-refresh"
 msgstr "Automatisch verversen inschakelen"
 
-#: gfeeds/preferences_window.py:70
+#: gfeeds/preferences_window.py:72
 msgid "Auto-refresh interval"
 msgstr "Interval voor automatisch verversen"
 
-#: gfeeds/preferences_window.py:71
+#: gfeeds/preferences_window.py:73
 msgid "In seconds"
 msgstr "In seconden"
 
-#: gfeeds/preferences_window.py:78
+#: gfeeds/preferences_window.py:80
 msgid "Cache"
 msgstr "Cache"
 
-#: gfeeds/preferences_window.py:80
+#: gfeeds/preferences_window.py:82
 msgid "Clear caches"
 msgstr "Caches legen"
 
-#: gfeeds/preferences_window.py:81
+#: gfeeds/preferences_window.py:83
 msgid "Clear"
 msgstr "Wissen"
 
@@ -261,158 +491,212 @@ msgid "Dark mode"
 msgstr "Donkere modus"
 
 #: gfeeds/preferences_window.py:118
-msgid "Use dark theme for reader mode"
-msgstr "Donker thema gebruiken in leesmodus"
+msgid "Reader mode theme"
+msgstr "Thema van leesmodus"
 
 #: gfeeds/preferences_window.py:122
+msgid "Automatic"
+msgstr "Automatisch"
+
+#: gfeeds/preferences_window.py:122
+msgid "Light"
+msgstr "Licht"
+
+#: gfeeds/preferences_window.py:122
+msgid "Dark"
+msgstr "Donker"
+
+#: gfeeds/preferences_window.py:126
 msgid "Show article thumbnails"
 msgstr "Miniaturen van artikelen tonen"
 
-#: gfeeds/preferences_window.py:127
-msgid "Maximum thumbnail height"
-msgstr "Maximale hoogte van miniaturen"
-
-#: gfeeds/preferences_window.py:133
+#: gfeeds/preferences_window.py:131
 msgid "Show full articles titles"
 msgstr "Volledige artikelkoppen tonen"
 
-#: gfeeds/preferences_window.py:138
+#: gfeeds/preferences_window.py:136
 msgid "Show full feeds names"
 msgstr "Volledige feednamen tonen"
 
-#: gfeeds/preferences_window.py:145
+#: gfeeds/preferences_window.py:143
 msgid "Font preferences"
 msgstr "Lettertypevoorkeuren"
 
-#: gfeeds/preferences_window.py:147
+#: gfeeds/preferences_window.py:145
 msgid "Use system font for titles"
 msgstr "Systeemlettertype gebruiken voor titels"
 
-#: gfeeds/preferences_window.py:151
+#: gfeeds/preferences_window.py:149
 msgid "Use system font for paragraphs"
 msgstr "Systeemlettertype gebruiken voor alinea’s"
 
-#: gfeeds/preferences_window.py:155
+#: gfeeds/preferences_window.py:153
 msgid "Custom title font"
 msgstr "Aangepast titellettertype"
 
-#: gfeeds/preferences_window.py:159
+#: gfeeds/preferences_window.py:157
 msgid "Custom paragraph font"
 msgstr "Aangepast alinealettertype"
 
-#: gfeeds/preferences_window.py:163
+#: gfeeds/preferences_window.py:161
 msgid "Custom monospace font"
 msgstr "Aangepast lettertype met vaste breedte"
 
-#: gfeeds/preferences_window.py:175
+#: gfeeds/preferences_window.py:173
 msgid "Privacy"
 msgstr "Privacy"
 
-#: gfeeds/preferences_window.py:178
+#: gfeeds/preferences_window.py:177
 msgid "Privacy preferences"
 msgstr "Privacyvoorkeuren"
 
-#: gfeeds/preferences_window.py:180
+#: gfeeds/preferences_window.py:179
 msgid "Enable JavaScript"
 msgstr "JavaScript inschakelen"
 
-#: gfeeds/preferences_window.py:185
+#: gfeeds/preferences_window.py:184
 msgid "Try to block advertisements"
 msgstr "Probeer advertenties te blokkeren"
 
-#: gfeeds/preferences_window.py:187 gfeeds/preferences_window.py:222
+#: gfeeds/preferences_window.py:186 gfeeds/preferences_window.py:221
 msgid "Requires app restart"
 msgstr "Vereist dat de toepassing opnieuw gestart wordt"
 
-#: gfeeds/preferences_window.py:191
+#: gfeeds/preferences_window.py:190
 msgid "Update advertisement blocking list"
 msgstr "Lijst met geblokkeerde reclame bijwerken"
 
-#: gfeeds/preferences_window.py:192
+#: gfeeds/preferences_window.py:191
 msgid "Updates automatically every 10 days"
 msgstr "Wordt elke 10 dagen automatisch bijgewerkt"
 
-#: gfeeds/preferences_window.py:193
+#: gfeeds/preferences_window.py:192
 msgid "Update"
 msgstr "Bijwerken"
 
-#: gfeeds/preferences_window.py:206
+#: gfeeds/preferences_window.py:205
 msgid "Advanced"
 msgstr "Geavanceerd"
 
-#: gfeeds/preferences_window.py:209
+#: gfeeds/preferences_window.py:208
 msgid "Advanced preferences"
 msgstr "Geavanceerde voorkeuren"
 
-#: gfeeds/preferences_window.py:211
+#: gfeeds/preferences_window.py:210
 msgid "Maximum refresh threads"
 msgstr "Maximumaantal verversprocessen"
 
-#: gfeeds/preferences_window.py:213
+#: gfeeds/preferences_window.py:212
 msgid "How many threads to use for feeds refresh"
 msgstr "Hoeveel processen mogen gebruikt worden om feeds te verversen"
 
-#: gfeeds/preferences_window.py:220
+#: gfeeds/preferences_window.py:219
 msgid "Experimental GtkListView for articles list"
 msgstr "Experimentele GtkListView voor de artikellijst"
 
-#: gfeeds/rss_parser.py:67
+#: gfeeds/preferences_window.py:227
+msgid "Troubleshooting"
+msgstr "Probleemoplossing"
+
+#: gfeeds/preferences_window.py:229
+msgid "Export Configuration as JSON"
+msgstr "Configuratie exporteren als JSON"
+
+#: gfeeds/preferences_window.py:230
+msgid "Attach this when reporting bugs"
+msgstr "Voeg dit toe als bijlage bij het rapporteren van een probleem"
+
+#: gfeeds/preferences_window.py:231
+msgid "Export"
+msgstr "Exporteren"
+
+#. type: ignore
+#: gfeeds/preferences_window.py:244
+msgid "Feeds Configuration"
+msgstr "Feedconfiguratie"
+
+#: gfeeds/preferences_window.py:248
+msgid "_Close"
+msgstr "_Sluiten"
+
+#: gfeeds/preferences_window.py:251
+msgid "Cop_y"
+msgstr "_Kopiëren"
+
+#: gfeeds/util/build_reader_html.py:104
 #, python-brace-format
-msgid "Error: unable to parse datetime {0} for feeditem {1}"
-msgstr "Fout: kan de datum en tijd {0} van feeditem {1} niet verwerken"
+msgid "Author: <a href=\"{0}\">{1}</a>"
+msgstr "Auteur: <a href=\"{0}\">{1}</a>"
 
-#: gfeeds/rss_parser.py:148
+#: gfeeds/util/build_reader_html.py:108
 #, python-brace-format
-msgid "Errors while parsing feed `{0}`"
-msgstr "Fouten tijdens het verwerken van `{0}`"
+msgid "Author: {0}"
+msgstr "Auteur: {0}"
 
-#: gfeeds/rss_parser.py:175
+#: gfeeds/util/download_manager.py:112
 #, python-brace-format
-msgid "`{0}` may not be an RSS or Atom feed"
-msgstr "`{0}` is mogelijk geen RSS- of Atom-feed"
+msgid "`{0}`: connection timed out"
+msgstr "`{0}`: verbinding verlopen"
 
-#: gfeeds/sidebar.py:23
-msgid "Loading feeds..."
-msgstr "Bezig met laden van feeds…"
+#: gfeeds/util/download_manager.py:121
+#, python-brace-format
+msgid "`{0}` might not be a valid address"
+msgstr "`{0}` is misschien geen geldig adres"
 
-#: gfeeds/sidebar_row_popover.py:31 gfeeds/sidebar_row_popover.py:58
-msgid "Mark as unread"
-msgstr "Markeren als ongelezen"
+#: gfeeds/util/download_manager.py:161
+#, python-brace-format
+msgid "Error downloading `{0}`, code `{1}`"
+msgstr "Fout tijdens ophalen van `{0}` - code `{1}`"
 
-#: gfeeds/sidebar_row_popover.py:38 gfeeds/sidebar_row_popover.py:50
-msgid "Mark as read"
-msgstr "Markeren als gelezen"
+#: gfeeds/util/get_favicon.py:48
+#, python-brace-format
+msgid "Error downloading favicon for `{0}`"
+msgstr "De favicon van `{0}` kan niet worden opgehaald"
 
-#: gfeeds/suggestion_bar.py:37
-msgid "There are some errors"
-msgstr "Er zijn fouten opgetreden"
+#: gfeeds/util/opml_parser.py:33
+msgid "Error: OPML path provided does not exist"
+msgstr "Fout: het opgegeven OPML-pad bestaat niet"
 
-#: gfeeds/suggestion_bar.py:46
-msgid "Show"
-msgstr "Tonen"
+#: gfeeds/util/opml_parser.py:44
+#, python-brace-format
+msgid "Error parsing OPML file `{0}`"
+msgstr "Fout tijdens verwerken van `{0}`"
 
-#: gfeeds/suggestion_bar.py:47
-msgid "Ignore"
-msgstr "Negeren"
-
-#: gfeeds/suggestion_bar.py:70
-msgid "There were problems with some feeds. Do you want to remove them?"
-msgstr "Er zijn problemen opgetreden met enkele feeds. Wilt u ze verwijderen?"
-
-#: gfeeds/suggestion_bar.py:97
-msgid "You are offline"
-msgstr "U hebt geen interverbinding"
-
-#: gfeeds/webview.py:183
+#: gfeeds/webview.py:200
 msgid "Link copied to clipboard!"
 msgstr "De link is gekopieerd naar het klembord!"
 
-#: gfeeds/webview.py:205
+#: gfeeds/webview.py:222
 msgid "Feed content not available for this article"
 msgstr "Geen feedinhoud beschikbaar bij dit artikel"
 
-#~ msgid "Add new feed"
-#~ msgstr "Feed toevoegen"
+#~ msgid ""
+#~ "There were problems with some feeds.\n"
+#~ "Do you want to remove them?"
+#~ msgstr ""
+#~ "Er zijn problemen opgetreden met enkele feeds.\n"
+#~ "Wilt u ze verwijderen?"
+
+#~ msgid "Use dark theme for reader mode"
+#~ msgstr "Donker thema gebruiken in leesmodus"
+
+#~ msgid "Maximum thumbnail height"
+#~ msgstr "Maximale hoogte van miniaturen"
+
+#~ msgid "Loading feeds..."
+#~ msgstr "Bezig met laden van feeds…"
+
+#~ msgid "Mark as read"
+#~ msgstr "Markeren als gelezen"
+
+#~ msgid "Show"
+#~ msgstr "Tonen"
+
+#~ msgid "Ignore"
+#~ msgstr "Negeren"
+
+#~ msgid "You are offline"
+#~ msgstr "U hebt geen interverbinding"
 
 #~ msgid "Filler View"
 #~ msgstr "Vullende weergave"
@@ -438,15 +722,6 @@ msgstr "Geen feedinhoud beschikbaar bij dit artikel"
 #~ msgid "Feed"
 #~ msgstr "Feed"
 
-#~ msgid "Select/Unselect all"
-#~ msgstr "Alles/Niets selecteren"
-
-#~ msgid "Delete selected feeds"
-#~ msgstr "Geselecteerde feeds verwijderen"
-
-#~ msgid "Manage tags for selected feeds"
-#~ msgstr "Labels van geselecteerde feeds beheren"
-
 #~ msgid "General Settings"
 #~ msgstr "Algemene instellingen"
 
@@ -465,68 +740,8 @@ msgstr "Geen feedinhoud beschikbaar bij dit artikel"
 #~ msgid "`{0}` is not an URL"
 #~ msgstr "`{0}` is geen url"
 
-#~ msgid "Open Keyboard Shortcuts"
-#~ msgstr "Sneltoetsoverzicht tonen"
-
-#~ msgid "Quit"
-#~ msgstr "Afsluiten"
-
-#~ msgid "Refresh articles"
-#~ msgstr "Artikelen verversen"
-
 #~ msgid "Search articles"
 #~ msgstr "Zoeken naar artikelen"
-
-#~ msgid "Previous article"
-#~ msgstr "Vorig artikel"
-
-#~ msgid "Show/Hide read articles"
-#~ msgstr "Gelezen artikelen tonen/verbergen"
-
-#~ msgid "Zoom in"
-#~ msgstr "Inzoomen"
-
-#~ msgid "Zoom out"
-#~ msgstr "Uitzoomen"
-
-#~ msgid "Reset zoom"
-#~ msgstr "Standaard zoomniveau"
-
-#~ msgid "Select an article"
-#~ msgstr "Selecteer een artikel"
-
-#~ msgid "Show read articles"
-#~ msgstr "Gelezen artikelen tonen"
-
-#~ msgid "Mark all as read"
-#~ msgstr "Alles markeren als gelezen"
-
-#~ msgid "Mark all as unread"
-#~ msgstr "Alles markeren als ongelezen"
-
-#~ msgid "Import OPML"
-#~ msgstr "OPML-bestand importeren"
-
-#~ msgid "Export OPML"
-#~ msgstr "OPML-bestand exporteren"
-
-#~ msgid "Keyboard Shortcuts"
-#~ msgstr "Sneltoetsen"
-
-#~ msgid "About Feeds"
-#~ msgstr "Over Feeds"
-
-#~ msgid "Menu"
-#~ msgstr "Menu"
-
-#~ msgid "Filter by feed"
-#~ msgstr "Filteren op feed"
-
-#~ msgid "Search"
-#~ msgstr "Zoeken"
-
-#~ msgid "Back to articles"
-#~ msgstr "Terug naar artikeloverzicht"
 
 #~ msgid "Change view mode"
 #~ msgstr "Weergavemodus aanpassen"
@@ -534,56 +749,17 @@ msgstr "Geen feedinhoud beschikbaar bij dit artikel"
 #~ msgid "Share"
 #~ msgstr "Delen"
 
-#~ msgid "Open externally"
-#~ msgstr "Extern openen"
-
-#~ msgid "Let's get started"
-#~ msgstr "Aan de slag"
-
-#~ msgid "Add new feeds via URL"
-#~ msgstr "Feeds toevoegen middels url"
-
-#~ msgid "Import an OPML file"
-#~ msgstr "OPML-bestand importeren"
-
-#~ msgid "Enter feed address to add"
-#~ msgstr "Voer een feedadres in"
-
 #~ msgid "https://..."
 #~ msgstr "https://..."
 
-#~ msgid "Add"
-#~ msgstr "Toevoegen"
-
-#~ msgid "You're already subscribed to that feed!"
-#~ msgstr "U bent al geabonneerd op deze feed!"
-
-#~ msgid "View mode"
-#~ msgstr "Weergavemodus"
-
 #~ msgid "label"
 #~ msgstr "label"
-
-#~ msgid "New tag name..."
-#~ msgstr "Nieuwe labelnaam..."
-
-#~ msgid "Add tag"
-#~ msgstr "Label toekennen"
-
-#~ msgid "There are no tags yet"
-#~ msgstr "Er zijn nog geen labels toegekend"
-
-#~ msgid "Add some using the entry above"
-#~ msgstr "Voeg labels toe middels het vak hierboven"
 
 #~ msgid "page0"
 #~ msgstr "pagina0"
 
 #~ msgid "page1"
 #~ msgstr "pagina1"
-
-#~ msgid "Save article"
-#~ msgstr "Artikel opslaan"
 
 #~ msgid "@prettyname@"
 #~ msgstr "@prettyname@"
