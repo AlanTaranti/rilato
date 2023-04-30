@@ -2,14 +2,15 @@
 # Copyright (C) 2019 THE gfeeds'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the gfeeds package.
 # Éloi Rivard <eloi.rivard@aquilenet.fr>, 2019-2022.
+# Alexandre Franke <afranke@gnome.org>, 2022.
 # Charles Monzat <charles.monzat@free.fr>, 2022.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gfeeds 0.12\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/gfeeds/issues\n"
-"POT-Creation-Date: 2022-05-09 14:29+0000\n"
-"PO-Revision-Date: 2022-05-25 18:56+0200\n"
+"POT-Creation-Date: 2022-10-03 18:20+0000\n"
+"PO-Revision-Date: 2022-10-07 12:34+0200\n"
 "Last-Translator: Charles Monzat <charles.monzat@free.fr>\n"
 "Language-Team: GNOME French Team <gnomefr@traduc.org>\n"
 "Language: fr\n"
@@ -63,24 +64,259 @@ msgstr "Les flux peuvent êtres importés et exportés via OPML."
 msgid "rss;reader;feed;news;"
 msgstr "rss;reader;feed;news;lecture;nouvelles;journaux;flux;"
 
-#: gfeeds/feed_item.py:49
+#: data/ui/aboutdialog.ui.in:10
+msgid "translator-credits"
+msgstr ""
+"Éloi Rivard <eloi.rivard@aquilenet.fr>\n"
+"Charles Monzat <charles.monzat@free.fr>\n"
+"Alexandre Franke <afranke@gnome.org>"
+
+#: data/ui/add_feed_popover.blp:11
+msgid "Enter feed address to add"
+msgstr "Entrez l’adresse du flux à ajouter"
+
+#: data/ui/add_feed_popover.blp:26
+msgid "Add"
+msgstr "Ajouter"
+
+#: data/ui/add_feed_popover.blp:32
+msgid "You're already subscribed to that feed!"
+msgstr "Vous êtes déjà abonné à ce flux !"
+
+#: data/ui/empty_state.blp:7
+msgid "Let's get started"
+msgstr "Commençons"
+
+#: data/ui/empty_state.blp:22
+msgid "Add new feeds via URL"
+msgstr "Ajouter de nouveaux flux via une URL"
+
+#: data/ui/empty_state.blp:27
+msgid "Import an OPML file"
+msgstr "Importer un fichier OPML"
+
+#: data/ui/left_headerbar.blp:6
+msgid "_Show Read Articles"
+msgstr "_Afficher les articles lus"
+
+#: data/ui/left_headerbar.blp:7
+msgid "Mark All as Read"
+msgstr "Tout marquer comme lu"
+
+#: data/ui/left_headerbar.blp:8
+msgid "Mark All as _Unread"
+msgstr "Tout marquer comme non lu"
+
+#: data/ui/left_headerbar.blp:11
+msgid "Show _Empty Feeds"
+msgstr "Afficher les flux _vides"
+
+#: data/ui/left_headerbar.blp:12
+msgid "_Manage Feeds"
+msgstr "_Gérer les flux"
+
+#: data/ui/left_headerbar.blp:13
+msgid "_Import OPML"
+msgstr "_Importer un fichier OPML"
+
+#: data/ui/left_headerbar.blp:14
+msgid "E_xport OPML"
+msgstr "E_xporter un fichier OPML"
+
+#: data/ui/left_headerbar.blp:17
+msgid "P_references"
+msgstr "P_références"
+
+#: data/ui/left_headerbar.blp:18
+msgid "_Keyboard Shortcuts"
+msgstr "Raccourcis _clavier"
+
+#: data/ui/left_headerbar.blp:19
+msgid "_About Feeds"
+msgstr "À _propos"
+
+#: data/ui/left_headerbar.blp:28
+msgid "Filter"
+msgstr "Filtrer"
+
+#: data/ui/left_headerbar.blp:32
+msgid "Add Feed"
+msgstr "Ajouter un flux"
+
+#: data/ui/left_headerbar.blp:36
+msgid "Menu"
+msgstr "Menu"
+
+#: data/ui/left_headerbar.blp:41 data/ui/shortcutsWindow.blp:35
+msgid "Refresh"
+msgstr "Actualiser"
+
+#: data/ui/left_headerbar.blp:46 data/ui/shortcutsWindow.blp:39
+msgid "Search"
+msgstr "Rechercher"
+
+#: data/ui/left_headerbar.blp:51
+msgid "There Are Errors"
+msgstr "Il y a des erreurs"
+
+#: data/ui/main_leaflet.blp:40
+msgid "Offline"
+msgstr "Hors ligne"
+
+#: data/ui/manage_feeds_headerbar.blp:7 gfeeds/manage_feeds_window.py:263
+msgid "Manage Feeds"
+msgstr "Gérer les flux"
+
+#: data/ui/manage_feeds_headerbar.blp:11
+msgid "Manage Tags for Selected Feeds"
+msgstr "Gérer les étiquettes pour les flux sélectionnés"
+
+#: data/ui/manage_feeds_headerbar.blp:16
+msgid "Select/Unselect All"
+msgstr "Tout sélectionner / désélectionner"
+
+#: data/ui/manage_feeds_headerbar.blp:21
+msgid "Delete Selected Feeds"
+msgstr "Supprimer les flux sélectionnés"
+
+#: data/ui/manage_tags_content.blp:17
+msgid "New tag name…"
+msgstr "Nouveau nom d’étiquette…"
+
+#: data/ui/manage_tags_content.blp:24
+msgid "Add Tag"
+msgstr "Ajouter une étiquette"
+
+#: data/ui/manage_tags_content.blp:39
+msgid "There are no tags yet"
+msgstr "Il n’y a pas encore d’étiquettes"
+
+#: data/ui/manage_tags_content.blp:40
+msgid "Add some using the entry above"
+msgstr "Ajoutez-en via l’entrée ci-dessus"
+
+#: data/ui/right_headerbar.blp:9
+msgid "Open in _Browser"
+msgstr "Ouvrir dans le _navigateur"
+
+#: data/ui/right_headerbar.blp:10
+msgid "Open in External Media _Player"
+msgstr "Ouvrir dans un _lecteur média externe"
+
+#: data/ui/right_headerbar.blp:11
+msgid "_Copy Article Link"
+msgstr "_Copier le lien de l’article"
+
+#: data/ui/right_headerbar.blp:17 data/ui/right_headerbar.blp:96
+msgid "View Mode"
+msgstr "Mode de vue"
+
+#: data/ui/right_headerbar.blp:19
+msgid "Web View"
+msgstr "Page web"
+
+#: data/ui/right_headerbar.blp:24
+msgid "Reader Mode"
+msgstr "Mode lecture"
+
+#: data/ui/right_headerbar.blp:29
+msgid "Feed Content"
+msgstr "Contenu du flux"
+
+#: data/ui/right_headerbar.blp:44 data/ui/shortcutsWindow.blp:66
+msgid "Zoom Out"
+msgstr "Zoom arrière"
+
+#: data/ui/right_headerbar.blp:51 data/ui/shortcutsWindow.blp:70
+msgid "Reset Zoom"
+msgstr "Réinitialiser le zoom"
+
+#: data/ui/right_headerbar.blp:57 data/ui/shortcutsWindow.blp:62
+msgid "Zoom In"
+msgstr "Zoom avant"
+
+#: data/ui/right_headerbar.blp:90
+msgid "Back to Articles"
+msgstr "Retour aux articles"
+
+#: data/ui/shortcutsWindow.blp:9 gfeeds/preferences_window.py:24
+msgid "General"
+msgstr "Général"
+
+#: data/ui/shortcutsWindow.blp:12
+msgid "Open Keyboard Shortcuts"
+msgstr "Ouvrir les raccourcis clavier"
+
+#: data/ui/shortcutsWindow.blp:16
+msgid "Open Menu"
+msgstr "Ouvrir le menu"
+
+#: data/ui/shortcutsWindow.blp:20
+msgid "Open Preferences"
+msgstr "Ouvrir les préférences"
+
+#: data/ui/shortcutsWindow.blp:24
+msgid "Open Filter"
+msgstr "Ouvrir le filtre"
+
+#: data/ui/shortcutsWindow.blp:28
+msgid "Quit"
+msgstr "Quitter"
+
+#: data/ui/shortcutsWindow.blp:32
+msgid "Article List"
+msgstr "Liste des articles"
+
+#: data/ui/shortcutsWindow.blp:43
+msgid "Next"
+msgstr "Suivant"
+
+#: data/ui/shortcutsWindow.blp:47
+msgid "Previous"
+msgstr "Précédent"
+
+#: data/ui/shortcutsWindow.blp:51
+msgid "Show/Hide Read Articles"
+msgstr "Afficher / masquer les articles lus"
+
+#: data/ui/shortcutsWindow.blp:55
+msgid "Mark All Read"
+msgstr "Tout marquer comme lu"
+
+#: data/ui/shortcutsWindow.blp:59
+msgid "Article"
+msgstr "Article"
+
+#: data/ui/shortcutsWindow.blp:74 data/ui/sidebar_listbox_row.blp:6
+msgid "Open in Browser"
+msgstr "Ouvrir dans le navigateur"
+
+#: data/ui/sidebar_listbox_row.blp:5
+msgid "Mark as Read/Unread"
+msgstr "Marqué comme lu / non lu"
+
+#: data/ui/webview.blp:12
+msgid "Select an article"
+msgstr "Choisir un article"
+
+#: gfeeds/feed_item.py:57
 #, python-brace-format
 msgid "Error: unable to parse datetime {0} for feeditem {1}"
 msgstr ""
 "Erreur : impossible d’analyser la date et l’heure {0} pour l’élément de flux "
 "{1}"
 
-#: gfeeds/feed_parser.py:37
+#: gfeeds/feed_parser.py:61
 #, python-brace-format
-msgid "Errors while parsing feed `{0}`"
-msgstr "Erreurs lors de l’analyse du flux « {0} »"
+msgid "Errors while parsing feed `{0}`, URL: `{1}`"
+msgstr "Erreurs lors de l’analyse du flux « {0} », URL : « {1} »"
 
-#: gfeeds/feed_parser.py:55
+#: gfeeds/feed_parser.py:71
 #, python-brace-format
 msgid "`{0}` may not be an RSS or Atom feed"
 msgstr "« {0} » n’est sans doute pas un flux RSS ou Atom"
 
-#: gfeeds/feeds_manager.py:88
+#: gfeeds/feeds_manager.py:97
 #, python-brace-format
 msgid "Feed {0} exists already, skipping"
 msgstr "Le flux {0} existe déjà, ignoré"
@@ -89,44 +325,58 @@ msgstr "Le flux {0} existe déjà, ignoré"
 msgid "All feeds"
 msgstr "Tous les flux"
 
-#: gfeeds/headerbar.py:184
-msgid ""
-"There were problems with some feeds.\n"
-"Do you want to remove them?"
+#: gfeeds/headerbar.py:197
+msgid "There were problems with some feeds. Do you want to remove them?"
 msgstr ""
-"Il y a eu des problèmes avec certains flux.\n"
-"Voulez-vous les supprimer ?"
+"Il y a eu des problèmes avec certains flux. Voulez-vous les supprimer ?"
 
-#: gfeeds/main_leaflet.py:119
+#: gfeeds/headerbar.py:202
+msgid "_Keep"
+msgstr "_Conserver"
+
+#: gfeeds/headerbar.py:204
+msgid "_Remove"
+msgstr "_Enlever"
+
+#: gfeeds/main_leaflet.py:122
 #, python-brace-format
 msgid "{0} new article"
 msgid_plural "{0} new articles"
 msgstr[0] "{0} nouvel article"
 msgstr[1] "{0} nouveaux articles"
 
-#: gfeeds/__main__.py:229
+#: gfeeds/__main__.py:232
 msgid "Do you want to import these feeds?"
 msgstr "Voulez-vous importer ces flux ?"
 
-#: gfeeds/__main__.py:256
+#: gfeeds/__main__.py:239 gfeeds/__main__.py:273
+#: gfeeds/manage_feeds_window.py:330
+msgid "_Cancel"
+msgstr "A_nnuler"
+
+#: gfeeds/__main__.py:242 gfeeds/__main__.py:276
+msgid "_Import"
+msgstr "_Importer"
+
+#: gfeeds/__main__.py:269
 msgid "Do you want to import this feed?"
 msgstr "Voulez-vous importer ce flux ?"
 
-#: gfeeds/__main__.py:285
+#: gfeeds/__main__.py:301
 msgid "url"
 msgstr "url"
 
-#: gfeeds/__main__.py:288
+#: gfeeds/__main__.py:304
 msgid "opml file local url or rss remote url to import"
 msgstr "URL locale du fichier opml ou URL distante rss à importer"
 
-#: gfeeds/manage_feeds_window.py:263
-msgid "Manage Feeds"
-msgstr "Gérer les flux"
-
-#: gfeeds/manage_feeds_window.py:318
+#: gfeeds/manage_feeds_window.py:327
 msgid "Do you want to delete these feeds?"
 msgstr "Voulez-vous supprimer ces flux ?"
+
+#: gfeeds/manage_feeds_window.py:332
+msgid "_Delete"
+msgstr "_Supprimer"
 
 #: gfeeds/opml_file_chooser.py:7
 msgid "XML files"
@@ -152,84 +402,71 @@ msgstr "Choisir où enregistrer le fichier OPML exporté"
 msgid "Save"
 msgstr "Enregistrer"
 
-#: gfeeds/opml_manager.py:42
-msgid "Error: OPML path provided does not exist"
-msgstr "Erreur : Le chemin du fichier OPML n’existe pas"
-
-#: gfeeds/opml_manager.py:53
-#, python-brace-format
-msgid "Error parsing OPML file `{0}`"
-msgstr "Erreur lors de l’analyse du fichier OPML « {0} »"
-
-#: gfeeds/preferences_window.py:22
-msgid "General"
-msgstr "Général"
-
-#: gfeeds/preferences_window.py:25
+#: gfeeds/preferences_window.py:27
 msgid "General preferences"
 msgstr "Paramètres généraux"
 
-#: gfeeds/preferences_window.py:27
+#: gfeeds/preferences_window.py:29
 msgid "Show newer articles first"
 msgstr "Afficher l’article le plus récent en premier"
 
-#: gfeeds/preferences_window.py:32
+#: gfeeds/preferences_window.py:34
 msgid "Open links in your browser"
 msgstr "Ouvrir les liens dans votre navigateur"
 
-#: gfeeds/preferences_window.py:36
+#: gfeeds/preferences_window.py:38
 msgid "Use external video player for YouTube"
 msgstr "Utiliser un lecteur vidéo externe pour YouTube"
 
-#: gfeeds/preferences_window.py:38
+#: gfeeds/preferences_window.py:40
 msgid "Requires youtube-dl and a compatible video player"
 msgstr "Nécessite youtube-dl et un lecteur vidéo compatible"
 
-#: gfeeds/preferences_window.py:44
+#: gfeeds/preferences_window.py:46
 msgid "Preferred video player"
 msgstr "Lecteur vidéo préféré"
 
-#: gfeeds/preferences_window.py:48
+#: gfeeds/preferences_window.py:50
 msgid "Maximum article age"
 msgstr "Âge maximum des articles"
 
-#: gfeeds/preferences_window.py:49
+#: gfeeds/preferences_window.py:51
 msgid "In days"
 msgstr "En jours"
 
-#: gfeeds/preferences_window.py:56
+#: gfeeds/preferences_window.py:58
 msgid "Refresh preferences"
 msgstr "Préférences d’actualisation"
 
-#: gfeeds/preferences_window.py:58
+#: gfeeds/preferences_window.py:60
 msgid "Refresh articles on startup"
 msgstr "Actualiser les articles au démarrage"
 
-#: gfeeds/preferences_window.py:62
+#: gfeeds/preferences_window.py:64
 msgid "New articles notification"
 msgstr "Notification des nouveaux articles"
 
-#: gfeeds/preferences_window.py:66
+#: gfeeds/preferences_window.py:68
 msgid "Enable auto-refresh"
 msgstr "Activer l’actualisation automatique"
 
-#: gfeeds/preferences_window.py:70
+#: gfeeds/preferences_window.py:72
 msgid "Auto-refresh interval"
 msgstr "Intervalle d’actualisation automatique"
 
-#: gfeeds/preferences_window.py:71
+#: gfeeds/preferences_window.py:73
 msgid "In seconds"
 msgstr "En secondes"
 
-#: gfeeds/preferences_window.py:78
+#: gfeeds/preferences_window.py:80
 msgid "Cache"
 msgstr "Cache"
 
-#: gfeeds/preferences_window.py:80
+#: gfeeds/preferences_window.py:82
 msgid "Clear caches"
 msgstr "Effacer les caches"
 
-#: gfeeds/preferences_window.py:81
+#: gfeeds/preferences_window.py:83
 msgid "Clear"
 msgstr "Effacer"
 
@@ -246,7 +483,6 @@ msgid "Dark mode"
 msgstr "Mode sombre"
 
 #: gfeeds/preferences_window.py:118
-#| msgid "Reader Mode"
 msgid "Reader mode theme"
 msgstr "Thème du mode lecture"
 
@@ -259,7 +495,6 @@ msgid "Light"
 msgstr "Clair"
 
 #: gfeeds/preferences_window.py:122
-#| msgid "Dark mode"
 msgid "Dark"
 msgstr "Sombre"
 
@@ -303,216 +538,131 @@ msgstr "Police à chasse fixe personnalisée"
 msgid "Privacy"
 msgstr "Confidentialité"
 
-#: gfeeds/preferences_window.py:176
+#: gfeeds/preferences_window.py:177
 msgid "Privacy preferences"
 msgstr "Paramètres de confidentialité"
 
-#: gfeeds/preferences_window.py:178
+#: gfeeds/preferences_window.py:179
 msgid "Enable JavaScript"
 msgstr "Activer Javascript"
 
-#: gfeeds/preferences_window.py:183
+#: gfeeds/preferences_window.py:184
 msgid "Try to block advertisements"
 msgstr "Essayer de bloquer les publicités"
 
-#: gfeeds/preferences_window.py:185 gfeeds/preferences_window.py:220
+#: gfeeds/preferences_window.py:186 gfeeds/preferences_window.py:221
 msgid "Requires app restart"
 msgstr "Nécessite le redémarrage de l’application"
 
-#: gfeeds/preferences_window.py:189
+#: gfeeds/preferences_window.py:190
 msgid "Update advertisement blocking list"
 msgstr "Mettre à jour la liste de blocage des publicités"
 
-#: gfeeds/preferences_window.py:190
+#: gfeeds/preferences_window.py:191
 msgid "Updates automatically every 10 days"
 msgstr "Mise à jour automatique tous les 10 jours"
 
-#: gfeeds/preferences_window.py:191
+#: gfeeds/preferences_window.py:192
 msgid "Update"
 msgstr "Mettre à jour"
 
-#: gfeeds/preferences_window.py:204
+#: gfeeds/preferences_window.py:205
 msgid "Advanced"
 msgstr "Avancé"
 
-#: gfeeds/preferences_window.py:207
+#: gfeeds/preferences_window.py:208
 msgid "Advanced preferences"
 msgstr "Paramètres avancés"
 
-#: gfeeds/preferences_window.py:209
+#: gfeeds/preferences_window.py:210
 msgid "Maximum refresh threads"
 msgstr "Nombre maximal de fils d’actualisation"
 
-#: gfeeds/preferences_window.py:211
+#: gfeeds/preferences_window.py:212
 msgid "How many threads to use for feeds refresh"
 msgstr "Nombre de fils à utiliser pour actualiser les flux"
 
-#: gfeeds/preferences_window.py:218
+#: gfeeds/preferences_window.py:219
 msgid "Experimental GtkListView for articles list"
 msgstr "Activation expérimentale de GtkListView pour la liste des articles"
 
-#: gfeeds/sidebar.py:21
-msgid "Loading feeds..."
-msgstr "Chargement des flux…"
+#: gfeeds/preferences_window.py:227
+msgid "Troubleshooting"
+msgstr "Dépannage"
 
-#: gfeeds/sidebar_row_popover.py:31 gfeeds/sidebar_row_popover.py:58
-msgid "Mark as unread"
-msgstr "Marqué comme non lu"
+#: gfeeds/preferences_window.py:229
+msgid "Export Configuration as JSON"
+msgstr "Exporter la configuration en JSON"
 
-#: gfeeds/sidebar_row_popover.py:38 gfeeds/sidebar_row_popover.py:50
-msgid "Mark as read"
-msgstr "Marquer comme lu"
+#: gfeeds/preferences_window.py:230
+msgid "Attach this when reporting bugs"
+msgstr "Lier cela aux rapports d’anomalies"
 
-#: gfeeds/util/download_manager.py:96
+#: gfeeds/preferences_window.py:231
+msgid "Export"
+msgstr "Exporter"
+
+#. type: ignore
+#: gfeeds/preferences_window.py:244
+msgid "Feeds Configuration"
+msgstr "Configuration du flux"
+
+#: gfeeds/preferences_window.py:248
+msgid "_Close"
+msgstr "_Fermer"
+
+#: gfeeds/preferences_window.py:251
+msgid "Cop_y"
+msgstr "Co_pier"
+
+#: gfeeds/util/download_manager.py:112
 #, python-brace-format
 msgid "`{0}`: connection timed out"
 msgstr "« {0} » : connexion expirée"
 
-#: gfeeds/util/download_manager.py:105
+#: gfeeds/util/download_manager.py:121
 #, python-brace-format
 msgid "`{0}` might not be a valid address"
 msgstr "« {0} » n’est sans doute pas une adresse valide"
 
-#: gfeeds/util/download_manager.py:144
+#: gfeeds/util/download_manager.py:161
 #, python-brace-format
 msgid "Error downloading `{0}`, code `{1}`"
 msgstr "Erreur lors du téléchargement de « {0} », code « {1} »"
 
-#: gfeeds/util/get_favicon.py:53
+#: gfeeds/util/get_favicon.py:48
 #, python-brace-format
 msgid "Error downloading favicon for `{0}`"
 msgstr "Erreur lors du téléchargement du favicon pour « {0} »"
 
-#: gfeeds/webview.py:201
+#: gfeeds/util/opml_parser.py:33
+msgid "Error: OPML path provided does not exist"
+msgstr "Erreur : Le chemin du fichier OPML n’existe pas"
+
+#: gfeeds/util/opml_parser.py:44
+#, python-brace-format
+msgid "Error parsing OPML file `{0}`"
+msgstr "Erreur lors de l’analyse du fichier OPML « {0} »"
+
+#: gfeeds/webview.py:204
 msgid "Link copied to clipboard!"
 msgstr "Lien copié dans le presse-papiers !"
 
-#: gfeeds/webview.py:223
+#: gfeeds/webview.py:226
 msgid "Feed content not available for this article"
 msgstr "Contenu du flux indisponible pour cet article"
+
+#~ msgid "Loading feeds..."
+#~ msgstr "Chargement des flux…"
+
+#~ msgid "Mark as read"
+#~ msgstr "Marquer comme lu"
 
 #~ msgid "Use dark theme for reader mode"
 #~ msgstr "Utiliser le thème sombre pour le mode lecture"
 
 #~ msgid "Maximum thumbnail height"
 #~ msgstr "Hauteur maximale des vignettes"
-
-#~ msgid "Enter feed address to add"
-#~ msgstr "Entrez l'adresse du flux à ajouter"
-
-#~ msgid "Add"
-#~ msgstr "Ajouter"
-
-#~ msgid "You're already subscribed to that feed!"
-#~ msgstr "Vous êtes déjà abonné à ce flux !"
-
-#~ msgid "Let's get started"
-#~ msgstr "Commençons"
-
-#~ msgid "Add new feeds via URL"
-#~ msgstr "Ajouter de nouveaux flux via une URL"
-
-#~ msgid "Import an OPML file"
-#~ msgstr "Importer un fichier OPML"
-
-#~ msgid "Show Read Articles"
-#~ msgstr "Montrer les articles lus"
-
-#~ msgid "Mark All as Read"
-#~ msgstr "Marquer tous comme lus"
-
-#~ msgid "Mark All as Unread"
-#~ msgstr "Marquer tous comme non-lus"
-
-#~ msgid "Show Empty Feeds"
-#~ msgstr "Montrer les flux vides"
-
-#~ msgid "Import OPML"
-#~ msgstr "Importer un fichier OPML"
-
-#~ msgid "Export OPML"
-#~ msgstr "Exporter un fichier OPML"
-
-#~ msgid "Preferences"
-#~ msgstr "Préférences"
-
-#~ msgid "Keyboard Shortcuts"
-#~ msgstr "Raccourcis clavier"
-
-#~ msgid "About Feeds"
-#~ msgstr "À propos"
-
-#~ msgid "Filter"
-#~ msgstr "Filtrer"
-
-#~ msgid "Add Feed"
-#~ msgstr "Ajouter un flux"
-
-#~ msgid "Menu"
-#~ msgstr "Menu"
-
-#~ msgid "Refresh"
-#~ msgstr "Rafraîchir"
-
-#~ msgid "Search"
-#~ msgstr "Rechercher"
-
-#~ msgid "There Are Errors"
-#~ msgstr "Il y a des erreurs"
-
-#~ msgid "Offline"
-#~ msgstr "Hors-ligne"
-
-#~ msgid "Manage Tags for Selected Feeds"
-#~ msgstr "Gérer les étiquettes pour les flux sélectionnés"
-
-#~ msgid "Select/Unselect All"
-#~ msgstr "Sélectionner / désélectionner tous"
-
-#~ msgid "Delete Selected Feeds"
-#~ msgstr "Supprimer les flux sélectionnés"
-
-#~ msgid "New tag name…"
-#~ msgstr "Nouveau nom d'étiquette..."
-
-#~ msgid "Add Tag"
-#~ msgstr "Ajouter une étiquette"
-
-#~ msgid "There are no tags yet"
-#~ msgstr "Il n'y a pas encore d'étiquettes"
-
-#~ msgid "Add some using the entry above"
-#~ msgstr "Ajoutez-en en utilisant l'entrée ci-dessus"
-
-#~ msgid "Open in Browser"
-#~ msgstr "Ouvrir dans le navigateur"
-
-#~ msgid "Open in External Media Player"
-#~ msgstr "Ouvrir dans un lecteur média externe"
-
-#~ msgid "Copy Article Link"
-#~ msgstr "Copier le lien de l'article"
-
-#~ msgid "View Mode"
-#~ msgstr "Mode de vue"
-
-#~ msgid "Web View"
-#~ msgstr "Page web"
-
-#~ msgid "Feed Content"
-#~ msgstr "Contenu du flux"
-
-#~ msgid "Zoom Out"
-#~ msgstr "Dézoomer"
-
-#~ msgid "Reset Zoom"
-#~ msgstr "Réinitialiser le zoom"
-
-#~ msgid "Zoom In"
-#~ msgstr "Zoomer"
-
-#~ msgid "Back to Articles"
-#~ msgstr "Retour aux articles"
 
 #~ msgid "Mark as Read"
 #~ msgstr "Marquer comme lu"
@@ -522,42 +672,6 @@ msgstr "Contenu du flux indisponible pour cet article"
 
 #~ msgid "Yes"
 #~ msgstr "Oui"
-
-#~ msgid "Open Keyboard Shortcuts"
-#~ msgstr "Ouvrir les raccourcis clavier"
-
-#~ msgid "Open Menu"
-#~ msgstr "Ouvrir le menu"
-
-#~ msgid "Open Preferences"
-#~ msgstr "Ouvrir les préférences"
-
-#~ msgid "Open Filter"
-#~ msgstr "Ouvrir le filtre"
-
-#~ msgid "Quit"
-#~ msgstr "Quitter"
-
-#~ msgid "Article List"
-#~ msgstr "Liste des articles"
-
-#~ msgid "Next"
-#~ msgstr "Suivant"
-
-#~ msgid "Previous"
-#~ msgstr "Précédent"
-
-#~ msgid "Show/Hide Read Articles"
-#~ msgstr "Montrer / cacher les articles lus"
-
-#~ msgid "Mark All Read"
-#~ msgstr "Marquer tous comme lus"
-
-#~ msgid "Article"
-#~ msgstr "Article"
-
-#~ msgid "Select an article"
-#~ msgstr "Choisir un article"
 
 #~ msgid "@prettyname@"
 #~ msgstr "@prettyname@"
