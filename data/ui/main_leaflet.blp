@@ -1,20 +1,20 @@
 using Gtk 4.0;
 using Adw 1;
 
-template MainLeaflet : Adw.Bin {
+template $MainLeaflet : Adw.Bin {
     Adw.Leaflet leaflet {
         homogeneous: false;
         can-navigate-back: true;
         transition-type: over;
         visible-child: left_box;
-        notify::folded => on_leaflet_folded();
+        notify::folded => $on_leaflet_folded();
         Adw.LeafletPage left_page {
             child: Gtk.Box left_box {
                 hexpand: false;
                 orientation: vertical;
                 width-request: 360;
                 height-request: 100;
-                .LeftHeaderbar left_headerbar {
+                $LeftHeaderbar left_headerbar {
                     searchbar: searchbar;
                 }
                 SearchBar searchbar {
@@ -50,9 +50,9 @@ template MainLeaflet : Adw.Bin {
                     reveal-flap: false;
                     swipe-to-open: true;
                     swipe-to-close: true;
-                    [flap] .FilterView filter_view {}
-                    [content] .StackWithEmptyState sidebar_stack {
-                        main-widget: .GFeedsSidebar sidebar {
+                    [flap] $FilterView filter_view {}
+                    [content] $StackWithEmptyState sidebar_stack {
+                        main-widget: $GFeedsSidebar sidebar {
 
                         };
                     }
@@ -66,11 +66,11 @@ template MainLeaflet : Adw.Bin {
         Adw.LeafletPage right_page {
             child: Gtk.Box right_box {
                 orientation: vertical;
-                .RightHeaderbar right_headerbar {
+                $RightHeaderbar right_headerbar {
                     webview: webview;
-                    go_back => on_back_btn_clicked();
+                    go_back => $on_back_btn_clicked();
                 }
-                .GFeedsWebView webview {}
+                $GFeedsWebView webview {}
             };
         }
     }

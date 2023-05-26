@@ -24,7 +24,7 @@ class AppAction:
         self.state_type = state_type
         self.state_default = state_default
 
-        assert not self.stateful or self.state_default is not None
+        assert (not self.stateful or self.state_default is not None)
 
     def get_action(self):
         action = None

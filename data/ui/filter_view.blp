@@ -2,7 +2,7 @@ using Gtk 4.0;
 using Adw 1;
 
 
-template FilterView : Adw.Bin {
+template $FilterView : Adw.Bin {
     styles ['background']
     ScrolledWindow {
         hscrollbar-policy: never;
@@ -13,13 +13,13 @@ template FilterView : Adw.Bin {
             ListBox all_listbox {
                 styles ['navigation-sidebar']
                 selection-mode: single;
-                row-activated => on_all_row_activated();
+                row-activated => $on_all_row_activated();
             }
             Separator { orientation: horizontal; margin-start: 6; margin-end: 6; }
             ListBox tags_listbox {
                 styles ['navigation-sidebar']
                 selection-mode: single;
-                row-activated => on_tags_row_activated();
+                row-activated => $on_tags_row_activated();
             }
             Separator { orientation: horizontal; margin-start: 6; margin-end: 6; }
             Adw.Bin feeds_listbox_bin {}

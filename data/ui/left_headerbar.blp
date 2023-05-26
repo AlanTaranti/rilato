@@ -20,7 +20,7 @@ menu generalMenu {
     }
 }
 
-template LeftHeaderbar : WindowHandle {
+template $LeftHeaderbar : WindowHandle {
     vexpand: false; hexpand: true;
     Adw.HeaderBar left_headerbar {
         [title] Adw.Bin {}
@@ -40,7 +40,7 @@ template LeftHeaderbar : WindowHandle {
         [end] Button refresh_btn {
             tooltip-text: _("Refresh");
             icon-name: 'view-refresh-symbolic';
-            clicked => on_refresh_btn_clicked();
+            clicked => $on_refresh_btn_clicked();
         }
         [end] ToggleButton search_btn {
             tooltip-text: _("Search");
@@ -50,7 +50,7 @@ template LeftHeaderbar : WindowHandle {
             tooltip-text: _("There Are Errors");
             icon-name: 'dialog-warning-symbolic';
             visible: false;
-            clicked => show_errors_dialog();
+            clicked => $show_errors_dialog();
         }
     }
 }

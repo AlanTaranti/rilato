@@ -42,25 +42,25 @@ PopoverMenu extra_popover {
             styles ['flat', 'circular']
             icon-name: 'zoom-out-symbolic';
             tooltip-text: _("Zoom Out");
-            clicked => on_zoom_out_btn_clicked();
+            clicked => $on_zoom_out_btn_clicked();
         }
         Button zoom_reset_btn {
             styles ['flat']
             label: '100%';
             width-request: 80;
             tooltip-text: _("Reset Zoom");
-            clicked => on_zoom_reset_btn_clicked();
+            clicked => $on_zoom_reset_btn_clicked();
         }
         Button zoom_in_btn {
             styles ['flat', 'circular']
             icon-name: 'zoom-in-symbolic';
             tooltip-text: _("Zoom In");
-            clicked => on_zoom_in_btn_clicked();
+            clicked => $on_zoom_in_btn_clicked();
         }
     }
 }
 
-template RightHeaderbar : WindowHandle {
+template $RightHeaderbar : WindowHandle {
     vexpand: false; hexpand: true;
     Adw.HeaderBar right_headerbar {
         hexpand: true;
@@ -89,7 +89,7 @@ template RightHeaderbar : WindowHandle {
             visible: false;
             tooltip-text: _("Back to Articles");
             icon-name: 'go-previous-symbolic';
-            clicked => on_back_btn_clicked();
+            clicked => $on_back_btn_clicked();
         }
         MenuButton view_mode_menu_btn {
             sensitive: false;
