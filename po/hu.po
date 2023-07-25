@@ -8,16 +8,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gfeeds master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/gfeeds/issues\n"
-"POT-Creation-Date: 2023-03-11 08:34+0000\n"
-"PO-Revision-Date: 2023-03-11 10:27+0100\n"
+"POT-Creation-Date: 2023-03-26 11:12+0000\n"
+"PO-Revision-Date: 2023-07-26 01:00+0200\n"
 "Last-Translator: Balázs Úr <ur.balazs at fsf dot hu>\n"
-"Language-Team: Hungarian <gnome-hu-list at gnome dot org>\n"
+"Language-Team: Hungarian <openscope at fsf dot hu>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 22.08.2\n"
+"X-Generator: Lokalize 23.04.1\n"
 
 #: data/org.gabmus.gfeeds.appdata.xml.in:4
 msgid "Feeds"
@@ -297,7 +297,7 @@ msgstr "Megjelölés olvasottként/olvasatlanként"
 msgid "Select an article"
 msgstr "Válasszon egy cikket"
 
-#: gfeeds/feed_item.py:59
+#: gfeeds/feed_item.py:62
 #, python-brace-format
 msgid "Error: unable to parse datetime {0} for feeditem {1}"
 msgstr "Hiba: a(z) {0} dátum nem dolgozható fel ennél a hírforráselemnél: {1}"
@@ -309,14 +309,13 @@ msgstr "Hibák történtek a(z) „{0}” hírforrás feldolgozásakor, URL: „
 
 #: gfeeds/feed_parser.py:75
 #, python-brace-format
-#| msgid "Errors while parsing feed `{0}`, URL: `{1}`"
 msgid "Error decoding unicode data from feed `{0}`, URL: `{1}`"
 msgstr ""
-"Hiba a(z) „{0}” hírforrásból származó Unicode adatok dekódolásakor, URL: „{1}”"
+"Hiba a(z) „{0}” hírforrásból származó Unicode adatok dekódolásakor, URL: "
+"„{1}”"
 
 #: gfeeds/feed_parser.py:82
 #, python-brace-format
-#| msgid "Errors while parsing feed `{0}`, URL: `{1}`"
 msgid "Error extracting data from feed `{0}`, URL: `{1}`"
 msgstr "Hiba a(z) „{0}” hírforrásból származó adatok kinyerésekor, URL: „{1}”"
 
@@ -623,6 +622,16 @@ msgstr "_Bezárás"
 msgid "Cop_y"
 msgstr "_Másolás"
 
+#: gfeeds/util/build_reader_html.py:104
+#, python-brace-format
+msgid "Author: <a href=\"{0}\">{1}</a>"
+msgstr "Szerző: <a href=\"{0}\">{1}</a>"
+
+#: gfeeds/util/build_reader_html.py:108
+#, python-brace-format
+msgid "Author: {0}"
+msgstr "Szerző: {0}"
+
 #: gfeeds/util/download_manager.py:112
 #, python-brace-format
 msgid "`{0}`: connection timed out"
@@ -652,10 +661,10 @@ msgstr "Hiba: A megadott OPML útvonal nem létezik"
 msgid "Error parsing OPML file `{0}`"
 msgstr "Hiba a(z) „{0}” OPML-fájl feldolgozásakor"
 
-#: gfeeds/webview.py:204
+#: gfeeds/webview.py:200
 msgid "Link copied to clipboard!"
 msgstr "Hivatkozás a vágólapra másolva!"
 
-#: gfeeds/webview.py:226
+#: gfeeds/webview.py:222
 msgid "Feed content not available for this article"
 msgstr "Nem érhető el hírforrástartalom ennél a cikknél"
