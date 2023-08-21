@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/gfeeds/issues\n"
-"POT-Creation-Date: 2023-03-13 17:33+0000\n"
-"PO-Revision-Date: 2023-03-14 19:02+0100\n"
+"POT-Creation-Date: 2023-03-26 11:12+0000\n"
+"PO-Revision-Date: 2023-05-16 18:55+0200\n"
 "Last-Translator: Jürgen Benvenuti <gastornis@posteo.org>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "Language: de\n"
@@ -308,7 +308,7 @@ msgstr "Als gelesen/ungelesen markieren"
 msgid "Select an article"
 msgstr "Wählen Sie einen Artikel aus"
 
-#: gfeeds/feed_item.py:59
+#: gfeeds/feed_item.py:62
 #, python-brace-format
 msgid "Error: unable to parse datetime {0} for feeditem {1}"
 msgstr ""
@@ -640,6 +640,16 @@ msgstr "_Schließen"
 msgid "Cop_y"
 msgstr "_Kopieren"
 
+#: gfeeds/util/build_reader_html.py:104
+#, python-brace-format
+msgid "Author: <a href=\"{0}\">{1}</a>"
+msgstr "Autor: <a href=\"{0}\">{1}</a>"
+
+#: gfeeds/util/build_reader_html.py:108
+#, python-brace-format
+msgid "Author: {0}"
+msgstr "Autor: {0}"
+
 #: gfeeds/util/download_manager.py:112
 #, python-brace-format
 msgid "`{0}`: connection timed out"
@@ -669,11 +679,11 @@ msgstr "Fehler: Der angegebene OPML-Pfad existiert nicht"
 msgid "Error parsing OPML file `{0}`"
 msgstr "Fehler beim Analysieren der OPML-Datei »{0}«"
 
-#: gfeeds/webview.py:204
+#: gfeeds/webview.py:200
 msgid "Link copied to clipboard!"
 msgstr "Verweis in die Zwischenablage kopiert!"
 
-#: gfeeds/webview.py:226
+#: gfeeds/webview.py:222
 msgid "Feed content not available for this article"
 msgstr "Feed-Inhalt für diesen Artikel nicht verfügbar"
 
