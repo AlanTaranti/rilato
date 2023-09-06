@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gfeeds 0.16.2\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/gfeeds/issues\n"
-"POT-Creation-Date: 2023-03-14 22:33+0000\n"
-"PO-Revision-Date: 2023-03-16 22:44+0900\n"
+"POT-Creation-Date: 2023-03-26 11:12+0000\n"
+"PO-Revision-Date: 2023-08-31 16:42+0900\n"
 "Last-Translator: DaeHyun Sung <sungdh86+git@gmail.com>\n"
 "Language-Team: Korean <translation-team-ko@googlegroups.com>\n"
 "Language: ko\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.3.2\n"
 
 #: data/org.gabmus.gfeeds.appdata.xml.in:4
 msgid "Feeds"
@@ -291,7 +291,7 @@ msgstr "읽음/읽지 않음으로 표시"
 msgid "Select an article"
 msgstr "기사를 선택하십시오"
 
-#: gfeeds/feed_item.py:59
+#: gfeeds/feed_item.py:62
 #, python-brace-format
 msgid "Error: unable to parse datetime {0} for feeditem {1}"
 msgstr "오류: {0}에 있는 항목 {1}의 시간을 파싱할 수 없음"
@@ -615,6 +615,16 @@ msgstr "닫기(_C)"
 msgid "Cop_y"
 msgstr "복사(_Y)"
 
+#: gfeeds/util/build_reader_html.py:104
+#, python-brace-format
+msgid "Author: <a href=\"{0}\">{1}</a>"
+msgstr "작성자: <a href=\"{0}\">{1}</a>"
+
+#: gfeeds/util/build_reader_html.py:108
+#, python-brace-format
+msgid "Author: {0}"
+msgstr "작성자: {0}"
+
 #: gfeeds/util/download_manager.py:112
 #, python-brace-format
 msgid "`{0}`: connection timed out"
@@ -644,11 +654,11 @@ msgstr "오류: OPML 경로가 없습니다"
 msgid "Error parsing OPML file `{0}`"
 msgstr "OPML 파일 '{0}'을 파싱하는 중 오류가 발생했습니다"
 
-#: gfeeds/webview.py:204
+#: gfeeds/webview.py:200
 msgid "Link copied to clipboard!"
 msgstr "링크가 클립보드로 복사되었습니다!"
 
-#: gfeeds/webview.py:226
+#: gfeeds/webview.py:222
 msgid "Feed content not available for this article"
 msgstr "이 문서에서 사용할 수 없는 피드 내용"
 
