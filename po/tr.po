@@ -10,16 +10,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gfeeds 0.16.2\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/gfeeds/issues\n"
-"POT-Creation-Date: 2023-03-26 11:12+0000\n"
-"PO-Revision-Date: 2023-03-27 15:29+0300\n"
-"Last-Translator: Emin Tufan Çetin <etcetin@gmail.com>\n"
+"POT-Creation-Date: 2023-03-27 12:29+0000\n"
+"PO-Revision-Date: 2023-10-17 01:41+0300\n"
+"Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
 "Language-Team: Turkish <gnome-turk@gnome.org>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.4\n"
 
 #: data/org.gabmus.gfeeds.appdata.xml.in:4
 msgid "Feeds"
@@ -359,7 +359,7 @@ msgstr "Bu beslemeleri içeri aktarmak istiyor musunuz?"
 #: gfeeds/__main__.py:239 gfeeds/__main__.py:273
 #: gfeeds/manage_feeds_window.py:324
 msgid "_Cancel"
-msgstr "_İptal Et"
+msgstr "İ_ptal"
 
 #: gfeeds/__main__.py:242 gfeeds/__main__.py:276
 msgid "_Import"
@@ -399,7 +399,7 @@ msgstr "Aç"
 
 #: gfeeds/opml_file_chooser.py:19 gfeeds/opml_file_chooser.py:31
 msgid "Cancel"
-msgstr "İptal Et"
+msgstr "İptal"
 
 #: gfeeds/opml_file_chooser.py:26
 msgid "Choose where to save the exported OPML file"
