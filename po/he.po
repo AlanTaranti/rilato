@@ -1,23 +1,23 @@
 # Hebrew translation for gfeeds.
 # Copyright (C) 2022 gfeeds's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gfeeds package.
-# Yosef Or Boczko <yoseforb@gmail.com>, 2022.
+# Yosef Or Boczko <yoseforb@gmail.com>, 2022-2024.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gfeeds master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/gfeeds/issues\n"
-"POT-Creation-Date: 2022-07-12 05:28+0000\n"
-"PO-Revision-Date: 2022-08-18 20:49+0300\n"
+"POT-Creation-Date: 2023-03-26 11:12+0000\n"
+"PO-Revision-Date: 2024-06-16 21:11+0300\n"
 "Last-Translator: Yosef Or Boczko <yoseforb@gmail.com>\n"
-"Language-Team: Hebrew <>\n"
+"Language-Team: Hebrew\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n==2 ? 1 : n>10 && n%10==0 ? "
 "2 : 3)\n"
-"X-Generator: Gtranslator 40.0\n"
+"X-Generator: Gtranslator 46.1\n"
 
 #: data/org.gabmus.gfeeds.appdata.xml.in:4
 msgid "Feeds"
@@ -58,23 +58,266 @@ msgstr "הזנות יכול לייבוא ולייצא באמצעות OPML."
 msgid "rss;reader;feed;news;"
 msgstr "הזנה;הזנות;rss;קריאה;חדשות;feed;feeds;"
 
-#: gfeeds/feed_item.py:49
+#: data/ui/aboutdialog.ui.in:10
+msgid "translator-credits"
+msgstr ""
+"יוסף אור בוצ׳קו <yoseforb@gmail.com>\n"
+"מיזם תרגום GNOME לעברית https://l10n.gnome.org/teams/he/"
+
+#: data/ui/add_feed_popover.blp:11
+msgid "Enter feed address to add"
+msgstr "יש להזין כתובת הזנה להוספה"
+
+#: data/ui/add_feed_popover.blp:26
+msgid "Add"
+msgstr "הוספה"
+
+#: data/ui/add_feed_popover.blp:32
+msgid "You're already subscribed to that feed!"
+msgstr "כבר נרשמת להזנה זו!"
+
+#: data/ui/empty_state.blp:7
+msgid "Let's get started"
+msgstr "בואו נתחיל"
+
+#: data/ui/empty_state.blp:22
+msgid "Add new feeds via URL"
+msgstr "הוספת הזנות חדשות באמצעות כתובת URL"
+
+#: data/ui/empty_state.blp:27
+msgid "Import an OPML file"
+msgstr "ייבוא קובץ OPML"
+
+#: data/ui/left_headerbar.blp:6
+msgid "_Show Read Articles"
+msgstr "ה_צגת מאמרים שנקראו"
+
+#: data/ui/left_headerbar.blp:7
+msgid "Mark All as Read"
+msgstr "סימון הכול כנקרא"
+
+#: data/ui/left_headerbar.blp:8
+msgid "Mark All as _Unread"
+msgstr "סימון הכל כ_לא נקרא"
+
+#: data/ui/left_headerbar.blp:11
+msgid "Show _Empty Feeds"
+msgstr "הצגת הזנות _ריקות"
+
+#: data/ui/left_headerbar.blp:12
+msgid "_Manage Feeds"
+msgstr "_ניהול הזנות"
+
+#: data/ui/left_headerbar.blp:13
+msgid "_Import OPML"
+msgstr "_ייבוא OPML"
+
+#: data/ui/left_headerbar.blp:14
+msgid "E_xport OPML"
+msgstr "_ייצוא OPML"
+
+#: data/ui/left_headerbar.blp:17
+msgid "P_references"
+msgstr "ה_עדפות"
+
+#: data/ui/left_headerbar.blp:18
+msgid "_Keyboard Shortcuts"
+msgstr "_צירופי מקשים"
+
+#: data/ui/left_headerbar.blp:19
+msgid "_About Feeds"
+msgstr "_על הזנות"
+
+#: data/ui/left_headerbar.blp:28
+msgid "Filter"
+msgstr "מסנן"
+
+#: data/ui/left_headerbar.blp:32
+msgid "Add Feed"
+msgstr "הוספת הזנה"
+
+#: data/ui/left_headerbar.blp:36
+msgid "Menu"
+msgstr "תפריט"
+
+#: data/ui/left_headerbar.blp:41 data/ui/shortcutsWindow.blp:35
+msgid "Refresh"
+msgstr "רענון"
+
+#: data/ui/left_headerbar.blp:46 data/ui/shortcutsWindow.blp:39
+msgid "Search"
+msgstr "חיפוש"
+
+#: data/ui/left_headerbar.blp:50
+msgid "There Are Errors"
+msgstr "יש שגיאות"
+
+#: data/ui/main_leaflet.blp:40
+msgid "Offline"
+msgstr "לא מקוון"
+
+#: data/ui/manage_feeds_headerbar.blp:7 gfeeds/manage_feeds_window.py:257
+msgid "Manage Feeds"
+msgstr "ניהול הזנות"
+
+#: data/ui/manage_feeds_headerbar.blp:11
+msgid "Manage Tags for Selected Feeds"
+msgstr "ניהול תגיות עבור הזנות נבחרות"
+
+#: data/ui/manage_feeds_headerbar.blp:16
+msgid "Select/Unselect All"
+msgstr "בחירת/ביטול בחירת הכול"
+
+#: data/ui/manage_feeds_headerbar.blp:21
+msgid "Delete Selected Feeds"
+msgstr "מחיקת הזנות נבחרות"
+
+#: data/ui/manage_tags_content.blp:17
+msgid "New tag name…"
+msgstr "שם תגית חדש…"
+
+#: data/ui/manage_tags_content.blp:24
+msgid "Add Tag"
+msgstr "הוספת תגית"
+
+#: data/ui/manage_tags_content.blp:39
+msgid "There are no tags yet"
+msgstr "עוד אין תגיות"
+
+#: data/ui/manage_tags_content.blp:40
+msgid "Add some using the entry above"
+msgstr "הוספה של כמה באמצעות השורה מעל"
+
+#: data/ui/right_headerbar.blp:9
+msgid "Open in _Browser"
+msgstr "פתיחה ב_דפדפן"
+
+#: data/ui/right_headerbar.blp:10
+msgid "Open in External Media _Player"
+msgstr "פתיחה ב_נגן מדיה חיצוני"
+
+#: data/ui/right_headerbar.blp:11
+msgid "_Copy Article Link"
+msgstr "_העתקת קישור מאמר"
+
+#: data/ui/right_headerbar.blp:17 data/ui/right_headerbar.blp:96
+msgid "View Mode"
+msgstr "מצב תצוגה"
+
+#: data/ui/right_headerbar.blp:19
+msgid "Web View"
+msgstr "תצוגת אינטרנט"
+
+#: data/ui/right_headerbar.blp:24
+msgid "Reader Mode"
+msgstr "תצוגת קריאה"
+
+#: data/ui/right_headerbar.blp:29
+msgid "Feed Content"
+msgstr "תוכן הזנה"
+
+#: data/ui/right_headerbar.blp:44 data/ui/shortcutsWindow.blp:66
+msgid "Zoom Out"
+msgstr "התרחקות"
+
+#: data/ui/right_headerbar.blp:51 data/ui/shortcutsWindow.blp:70
+msgid "Reset Zoom"
+msgstr "איפוס התקריב"
+
+#: data/ui/right_headerbar.blp:57 data/ui/shortcutsWindow.blp:62
+msgid "Zoom In"
+msgstr "התקרבות"
+
+#: data/ui/right_headerbar.blp:90
+msgid "Back to Articles"
+msgstr "חזרה למאמרים"
+
+#: data/ui/shortcutsWindow.blp:9 gfeeds/preferences_window.py:24
+msgid "General"
+msgstr "כללי"
+
+#: data/ui/shortcutsWindow.blp:12
+msgid "Open Keyboard Shortcuts"
+msgstr "פתיחת צירופי מקשים"
+
+#: data/ui/shortcutsWindow.blp:16
+msgid "Open Menu"
+msgstr "פתיחת תפריט"
+
+#: data/ui/shortcutsWindow.blp:20
+msgid "Open Preferences"
+msgstr "פתיחת העדפות"
+
+#: data/ui/shortcutsWindow.blp:24
+msgid "Open Filter"
+msgstr "פתיחת מסנן"
+
+#: data/ui/shortcutsWindow.blp:28
+msgid "Quit"
+msgstr "יציאה"
+
+#: data/ui/shortcutsWindow.blp:32
+msgid "Article List"
+msgstr "רשימת מאמרים"
+
+#: data/ui/shortcutsWindow.blp:43
+msgid "Next"
+msgstr "הבא"
+
+#: data/ui/shortcutsWindow.blp:47
+msgid "Previous"
+msgstr "הקודם"
+
+#: data/ui/shortcutsWindow.blp:51
+msgid "Show/Hide Read Articles"
+msgstr "הצגת/הסתרת מאמרים שנקראו"
+
+#: data/ui/shortcutsWindow.blp:55
+msgid "Mark All Read"
+msgstr "סימון כלא נקרא"
+
+#: data/ui/shortcutsWindow.blp:59
+msgid "Article"
+msgstr "מאמר"
+
+#: data/ui/shortcutsWindow.blp:74 data/ui/sidebar_listbox_row.blp:6
+msgid "Open in Browser"
+msgstr "פתיחה בדפדפן"
+
+#: data/ui/sidebar_listbox_row.blp:5
+msgid "Mark as Read/Unread"
+msgstr "סימון כנקרא/לא נקרא"
+
+#: data/ui/webview.blp:12
+msgid "Select an article"
+msgstr "בחירה מאמר"
+
+#: gfeeds/feed_item.py:62
 #, python-brace-format
 msgid "Error: unable to parse datetime {0} for feeditem {1}"
 msgstr "שגיאה: לא ניתן לנתח את התאריך והשעה {0} עבור פריט הזנה {1}"
 
-#: gfeeds/feed_parser.py:37
+#: gfeeds/feed_parser.py:61
 #, python-brace-format
-#| msgid "Errors while parsing feed `{0}`"
 msgid "Errors while parsing feed `{0}`, URL: `{1}`"
 msgstr "שגיאה בניתוח הזנה '{0}', כתובת: '{1}'"
 
-#: gfeeds/feed_parser.py:55
+#: gfeeds/feed_parser.py:75
+#, python-brace-format
+msgid "Error decoding unicode data from feed `{0}`, URL: `{1}`"
+msgstr "שגיאה בניתוח נתוני יוניקוד מהזנה '{0}', כתובת: '{1}'"
+
+#: gfeeds/feed_parser.py:82
+#, python-brace-format
+msgid "Error extracting data from feed `{0}`, URL: `{1}`"
+msgstr "שגיאה בחילוץ מידע מהזנה '{0}', כתובת: '{1}'"
+
+#: gfeeds/feed_parser.py:90
 #, python-brace-format
 msgid "`{0}` may not be an RSS or Atom feed"
 msgstr "‏יתכן ו־'{0} אינו הזנת RSS או Atom"
 
-#: gfeeds/feeds_manager.py:88
+#: gfeeds/feeds_manager.py:83
 #, python-brace-format
 msgid "Feed {0} exists already, skipping"
 msgstr "הזנה {0} כבר קיימת, מדלג"
@@ -83,15 +326,19 @@ msgstr "הזנה {0} כבר קיימת, מדלג"
 msgid "All feeds"
 msgstr "כל ההזנות"
 
-#: gfeeds/headerbar.py:184
-msgid ""
-"There were problems with some feeds.\n"
-"Do you want to remove them?"
-msgstr ""
-"יש בעיות עם כמה הזנות.\n"
-"האם ברצונך למחוק אותן?"
+#: gfeeds/headerbar.py:197
+msgid "There were problems with some feeds. Do you want to remove them?"
+msgstr "ישנן בעיות בכמה הזנות. האם ברצונך למחוק אותן?"
 
-#: gfeeds/main_leaflet.py:119
+#: gfeeds/headerbar.py:202
+msgid "_Keep"
+msgstr "_שמירה"
+
+#: gfeeds/headerbar.py:204
+msgid "_Remove"
+msgstr "_הסרה"
+
+#: gfeeds/main_leaflet.py:114
 #, python-brace-format
 msgid "{0} new article"
 msgid_plural "{0} new articles"
@@ -100,29 +347,38 @@ msgstr[1] "שני מאמרים חדשים"
 msgstr[2] "‏{0} מאמרים חדשים"
 msgstr[3] "‏{0} מאמרים חדשים"
 
-#: gfeeds/__main__.py:229
+#: gfeeds/__main__.py:232
 msgid "Do you want to import these feeds?"
 msgstr "האם ברצונך לייבא הזנות אלה?"
 
-#: gfeeds/__main__.py:256
+#: gfeeds/__main__.py:239 gfeeds/__main__.py:273
+#: gfeeds/manage_feeds_window.py:324
+msgid "_Cancel"
+msgstr "_ביטול"
+
+#: gfeeds/__main__.py:242 gfeeds/__main__.py:276
+msgid "_Import"
+msgstr "_ייבוא"
+
+#: gfeeds/__main__.py:269
 msgid "Do you want to import this feed?"
 msgstr "האם ברצונך לייבא הזנה זו?"
 
-#: gfeeds/__main__.py:285
+#: gfeeds/__main__.py:301
 msgid "url"
 msgstr "כתובת"
 
-#: gfeeds/__main__.py:288
+#: gfeeds/__main__.py:304
 msgid "opml file local url or rss remote url to import"
 msgstr "קובץ OPML מקומי, כתובת URL או RSS מרוחק לייבוא"
 
-#: gfeeds/manage_feeds_window.py:263
-msgid "Manage Feeds"
-msgstr "ניהול הזנות"
-
-#: gfeeds/manage_feeds_window.py:318
+#: gfeeds/manage_feeds_window.py:321
 msgid "Do you want to delete these feeds?"
 msgstr "האם ברצונך למחוק הזנות אלה?"
+
+#: gfeeds/manage_feeds_window.py:326
+msgid "_Delete"
+msgstr "_מחיקה"
 
 #: gfeeds/opml_file_chooser.py:7
 msgid "XML files"
@@ -148,84 +404,71 @@ msgstr "בחירה היכן לשמור את קובץ ה־OPML המיובא"
 msgid "Save"
 msgstr "שמירה"
 
-#: gfeeds/opml_manager.py:42
-msgid "Error: OPML path provided does not exist"
-msgstr "שגיאה: נתיב OPML שסופק אינו קיים"
-
-#: gfeeds/opml_manager.py:53
-#, python-brace-format
-msgid "Error parsing OPML file `{0}`"
-msgstr "שגיאה בניתוח קובץ OPML ‏'‎{0}'"
-
-#: gfeeds/preferences_window.py:22
-msgid "General"
-msgstr "כללי"
-
-#: gfeeds/preferences_window.py:25
+#: gfeeds/preferences_window.py:27
 msgid "General preferences"
 msgstr "העדפות כלליות"
 
-#: gfeeds/preferences_window.py:27
+#: gfeeds/preferences_window.py:29
 msgid "Show newer articles first"
 msgstr "הצגת מאמרים חדשים ראשונים"
 
-#: gfeeds/preferences_window.py:32
+#: gfeeds/preferences_window.py:34
 msgid "Open links in your browser"
 msgstr "פתיחת קישורים בדפדפן שלך"
 
-#: gfeeds/preferences_window.py:36
+#: gfeeds/preferences_window.py:38
 msgid "Use external video player for YouTube"
 msgstr "שימוש בנגן סרטים חיצוני עבור YouTube"
 
-#: gfeeds/preferences_window.py:38
+#: gfeeds/preferences_window.py:40
 msgid "Requires youtube-dl and a compatible video player"
 msgstr "דורש youtube-dl ונגן סרטים מתאים"
 
-#: gfeeds/preferences_window.py:44
+#: gfeeds/preferences_window.py:46
 msgid "Preferred video player"
 msgstr "נגן סרטים מועדף"
 
-#: gfeeds/preferences_window.py:48
+#: gfeeds/preferences_window.py:50
 msgid "Maximum article age"
 msgstr "אורך חיים מרבי למאמר"
 
-#: gfeeds/preferences_window.py:49
+#: gfeeds/preferences_window.py:51
 msgid "In days"
 msgstr "בימים"
 
-#: gfeeds/preferences_window.py:56
+#: gfeeds/preferences_window.py:58
 msgid "Refresh preferences"
 msgstr "העדפות רענון"
 
-#: gfeeds/preferences_window.py:58
+#: gfeeds/preferences_window.py:60
 msgid "Refresh articles on startup"
 msgstr "רענון מאמרים עם ההפעלה"
 
-#: gfeeds/preferences_window.py:62
+#: gfeeds/preferences_window.py:64
 msgid "New articles notification"
 msgstr "התרעה על מאמרים חדשים"
 
-#: gfeeds/preferences_window.py:66
+#: gfeeds/preferences_window.py:68
 msgid "Enable auto-refresh"
 msgstr "לאפשר רענון אוטומטי"
 
-#: gfeeds/preferences_window.py:70
+#: gfeeds/preferences_window.py:72
 msgid "Auto-refresh interval"
 msgstr "מרווח לרענון אוטומטי"
 
-#: gfeeds/preferences_window.py:71
+#: gfeeds/preferences_window.py:73
 msgid "In seconds"
 msgstr "בשניות"
 
-#: gfeeds/preferences_window.py:78
+#: gfeeds/preferences_window.py:80
 msgid "Cache"
 msgstr "מטמון"
 
-#: gfeeds/preferences_window.py:80
+#: gfeeds/preferences_window.py:82
 msgid "Clear caches"
 msgstr "פינוי מטמון"
 
-#: gfeeds/preferences_window.py:81
+#: gfeeds/preferences_window.py:83
 msgid "Clear"
 msgstr "פינוי"
 
@@ -242,7 +485,6 @@ msgid "Dark mode"
 msgstr "מצב כהה"
 
 #: gfeeds/preferences_window.py:118
-#| msgid "Reader Mode"
 msgid "Reader mode theme"
 msgstr "ערכת מצב קריאה"
 
@@ -255,7 +497,6 @@ msgid "Light"
 msgstr "בהיר"
 
 #: gfeeds/preferences_window.py:122
-#| msgid "Dark mode"
 msgid "Dark"
 msgstr "כהה"
 
@@ -299,93 +540,142 @@ msgstr "גופן באורך קבוע מותאם"
 msgid "Privacy"
 msgstr "פרטיות"
 
-#: gfeeds/preferences_window.py:176
+#: gfeeds/preferences_window.py:177
 msgid "Privacy preferences"
 msgstr "העדפות פרטיות"
 
-#: gfeeds/preferences_window.py:178
+#: gfeeds/preferences_window.py:179
 msgid "Enable JavaScript"
 msgstr "לאפשר JavaScript"
 
-#: gfeeds/preferences_window.py:183
+#: gfeeds/preferences_window.py:184
 msgid "Try to block advertisements"
 msgstr "לנסות לחסום פרסומות"
 
-#: gfeeds/preferences_window.py:185 gfeeds/preferences_window.py:220
+#: gfeeds/preferences_window.py:186 gfeeds/preferences_window.py:221
 msgid "Requires app restart"
 msgstr "נדרשת הפעלה מחדש של היישום"
 
-#: gfeeds/preferences_window.py:189
+#: gfeeds/preferences_window.py:190
 msgid "Update advertisement blocking list"
 msgstr "עדכון רשימת חסימת פרסומות"
 
-#: gfeeds/preferences_window.py:190
+#: gfeeds/preferences_window.py:191
 msgid "Updates automatically every 10 days"
 msgstr "עדכון אוטומטי בכל 10 ימים"
 
-#: gfeeds/preferences_window.py:191
+#: gfeeds/preferences_window.py:192
 msgid "Update"
 msgstr "עדכון"
 
-#: gfeeds/preferences_window.py:204
+#: gfeeds/preferences_window.py:205
 msgid "Advanced"
 msgstr "מתקדם"
 
-#: gfeeds/preferences_window.py:207
+#: gfeeds/preferences_window.py:208
 msgid "Advanced preferences"
 msgstr "העדפות מתקדמות"
 
-#: gfeeds/preferences_window.py:209
+#: gfeeds/preferences_window.py:210
 msgid "Maximum refresh threads"
 msgstr "מספר חוטים מרביים לרענון"
 
-#: gfeeds/preferences_window.py:211
+#: gfeeds/preferences_window.py:212
 msgid "How many threads to use for feeds refresh"
 msgstr "כמה חוטים לשימוש לרענון הזנות"
 
-#: gfeeds/preferences_window.py:218
+#: gfeeds/preferences_window.py:219
 msgid "Experimental GtkListView for articles list"
 msgstr "‏GtkListView ניסיוני עבור רשימת המאמרים"
 
-#: gfeeds/sidebar.py:21
-msgid "Loading feeds..."
-msgstr "טוען הזנות…"
+#: gfeeds/preferences_window.py:227
+msgid "Troubleshooting"
+msgstr "פתרון תקלות"
 
-#: gfeeds/sidebar_row_popover.py:31 gfeeds/sidebar_row_popover.py:58
-msgid "Mark as unread"
-msgstr "סימון כלא נקרא"
+#: gfeeds/preferences_window.py:229
+msgid "Export Configuration as JSON"
+msgstr "ייצוא נתונים כ־JSON"
 
-#: gfeeds/sidebar_row_popover.py:38 gfeeds/sidebar_row_popover.py:50
-msgid "Mark as read"
-msgstr "סימון כנקרא"
+#: gfeeds/preferences_window.py:230
+msgid "Attach this when reporting bugs"
+msgstr "צירוף יחד עם דיווח התקלה"
 
-#: gfeeds/util/download_manager.py:102
+#: gfeeds/preferences_window.py:231
+msgid "Export"
+msgstr "ייצוא"
+
+#. type: ignore
+#: gfeeds/preferences_window.py:244
+msgid "Feeds Configuration"
+msgstr "הגדרת הזנות"
+
+#: gfeeds/preferences_window.py:248
+msgid "_Close"
+msgstr "_סגירה"
+
+#: gfeeds/preferences_window.py:251
+msgid "Cop_y"
+msgstr "ה_עתקה"
+
+#: gfeeds/util/build_reader_html.py:104
+#, python-brace-format
+msgid "Author: <a href=\"{0}\">{1}</a>"
+msgstr "מחבר: <a href=\"{0}\">{1}</a>"
+
+#: gfeeds/util/build_reader_html.py:108
+#, python-brace-format
+msgid "Author: {0}"
+msgstr "מחבר: {0}"
+
+#: gfeeds/util/download_manager.py:112
 #, python-brace-format
 msgid "`{0}`: connection timed out"
 msgstr "‏'{0}': תם זמן ההתחברות"
 
-#: gfeeds/util/download_manager.py:111
+#: gfeeds/util/download_manager.py:121
 #, python-brace-format
 msgid "`{0}` might not be a valid address"
 msgstr "יתכן ו־'{0}' כתובת לא תקפה"
 
-#: gfeeds/util/download_manager.py:150
+#: gfeeds/util/download_manager.py:161
 #, python-brace-format
 msgid "Error downloading `{0}`, code `{1}`"
 msgstr "שגיאה בהורדת '{0}', קוד '{1}'"
 
-#: gfeeds/util/get_favicon.py:53
+#: gfeeds/util/get_favicon.py:48
 #, python-brace-format
 msgid "Error downloading favicon for `{0}`"
 msgstr "שגיאה בהורדת צלמית עבור '{0}'"
 
-#: gfeeds/webview.py:201
+#: gfeeds/util/opml_parser.py:33
+msgid "Error: OPML path provided does not exist"
+msgstr "שגיאה: נתיב OPML שסופק אינו קיים"
+
+#: gfeeds/util/opml_parser.py:44
+#, python-brace-format
+msgid "Error parsing OPML file `{0}`"
+msgstr "שגיאה בניתוח קובץ OPML ‏'‎{0}'"
+
+#: gfeeds/webview.py:200
 msgid "Link copied to clipboard!"
 msgstr "קישור הועתק ללוח הגזירים!"
 
-#: gfeeds/webview.py:223
+#: gfeeds/webview.py:222
 msgid "Feed content not available for this article"
 msgstr "תוכן ההזנה לא זימן למאמר זה"
+
+#~ msgid ""
+#~ "There were problems with some feeds.\n"
+#~ "Do you want to remove them?"
+#~ msgstr ""
+#~ "יש בעיות עם כמה הזנות.\n"
+#~ "האם ברצונך למחוק אותן?"
+
+#~ msgid "Loading feeds..."
+#~ msgstr "טוען הזנות…"
+
+#~ msgid "Mark as read"
+#~ msgstr "סימון כנקרא"
 
 #~ msgid "Use dark theme for reader mode"
 #~ msgstr "שימוש בערכת נושא כהה במצב קריאה"
@@ -402,164 +692,11 @@ msgstr "תוכן ההזנה לא זימן למאמר זה"
 #~ msgid "Ignore"
 #~ msgstr "התעלמות"
 
-#~ msgid "There were problems with some feeds. Do you want to remove them?"
-#~ msgstr "ישנן בעיות בכמה הזנות. האם ברצונך למחוק אותן?"
-
 #~ msgid "You are offline"
 #~ msgstr "הנך במצב לא מקוון"
 
-#~ msgid "Web View"
-#~ msgstr "תצוגת אינטרנט"
-
-#~ msgid "Feed Content"
-#~ msgstr "תוכן הזנה"
-
-#~ msgid "Open Keyboard Shortcuts"
-#~ msgstr "פתיחת צירופי מקשים"
-
-#~ msgid "Open Menu"
-#~ msgstr "פתיחת תפריט"
-
-#~ msgid "Open Preferences"
-#~ msgstr "פתיחת העדפות"
-
-#~ msgid "Open Filter"
-#~ msgstr "פתיחת מסנן"
-
-#~ msgid "Quit"
-#~ msgstr "יציאה"
-
-#~ msgid "Article List"
-#~ msgstr "רשימת מאמרים"
-
-#~ msgid "Refresh"
-#~ msgstr "רענון"
-
-#~ msgid "Search"
-#~ msgstr "חיפוש"
-
-#~ msgid "Next"
-#~ msgstr "הבא"
-
-#~ msgid "Previous"
-#~ msgstr "הקודם"
-
-#~ msgid "Show/Hide Read Articles"
-#~ msgstr "הצגת/הסתרת מאמרים שנקראו"
-
-#~ msgid "Mark All Read"
-#~ msgstr "סימון כלא נקרא"
-
-#~ msgid "Article"
-#~ msgstr "מאמר"
-
-#~ msgid "Zoom In"
-#~ msgstr "התקרבות"
-
-#~ msgid "Zoom Out"
-#~ msgstr "התרחקות"
-
-#~ msgid "Reset Zoom"
-#~ msgstr "איפוס התקריב"
-
-#~ msgid "Open in Browser"
-#~ msgstr "פתיחה בדפדפן"
-
-#~ msgid "Enter feed address to add"
-#~ msgstr "יש להזין כתובת הזנה להוספה"
-
-#~ msgid "Add"
-#~ msgstr "הוספה"
-
-#~ msgid "You're already subscribed to that feed!"
-#~ msgstr "כבר נרשמת להזנה זו!"
-
-#~ msgid "Show Read Articles"
-#~ msgstr "הצגת מאמרים שנקראו"
-
-#~ msgid "Mark All as Read"
-#~ msgstr "סימון הכול כנקרא"
-
-#~ msgid "Mark All as Unread"
-#~ msgstr "סימון הכל כלא נקרא"
-
-#~ msgid "Show Empty Feeds"
-#~ msgstr "הצגת הזנות ריקות"
-
-#~ msgid "Import OPML"
-#~ msgstr "ייבוא OPML"
-
-#~ msgid "Export OPML"
-#~ msgstr "ייצוא OPML"
-
-#~ msgid "Preferences"
-#~ msgstr "העדפות"
-
-#~ msgid "Keyboard Shortcuts"
-#~ msgstr "צירופי מקשים"
-
-#~ msgid "About Feeds"
-#~ msgstr "על הזנות"
-
-#~ msgid "Filter"
-#~ msgstr "מסנן"
-
-#~ msgid "Add Feed"
-#~ msgstr "הוספת הזנה"
-
-#~ msgid "Menu"
-#~ msgstr "תפריט"
-
-#~ msgid "There Are Errors"
-#~ msgstr "יש שגיאות"
-
-#~ msgid "New tag name…"
-#~ msgstr "שם תגית חדש…"
-
-#~ msgid "Add Tag"
-#~ msgstr "הוספת תגית"
-
-#~ msgid "There are no tags yet"
-#~ msgstr "עוד אין תגיות"
-
-#~ msgid "Add some using the entry above"
-#~ msgstr "הוספה של כמה באמצעות השורה מעל"
-
-#~ msgid "Open in External Media Player"
-#~ msgstr "פתיחה בנגן מדיה חיצוני"
-
-#~ msgid "Copy Article Link"
-#~ msgstr "העתק קישור מאמר"
-
-#~ msgid "Back to Articles"
-#~ msgstr "חזרה למאמרים"
-
-#~ msgid "Change View Mode"
-#~ msgstr "שינוי מצב תצוגה"
-
-#~ msgid "Let's get started"
-#~ msgstr "בואו נתחיל"
-
-#~ msgid "Add new feeds via URL"
-#~ msgstr "הוספת הזנות חדשות באמצעות כתובת URL"
-
-#~ msgid "Import an OPML file"
-#~ msgstr "ייבוא קובץ OPML"
-
-#~ msgid "Manage Tags for Selected Feeds"
-#~ msgstr "ניהול תגיות עבור הזנות נבחרות"
-
-#~ msgid "Select/Unselect All"
-#~ msgstr "בחירת/ביטול בחירת הכול"
-
-#~ msgid "Delete Selected Feeds"
-#~ msgstr "מחיקת הזנות נבחרות"
-
 #~ msgid "Mark as Read"
 #~ msgstr "סימון כנקרא"
-
-#~ msgid "Select an article"
-#~ msgstr "בחירה מאמר"
 
 #~ msgid "@prettyname@"
 #~ msgstr "@yoseforb@"
