@@ -1,23 +1,23 @@
 # Serbian translation for gfeeds.
 # Copyright © 2022 gfeeds's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gfeeds package.
-# Мирослав Николић <miroslavnikolic@rocketmail.com>, 2022.
+# Мирослав Николић <miroslavnikolic@rocketmail.com>, 2022-2025.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gfeeds master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/gfeeds/issues\n"
-"POT-Creation-Date: 2022-10-02 17:13+0000\n"
-"PO-Revision-Date: 2022-10-26 12:32+0200\n"
+"POT-Creation-Date: 2023-03-26 11:12+0000\n"
+"PO-Revision-Date: 2025-01-21 23:02+0100\n"
 "Last-Translator: Мирослав Николић <miroslavnikolic@rocketmail.com>\n"
 "Language-Team: Serbian <српски <gnome-sr@googlegroups.org>>\n"
 "Language: sr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=n==1? 3 : n%10==1 && n%100!=11 ? 0 : n"
-"%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2\n"
-"X-Generator: Gtranslator 3.36.0\n"
+"Plural-Forms: nplurals=4; plural=n==1? 3 : n%10==1 && n%100!=11 ? 0 : "
+"n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Poedit 3.5\n"
 
 #: data/org.gabmus.gfeeds.appdata.xml.in:4
 msgid "Feeds"
@@ -87,22 +87,18 @@ msgid "Add new feeds via URL"
 msgstr "Додајте нове токове путем адресе"
 
 #: data/ui/empty_state.blp:27
-#| msgid "Error parsing OPML file `{0}`"
 msgid "Import an OPML file"
 msgstr "Увезите ОПМЛ датотеку"
 
 #: data/ui/left_headerbar.blp:6
-#| msgid "Show newer articles first"
 msgid "_Show Read Articles"
 msgstr "_Прикажи чланке за читање"
 
 #: data/ui/left_headerbar.blp:7
-#| msgid "Mark as read"
 msgid "Mark All as Read"
 msgstr "Означи све као прочитано"
 
 #: data/ui/left_headerbar.blp:8
-#| msgid "Mark as unread"
 msgid "Mark All as _Unread"
 msgstr "Означи све као _непрочитано"
 
@@ -111,7 +107,6 @@ msgid "Show _Empty Feeds"
 msgstr "Прикажи _празне токове"
 
 #: data/ui/left_headerbar.blp:12
-#| msgid "Manage Feeds"
 msgid "_Manage Feeds"
 msgstr "Управљај _токовима"
 
@@ -124,7 +119,6 @@ msgid "E_xport OPML"
 msgstr "_Извези ОПМЛ"
 
 #: data/ui/left_headerbar.blp:17
-#| msgid "Font preferences"
 msgid "P_references"
 msgstr "_Поставке"
 
@@ -141,7 +135,6 @@ msgid "Filter"
 msgstr "Филтрирај"
 
 #: data/ui/left_headerbar.blp:32
-#| msgid "Feeds"
 msgid "Add Feed"
 msgstr "Додај ток"
 
@@ -157,8 +150,7 @@ msgstr "Освежи"
 msgid "Search"
 msgstr "Тражи"
 
-#: data/ui/left_headerbar.blp:51
-#| msgid "There are some errors"
+#: data/ui/left_headerbar.blp:50
 msgid "There Are Errors"
 msgstr "Постоје грешке"
 
@@ -166,7 +158,7 @@ msgstr "Постоје грешке"
 msgid "Offline"
 msgstr "Ван мреже"
 
-#: data/ui/manage_feeds_headerbar.blp:7 gfeeds/manage_feeds_window.py:263
+#: data/ui/manage_feeds_headerbar.blp:7 gfeeds/manage_feeds_window.py:257
 msgid "Manage Feeds"
 msgstr "Управљај токовима"
 
@@ -191,7 +183,6 @@ msgid "Add Tag"
 msgstr "Додај ознаку"
 
 #: data/ui/manage_tags_content.blp:39
-#| msgid "There are some errors"
 msgid "There are no tags yet"
 msgstr "Још нема ознака"
 
@@ -200,7 +191,6 @@ msgid "Add some using the entry above"
 msgstr "Додајте неку користећи унос изнад"
 
 #: data/ui/right_headerbar.blp:9
-#| msgid "Open links in your browser"
 msgid "Open in _Browser"
 msgstr "Отвори у _прегледнику"
 
@@ -221,7 +211,6 @@ msgid "Web View"
 msgstr "Веб преглед"
 
 #: data/ui/right_headerbar.blp:24
-#| msgid "Reader mode theme"
 msgid "Reader Mode"
 msgstr "Режим читача"
 
@@ -254,12 +243,10 @@ msgid "Open Keyboard Shortcuts"
 msgstr "Отвори прећице тастатуре"
 
 #: data/ui/shortcutsWindow.blp:16
-#| msgid "Open"
 msgid "Open Menu"
 msgstr "Отвори изборник"
 
 #: data/ui/shortcutsWindow.blp:20
-#| msgid "Font preferences"
 msgid "Open Preferences"
 msgstr "Отвори поставке"
 
@@ -288,7 +275,6 @@ msgid "Show/Hide Read Articles"
 msgstr "Прикажи/сакриј чланке за читање"
 
 #: data/ui/shortcutsWindow.blp:55
-#| msgid "Mark as read"
 msgid "Mark All Read"
 msgstr "Означи све као прочитано"
 
@@ -297,22 +283,18 @@ msgid "Article"
 msgstr "Чланак"
 
 #: data/ui/shortcutsWindow.blp:74 data/ui/sidebar_listbox_row.blp:6
-#| msgid "Open links in your browser"
 msgid "Open in Browser"
 msgstr "Отвори у прегледнику"
 
 #: data/ui/sidebar_listbox_row.blp:5
-#| msgid "Mark as unread"
 msgid "Mark as Read/Unread"
 msgstr "Означи као прочитано/непрочитано"
 
 #: data/ui/webview.blp:12
-#| msgid "{0} new article"
-#| msgid_plural "{0} new articles"
 msgid "Select an article"
 msgstr "Изаберите чланак"
 
-#: gfeeds/feed_item.py:57
+#: gfeeds/feed_item.py:62
 #, python-brace-format
 msgid "Error: unable to parse datetime {0} for feeditem {1}"
 msgstr "Грешка: не могу да обрадим време датума „{0}“ за ставку тока „{1}“"
@@ -322,12 +304,22 @@ msgstr "Грешка: не могу да обрадим време датума 
 msgid "Errors while parsing feed `{0}`, URL: `{1}`"
 msgstr "Грешка приликом обраде тока „{0}“, адреса „{1}“"
 
-#: gfeeds/feed_parser.py:71
+#: gfeeds/feed_parser.py:75
+#, python-brace-format
+msgid "Error decoding unicode data from feed `{0}`, URL: `{1}`"
+msgstr "Грешка декодирања јуникод података из тока „{0}“, адреса „{1}“"
+
+#: gfeeds/feed_parser.py:82
+#, python-brace-format
+msgid "Error extracting data from feed `{0}`, URL: `{1}`"
+msgstr "Грешка извлачења података из тока „{0}“, адреса „{1}“"
+
+#: gfeeds/feed_parser.py:90
 #, python-brace-format
 msgid "`{0}` may not be an RSS or Atom feed"
 msgstr "„{0}“ не може бити РСС или Атом ток"
 
-#: gfeeds/feeds_manager.py:97
+#: gfeeds/feeds_manager.py:83
 #, python-brace-format
 msgid "Feed {0} exists already, skipping"
 msgstr "Већ постоји ток „{0}“, прескачем"
@@ -348,7 +340,7 @@ msgstr "_Задржи"
 msgid "_Remove"
 msgstr "_Уклони"
 
-#: gfeeds/main_leaflet.py:122
+#: gfeeds/main_leaflet.py:114
 #, python-brace-format
 msgid "{0} new article"
 msgid_plural "{0} new articles"
@@ -362,8 +354,7 @@ msgid "Do you want to import these feeds?"
 msgstr "Да ли желите да увезете ове токове?"
 
 #: gfeeds/__main__.py:239 gfeeds/__main__.py:273
-#: gfeeds/manage_feeds_window.py:330
-#| msgid "Cancel"
+#: gfeeds/manage_feeds_window.py:324
 msgid "_Cancel"
 msgstr "_Откажи"
 
@@ -383,11 +374,11 @@ msgstr "адреса"
 msgid "opml file local url or rss remote url to import"
 msgstr "локална адреса опм датотеке или адреса удаљеног рсс-а за увоз"
 
-#: gfeeds/manage_feeds_window.py:327
+#: gfeeds/manage_feeds_window.py:321
 msgid "Do you want to delete these feeds?"
 msgstr "Да ли желите да обришете ове токове?"
 
-#: gfeeds/manage_feeds_window.py:332
+#: gfeeds/manage_feeds_window.py:326
 msgid "_Delete"
 msgstr "_Обриши"
 
@@ -617,7 +608,6 @@ msgstr "Извези"
 
 #. type: ignore
 #: gfeeds/preferences_window.py:244
-#| msgid "Feed Content"
 msgid "Feeds Configuration"
 msgstr "Подешавање токова"
 
@@ -628,6 +618,16 @@ msgstr "_Затвори"
 #: gfeeds/preferences_window.py:251
 msgid "Cop_y"
 msgstr "_Умножи"
+
+#: gfeeds/util/build_reader_html.py:104
+#, python-brace-format
+msgid "Author: <a href=\"{0}\">{1}</a>"
+msgstr "Аутор: <a href=\"{0}\">{1}</a>"
+
+#: gfeeds/util/build_reader_html.py:108
+#, python-brace-format
+msgid "Author: {0}"
+msgstr "Аутор: {0}"
 
 #: gfeeds/util/download_manager.py:112
 #, python-brace-format
@@ -658,11 +658,11 @@ msgstr "Грешка: достављена ОПМЛ путања не посто
 msgid "Error parsing OPML file `{0}`"
 msgstr "Грешка обраде ОПМЛ датотеке „{0}“"
 
-#: gfeeds/webview.py:204
+#: gfeeds/webview.py:200
 msgid "Link copied to clipboard!"
 msgstr "Веза је умножена у оставу!"
 
-#: gfeeds/webview.py:226
+#: gfeeds/webview.py:222
 msgid "Feed content not available for this article"
 msgstr "Садржај тока није доступан за овај чланак"
 
