@@ -1,14 +1,14 @@
 # Georgian translation for gfeeds.
 # Copyright (C) 2024 gfeeds's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gfeeds package.
-# Ekaterine Papava <papava.e@gtu.ge>, 2024.
+# Ekaterine Papava <papava.e@gtu.ge>, 2024-2025.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gfeeds master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/gfeeds/issues\n"
-"POT-Creation-Date: 2023-12-05 12:54+0000\n"
-"PO-Revision-Date: 2024-03-22 05:17+0100\n"
+"POT-Creation-Date: 2024-03-22 04:18+0000\n"
+"PO-Revision-Date: 2025-02-25 07:48+0100\n"
 "Last-Translator: Ekaterine Papava <papava.e@gtu.ge>\n"
 "Language-Team: Georgian <ka@li.org>\n"
 "Language: ka\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.3.2\n"
+"X-Generator: Poedit 3.5\n"
 
 #: data/org.gabmus.gfeeds.appdata.xml.in:4
 msgid "Feeds"
@@ -31,12 +31,16 @@ msgid ""
 "Feeds is a minimal RSS/Atom feed reader built with speed and simplicity in "
 "mind."
 msgstr ""
+"Feeds მინიმალური RSS/Atom ლენტის წამკითხველი, რომელიც აგებულია სიჩქარისა და "
+"სიმარტივისთვის."
 
 #: data/org.gabmus.gfeeds.appdata.xml.in:16
 msgid ""
 "It offers a simple user interface that only shows the latest news from your "
 "subscriptions."
 msgstr ""
+"გთავაზობთ მარტივ მომხმარებლის ინტერფეისს, რომელიც, მხოლოდ, უახლეს სიახლეებს "
+"გაჩვენებთ თქვენი გამოწერილი ლენტებიდან."
 
 #: data/org.gabmus.gfeeds.appdata.xml.in:17
 msgid ""
@@ -44,6 +48,9 @@ msgid ""
 "faster and less intrusive user experience. There's also a reader mode "
 "included, built from the one GNOME Web/Epiphany uses."
 msgstr ""
+"სტატიები ნაჩვენებია ვებ – ხედში ნაგულისხმევად, javascript გამორთულია "
+"მომხმარებლის უფრო სწრაფი და ნაკლებად ინტრუზიული გამოცდილებისთვის. ასევე "
+"შედის მკითხველის რეჟიმი, რომელიც აგებულია GNOME Web/Epiphany– დან."
 
 #: data/org.gabmus.gfeeds.appdata.xml.in:18
 msgid "Feeds can be imported and exported via OPML."
@@ -289,17 +296,18 @@ msgstr "აირჩიეთ სტატია"
 #: gfeeds/feed_item.py:62
 #, python-brace-format
 msgid "Error: unable to parse datetime {0} for feeditem {1}"
-msgstr ""
+msgstr "შეცდომა: ვერ დავამუშავე თარიღი და დრო {0} ლენტის ელემენტისთვის {1}"
 
 #: gfeeds/feed_parser.py:61
 #, python-brace-format
 msgid "Errors while parsing feed `{0}`, URL: `{1}`"
-msgstr ""
+msgstr "დამუშავების შეცდომა ლენტისთვის '{0}', ბმული: ''{1}"
 
 #: gfeeds/feed_parser.py:75
 #, python-brace-format
 msgid "Error decoding unicode data from feed `{0}`, URL: `{1}`"
 msgstr ""
+"დეკოდირების შეცდომა უნიკოდის მონაცემებისთვის ლენტიდან '{0}' ბმული: '{1}'"
 
 #: gfeeds/feed_parser.py:82
 #, python-brace-format
