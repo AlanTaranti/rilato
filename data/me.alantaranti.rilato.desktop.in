@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=rilato
+Exec=rilato
+Icon=me.alantaranti.rilato
+Terminal=false
+Type=Application
+Categories=Utility;
+Keywords=GTK;
+StartupNotify=true
+DBusActivatable=true

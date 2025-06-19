@@ -1,0 +1,8 @@
+# List of source files containing translatable strings.
+# Please keep this file sorted alphabetically.
+data/me.alantaranti.rilato.desktop.in
+data/me.alantaranti.rilato.metainfo.xml.in
+data/me.alantaranti.rilato.gschema.xml
+src/main.py
+src/window.py
+src/window.ui

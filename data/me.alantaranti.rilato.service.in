@@ -1,0 +1,3 @@
+[D-BUS Service]
+Name=me.alantaranti.rilato
+Exec=@bindir@/rilato --gapplication-service
