@@ -20,6 +20,23 @@ pip3 install poetry
 poetry install
 ```
 
+### Git Hooks Setup
+```bash
+# Install pre-commit hooks
+poetry run pre-commit install
+
+# Install pre-push hook
+cp git-hooks/pre-push .git/hooks/
+chmod +x .git/hooks/pre-push
+```
+
+The pre-commit hooks will run automatically on commit and will:
+- Run ruff check with auto-fix
+- Run ruff format
+
+The pre-push hook will run automatically on push and will:
+- Run pytest to ensure all tests pass
+
 ### Build & Run
 ```bash
 poetry run rilato-build

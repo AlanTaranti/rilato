@@ -1,0 +1,14 @@
+#!/bin/sh
+
+# Run pytest before pushing
+echo "Running pytest before push..."
+poetry run pytest
+exit_code=$?
+
+if [ $exit_code -ne 0 ]; then
+    echo "Tests failed. Push aborted."
+    exit 1
+fi
+
+echo "Tests passed. Continuing with push."
+exit 0
