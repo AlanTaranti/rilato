@@ -22,8 +22,5 @@ poetry install
 
 ### Build & Run
 ```bash
-meson setup build --prefix="$(pwd)/build" --buildtype=debug  --reconfigure
-meson compile -C build
-meson install -C build
-./build/bin/rilato
-```
+poetry run rilato-build
+poetry run rilato
