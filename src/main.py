@@ -53,10 +53,10 @@ class RilatoApplication(Adw.Application):
         """Callback for the app.about action."""
         about = Adw.AboutDialog(application_name='rilato',
                                 application_icon='me.alantaranti.rilato',
-                                developer_name='Taranti',
+                                developer_name='Alan Taranti',
                                 version='0.1.0',
-                                developers=['Taranti'],
-                                copyright='© 2025 Taranti')
+                                developers=['Alan Taranti'],
+                                copyright='© 2025 Alan Taranti')
         # Translators: Replace "translator-credits" with your name/username, and optionally an email or URL.
         about.set_translator_credits(_('translator-credits'))
         about.present(self.props.active_window)
