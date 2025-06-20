@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "rilato"
+version = "0.1.0"
+description = ""
+authors = ["Alan Taranti <contato@alantaranti.me>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.13"
+pycairo = "^1.28.0"
+pygobject = "^3.52.3"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
