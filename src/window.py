@@ -20,9 +20,10 @@
 from gi.repository import Adw
 from gi.repository import Gtk
 
-@Gtk.Template(resource_path='/me/alantaranti/rilato/window.ui')
+
+@Gtk.Template(resource_path="/me/alantaranti/rilato/window.ui")
 class RilatoWindow(Adw.ApplicationWindow):
-    __gtype_name__ = 'RilatoWindow'
+    __gtype_name__ = "RilatoWindow"
 
     label = Gtk.Template.Child()
     startup_entry = Gtk.Template.Child()
