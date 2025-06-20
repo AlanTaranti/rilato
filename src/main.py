@@ -32,7 +32,7 @@ class RilatoApplication(Adw.Application):
 
     def __init__(self):
         super().__init__(application_id='me.alantaranti.rilato',
-                         flags=Gio.ApplicationFlags.DEFAULT_FLAGS
+                         flags=Gio.ApplicationFlags.DEFAULT_FLAGS,
                          resource_base_path='/me/alantaranti/rilato')
         self.create_action('quit', lambda *_: self.quit(), ['<primary>q'])
         self.create_action('about', self.on_about_action)
