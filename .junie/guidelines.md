@@ -60,4 +60,11 @@
 * Structure tests under `tests/` mirroring `src/` layout.
 * Use `pytest-gi` for testing GTK components and mock GObject signals.
 * Always run tests after its creation to ensure a clean state.
-* Always run tests after changes to the application to ensure a clean state.
+
+13. **Development Workflow**
+* Implement the functionality.
+* Create tests for new features.
+* Use `pytest --cov` to ensure tests are passing and to track code coverage.
+* Use `ruff check --fix` to check and fix code.
+* Use `ruff format` to format code.
+* Use `poetry run rilato-build` to ensure you can build the application.
