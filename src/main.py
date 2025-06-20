@@ -22,9 +22,9 @@ import gi
 
 gi.require_version("Gtk", "4.0")
 gi.require_version("Adw", "1")
-
-from gi.repository import Gtk, Gio, Adw
-from .window import RilatoWindow
+from gi.repository import Gio, Adw  # noqa: E402
+from gettext import gettext as _  # noqa: E402
+from .window import RilatoWindow  # noqa: E402
 
 
 class RilatoApplication(Adw.Application):

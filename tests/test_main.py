@@ -34,7 +34,7 @@ sys.modules["src.window"].RilatoWindow = MagicMock()
 sys.modules["builtins"]._ = MagicMock(return_value="translator-credits")
 
 # Import the module to test
-from src.main import RilatoApplication, main
+from src.main import RilatoApplication, main  # noqa: E402
 
 
 @pytest.fixture
