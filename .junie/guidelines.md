@@ -59,5 +59,5 @@
 
 * Structure tests under `tests/` mirroring `src/` layout.
 * Use `pytest-gi` for testing GTK components and mock GObject signals.
-
-
+* Always run tests after its creation to ensure a clean state.
+* Always run tests after changes to the application to ensure a clean state.
