@@ -59,6 +59,5 @@
 
 * Structure tests under `tests/` mirroring `src/` layout.
 * Use `pytest-gi` for testing GTK components and mock GObject signals.
-* To run tests: `.venv/bin/pytest --maxfail=1 --disable-warnings -q`
 
 
