@@ -16,9 +16,14 @@ class CommonListScrolledWin(Gtk.ScrolledWindow):
         self.feedman = FeedsManager()
         self.articles_store = self.feedman.article_store
 
-        self.fetch_image_thread_pool = ThreadPoolExecutor(
-            max_workers=self.articles_store.confman.nconf.max_refresh_threads
-        )
+        # Ensure max_refresh_threads is an integer
+        try:
+            max_threads = int(self.articles_store.confman.nconf.max_refresh_threads)
+        except (TypeError, ValueError):
+            # Default to 2 if conversion fails
+            max_threads = 2
+
+        self.fetch_image_thread_pool = ThreadPoolExecutor(max_workers=max_threads)
 
         # API bindings
         self.empty = self.articles_store.empty

@@ -55,7 +55,13 @@ class RilatoWebView(Gtk.Stack):
         if self.confman.nconf.enable_adblock:
             self.apply_adblock()
 
-        self.webkitview.set_zoom_level(self.confman.nconf.webview_zoom)
+        # Ensure zoom level is a float
+        try:
+            zoom_level = float(self.confman.nconf.webview_zoom)
+            self.webkitview.set_zoom_level(zoom_level)
+        except (TypeError, ValueError):
+            # Default to 1.0 if conversion fails
+            self.webkitview.set_zoom_level(1.0)
 
         self.new_page_loaded = False
         self.uri = ""

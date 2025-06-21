@@ -111,6 +111,8 @@ class RightHeaderbar(Gtk.WindowHandle):
         self.zoom_reset_btn.set_label(f"{round(n_zoom * 100)}%")
 
     def set_view_mode_icon(self, mode):
+        if not mode or mode not in VIEW_MODE_ICONS:
+            mode = "webview"  # Default to webview if mode is invalid
         self.view_mode_menu_btn.set_icon_name(VIEW_MODE_ICONS[mode])
 
     def on_view_mode_change(self, target):

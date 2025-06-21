@@ -78,6 +78,35 @@ class MockSettings:
             "filter-feed": "",
             "sidebar-width": 250,
             "articles-list-width": 350,
+            # Add missing keys that are causing errors
+            "feeds": {},
+            "max-refresh-threads": 2,
+            "webview-zoom": 1.0,
+            "default-view": "webview",
+            "read-items": [],
+            "tags": [],
+            "use-experimental-listview": False,
+            "show-read-items": True,
+            "show-empty-feeds": True,
+            "full-article-title": True,
+            "open-links-externally": True,
+            "full-feed-name": True,
+            "refresh-on-startup": False,
+            "open-youtube-externally": True,
+            "media-player": "mpv",
+            "auto-refresh-enabled": False,
+            "auto-refresh-time-seconds": 300,
+            "enable-adblock": True,
+            "blocklist-last-update": 0.0,
+            "font-use-system-for-titles": False,
+            "font-use-system-for-paragraphs": True,
+            "font-titles-custom": "DejaVu Serif",
+            "font-paragraphs-custom": "Cantarell",
+            "font-monospace-custom": "DejaVu Sans Mono",
+            "enable-js": False,
+            "max-article-age-days": 30,
+            "reader-theme": "auto",
+            "new-first": True,
         }
         # Generate some keys based on the defaults
         self.__keys = list(self.defaults.keys())
@@ -114,6 +143,21 @@ class MockSettings:
 
     def set_double(self, key, value):
         self.defaults[key] = value
+
+    def bind(self, key, obj, property_name, flags):
+        """Mock implementation of Gio.Settings.bind()
+
+        This simplified implementation just sets the initial value on the object.
+        In a real GSettings implementation, this would create a bidirectional binding.
+        """
+        # Get the current value from settings
+        value = self.defaults.get(key, None)
+        if value is not None:
+            # Set the property on the object
+            if hasattr(obj, "set_property") and callable(obj.set_property):
+                obj.set_property(property_name, value)
+            elif hasattr(obj, property_name):
+                setattr(obj, property_name, value)
 
 
 class GsettingsWrapper:
