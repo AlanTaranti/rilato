@@ -1,12 +1,12 @@
-# Hindi translation for gfeeds.
-# Copyright (C) 2024 gfeeds's COPYRIGHT HOLDER
-# This file is distributed under the same license as the gfeeds package.
+# Hindi translation for rilato.
+# Copyright (C) 2024 rilato's COPYRIGHT HOLDER
+# This file is distributed under the same license as the rilato package.
 # Scrambled777 <weblate.scrambled777@simplelogin.com>, 2024.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gfeeds master\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/gfeeds/issues\n"
+"Project-Id-Version: rilato master\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/rilato/issues\n"
 "POT-Creation-Date: 2024-03-30 23:16+0000\n"
 "PO-Revision-Date: 2024-04-29 14:17+0530\n"
 "Last-Translator: Scrambled777 <weblate.scrambled777@simplelogin.com>\n"
@@ -18,15 +18,15 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Gtranslator 46.1\n"
 
-#: data/org.gabmus.gfeeds.appdata.xml.in:4
+#: data/org.gabmus.rilato.appdata.xml.in:4
 msgid "Feeds"
 msgstr "Feeds"
 
-#: data/org.gabmus.gfeeds.appdata.xml.in:6 data/org.gabmus.gfeeds.desktop.in:7
+#: data/org.gabmus.rilato.appdata.xml.in:6 data/org.gabmus.rilato.desktop.in:7
 msgid "News reader for GNOME"
 msgstr "GNOME के लिए समाचार पाठक"
 
-#: data/org.gabmus.gfeeds.appdata.xml.in:15
+#: data/org.gabmus.rilato.appdata.xml.in:15
 msgid ""
 "Feeds is a minimal RSS/Atom feed reader built with speed and simplicity in "
 "mind."
@@ -34,7 +34,7 @@ msgstr ""
 "Feeds एक न्यूनतम RSS/एटम फीड पाठक है जिसे गति और सरलता को ध्यान में रखकर बनाया गया "
 "है।"
 
-#: data/org.gabmus.gfeeds.appdata.xml.in:16
+#: data/org.gabmus.rilato.appdata.xml.in:16
 msgid ""
 "It offers a simple user interface that only shows the latest news from your "
 "subscriptions."
@@ -42,7 +42,7 @@ msgstr ""
 "यह एक सरल उपयोगकर्ता अंतराफलक प्रदान करता है जो केवल आपके सदस्यता प्राप्त स्रोत से "
 "नवीनतम समाचार दिखाता है।"
 
-#: data/org.gabmus.gfeeds.appdata.xml.in:17
+#: data/org.gabmus.rilato.appdata.xml.in:17
 msgid ""
 "Articles are shown in a web view by default, with javascript disabled for a "
 "faster and less intrusive user experience. There's also a reader mode "
@@ -52,12 +52,12 @@ msgstr ""
 "लिए जावास्क्रिप्ट अक्षम होता है। इसमें एक पाठक मोड भी शामिल है, जो GNOME वेब/Epiphany "
 "के उपयोग से निर्मित है।"
 
-#: data/org.gabmus.gfeeds.appdata.xml.in:18
+#: data/org.gabmus.rilato.appdata.xml.in:18
 msgid "Feeds can be imported and exported via OPML."
 msgstr "फीड को OPML के माध्यम से आयात और निर्यात किया जा सकता है।"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/org.gabmus.gfeeds.desktop.in:16
+#: data/org.gabmus.rilato.desktop.in:16
 msgid "rss;reader;feed;news;"
 msgstr "rss;पाठक;फीड;समाचार;"
 
@@ -157,7 +157,7 @@ msgstr "कुछ त्रुटियां हैं"
 msgid "Offline"
 msgstr "ऑफलाइन"
 
-#: data/ui/manage_feeds_headerbar.blp:7 gfeeds/manage_feeds_window.py:257
+#: data/ui/manage_feeds_headerbar.blp:7 rilato/manage_feeds_window.py:257
 msgid "Manage Feeds"
 msgstr "फीड प्रबंधित करें"
 
@@ -233,7 +233,7 @@ msgstr "ज़ूम इन"
 msgid "Back to Articles"
 msgstr "आलेख पर वापस जाएं"
 
-#: data/ui/shortcutsWindow.blp:9 gfeeds/preferences_window.py:24
+#: data/ui/shortcutsWindow.blp:9 rilato/preferences_window.py:24
 msgid "General"
 msgstr "सामान्य"
 
@@ -293,372 +293,372 @@ msgstr "पठित/अपठित चिह्नित करें"
 msgid "Select an article"
 msgstr "एक आलेख चुनें"
 
-#: gfeeds/feed_item.py:62
+#: rilato/feed_item.py:62
 #, python-brace-format
 msgid "Error: unable to parse datetime {0} for feeditem {1}"
 msgstr "त्रुटि: feeditem {1} के लिए datetime {0} का विश्लेषण करने में असमर्थ"
 
-#: gfeeds/feed_parser.py:61
+#: rilato/feed_parser.py:61
 #, python-brace-format
 msgid "Errors while parsing feed `{0}`, URL: `{1}`"
 msgstr "फीड विश्लेषण करते समय त्रुटियां `{0}`, URL: `{1}`"
 
-#: gfeeds/feed_parser.py:75
+#: rilato/feed_parser.py:75
 #, python-brace-format
 msgid "Error decoding unicode data from feed `{0}`, URL: `{1}`"
 msgstr "फीड `{0}` से यूनिकोड डेटा को विकोड करने में त्रुटि, URL: `{1}`"
 
-#: gfeeds/feed_parser.py:82
+#: rilato/feed_parser.py:82
 #, python-brace-format
 msgid "Error extracting data from feed `{0}`, URL: `{1}`"
 msgstr "फीड `{0}` से डेटा निकालने में त्रुटि, URL: `{1}`"
 
-#: gfeeds/feed_parser.py:90
+#: rilato/feed_parser.py:90
 #, python-brace-format
 msgid "`{0}` may not be an RSS or Atom feed"
 msgstr "`{0}` RSS या एटम फीड नहीं हो सकता है"
 
-#: gfeeds/feeds_manager.py:83
+#: rilato/feeds_manager.py:83
 #, python-brace-format
 msgid "Feed {0} exists already, skipping"
 msgstr "फीड {0} पहले से मौजूद है, छोड़ा जा रहा है"
 
-#: gfeeds/feeds_view.py:13
+#: rilato/feeds_view.py:13
 msgid "All feeds"
 msgstr "सभी फीड"
 
-#: gfeeds/headerbar.py:197
+#: rilato/headerbar.py:197
 msgid "There were problems with some feeds. Do you want to remove them?"
 msgstr "कुछ फीड में समस्याएं थीं। क्या आप उन्हें हटाना चाहते हैं?"
 
-#: gfeeds/headerbar.py:202
+#: rilato/headerbar.py:202
 msgid "_Keep"
 msgstr "रखें (_K)"
 
-#: gfeeds/headerbar.py:204
+#: rilato/headerbar.py:204
 msgid "_Remove"
 msgstr "हटाएं (_R)"
 
-#: gfeeds/main_leaflet.py:114
+#: rilato/main_leaflet.py:114
 #, python-brace-format
 msgid "{0} new article"
 msgid_plural "{0} new articles"
 msgstr[0] "{0} नया आलेख"
 msgstr[1] "{0} नए आलेख"
 
-#: gfeeds/__main__.py:232
+#: rilato/__main__.py:232
 msgid "Do you want to import these feeds?"
 msgstr "क्या आप ये फीड आयात करना चाहते हैं?"
 
-#: gfeeds/__main__.py:239 gfeeds/__main__.py:273
-#: gfeeds/manage_feeds_window.py:324
+#: rilato/__main__.py:239 rilato/__main__.py:273
+#: rilato/manage_feeds_window.py:324
 msgid "_Cancel"
 msgstr "रद्द करें (_C)"
 
-#: gfeeds/__main__.py:242 gfeeds/__main__.py:276
+#: rilato/__main__.py:242 rilato/__main__.py:276
 msgid "_Import"
 msgstr "आयात (_I)"
 
-#: gfeeds/__main__.py:269
+#: rilato/__main__.py:269
 msgid "Do you want to import this feed?"
 msgstr "क्या आप यह फीड आयात करना चाहते हैं?"
 
-#: gfeeds/__main__.py:301
+#: rilato/__main__.py:301
 msgid "url"
 msgstr "url"
 
-#: gfeeds/__main__.py:304
+#: rilato/__main__.py:304
 msgid "opml file local url or rss remote url to import"
 msgstr "आयात करने के लिए opml फाइल स्थानीय URL या RSS रिमोट URL"
 
-#: gfeeds/manage_feeds_window.py:321
+#: rilato/manage_feeds_window.py:321
 msgid "Do you want to delete these feeds?"
 msgstr "क्या आप ये फीड हटाना चाहते हैं?"
 
-#: gfeeds/manage_feeds_window.py:326
+#: rilato/manage_feeds_window.py:326
 msgid "_Delete"
 msgstr "मिटाएं (_D)"
 
-#: gfeeds/opml_file_chooser.py:7
+#: rilato/opml_file_chooser.py:7
 msgid "XML files"
 msgstr "XML फाइलें"
 
-#: gfeeds/opml_file_chooser.py:14
+#: rilato/opml_file_chooser.py:14
 msgid "Choose an OPML file to import"
 msgstr "आयात करने के लिए एक OPML फाइल चुनें"
 
-#: gfeeds/opml_file_chooser.py:18
+#: rilato/opml_file_chooser.py:18
 msgid "Open"
 msgstr "खोलें"
 
-#: gfeeds/opml_file_chooser.py:19 gfeeds/opml_file_chooser.py:31
+#: rilato/opml_file_chooser.py:19 rilato/opml_file_chooser.py:31
 msgid "Cancel"
 msgstr "रद्द करें"
 
-#: gfeeds/opml_file_chooser.py:26
+#: rilato/opml_file_chooser.py:26
 msgid "Choose where to save the exported OPML file"
 msgstr "निर्यातित OPML फाइल को सहेजने का स्थान चुनें"
 
-#: gfeeds/opml_file_chooser.py:30
+#: rilato/opml_file_chooser.py:30
 msgid "Save"
 msgstr "सहेजें"
 
-#: gfeeds/preferences_window.py:27
+#: rilato/preferences_window.py:27
 msgid "General preferences"
 msgstr "सामान्य प्राथमिकताएं"
 
-#: gfeeds/preferences_window.py:29
+#: rilato/preferences_window.py:29
 msgid "Show newer articles first"
 msgstr "नए आलेख पहले दिखाएं"
 
-#: gfeeds/preferences_window.py:34
+#: rilato/preferences_window.py:34
 msgid "Open links in your browser"
 msgstr "अपने ब्राउज़र में लिंक खोलें"
 
-#: gfeeds/preferences_window.py:38
+#: rilato/preferences_window.py:38
 msgid "Use external video player for YouTube"
 msgstr "YouTube के लिए बाहरी वीडियो प्लेयर का उपयोग करें"
 
-#: gfeeds/preferences_window.py:40
+#: rilato/preferences_window.py:40
 msgid "Requires youtube-dl and a compatible video player"
 msgstr "youtube-dl और एक संगत वीडियो प्लेयर की आवश्यकता है"
 
-#: gfeeds/preferences_window.py:46
+#: rilato/preferences_window.py:46
 msgid "Preferred video player"
 msgstr "पसंदीदा वीडियो प्लेयर"
 
-#: gfeeds/preferences_window.py:50
+#: rilato/preferences_window.py:50
 msgid "Maximum article age"
 msgstr "अधिकतम आलेख आयु"
 
-#: gfeeds/preferences_window.py:51
+#: rilato/preferences_window.py:51
 msgid "In days"
 msgstr "दिनों में"
 
-#: gfeeds/preferences_window.py:58
+#: rilato/preferences_window.py:58
 msgid "Refresh preferences"
 msgstr "प्राथमिकताएं ताज़ा करें"
 
-#: gfeeds/preferences_window.py:60
+#: rilato/preferences_window.py:60
 msgid "Refresh articles on startup"
 msgstr "शुरुवात पर आलेख ताज़ा करें"
 
-#: gfeeds/preferences_window.py:64
+#: rilato/preferences_window.py:64
 msgid "New articles notification"
 msgstr "नए आलेखों की अधिसूचना"
 
-#: gfeeds/preferences_window.py:68
+#: rilato/preferences_window.py:68
 msgid "Enable auto-refresh"
 msgstr "स्वतः ताज़ा सक्षम करें"
 
-#: gfeeds/preferences_window.py:72
+#: rilato/preferences_window.py:72
 msgid "Auto-refresh interval"
 msgstr "स्वतः ताज़ा अंतराल"
 
-#: gfeeds/preferences_window.py:73
+#: rilato/preferences_window.py:73
 msgid "In seconds"
 msgstr "सेकंड में"
 
-#: gfeeds/preferences_window.py:80
+#: rilato/preferences_window.py:80
 msgid "Cache"
 msgstr "कैशे"
 
-#: gfeeds/preferences_window.py:82
+#: rilato/preferences_window.py:82
 msgid "Clear caches"
 msgstr "कैशे साफ करें"
 
-#: gfeeds/preferences_window.py:83
+#: rilato/preferences_window.py:83
 msgid "Clear"
 msgstr "साफ करें"
 
-#: gfeeds/preferences_window.py:109
+#: rilato/preferences_window.py:109
 msgid "Appearance"
 msgstr "दिखावट"
 
-#: gfeeds/preferences_window.py:112
+#: rilato/preferences_window.py:112
 msgid "Appearance preferences"
 msgstr "दिखावट प्राथमिकताएं"
 
-#: gfeeds/preferences_window.py:114
+#: rilato/preferences_window.py:114
 msgid "Dark mode"
 msgstr "गहरा मोड"
 
-#: gfeeds/preferences_window.py:118
+#: rilato/preferences_window.py:118
 msgid "Reader mode theme"
 msgstr "पाठक मोड थीम"
 
-#: gfeeds/preferences_window.py:122
+#: rilato/preferences_window.py:122
 msgid "Automatic"
 msgstr "स्वचालित"
 
-#: gfeeds/preferences_window.py:122
+#: rilato/preferences_window.py:122
 msgid "Light"
 msgstr "हल्की"
 
-#: gfeeds/preferences_window.py:122
+#: rilato/preferences_window.py:122
 msgid "Dark"
 msgstr "गहरी"
 
-#: gfeeds/preferences_window.py:126
+#: rilato/preferences_window.py:126
 msgid "Show article thumbnails"
 msgstr "आलेख थंबनेल दिखाएं"
 
-#: gfeeds/preferences_window.py:131
+#: rilato/preferences_window.py:131
 msgid "Show full articles titles"
 msgstr "संपूर्ण आलेखों के शीर्षक दिखाएं"
 
-#: gfeeds/preferences_window.py:136
+#: rilato/preferences_window.py:136
 msgid "Show full feeds names"
 msgstr "संपूर्ण फीड नाम दिखाएं"
 
-#: gfeeds/preferences_window.py:143
+#: rilato/preferences_window.py:143
 msgid "Font preferences"
 msgstr "फॉन्ट प्राथमिकताएं"
 
-#: gfeeds/preferences_window.py:145
+#: rilato/preferences_window.py:145
 msgid "Use system font for titles"
 msgstr "शीर्षकों के लिए सिस्टम फॉन्ट का उपयोग करें"
 
-#: gfeeds/preferences_window.py:149
+#: rilato/preferences_window.py:149
 msgid "Use system font for paragraphs"
 msgstr "अनुच्छेदों के लिए सिस्टम फॉन्ट का उपयोग करें"
 
-#: gfeeds/preferences_window.py:153
+#: rilato/preferences_window.py:153
 msgid "Custom title font"
 msgstr "तदनुकूल शीर्षक फॉन्ट"
 
-#: gfeeds/preferences_window.py:157
+#: rilato/preferences_window.py:157
 msgid "Custom paragraph font"
 msgstr "तदनुकूल अनुच्छेद फॉन्ट"
 
-#: gfeeds/preferences_window.py:161
+#: rilato/preferences_window.py:161
 msgid "Custom monospace font"
 msgstr "तदनुकूल मोनोस्पेस फॉन्ट"
 
-#: gfeeds/preferences_window.py:173
+#: rilato/preferences_window.py:173
 msgid "Privacy"
 msgstr "गोपनीयता"
 
-#: gfeeds/preferences_window.py:177
+#: rilato/preferences_window.py:177
 msgid "Privacy preferences"
 msgstr "गोपनीयता प्राथमिकताएं"
 
-#: gfeeds/preferences_window.py:179
+#: rilato/preferences_window.py:179
 msgid "Enable JavaScript"
 msgstr "जावास्क्रिप्ट सक्षम करें"
 
-#: gfeeds/preferences_window.py:184
+#: rilato/preferences_window.py:184
 msgid "Try to block advertisements"
 msgstr "विज्ञापनों को रोकने का प्रयास करें"
 
-#: gfeeds/preferences_window.py:186 gfeeds/preferences_window.py:221
+#: rilato/preferences_window.py:186 rilato/preferences_window.py:221
 msgid "Requires app restart"
 msgstr "ऐप पुनरारंभ की आवश्यकता है"
 
-#: gfeeds/preferences_window.py:190
+#: rilato/preferences_window.py:190
 msgid "Update advertisement blocking list"
 msgstr "विज्ञापन अवरोधन सूची अद्यतन करें"
 
-#: gfeeds/preferences_window.py:191
+#: rilato/preferences_window.py:191
 msgid "Updates automatically every 10 days"
 msgstr "हर 10 दिन में स्वचालित रूप से अद्यतन होता है"
 
-#: gfeeds/preferences_window.py:192
+#: rilato/preferences_window.py:192
 msgid "Update"
 msgstr "अद्यतन"
 
-#: gfeeds/preferences_window.py:205
+#: rilato/preferences_window.py:205
 msgid "Advanced"
 msgstr "उन्नत"
 
-#: gfeeds/preferences_window.py:208
+#: rilato/preferences_window.py:208
 msgid "Advanced preferences"
 msgstr "उन्नत प्राथमिकताएं"
 
-#: gfeeds/preferences_window.py:210
+#: rilato/preferences_window.py:210
 msgid "Maximum refresh threads"
 msgstr "अधिकतम ताज़ा थ्रेड्स"
 
-#: gfeeds/preferences_window.py:212
+#: rilato/preferences_window.py:212
 msgid "How many threads to use for feeds refresh"
 msgstr "फीड ताज़ा करने के लिए कितने थ्रेड का उपयोग करना है"
 
-#: gfeeds/preferences_window.py:219
+#: rilato/preferences_window.py:219
 msgid "Experimental GtkListView for articles list"
 msgstr "आलेख सूची के लिए प्रायोगिक GtkListView"
 
-#: gfeeds/preferences_window.py:227
+#: rilato/preferences_window.py:227
 msgid "Troubleshooting"
 msgstr "समस्यानिवारण"
 
-#: gfeeds/preferences_window.py:229
+#: rilato/preferences_window.py:229
 msgid "Export Configuration as JSON"
 msgstr "JSON के रूप में विन्यास निर्यात करें"
 
-#: gfeeds/preferences_window.py:230
+#: rilato/preferences_window.py:230
 msgid "Attach this when reporting bugs"
 msgstr "बग की रिपोर्ट करते समय इसे संलग्न करें"
 
-#: gfeeds/preferences_window.py:231
+#: rilato/preferences_window.py:231
 msgid "Export"
 msgstr "निर्यात"
 
 #. type: ignore
-#: gfeeds/preferences_window.py:244
+#: rilato/preferences_window.py:244
 msgid "Feeds Configuration"
 msgstr "फीड विन्यास"
 
-#: gfeeds/preferences_window.py:248
+#: rilato/preferences_window.py:248
 msgid "_Close"
 msgstr "बंद करें (_C)"
 
-#: gfeeds/preferences_window.py:251
+#: rilato/preferences_window.py:251
 msgid "Cop_y"
 msgstr "कॉपी करें (_y)"
 
-#: gfeeds/util/build_reader_html.py:104
+#: rilato/util/build_reader_html.py:104
 #, python-brace-format
 msgid "Author: <a href=\"{0}\">{1}</a>"
 msgstr "लेखक: <a href=\"{0}\">{1}</a>"
 
-#: gfeeds/util/build_reader_html.py:108
+#: rilato/util/build_reader_html.py:108
 #, python-brace-format
 msgid "Author: {0}"
 msgstr "लेखक: {0}"
 
-#: gfeeds/util/download_manager.py:112
+#: rilato/util/download_manager.py:112
 #, python-brace-format
 msgid "`{0}`: connection timed out"
 msgstr "`{0}`: कनेक्शन का समय समाप्त"
 
-#: gfeeds/util/download_manager.py:121
+#: rilato/util/download_manager.py:121
 #, python-brace-format
 msgid "`{0}` might not be a valid address"
 msgstr "`{0}` संभवतः वैध पता नहीं है"
 
-#: gfeeds/util/download_manager.py:161
+#: rilato/util/download_manager.py:161
 #, python-brace-format
 msgid "Error downloading `{0}`, code `{1}`"
 msgstr "`{0}` डाउनलोड करने में त्रुटि, कोड `{1}`"
 
-#: gfeeds/util/get_favicon.py:48
+#: rilato/util/get_favicon.py:48
 #, python-brace-format
 msgid "Error downloading favicon for `{0}`"
 msgstr "`{0}` के लिए फ़ेविकॉन डाउनलोड करने में त्रुटि"
 
-#: gfeeds/util/opml_parser.py:33
+#: rilato/util/opml_parser.py:33
 msgid "Error: OPML path provided does not exist"
 msgstr "त्रुटि: प्रदत्त OPML पथ मौजूद नहीं है"
 
-#: gfeeds/util/opml_parser.py:44
+#: rilato/util/opml_parser.py:44
 #, python-brace-format
 msgid "Error parsing OPML file `{0}`"
 msgstr "OPML फाइल `{0}` का विश्लेषण करने में त्रुटि"
 
-#: gfeeds/webview.py:200
+#: rilato/webview.py:200
 msgid "Link copied to clipboard!"
 msgstr "लिंक क्लिपबोर्ड पर कॉपी किया गया!"
 
-#: gfeeds/webview.py:222
+#: rilato/webview.py:222
 msgid "Feed content not available for this article"
 msgstr "इस आलेख के लिए फीड सामग्री उपलब्ध नहीं है"

@@ -38,15 +38,15 @@
  */
 
 body {
-    font-family: gfeeds-reader-sans, sans-serif;
+    font-family: rilato-reader-sans, sans-serif;
 }
 
 body.sans {
-  font-family: gfeeds-reader-sans, sans-serif;
+  font-family: rilato-reader-sans, sans-serif;
 }
 
 body.serif {
-  font-family: gfeeds-reader-serif, serif;
+  font-family: rilato-reader-serif, serif;
 }
 
 body {
@@ -74,7 +74,7 @@ h6 {
   /* Contrast ratio: 4.77 */
   font-weight: bold;
   color: #555555;
-  font-family: gfeeds-reader-serif, serif;
+  font-family: rilato-reader-serif, serif;
 }
 
 body.serif h1,
@@ -83,7 +83,7 @@ body.serif h3,
 body.serif h4,
 body.serif h5,
 body.serif h6 {
-  font-family: gfeeds-reader-sans, sans-serif;
+  font-family: rilato-reader-sans, sans-serif;
 }
 
 
@@ -100,7 +100,7 @@ body.dark h6 {
 tt,
 code,
 pre {
-  font-family: gfeeds-reader-mono, monospace;
+  font-family: rilato-reader-mono, monospace;
 }
 
 hr {

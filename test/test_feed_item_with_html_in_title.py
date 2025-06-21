@@ -1,10 +1,10 @@
 from os import remove
 from pathlib import Path
 import pytest
-from gfeeds.feed_item import FeedItem
-from gfeeds.feed_parser import parse_feed
+from rilato.feed_item import FeedItem
+from rilato.feed_parser import parse_feed
 
-RSS_PATH = '/tmp/org.gabmus.gfeeds.test.feed_item_with_html_in_title.rss'
+RSS_PATH = '/tmp/org.gabmus.rilato.test.feed_item_with_html_in_title.rss'
 SAMPLE_RSS = '''<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <?xml-stylesheet href="/feed_style.xsl" type="text/xsl"?>
 <rss version="2.0"
@@ -59,7 +59,7 @@ def __mock_confman(monkeypatch):
             self.nconf = MockNConf()
 
     monkeypatch.setattr(
-        'gfeeds.feed_item.ConfManager', MockConfManager
+        'rilato.feed_item.ConfManager', MockConfManager
     )
 
 

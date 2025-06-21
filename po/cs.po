@@ -5,8 +5,8 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gfeeds\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/gfeeds/issues\n"
+"Project-Id-Version: rilato\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/rilato/issues\n"
 "POT-Creation-Date: 2022-02-09 10:26+0000\n"
 "PO-Revision-Date: 2022-03-18 15:22+0100\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
@@ -17,15 +17,15 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
-#: data/org.gabmus.gfeeds.appdata.xml.in:4
+#: data/org.gabmus.rilato.appdata.xml.in:4
 msgid "Feeds"
 msgstr "Kanály"
 
-#: data/org.gabmus.gfeeds.appdata.xml.in:6 data/org.gabmus.gfeeds.desktop.in:7
+#: data/org.gabmus.rilato.appdata.xml.in:6 data/org.gabmus.rilato.desktop.in:7
 msgid "News reader for GNOME"
 msgstr "Čtečka novinek pro GNOME"
 
-#: data/org.gabmus.gfeeds.appdata.xml.in:15
+#: data/org.gabmus.rilato.appdata.xml.in:15
 msgid ""
 "Feeds is a minimal RSS/Atom feed reader built with speed and simplicity in "
 "mind."
@@ -33,7 +33,7 @@ msgstr ""
 "Aplikace Kanály je minimalistický prohlížeč kanálů RSS/Atom, který si cení "
 "rychlosti a jednoduchosti."
 
-#: data/org.gabmus.gfeeds.appdata.xml.in:16
+#: data/org.gabmus.rilato.appdata.xml.in:16
 msgid ""
 "It offers a simple user interface that only shows the latest news from your "
 "subscriptions."
@@ -41,7 +41,7 @@ msgstr ""
 "Má jednoduché uživatelské rozhraní, které zobrazuje pouze nejnovější zprávy "
 "z vašich odběrů."
 
-#: data/org.gabmus.gfeeds.appdata.xml.in:17
+#: data/org.gabmus.rilato.appdata.xml.in:17
 msgid ""
 "Articles are shown in a web view by default, with javascript disabled for a "
 "faster and less intrusive user experience. There's also a reader mode "
@@ -51,12 +51,12 @@ msgstr ""
 "Javascriptem, aby měl uživatel rychlejší a méně rušivé prostředí. K dispozici "
 "je také režim čtečky založený na aplikaci Web GNOME/Epiphany."
 
-#: data/org.gabmus.gfeeds.appdata.xml.in:18
+#: data/org.gabmus.rilato.appdata.xml.in:18
 msgid "Feeds can be imported and exported via OPML."
 msgstr "Kanály je možné importovat a exportovat přes OPML."
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/org.gabmus.gfeeds.desktop.in:16
+#: data/org.gabmus.rilato.desktop.in:16
 msgid "rss;reader;feed;news;"
 msgstr "rss;čtečka;feed;kanál;news;novinky;články;"
 
@@ -72,43 +72,43 @@ msgstr "Režim čtečky"
 msgid "Feed Content"
 msgstr "Obsah kanálu"
 
-#: gfeeds/confirm_add_dialog.py:16
+#: rilato/confirm_add_dialog.py:16
 msgid "Do you want to import these feeds?"
 msgstr "Chcete naimportovat tyto kanály?"
 
-#: gfeeds/confirm_add_dialog.py:17
+#: rilato/confirm_add_dialog.py:17
 msgid "Do you want to import this feed?"
 msgstr "Chcete naimportovat tento kanál?"
 
-#: gfeeds/download_manager.py:88
+#: rilato/download_manager.py:88
 #, python-brace-format
 msgid "`{0}`: connection timed out"
 msgstr "„{0}“: vypršel časový limit"
 
-#: gfeeds/download_manager.py:92
+#: rilato/download_manager.py:92
 #, python-brace-format
 msgid "`{0}` might not be a valid address"
 msgstr "„{0}“ nemusí být platná adresa"
 
-#: gfeeds/download_manager.py:117
+#: rilato/download_manager.py:117
 msgid "Error downloading `{0}`, code `{1}`"
 msgstr "Chyba při stahování „{0}“, kód „{1}“"
 
-#: gfeeds/feeds_manager.py:87
+#: rilato/feeds_manager.py:87
 #, python-brace-format
 msgid "Feed {0} exists already, skipping"
 msgstr "Kanál {0} již existuje, vynechává se"
 
-#: gfeeds/feeds_view.py:14
+#: rilato/feeds_view.py:14
 msgid "All feeds"
 msgstr "Všechny kanály"
 
-#: gfeeds/get_favicon.py:45
+#: rilato/get_favicon.py:45
 #, python-brace-format
 msgid "Error downloading favicon for `{0}`"
 msgstr "Chyba při stahování ikony pro „{0}“"
 
-#: gfeeds/headerbar.py:171
+#: rilato/headerbar.py:171
 msgid ""
 "There were problems with some feeds.\n"
 "Do you want to remove them?"
@@ -116,7 +116,7 @@ msgstr ""
 "Vyskytl se problém s některými kanály.\n"
 "Přejete si je odstranit?"
 
-#: gfeeds/main_leaflet.py:118
+#: rilato/main_leaflet.py:118
 #, python-brace-format
 msgid "{0} new article"
 msgid_plural "{0} new articles"
@@ -124,286 +124,286 @@ msgstr[0] "{0} nový článek"
 msgstr[1] "{0} nové články"
 msgstr[2] "{0} nových článků"
 
-#: gfeeds/__main__.py:251
+#: rilato/__main__.py:251
 msgid "url"
 msgstr "URL"
 
-#: gfeeds/__main__.py:254
+#: rilato/__main__.py:254
 msgid "opml file local url or rss remote url to import"
 msgstr "místní URL souboru OPML nebo vzdálené URL RSS pro import"
 
-#: gfeeds/manage_feeds_window.py:229
+#: rilato/manage_feeds_window.py:229
 msgid "Do you want to delete these feeds?"
 msgstr "Chcete smazat tyto kanály?"
 
-#: gfeeds/manage_feeds_window.py:281
+#: rilato/manage_feeds_window.py:281
 msgid "Manage Feeds"
 msgstr "Správa kanálů"
 
-#: gfeeds/opml_file_chooser.py:7
+#: rilato/opml_file_chooser.py:7
 msgid "XML files"
 msgstr "Soubory XML"
 
-#: gfeeds/opml_file_chooser.py:14
+#: rilato/opml_file_chooser.py:14
 msgid "Choose an OPML file to import"
 msgstr "Výběr souboru OPML pro import"
 
-#: gfeeds/opml_file_chooser.py:18
+#: rilato/opml_file_chooser.py:18
 msgid "Open"
 msgstr "Otevřít"
 
-#: gfeeds/opml_file_chooser.py:19 gfeeds/opml_file_chooser.py:31
+#: rilato/opml_file_chooser.py:19 rilato/opml_file_chooser.py:31
 msgid "Cancel"
 msgstr "Zrušit"
 
-#: gfeeds/opml_file_chooser.py:26
+#: rilato/opml_file_chooser.py:26
 msgid "Choose where to save the exported OPML file"
 msgstr "Výběr umístění pro vyexportovaný soubor OPML"
 
-#: gfeeds/opml_file_chooser.py:30
+#: rilato/opml_file_chooser.py:30
 msgid "Save"
 msgstr "Uložit"
 
-#: gfeeds/opml_manager.py:42
+#: rilato/opml_manager.py:42
 msgid "Error: OPML path provided does not exist"
 msgstr "Chyba: Zadaná cesta k OPML neexistuje"
 
-#: gfeeds/opml_manager.py:53
+#: rilato/opml_manager.py:53
 #, python-brace-format
 msgid "Error parsing OPML file `{0}`"
 msgstr "Chyba při zpracování souboru OPML „{0}“"
 
-#: gfeeds/preferences_window.py:22
+#: rilato/preferences_window.py:22
 msgid "General"
 msgstr "Obecné"
 
-#: gfeeds/preferences_window.py:25
+#: rilato/preferences_window.py:25
 msgid "General preferences"
 msgstr "Obecné předvolby"
 
-#: gfeeds/preferences_window.py:27
+#: rilato/preferences_window.py:27
 msgid "Show newer articles first"
 msgstr "Novější články zobrazovat jako první"
 
-#: gfeeds/preferences_window.py:32
+#: rilato/preferences_window.py:32
 msgid "Open links in your browser"
 msgstr "Otevírat odkazy ve vašem prohlížeči"
 
-#: gfeeds/preferences_window.py:36
+#: rilato/preferences_window.py:36
 msgid "Use external video player for YouTube"
 msgstr "Používat externí videopřehrávač pro YouTube"
 
-#: gfeeds/preferences_window.py:38
+#: rilato/preferences_window.py:38
 msgid "Requires youtube-dl and a compatible video player"
 msgstr "Vyžaduje program youtube-dl a kompatibilní videopřehrávač."
 
-#: gfeeds/preferences_window.py:44
+#: rilato/preferences_window.py:44
 msgid "Preferred video player"
 msgstr "Upřednostňovaný videopřehrávač"
 
-#: gfeeds/preferences_window.py:48
+#: rilato/preferences_window.py:48
 msgid "Maximum article age"
 msgstr "Maximální stáří článku"
 
-#: gfeeds/preferences_window.py:49
+#: rilato/preferences_window.py:49
 msgid "In days"
 msgstr "Ve dnech"
 
-#: gfeeds/preferences_window.py:56
+#: rilato/preferences_window.py:56
 msgid "Refresh preferences"
 msgstr "Předvolby aktualizace"
 
-#: gfeeds/preferences_window.py:58
+#: rilato/preferences_window.py:58
 msgid "Refresh articles on startup"
 msgstr "Aktualizovat články při spuštění"
 
-#: gfeeds/preferences_window.py:62
+#: rilato/preferences_window.py:62
 msgid "New articles notification"
 msgstr "Upozorňovat na nové články"
 
-#: gfeeds/preferences_window.py:66
+#: rilato/preferences_window.py:66
 msgid "Enable auto-refresh"
 msgstr "Povolit automatické aktualizace"
 
-#: gfeeds/preferences_window.py:70
+#: rilato/preferences_window.py:70
 msgid "Auto-refresh interval"
 msgstr "Četnost automatických aktualizací"
 
-#: gfeeds/preferences_window.py:71
+#: rilato/preferences_window.py:71
 msgid "In seconds"
 msgstr "V sekundách"
 
-#: gfeeds/preferences_window.py:78
+#: rilato/preferences_window.py:78
 msgid "Cache"
 msgstr "Mezipaměť"
 
-#: gfeeds/preferences_window.py:80
+#: rilato/preferences_window.py:80
 msgid "Clear caches"
 msgstr "Smazat mezipaměti"
 
-#: gfeeds/preferences_window.py:81
+#: rilato/preferences_window.py:81
 msgid "Clear"
 msgstr "Smazat"
 
-#: gfeeds/preferences_window.py:109
+#: rilato/preferences_window.py:109
 msgid "Appearance"
 msgstr "Vzhled"
 
-#: gfeeds/preferences_window.py:112
+#: rilato/preferences_window.py:112
 msgid "Appearance preferences"
 msgstr "Předvolby vzhledu"
 
-#: gfeeds/preferences_window.py:114
+#: rilato/preferences_window.py:114
 msgid "Dark mode"
 msgstr "Tmavý motiv"
 
-#: gfeeds/preferences_window.py:118
+#: rilato/preferences_window.py:118
 msgid "Use dark theme for reader mode"
 msgstr "Používat tmavý motiv pro režim čtení"
 
-#: gfeeds/preferences_window.py:122
+#: rilato/preferences_window.py:122
 msgid "Show article thumbnails"
 msgstr "Zobrazovat miniatury článků"
 
-#: gfeeds/preferences_window.py:127
+#: rilato/preferences_window.py:127
 msgid "Maximum thumbnail height"
 msgstr "Maximální výška miniatury"
 
-#: gfeeds/preferences_window.py:133
+#: rilato/preferences_window.py:133
 msgid "Show full articles titles"
 msgstr "Zobrazovat celé nadpisy článků"
 
-#: gfeeds/preferences_window.py:138
+#: rilato/preferences_window.py:138
 msgid "Show full feeds names"
 msgstr "Zobrazovat celé názvy kanálů"
 
-#: gfeeds/preferences_window.py:145
+#: rilato/preferences_window.py:145
 msgid "Font preferences"
 msgstr "Předvolby fontů"
 
-#: gfeeds/preferences_window.py:147
+#: rilato/preferences_window.py:147
 msgid "Use system font for titles"
 msgstr "Používat systémový font pro nadpisy"
 
-#: gfeeds/preferences_window.py:151
+#: rilato/preferences_window.py:151
 msgid "Use system font for paragraphs"
 msgstr "Používat systémový font pro odstavce"
 
-#: gfeeds/preferences_window.py:155
+#: rilato/preferences_window.py:155
 msgid "Custom title font"
 msgstr "Vlastní font pro nadpisy"
 
-#: gfeeds/preferences_window.py:159
+#: rilato/preferences_window.py:159
 msgid "Custom paragraph font"
 msgstr "Vlastní font pro odstavce"
 
-#: gfeeds/preferences_window.py:163
+#: rilato/preferences_window.py:163
 msgid "Custom monospace font"
 msgstr "Vlastní font s pevnou šířkou"
 
-#: gfeeds/preferences_window.py:175
+#: rilato/preferences_window.py:175
 msgid "Privacy"
 msgstr "Soukromí"
 
-#: gfeeds/preferences_window.py:178
+#: rilato/preferences_window.py:178
 msgid "Privacy preferences"
 msgstr "Předvolby soukromí"
 
-#: gfeeds/preferences_window.py:180
+#: rilato/preferences_window.py:180
 msgid "Enable JavaScript"
 msgstr "Povolit JavaScript"
 
-#: gfeeds/preferences_window.py:185
+#: rilato/preferences_window.py:185
 msgid "Try to block advertisements"
 msgstr "Zkoušet blokovat reklamy"
 
-#: gfeeds/preferences_window.py:187 gfeeds/preferences_window.py:222
+#: rilato/preferences_window.py:187 rilato/preferences_window.py:222
 msgid "Requires app restart"
 msgstr "Vyžaduje restart aplikace"
 
-#: gfeeds/preferences_window.py:191
+#: rilato/preferences_window.py:191
 msgid "Update advertisement blocking list"
 msgstr "Aktualizovat seznam pro blokování reklam"
 
-#: gfeeds/preferences_window.py:192
+#: rilato/preferences_window.py:192
 msgid "Updates automatically every 10 days"
 msgstr "Aktualizovat automaticky každých 10 dní"
 
-#: gfeeds/preferences_window.py:193
+#: rilato/preferences_window.py:193
 msgid "Update"
 msgstr "Aktualizovat"
 
-#: gfeeds/preferences_window.py:206
+#: rilato/preferences_window.py:206
 msgid "Advanced"
 msgstr "Pokročilé"
 
-#: gfeeds/preferences_window.py:209
+#: rilato/preferences_window.py:209
 msgid "Advanced preferences"
 msgstr "Pokročilé předvolby…"
 
-#: gfeeds/preferences_window.py:211
+#: rilato/preferences_window.py:211
 msgid "Maximum refresh threads"
 msgstr "Maximum vláken pro aktualizace"
 
-#: gfeeds/preferences_window.py:213
+#: rilato/preferences_window.py:213
 msgid "How many threads to use for feeds refresh"
 msgstr "Kolik vláken používat pro aktualizace kanálů."
 
-#: gfeeds/preferences_window.py:220
+#: rilato/preferences_window.py:220
 msgid "Experimental GtkListView for articles list"
 msgstr "Experimentální GtkListView pro seznam článků"
 
-#: gfeeds/rss_parser.py:67
+#: rilato/rss_parser.py:67
 #, python-brace-format
 msgid "Error: unable to parse datetime {0} for feeditem {1}"
 msgstr "Chyba: nelze zpracovat datum/čas {0} pro položku kanálu {1}"
 
-#: gfeeds/rss_parser.py:148
+#: rilato/rss_parser.py:148
 #, python-brace-format
 msgid "Errors while parsing feed `{0}`"
 msgstr "Chyby při zpracování kanálu „{0}“"
 
-#: gfeeds/rss_parser.py:175
+#: rilato/rss_parser.py:175
 #, python-brace-format
 msgid "`{0}` may not be an RSS or Atom feed"
 msgstr "„{0}“ nesmí být kanál RSS nebo Atom."
 
-#: gfeeds/sidebar.py:23
+#: rilato/sidebar.py:23
 msgid "Loading feeds..."
 msgstr "Načítají se kanály…"
 
-#: gfeeds/sidebar_row_popover.py:31 gfeeds/sidebar_row_popover.py:58
+#: rilato/sidebar_row_popover.py:31 rilato/sidebar_row_popover.py:58
 msgid "Mark as unread"
 msgstr "Označit jako nepřečtené"
 
-#: gfeeds/sidebar_row_popover.py:38 gfeeds/sidebar_row_popover.py:50
+#: rilato/sidebar_row_popover.py:38 rilato/sidebar_row_popover.py:50
 msgid "Mark as read"
 msgstr "Označit jako přečtené"
 
-#: gfeeds/suggestion_bar.py:37
+#: rilato/suggestion_bar.py:37
 msgid "There are some errors"
 msgstr "Vyskytly se chyby"
 
-#: gfeeds/suggestion_bar.py:46
+#: rilato/suggestion_bar.py:46
 msgid "Show"
 msgstr "Zobrazit"
 
-#: gfeeds/suggestion_bar.py:47
+#: rilato/suggestion_bar.py:47
 msgid "Ignore"
 msgstr "Ignorovat"
 
-#: gfeeds/suggestion_bar.py:70
+#: rilato/suggestion_bar.py:70
 msgid "There were problems with some feeds. Do you want to remove them?"
 msgstr "Vyskytl se problém s některými kanály. Přejete si je odebrat?"
 
-#: gfeeds/suggestion_bar.py:97
+#: rilato/suggestion_bar.py:97
 msgid "You are offline"
 msgstr "Nejste připojeni k síti"
 
-#: gfeeds/webview.py:183
+#: rilato/webview.py:183
 msgid "Link copied to clipboard!"
 msgstr "Odkaz byl zkopírován do schránky"
 
-#: gfeeds/webview.py:205
+#: rilato/webview.py:205
 msgid "Feed content not available for this article"
 msgstr "Obsah kanálu není pro tento článek dostupný"

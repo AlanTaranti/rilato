@@ -1,4 +1,4 @@
-from gfeeds.util.create_full_url import create_full_url
+from rilato.util.create_full_url import create_full_url
 
 
 def test_create_full_url_already_full():

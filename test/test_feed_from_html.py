@@ -1,5 +1,5 @@
 from pathlib import Path
-from gfeeds.util.download_manager import extract_feed_url_from_html
+from rilato.util.download_manager import extract_feed_url_from_html
 
 __HTML_BASE = '''
 <!DOCTYPE html>
@@ -24,15 +24,15 @@ def __mock(monkeypatch, html: str):
             fd.write(html)
 
     monkeypatch.setattr(
-        'gfeeds.util.download_manager.download_raw', mock_download_raw
+        'rilato.util.download_manager.download_raw', mock_download_raw
     )
 
     class MockConfManager:
         def __init__(self):
-            self.cache_path = Path('/tmp/org.gabmus.gfeeds.test/cache')
+            self.cache_path = Path('/tmp/org.gabmus.rilato.test/cache')
 
     monkeypatch.setattr(
-        'gfeeds.confManager.ConfManager', MockConfManager
+        'rilato.confManager.ConfManager', MockConfManager
     )
 
 

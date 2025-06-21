@@ -1,13 +1,13 @@
-# Hungarian translations for gfeeds package.
+# Hungarian translations for rilato package.
 # Copyright (C) 2021, 2022, 2023 Free Software Foundation, Inc.
-# This file is distributed under the same license as the gfeeds package.
+# This file is distributed under the same license as the rilato package.
 #
 # Meskó Balázs <mesko.balazs at fsf dot hu>, 2021, 2022.
 # Balázs Úr <ur.balazs at fsf dot hu>, 2022, 2023.
 msgid ""
 msgstr ""
-"Project-Id-Version: gfeeds master\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/gfeeds/issues\n"
+"Project-Id-Version: rilato master\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/rilato/issues\n"
 "POT-Creation-Date: 2023-03-26 11:12+0000\n"
 "PO-Revision-Date: 2023-07-26 01:00+0200\n"
 "Last-Translator: Balázs Úr <ur.balazs at fsf dot hu>\n"
@@ -19,15 +19,15 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Lokalize 23.04.1\n"
 
-#: data/org.gabmus.gfeeds.appdata.xml.in:4
+#: data/org.gabmus.rilato.appdata.xml.in:4
 msgid "Feeds"
 msgstr "Hírforrások"
 
-#: data/org.gabmus.gfeeds.appdata.xml.in:6 data/org.gabmus.gfeeds.desktop.in:7
+#: data/org.gabmus.rilato.appdata.xml.in:6 data/org.gabmus.rilato.desktop.in:7
 msgid "News reader for GNOME"
 msgstr "Hírolvasó a GNOME-hoz"
 
-#: data/org.gabmus.gfeeds.appdata.xml.in:15
+#: data/org.gabmus.rilato.appdata.xml.in:15
 msgid ""
 "Feeds is a minimal RSS/Atom feed reader built with speed and simplicity in "
 "mind."
@@ -35,7 +35,7 @@ msgstr ""
 "A Hírforrások egy minimális RSS/Atom hírolvasó, amely a sebességre és az "
 "egyszerűségre törekedve készült."
 
-#: data/org.gabmus.gfeeds.appdata.xml.in:16
+#: data/org.gabmus.rilato.appdata.xml.in:16
 msgid ""
 "It offers a simple user interface that only shows the latest news from your "
 "subscriptions."
@@ -43,7 +43,7 @@ msgstr ""
 "Egyszerű felhasználó felületet biztosít, amely csak a legfrissebb híreket "
 "jeleníti meg a feliratkozásai közül."
 
-#: data/org.gabmus.gfeeds.appdata.xml.in:17
+#: data/org.gabmus.rilato.appdata.xml.in:17
 msgid ""
 "Articles are shown in a web view by default, with javascript disabled for a "
 "faster and less intrusive user experience. There's also a reader mode "
@@ -54,12 +54,12 @@ msgstr ""
 "érdekében. Tartalmaz olvasó módot is, amely ugyanarra az összetevőre épül, "
 "mint amit a GNOME Web/Epiphany is használ."
 
-#: data/org.gabmus.gfeeds.appdata.xml.in:18
+#: data/org.gabmus.rilato.appdata.xml.in:18
 msgid "Feeds can be imported and exported via OPML."
 msgstr "A hírforrások OPML-ből importálhatók és abba exportálhatók."
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/org.gabmus.gfeeds.desktop.in:16
+#: data/org.gabmus.rilato.desktop.in:16
 msgid "rss;reader;feed;news;"
 msgstr "rss;olvasó;hírforrás;hírek;"
 
@@ -161,7 +161,7 @@ msgstr "Hibák találhatók"
 msgid "Offline"
 msgstr "Kapcsolat nélkül"
 
-#: data/ui/manage_feeds_headerbar.blp:7 gfeeds/manage_feeds_window.py:257
+#: data/ui/manage_feeds_headerbar.blp:7 rilato/manage_feeds_window.py:257
 msgid "Manage Feeds"
 msgstr "Hírforrások kezelése"
 
@@ -237,7 +237,7 @@ msgstr "Nagyítás"
 msgid "Back to Articles"
 msgstr "Vissza a cikkekhez"
 
-#: data/ui/shortcutsWindow.blp:9 gfeeds/preferences_window.py:24
+#: data/ui/shortcutsWindow.blp:9 rilato/preferences_window.py:24
 msgid "General"
 msgstr "Általános"
 
@@ -297,374 +297,374 @@ msgstr "Megjelölés olvasottként/olvasatlanként"
 msgid "Select an article"
 msgstr "Válasszon egy cikket"
 
-#: gfeeds/feed_item.py:62
+#: rilato/feed_item.py:62
 #, python-brace-format
 msgid "Error: unable to parse datetime {0} for feeditem {1}"
 msgstr "Hiba: a(z) {0} dátum nem dolgozható fel ennél a hírforráselemnél: {1}"
 
-#: gfeeds/feed_parser.py:61
+#: rilato/feed_parser.py:61
 #, python-brace-format
 msgid "Errors while parsing feed `{0}`, URL: `{1}`"
 msgstr "Hibák történtek a(z) „{0}” hírforrás feldolgozásakor, URL: „{1}”"
 
-#: gfeeds/feed_parser.py:75
+#: rilato/feed_parser.py:75
 #, python-brace-format
 msgid "Error decoding unicode data from feed `{0}`, URL: `{1}`"
 msgstr ""
 "Hiba a(z) „{0}” hírforrásból származó Unicode adatok dekódolásakor, URL: "
 "„{1}”"
 
-#: gfeeds/feed_parser.py:82
+#: rilato/feed_parser.py:82
 #, python-brace-format
 msgid "Error extracting data from feed `{0}`, URL: `{1}`"
 msgstr "Hiba a(z) „{0}” hírforrásból származó adatok kinyerésekor, URL: „{1}”"
 
-#: gfeeds/feed_parser.py:90
+#: rilato/feed_parser.py:90
 #, python-brace-format
 msgid "`{0}` may not be an RSS or Atom feed"
 msgstr "A(z) „{0}” lehet, hogy nem RSS vagy Atom hírforrás"
 
-#: gfeeds/feeds_manager.py:83
+#: rilato/feeds_manager.py:83
 #, python-brace-format
 msgid "Feed {0} exists already, skipping"
 msgstr "A(z) „{0}” hírforrás már létezik, kihagyás"
 
-#: gfeeds/feeds_view.py:13
+#: rilato/feeds_view.py:13
 msgid "All feeds"
 msgstr "Összes hírforrás"
 
-#: gfeeds/headerbar.py:197
+#: rilato/headerbar.py:197
 msgid "There were problems with some feeds. Do you want to remove them?"
 msgstr "Problémák voltak egyes hírforrásokkal. Szeretné eltávolítani azokat?"
 
-#: gfeeds/headerbar.py:202
+#: rilato/headerbar.py:202
 msgid "_Keep"
 msgstr "_Megtartás"
 
-#: gfeeds/headerbar.py:204
+#: rilato/headerbar.py:204
 msgid "_Remove"
 msgstr "_Eltávolítás"
 
-#: gfeeds/main_leaflet.py:114
+#: rilato/main_leaflet.py:114
 #, python-brace-format
 msgid "{0} new article"
 msgid_plural "{0} new articles"
 msgstr[0] "{0} új cikk"
 msgstr[1] "{0} új cikk"
 
-#: gfeeds/__main__.py:232
+#: rilato/__main__.py:232
 msgid "Do you want to import these feeds?"
 msgstr "Szeretné importálni ezeket a hírforrásokat?"
 
-#: gfeeds/__main__.py:239 gfeeds/__main__.py:273
-#: gfeeds/manage_feeds_window.py:324
+#: rilato/__main__.py:239 rilato/__main__.py:273
+#: rilato/manage_feeds_window.py:324
 msgid "_Cancel"
 msgstr "_Mégse"
 
-#: gfeeds/__main__.py:242 gfeeds/__main__.py:276
+#: rilato/__main__.py:242 rilato/__main__.py:276
 msgid "_Import"
 msgstr "_Importálás"
 
-#: gfeeds/__main__.py:269
+#: rilato/__main__.py:269
 msgid "Do you want to import this feed?"
 msgstr "Szeretné importálni ezt a hírforrást?"
 
-#: gfeeds/__main__.py:301
+#: rilato/__main__.py:301
 msgid "url"
 msgstr "URL"
 
-#: gfeeds/__main__.py:304
+#: rilato/__main__.py:304
 msgid "opml file local url or rss remote url to import"
 msgstr "importálandó helyi OPML-fájl vagy távoli RSS URL"
 
-#: gfeeds/manage_feeds_window.py:321
+#: rilato/manage_feeds_window.py:321
 msgid "Do you want to delete these feeds?"
 msgstr "Szeretné törölni ezeket a hírforrásokat?"
 
-#: gfeeds/manage_feeds_window.py:326
+#: rilato/manage_feeds_window.py:326
 msgid "_Delete"
 msgstr "_Törlés"
 
-#: gfeeds/opml_file_chooser.py:7
+#: rilato/opml_file_chooser.py:7
 msgid "XML files"
 msgstr "XML-fájlok"
 
-#: gfeeds/opml_file_chooser.py:14
+#: rilato/opml_file_chooser.py:14
 msgid "Choose an OPML file to import"
 msgstr "Válassza ki az importálandó OPML-fájlt"
 
-#: gfeeds/opml_file_chooser.py:18
+#: rilato/opml_file_chooser.py:18
 msgid "Open"
 msgstr "Megnyitás"
 
-#: gfeeds/opml_file_chooser.py:19 gfeeds/opml_file_chooser.py:31
+#: rilato/opml_file_chooser.py:19 rilato/opml_file_chooser.py:31
 msgid "Cancel"
 msgstr "Mégse"
 
-#: gfeeds/opml_file_chooser.py:26
+#: rilato/opml_file_chooser.py:26
 msgid "Choose where to save the exported OPML file"
 msgstr "Válassza ki, hogy hová mentse az exportálandó OPML-fájlt"
 
-#: gfeeds/opml_file_chooser.py:30
+#: rilato/opml_file_chooser.py:30
 msgid "Save"
 msgstr "Mentés"
 
-#: gfeeds/preferences_window.py:27
+#: rilato/preferences_window.py:27
 msgid "General preferences"
 msgstr "Általános beállítások"
 
-#: gfeeds/preferences_window.py:29
+#: rilato/preferences_window.py:29
 msgid "Show newer articles first"
 msgstr "Újabb cikkek megjelenítése elsőként"
 
-#: gfeeds/preferences_window.py:34
+#: rilato/preferences_window.py:34
 msgid "Open links in your browser"
 msgstr "Hivatkozások megnyitása böngészőben"
 
-#: gfeeds/preferences_window.py:38
+#: rilato/preferences_window.py:38
 msgid "Use external video player for YouTube"
 msgstr "Külső videólejátszó használata a YouTube-hoz"
 
-#: gfeeds/preferences_window.py:40
+#: rilato/preferences_window.py:40
 msgid "Requires youtube-dl and a compatible video player"
 msgstr "A youtube-dl és egy kompatibilis videólejátszó meglétét igényli"
 
-#: gfeeds/preferences_window.py:46
+#: rilato/preferences_window.py:46
 msgid "Preferred video player"
 msgstr "Előnyben részesített videólejátszó"
 
-#: gfeeds/preferences_window.py:50
+#: rilato/preferences_window.py:50
 msgid "Maximum article age"
 msgstr "Cikkek legnagyobb életkora"
 
-#: gfeeds/preferences_window.py:51
+#: rilato/preferences_window.py:51
 msgid "In days"
 msgstr "Napokban"
 
-#: gfeeds/preferences_window.py:58
+#: rilato/preferences_window.py:58
 msgid "Refresh preferences"
 msgstr "Beállítások frissítése"
 
-#: gfeeds/preferences_window.py:60
+#: rilato/preferences_window.py:60
 msgid "Refresh articles on startup"
 msgstr "Cikkek frissítése indításkor"
 
-#: gfeeds/preferences_window.py:64
+#: rilato/preferences_window.py:64
 msgid "New articles notification"
 msgstr "Új cikkek értesítés"
 
-#: gfeeds/preferences_window.py:68
+#: rilato/preferences_window.py:68
 msgid "Enable auto-refresh"
 msgstr "Automatikus frissítés engedélyezése"
 
-#: gfeeds/preferences_window.py:72
+#: rilato/preferences_window.py:72
 msgid "Auto-refresh interval"
 msgstr "Automatikus frissítés időköze"
 
-#: gfeeds/preferences_window.py:73
+#: rilato/preferences_window.py:73
 msgid "In seconds"
 msgstr "Másodpercben"
 
-#: gfeeds/preferences_window.py:80
+#: rilato/preferences_window.py:80
 msgid "Cache"
 msgstr "Gyorsítótár"
 
-#: gfeeds/preferences_window.py:82
+#: rilato/preferences_window.py:82
 msgid "Clear caches"
 msgstr "Gyorsítótárak törlése"
 
-#: gfeeds/preferences_window.py:83
+#: rilato/preferences_window.py:83
 msgid "Clear"
 msgstr "Törlés"
 
-#: gfeeds/preferences_window.py:109
+#: rilato/preferences_window.py:109
 msgid "Appearance"
 msgstr "Megjelenés"
 
-#: gfeeds/preferences_window.py:112
+#: rilato/preferences_window.py:112
 msgid "Appearance preferences"
 msgstr "Megjelenési beállítások"
 
-#: gfeeds/preferences_window.py:114
+#: rilato/preferences_window.py:114
 msgid "Dark mode"
 msgstr "Sötét mód"
 
-#: gfeeds/preferences_window.py:118
+#: rilato/preferences_window.py:118
 msgid "Reader mode theme"
 msgstr "Olvasó mód témája"
 
-#: gfeeds/preferences_window.py:122
+#: rilato/preferences_window.py:122
 msgid "Automatic"
 msgstr "Automatikus"
 
-#: gfeeds/preferences_window.py:122
+#: rilato/preferences_window.py:122
 msgid "Light"
 msgstr "Világos"
 
-#: gfeeds/preferences_window.py:122
+#: rilato/preferences_window.py:122
 msgid "Dark"
 msgstr "Sötét"
 
-#: gfeeds/preferences_window.py:126
+#: rilato/preferences_window.py:126
 msgid "Show article thumbnails"
 msgstr "Cikkek bélyegképeinek megjelenítése"
 
-#: gfeeds/preferences_window.py:131
+#: rilato/preferences_window.py:131
 msgid "Show full articles titles"
 msgstr "Teljes cikkcímek megjelenítése"
 
-#: gfeeds/preferences_window.py:136
+#: rilato/preferences_window.py:136
 msgid "Show full feeds names"
 msgstr "Teljes hírforrásnevek megjelenítése"
 
-#: gfeeds/preferences_window.py:143
+#: rilato/preferences_window.py:143
 msgid "Font preferences"
 msgstr "Betűkészlet beállításai"
 
-#: gfeeds/preferences_window.py:145
+#: rilato/preferences_window.py:145
 msgid "Use system font for titles"
 msgstr "Rendszer betűkészletének használata a címeknél"
 
-#: gfeeds/preferences_window.py:149
+#: rilato/preferences_window.py:149
 msgid "Use system font for paragraphs"
 msgstr "Rendszer betűkészletének használata a bekezdéseknél"
 
-#: gfeeds/preferences_window.py:153
+#: rilato/preferences_window.py:153
 msgid "Custom title font"
 msgstr "Egyéni betűkészlet a címhez"
 
-#: gfeeds/preferences_window.py:157
+#: rilato/preferences_window.py:157
 msgid "Custom paragraph font"
 msgstr "Egyéni betűkészlet a bekezdéshez"
 
-#: gfeeds/preferences_window.py:161
+#: rilato/preferences_window.py:161
 msgid "Custom monospace font"
 msgstr "Egyéni rögzített szélességű betűkészlet"
 
-#: gfeeds/preferences_window.py:173
+#: rilato/preferences_window.py:173
 msgid "Privacy"
 msgstr "Adatvédelem"
 
-#: gfeeds/preferences_window.py:177
+#: rilato/preferences_window.py:177
 msgid "Privacy preferences"
 msgstr "Adatvédelmi beállítások"
 
-#: gfeeds/preferences_window.py:179
+#: rilato/preferences_window.py:179
 msgid "Enable JavaScript"
 msgstr "JavaScript engedélyezése"
 
-#: gfeeds/preferences_window.py:184
+#: rilato/preferences_window.py:184
 msgid "Try to block advertisements"
 msgstr "Hirdetések tiltásának kísérlete"
 
-#: gfeeds/preferences_window.py:186 gfeeds/preferences_window.py:221
+#: rilato/preferences_window.py:186 rilato/preferences_window.py:221
 msgid "Requires app restart"
 msgstr "Az alkalmazás újraindítását igényli"
 
-#: gfeeds/preferences_window.py:190
+#: rilato/preferences_window.py:190
 msgid "Update advertisement blocking list"
 msgstr "Hirdetések tiltólistájának frissítése"
 
-#: gfeeds/preferences_window.py:191
+#: rilato/preferences_window.py:191
 msgid "Updates automatically every 10 days"
 msgstr "Automatikusan frissíti 10 naponként"
 
-#: gfeeds/preferences_window.py:192
+#: rilato/preferences_window.py:192
 msgid "Update"
 msgstr "Frissítés"
 
-#: gfeeds/preferences_window.py:205
+#: rilato/preferences_window.py:205
 msgid "Advanced"
 msgstr "Speciális"
 
-#: gfeeds/preferences_window.py:208
+#: rilato/preferences_window.py:208
 msgid "Advanced preferences"
 msgstr "Speciális beállítások"
 
-#: gfeeds/preferences_window.py:210
+#: rilato/preferences_window.py:210
 msgid "Maximum refresh threads"
 msgstr "Frissítési szálak legnagyobb száma"
 
-#: gfeeds/preferences_window.py:212
+#: rilato/preferences_window.py:212
 msgid "How many threads to use for feeds refresh"
 msgstr "Hány szálat használjon a hírforrások frissítéséhez"
 
-#: gfeeds/preferences_window.py:219
+#: rilato/preferences_window.py:219
 msgid "Experimental GtkListView for articles list"
 msgstr "Kísérleti GtkListView a cikkek listájához"
 
-#: gfeeds/preferences_window.py:227
+#: rilato/preferences_window.py:227
 msgid "Troubleshooting"
 msgstr "Hibaelhárítás"
 
-#: gfeeds/preferences_window.py:229
+#: rilato/preferences_window.py:229
 msgid "Export Configuration as JSON"
 msgstr "Beállítások exportálása JSON-ként"
 
-#: gfeeds/preferences_window.py:230
+#: rilato/preferences_window.py:230
 msgid "Attach this when reporting bugs"
 msgstr "Ennek csatolása a hibák jelentésekor"
 
-#: gfeeds/preferences_window.py:231
+#: rilato/preferences_window.py:231
 msgid "Export"
 msgstr "Exportálás"
 
 #. type: ignore
-#: gfeeds/preferences_window.py:244
+#: rilato/preferences_window.py:244
 msgid "Feeds Configuration"
 msgstr "Hírforrások beállításai"
 
-#: gfeeds/preferences_window.py:248
+#: rilato/preferences_window.py:248
 msgid "_Close"
 msgstr "_Bezárás"
 
-#: gfeeds/preferences_window.py:251
+#: rilato/preferences_window.py:251
 msgid "Cop_y"
 msgstr "_Másolás"
 
-#: gfeeds/util/build_reader_html.py:104
+#: rilato/util/build_reader_html.py:104
 #, python-brace-format
 msgid "Author: <a href=\"{0}\">{1}</a>"
 msgstr "Szerző: <a href=\"{0}\">{1}</a>"
 
-#: gfeeds/util/build_reader_html.py:108
+#: rilato/util/build_reader_html.py:108
 #, python-brace-format
 msgid "Author: {0}"
 msgstr "Szerző: {0}"
 
-#: gfeeds/util/download_manager.py:112
+#: rilato/util/download_manager.py:112
 #, python-brace-format
 msgid "`{0}`: connection timed out"
 msgstr "„{0}”: időtúllépés a kapcsolatban"
 
-#: gfeeds/util/download_manager.py:121
+#: rilato/util/download_manager.py:121
 #, python-brace-format
 msgid "`{0}` might not be a valid address"
 msgstr "A „{0}” lehet, hogy nem érvényes cím"
 
-#: gfeeds/util/download_manager.py:161
+#: rilato/util/download_manager.py:161
 #, python-brace-format
 msgid "Error downloading `{0}`, code `{1}`"
 msgstr "Hiba a(z) „{0}” letöltésekor, kód: „{1}”"
 
-#: gfeeds/util/get_favicon.py:48
+#: rilato/util/get_favicon.py:48
 #, python-brace-format
 msgid "Error downloading favicon for `{0}`"
 msgstr "Hiba a(z) „{0}” böngészőikonjának letöltésekor"
 
-#: gfeeds/util/opml_parser.py:33
+#: rilato/util/opml_parser.py:33
 msgid "Error: OPML path provided does not exist"
 msgstr "Hiba: A megadott OPML útvonal nem létezik"
 
-#: gfeeds/util/opml_parser.py:44
+#: rilato/util/opml_parser.py:44
 #, python-brace-format
 msgid "Error parsing OPML file `{0}`"
 msgstr "Hiba a(z) „{0}” OPML-fájl feldolgozásakor"
 
-#: gfeeds/webview.py:200
+#: rilato/webview.py:200
 msgid "Link copied to clipboard!"
 msgstr "Hivatkozás a vágólapra másolva!"
 
-#: gfeeds/webview.py:222
+#: rilato/webview.py:222
 msgid "Feed content not available for this article"
 msgstr "Nem érhető el hírforrástartalom ennél a cikknél"

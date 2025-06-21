@@ -1,12 +1,12 @@
-# Georgian translation for gfeeds.
-# Copyright (C) 2024 gfeeds's COPYRIGHT HOLDER
-# This file is distributed under the same license as the gfeeds package.
+# Georgian translation for rilato.
+# Copyright (C) 2024 rilato's COPYRIGHT HOLDER
+# This file is distributed under the same license as the rilato package.
 # Ekaterine Papava <papava.e@gtu.ge>, 2024-2025.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gfeeds master\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/gfeeds/issues\n"
+"Project-Id-Version: rilato master\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/rilato/issues\n"
 "POT-Creation-Date: 2024-03-22 04:18+0000\n"
 "PO-Revision-Date: 2025-02-25 07:48+0100\n"
 "Last-Translator: Ekaterine Papava <papava.e@gtu.ge>\n"
@@ -18,15 +18,15 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Poedit 3.5\n"
 
-#: data/org.gabmus.gfeeds.appdata.xml.in:4
+#: data/org.gabmus.rilato.appdata.xml.in:4
 msgid "Feeds"
 msgstr "ლენტები"
 
-#: data/org.gabmus.gfeeds.appdata.xml.in:6 data/org.gabmus.gfeeds.desktop.in:7
+#: data/org.gabmus.rilato.appdata.xml.in:6 data/org.gabmus.rilato.desktop.in:7
 msgid "News reader for GNOME"
 msgstr "სიახლეების მკითხველი GNOME-სთვის"
 
-#: data/org.gabmus.gfeeds.appdata.xml.in:15
+#: data/org.gabmus.rilato.appdata.xml.in:15
 msgid ""
 "Feeds is a minimal RSS/Atom feed reader built with speed and simplicity in "
 "mind."
@@ -34,7 +34,7 @@ msgstr ""
 "Feeds მინიმალური RSS/Atom ლენტის წამკითხველი, რომელიც აგებულია სიჩქარისა და "
 "სიმარტივისთვის."
 
-#: data/org.gabmus.gfeeds.appdata.xml.in:16
+#: data/org.gabmus.rilato.appdata.xml.in:16
 msgid ""
 "It offers a simple user interface that only shows the latest news from your "
 "subscriptions."
@@ -42,7 +42,7 @@ msgstr ""
 "გთავაზობთ მარტივ მომხმარებლის ინტერფეისს, რომელიც, მხოლოდ, უახლეს სიახლეებს "
 "გაჩვენებთ თქვენი გამოწერილი ლენტებიდან."
 
-#: data/org.gabmus.gfeeds.appdata.xml.in:17
+#: data/org.gabmus.rilato.appdata.xml.in:17
 msgid ""
 "Articles are shown in a web view by default, with javascript disabled for a "
 "faster and less intrusive user experience. There's also a reader mode "
@@ -52,12 +52,12 @@ msgstr ""
 "მომხმარებლის უფრო სწრაფი და ნაკლებად ინტრუზიული გამოცდილებისთვის. ასევე "
 "შედის მკითხველის რეჟიმი, რომელიც აგებულია GNOME Web/Epiphany– დან."
 
-#: data/org.gabmus.gfeeds.appdata.xml.in:18
+#: data/org.gabmus.rilato.appdata.xml.in:18
 msgid "Feeds can be imported and exported via OPML."
 msgstr "ლენტები შეიძლება შემოტანილი და გატანილი იყოს OPML-ით."
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/org.gabmus.gfeeds.desktop.in:16
+#: data/org.gabmus.rilato.desktop.in:16
 msgid "rss;reader;feed;news;"
 msgstr "rss;reader;feed;news;სიახლეები;ლენტა;წაკითხვა;"
 
@@ -157,7 +157,7 @@ msgstr "აღმოჩენილია შეცდომები"
 msgid "Offline"
 msgstr "გათიშული"
 
-#: data/ui/manage_feeds_headerbar.blp:7 gfeeds/manage_feeds_window.py:257
+#: data/ui/manage_feeds_headerbar.blp:7 rilato/manage_feeds_window.py:257
 msgid "Manage Feeds"
 msgstr "ლენტების მართვა"
 
@@ -233,7 +233,7 @@ msgstr "გადიდება"
 msgid "Back to Articles"
 msgstr "სტატიებზე დაბრუნება"
 
-#: data/ui/shortcutsWindow.blp:9 gfeeds/preferences_window.py:24
+#: data/ui/shortcutsWindow.blp:9 rilato/preferences_window.py:24
 msgid "General"
 msgstr "ზოგადი"
 
@@ -293,372 +293,372 @@ msgstr "წაითხულად/წაუკითხავად მონ�
 msgid "Select an article"
 msgstr "აირჩიეთ სტატია"
 
-#: gfeeds/feed_item.py:62
+#: rilato/feed_item.py:62
 #, python-brace-format
 msgid "Error: unable to parse datetime {0} for feeditem {1}"
 msgstr "შეცდომა: ვერ დავამუშავე თარიღი და დრო {0} ლენტის ელემენტისთვის {1}"
 
-#: gfeeds/feed_parser.py:61
+#: rilato/feed_parser.py:61
 #, python-brace-format
 msgid "Errors while parsing feed `{0}`, URL: `{1}`"
 msgstr "დამუშავების შეცდომა ლენტისთვის '{0}', ბმული: ''{1}"
 
-#: gfeeds/feed_parser.py:75
+#: rilato/feed_parser.py:75
 #, python-brace-format
 msgid "Error decoding unicode data from feed `{0}`, URL: `{1}`"
 msgstr ""
 "დეკოდირების შეცდომა უნიკოდის მონაცემებისთვის ლენტიდან '{0}' ბმული: '{1}'"
 
-#: gfeeds/feed_parser.py:82
+#: rilato/feed_parser.py:82
 #, python-brace-format
 msgid "Error extracting data from feed `{0}`, URL: `{1}`"
 msgstr "შეცდომა მონაცემების გამოღებისას ლენტიდან '{0}', URL: '{1}'"
 
-#: gfeeds/feed_parser.py:90
+#: rilato/feed_parser.py:90
 #, python-brace-format
 msgid "`{0}` may not be an RSS or Atom feed"
 msgstr "'{0}' შეიძლება, RSS ან ატომური ლენტა არ იყოს"
 
-#: gfeeds/feeds_manager.py:83
+#: rilato/feeds_manager.py:83
 #, python-brace-format
 msgid "Feed {0} exists already, skipping"
 msgstr "ლენტა {0} უკვე არსებობს. გამოტოვება"
 
-#: gfeeds/feeds_view.py:13
+#: rilato/feeds_view.py:13
 msgid "All feeds"
 msgstr "ყველა ლენტა"
 
-#: gfeeds/headerbar.py:197
+#: rilato/headerbar.py:197
 msgid "There were problems with some feeds. Do you want to remove them?"
 msgstr "აღმოჩენილია პრობლემები რამდენიმე ლენტასთან. გნებავთ მათი წაშლა?"
 
-#: gfeeds/headerbar.py:202
+#: rilato/headerbar.py:202
 msgid "_Keep"
 msgstr "დატოვება"
 
-#: gfeeds/headerbar.py:204
+#: rilato/headerbar.py:204
 msgid "_Remove"
 msgstr "_წაშლა"
 
-#: gfeeds/main_leaflet.py:114
+#: rilato/main_leaflet.py:114
 #, python-brace-format
 msgid "{0} new article"
 msgid_plural "{0} new articles"
 msgstr[0] "{0} ახალი სტატია"
 
-#: gfeeds/__main__.py:232
+#: rilato/__main__.py:232
 msgid "Do you want to import these feeds?"
 msgstr "გნებავთ ამ ლენტების შემოტანა?"
 
-#: gfeeds/__main__.py:239 gfeeds/__main__.py:273
-#: gfeeds/manage_feeds_window.py:324
+#: rilato/__main__.py:239 rilato/__main__.py:273
+#: rilato/manage_feeds_window.py:324
 msgid "_Cancel"
 msgstr "_გაუქმება"
 
-#: gfeeds/__main__.py:242 gfeeds/__main__.py:276
+#: rilato/__main__.py:242 rilato/__main__.py:276
 msgid "_Import"
 msgstr "_შემოტანა"
 
-#: gfeeds/__main__.py:269
+#: rilato/__main__.py:269
 msgid "Do you want to import this feed?"
 msgstr "გნებავთ ამ ლენტის შემოტანა?"
 
-#: gfeeds/__main__.py:301
+#: rilato/__main__.py:301
 msgid "url"
 msgstr "url"
 
-#: gfeeds/__main__.py:304
+#: rilato/__main__.py:304
 msgid "opml file local url or rss remote url to import"
 msgstr "opml ფაილის ლოკალური ბმული ან rss დაშორებული ბმული, შემოსატანად"
 
-#: gfeeds/manage_feeds_window.py:321
+#: rilato/manage_feeds_window.py:321
 msgid "Do you want to delete these feeds?"
 msgstr "გნებავთ ამ ლენტების წაშლა?"
 
-#: gfeeds/manage_feeds_window.py:326
+#: rilato/manage_feeds_window.py:326
 msgid "_Delete"
 msgstr "_წაშლა"
 
-#: gfeeds/opml_file_chooser.py:7
+#: rilato/opml_file_chooser.py:7
 msgid "XML files"
 msgstr "XML ფაილები"
 
-#: gfeeds/opml_file_chooser.py:14
+#: rilato/opml_file_chooser.py:14
 msgid "Choose an OPML file to import"
 msgstr "აირჩიეთ შემოსატანი OPML ფაილი"
 
-#: gfeeds/opml_file_chooser.py:18
+#: rilato/opml_file_chooser.py:18
 msgid "Open"
 msgstr "გახსნა"
 
-#: gfeeds/opml_file_chooser.py:19 gfeeds/opml_file_chooser.py:31
+#: rilato/opml_file_chooser.py:19 rilato/opml_file_chooser.py:31
 msgid "Cancel"
 msgstr "გაუქმება"
 
-#: gfeeds/opml_file_chooser.py:26
+#: rilato/opml_file_chooser.py:26
 msgid "Choose where to save the exported OPML file"
 msgstr "აირჩიეთ, სად ჩავწერო გატანილი OPML ფაილი"
 
-#: gfeeds/opml_file_chooser.py:30
+#: rilato/opml_file_chooser.py:30
 msgid "Save"
 msgstr "შენახვა"
 
-#: gfeeds/preferences_window.py:27
+#: rilato/preferences_window.py:27
 msgid "General preferences"
 msgstr "საერთო პარამეტრები"
 
-#: gfeeds/preferences_window.py:29
+#: rilato/preferences_window.py:29
 msgid "Show newer articles first"
 msgstr "ჯერ ახალი სტატიები მაჩვენე"
 
-#: gfeeds/preferences_window.py:34
+#: rilato/preferences_window.py:34
 msgid "Open links in your browser"
 msgstr "ბმულების გახსნა თქვენს ბრაუზერში"
 
-#: gfeeds/preferences_window.py:38
+#: rilato/preferences_window.py:38
 msgid "Use external video player for YouTube"
 msgstr "YouTube-სთვის გარე ვიდეოდამკვრელის გამოყენება"
 
-#: gfeeds/preferences_window.py:40
+#: rilato/preferences_window.py:40
 msgid "Requires youtube-dl and a compatible video player"
 msgstr "სჭირდება youtube-dl და თავსებადი ვიდეოდამკვრელი"
 
-#: gfeeds/preferences_window.py:46
+#: rilato/preferences_window.py:46
 msgid "Preferred video player"
 msgstr "სასურველი ვიდეოდამკვრელი"
 
-#: gfeeds/preferences_window.py:50
+#: rilato/preferences_window.py:50
 msgid "Maximum article age"
 msgstr "მაქსიმალური სტატიის ასაკი"
 
-#: gfeeds/preferences_window.py:51
+#: rilato/preferences_window.py:51
 msgid "In days"
 msgstr "დღეში"
 
-#: gfeeds/preferences_window.py:58
+#: rilato/preferences_window.py:58
 msgid "Refresh preferences"
 msgstr "პარამეტრების განახლება"
 
-#: gfeeds/preferences_window.py:60
+#: rilato/preferences_window.py:60
 msgid "Refresh articles on startup"
 msgstr "სტატიების განახლება გაშვებისას"
 
-#: gfeeds/preferences_window.py:64
+#: rilato/preferences_window.py:64
 msgid "New articles notification"
 msgstr "ახალი სტატიების გაფრთხილება"
 
-#: gfeeds/preferences_window.py:68
+#: rilato/preferences_window.py:68
 msgid "Enable auto-refresh"
 msgstr "ავტომატური განახლების ჩართვა"
 
-#: gfeeds/preferences_window.py:72
+#: rilato/preferences_window.py:72
 msgid "Auto-refresh interval"
 msgstr "ავტომატური განახლების ინტერვალი"
 
-#: gfeeds/preferences_window.py:73
+#: rilato/preferences_window.py:73
 msgid "In seconds"
 msgstr "წამებში"
 
-#: gfeeds/preferences_window.py:80
+#: rilato/preferences_window.py:80
 msgid "Cache"
 msgstr "კეში"
 
-#: gfeeds/preferences_window.py:82
+#: rilato/preferences_window.py:82
 msgid "Clear caches"
 msgstr "კეშის გასუფთავება"
 
-#: gfeeds/preferences_window.py:83
+#: rilato/preferences_window.py:83
 msgid "Clear"
 msgstr "გაწმენდა"
 
-#: gfeeds/preferences_window.py:109
+#: rilato/preferences_window.py:109
 msgid "Appearance"
 msgstr "გარეგნობა"
 
-#: gfeeds/preferences_window.py:112
+#: rilato/preferences_window.py:112
 msgid "Appearance preferences"
 msgstr "გარეგნობის მორგება"
 
-#: gfeeds/preferences_window.py:114
+#: rilato/preferences_window.py:114
 msgid "Dark mode"
 msgstr "მუქი რეჟიმი"
 
-#: gfeeds/preferences_window.py:118
+#: rilato/preferences_window.py:118
 msgid "Reader mode theme"
 msgstr "კითხვის რეჟიმის თემა"
 
-#: gfeeds/preferences_window.py:122
+#: rilato/preferences_window.py:122
 msgid "Automatic"
 msgstr "ავტომატური"
 
-#: gfeeds/preferences_window.py:122
+#: rilato/preferences_window.py:122
 msgid "Light"
 msgstr "მსუბუქი"
 
-#: gfeeds/preferences_window.py:122
+#: rilato/preferences_window.py:122
 msgid "Dark"
 msgstr "ბნელი"
 
-#: gfeeds/preferences_window.py:126
+#: rilato/preferences_window.py:126
 msgid "Show article thumbnails"
 msgstr "სტატიის მინიატურების ჩვენება"
 
-#: gfeeds/preferences_window.py:131
+#: rilato/preferences_window.py:131
 msgid "Show full articles titles"
 msgstr "სრული სტატიის სათაურების ჩვენება"
 
-#: gfeeds/preferences_window.py:136
+#: rilato/preferences_window.py:136
 msgid "Show full feeds names"
 msgstr "სრული სტატიის სახელების ჩვენება"
 
-#: gfeeds/preferences_window.py:143
+#: rilato/preferences_window.py:143
 msgid "Font preferences"
 msgstr "ფონტების მორგება"
 
-#: gfeeds/preferences_window.py:145
+#: rilato/preferences_window.py:145
 msgid "Use system font for titles"
 msgstr "სისტემური ფონტის გამოყენება სათაურებისთვის"
 
-#: gfeeds/preferences_window.py:149
+#: rilato/preferences_window.py:149
 msgid "Use system font for paragraphs"
 msgstr "სისტემური ფონტის გამოყენება აბზაცებისთვის"
 
-#: gfeeds/preferences_window.py:153
+#: rilato/preferences_window.py:153
 msgid "Custom title font"
 msgstr "მომხმარებლის სათაურის ფონტი"
 
-#: gfeeds/preferences_window.py:157
+#: rilato/preferences_window.py:157
 msgid "Custom paragraph font"
 msgstr "მომხმარებლის აბზაცის ფონტი"
 
-#: gfeeds/preferences_window.py:161
+#: rilato/preferences_window.py:161
 msgid "Custom monospace font"
 msgstr "ერთსიგანიან ფონტის ხელით მითითება"
 
-#: gfeeds/preferences_window.py:173
+#: rilato/preferences_window.py:173
 msgid "Privacy"
 msgstr "პირადი ინფორმაცია"
 
-#: gfeeds/preferences_window.py:177
+#: rilato/preferences_window.py:177
 msgid "Privacy preferences"
 msgstr "კონფიდენციალობის მორგება"
 
-#: gfeeds/preferences_window.py:179
+#: rilato/preferences_window.py:179
 msgid "Enable JavaScript"
 msgstr "JavaScript-ის ჩართვა"
 
-#: gfeeds/preferences_window.py:184
+#: rilato/preferences_window.py:184
 msgid "Try to block advertisements"
 msgstr "რეკლამის დაბლოკვის ცდა"
 
-#: gfeeds/preferences_window.py:186 gfeeds/preferences_window.py:221
+#: rilato/preferences_window.py:186 rilato/preferences_window.py:221
 msgid "Requires app restart"
 msgstr "ესაჭიროება აპის რესტარტი"
 
-#: gfeeds/preferences_window.py:190
+#: rilato/preferences_window.py:190
 msgid "Update advertisement blocking list"
 msgstr "რეკლამის დაბლოკვის სიის განახლება"
 
-#: gfeeds/preferences_window.py:191
+#: rilato/preferences_window.py:191
 msgid "Updates automatically every 10 days"
 msgstr "განახლდება ავტომატურად ყოველ 10 დღეში"
 
-#: gfeeds/preferences_window.py:192
+#: rilato/preferences_window.py:192
 msgid "Update"
 msgstr "განახლება"
 
-#: gfeeds/preferences_window.py:205
+#: rilato/preferences_window.py:205
 msgid "Advanced"
 msgstr "დაწინაურებული"
 
-#: gfeeds/preferences_window.py:208
+#: rilato/preferences_window.py:208
 msgid "Advanced preferences"
 msgstr "დამატებითი პარამეტრები"
 
-#: gfeeds/preferences_window.py:210
+#: rilato/preferences_window.py:210
 msgid "Maximum refresh threads"
 msgstr "მაქსიმალური განახლების ნაკადები"
 
-#: gfeeds/preferences_window.py:212
+#: rilato/preferences_window.py:212
 msgid "How many threads to use for feeds refresh"
 msgstr "რამენი ნაკადი გამოიყენება ლენტების განახლებისას"
 
-#: gfeeds/preferences_window.py:219
+#: rilato/preferences_window.py:219
 msgid "Experimental GtkListView for articles list"
 msgstr "ექსპერიმენტული GtkListView ლენტების სიისთვის"
 
-#: gfeeds/preferences_window.py:227
+#: rilato/preferences_window.py:227
 msgid "Troubleshooting"
 msgstr "პრობლემების გადაჭრა"
 
-#: gfeeds/preferences_window.py:229
+#: rilato/preferences_window.py:229
 msgid "Export Configuration as JSON"
 msgstr "კონფიგურაციის გატანა JSON-ში"
 
-#: gfeeds/preferences_window.py:230
+#: rilato/preferences_window.py:230
 msgid "Attach this when reporting bugs"
 msgstr "მიამაგრეთ ეს შეცდომების ანგარიშის გაგზავნისას"
 
-#: gfeeds/preferences_window.py:231
+#: rilato/preferences_window.py:231
 msgid "Export"
 msgstr "გატანა"
 
 #. type: ignore
-#: gfeeds/preferences_window.py:244
+#: rilato/preferences_window.py:244
 msgid "Feeds Configuration"
 msgstr "ლენტების მორგება"
 
-#: gfeeds/preferences_window.py:248
+#: rilato/preferences_window.py:248
 msgid "_Close"
 msgstr "_დახურვა"
 
-#: gfeeds/preferences_window.py:251
+#: rilato/preferences_window.py:251
 msgid "Cop_y"
 msgstr "_კოპირება"
 
-#: gfeeds/util/build_reader_html.py:104
+#: rilato/util/build_reader_html.py:104
 #, python-brace-format
 msgid "Author: <a href=\"{0}\">{1}</a>"
 msgstr "ავტორი: <a href=\"{0}\">{1}</a>"
 
-#: gfeeds/util/build_reader_html.py:108
+#: rilato/util/build_reader_html.py:108
 #, python-brace-format
 msgid "Author: {0}"
 msgstr "ავტორი: {0}"
 
-#: gfeeds/util/download_manager.py:112
+#: rilato/util/download_manager.py:112
 #, python-brace-format
 msgid "`{0}`: connection timed out"
 msgstr "`{0}`: მიერთების მოლოდინის ვადა ამოიწურა"
 
-#: gfeeds/util/download_manager.py:121
+#: rilato/util/download_manager.py:121
 #, python-brace-format
 msgid "`{0}` might not be a valid address"
 msgstr "`{0}` შეიძლება არასწორი მისამართია"
 
-#: gfeeds/util/download_manager.py:161
+#: rilato/util/download_manager.py:161
 #, python-brace-format
 msgid "Error downloading `{0}`, code `{1}`"
 msgstr "'{0}'-ის გადმოწერის შეცდომა. კოდი '{1}"
 
-#: gfeeds/util/get_favicon.py:48
+#: rilato/util/get_favicon.py:48
 #, python-brace-format
 msgid "Error downloading favicon for `{0}`"
 msgstr "Favicon-ის გადმოწერის შეცდომა '{0}'-სთვის"
 
-#: gfeeds/util/opml_parser.py:33
+#: rilato/util/opml_parser.py:33
 msgid "Error: OPML path provided does not exist"
 msgstr "შეცდომა: მოწოდებული OPML ბილიკი არ არსებობს"
 
-#: gfeeds/util/opml_parser.py:44
+#: rilato/util/opml_parser.py:44
 #, python-brace-format
 msgid "Error parsing OPML file `{0}`"
 msgstr "OPML ფაილის '{0}' დამუშავების შეცდომა"
 
-#: gfeeds/webview.py:200
+#: rilato/webview.py:200
 msgid "Link copied to clipboard!"
 msgstr "ბმული დაკოპირდა გაცვლის ბუფერში!"
 
-#: gfeeds/webview.py:222
+#: rilato/webview.py:222
 msgid "Feed content not available for this article"
 msgstr "ლენტის შემცველობა ამ სტატიისთვის ხელმისაწვდომი არაა"

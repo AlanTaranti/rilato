@@ -1,11 +1,11 @@
 from pathlib import Path
 from .sample_rss import SAMPLE_RSS
-from gfeeds.feed_parser import parse_feed
+from rilato.feed_parser import parse_feed
 from os import remove
 import pytest
 
 
-RSS_PATH = '/tmp/org.gabmus.gfeeds.test.parse_feed.rss'
+RSS_PATH = '/tmp/org.gabmus.rilato.test.parse_feed.rss'
 
 
 @pytest.fixture(autouse=True)

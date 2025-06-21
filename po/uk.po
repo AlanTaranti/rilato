@@ -1,12 +1,12 @@
-# Ukrainian translation for gfeeds.
-# Copyright (C) 2021 gfeeds's COPYRIGHT HOLDER
-# This file is distributed under the same license as the gfeeds package.
+# Ukrainian translation for rilato.
+# Copyright (C) 2021 rilato's COPYRIGHT HOLDER
+# This file is distributed under the same license as the rilato package.
 #
 # Yuri Chornoivan <yurchor@ukr.net>, 2021, 2022, 2023.
 msgid ""
 msgstr ""
-"Project-Id-Version: gfeeds master\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/gfeeds/issues\n"
+"Project-Id-Version: rilato master\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/rilato/issues\n"
 "POT-Creation-Date: 2023-03-26 11:12+0000\n"
 "PO-Revision-Date: 2023-03-26 15:23+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
@@ -19,15 +19,15 @@ msgstr ""
 "%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Lokalize 20.12.0\n"
 
-#: data/org.gabmus.gfeeds.appdata.xml.in:4
+#: data/org.gabmus.rilato.appdata.xml.in:4
 msgid "Feeds"
 msgstr "Стрічки"
 
-#: data/org.gabmus.gfeeds.appdata.xml.in:6 data/org.gabmus.gfeeds.desktop.in:7
+#: data/org.gabmus.rilato.appdata.xml.in:6 data/org.gabmus.rilato.desktop.in:7
 msgid "News reader for GNOME"
 msgstr "Програма для читання новин у GNOME"
 
-#: data/org.gabmus.gfeeds.appdata.xml.in:15
+#: data/org.gabmus.rilato.appdata.xml.in:15
 msgid ""
 "Feeds is a minimal RSS/Atom feed reader built with speed and simplicity in "
 "mind."
@@ -35,7 +35,7 @@ msgstr ""
 "«Стрічки» — мінімалістична програма для читання стрічок новин RSS/Atom. "
 "Акцент зроблено на швидкість і простоту."
 
-#: data/org.gabmus.gfeeds.appdata.xml.in:16
+#: data/org.gabmus.rilato.appdata.xml.in:16
 msgid ""
 "It offers a simple user interface that only shows the latest news from your "
 "subscriptions."
@@ -43,7 +43,7 @@ msgstr ""
 "Програма пропонує вам скористатися простим інтерфейсом користувача, у якому "
 "показано лише найсвіжіші новини з ваших підписок."
 
-#: data/org.gabmus.gfeeds.appdata.xml.in:17
+#: data/org.gabmus.rilato.appdata.xml.in:17
 msgid ""
 "Articles are shown in a web view by default, with javascript disabled for a "
 "faster and less intrusive user experience. There's also a reader mode "
@@ -54,12 +54,12 @@ msgstr ""
 "читача, який побудовано на основі того, що використовується у «Тенетах "
 "GNOME»/Epiphany."
 
-#: data/org.gabmus.gfeeds.appdata.xml.in:18
+#: data/org.gabmus.rilato.appdata.xml.in:18
 msgid "Feeds can be imported and exported via OPML."
 msgstr "Стрічки можна імпортувати або експортувати у форматі OPML."
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/org.gabmus.gfeeds.desktop.in:16
+#: data/org.gabmus.rilato.desktop.in:16
 msgid "rss;reader;feed;news;"
 msgstr "rss;reader;feed;news;рсс;читання;стрічка;подача;новини;"
 
@@ -159,7 +159,7 @@ msgstr "Сталися якісь помилки"
 msgid "Offline"
 msgstr "Поза мережею"
 
-#: data/ui/manage_feeds_headerbar.blp:7 gfeeds/manage_feeds_window.py:257
+#: data/ui/manage_feeds_headerbar.blp:7 rilato/manage_feeds_window.py:257
 msgid "Manage Feeds"
 msgstr "Керування стрічками"
 
@@ -235,7 +235,7 @@ msgstr "Збільшити"
 msgid "Back to Articles"
 msgstr "Назад до статей"
 
-#: data/ui/shortcutsWindow.blp:9 gfeeds/preferences_window.py:24
+#: data/ui/shortcutsWindow.blp:9 rilato/preferences_window.py:24
 msgid "General"
 msgstr "Загальне"
 
@@ -295,54 +295,54 @@ msgstr "Позначити як прочитане/непрочитане"
 msgid "Select an article"
 msgstr "Виберіть статтю"
 
-#: gfeeds/feed_item.py:62
+#: rilato/feed_item.py:62
 #, python-brace-format
 msgid "Error: unable to parse datetime {0} for feeditem {1}"
 msgstr "Помилка: не вдалося обробити позначку часу {0} для запису стрічки {1}"
 
-#: gfeeds/feed_parser.py:61
+#: rilato/feed_parser.py:61
 #, python-brace-format
 msgid "Errors while parsing feed `{0}`, URL: `{1}`"
 msgstr "Помилки під час обробки стрічки «{0}», адреса: «{1}»"
 
-#: gfeeds/feed_parser.py:75
+#: rilato/feed_parser.py:75
 #, python-brace-format
 msgid "Error decoding unicode data from feed `{0}`, URL: `{1}`"
 msgstr ""
 "Помилка під час декодування даних Unicode зі стрічки «{0}», адреса: «{1}»"
 
-#: gfeeds/feed_parser.py:82
+#: rilato/feed_parser.py:82
 #, python-brace-format
 msgid "Error extracting data from feed `{0}`, URL: `{1}`"
 msgstr "Помилки під час видобування даних зі стрічки «{0}», адреса: «{1}»"
 
-#: gfeeds/feed_parser.py:90
+#: rilato/feed_parser.py:90
 #, python-brace-format
 msgid "`{0}` may not be an RSS or Atom feed"
 msgstr "«{0}», можливо, не є стрічкою RSS або Atom"
 
-#: gfeeds/feeds_manager.py:83
+#: rilato/feeds_manager.py:83
 #, python-brace-format
 msgid "Feed {0} exists already, skipping"
 msgstr "Запис стрічки {0} вже існує, пропускаємо"
 
-#: gfeeds/feeds_view.py:13
+#: rilato/feeds_view.py:13
 msgid "All feeds"
 msgstr "Всі стрічки"
 
-#: gfeeds/headerbar.py:197
+#: rilato/headerbar.py:197
 msgid "There were problems with some feeds. Do you want to remove them?"
 msgstr "З деякими стрічками виникли проблеми. Хочете вилучити їх?"
 
-#: gfeeds/headerbar.py:202
+#: rilato/headerbar.py:202
 msgid "_Keep"
 msgstr "З_берегти"
 
-#: gfeeds/headerbar.py:204
+#: rilato/headerbar.py:204
 msgid "_Remove"
 msgstr "Ви_лучити"
 
-#: gfeeds/main_leaflet.py:114
+#: rilato/main_leaflet.py:114
 #, python-brace-format
 msgid "{0} new article"
 msgid_plural "{0} new articles"
@@ -351,322 +351,322 @@ msgstr[1] "{0} нові статті"
 msgstr[2] "{0} нових статей"
 msgstr[3] "{0} нова стаття"
 
-#: gfeeds/__main__.py:232
+#: rilato/__main__.py:232
 msgid "Do you want to import these feeds?"
 msgstr "Хочете імпортувати ці стрічки?"
 
-#: gfeeds/__main__.py:239 gfeeds/__main__.py:273
-#: gfeeds/manage_feeds_window.py:324
+#: rilato/__main__.py:239 rilato/__main__.py:273
+#: rilato/manage_feeds_window.py:324
 msgid "_Cancel"
 msgstr "_Скасувати"
 
-#: gfeeds/__main__.py:242 gfeeds/__main__.py:276
+#: rilato/__main__.py:242 rilato/__main__.py:276
 msgid "_Import"
 msgstr "_Імпортувати"
 
-#: gfeeds/__main__.py:269
+#: rilato/__main__.py:269
 msgid "Do you want to import this feed?"
 msgstr "Хочете імпортувати цю стрічку?"
 
-#: gfeeds/__main__.py:301
+#: rilato/__main__.py:301
 msgid "url"
 msgstr "адреса"
 
-#: gfeeds/__main__.py:304
+#: rilato/__main__.py:304
 msgid "opml file local url or rss remote url to import"
 msgstr ""
 "локальна адреса файла opml або віддалена адреса rss для імпортування даних"
 
-#: gfeeds/manage_feeds_window.py:321
+#: rilato/manage_feeds_window.py:321
 msgid "Do you want to delete these feeds?"
 msgstr "Хочете вилучити ці стрічки?"
 
-#: gfeeds/manage_feeds_window.py:326
+#: rilato/manage_feeds_window.py:326
 msgid "_Delete"
 msgstr "В_илучити"
 
-#: gfeeds/opml_file_chooser.py:7
+#: rilato/opml_file_chooser.py:7
 msgid "XML files"
 msgstr "файли XML"
 
-#: gfeeds/opml_file_chooser.py:14
+#: rilato/opml_file_chooser.py:14
 msgid "Choose an OPML file to import"
 msgstr "Виберіть файл OPML для імпортування"
 
-#: gfeeds/opml_file_chooser.py:18
+#: rilato/opml_file_chooser.py:18
 msgid "Open"
 msgstr "Відкрити"
 
-#: gfeeds/opml_file_chooser.py:19 gfeeds/opml_file_chooser.py:31
+#: rilato/opml_file_chooser.py:19 rilato/opml_file_chooser.py:31
 msgid "Cancel"
 msgstr "Скасувати"
 
-#: gfeeds/opml_file_chooser.py:26
+#: rilato/opml_file_chooser.py:26
 msgid "Choose where to save the exported OPML file"
 msgstr "Виберіть місце зберігання експортованого файла OPML"
 
-#: gfeeds/opml_file_chooser.py:30
+#: rilato/opml_file_chooser.py:30
 msgid "Save"
 msgstr "Зберегти"
 
-#: gfeeds/preferences_window.py:27
+#: rilato/preferences_window.py:27
 msgid "General preferences"
 msgstr "Загальні параметри"
 
-#: gfeeds/preferences_window.py:29
+#: rilato/preferences_window.py:29
 msgid "Show newer articles first"
 msgstr "Показати спочатку новіші статті"
 
-#: gfeeds/preferences_window.py:34
+#: rilato/preferences_window.py:34
 msgid "Open links in your browser"
 msgstr "Відкривати посилання у вашому браузері"
 
-#: gfeeds/preferences_window.py:38
+#: rilato/preferences_window.py:38
 msgid "Use external video player for YouTube"
 msgstr "Зовнішній відеопрогравач для YouTube"
 
-#: gfeeds/preferences_window.py:40
+#: rilato/preferences_window.py:40
 msgid "Requires youtube-dl and a compatible video player"
 msgstr "Потребує youtube-dl і сумісного відеопрогравача"
 
-#: gfeeds/preferences_window.py:46
+#: rilato/preferences_window.py:46
 msgid "Preferred video player"
 msgstr "Бажаний відеопрогравач"
 
-#: gfeeds/preferences_window.py:50
+#: rilato/preferences_window.py:50
 msgid "Maximum article age"
 msgstr "Максимальний вік статей"
 
-#: gfeeds/preferences_window.py:51
+#: rilato/preferences_window.py:51
 msgid "In days"
 msgstr "За днями"
 
-#: gfeeds/preferences_window.py:58
+#: rilato/preferences_window.py:58
 msgid "Refresh preferences"
 msgstr "Оновити налаштування"
 
-#: gfeeds/preferences_window.py:60
+#: rilato/preferences_window.py:60
 msgid "Refresh articles on startup"
 msgstr "Оновлювати статті під час запуску"
 
-#: gfeeds/preferences_window.py:64
+#: rilato/preferences_window.py:64
 msgid "New articles notification"
 msgstr "Сповіщення щодо нових статей"
 
-#: gfeeds/preferences_window.py:68
+#: rilato/preferences_window.py:68
 msgid "Enable auto-refresh"
 msgstr "Увімкнути автооновлення"
 
-#: gfeeds/preferences_window.py:72
+#: rilato/preferences_window.py:72
 msgid "Auto-refresh interval"
 msgstr "Інтервал автооновлення"
 
-#: gfeeds/preferences_window.py:73
+#: rilato/preferences_window.py:73
 msgid "In seconds"
 msgstr "У секундах"
 
-#: gfeeds/preferences_window.py:80
+#: rilato/preferences_window.py:80
 msgid "Cache"
 msgstr "Кеш"
 
-#: gfeeds/preferences_window.py:82
+#: rilato/preferences_window.py:82
 msgid "Clear caches"
 msgstr "Очистити кеш"
 
-#: gfeeds/preferences_window.py:83
+#: rilato/preferences_window.py:83
 msgid "Clear"
 msgstr "Очистити"
 
-#: gfeeds/preferences_window.py:109
+#: rilato/preferences_window.py:109
 msgid "Appearance"
 msgstr "Вигляд"
 
-#: gfeeds/preferences_window.py:112
+#: rilato/preferences_window.py:112
 msgid "Appearance preferences"
 msgstr "Параметри вигляду"
 
-#: gfeeds/preferences_window.py:114
+#: rilato/preferences_window.py:114
 msgid "Dark mode"
 msgstr "Темний режим"
 
-#: gfeeds/preferences_window.py:118
+#: rilato/preferences_window.py:118
 msgid "Reader mode theme"
 msgstr "Тема режиму читача"
 
-#: gfeeds/preferences_window.py:122
+#: rilato/preferences_window.py:122
 msgid "Automatic"
 msgstr "Автоматично"
 
-#: gfeeds/preferences_window.py:122
+#: rilato/preferences_window.py:122
 msgid "Light"
 msgstr "Світла"
 
-#: gfeeds/preferences_window.py:122
+#: rilato/preferences_window.py:122
 msgid "Dark"
 msgstr "Темна"
 
-#: gfeeds/preferences_window.py:126
+#: rilato/preferences_window.py:126
 msgid "Show article thumbnails"
 msgstr "Показувати мініатюри статей"
 
-#: gfeeds/preferences_window.py:131
+#: rilato/preferences_window.py:131
 msgid "Show full articles titles"
 msgstr "Показувати заголовки статей повністю"
 
-#: gfeeds/preferences_window.py:136
+#: rilato/preferences_window.py:136
 msgid "Show full feeds names"
 msgstr "Показувати назви стрічок повністю"
 
-#: gfeeds/preferences_window.py:143
+#: rilato/preferences_window.py:143
 msgid "Font preferences"
 msgstr "Налаштування шрифтів"
 
-#: gfeeds/preferences_window.py:145
+#: rilato/preferences_window.py:145
 msgid "Use system font for titles"
 msgstr "Використати для заголовків загальносистемний шрифт"
 
-#: gfeeds/preferences_window.py:149
+#: rilato/preferences_window.py:149
 msgid "Use system font for paragraphs"
 msgstr "Використати для абзаців загальносистемний шрифт"
 
-#: gfeeds/preferences_window.py:153
+#: rilato/preferences_window.py:153
 msgid "Custom title font"
 msgstr "Нетиповий шрифт заголовків"
 
-#: gfeeds/preferences_window.py:157
+#: rilato/preferences_window.py:157
 msgid "Custom paragraph font"
 msgstr "Нетиповий шрифт абзаців"
 
-#: gfeeds/preferences_window.py:161
+#: rilato/preferences_window.py:161
 msgid "Custom monospace font"
 msgstr "Нетиповий моноширинний шрифт"
 
-#: gfeeds/preferences_window.py:173
+#: rilato/preferences_window.py:173
 msgid "Privacy"
 msgstr "Конфіденційність"
 
-#: gfeeds/preferences_window.py:177
+#: rilato/preferences_window.py:177
 msgid "Privacy preferences"
 msgstr "Параметри конфіденційності"
 
-#: gfeeds/preferences_window.py:179
+#: rilato/preferences_window.py:179
 msgid "Enable JavaScript"
 msgstr "Увімкнути JavaScript"
 
-#: gfeeds/preferences_window.py:184
+#: rilato/preferences_window.py:184
 msgid "Try to block advertisements"
 msgstr "Намагатися блокувати рекламу"
 
-#: gfeeds/preferences_window.py:186 gfeeds/preferences_window.py:221
+#: rilato/preferences_window.py:186 rilato/preferences_window.py:221
 msgid "Requires app restart"
 msgstr "Потребує перезапуску програми"
 
-#: gfeeds/preferences_window.py:190
+#: rilato/preferences_window.py:190
 msgid "Update advertisement blocking list"
 msgstr "Оновити список блокування реклами"
 
-#: gfeeds/preferences_window.py:191
+#: rilato/preferences_window.py:191
 msgid "Updates automatically every 10 days"
 msgstr "Автоматично оновлюється кожні 10 днів"
 
-#: gfeeds/preferences_window.py:192
+#: rilato/preferences_window.py:192
 msgid "Update"
 msgstr "Оновити"
 
-#: gfeeds/preferences_window.py:205
+#: rilato/preferences_window.py:205
 msgid "Advanced"
 msgstr "Додатково"
 
-#: gfeeds/preferences_window.py:208
+#: rilato/preferences_window.py:208
 msgid "Advanced preferences"
 msgstr "Додаткові налаштування"
 
-#: gfeeds/preferences_window.py:210
+#: rilato/preferences_window.py:210
 msgid "Maximum refresh threads"
 msgstr "Максимальна кількість потоків оновлення"
 
-#: gfeeds/preferences_window.py:212
+#: rilato/preferences_window.py:212
 msgid "How many threads to use for feeds refresh"
 msgstr ""
 "Кількість потоків обробки, яку можна використовувати для оновлення стрічок"
 
-#: gfeeds/preferences_window.py:219
+#: rilato/preferences_window.py:219
 msgid "Experimental GtkListView for articles list"
 msgstr "Експериментальний GtkListView для списку статей"
 
-#: gfeeds/preferences_window.py:227
+#: rilato/preferences_window.py:227
 msgid "Troubleshooting"
 msgstr "Усування проблем"
 
-#: gfeeds/preferences_window.py:229
+#: rilato/preferences_window.py:229
 msgid "Export Configuration as JSON"
 msgstr "Експортувати налаштування як JSON"
 
-#: gfeeds/preferences_window.py:230
+#: rilato/preferences_window.py:230
 msgid "Attach this when reporting bugs"
 msgstr "Долучіть ці дані при звітуванні щодо вад"
 
-#: gfeeds/preferences_window.py:231
+#: rilato/preferences_window.py:231
 msgid "Export"
 msgstr "Експортувати"
 
 #. type: ignore
-#: gfeeds/preferences_window.py:244
+#: rilato/preferences_window.py:244
 msgid "Feeds Configuration"
 msgstr "Налаштування стрічок"
 
-#: gfeeds/preferences_window.py:248
+#: rilato/preferences_window.py:248
 msgid "_Close"
 msgstr "_Закрити"
 
-#: gfeeds/preferences_window.py:251
+#: rilato/preferences_window.py:251
 msgid "Cop_y"
 msgstr "_Копіювати"
 
-#: gfeeds/util/build_reader_html.py:104
+#: rilato/util/build_reader_html.py:104
 #, python-brace-format
 msgid "Author: <a href=\"{0}\">{1}</a>"
 msgstr "Автор: <a href=\"{0}\">{1}</a>"
 
-#: gfeeds/util/build_reader_html.py:108
+#: rilato/util/build_reader_html.py:108
 #, python-brace-format
 msgid "Author: {0}"
 msgstr "Автор: {0}"
 
-#: gfeeds/util/download_manager.py:112
+#: rilato/util/download_manager.py:112
 #, python-brace-format
 msgid "`{0}`: connection timed out"
 msgstr "`{0}`: перевищено час очікування відповіді у з'єднанні"
 
-#: gfeeds/util/download_manager.py:121
+#: rilato/util/download_manager.py:121
 #, python-brace-format
 msgid "`{0}` might not be a valid address"
 msgstr "«{0}», ймовірно, не є коректною адресою"
 
-#: gfeeds/util/download_manager.py:161
+#: rilato/util/download_manager.py:161
 #, python-brace-format
 msgid "Error downloading `{0}`, code `{1}`"
 msgstr "Помилка під час отримання «{0}», код «{1}»"
 
-#: gfeeds/util/get_favicon.py:48
+#: rilato/util/get_favicon.py:48
 #, python-brace-format
 msgid "Error downloading favicon for `{0}`"
 msgstr "Помилка під час завантаження піктограми для «{0}»"
 
-#: gfeeds/util/opml_parser.py:33
+#: rilato/util/opml_parser.py:33
 msgid "Error: OPML path provided does not exist"
 msgstr "Помилка: вказаного шляху до OPML не існує"
 
-#: gfeeds/util/opml_parser.py:44
+#: rilato/util/opml_parser.py:44
 #, python-brace-format
 msgid "Error parsing OPML file `{0}`"
 msgstr "Помилка під час обробки файла OPML «{0}»"
 
-#: gfeeds/webview.py:200
+#: rilato/webview.py:200
 msgid "Link copied to clipboard!"
 msgstr "Посилання скопійовано до буфера обміну!"
 
-#: gfeeds/webview.py:222
+#: rilato/webview.py:222
 msgid "Feed content not available for this article"
 msgstr "Для цієї статті дані стрічки є недоступними"
 

@@ -1,12 +1,12 @@
-# Hebrew translation for gfeeds.
-# Copyright (C) 2022 gfeeds's COPYRIGHT HOLDER
-# This file is distributed under the same license as the gfeeds package.
+# Hebrew translation for rilato.
+# Copyright (C) 2022 rilato's COPYRIGHT HOLDER
+# This file is distributed under the same license as the rilato package.
 # Yosef Or Boczko <yoseforb@gmail.com>, 2022-2024.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gfeeds master\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/gfeeds/issues\n"
+"Project-Id-Version: rilato master\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/rilato/issues\n"
 "POT-Creation-Date: 2024-06-16 18:12+0000\n"
 "PO-Revision-Date: 2024-06-24 13:47+0300\n"
 "Last-Translator: Yosef Or Boczko <yoseforb@gmail.com>\n"
@@ -19,27 +19,27 @@ msgstr ""
 "2 : 3)\n"
 "X-Generator: Gtranslator 46.1\n"
 
-#: data/org.gabmus.gfeeds.appdata.xml.in:4
+#: data/org.gabmus.rilato.appdata.xml.in:4
 msgid "Feeds"
 msgstr "הזנות"
 
-#: data/org.gabmus.gfeeds.appdata.xml.in:6 data/org.gabmus.gfeeds.desktop.in:7
+#: data/org.gabmus.rilato.appdata.xml.in:6 data/org.gabmus.rilato.desktop.in:7
 msgid "News reader for GNOME"
 msgstr "קורא חדשות עבור GNOME"
 
-#: data/org.gabmus.gfeeds.appdata.xml.in:15
+#: data/org.gabmus.rilato.appdata.xml.in:15
 msgid ""
 "Feeds is a minimal RSS/Atom feed reader built with speed and simplicity in "
 "mind."
 msgstr "הזנות הוא קורא הזנת RSS/Atom בסיסי הנבנה במחשב על מהירות ופשטות."
 
-#: data/org.gabmus.gfeeds.appdata.xml.in:16
+#: data/org.gabmus.rilato.appdata.xml.in:16
 msgid ""
 "It offers a simple user interface that only shows the latest news from your "
 "subscriptions."
 msgstr "הוא מציע ממשק משתמש פשוט שרק מציג את החדשות האחרונות מההרשמות שלך."
 
-#: data/org.gabmus.gfeeds.appdata.xml.in:17
+#: data/org.gabmus.rilato.appdata.xml.in:17
 msgid ""
 "Articles are shown in a web view by default, with javascript disabled for a "
 "faster and less intrusive user experience. There's also a reader mode "
@@ -49,12 +49,12 @@ msgstr ""
 "משתמש מהירה יותר וחסרת הפרעות. כלול גם מצב קריאה, נבנה מזה שבשימוש דפדפן "
 "GNOME ‏(Epiphany)."
 
-#: data/org.gabmus.gfeeds.appdata.xml.in:18
+#: data/org.gabmus.rilato.appdata.xml.in:18
 msgid "Feeds can be imported and exported via OPML."
 msgstr "הזנות יכול לייבוא ולייצא באמצעות OPML."
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/org.gabmus.gfeeds.desktop.in:16
+#: data/org.gabmus.rilato.desktop.in:16
 msgid "rss;reader;feed;news;"
 msgstr "הזנה;הזנות;rss;קריאה;חדשות;feed;feeds;"
 
@@ -156,7 +156,7 @@ msgstr "יש שגיאות"
 msgid "Offline"
 msgstr "לא מקוון"
 
-#: data/ui/manage_feeds_headerbar.blp:7 gfeeds/manage_feeds_window.py:257
+#: data/ui/manage_feeds_headerbar.blp:7 rilato/manage_feeds_window.py:257
 msgid "Manage Feeds"
 msgstr "ניהול הזנות"
 
@@ -232,7 +232,7 @@ msgstr "התקרבות"
 msgid "Back to Articles"
 msgstr "חזרה למאמרים"
 
-#: data/ui/shortcutsWindow.blp:9 gfeeds/preferences_window.py:24
+#: data/ui/shortcutsWindow.blp:9 rilato/preferences_window.py:24
 msgid "General"
 msgstr "כללי"
 
@@ -292,53 +292,53 @@ msgstr "סימון כנקרא/לא נקרא"
 msgid "Select an article"
 msgstr "יש לבחור מאמר"
 
-#: gfeeds/feed_item.py:62
+#: rilato/feed_item.py:62
 #, python-brace-format
 msgid "Error: unable to parse datetime {0} for feeditem {1}"
 msgstr "שגיאה: לא ניתן לנתח את התאריך והשעה {0} עבור פריט הזנה {1}"
 
-#: gfeeds/feed_parser.py:61
+#: rilato/feed_parser.py:61
 #, python-brace-format
 msgid "Errors while parsing feed `{0}`, URL: `{1}`"
 msgstr "שגיאה בניתוח הזנה '{0}', כתובת: '{1}'"
 
-#: gfeeds/feed_parser.py:75
+#: rilato/feed_parser.py:75
 #, python-brace-format
 msgid "Error decoding unicode data from feed `{0}`, URL: `{1}`"
 msgstr "שגיאה בניתוח נתוני יוניקוד מהזנה '{0}', כתובת: '{1}'"
 
-#: gfeeds/feed_parser.py:82
+#: rilato/feed_parser.py:82
 #, python-brace-format
 msgid "Error extracting data from feed `{0}`, URL: `{1}`"
 msgstr "שגיאה בחילוץ מידע מהזנה '{0}', כתובת: '{1}'"
 
-#: gfeeds/feed_parser.py:90
+#: rilato/feed_parser.py:90
 #, python-brace-format
 msgid "`{0}` may not be an RSS or Atom feed"
 msgstr "‏יתכן ו־'{0} אינו הזנת RSS או Atom"
 
-#: gfeeds/feeds_manager.py:83
+#: rilato/feeds_manager.py:83
 #, python-brace-format
 msgid "Feed {0} exists already, skipping"
 msgstr "הזנה {0} כבר קיימת, מדלג"
 
-#: gfeeds/feeds_view.py:13
+#: rilato/feeds_view.py:13
 msgid "All feeds"
 msgstr "כל ההזנות"
 
-#: gfeeds/headerbar.py:197
+#: rilato/headerbar.py:197
 msgid "There were problems with some feeds. Do you want to remove them?"
 msgstr "ישנן בעיות בכמה הזנות. האם ברצונך למחוק אותן?"
 
-#: gfeeds/headerbar.py:202
+#: rilato/headerbar.py:202
 msgid "_Keep"
 msgstr "_שמירה"
 
-#: gfeeds/headerbar.py:204
+#: rilato/headerbar.py:204
 msgid "_Remove"
 msgstr "_הסרה"
 
-#: gfeeds/main_leaflet.py:114
+#: rilato/main_leaflet.py:114
 #, python-brace-format
 msgid "{0} new article"
 msgid_plural "{0} new articles"
@@ -347,320 +347,320 @@ msgstr[1] "שני מאמרים חדשים"
 msgstr[2] "‏{0} מאמרים חדשים"
 msgstr[3] "‏{0} מאמרים חדשים"
 
-#: gfeeds/__main__.py:232
+#: rilato/__main__.py:232
 msgid "Do you want to import these feeds?"
 msgstr "האם ברצונך לייבא הזנות אלה?"
 
-#: gfeeds/__main__.py:239 gfeeds/__main__.py:273
-#: gfeeds/manage_feeds_window.py:324
+#: rilato/__main__.py:239 rilato/__main__.py:273
+#: rilato/manage_feeds_window.py:324
 msgid "_Cancel"
 msgstr "_ביטול"
 
-#: gfeeds/__main__.py:242 gfeeds/__main__.py:276
+#: rilato/__main__.py:242 rilato/__main__.py:276
 msgid "_Import"
 msgstr "_ייבוא"
 
-#: gfeeds/__main__.py:269
+#: rilato/__main__.py:269
 msgid "Do you want to import this feed?"
 msgstr "האם ברצונך לייבא הזנה זו?"
 
-#: gfeeds/__main__.py:301
+#: rilato/__main__.py:301
 msgid "url"
 msgstr "כתובת"
 
-#: gfeeds/__main__.py:304
+#: rilato/__main__.py:304
 msgid "opml file local url or rss remote url to import"
 msgstr "קובץ OPML מקומי, כתובת URL או RSS מרוחק לייבוא"
 
-#: gfeeds/manage_feeds_window.py:321
+#: rilato/manage_feeds_window.py:321
 msgid "Do you want to delete these feeds?"
 msgstr "האם ברצונך למחוק הזנות אלה?"
 
-#: gfeeds/manage_feeds_window.py:326
+#: rilato/manage_feeds_window.py:326
 msgid "_Delete"
 msgstr "_מחיקה"
 
-#: gfeeds/opml_file_chooser.py:7
+#: rilato/opml_file_chooser.py:7
 msgid "XML files"
 msgstr "קובצי XML"
 
-#: gfeeds/opml_file_chooser.py:14
+#: rilato/opml_file_chooser.py:14
 msgid "Choose an OPML file to import"
 msgstr "בחירת קובץ OPML לייבוא"
 
-#: gfeeds/opml_file_chooser.py:18
+#: rilato/opml_file_chooser.py:18
 msgid "Open"
 msgstr "פתיחה"
 
-#: gfeeds/opml_file_chooser.py:19 gfeeds/opml_file_chooser.py:31
+#: rilato/opml_file_chooser.py:19 rilato/opml_file_chooser.py:31
 msgid "Cancel"
 msgstr "ביטול"
 
-#: gfeeds/opml_file_chooser.py:26
+#: rilato/opml_file_chooser.py:26
 msgid "Choose where to save the exported OPML file"
 msgstr "בחירה היכן לשמור את קובץ ה־OPML המיובא"
 
-#: gfeeds/opml_file_chooser.py:30
+#: rilato/opml_file_chooser.py:30
 msgid "Save"
 msgstr "שמירה"
 
-#: gfeeds/preferences_window.py:27
+#: rilato/preferences_window.py:27
 msgid "General preferences"
 msgstr "העדפות כלליות"
 
-#: gfeeds/preferences_window.py:29
+#: rilato/preferences_window.py:29
 msgid "Show newer articles first"
 msgstr "הצגת מאמרים חדשים ראשונים"
 
-#: gfeeds/preferences_window.py:34
+#: rilato/preferences_window.py:34
 msgid "Open links in your browser"
 msgstr "פתיחת קישורים בדפדפן שלך"
 
-#: gfeeds/preferences_window.py:38
+#: rilato/preferences_window.py:38
 msgid "Use external video player for YouTube"
 msgstr "שימוש בנגן סרטים חיצוני עבור YouTube"
 
-#: gfeeds/preferences_window.py:40
+#: rilato/preferences_window.py:40
 msgid "Requires youtube-dl and a compatible video player"
 msgstr "דורש youtube-dl ונגן סרטים מתאים"
 
-#: gfeeds/preferences_window.py:46
+#: rilato/preferences_window.py:46
 msgid "Preferred video player"
 msgstr "נגן סרטים מועדף"
 
-#: gfeeds/preferences_window.py:50
+#: rilato/preferences_window.py:50
 msgid "Maximum article age"
 msgstr "אורך חיים מרבי למאמר"
 
-#: gfeeds/preferences_window.py:51
+#: rilato/preferences_window.py:51
 msgid "In days"
 msgstr "בימים"
 
-#: gfeeds/preferences_window.py:58
+#: rilato/preferences_window.py:58
 msgid "Refresh preferences"
 msgstr "העדפות רענון"
 
-#: gfeeds/preferences_window.py:60
+#: rilato/preferences_window.py:60
 msgid "Refresh articles on startup"
 msgstr "רענון מאמרים עם ההפעלה"
 
-#: gfeeds/preferences_window.py:64
+#: rilato/preferences_window.py:64
 msgid "New articles notification"
 msgstr "התרעה על מאמרים חדשים"
 
-#: gfeeds/preferences_window.py:68
+#: rilato/preferences_window.py:68
 msgid "Enable auto-refresh"
 msgstr "לאפשר רענון אוטומטי"
 
-#: gfeeds/preferences_window.py:72
+#: rilato/preferences_window.py:72
 msgid "Auto-refresh interval"
 msgstr "מרווח לרענון אוטומטי"
 
-#: gfeeds/preferences_window.py:73
+#: rilato/preferences_window.py:73
 msgid "In seconds"
 msgstr "בשניות"
 
-#: gfeeds/preferences_window.py:80
+#: rilato/preferences_window.py:80
 msgid "Cache"
 msgstr "מטמון"
 
-#: gfeeds/preferences_window.py:82
+#: rilato/preferences_window.py:82
 msgid "Clear caches"
 msgstr "פינוי מטמון"
 
-#: gfeeds/preferences_window.py:83
+#: rilato/preferences_window.py:83
 msgid "Clear"
 msgstr "פינוי"
 
-#: gfeeds/preferences_window.py:109
+#: rilato/preferences_window.py:109
 msgid "Appearance"
 msgstr "מראה"
 
-#: gfeeds/preferences_window.py:112
+#: rilato/preferences_window.py:112
 msgid "Appearance preferences"
 msgstr "העדפות מראה"
 
-#: gfeeds/preferences_window.py:114
+#: rilato/preferences_window.py:114
 msgid "Dark mode"
 msgstr "מצב כהה"
 
-#: gfeeds/preferences_window.py:118
+#: rilato/preferences_window.py:118
 msgid "Reader mode theme"
 msgstr "ערכת מצב קריאה"
 
-#: gfeeds/preferences_window.py:122
+#: rilato/preferences_window.py:122
 msgid "Automatic"
 msgstr "אוטומטי"
 
-#: gfeeds/preferences_window.py:122
+#: rilato/preferences_window.py:122
 msgid "Light"
 msgstr "בהיר"
 
-#: gfeeds/preferences_window.py:122
+#: rilato/preferences_window.py:122
 msgid "Dark"
 msgstr "כהה"
 
-#: gfeeds/preferences_window.py:126
+#: rilato/preferences_window.py:126
 msgid "Show article thumbnails"
 msgstr "הצגת תמונות ממוזערות למאמר"
 
-#: gfeeds/preferences_window.py:131
+#: rilato/preferences_window.py:131
 msgid "Show full articles titles"
 msgstr "הצגת כותרת מלאה למאמר"
 
-#: gfeeds/preferences_window.py:136
+#: rilato/preferences_window.py:136
 msgid "Show full feeds names"
 msgstr "הצגת שם מלא של הזנות"
 
-#: gfeeds/preferences_window.py:143
+#: rilato/preferences_window.py:143
 msgid "Font preferences"
 msgstr "העדפות גופן"
 
-#: gfeeds/preferences_window.py:145
+#: rilato/preferences_window.py:145
 msgid "Use system font for titles"
 msgstr "שימוש בגופן מערכת לכותרות"
 
-#: gfeeds/preferences_window.py:149
+#: rilato/preferences_window.py:149
 msgid "Use system font for paragraphs"
 msgstr "שימוש בגופן מערכת לפסקאות"
 
-#: gfeeds/preferences_window.py:153
+#: rilato/preferences_window.py:153
 msgid "Custom title font"
 msgstr "גופן מותאם לכותרת"
 
-#: gfeeds/preferences_window.py:157
+#: rilato/preferences_window.py:157
 msgid "Custom paragraph font"
 msgstr "גופן מותאם לפסקאות"
 
-#: gfeeds/preferences_window.py:161
+#: rilato/preferences_window.py:161
 msgid "Custom monospace font"
 msgstr "גופן באורך קבוע מותאם"
 
-#: gfeeds/preferences_window.py:173
+#: rilato/preferences_window.py:173
 msgid "Privacy"
 msgstr "פרטיות"
 
-#: gfeeds/preferences_window.py:177
+#: rilato/preferences_window.py:177
 msgid "Privacy preferences"
 msgstr "העדפות פרטיות"
 
-#: gfeeds/preferences_window.py:179
+#: rilato/preferences_window.py:179
 msgid "Enable JavaScript"
 msgstr "לאפשר JavaScript"
 
-#: gfeeds/preferences_window.py:184
+#: rilato/preferences_window.py:184
 msgid "Try to block advertisements"
 msgstr "לנסות לחסום פרסומות"
 
-#: gfeeds/preferences_window.py:186 gfeeds/preferences_window.py:221
+#: rilato/preferences_window.py:186 rilato/preferences_window.py:221
 msgid "Requires app restart"
 msgstr "נדרשת הפעלה מחדש של היישום"
 
-#: gfeeds/preferences_window.py:190
+#: rilato/preferences_window.py:190
 msgid "Update advertisement blocking list"
 msgstr "עדכון רשימת חסימת פרסומות"
 
-#: gfeeds/preferences_window.py:191
+#: rilato/preferences_window.py:191
 msgid "Updates automatically every 10 days"
 msgstr "עדכון אוטומטי בכל 10 ימים"
 
-#: gfeeds/preferences_window.py:192
+#: rilato/preferences_window.py:192
 msgid "Update"
 msgstr "עדכון"
 
-#: gfeeds/preferences_window.py:205
+#: rilato/preferences_window.py:205
 msgid "Advanced"
 msgstr "מתקדם"
 
-#: gfeeds/preferences_window.py:208
+#: rilato/preferences_window.py:208
 msgid "Advanced preferences"
 msgstr "העדפות מתקדמות"
 
-#: gfeeds/preferences_window.py:210
+#: rilato/preferences_window.py:210
 msgid "Maximum refresh threads"
 msgstr "מספר חוטים מרביים לרענון"
 
-#: gfeeds/preferences_window.py:212
+#: rilato/preferences_window.py:212
 msgid "How many threads to use for feeds refresh"
 msgstr "כמה חוטים לשימוש לרענון הזנות"
 
-#: gfeeds/preferences_window.py:219
+#: rilato/preferences_window.py:219
 msgid "Experimental GtkListView for articles list"
 msgstr "‏GtkListView ניסיוני עבור רשימת המאמרים"
 
-#: gfeeds/preferences_window.py:227
+#: rilato/preferences_window.py:227
 msgid "Troubleshooting"
 msgstr "פתרון תקלות"
 
-#: gfeeds/preferences_window.py:229
+#: rilato/preferences_window.py:229
 msgid "Export Configuration as JSON"
 msgstr "ייצוא נתונים כ־JSON"
 
-#: gfeeds/preferences_window.py:230
+#: rilato/preferences_window.py:230
 msgid "Attach this when reporting bugs"
 msgstr "צירוף יחד עם דיווח התקלה"
 
-#: gfeeds/preferences_window.py:231
+#: rilato/preferences_window.py:231
 msgid "Export"
 msgstr "ייצוא"
 
 #. type: ignore
-#: gfeeds/preferences_window.py:244
+#: rilato/preferences_window.py:244
 msgid "Feeds Configuration"
 msgstr "הגדרת הזנות"
 
-#: gfeeds/preferences_window.py:248
+#: rilato/preferences_window.py:248
 msgid "_Close"
 msgstr "_סגירה"
 
-#: gfeeds/preferences_window.py:251
+#: rilato/preferences_window.py:251
 msgid "Cop_y"
 msgstr "ה_עתקה"
 
-#: gfeeds/util/build_reader_html.py:104
+#: rilato/util/build_reader_html.py:104
 #, python-brace-format
 msgid "Author: <a href=\"{0}\">{1}</a>"
 msgstr "מחבר: <a href=\"{0}\">{1}</a>"
 
-#: gfeeds/util/build_reader_html.py:108
+#: rilato/util/build_reader_html.py:108
 #, python-brace-format
 msgid "Author: {0}"
 msgstr "מחבר: {0}"
 
-#: gfeeds/util/download_manager.py:112
+#: rilato/util/download_manager.py:112
 #, python-brace-format
 msgid "`{0}`: connection timed out"
 msgstr "‏'{0}': תם זמן ההתחברות"
 
-#: gfeeds/util/download_manager.py:121
+#: rilato/util/download_manager.py:121
 #, python-brace-format
 msgid "`{0}` might not be a valid address"
 msgstr "יתכן ו־'{0}' כתובת לא תקפה"
 
-#: gfeeds/util/download_manager.py:161
+#: rilato/util/download_manager.py:161
 #, python-brace-format
 msgid "Error downloading `{0}`, code `{1}`"
 msgstr "שגיאה בהורדת '{0}', קוד '{1}'"
 
-#: gfeeds/util/get_favicon.py:48
+#: rilato/util/get_favicon.py:48
 #, python-brace-format
 msgid "Error downloading favicon for `{0}`"
 msgstr "שגיאה בהורדת צלמית עבור '{0}'"
 
-#: gfeeds/util/opml_parser.py:33
+#: rilato/util/opml_parser.py:33
 msgid "Error: OPML path provided does not exist"
 msgstr "שגיאה: נתיב OPML שסופק אינו קיים"
 
-#: gfeeds/util/opml_parser.py:44
+#: rilato/util/opml_parser.py:44
 #, python-brace-format
 msgid "Error parsing OPML file `{0}`"
 msgstr "שגיאה בניתוח קובץ OPML ‏'‎{0}'"
 
-#: gfeeds/webview.py:200
+#: rilato/webview.py:200
 msgid "Link copied to clipboard!"
 msgstr "קישור הועתק ללוח הגזירים!"
 
-#: gfeeds/webview.py:222
+#: rilato/webview.py:222
 msgid "Feed content not available for this article"
 msgstr "תוכן ההזנה לא זימן למאמר זה"
 

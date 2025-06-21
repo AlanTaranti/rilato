@@ -1,9 +1,9 @@
-from gfeeds.util.opml_parser import FeedImportData, opml_to_rss_list
+from rilato.util.opml_parser import FeedImportData, opml_to_rss_list
 from os import remove
 import pytest
 
 
-OPML_PATH = '/tmp/org.gabmus.gfeeds.test.opml_parse.opml'
+OPML_PATH = '/tmp/org.gabmus.rilato.test.opml_parse.opml'
 OPML_CONTENT = '''<?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="https://images.ruk.ca/opml/opml.xsl"?>
 <opml version="2.0">

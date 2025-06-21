@@ -1,12 +1,12 @@
-# Spanish translations for gfeeds package.
-# Copyright (C) 2019 THE gfeeds'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the gfeeds package.
+# Spanish translations for rilato package.
+# Copyright (C) 2019 THE rilato'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the rilato package.
 # odiseo <juan.camposzambrana@gmail.com>, 2019.
 # Óscar Fernández Díaz <oscfdezdz@tuta.io>, 2021-2002
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gfeeds 0.11\n"
+"Project-Id-Version: rilato 0.11\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-02-23 14:18+0100\n"
 "PO-Revision-Date: 2022-02-23 14:21+0100\n"
@@ -19,52 +19,52 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.0.1\n"
 
-#: ../gfeeds/__main__.py:259
+#: ../rilato/__main__.py:259
 msgid "url"
 msgstr "url"
 
-#: ../gfeeds/__main__.py:262
+#: ../rilato/__main__.py:262
 msgid "opml file local url or rss remote url to import"
 msgstr "url de fichero local opml o remota rss url a importar"
 
-#: ../gfeeds/confirm_add_dialog.py:16
+#: ../rilato/confirm_add_dialog.py:16
 msgid "Do you want to import these feeds?"
 msgstr "¿Quiere importar estas fuentes?"
 
-#: ../gfeeds/confirm_add_dialog.py:17
+#: ../rilato/confirm_add_dialog.py:17
 msgid "Do you want to import this feed?"
 msgstr "¿Quiere importar esta fuente?"
 
-#: ../gfeeds/download_manager.py:88
+#: ../rilato/download_manager.py:88
 #, python-brace-format
 msgid "`{0}`: connection timed out"
 msgstr "`{0}`: la conexión se ha agotado"
 
-#: ../gfeeds/download_manager.py:92
+#: ../rilato/download_manager.py:92
 #, python-brace-format
 msgid "`{0}` might not be a valid address"
 msgstr "`{0}` podría no ser una dirección válida"
 
-#: ../gfeeds/download_manager.py:117
+#: ../rilato/download_manager.py:117
 #, python-brace-format
 msgid "Error downloading `{0}`, code `{1}`"
 msgstr "Error descargando `{0}`, código `{1}`"
 
-#: ../gfeeds/feeds_manager.py:87
+#: ../rilato/feeds_manager.py:87
 #, python-brace-format
 msgid "Feed {0} exists already, skipping"
 msgstr "Fuente {0} ya existe, saltando"
 
-#: ../gfeeds/feeds_view.py:14
+#: ../rilato/feeds_view.py:14
 msgid "All feeds"
 msgstr "Todas las fuentes"
 
-#: ../gfeeds/get_favicon.py:45
+#: ../rilato/get_favicon.py:45
 #, python-brace-format
 msgid "Error downloading favicon for `{0}`"
 msgstr "Error descargando el icono para `{0}`"
 
-#: ../gfeeds/headerbar.py:171
+#: ../rilato/headerbar.py:171
 msgid ""
 "There were problems with some feeds.\n"
 "Do you want to remove them?"
@@ -72,286 +72,286 @@ msgstr ""
 "Hubo problemas con algunas fuentes.\n"
 "¿Quiere eliminarlas?"
 
-#: ../gfeeds/main_leaflet.py:121
+#: ../rilato/main_leaflet.py:121
 #, python-brace-format
 msgid "{0} new article"
 msgid_plural "{0} new articles"
 msgstr[0] "{0} artículo nuevo"
 msgstr[1] "{0} artículos nuevos"
 
-#: ../gfeeds/manage_feeds_window.py:225
+#: ../rilato/manage_feeds_window.py:225
 msgid "Do you want to delete these feeds?"
 msgstr "¿Quiere borrar estas fuentes?"
 
-#: ../gfeeds/manage_feeds_window.py:277
+#: ../rilato/manage_feeds_window.py:277
 msgid "Manage Feeds"
 msgstr "Organizar fuentes"
 
-#: ../gfeeds/opml_file_chooser.py:7
+#: ../rilato/opml_file_chooser.py:7
 msgid "XML files"
 msgstr "Ficheros XML"
 
-#: ../gfeeds/opml_file_chooser.py:14
+#: ../rilato/opml_file_chooser.py:14
 msgid "Choose an OPML file to import"
 msgstr "Escoger un fichero OPML a importar"
 
-#: ../gfeeds/opml_file_chooser.py:18
+#: ../rilato/opml_file_chooser.py:18
 msgid "Open"
 msgstr "Abrir"
 
-#: ../gfeeds/opml_file_chooser.py:19 ../gfeeds/opml_file_chooser.py:31
+#: ../rilato/opml_file_chooser.py:19 ../rilato/opml_file_chooser.py:31
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: ../gfeeds/opml_file_chooser.py:26
+#: ../rilato/opml_file_chooser.py:26
 msgid "Choose where to save the exported OPML file"
 msgstr "Escoger donde guardar el fichero OPML exportado"
 
-#: ../gfeeds/opml_file_chooser.py:30
+#: ../rilato/opml_file_chooser.py:30
 msgid "Save"
 msgstr "Guardar"
 
-#: ../gfeeds/opml_manager.py:42
+#: ../rilato/opml_manager.py:42
 msgid "Error: OPML path provided does not exist"
 msgstr "Error: La ruta suministrada del fichero OPML no existe"
 
-#: ../gfeeds/opml_manager.py:53
+#: ../rilato/opml_manager.py:53
 #, python-brace-format
 msgid "Error parsing OPML file `{0}`"
 msgstr "Error parseando el fichero OPML `{0}`"
 
-#: ../gfeeds/preferences_window.py:22
+#: ../rilato/preferences_window.py:22
 msgid "General"
 msgstr "General"
 
-#: ../gfeeds/preferences_window.py:25
+#: ../rilato/preferences_window.py:25
 msgid "General preferences"
 msgstr "Preferencias generales"
 
-#: ../gfeeds/preferences_window.py:27
+#: ../rilato/preferences_window.py:27
 msgid "Show newer articles first"
 msgstr "Mostrar los artículos recientes primero"
 
-#: ../gfeeds/preferences_window.py:32
+#: ../rilato/preferences_window.py:32
 msgid "Open links in your browser"
 msgstr "Abrir enlaces en su navegador"
 
-#: ../gfeeds/preferences_window.py:36
+#: ../rilato/preferences_window.py:36
 msgid "Use external video player for YouTube"
 msgstr "Usar un reproductor de vídeo externo para YouTube"
 
-#: ../gfeeds/preferences_window.py:38
+#: ../rilato/preferences_window.py:38
 msgid "Requires youtube-dl and a compatible video player"
 msgstr "Requiere youtube-dl y un reproductor de vídeo compatible"
 
-#: ../gfeeds/preferences_window.py:44
+#: ../rilato/preferences_window.py:44
 msgid "Preferred video player"
 msgstr "Reproductor de vídeo preferido"
 
-#: ../gfeeds/preferences_window.py:48
+#: ../rilato/preferences_window.py:48
 msgid "Maximum article age"
 msgstr "Duración máxima del artículo"
 
-#: ../gfeeds/preferences_window.py:49
+#: ../rilato/preferences_window.py:49
 msgid "In days"
 msgstr "En días"
 
-#: ../gfeeds/preferences_window.py:56
+#: ../rilato/preferences_window.py:56
 msgid "Refresh preferences"
 msgstr "Actualizar preferencias"
 
-#: ../gfeeds/preferences_window.py:58
+#: ../rilato/preferences_window.py:58
 msgid "Refresh articles on startup"
 msgstr "Actualizar los artículos al inicio"
 
-#: ../gfeeds/preferences_window.py:62
+#: ../rilato/preferences_window.py:62
 msgid "New articles notification"
 msgstr "Notificación de artículos nuevos"
 
-#: ../gfeeds/preferences_window.py:66
+#: ../rilato/preferences_window.py:66
 msgid "Enable auto-refresh"
 msgstr "Activar la actualización automática"
 
-#: ../gfeeds/preferences_window.py:70
+#: ../rilato/preferences_window.py:70
 msgid "Auto-refresh interval"
 msgstr "Intervalo de actualización automática"
 
-#: ../gfeeds/preferences_window.py:71
+#: ../rilato/preferences_window.py:71
 msgid "In seconds"
 msgstr "En segundos"
 
-#: ../gfeeds/preferences_window.py:78
+#: ../rilato/preferences_window.py:78
 msgid "Cache"
 msgstr "Caché"
 
-#: ../gfeeds/preferences_window.py:80
+#: ../rilato/preferences_window.py:80
 msgid "Clear caches"
 msgstr "Borrar caché"
 
-#: ../gfeeds/preferences_window.py:81
+#: ../rilato/preferences_window.py:81
 msgid "Clear"
 msgstr "Borrar"
 
-#: ../gfeeds/preferences_window.py:109
+#: ../rilato/preferences_window.py:109
 msgid "Appearance"
 msgstr "Apariencia"
 
-#: ../gfeeds/preferences_window.py:112
+#: ../rilato/preferences_window.py:112
 msgid "Appearance preferences"
 msgstr "Preferencias de apariencia"
 
-#: ../gfeeds/preferences_window.py:114
+#: ../rilato/preferences_window.py:114
 msgid "Dark mode"
 msgstr "Modo oscuro"
 
-#: ../gfeeds/preferences_window.py:118
+#: ../rilato/preferences_window.py:118
 msgid "Use dark theme for reader mode"
 msgstr "Usar el tema oscuro para el modo lectura"
 
-#: ../gfeeds/preferences_window.py:122
+#: ../rilato/preferences_window.py:122
 msgid "Show article thumbnails"
 msgstr "Mostrar las miniaturas de los artículos"
 
-#: ../gfeeds/preferences_window.py:127
+#: ../rilato/preferences_window.py:127
 msgid "Maximum thumbnail height"
 msgstr "Altura máxima de la miniatura"
 
-#: ../gfeeds/preferences_window.py:133
+#: ../rilato/preferences_window.py:133
 msgid "Show full articles titles"
 msgstr "Mostrar el título de los artículos completo"
 
-#: ../gfeeds/preferences_window.py:138
+#: ../rilato/preferences_window.py:138
 msgid "Show full feeds names"
 msgstr "Mostrar el nombre completo de las fuentes"
 
-#: ../gfeeds/preferences_window.py:145
+#: ../rilato/preferences_window.py:145
 msgid "Font preferences"
 msgstr "Preferencias de tipografía"
 
-#: ../gfeeds/preferences_window.py:147
+#: ../rilato/preferences_window.py:147
 msgid "Use system font for titles"
 msgstr "Usar la tipografía del sistema para los títulos"
 
-#: ../gfeeds/preferences_window.py:151
+#: ../rilato/preferences_window.py:151
 msgid "Use system font for paragraphs"
 msgstr "Usar la tipografía del sistema para los párrafos"
 
-#: ../gfeeds/preferences_window.py:155
+#: ../rilato/preferences_window.py:155
 msgid "Custom title font"
 msgstr "Tipografía del título personalizada"
 
-#: ../gfeeds/preferences_window.py:159
+#: ../rilato/preferences_window.py:159
 msgid "Custom paragraph font"
 msgstr "Tipografía del párrafo personalizada"
 
-#: ../gfeeds/preferences_window.py:163
+#: ../rilato/preferences_window.py:163
 msgid "Custom monospace font"
 msgstr "Tipografía monoespaciada personalizada"
 
-#: ../gfeeds/preferences_window.py:175
+#: ../rilato/preferences_window.py:175
 msgid "Privacy"
 msgstr "Privacidad"
 
-#: ../gfeeds/preferences_window.py:178
+#: ../rilato/preferences_window.py:178
 msgid "Privacy preferences"
 msgstr "Preferencias de privacidad"
 
-#: ../gfeeds/preferences_window.py:180
+#: ../rilato/preferences_window.py:180
 msgid "Enable JavaScript"
 msgstr "Activar Javascript"
 
-#: ../gfeeds/preferences_window.py:185
+#: ../rilato/preferences_window.py:185
 msgid "Try to block advertisements"
 msgstr "Intentar bloquear los anuncios"
 
-#: ../gfeeds/preferences_window.py:187 ../gfeeds/preferences_window.py:222
+#: ../rilato/preferences_window.py:187 ../rilato/preferences_window.py:222
 msgid "Requires app restart"
 msgstr "Requiere reiniciar la aplicación"
 
-#: ../gfeeds/preferences_window.py:191
+#: ../rilato/preferences_window.py:191
 msgid "Update advertisement blocking list"
 msgstr "Actualizar la lista de bloqueo de anuncios"
 
-#: ../gfeeds/preferences_window.py:192
+#: ../rilato/preferences_window.py:192
 msgid "Updates automatically every 10 days"
 msgstr "Se actualiza automáticamente cada 10 días"
 
-#: ../gfeeds/preferences_window.py:193
+#: ../rilato/preferences_window.py:193
 msgid "Update"
 msgstr "Actualizar"
 
-#: ../gfeeds/preferences_window.py:206
+#: ../rilato/preferences_window.py:206
 msgid "Advanced"
 msgstr "Avanzado"
 
-#: ../gfeeds/preferences_window.py:209
+#: ../rilato/preferences_window.py:209
 msgid "Advanced preferences"
 msgstr "Preferencias avanzadas"
 
-#: ../gfeeds/preferences_window.py:211
+#: ../rilato/preferences_window.py:211
 msgid "Maximum refresh threads"
 msgstr "Máximo número de hilos para actualizar"
 
-#: ../gfeeds/preferences_window.py:213
+#: ../rilato/preferences_window.py:213
 msgid "How many threads to use for feeds refresh"
 msgstr "Cuántos hilos usar para la actualización de las fuentes"
 
-#: ../gfeeds/preferences_window.py:220
+#: ../rilato/preferences_window.py:220
 msgid "Experimental GtkListView for articles list"
 msgstr "GtkListView experimental para la lista de artículos"
 
-#: ../gfeeds/rss_parser.py:67
+#: ../rilato/rss_parser.py:67
 #, python-brace-format
 msgid "Error: unable to parse datetime {0} for feeditem {1}"
 msgstr "Error: no se pudo parsear la fecha {0} para el elemento {1}"
 
-#: ../gfeeds/rss_parser.py:148
+#: ../rilato/rss_parser.py:148
 #, python-brace-format
 msgid "Errors while parsing feed `{0}`"
 msgstr "Errores en el parseo de la fuente `{0}`"
 
-#: ../gfeeds/rss_parser.py:175
+#: ../rilato/rss_parser.py:175
 #, python-brace-format
 msgid "`{0}` may not be an RSS or Atom feed"
 msgstr "`{0}` podría no ser una fuente web o Atom"
 
-#: ../gfeeds/sidebar.py:21
+#: ../rilato/sidebar.py:21
 msgid "Loading feeds..."
 msgstr "Cargando fuentes..."
 
-#: ../gfeeds/sidebar_row_popover.py:31 ../gfeeds/sidebar_row_popover.py:58
+#: ../rilato/sidebar_row_popover.py:31 ../rilato/sidebar_row_popover.py:58
 msgid "Mark as unread"
 msgstr "Marcar como no leído"
 
-#: ../gfeeds/sidebar_row_popover.py:38 ../gfeeds/sidebar_row_popover.py:50
+#: ../rilato/sidebar_row_popover.py:38 ../rilato/sidebar_row_popover.py:50
 msgid "Mark as read"
 msgstr "Marcar como leido"
 
-#: ../gfeeds/suggestion_bar.py:37
+#: ../rilato/suggestion_bar.py:37
 msgid "There are some errors"
 msgstr "Hay algunos errores"
 
-#: ../gfeeds/suggestion_bar.py:46
+#: ../rilato/suggestion_bar.py:46
 msgid "Show"
 msgstr "Mostrar"
 
-#: ../gfeeds/suggestion_bar.py:47
+#: ../rilato/suggestion_bar.py:47
 msgid "Ignore"
 msgstr "Ignorar"
 
-#: ../gfeeds/suggestion_bar.py:70
+#: ../rilato/suggestion_bar.py:70
 msgid "There were problems with some feeds. Do you want to remove them?"
 msgstr "Hubo problemas con algunas fuentes. ¿Quiere eliminarlas?"
 
-#: ../gfeeds/suggestion_bar.py:97
+#: ../rilato/suggestion_bar.py:97
 msgid "You are offline"
 msgstr "Está desconectado"
 
-#: ../gfeeds/webview.py:188
+#: ../rilato/webview.py:188
 msgid "Link copied to clipboard!"
 msgstr "¡Enlace copiado al portapapeles!"
 
-#: ../gfeeds/webview.py:210
+#: ../rilato/webview.py:210
 msgid "Feed content not available for this article"
 msgstr "El contenido de la fuente no está disponible para este artículo"
 
@@ -555,23 +555,23 @@ msgstr "Artículo"
 msgid "Select an article"
 msgstr "Seleccionar un artículo"
 
-#: ../data/org.gabmus.gfeeds.desktop.in:6
+#: ../data/org.gabmus.rilato.desktop.in:6
 msgid "@prettyname@"
 msgstr "@prettyname@"
 
-#: ../data/org.gabmus.gfeeds.desktop.in:7
+#: ../data/org.gabmus.rilato.desktop.in:7
 msgid "News reader for GNOME"
 msgstr "Lector de noticias para GNOME"
 
-#: ../data/org.gabmus.gfeeds.desktop.in:16
+#: ../data/org.gabmus.rilato.desktop.in:16
 msgid "rss;reader;feed;news;"
 msgstr "rss;reader;feed;news;lector;fuentes;noticias;"
 
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:4
+#: ../data/org.gabmus.rilato.appdata.xml.in:4
 msgid "Feeds"
 msgstr "Feeds"
 
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:15
+#: ../data/org.gabmus.rilato.appdata.xml.in:15
 msgid ""
 "Feeds is a minimal RSS/Atom feed reader built with speed and simplicity in "
 "mind."
@@ -579,7 +579,7 @@ msgstr ""
 "Feeds es un lector de fuentes web/Atom construido con la velocidad y "
 "simplicidad en mente."
 
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:16
+#: ../data/org.gabmus.rilato.appdata.xml.in:16
 msgid ""
 "It offers a simple user interface that only shows the latest news from your "
 "subscriptions."
@@ -587,7 +587,7 @@ msgstr ""
 "Ofrece un interfaz simple de usuario que solo muestra las últimas noticias "
 "de sus suscripciones."
 
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:17
+#: ../data/org.gabmus.rilato.appdata.xml.in:17
 msgid ""
 "Articles are shown in a web view by default, with javascript disabled for a "
 "faster and less intrusive user experience. There's also a reader mode "
@@ -598,20 +598,20 @@ msgstr ""
 "También hay un modo lectura incluido, usando funcionalidades de GNOME Web/"
 "Epiphany."
 
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:18
+#: ../data/org.gabmus.rilato.appdata.xml.in:18
 msgid "Feeds can be imported and exported via OPML."
 msgstr "Las fuentes pueden ser importados y exportadas usando el formato OPML."
 
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:59
+#: ../data/org.gabmus.rilato.appdata.xml.in:59
 msgid "Fixed view mode button"
 msgstr "Corregido el botón del modo vista"
 
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:60
+#: ../data/org.gabmus.rilato.appdata.xml.in:60
 msgid "Option to open YouTube links with an external media player"
 msgstr ""
 "Opción para abrir enlaces de YouTube con un reproductor multimedia externo"
 
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:61
+#: ../data/org.gabmus.rilato.appdata.xml.in:61
 msgid ""
 "Saved articles are no longer stored inside the cache directory, avoiding "
 "accidental deletion"
@@ -619,60 +619,60 @@ msgstr ""
 "Los artículos guardados ya no se almacenan en el directorio de la caché, lo "
 "que evita su eliminación accidental"
 
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:69
+#: ../data/org.gabmus.rilato.appdata.xml.in:69
 msgid "Feed icons improvements for high DPI screens"
 msgstr "Mejoras en los iconos de las fuentes para las pantallas de alta DPI"
 
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:77
+#: ../data/org.gabmus.rilato.appdata.xml.in:77
 msgid "UI improvements on phones"
 msgstr "Mejoras en la interfaz de usuario de los teléfonos"
 
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:85
+#: ../data/org.gabmus.rilato.appdata.xml.in:85
 msgid "Switched to the new libhandy Avatar widget"
 msgstr "Cambiado al nuevo widget de Avatar de libhandy"
 
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:86
+#: ../data/org.gabmus.rilato.appdata.xml.in:86
 msgid "Added Dutch translation courtesy of Heimen Stoffels"
 msgstr "Añadida la traducción al neerlandés por cortesía de Heimen Stoffels"
 
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:93
+#: ../data/org.gabmus.rilato.appdata.xml.in:93
 msgid "Fixed searchbar"
 msgstr "Corregida la barra de búsqueda"
 
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:101
+#: ../data/org.gabmus.rilato.appdata.xml.in:101
 msgid ""
 "New tags feature! You can now categorize your feeds by creating custom tags"
 msgstr ""
 "¡Nueva función de etiquetas! Ahora puedes clasificar sus fuentes creando "
 "etiquetas personalizadas"
 
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:102
+#: ../data/org.gabmus.rilato.appdata.xml.in:102
 msgid "RSS links can now be opened directly in Feeds to be imported"
 msgstr ""
 "Ahora los enlaces web pueden abrirse directamente en Feeds para ser "
 "importados"
 
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:103
+#: ../data/org.gabmus.rilato.appdata.xml.in:103
 msgid "Mark as read now only marks the currently visible feeds"
 msgstr "Marcar como leído ahora solo marca las fuentes actualmente visibles"
 
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:104
+#: ../data/org.gabmus.rilato.appdata.xml.in:104
 msgid "Added support for the latest version of libhandy"
 msgstr "Añadido el soporte para la última versión de libhandy"
 
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:105
+#: ../data/org.gabmus.rilato.appdata.xml.in:105
 msgid "Improved message dialogs"
 msgstr "Mejorados los diálogos de mensajes"
 
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:106
+#: ../data/org.gabmus.rilato.appdata.xml.in:106
 msgid "Performance improvements when importing OPML files"
 msgstr "Mejoras de rendimiento en la importación de archivos OPML"
 
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:107
+#: ../data/org.gabmus.rilato.appdata.xml.in:107
 msgid "Removed option to disable client side decoration"
 msgstr "Eliminada la opción de desactivar la decoración del lado del cliente"
 
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:114
+#: ../data/org.gabmus.rilato.appdata.xml.in:114
 msgid ""
 "Don't remove feeds automatically if they have errors, instead ask the user "
 "what to do"
@@ -680,312 +680,312 @@ msgstr ""
 "No se eliminan las fuentes automáticamente si tienen errores, sino que se "
 "pregunta qué se debe hacer"
 
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:115
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:137
+#: ../data/org.gabmus.rilato.appdata.xml.in:115
+#: ../data/org.gabmus.rilato.appdata.xml.in:137
 msgid "Updated Italian translation"
 msgstr "Actualizada la traducción al italiano"
 
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:122
+#: ../data/org.gabmus.rilato.appdata.xml.in:122
 msgid "Updated French translation"
 msgstr "Actualizada la traducción al francés"
 
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:129
+#: ../data/org.gabmus.rilato.appdata.xml.in:129
 msgid "Bug fixes"
 msgstr "Corrección de errores"
 
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:136
+#: ../data/org.gabmus.rilato.appdata.xml.in:136
 msgid "Updated version number"
 msgstr "Número de versión actualizado"
 
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:144
+#: ../data/org.gabmus.rilato.appdata.xml.in:144
 msgid "You can now add some feeds by just using the website URL"
 msgstr ""
 "Ahora puede añadir algunas fuentes simplemente utilizando la URL del sitio "
 "web"
 
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:145
+#: ../data/org.gabmus.rilato.appdata.xml.in:145
 msgid "New generated placeholder icon for feeds without one"
 msgstr "Nuevo icono de marcador de posición generado para las fuentes sin uno"
 
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:146
+#: ../data/org.gabmus.rilato.appdata.xml.in:146
 msgid "Improved reader mode"
 msgstr "Mejorado el modo de lectura"
 
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:147
+#: ../data/org.gabmus.rilato.appdata.xml.in:147
 msgid "Swipe left on your touchscreen to move back from an article"
 msgstr ""
 "Deslice el dedo hacia la izquierda en la pantalla táctil para retroceder de "
 "un artículo"
 
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:148
+#: ../data/org.gabmus.rilato.appdata.xml.in:148
 msgid "Code blocks in articles now have syntax highlighting"
 msgstr ""
 "Los bloques de código en los artículos ahora tienen resaltado de sintaxis"
 
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:149
+#: ../data/org.gabmus.rilato.appdata.xml.in:149
 msgid "Added French translation"
 msgstr "Añadida la traducción al francés"
 
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:150
+#: ../data/org.gabmus.rilato.appdata.xml.in:150
 msgid "Removed the colored border left of the articles"
 msgstr "Eliminado el borde de color a la izquierda de los artículos"
 
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:151
+#: ../data/org.gabmus.rilato.appdata.xml.in:151
 msgid "More keyboard shortcuts"
 msgstr "Más atajos del teclado"
 
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:152
+#: ../data/org.gabmus.rilato.appdata.xml.in:152
 msgid "Added option to refresh articles on startup"
 msgstr "Añadida la opción de actualizar los artículos al inicio"
 
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:153
+#: ../data/org.gabmus.rilato.appdata.xml.in:153
 msgid "Updated to the GNOME 3.36 runtime"
 msgstr "Actualizado al runtime de GNOME 3.36"
 
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:154
+#: ../data/org.gabmus.rilato.appdata.xml.in:154
 msgid "Various improvements and bug fixes"
 msgstr "Varias mejoras y correcciones de errores"
 
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:161
+#: ../data/org.gabmus.rilato.appdata.xml.in:161
 msgid "Added loading progress bar"
 msgstr "Añadida una barra de progreso de carga"
 
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:162
+#: ../data/org.gabmus.rilato.appdata.xml.in:162
 msgid "Added Spanish translation"
 msgstr "Añadida la traducción al español"
 
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:163
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:174
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:188
+#: ../data/org.gabmus.rilato.appdata.xml.in:163
+#: ../data/org.gabmus.rilato.appdata.xml.in:174
+#: ../data/org.gabmus.rilato.appdata.xml.in:188
 msgid "Various UI improvements"
 msgstr "Varias mejoras de la IU"
 
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:164
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:175
+#: ../data/org.gabmus.rilato.appdata.xml.in:164
+#: ../data/org.gabmus.rilato.appdata.xml.in:175
 msgid "Performance improvements"
 msgstr "Mejoras en el rendimiento"
 
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:165
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:176
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:189
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:199
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:214
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:225
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:278
+#: ../data/org.gabmus.rilato.appdata.xml.in:165
+#: ../data/org.gabmus.rilato.appdata.xml.in:176
+#: ../data/org.gabmus.rilato.appdata.xml.in:189
+#: ../data/org.gabmus.rilato.appdata.xml.in:199
+#: ../data/org.gabmus.rilato.appdata.xml.in:214
+#: ../data/org.gabmus.rilato.appdata.xml.in:225
+#: ../data/org.gabmus.rilato.appdata.xml.in:278
 msgid "Various bug fixes"
 msgstr "Varias correcciones de errores"
 
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:172
+#: ../data/org.gabmus.rilato.appdata.xml.in:172
 msgid "Load cached articles on startup"
 msgstr "Cargar artículos cacheados en el arranque"
 
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:173
+#: ../data/org.gabmus.rilato.appdata.xml.in:173
 msgid "Added new view mode menu"
 msgstr "Añadido un nuevo menú de modo de vista"
 
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:177
+#: ../data/org.gabmus.rilato.appdata.xml.in:177
 msgid "Added Brazilian Portuguese translation"
 msgstr "Añadida la traducción al portugués de Brasil"
 
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:178
+#: ../data/org.gabmus.rilato.appdata.xml.in:178
 msgid "Added Russian translation"
 msgstr "Añadida la traducción al ruso"
 
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:185
+#: ../data/org.gabmus.rilato.appdata.xml.in:185
 msgid "Option to ellipsize article titles for a more compact view"
 msgstr "Opción de elipsar los artículos para una vista más compacta"
 
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:186
+#: ../data/org.gabmus.rilato.appdata.xml.in:186
 msgid "Added a search function"
 msgstr "Añadida una función de búsqueda"
 
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:187
+#: ../data/org.gabmus.rilato.appdata.xml.in:187
 msgid "Updated dependencies"
 msgstr "Dependencias actualizadas"
 
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:196
+#: ../data/org.gabmus.rilato.appdata.xml.in:196
 msgid "Errors with feeds are now shown in the UI"
 msgstr "Los errores con las fuentes se muestran ahora en la interfaz"
 
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:197
+#: ../data/org.gabmus.rilato.appdata.xml.in:197
 msgid "Big UI overhaul"
 msgstr "Gran revisión de la IU"
 
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:198
+#: ../data/org.gabmus.rilato.appdata.xml.in:198
 msgid "Updated translations"
 msgstr "Actualizadas las traducciones"
 
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:206
+#: ../data/org.gabmus.rilato.appdata.xml.in:206
 msgid "OPML file association"
 msgstr "Asociación de archivos OPML"
 
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:207
+#: ../data/org.gabmus.rilato.appdata.xml.in:207
 msgid "Changed left headerbar button order"
 msgstr ""
 "Cambiado el orden de los botones de la barra de encabezamiento izquierda"
 
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:208
+#: ../data/org.gabmus.rilato.appdata.xml.in:208
 msgid "Optimization for updating feeds"
 msgstr "Optimización de la actualización de fuentes"
 
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:209
+#: ../data/org.gabmus.rilato.appdata.xml.in:209
 msgid "Redesigned right click/longpress menu"
 msgstr "Rediseño del menú de clic derecho/pulsación larga"
 
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:210
+#: ../data/org.gabmus.rilato.appdata.xml.in:210
 msgid "Option to show/hide read articles"
 msgstr "Opción de mostrar/ocultar los artículos leídos"
 
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:211
+#: ../data/org.gabmus.rilato.appdata.xml.in:211
 msgid "Reworked suggestion bar"
 msgstr "Barra de sugerencias renovada"
 
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:212
+#: ../data/org.gabmus.rilato.appdata.xml.in:212
 msgid "Changed name to Feeds"
 msgstr "Cambiado el nombre a Feeds"
 
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:213
+#: ../data/org.gabmus.rilato.appdata.xml.in:213
 msgid "Improved CPU utilization"
 msgstr "Mejorada la utilización de la CPU"
 
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:221
+#: ../data/org.gabmus.rilato.appdata.xml.in:221
 msgid "New right click or longpress menu for articles"
 msgstr "Nuevo menú de clic derecho o pulsación larga para artículos"
 
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:222
+#: ../data/org.gabmus.rilato.appdata.xml.in:222
 msgid "You can now save articles offline"
 msgstr "Ahora puedes guardar artículos sin conexión"
 
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:223
+#: ../data/org.gabmus.rilato.appdata.xml.in:223
 msgid "Initial suggestion to add feeds is now less intrusive"
 msgstr "La sugerencia inicial de añadir fuentes es ahora menos intrusiva"
 
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:224
+#: ../data/org.gabmus.rilato.appdata.xml.in:224
 msgid "Read articles are now greyed out"
 msgstr "Los artículos leídos son ahora grises"
 
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:232
+#: ../data/org.gabmus.rilato.appdata.xml.in:232
 msgid "Concurrent feeds refresh, with customizable thread count"
 msgstr ""
 "Actualización simultánea de las fuentes, con un número de hilos "
 "personalizable"
 
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:233
+#: ../data/org.gabmus.rilato.appdata.xml.in:233
 msgid "Added German translation (thanks @Etamuk)"
 msgstr "Añadida la traducción al alemán (gracias @Etamuk)"
 
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:240
+#: ../data/org.gabmus.rilato.appdata.xml.in:240
 msgid "Fix bugs in reader mode"
 msgstr "Corrección de errores en el modo lectura"
 
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:247
+#: ../data/org.gabmus.rilato.appdata.xml.in:247
 msgid "Minor bug fix"
 msgstr "Corrección de errores menores"
 
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:254
+#: ../data/org.gabmus.rilato.appdata.xml.in:254
 msgid "Improved date and time parsing and display"
 msgstr "Mejorado el análisis y la visualización de la fecha y la hora"
 
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:255
+#: ../data/org.gabmus.rilato.appdata.xml.in:255
 msgid "Reader mode can now work on websites without an article tag"
 msgstr ""
 "El modo de lectura ahora puede funcionar en sitios web sin etiqueta de "
 "artículo"
 
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:256
+#: ../data/org.gabmus.rilato.appdata.xml.in:256
 msgid "Slight improvements to the icon"
 msgstr "Ligeras mejoras en el icono"
 
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:257
+#: ../data/org.gabmus.rilato.appdata.xml.in:257
 msgid "New feature to filter articles by feed"
 msgstr "Nueva función para filtrar los artículos por fuente"
 
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:264
+#: ../data/org.gabmus.rilato.appdata.xml.in:264
 msgid "Improved favicon download"
 msgstr "Mejorada la descarga del favicon"
 
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:265
+#: ../data/org.gabmus.rilato.appdata.xml.in:265
 msgid "Fixed refresh duplicating articles"
 msgstr "Corregida la actualización de los artículos duplicados"
 
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:272
+#: ../data/org.gabmus.rilato.appdata.xml.in:272
 msgid "Added option to disable client side decoration"
 msgstr "Añadida la opción de desactivar la decoración del lado del cliente"
 
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:273
+#: ../data/org.gabmus.rilato.appdata.xml.in:273
 msgid "Brought primary menu in line with GNOME HIG"
 msgstr "Se ha adaptado el menú principal a GNOME HIG"
 
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:274
+#: ../data/org.gabmus.rilato.appdata.xml.in:274
 msgid "Added placeholder icon for feeds without an icon"
 msgstr "Añadido un icono de marcador de posición para las fuentes sin icono"
 
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:275
+#: ../data/org.gabmus.rilato.appdata.xml.in:275
 msgid "Migrated some widgets to Glade templates"
 msgstr "Migración de algunos widgets a las plantillas de Glade"
 
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:276
+#: ../data/org.gabmus.rilato.appdata.xml.in:276
 msgid "Option to use reader mode by default"
 msgstr "Opción de usar el modo lectura por defecto"
 
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:277
+#: ../data/org.gabmus.rilato.appdata.xml.in:277
 msgid "Option to show article content from the feed"
 msgstr "Opción de mostrar el contenido del artículo desde la fuente"
 
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:285
+#: ../data/org.gabmus.rilato.appdata.xml.in:285
 msgid "Fixed labels alignment"
 msgstr "Corregida la alineación de las etiquetas"
 
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:286
+#: ../data/org.gabmus.rilato.appdata.xml.in:286
 msgid "Changed app name to Feeds"
 msgstr "Cambiado el nombre de la aplicación a Feeds"
 
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:287
+#: ../data/org.gabmus.rilato.appdata.xml.in:287
 msgid "Added separators for the two sections of the app"
 msgstr "Añadidos los separadores para las dos secciones de la aplicación"
 
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:288
+#: ../data/org.gabmus.rilato.appdata.xml.in:288
 msgid "Using links as feed titles when there is no title"
 msgstr "Uso de enlaces como títulos de fuentes cuando no hay títulos"
 
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:289
+#: ../data/org.gabmus.rilato.appdata.xml.in:289
 msgid "Added preference for maximum article age"
 msgstr "Añadida la preferencia por la antigüedad máxima del artículo"
 
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:290
+#: ../data/org.gabmus.rilato.appdata.xml.in:290
 msgid "Added zoom keyboard shortcuts"
 msgstr "Se han añadido los atajos de teclado para el zoom"
 
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:291
+#: ../data/org.gabmus.rilato.appdata.xml.in:291
 msgid "Added preference to enable JavaScript"
 msgstr "Añadida la preferencia de activar JavaScript"
 
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:292
+#: ../data/org.gabmus.rilato.appdata.xml.in:292
 msgid "Fix window control positions when they are on the left"
 msgstr ""
 "Arregladas las posiciones de los controles de las ventanas cuando están a la "
 "izquierda"
 
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:299
+#: ../data/org.gabmus.rilato.appdata.xml.in:299
 msgid "Feeds for websites without favicons will now work"
 msgstr "Ahora funcionan las fuentes de los sitios web sin favicons"
 
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:306
+#: ../data/org.gabmus.rilato.appdata.xml.in:306
 msgid "Fixed bug with adding new feeds"
 msgstr "Corregido un error al añadir nuevas fuentes"
 
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:313
+#: ../data/org.gabmus.rilato.appdata.xml.in:313
 msgid "Switched to native file chooser"
 msgstr "Cambiado al selector de archivos nativo"
 
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:314
+#: ../data/org.gabmus.rilato.appdata.xml.in:314
 msgid "Added empty state initial screen for sidebar"
 msgstr "Añadida la pantalla inicial de estado vacío para la barra lateral"
 
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:315
+#: ../data/org.gabmus.rilato.appdata.xml.in:315
 msgid "Added italian translation"
 msgstr "Añadida la traducción al italiano"
 
-#: ../data/org.gabmus.gfeeds.appdata.xml.in:322
+#: ../data/org.gabmus.rilato.appdata.xml.in:322
 msgid "First release"
 msgstr "Primera versión"

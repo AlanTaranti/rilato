@@ -1,4 +1,4 @@
-project('gfeeds',
+project('rilato',
     version: '2.2.0',
     meson_version: '>= 0.58.0',
     license: 'GPL3'

@@ -1,9 +1,0 @@
-[Desktop Entry]
-Name=Feeds
-# TODO: We could include the full path here but Meson requires
-#       newer GLib to generate files for GResource
-TryExec=gfeeds
-Exec=gfeeds --gapplication-service
-Type=Application
-NoDisplay=true
-Name[en_US]=org.gabmus.gfeeds.service.desktop

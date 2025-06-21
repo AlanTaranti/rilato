@@ -2,7 +2,7 @@
 
 DOMAIN_EXTENSION="org"
 AUTHOR="gabmus"
-APPNAME="gfeeds"
+APPNAME="rilato"
 APPID="${DOMAIN_EXTENSION}.${AUTHOR}.${APPNAME}"
 
 if [ "$1" == "-h" ]; then

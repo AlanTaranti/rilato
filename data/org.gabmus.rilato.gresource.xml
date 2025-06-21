@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gresources>
+  <gresource prefix="/org/gabmus/rilato">
+    <file compressed="true">org.gabmus.rilato.service.desktop</file>
+
+    <file compressed="true">ui/reader_mode_style.css</file>
+
+    <file preprocess="xml-stripblanks">aboutdialog.ui</file>
+    <file preprocess="xml-stripblanks">ui/add_feed_popover.ui</file>
+    <file preprocess="xml-stripblanks">ui/empty_state.ui</file>
+    <file preprocess="xml-stripblanks">ui/main_leaflet.ui</file>
+    <file preprocess="xml-stripblanks">ui/left_headerbar.ui</file>
+    <file preprocess="xml-stripblanks">ui/right_headerbar.ui</file>
+    <file preprocess="xml-stripblanks">ui/manage_feeds_listbox_row.ui</file>
+    <file preprocess="xml-stripblanks">ui/manage_feeds_headerbar.ui</file>
+    <file preprocess="xml-stripblanks">ui/shortcutsWindow.ui</file>
+    <file preprocess="xml-stripblanks">ui/sidebar_listbox_row.ui</file>
+    <file preprocess="xml-stripblanks">ui/webview.ui</file>
+    <file preprocess="xml-stripblanks">ui/manage_tags_content.ui</file>
+    <file preprocess="xml-stripblanks">ui/manage_tags_listbox_row.ui</file>
+    <file preprocess="xml-stripblanks">ui/filter_view.ui</file>
+
+    <file compressed="true">ui/gtk_style.css</file>
+
+    <file preprocess="xml-stripblanks">icons/org.gabmus.rilato.svg</file>
+    <file preprocess="xml-stripblanks">icons/org.gabmus.rilato-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">icons/scalable/status/ephy-reader-mode-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">icons/scalable/status/globe-alt-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">icons/scalable/status/tag-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">icons/scalable/status/webview-filler-symbolic.svg</file>
+
+  </gresource>
+</gresources>

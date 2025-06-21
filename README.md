@@ -1,10 +1,10 @@
-# <a href="https://gabmus.gitlab.io/gnome-feeds"><img height="32" src="data/icons/org.gabmus.gfeeds.svg" /> Feeds</a>
+# <a href="https://gabmus.gitlab.io/gnome-feeds"><img height="32" src="data/icons/org.gabmus.rilato.svg" /> Feeds</a>
 
 An RSS/Atom feed reader for GNOME.
 
-![screenshot](https://gitlab.gnome.org/World/gfeeds/-/raw/website/static/screenshots/mainwindow.png)
+![screenshot](https://gitlab.gnome.org/World/rilato/-/raw/website/static/screenshots/mainwindow.png)
 
-[![Download on Flathub](https://raw.githubusercontent.com/flatpak-design-team/flathub-mockups/master/assets/download-button/download.svg?sanitize=true)](https://flathub.org/apps/details/org.gabmus.gfeeds)
+[![Download on Flathub](https://raw.githubusercontent.com/flatpak-design-team/flathub-mockups/master/assets/download-button/download.svg?sanitize=true)](https://flathub.org/apps/details/org.gabmus.rilato)
 
 ## Dependencies
 
@@ -22,17 +22,15 @@ An RSS/Atom feed reader for GNOME.
 
 ## Build and run from source
 
-**Note**: If you're looking to install the app for regular use, [download it from Flathub](https://flathub.org/apps/details/org.gabmus.gfeeds) or from your distribution repositories. These instructions are only for developers and package maintainers.
+**Note**: If you're looking to install the app for regular use, [download it from Flathub](https://flathub.org/apps/details/org.gabmus.rilato) or from your distribution repositories. These instructions are only for developers and package maintainers.
 
 ```bash
-git clone https://gitlab.gnome.org/World/gfeeds
-cd gfeeds
-mkdir build
-cd build
-meson .. -Dprefix="$PWD/build/mprefix"
-ninja
-ninja install
-ninja run
+git clone https://github.com/AlanTaranti/rilato
+cd rilato
+meson setup build --Dprefix="$PWD/build/mprefix" --buildtype=debug --reconfigure
+meson compile -C build
+meson install -C build
+./build/bin/rilato
 ```
 
 ## Hacking
@@ -40,5 +38,5 @@ ninja run
 You might want to check your code with [flake8](https://github.com/pycqa/flake8) before opening a merge request.
 
 ```bash
-flake8 gfeeds
+flake8 rilato
 ```

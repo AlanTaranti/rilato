@@ -1,5 +1,5 @@
 from unittest.mock import MagicMock
-from gfeeds.util.opml_generator import feeds_list_to_opml
+from rilato.util.opml_generator import feeds_list_to_opml
 
 
 MOCK_FEEDS = [

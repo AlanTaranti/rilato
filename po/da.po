@@ -1,14 +1,14 @@
-# Danish translation for gfeeds.
-# Copyright (C) 2022 gfeeds's COPYRIGHT HOLDER
-# This file is distributed under the same license as the gfeeds package.
+# Danish translation for rilato.
+# Copyright (C) 2022 rilato's COPYRIGHT HOLDER
+# This file is distributed under the same license as the rilato package.
 # Ask Hjorth Larsen <asklarsen@gmail.com>, 2022.
 #
 # Ordliste
 #   feed -> (nyheds)kilde
 msgid ""
 msgstr ""
-"Project-Id-Version: gfeeds master\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/gfeeds/issues\n"
+"Project-Id-Version: rilato master\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/rilato/issues\n"
 "POT-Creation-Date: 2022-05-06 18:45+0000\n"
 "PO-Revision-Date: 2022-06-26 16:07+0200\n"
 "Last-Translator: Ask Hjorth Larsen <asklarsen@gmail.com>\n"
@@ -19,67 +19,67 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: data/org.gabmus.gfeeds.appdata.xml.in:4
+#: data/org.gabmus.rilato.appdata.xml.in:4
 msgid "Feeds"
 msgstr "Feeds"
 
-#: data/org.gabmus.gfeeds.appdata.xml.in:6 data/org.gabmus.gfeeds.desktop.in:7
+#: data/org.gabmus.rilato.appdata.xml.in:6 data/org.gabmus.rilato.desktop.in:7
 msgid "News reader for GNOME"
 msgstr "Nyhedslæser til GNOME"
 
-#: data/org.gabmus.gfeeds.appdata.xml.in:15
+#: data/org.gabmus.rilato.appdata.xml.in:15
 msgid ""
 "Feeds is a minimal RSS/Atom feed reader built with speed and simplicity in "
 "mind."
 msgstr "Feeds er en minimal RSS/Atom-kildelæser, som er skrevet med henblik på hastighed og enkelhed."
 
-#: data/org.gabmus.gfeeds.appdata.xml.in:16
+#: data/org.gabmus.rilato.appdata.xml.in:16
 msgid ""
 "It offers a simple user interface that only shows the latest news from your "
 "subscriptions."
 msgstr "Programmet tilbyder en simpel brugergrænseflade, som kun viser de sidste nyheder fra dine abonnementer."
 
-#: data/org.gabmus.gfeeds.appdata.xml.in:17
+#: data/org.gabmus.rilato.appdata.xml.in:17
 msgid ""
 "Articles are shown in a web view by default, with javascript disabled for a "
 "faster and less intrusive user experience. There's also a reader mode "
 "included, built from the one GNOME Web/Epiphany uses."
 msgstr "Artikler vises som standard i webvisning med JavaScript deaktiveret for at give en hurtigere og mindre generende brugeroplevelse. Der er også en inkluderet læsetilstand, der bygger på den, GNOME Web/Epiphany bruger."
 
-#: data/org.gabmus.gfeeds.appdata.xml.in:18
+#: data/org.gabmus.rilato.appdata.xml.in:18
 msgid "Feeds can be imported and exported via OPML."
 msgstr "Nyhedskilder kan importeres og eksporteres via OPML."
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/org.gabmus.gfeeds.desktop.in:16
+#: data/org.gabmus.rilato.desktop.in:16
 msgid "rss;reader;feed;news;"
 msgstr "rss;reader;feed;news;"
 
-#: gfeeds/feed_item.py:49
+#: rilato/feed_item.py:49
 #, python-brace-format
 msgid "Error: unable to parse datetime {0} for feeditem {1}"
 msgstr "Fejl: kan ikke fortolke datetime {0} for feeditem {1}"
 
-#: gfeeds/feed_parser.py:37
+#: rilato/feed_parser.py:37
 #, python-brace-format
 msgid "Errors while parsing feed `{0}`"
 msgstr "Fejl ved fortolkning af feed “{0}”"
 
-#: gfeeds/feed_parser.py:55
+#: rilato/feed_parser.py:55
 #, python-brace-format
 msgid "`{0}` may not be an RSS or Atom feed"
 msgstr "“{0}” er måske ikke et RSS- eller Atom-feed"
 
-#: gfeeds/feeds_manager.py:88
+#: rilato/feeds_manager.py:88
 #, python-brace-format
 msgid "Feed {0} exists already, skipping"
 msgstr "Kilden {0} findes allerede — springer over"
 
-#: gfeeds/feeds_view.py:13
+#: rilato/feeds_view.py:13
 msgid "All feeds"
 msgstr "Alle kilder"
 
-#: gfeeds/headerbar.py:184
+#: rilato/headerbar.py:184
 msgid ""
 "There were problems with some feeds.\n"
 "Do you want to remove them?"
@@ -87,286 +87,286 @@ msgstr ""
 "Der opstod problemer med visse nyhedskilder.\n"
 "Vil du fjerne dem?"
 
-#: gfeeds/main_leaflet.py:119
+#: rilato/main_leaflet.py:119
 #, python-brace-format
 msgid "{0} new article"
 msgid_plural "{0} new articles"
 msgstr[0] "{0} ny artikel"
 msgstr[1] "{0} nye artikler"
 
-#: gfeeds/__main__.py:229
+#: rilato/__main__.py:229
 msgid "Do you want to import these feeds?"
 msgstr "Vil du importere disse nyhedskilder?"
 
-#: gfeeds/__main__.py:256
+#: rilato/__main__.py:256
 msgid "Do you want to import this feed?"
 msgstr "Vil du importere denne nyhedskilde?"
 
-#: gfeeds/__main__.py:285
+#: rilato/__main__.py:285
 msgid "url"
 msgstr "url"
 
-#: gfeeds/__main__.py:288
+#: rilato/__main__.py:288
 msgid "opml file local url or rss remote url to import"
 msgstr "lokal url til opml-fil eller fjern-url til rss som skal importeres"
 
-#: gfeeds/manage_feeds_window.py:263
+#: rilato/manage_feeds_window.py:263
 msgid "Manage Feeds"
 msgstr "Håndtér nyhedskilder"
 
-#: gfeeds/manage_feeds_window.py:318
+#: rilato/manage_feeds_window.py:318
 msgid "Do you want to delete these feeds?"
 msgstr "Vil du slette disse nyhedskilder?"
 
-#: gfeeds/opml_file_chooser.py:7
+#: rilato/opml_file_chooser.py:7
 msgid "XML files"
 msgstr "XML-filer"
 
-#: gfeeds/opml_file_chooser.py:14
+#: rilato/opml_file_chooser.py:14
 msgid "Choose an OPML file to import"
 msgstr "Vælg en OPML-fil der skal importeres"
 
-#: gfeeds/opml_file_chooser.py:18
+#: rilato/opml_file_chooser.py:18
 msgid "Open"
 msgstr "Åbn"
 
-#: gfeeds/opml_file_chooser.py:19 gfeeds/opml_file_chooser.py:31
+#: rilato/opml_file_chooser.py:19 rilato/opml_file_chooser.py:31
 msgid "Cancel"
 msgstr "Annullér"
 
-#: gfeeds/opml_file_chooser.py:26
+#: rilato/opml_file_chooser.py:26
 msgid "Choose where to save the exported OPML file"
 msgstr "Vælg hvor den eksporterede OPML-fil skal gemmes"
 
-#: gfeeds/opml_file_chooser.py:30
+#: rilato/opml_file_chooser.py:30
 msgid "Save"
 msgstr "Gem"
 
-#: gfeeds/opml_manager.py:42
+#: rilato/opml_manager.py:42
 msgid "Error: OPML path provided does not exist"
 msgstr "Fejl: Den givne OPML-sti findes ikke"
 
-#: gfeeds/opml_manager.py:53
+#: rilato/opml_manager.py:53
 #, python-brace-format
 msgid "Error parsing OPML file `{0}`"
 msgstr "Fejl ved fortolkning af OPML-filen “{0}”"
 
-#: gfeeds/preferences_window.py:22
+#: rilato/preferences_window.py:22
 msgid "General"
 msgstr "Generelle"
 
-#: gfeeds/preferences_window.py:25
+#: rilato/preferences_window.py:25
 msgid "General preferences"
 msgstr "Generelle indstillinger"
 
-#: gfeeds/preferences_window.py:27
+#: rilato/preferences_window.py:27
 msgid "Show newer articles first"
 msgstr "Vis nyere artikler først"
 
-#: gfeeds/preferences_window.py:32
+#: rilato/preferences_window.py:32
 msgid "Open links in your browser"
 msgstr "Åbn links i din browser"
 
-#: gfeeds/preferences_window.py:36
+#: rilato/preferences_window.py:36
 msgid "Use external video player for YouTube"
 msgstr "Brug ekstern videoafspiller til YouTube"
 
-#: gfeeds/preferences_window.py:38
+#: rilato/preferences_window.py:38
 msgid "Requires youtube-dl and a compatible video player"
 msgstr "Kræver youtube-dl og en kompatibel videoafspiller"
 
-#: gfeeds/preferences_window.py:44
+#: rilato/preferences_window.py:44
 msgid "Preferred video player"
 msgstr "Foretrukken videoafspiller"
 
-#: gfeeds/preferences_window.py:48
+#: rilato/preferences_window.py:48
 msgid "Maximum article age"
 msgstr "Maksimal alder på artikler"
 
-#: gfeeds/preferences_window.py:49
+#: rilato/preferences_window.py:49
 msgid "In days"
 msgstr "I dage"
 
-#: gfeeds/preferences_window.py:56
+#: rilato/preferences_window.py:56
 msgid "Refresh preferences"
 msgstr "Opdatér indstillinger"
 
-#: gfeeds/preferences_window.py:58
+#: rilato/preferences_window.py:58
 msgid "Refresh articles on startup"
 msgstr "Opdatér artikler ved programstart"
 
-#: gfeeds/preferences_window.py:62
+#: rilato/preferences_window.py:62
 msgid "New articles notification"
 msgstr "Påmindelse ved nye artikler"
 
-#: gfeeds/preferences_window.py:66
+#: rilato/preferences_window.py:66
 msgid "Enable auto-refresh"
 msgstr "Aktivér automatisk opdatering"
 
-#: gfeeds/preferences_window.py:70
+#: rilato/preferences_window.py:70
 msgid "Auto-refresh interval"
 msgstr "Interval for automatisk opdatering"
 
-#: gfeeds/preferences_window.py:71
+#: rilato/preferences_window.py:71
 msgid "In seconds"
 msgstr "I sekunder"
 
-#: gfeeds/preferences_window.py:78
+#: rilato/preferences_window.py:78
 msgid "Cache"
 msgstr "Mellemlager"
 
-#: gfeeds/preferences_window.py:80
+#: rilato/preferences_window.py:80
 msgid "Clear caches"
 msgstr "Ryd mellemlager"
 
-#: gfeeds/preferences_window.py:81
+#: rilato/preferences_window.py:81
 msgid "Clear"
 msgstr "Ryd"
 
-#: gfeeds/preferences_window.py:109
+#: rilato/preferences_window.py:109
 msgid "Appearance"
 msgstr "Udseende"
 
-#: gfeeds/preferences_window.py:112
+#: rilato/preferences_window.py:112
 msgid "Appearance preferences"
 msgstr "Indstillinger for udseende"
 
-#: gfeeds/preferences_window.py:114
+#: rilato/preferences_window.py:114
 msgid "Dark mode"
 msgstr "Mørk tilstand"
 
-#: gfeeds/preferences_window.py:118
+#: rilato/preferences_window.py:118
 msgid "Use dark theme for reader mode"
 msgstr "Brug mørkt tema i læsetilstand"
 
-#: gfeeds/preferences_window.py:122
+#: rilato/preferences_window.py:122
 msgid "Show article thumbnails"
 msgstr "Vis miniaturer for artikler"
 
-#: gfeeds/preferences_window.py:127
+#: rilato/preferences_window.py:127
 msgid "Maximum thumbnail height"
 msgstr "Maksimal højde af miniaturer"
 
-#: gfeeds/preferences_window.py:133
+#: rilato/preferences_window.py:133
 msgid "Show full articles titles"
 msgstr "Vis uforkortede artikeloverskrifter"
 
-#: gfeeds/preferences_window.py:138
+#: rilato/preferences_window.py:138
 msgid "Show full feeds names"
 msgstr "Vis fulde nyhedskildenavne"
 
-#: gfeeds/preferences_window.py:145
+#: rilato/preferences_window.py:145
 msgid "Font preferences"
 msgstr "Indstillinger for skrifttype"
 
-#: gfeeds/preferences_window.py:147
+#: rilato/preferences_window.py:147
 msgid "Use system font for titles"
 msgstr "Brug systemskrifttype til overskrifter"
 
-#: gfeeds/preferences_window.py:151
+#: rilato/preferences_window.py:151
 msgid "Use system font for paragraphs"
 msgstr "Brug systemskrifttype til afsnit"
 
-#: gfeeds/preferences_window.py:155
+#: rilato/preferences_window.py:155
 msgid "Custom title font"
 msgstr "Brugertilpasset skrifttype til overskrifter"
 
-#: gfeeds/preferences_window.py:159
+#: rilato/preferences_window.py:159
 msgid "Custom paragraph font"
 msgstr "Brugertilpasset skrifttype til afsnit"
 
-#: gfeeds/preferences_window.py:163
+#: rilato/preferences_window.py:163
 msgid "Custom monospace font"
 msgstr "Brugertilpasset fastbreddeskrifttype"
 
-#: gfeeds/preferences_window.py:175
+#: rilato/preferences_window.py:175
 msgid "Privacy"
 msgstr "Privatliv"
 
-#: gfeeds/preferences_window.py:178
+#: rilato/preferences_window.py:178
 msgid "Privacy preferences"
 msgstr "Indstillinger til privatliv"
 
-#: gfeeds/preferences_window.py:180
+#: rilato/preferences_window.py:180
 msgid "Enable JavaScript"
 msgstr "Aktivér JavaScript"
 
-#: gfeeds/preferences_window.py:185
+#: rilato/preferences_window.py:185
 msgid "Try to block advertisements"
 msgstr "Forsøg at blokere reklamer"
 
-#: gfeeds/preferences_window.py:187 gfeeds/preferences_window.py:222
+#: rilato/preferences_window.py:187 rilato/preferences_window.py:222
 msgid "Requires app restart"
 msgstr "Kræver programgenstart"
 
-#: gfeeds/preferences_window.py:191
+#: rilato/preferences_window.py:191
 msgid "Update advertisement blocking list"
 msgstr "Opdatér reklameblokeringsliste"
 
-#: gfeeds/preferences_window.py:192
+#: rilato/preferences_window.py:192
 msgid "Updates automatically every 10 days"
 msgstr "Opdaterer automatisk hver 10. dag"
 
-#: gfeeds/preferences_window.py:193
+#: rilato/preferences_window.py:193
 msgid "Update"
 msgstr "Opdatér"
 
-#: gfeeds/preferences_window.py:206
+#: rilato/preferences_window.py:206
 msgid "Advanced"
 msgstr "Avanceret"
 
-#: gfeeds/preferences_window.py:209
+#: rilato/preferences_window.py:209
 msgid "Advanced preferences"
 msgstr "Avancerede indstillinger"
 
-#: gfeeds/preferences_window.py:211
+#: rilato/preferences_window.py:211
 msgid "Maximum refresh threads"
 msgstr "Maksimalt antal opdateringstråde"
 
-#: gfeeds/preferences_window.py:213
+#: rilato/preferences_window.py:213
 msgid "How many threads to use for feeds refresh"
 msgstr "Hvor mange tråde der skal bruges til at opdatere nyhedskilder"
 
-#: gfeeds/preferences_window.py:220
+#: rilato/preferences_window.py:220
 msgid "Experimental GtkListView for articles list"
 msgstr "Eksperimentel GtkListView for artikelliste"
 
-#: gfeeds/sidebar.py:21
+#: rilato/sidebar.py:21
 msgid "Loading feeds..."
 msgstr "Indlæser nyhedskilder …"
 
-#: gfeeds/sidebar_row_popover.py:31 gfeeds/sidebar_row_popover.py:58
+#: rilato/sidebar_row_popover.py:31 rilato/sidebar_row_popover.py:58
 msgid "Mark as unread"
 msgstr "Markér som ulæst"
 
-#: gfeeds/sidebar_row_popover.py:38 gfeeds/sidebar_row_popover.py:50
+#: rilato/sidebar_row_popover.py:38 rilato/sidebar_row_popover.py:50
 msgid "Mark as read"
 msgstr "Markér som læst"
 
-#: gfeeds/util/download_manager.py:96
+#: rilato/util/download_manager.py:96
 #, python-brace-format
 msgid "`{0}`: connection timed out"
 msgstr "“{0}”: forbindelsens tidsgrænse udløb"
 
-#: gfeeds/util/download_manager.py:105
+#: rilato/util/download_manager.py:105
 #, python-brace-format
 msgid "`{0}` might not be a valid address"
 msgstr "“{0}” er måske ikke en gyldig adresse"
 
-#: gfeeds/util/download_manager.py:144
+#: rilato/util/download_manager.py:144
 #, python-brace-format
 msgid "Error downloading `{0}`, code `{1}`"
 msgstr "Fejl ved download af “{0}”, kode “{1}”"
 
-#: gfeeds/util/get_favicon.py:53
+#: rilato/util/get_favicon.py:53
 #, python-brace-format
 msgid "Error downloading favicon for `{0}`"
 msgstr "Fejl ved download af favicon for “{0}”"
 
-#: gfeeds/webview.py:201
+#: rilato/webview.py:201
 msgid "Link copied to clipboard!"
 msgstr "Link kopieret til udklipsholder!"
 
-#: gfeeds/webview.py:223
+#: rilato/webview.py:223
 msgid "Feed content not available for this article"
 msgstr "Nyhedskildeindhold er ikke tilgængeligt for denne artikel"

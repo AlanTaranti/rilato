@@ -52,7 +52,7 @@ template $MainLeaflet : Adw.Bin {
                     swipe-to-close: true;
                     [flap] $FilterView filter_view {}
                     [content] $StackWithEmptyState sidebar_stack {
-                        main-widget: $GFeedsSidebar sidebar {
+                        main-widget: $RilatoSidebar sidebar {
 
                         };
                     }
@@ -70,7 +70,7 @@ template $MainLeaflet : Adw.Bin {
                     webview: webview;
                     go_back => $on_back_btn_clicked();
                 }
-                $GFeedsWebView webview {}
+                $RilatoWebView webview {}
             };
         }
     }
