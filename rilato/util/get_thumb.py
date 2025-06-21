@@ -1,4 +1,4 @@
-from syndom import Html
+from rilato.util.html_parser import Html
 from rilato.util.create_full_url import create_full_url
 from rilato.util.download_manager import download_raw
 from rilato.util.paths import CACHE_PATH

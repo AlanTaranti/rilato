@@ -1,7 +1,7 @@
 from rilato.util.download_manager import extract_feed_url_from_html
 from typing import Optional
 from os.path import isfile
-from syndom import Feed as SynDomFeed
+from rilato.util.feed_parser_utils import Feed as SynDomFeed
 
 
 def get_feed_link_from_file(feed_path: str) -> Optional[str]:

@@ -40,3 +40,8 @@ pythonpath = [
 
 [tool.pylsp-mypy]
 enabled = true
+
+[tool.ruff]
+# Ignore E402 (module level import not at top of file) for gi.repository imports
+# This is a common pattern in GTK applications
+lint.ignore = ["E402"]

@@ -3,6 +3,10 @@ import sys
 import argparse
 from gettext import gettext as _
 from os.path import isfile
+import gi
+
+gi.require_version("Gtk", "4.0")
+gi.require_version("Adw", "1")
 from gi.repository import Gtk, Gdk, Gio, GLib, Adw
 from rilato.confManager import ConfManager
 from rilato.feeds_manager import FeedsManager

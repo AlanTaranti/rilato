@@ -11,7 +11,6 @@ An RSS/Atom feed reader for GNOME.
 - python 3.9
 - Gtk4
 - [libadwaita](https://gitlab.gnome.org/GNOME/libadwaita)
-- [python-syndom](https://gitlab.com/gabmus/syndication-domination)
 - [python-readability-lxml](https://github.com/buriy/python-readability)
 - [python-pygments](https://github.com/pygments/pygments)
 - [python-pillow](https://github.com/python-pillow/Pillow)
@@ -19,6 +18,7 @@ An RSS/Atom feed reader for GNOME.
 - [python-humanize](https://github.com/jmoiron/humanize)
 - [python-requests](https://github.com/psf/requests)
 - [python-html5lib](https://github.com/html5lib/html5lib-python)
+- [python-lxml](https://lxml.de/)
 
 ## Build and run from source
 

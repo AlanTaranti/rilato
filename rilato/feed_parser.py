@@ -7,7 +7,7 @@ from rilato.util.paths import THUMBS_CACHE_PATH
 from rilato.util.sha import shasum
 
 # from bs4 import UnicodeDammit  # TODO: reimplement it!
-from syndom import Feed as SynDomFeed, FeedItem as SynDomFeedItem
+from rilato.util.feed_parser_utils import Feed as SynDomFeed, FeedItem as SynDomFeedItem
 
 
 class FeedParserRes:
@@ -54,8 +54,8 @@ def parse_feed(
     sd_feed = None
     try:
         sd_feed = SynDomFeed(str(feedpath))
-    except Exception:
-        print("Error parsing feed (caught); will try extracting from HTML")
+    except Exception as e:
+        print(f"Error parsing feed (caught): {e}; will try extracting from HTML")
     if sd_feed is None:
         return FeedParserRes(
             is_null=True,
@@ -93,8 +93,10 @@ def parse_feed(
         )
     if not title:
         title = rss_link
+    # Use a default identifier if rss_link is None
+    identifier = (rss_link or title or str(feedpath)) + "v2"
     favicon_path: Optional[str] = str(
-        THUMBS_CACHE_PATH.joinpath(shasum(rss_link + "v2") + ".png")
+        THUMBS_CACHE_PATH.joinpath(shasum(identifier) + ".png")
     )
     if not isfile(favicon_path):
         if image_url:

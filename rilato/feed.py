@@ -5,7 +5,7 @@ from rilato.confManager import ConfManager
 from rilato.feed_item import FeedItem
 import pytz
 import rilato.feeds_manager as feeds_manager
-from syndom import Feed as SynDomFeed, FeedItem as SynDomFeedItem
+from rilato.util.feed_parser_utils import Feed as SynDomFeed, FeedItem as SynDomFeedItem
 
 
 class Feed(GObject.Object):

@@ -1,5 +1,4 @@
-SAMPLE_RSS = """
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+SAMPLE_RSS = """<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <?xml-stylesheet href="/feed_style.xsl" type="text/xsl"?>
 <rss version="2.0"
     xmlns:atom="http://www.w3.org/2005/Atom"

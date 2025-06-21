@@ -6,7 +6,7 @@ from rilato.util.create_full_url import create_full_url
 from rilato.util.download_manager import download_raw
 from rilato.util.paths import CACHE_PATH
 from rilato.util.sha import shasum
-from syndom import Html
+from rilato.util.html_parser import Html
 
 # Create a simple MIME type detector that doesn't rely on python-magic
 import mimetypes

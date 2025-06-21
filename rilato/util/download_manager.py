@@ -6,7 +6,7 @@ from rilato.confManager import ConfManager
 from rilato.util.create_full_url import create_full_url
 from rilato.util.paths import CACHE_PATH
 from rilato.util.sha import shasum
-from syndom import Html
+from rilato.util.html_parser import Html
 from typing import Literal, Optional, Union
 from rilato.util.to_unicode import to_unicode, bytes_to_unicode
 

@@ -2,7 +2,7 @@ from functools import reduce
 from operator import and_
 from pathlib import Path
 from gettext import gettext as _
-from syndom import Opml
+from rilato.util.feed_parser_utils import Opml
 from typing import List, Union
 
 
