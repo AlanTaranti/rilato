@@ -28,7 +28,7 @@ class SimpleMimeDetector:
                     content = f.read(1000)  # Read first 1000 chars
                     if "<svg" in content:
                         return "image/svg+xml"
-            except:
+            except:  # noqa E722
                 pass
 
             # Default to a generic type if we can't determine it
