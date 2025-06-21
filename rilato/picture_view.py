@@ -7,11 +7,12 @@ from math import ceil
 class PictureView(Gtk.Widget):
     def __init__(self, path):
         super().__init__(
-            overflow=Gtk.Overflow.HIDDEN, vexpand=True,
+            overflow=Gtk.Overflow.HIDDEN,
+            vexpand=True,
             hexpand=True,
             # valign=Gtk.Align.CENTER
         )
-        self.get_style_context().add_class('card')
+        self.get_style_context().add_class("card")
         self.confman = ConfManager()
         self.texture = None
         self.set_file(path)
@@ -27,9 +28,7 @@ class PictureView(Gtk.Widget):
             try:
                 self.texture = Gdk.Texture.new_from_file(gio_file)
             except Exception:
-                print(
-                    f'PictureView: Error creating texture for `{self.path}`'
-                )
+                print(f"PictureView: Error creating texture for `{self.path}`")
                 self.texture = None
             GLib.idle_add(cb)
 
@@ -37,9 +36,7 @@ class PictureView(Gtk.Widget):
             if self.texture is None:
                 return
             # 270 is the pic natural width with leaflet unfolded
-            cw, ch = self.texture.compute_concrete_size(
-                270, 0, 1200, 1200
-            )
+            cw, ch = self.texture.compute_concrete_size(270, 0, 1200, 1200)
             self.set_size_request(-1, ceil(ch))
             self.queue_draw()
             self.queue_resize()
@@ -54,10 +51,7 @@ class PictureView(Gtk.Widget):
             return
         width = self.get_width()
         height = width / self.texture.get_intrinsic_aspect_ratio()
-        self.texture.snapshot(
-            snapshot,
-            width, height
-        )
+        self.texture.snapshot(snapshot, width, height)
 
     def do_measure(self, orientation, for_size):
         if orientation == Gtk.Orientation.VERTICAL:  # get height
@@ -65,9 +59,7 @@ class PictureView(Gtk.Widget):
                 return (0, 0, -1, -1)
             if not self.texture:
                 return (0, 0, -1, -1)
-            cw, ch = self.texture.compute_concrete_size(
-                for_size, 0, 1200, 1200
-            )
+            cw, ch = self.texture.compute_concrete_size(for_size, 0, 1200, 1200)
             ch = max(min(ceil(ch), 1200), 1)
             return (0, ch, -1, -1)
         else:  # get width

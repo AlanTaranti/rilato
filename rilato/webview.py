@@ -13,9 +13,9 @@ from rilato.feed_item import FeedItem
 from rilato.util.paths import CACHE_PATH, IS_FLATPAK
 
 
-@Gtk.Template(resource_path='/org/gabmus/rilato/ui/webview.ui')
+@Gtk.Template(resource_path="/org/gabmus/rilato/ui/webview.ui")
 class RilatoWebView(Gtk.Stack):
-    __gtype_name__ = 'RilatoWebView'
+    __gtype_name__ = "RilatoWebView"
     webkitview = cast(WebKit.WebView, Gtk.Template.Child())
     loading_bar_revealer = cast(Gtk.Revealer, Gtk.Template.Child())
     loading_bar = cast(Gtk.ProgressBar, Gtk.Template.Child())
@@ -25,16 +25,8 @@ class RilatoWebView(Gtk.Stack):
     link_preview_label = cast(Gtk.Label, Gtk.Template.Child())
 
     __gsignals__ = {
-        'rilato_webview_load_start': (
-            GObject.SignalFlags.RUN_FIRST,
-            None,
-            (str,)
-        ),
-        'zoom_changed': (
-            GObject.SignalFlags.RUN_FIRST,
-            None,
-            (float,)
-        )
+        "rilato_webview_load_start": (GObject.SignalFlags.RUN_FIRST, None, (str,)),
+        "zoom_changed": (GObject.SignalFlags.RUN_FIRST, None, (float,)),
     }
 
     def __init__(self):
@@ -45,24 +37,20 @@ class RilatoWebView(Gtk.Stack):
         self.apply_webview_settings()
 
         self.confman.connect(
-            'rilato_webview_settings_changed',
-            self.apply_webview_settings
+            "rilato_webview_settings_changed", self.apply_webview_settings
         )
 
         self.confman.connect(
-            'on_apply_adblock_changed',
-            lambda *args: self.on_apply_adblock_changed(False)
+            "on_apply_adblock_changed",
+            lambda *args: self.on_apply_adblock_changed(False),
         )
         self.confman.connect(
-            'on_refresh_blocklist',
-            lambda *args: self.on_apply_adblock_changed(True)
+            "on_refresh_blocklist", lambda *args: self.on_apply_adblock_changed(True)
         )
 
         self.content_manager = self.webkitview.get_user_content_manager()
         self.user_content_filter_store = WebKit.UserContentFilterStore.new(
-            str(CACHE_PATH.joinpath(
-                'webkit_user_content_filter_store'
-            ))
+            str(CACHE_PATH.joinpath("webkit_user_content_filter_store"))
         )
         if self.confman.nconf.enable_adblock:
             self.apply_adblock()
@@ -70,7 +58,7 @@ class RilatoWebView(Gtk.Stack):
         self.webkitview.set_zoom_level(self.confman.nconf.webview_zoom)
 
         self.new_page_loaded = False
-        self.uri = ''
+        self.uri = ""
         self.feeditem = None
         self.html = None
 
@@ -80,17 +68,13 @@ class RilatoWebView(Gtk.Stack):
             if hit_test_result.context_is_link():
                 self.link_preview_revealer.set_visible(True)
                 self.link_preview_revealer.set_reveal_child(True)
-                self.link_preview_label.set_text(
-                    hit_test_result.get_link_uri()
-                )
+                self.link_preview_label.set_text(hit_test_result.get_link_uri())
                 return
         self.link_preview_revealer.set_visible(False)
         self.link_preview_revealer.set_reveal_child(False)
 
     def action_open_media_player(self):
-        self.open_url_in_media_player(
-            self.feeditem.link if self.feeditem else None
-        )
+        self.open_url_in_media_player(self.feeditem.link if self.feeditem else None)
 
     def on_apply_adblock_changed(self, refresh: bool):
         self.apply_adblock(
@@ -98,14 +82,17 @@ class RilatoWebView(Gtk.Stack):
         )
 
     def apply_adblock(self, refresh: bool = False, remove: bool = False):
-        refresh = refresh or (
-            datetime.fromtimestamp(
-                self.confman.nconf.blocklist_last_update
-            ) - datetime.now()
-        ).days >= 10
+        refresh = (
+            refresh
+            or (
+                datetime.fromtimestamp(self.confman.nconf.blocklist_last_update)
+                - datetime.now()
+            ).days
+            >= 10
+        )
 
         if refresh or remove:
-            self.content_manager.remove_filter_by_id('blocklist')
+            self.content_manager.remove_filter_by_id("blocklist")
         if remove:
             return
 
@@ -117,21 +104,20 @@ class RilatoWebView(Gtk.Stack):
                 filter = self.user_content_filter_store.save_finish(res)
                 apply_filter(filter)
             except GLib.Error:
-                print('Error saving blocklist')
+                print("Error saving blocklist")
 
         def download_blocklist_cb(blocklist: str):
             self.user_content_filter_store.save(
-                'blocklist', GLib.Bytes.new(blocklist.encode()), None,
-                save_blocklist_cb
+                "blocklist", GLib.Bytes.new(blocklist.encode()), None, save_blocklist_cb
             )
 
         def download_blocklist():
             res = download_text(
-                'https://easylist-downloads.adblockplus.org/'
-                'easylist_min_content_blocker.json'
+                "https://easylist-downloads.adblockplus.org/"
+                "easylist_min_content_blocker.json"
             )
             now = datetime.now()
-            print(f'Downloaded updated blocklist at {now}')
+            print(f"Downloaded updated blocklist at {now}")
             self.confman.nconf.blocklist_last_update = now.timestamp()
             GLib.idle_add(download_blocklist_cb, res)
 
@@ -139,52 +125,43 @@ class RilatoWebView(Gtk.Stack):
             try:
                 filter = self.user_content_filter_store.load_finish(res)
                 apply_filter(filter)
-                print('Loaded stored blocklist')
+                print("Loaded stored blocklist")
             except GLib.Error:
-                print('blocklist store not found, downloading...')
+                print("blocklist store not found, downloading...")
                 Thread(target=download_blocklist, daemon=True).start()
 
         if refresh:
             Thread(target=download_blocklist, daemon=True).start()
         else:
-            self.user_content_filter_store.load(
-                'blocklist', None, filter_load_cb, None
-            )
+            self.user_content_filter_store.load("blocklist", None, filter_load_cb, None)
 
     def change_view_mode(self, target):
-        if target == 'webview':
+        if target == "webview":
             # if uri is empty force rss content
             if not self.uri:
                 if not self.feeditem:
                     return
                 return self.load_feeditem(self.feeditem, force_feedcont=True)
             self.webkitview.load_uri(self.uri)
-        elif target == 'reader':
+        elif target == "reader":
             Thread(
-                target=self._load_reader_async,
-                args=(self.load_reader,), daemon=True
+                target=self._load_reader_async, args=(self.load_reader,), daemon=True
             ).start()
-        elif target == 'feedcont':
+        elif target == "feedcont":
             self.set_enable_rss_content(True)
 
     def apply_webview_settings(self, *args):
-        self.webkitview_settings.set_enable_javascript(
-            self.confman.nconf.enable_js
-        )
+        self.webkitview_settings.set_enable_javascript(self.confman.nconf.enable_js)
         self.webkitview_settings.set_enable_smooth_scrolling(True)
         self.webkitview_settings.set_enable_page_cache(True)
         self.webkitview.set_settings(self.webkitview_settings)
 
     def key_zoom_in(self, *args):
-        self.webkitview.set_zoom_level(
-            self.webkitview.get_zoom_level()+0.10
-        )
+        self.webkitview.set_zoom_level(self.webkitview.get_zoom_level() + 0.10)
         self.on_zoom_changed()
 
     def key_zoom_out(self, *args):
-        self.webkitview.set_zoom_level(
-            self.webkitview.get_zoom_level()-0.10
-        )
+        self.webkitview.set_zoom_level(self.webkitview.get_zoom_level() - 0.10)
         self.on_zoom_changed()
 
     def key_zoom_reset(self, *args):
@@ -193,11 +170,11 @@ class RilatoWebView(Gtk.Stack):
 
     def on_zoom_changed(self):
         zoom = self.webkitview.get_zoom_level()
-        self.emit('zoom_changed', zoom)
+        self.emit("zoom_changed", zoom)
         self.confman.nconf.webview_zoom = zoom
 
     def show_notif(self, *args):
-        toast = Adw.Toast(title=_('Link copied to clipboard!'))
+        toast = Adw.Toast(title=_("Link copied to clipboard!"))
         self.toast_overlay.add_toast(toast)
 
     def set_enable_rss_content(self, state=True, feeditem=None):
@@ -207,10 +184,7 @@ class RilatoWebView(Gtk.Stack):
             self.load_rss_content(self.feeditem)
         else:
             self.new_page_loaded = True
-            self.load_feeditem(
-                self.feeditem,
-                False
-            )
+            self.load_feeditem(self.feeditem, False)
 
     def load_rss_content(self, feeditem):
         self.set_visible_child(self.main_view)
@@ -218,11 +192,13 @@ class RilatoWebView(Gtk.Stack):
         self.uri = feeditem.link
         content = feeditem.content
         if not content:
-            content = '<h1><i>'+_(
-                'Feed content not available for this article'
-                )+'</i></h1>'
-        self.html = '<!-- RILATO RSS CONTENT --><article>{0}</article>'.format(
-            content if '</' in content else content.replace('\n', '<br>')
+            content = (
+                "<h1><i>"
+                + _("Feed content not available for this article")
+                + "</i></h1>"
+            )
+        self.html = "<!-- RILATO RSS CONTENT --><article>{0}</article>".format(
+            content if "</" in content else content.replace("\n", "<br>")
         )
         self.load_reader()
 
@@ -236,16 +212,17 @@ class RilatoWebView(Gtk.Stack):
             self.html = download_text(self.uri)
         except DownloadError as err:
             self.html = (
-                f'<h1>{_("Error downloading content.")}</h1>'
-                f'<h3>{_("Error code:")} {err.download_error_code}</h3>'
+                f"<h1>{_('Error downloading content.')}</h1>"
+                f"<h3>{_('Error code:')} {err.download_error_code}</h3>"
             )
         if callback:
             GLib.idle_add(callback)
 
     def load_feeditem(
-            self, feeditem: FeedItem,
-            trigger_on_load_start: Optional[bool] = True,
-            force_feedcont: Optional[bool] = False
+        self,
+        feeditem: FeedItem,
+        trigger_on_load_start: Optional[bool] = True,
+        force_feedcont: Optional[bool] = False,
     ):
         self.webkitview.stop_loading()
         uri = feeditem.link
@@ -255,16 +232,14 @@ class RilatoWebView(Gtk.Stack):
         target = self.confman.nconf.default_view
         # if uri is empty, fallback to rss content
         if not uri or force_feedcont:
-            target = 'feedcont'
-        if target == 'reader':
+            target = "feedcont"
+        if target == "reader":
             Thread(
-                target=self._load_reader_async,
-                args=(self.load_reader,),
-                daemon=True
+                target=self._load_reader_async, args=(self.load_reader,), daemon=True
             ).start()
             if trigger_on_load_start:
                 self.on_load_start()
-        elif target == 'feedcont':
+        elif target == "feedcont":
             self.on_load_start()
             self.set_enable_rss_content(True, feeditem)
         else:
@@ -274,30 +249,27 @@ class RilatoWebView(Gtk.Stack):
 
     def open_externally(self, *args):
         if self.uri:
-            Gio.AppInfo.launch_default_for_uri(
-                self.uri
-            )
+            Gio.AppInfo.launch_default_for_uri(self.uri)
 
     def on_load_start(self, *args):
         self.new_page_loaded = True
-        self.emit('rilato_webview_load_start', '')
+        self.emit("rilato_webview_load_start", "")
 
     @Gtk.Template.Callback()
     def on_load_changed(self, webview, event):
         if event != WebKit.LoadEvent.FINISHED:
             self.loading_bar_revealer.set_reveal_child(True)
         if event == WebKit.LoadEvent.STARTED:
-            self.loading_bar.set_fraction(.25)
+            self.loading_bar.set_fraction(0.25)
         elif event == WebKit.LoadEvent.REDIRECTED:
-            self.loading_bar.set_fraction(.50)
+            self.loading_bar.set_fraction(0.50)
         elif event == WebKit.LoadEvent.COMMITTED:
-            self.loading_bar.set_fraction(.75)
+            self.loading_bar.set_fraction(0.75)
         elif event == WebKit.LoadEvent.FINISHED:
             self.loading_bar.set_fraction(1.0)
             # waits 1 seconds async then hides the loading bar
             GLib.timeout_add_seconds(
-                1,
-                self.loading_bar_revealer.set_reveal_child, False
+                1, self.loading_bar_revealer.set_reveal_child, False
             )
             self.new_page_loaded = False
             resource = webview.get_main_resource()
@@ -308,15 +280,18 @@ class RilatoWebView(Gtk.Stack):
         if not self.feeditem:
             return
         dark = False
-        if self.confman.nconf.reader_theme == 'auto':
+        if self.confman.nconf.reader_theme == "auto":
             dark = Adw.StyleManager.get_default().get_dark()
         else:
-            dark = self.confman.nconf.reader_theme == 'dark'
-        self.webkitview.load_html(build_reader_html(
-            self.html,
-            self.feeditem,
-            dark,
-        ), self.uri)
+            dark = self.confman.nconf.reader_theme == "dark"
+        self.webkitview.load_html(
+            build_reader_html(
+                self.html,
+                self.feeditem,
+                dark,
+            ),
+            self.uri,
+        )
 
     def _get_data_cb(self, resource, result, __=None):
         self.html = resource.get_data_finish(result)
@@ -324,34 +299,29 @@ class RilatoWebView(Gtk.Stack):
     def open_url_in_media_player(self, url: Optional[str]):
         if not url:
             return
-        cmd_parts = [
-            self.confman.nconf.media_player, f"'{url}'"
-        ]
+        cmd_parts = [self.confman.nconf.media_player, f"'{url}'"]
         if IS_FLATPAK:
-            cmd_parts.insert(0, 'flatpak-spawn --host')
-        cmd = ' '.join(cmd_parts)
+            cmd_parts.insert(0, "flatpak-spawn --host")
+        cmd = " ".join(cmd_parts)
         Popen(cmd, shell=True)
 
     @Gtk.Template.Callback()
     def on_decide_policy(self, webView, decision, decisionType):
         if (
-                decisionType in
-                (
-                    WebKit.PolicyDecisionType.NAVIGATION_ACTION,
-                    WebKit.PolicyDecisionType.NEW_WINDOW_ACTION
-                ) and
-                decision.get_navigation_action().get_mouse_button() != 0
+            decisionType
+            in (
+                WebKit.PolicyDecisionType.NAVIGATION_ACTION,
+                WebKit.PolicyDecisionType.NEW_WINDOW_ACTION,
+            )
+            and decision.get_navigation_action().get_mouse_button() != 0
         ):
             uri = decision.get_navigation_action().get_request().get_uri()
-            if (
-                    self.confman.nconf.open_youtube_externally and
-                    reduce(or_, [
-                        f'://{pfx}' in uri
-                        for pfx in [
-                            p + 'youtube.com'
-                            for p in ('', 'www.', 'm.')
-                        ]
-                    ])
+            if self.confman.nconf.open_youtube_externally and reduce(
+                or_,
+                [
+                    f"://{pfx}" in uri
+                    for pfx in [p + "youtube.com" for p in ("", "www.", "m.")]
+                ],
             ):
                 decision.ignore()
                 self.open_url_in_media_player(uri)

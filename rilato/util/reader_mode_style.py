@@ -6,9 +6,9 @@ confman = ConfManager()
 
 
 def get_gtk_font():
-    ss = settings.get_property('gtk-font-name').split(' ')
+    ss = settings.get_property("gtk-font-name").split(" ")
     ss.pop(-1)
-    return ' '.join(ss).strip()
+    return " ".join(ss).strip()
 
 
 def get_css():
@@ -20,26 +20,26 @@ def get_css():
         serif_font = confman.nconf.font_titles_custom
     if not confman.nconf.font_use_system_for_paragraphs:
         sans_font = confman.nconf.font_paragraphs_custom
-    css = ''
-    for typ, var in zip(
-            ('sans',   'serif',     'mono'),
-            (sans_font, serif_font, mono_font)
-    ):
+    css = ""
+    for typ, var in zip(("sans", "serif", "mono"), (sans_font, serif_font, mono_font)):
         for variant, weight, style in zip(
-                ('',       ' Italic', ' Bold',  ' Bold Italic'),
-                ('normal', 'normal',  'bold',   'bold'),
-                ('normal', 'italic',  'normal', 'italic')
+            ("", " Italic", " Bold", " Bold Italic"),
+            ("normal", "normal", "bold", "bold"),
+            ("normal", "italic", "normal", "italic"),
         ):
-            css += f'''
+            css += f"""
             @font-face {{
                 font-family: rilato-reader-{typ};
                 src: local('{var}{variant}');
                 font-weight: {weight};
                 font-style: {style};
                 font-display: block;
-            }}'''
-    css += Gio.resources_lookup_data(
-        '/org/gabmus/rilato/ui/reader_mode_style.css',
-        Gio.ResourceLookupFlags.NONE
-    ).get_data().decode()
+            }}"""
+    css += (
+        Gio.resources_lookup_data(
+            "/org/gabmus/rilato/ui/reader_mode_style.css", Gio.ResourceLookupFlags.NONE
+        )
+        .get_data()
+        .decode()
+    )
     return css

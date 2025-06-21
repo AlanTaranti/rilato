@@ -1,12 +1,13 @@
 from datetime import datetime, timezone
 
 # Constants
-THREE_DAYS = 60*60*24*3
+THREE_DAYS = 60 * 60 * 24 * 3
 MINUTE = 60
 HOUR = 60 * MINUTE
 DAY = 24 * HOUR
 MONTH = 30 * DAY
 YEAR = 365 * DAY
+
 
 # Simple implementation of humanize functions
 def naturaltime(delta):
@@ -47,6 +48,7 @@ def naturaltime(delta):
             # since it's not available in this scope
             return "a long time ago"
 
+
 def naturaldate(dt):
     """Convert a datetime to a human-readable string."""
     now = datetime.now(timezone.utc)
@@ -61,6 +63,7 @@ def naturaldate(dt):
         return f"{int(seconds / DAY)} days ago"
     else:
         return dt.strftime("%b %d, %Y")
+
 
 def humanize_datetime(dt):
     """Format a datetime in a human-readable way."""

@@ -9,11 +9,13 @@ import logging
 # Create a logger to mimic the one from readability
 log = logging.getLogger("readability.readability")
 
+
 class RDoc:
     """
     Stub implementation of the RDoc class from readability_wrapper.
     This provides minimal functionality to allow the application to start.
     """
+
     def __init__(self, html, *args, **kwargs):
         self.html = html
         self.min_text_length = 25
@@ -22,7 +24,9 @@ class RDoc:
     def summary(self, **kwargs):
         """Return a simplified version of the HTML with a warning message."""
         if not self._warning_shown:
-            print("WARNING: Reader mode is not available because the 'readability-lxml' package is not installed.")
+            print(
+                "WARNING: Reader mode is not available because the 'readability-lxml' package is not installed."
+            )
             self._warning_shown = True
 
         return """

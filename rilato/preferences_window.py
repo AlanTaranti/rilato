@@ -4,9 +4,14 @@ from os.path import isfile, abspath, join
 from gi.repository import Gdk, Gtk, Adw
 from rilato.confManager import ConfManager
 from rilato.base_preferences import (
-    MPreferencesPage, MPreferencesGroup, PreferencesButtonRow,
-    PreferencesComboRow, PreferencesSpinButtonRow, PreferencesToggleRow,
-    PreferencesEntryRow, PreferencesFontChooserRow
+    MPreferencesPage,
+    MPreferencesGroup,
+    PreferencesButtonRow,
+    PreferencesComboRow,
+    PreferencesSpinButtonRow,
+    PreferencesToggleRow,
+    PreferencesEntryRow,
+    PreferencesFontChooserRow,
 )
 from typing import Optional
 from rilato.scrolled_dialog import ScrolledDialogResponse, ScrolledDialog
@@ -21,83 +26,85 @@ def show_preferences_window(parent_win, *args):
 class GeneralPreferencesPage(MPreferencesPage):
     def __init__(self):
         super().__init__(
-            title=_('General'), icon_name='preferences-other-symbolic',
+            title=_("General"),
+            icon_name="preferences-other-symbolic",
             pref_groups=[
                 MPreferencesGroup(
-                    title=_('General preferences'), rows=[
+                    title=_("General preferences"),
+                    rows=[
                         PreferencesToggleRow(
-                            title=_('Show newer articles first'),
-                            conf_key='new_first',
-                            signal='rilato_new_first_changed'
+                            title=_("Show newer articles first"),
+                            conf_key="new_first",
+                            signal="rilato_new_first_changed",
                         ),
                         PreferencesToggleRow(
-                            title=_('Open links in your browser'),
-                            conf_key='open_links_externally'
+                            title=_("Open links in your browser"),
+                            conf_key="open_links_externally",
                         ),
                         PreferencesToggleRow(
-                            title=_('Use external video player for YouTube'),
+                            title=_("Use external video player for YouTube"),
                             subtitle=_(
-                                'Requires youtube-dl and a compatible '
-                                'video player'
+                                "Requires youtube-dl and a compatible video player"
                             ),
-                            conf_key='open_youtube_externally'
+                            conf_key="open_youtube_externally",
                         ),
                         PreferencesEntryRow(
-                            title=_('Preferred video player'),
-                            conf_key='media_player'
+                            title=_("Preferred video player"), conf_key="media_player"
                         ),
                         PreferencesSpinButtonRow(
-                            title=_('Maximum article age'),
-                            subtitle=_('In days'),
-                            min_v=1, max_v=9999,
-                            conf_key='max_article_age_days'
-                        )
-                    ]
+                            title=_("Maximum article age"),
+                            subtitle=_("In days"),
+                            min_v=1,
+                            max_v=9999,
+                            conf_key="max_article_age_days",
+                        ),
+                    ],
                 ),
                 MPreferencesGroup(
-                    title=_('Refresh preferences'), rows=[
+                    title=_("Refresh preferences"),
+                    rows=[
                         PreferencesToggleRow(
-                            title=_('Refresh articles on startup'),
-                            conf_key='refresh_on_startup'
+                            title=_("Refresh articles on startup"),
+                            conf_key="refresh_on_startup",
                         ),
                         PreferencesToggleRow(
-                            title=_('New articles notification'),
-                            conf_key='notify_new_articles'
+                            title=_("New articles notification"),
+                            conf_key="notify_new_articles",
                         ),
                         PreferencesToggleRow(
-                            title=_('Enable auto-refresh'),
-                            conf_key='auto_refresh_enabled'
+                            title=_("Enable auto-refresh"),
+                            conf_key="auto_refresh_enabled",
                         ),
                         PreferencesSpinButtonRow(
-                            title=_('Auto-refresh interval'),
-                            subtitle=_('In seconds'),
-                            min_v=60, max_v=86400,  # 1 min to 24 hours
-                            conf_key='auto_refresh_time_seconds'
-                        )
-                    ]
+                            title=_("Auto-refresh interval"),
+                            subtitle=_("In seconds"),
+                            min_v=60,
+                            max_v=86400,  # 1 min to 24 hours
+                            conf_key="auto_refresh_time_seconds",
+                        ),
+                    ],
                 ),
                 MPreferencesGroup(
-                    title=_('Cache'), rows=[
+                    title=_("Cache"),
+                    rows=[
                         PreferencesButtonRow(
-                            title=_('Clear caches'),
-                            button_label=_('Clear'),
+                            title=_("Clear caches"),
+                            button_label=_("Clear"),
                             onclick=self.clear_caches,
-                            button_style_class='destructive-action',
-                            signal='rilato_repopulation_required'
+                            button_style_class="destructive-action",
+                            signal="rilato_repopulation_required",
                         )
-                    ]
-                )
-            ]
+                    ],
+                ),
+            ],
         )
 
     def clear_caches(self, confman, *args):
         for p in [
-                CACHE_PATH,
-                THUMBS_CACHE_PATH,
+            CACHE_PATH,
+            THUMBS_CACHE_PATH,
         ]:
-            files = [
-                abspath(join(p, f)) for f in listdir(p)
-            ]
+            files = [abspath(join(p, f)) for f in listdir(p)]
             for f in files:
                 if isfile(f):
                     remove(f)
@@ -106,134 +113,136 @@ class GeneralPreferencesPage(MPreferencesPage):
 class AppearancePreferencesPage(MPreferencesPage):
     def __init__(self):
         super().__init__(
-            title=_('Appearance'), icon_name='applications-graphics-symbolic',
+            title=_("Appearance"),
+            icon_name="applications-graphics-symbolic",
             pref_groups=[
                 MPreferencesGroup(
-                    title=_('Appearance preferences'), rows=[
+                    title=_("Appearance preferences"),
+                    rows=[
                         PreferencesToggleRow(
-                            title=_('Dark mode'), conf_key='dark_mode',
-                            signal='dark_mode_changed'
+                            title=_("Dark mode"),
+                            conf_key="dark_mode",
+                            signal="dark_mode_changed",
                         ),
                         PreferencesComboRow(
-                            title=_('Reader mode theme'),
-                            conf_key='reader_theme',
-                            values=['auto', 'light', 'dark'],
-                            value_names=[
-                                _('Automatic'), _('Light'), _('Dark')
-                            ]
+                            title=_("Reader mode theme"),
+                            conf_key="reader_theme",
+                            values=["auto", "light", "dark"],
+                            value_names=[_("Automatic"), _("Light"), _("Dark")],
                         ),
                         PreferencesToggleRow(
-                            title=_('Show article thumbnails'),
-                            conf_key='show_thumbnails',
-                            signal='show_thumbnails_changed'
+                            title=_("Show article thumbnails"),
+                            conf_key="show_thumbnails",
+                            signal="show_thumbnails_changed",
                         ),
                         PreferencesToggleRow(
-                            title=_('Show full articles titles'),
-                            conf_key='full_article_title',
-                            signal='rilato_full_article_title_changed'
+                            title=_("Show full articles titles"),
+                            conf_key="full_article_title",
+                            signal="rilato_full_article_title_changed",
                         ),
                         PreferencesToggleRow(
-                            title=_('Show full feeds names'),
-                            conf_key='full_feed_name',
-                            signal='rilato_full_feed_name_changed'
-                        )
-                    ]
+                            title=_("Show full feeds names"),
+                            conf_key="full_feed_name",
+                            signal="rilato_full_feed_name_changed",
+                        ),
+                    ],
                 ),
                 MPreferencesGroup(
-                    title=_('Font preferences'), rows=[
+                    title=_("Font preferences"),
+                    rows=[
                         PreferencesToggleRow(
-                            title=_('Use system font for titles'),
-                            conf_key='font_use_system_for_titles'
+                            title=_("Use system font for titles"),
+                            conf_key="font_use_system_for_titles",
                         ),
                         PreferencesToggleRow(
-                            title=_('Use system font for paragraphs'),
-                            conf_key='font_use_system_for_paragraphs'
+                            title=_("Use system font for paragraphs"),
+                            conf_key="font_use_system_for_paragraphs",
                         ),
                         PreferencesFontChooserRow(
-                            title=_('Custom title font'),
-                            conf_key='font_titles_custom'
+                            title=_("Custom title font"), conf_key="font_titles_custom"
                         ),
                         PreferencesFontChooserRow(
-                            title=_('Custom paragraph font'),
-                            conf_key='font_paragraphs_custom'
+                            title=_("Custom paragraph font"),
+                            conf_key="font_paragraphs_custom",
                         ),
                         PreferencesFontChooserRow(
-                            title=_('Custom monospace font'),
-                            conf_key='font_monospace_custom'
+                            title=_("Custom monospace font"),
+                            conf_key="font_monospace_custom",
                         ),
-                    ]
-                )
-            ]
+                    ],
+                ),
+            ],
         )
 
 
 class PrivacyPreferencesPage(MPreferencesPage):
     def __init__(self):
         super().__init__(
-            title=_('Privacy'),
-            icon_name='preferences-system-privacy-symbolic',
+            title=_("Privacy"),
+            icon_name="preferences-system-privacy-symbolic",
             pref_groups=[
                 MPreferencesGroup(
-                    title=_('Privacy preferences'), rows=[
+                    title=_("Privacy preferences"),
+                    rows=[
                         PreferencesToggleRow(
-                            title=_('Enable JavaScript'),
-                            conf_key='enable_js',
-                            signal='rilato_webview_settings_changed'
+                            title=_("Enable JavaScript"),
+                            conf_key="enable_js",
+                            signal="rilato_webview_settings_changed",
                         ),
                         PreferencesToggleRow(
-                            title=_('Try to block advertisements'),
-                            conf_key='enable_adblock',
-                            subtitle=_('Requires app restart'),
-                            signal='on_apply_adblock_changed'
+                            title=_("Try to block advertisements"),
+                            conf_key="enable_adblock",
+                            subtitle=_("Requires app restart"),
+                            signal="on_apply_adblock_changed",
                         ),
                         PreferencesButtonRow(
-                            title=_('Update advertisement blocking list'),
-                            subtitle=_('Updates automatically every 10 days'),
-                            button_label=_('Update'),
+                            title=_("Update advertisement blocking list"),
+                            subtitle=_("Updates automatically every 10 days"),
+                            button_label=_("Update"),
                             onclick=lambda *args: None,
-                            signal='on_refresh_blocklist'
-                        )
-                    ]
+                            signal="on_refresh_blocklist",
+                        ),
+                    ],
                 )
-            ]
+            ],
         )
 
 
 class AdvancedPreferencesPage(MPreferencesPage):
     def __init__(self):
         super().__init__(
-            title=_('Advanced'), icon_name='system-run-symbolic',
+            title=_("Advanced"),
+            icon_name="system-run-symbolic",
             pref_groups=[
                 MPreferencesGroup(
-                    title=_('Advanced preferences'), rows=[
+                    title=_("Advanced preferences"),
+                    rows=[
                         PreferencesSpinButtonRow(
-                            title=_('Maximum refresh threads'),
-                            subtitle=_(
-                                'How many threads to use for feeds refresh'
-                            ),
-                            min_v=1, max_v=32,
-                            conf_key='max_refresh_threads',
+                            title=_("Maximum refresh threads"),
+                            subtitle=_("How many threads to use for feeds refresh"),
+                            min_v=1,
+                            max_v=32,
+                            conf_key="max_refresh_threads",
                         ),
                         PreferencesToggleRow(
-                            title=_(
-                                'Experimental GtkListView for articles list'
-                            ),
-                            subtitle=_('Requires app restart'),
-                            conf_key='use_experimental_listview'
-                        )
-                    ]
+                            title=_("Experimental GtkListView for articles list"),
+                            subtitle=_("Requires app restart"),
+                            conf_key="use_experimental_listview",
+                        ),
+                    ],
                 ),
                 MPreferencesGroup(
-                    title=_('Troubleshooting'), rows=[
+                    title=_("Troubleshooting"),
+                    rows=[
                         PreferencesButtonRow(
-                            title=_('Export Configuration as JSON'),
-                            subtitle=_('Attach this when reporting bugs'),
-                            button_label=_('Export'),
-                            onclick=self.on_export_conf_as_json
+                            title=_("Export Configuration as JSON"),
+                            subtitle=_("Attach this when reporting bugs"),
+                            button_label=_("Export"),
+                            onclick=self.on_export_conf_as_json,
                         )
-                    ]
-                )
-            ]
+                    ],
+                ),
+            ],
         )
 
     def on_export_conf_as_json(self, confman: ConfManager):
@@ -241,20 +250,18 @@ class AdvancedPreferencesPage(MPreferencesPage):
 
         dialog = ScrolledDialog(
             parent=self.get_root(),  # type: ignore
-            title=_('Feeds Configuration'),
+            title=_("Feeds Configuration"),
             body=conf_json,
             responses=[
+                ScrolledDialogResponse("close", _("_Close"), lambda d, _: d.close()),
                 ScrolledDialogResponse(
-                    'close', _('_Close'), lambda d, _: d.close()
+                    "copy",
+                    _("Cop_y"),
+                    lambda _, __: Gdk.Display.get_default()
+                    .get_clipboard()
+                    .set(conf_json),
                 ),
-                ScrolledDialogResponse(
-                    'copy', _('Cop_y'),
-                    lambda _, __:
-                        Gdk.Display.get_default().get_clipboard().set(
-                            conf_json
-                        )
-                )
-            ]
+            ],
         )
         dialog.present()
 
@@ -271,7 +278,7 @@ class PreferencesWindow(Adw.PreferencesWindow):
             GeneralPreferencesPage(),
             PrivacyPreferencesPage(),
             AppearancePreferencesPage(),
-            AdvancedPreferencesPage()
+            AdvancedPreferencesPage(),
         ]
         for p in self.pages:
             self.add(p)

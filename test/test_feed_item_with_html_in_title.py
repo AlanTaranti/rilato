@@ -4,8 +4,8 @@ import pytest
 from rilato.feed_item import FeedItem
 from rilato.feed_parser import parse_feed
 
-RSS_PATH = '/tmp/org.gabmus.rilato.test.feed_item_with_html_in_title.rss'
-SAMPLE_RSS = '''<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+RSS_PATH = "/tmp/org.gabmus.rilato.test.feed_item_with_html_in_title.rss"
+SAMPLE_RSS = """<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <?xml-stylesheet href="/feed_style.xsl" type="text/xsl"?>
 <rss version="2.0"
     xmlns:atom="http://www.w3.org/2005/Atom"
@@ -38,12 +38,12 @@ Swatch_a_color_palette_manager/scrot0.png" />
         </item>
     </channel>
 </rss>
-'''
+"""
 
 
 @pytest.fixture(autouse=True)
 def run_around_tests():
-    with open(RSS_PATH, 'w') as fd:
+    with open(RSS_PATH, "w") as fd:
         fd.write(SAMPLE_RSS)
     yield
     remove(RSS_PATH)
@@ -58,9 +58,7 @@ def __mock_confman(monkeypatch):
         def __init__(self):
             self.nconf = MockNConf()
 
-    monkeypatch.setattr(
-        'rilato.feed_item.ConfManager', MockConfManager
-    )
+    monkeypatch.setattr("rilato.feed_item.ConfManager", MockConfManager)
 
 
 def test_feed_item_with_html_in_title(monkeypatch):
@@ -68,4 +66,4 @@ def test_feed_item_with_html_in_title(monkeypatch):
     feed = parse_feed(Path(RSS_PATH))
     assert len(feed.raw_entries) == 1
     fi = FeedItem(feed.raw_entries[0], feed)
-    assert fi.title == 'foo bar baz'
+    assert fi.title == "foo bar baz"

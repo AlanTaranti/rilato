@@ -7,15 +7,13 @@ from os.path import isfile
 
 
 def get_thumb(link):
-    dest = str(
-        CACHE_PATH.joinpath(shasum(link)+'.html')
-    )
+    dest = str(CACHE_PATH.joinpath(shasum(link) + ".html"))
     try:
         if not isfile(dest):
             download_raw(link, dest)
         sd_html = Html(dest)
     except Exception:
-        print('Error parsing HTML')
+        print("Error parsing HTML")
         return None
     res = sd_html.img_url
     if not res:

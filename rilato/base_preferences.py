@@ -7,11 +7,7 @@ class MActionRow(Adw.ActionRow):
     def __init__(self, title: str, subtitle: Optional[str] = None, **kwargs):
         self.title = title
         self.subtitle = subtitle
-        super().__init__(
-            title=self.title,
-            title_lines=0, subtitle_lines=0,
-            **kwargs
-        )
+        super().__init__(title=self.title, title_lines=0, subtitle_lines=0, **kwargs)
         if self.subtitle:
             self.set_subtitle(self.subtitle)
 
@@ -28,11 +24,15 @@ class PreferencesButtonRow(MActionRow):
     signal: an optional signal to let ConfManager emit when the button is
         pressed
     """
+
     def __init__(
-            self, title: str, button_label: str,
-            onclick: Callable, subtitle: Optional[str] = None,
-            button_style_class: Optional[str] = None,
-            signal: Optional[str] = None
+        self,
+        title: str,
+        button_label: str,
+        onclick: Callable,
+        subtitle: Optional[str] = None,
+        button_style_class: Optional[str] = None,
+        signal: Optional[str] = None,
     ):
         super().__init__(title, subtitle)
         self.button_label = button_label
@@ -40,12 +40,10 @@ class PreferencesButtonRow(MActionRow):
         self.signal = signal
         self.onclick = onclick
 
-        self.button = Gtk.Button(
-            label=self.button_label, valign=Gtk.Align.CENTER
-        )
+        self.button = Gtk.Button(label=self.button_label, valign=Gtk.Align.CENTER)
         if button_style_class:
             self.button.get_style_context().add_class(button_style_class)
-        self.button.connect('clicked', self.on_button_clicked)
+        self.button.connect("clicked", self.on_button_clicked)
         self.add_suffix(self.button)
 
     def on_button_clicked(self, btn):
@@ -63,9 +61,14 @@ class PreferencesEntryRow(MActionRow):
     onchange: an optional function that will be called when the entry changes
     signal: an optional signal to let ConfManager emit when the entry changes
     """
+
     def __init__(
-            self, title: str, conf_key: str, subtitle: Optional[str] = None,
-            onchange: Optional[Callable] = None, signal: Optional[str] = None
+        self,
+        title: str,
+        conf_key: str,
+        subtitle: Optional[str] = None,
+        onchange: Optional[Callable] = None,
+        signal: Optional[str] = None,
     ):
         super().__init__(title, subtitle)
         self.conf_key = conf_key
@@ -75,7 +78,7 @@ class PreferencesEntryRow(MActionRow):
 
         self.entry = Gtk.Entry(valign=Gtk.Align.CENTER)
         self.entry.set_text(self.confman.conf[self.conf_key])
-        self.entry.connect('changed', self.on_entry_changed)
+        self.entry.connect("changed", self.on_entry_changed)
         self.add_suffix(self.entry)
 
     def on_entry_changed(self, *_):
@@ -98,8 +101,13 @@ class PreferencesSpinButtonRow(MActionRow):
     """
 
     def __init__(
-            self, title: str, min_v: int, max_v: int, conf_key: str,
-            subtitle: Optional[str] = None, signal: Optional[str] = None
+        self,
+        title: str,
+        min_v: int,
+        max_v: int,
+        conf_key: str,
+        subtitle: Optional[str] = None,
+        signal: Optional[str] = None,
     ):
         super().__init__(title, subtitle)
         self.confman = ConfManager()
@@ -112,13 +120,13 @@ class PreferencesSpinButtonRow(MActionRow):
             max_v,  # maximum value
             1,  # step increment
             10,  # page increment (page up, page down? large steps anyway)
-            0
+            0,
         )
 
         self.spin_button = Gtk.SpinButton(
             adjustment=self.adjustment, valign=Gtk.Align.CENTER
         )
-        self.spin_button.connect('value-changed', self.on_value_changed)
+        self.spin_button.connect("value-changed", self.on_value_changed)
         self.add_suffix(self.spin_button)
 
     def on_value_changed(self, *_):
@@ -145,48 +153,44 @@ class PreferencesComboRow(Adw.ComboRow):
             self.value = value
 
     def __init__(
-            self, title: str, values: List[str], value_names: List[str],
-            conf_key: str, subtitle: Optional[str] = None,
-            signal: Optional[str] = None
+        self,
+        title: str,
+        values: List[str],
+        value_names: List[str],
+        conf_key: str,
+        subtitle: Optional[str] = None,
+        signal: Optional[str] = None,
     ):
         self.confman = ConfManager()
         self.signal = signal
         self.conf_key = conf_key
-        self.list_store = Gio.ListStore(
-            item_type=PreferencesComboRow.ItemWrapper
-        )
+        self.list_store = Gio.ListStore(item_type=PreferencesComboRow.ItemWrapper)
         self.items_l = list()
         for name, value in zip(value_names, values):
             i = PreferencesComboRow.ItemWrapper(name, value)
             self.items_l.append(i)
             self.list_store.append(i)
         self.factory = Gtk.SignalListItemFactory()
-        self.factory.connect('setup', self._on_setup_listitem)
-        self.factory.connect('bind', self._on_bind_listitem)
+        self.factory.connect("setup", self._on_setup_listitem)
+        self.factory.connect("bind", self._on_bind_listitem)
 
         self.title = title
         self.subtitle = subtitle
 
-        super().__init__(
-            model=self.list_store, factory=self.factory, title=title
-        )
+        super().__init__(model=self.list_store, factory=self.factory, title=title)
         if self.subtitle:
             self.set_subtitle(self.subtitle)
 
         self.set_selected(values.index(self.confman.conf[self.conf_key]))
 
-        self.connect('notify::selected-item', self.on_selection_changed)
+        self.connect("notify::selected-item", self.on_selection_changed)
 
-    def _on_setup_listitem(
-            self, factory: Gtk.ListItemFactory, list_item: Gtk.ListItem
-    ):
+    def _on_setup_listitem(self, factory: Gtk.ListItemFactory, list_item: Gtk.ListItem):
         label = Gtk.Label()
         list_item.set_child(label)
         list_item.row_w = label
 
-    def _on_bind_listitem(
-            self, factory: Gtk.ListItemFactory, list_item: Gtk.ListItem
-    ):
+    def _on_bind_listitem(self, factory: Gtk.ListItemFactory, list_item: Gtk.ListItem):
         label = list_item.get_child()
         label.set_text(list_item.get_item().name)
 
@@ -207,9 +211,13 @@ class PreferencesToggleRow(MActionRow):
     signal: an optional signal to let ConfManager emit when the configuration
         is set
     """
+
     def __init__(
-            self, title: str, conf_key: str, subtitle: Optional[str] = None,
-            signal: Optional[str] = None
+        self,
+        title: str,
+        conf_key: str,
+        subtitle: Optional[str] = None,
+        signal: Optional[str] = None,
     ):
         super().__init__(title, subtitle)
         self.confman = ConfManager()
@@ -218,7 +226,7 @@ class PreferencesToggleRow(MActionRow):
 
         self.toggle = Gtk.Switch(valign=Gtk.Align.CENTER)
         self.toggle.set_active(self.confman.conf[self.conf_key])
-        self.toggle.connect('state-set', self.on_toggle_state_set)
+        self.toggle.connect("state-set", self.on_toggle_state_set)
         self.add_suffix(self.toggle)
         self.set_activatable_widget(self.toggle)
 
@@ -232,9 +240,13 @@ class PreferencesFontChooserRow(MActionRow):
     """
     A preference row with a font chooser button
     """
+
     def __init__(
-        self, title: str, conf_key: str, subtitle: Optional[str] = None,
-        signal: Optional[str] = None
+        self,
+        title: str,
+        conf_key: str,
+        subtitle: Optional[str] = None,
+        signal: Optional[str] = None,
     ):
         super().__init__(title, subtitle)
         self.confman = ConfManager()
@@ -242,16 +254,20 @@ class PreferencesFontChooserRow(MActionRow):
         self.signal = signal
 
         self.font_btn = Gtk.FontButton(
-            title=self.title, modal=True, use_size=False,
-            use_font=True, font=self.confman.conf[self.conf_key],
-            valign=Gtk.Align.CENTER, level=Gtk.FontChooserLevel.FAMILY
+            title=self.title,
+            modal=True,
+            use_size=False,
+            use_font=True,
+            font=self.confman.conf[self.conf_key],
+            valign=Gtk.Align.CENTER,
+            level=Gtk.FontChooserLevel.FAMILY,
         )
-        self.font_btn.connect('font-set', self.on_font_set)
+        self.font_btn.connect("font-set", self.on_font_set)
         self.add_suffix(self.font_btn)
         self.set_activatable_widget(self.font_btn)
 
     def on_font_set(self, *args):
-        n_font = ' '.join(self.font_btn.get_font().split(' ')[:-1]).strip()
+        n_font = " ".join(self.font_btn.get_font().split(" ")[:-1]).strip()
         self.confman.conf[self.conf_key] = n_font
         if self.signal:
             self.confman.emit(self.signal)
@@ -259,8 +275,9 @@ class PreferencesFontChooserRow(MActionRow):
 
 class MPreferencesGroup(Adw.PreferencesGroup):
     def __init__(
-            self, title: str,
-            rows: List[Union[MActionRow, PreferencesComboRow, Adw.ActionRow]]
+        self,
+        title: str,
+        rows: List[Union[MActionRow, PreferencesComboRow, Adw.ActionRow]],
     ):
         self.title = title
         self.rows = rows
@@ -271,8 +288,10 @@ class MPreferencesGroup(Adw.PreferencesGroup):
 
 class MPreferencesPage(Adw.PreferencesPage):
     def __init__(
-            self, title: str, pref_groups: List[MPreferencesGroup],
-            icon_name: Optional[str] = None
+        self,
+        title: str,
+        pref_groups: List[MPreferencesGroup],
+        icon_name: Optional[str] = None,
     ):
         self.title = title
         self.icon_name = icon_name

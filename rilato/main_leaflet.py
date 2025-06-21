@@ -14,9 +14,9 @@ from rilato.confManager import ConfManager
 from rilato.feeds_manager import FeedsManager
 
 
-@Gtk.Template(resource_path='/org/gabmus/rilato/ui/main_leaflet.ui')
+@Gtk.Template(resource_path="/org/gabmus/rilato/ui/main_leaflet.ui")
 class MainLeaflet(Adw.Bin):
-    __gtype_name__ = 'MainLeaflet'
+    __gtype_name__ = "MainLeaflet"
     left_box = Gtk.Template.Child()
     right_box = Gtk.Template.Child()
     leaflet = Gtk.Template.Child()
@@ -36,32 +36,29 @@ class MainLeaflet(Adw.Bin):
         self.confman = ConfManager()
         self.feedman = FeedsManager()
 
-        self.sidebar.listview_sw.connect_activate(
-            self.on_sidebar_row_activated
-        )
+        self.sidebar.listview_sw.connect_activate(self.on_sidebar_row_activated)
         self.filter_flap.bind_property(
-            'reveal-flap', self.left_headerbar.filter_btn, 'active',
-            GObject.BindingFlags.BIDIRECTIONAL
+            "reveal-flap",
+            self.left_headerbar.filter_btn,
+            "active",
+            GObject.BindingFlags.BIDIRECTIONAL,
         )
 
-        self.confman.connect(
-            'rilato_filter_changed', self.on_filter_changed
-        )
+        self.confman.connect("rilato_filter_changed", self.on_filter_changed)
         self.searchbar_entry.connect(
-            'changed',
-            lambda entry: self.sidebar.set_search(entry.get_text())
+            "changed", lambda entry: self.sidebar.set_search(entry.get_text())
         )
         self.searchbar.bind_property(
-            'search-mode-enabled', self.left_headerbar.search_btn,
-            'active', GObject.BindingFlags.BIDIRECTIONAL
+            "search-mode-enabled",
+            self.left_headerbar.search_btn,
+            "active",
+            GObject.BindingFlags.BIDIRECTIONAL,
         )
 
+        self.feedman.connect("feedmanager_refresh_end", self.on_refresh_end)
         self.feedman.connect(
-            'feedmanager_refresh_end', self.on_refresh_end
-        )
-        self.feedman.connect(
-            'feedmanager_online_changed',
-            lambda _, value: self.connection_bar.set_revealed(not value)
+            "feedmanager_online_changed",
+            lambda _, value: self.connection_bar.set_revealed(not value),
         )
 
         self.on_leaflet_folded()
@@ -100,55 +97,43 @@ class MainLeaflet(Adw.Bin):
         self.webview.change_view_mode(target)
 
     def on_refresh_end(self, *_):
-        self.left_headerbar.errors_btn.set_visible(
-            len(self.feedman.errors) > 0
-        )
+        self.left_headerbar.errors_btn.set_visible(len(self.feedman.errors) > 0)
         self.sidebar.listview_sw.all_items_changed()
         self.sidebar.loading_revealer.set_running(False)
         if (
-                self.confman.nconf.notify_new_articles and
-                not self.get_root().is_active() and  # window is not focused
-                self.feedman.new_items_num > 0
+            self.confman.nconf.notify_new_articles
+            and not self.get_root().is_active()  # window is not focused
+            and self.feedman.new_items_num > 0
         ):
             notif_text = ngettext(
-                '{0} new article', '{0} new articles',
-                self.feedman.new_items_num
+                "{0} new article", "{0} new articles", self.feedman.new_items_num
             ).format(self.feedman.new_items_num)
             notif = Gio.Notification.new(notif_text)
-            notif.set_icon(Gio.ThemedIcon.new(
-                'org.gabmus.rilato-symbolic'
-            ))
-            self.get_root().app.send_notification('new_articles', notif)
+            notif.set_icon(Gio.ThemedIcon.new("org.gabmus.rilato-symbolic"))
+            self.get_root().app.send_notification("new_articles", notif)
 
     def on_sidebar_row_activated(self, feed_item: Optional[FeedItem]):
         self.feedman.article_store.set_selected_article(feed_item)
         if not feed_item:
             return
         feed_item.read = True
-        if (
-                self.confman.nconf.open_youtube_externally and
-                reduce(or_, [
-                    f'://{pfx}' in feed_item.link  # type: ignore
-                    for pfx in [
-                        p + 'youtube.com'
-                        for p in ('', 'www.', 'm.')
-                    ]
-                ])
+        if self.confman.nconf.open_youtube_externally and reduce(
+            or_,
+            [
+                f"://{pfx}" in feed_item.link  # type: ignore
+                for pfx in [p + "youtube.com" for p in ("", "www.", "m.")]
+            ],
         ):
-            cmd_parts = [
-                self.confman.nconf.media_player, f'"{feed_item.link}"'
-            ]
+            cmd_parts = [self.confman.nconf.media_player, f'"{feed_item.link}"']
             if self.confman.is_flatpak:
-                cmd_parts.insert(0, 'flatpak-spawn --host')
-            cmd = ' '.join(cmd_parts)
+                cmd_parts.insert(0, "flatpak-spawn --host")
+            cmd = " ".join(cmd_parts)
             Popen(cmd, shell=True)
             return
         self.webview.load_feeditem(feed_item)
-        self.right_headerbar.set_article_title(
-            feed_item.title
-        )
+        self.right_headerbar.set_article_title(feed_item.title)
         self.right_headerbar.extra_menu_btn.set_sensitive(True)
         self.leaflet.set_visible_child(self.right_box)
         self.on_leaflet_folded()
         self.sidebar.listview_sw.invalidate_filter()
-        feed_item.emit('changed', '')
+        feed_item.emit("changed", "")

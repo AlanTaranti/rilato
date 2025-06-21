@@ -5,12 +5,12 @@ from gi.repository import GLib
 
 class ThreadPool:
     def __init__(
-            self,
-            max_threads: int,
-            worker_func: Callable,
-            worker_func_args_l: Iterable[Iterable[Any]],
-            final_callback: Callable,
-            final_callback_args: Iterable[Any]
+        self,
+        max_threads: int,
+        worker_func: Callable,
+        worker_func_args_l: Iterable[Iterable[Any]],
+        final_callback: Callable,
+        final_callback_args: Iterable[Any],
     ):
         self.worker_func = worker_func
         self.worker_func_args_l = worker_func_args_l
@@ -26,7 +26,7 @@ class ThreadPool:
                     target=self._pool_worker,
                     name=None,
                     args=(*args_tuple,),
-                    daemon=True
+                    daemon=True,
                 )
             )
 
@@ -40,8 +40,8 @@ class ThreadPool:
 
     def start(self):
         while (
-                len(self.running_threads) < self.max_threads and
-                len(self.waiting_threads) > 0
+            len(self.running_threads) < self.max_threads
+            and len(self.waiting_threads) > 0
         ):
             t = self.waiting_threads.pop(0)
             t.start()

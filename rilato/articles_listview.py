@@ -10,7 +10,7 @@ class CommonListScrolledWin(Gtk.ScrolledWindow):
     def __init__(self):
         super().__init__(
             hscrollbar_policy=Gtk.PolicyType.NEVER,
-            vscrollbar_policy=Gtk.PolicyType.AUTOMATIC
+            vscrollbar_policy=Gtk.PolicyType.AUTOMATIC,
         )
 
         self.feedman = FeedsManager()
@@ -47,22 +47,20 @@ class ArticlesListView(CommonListScrolledWin):
 
         # listview and factory
         self.factory = Gtk.SignalListItemFactory()
-        self.factory.connect('setup', self._on_setup_listitem)
-        self.factory.connect('bind', self._on_bind_listitem)
+        self.factory.connect("setup", self._on_setup_listitem)
+        self.factory.connect("bind", self._on_bind_listitem)
         self.selection = Gtk.SingleSelection.new(self.articles_store)
         self.selection.set_autoselect(False)
         self.list_view = Gtk.ListView.new(self.selection, self.factory)
         self.list_view.set_vscroll_policy(Gtk.ScrollablePolicy.NATURAL)
 
-        self.list_view.get_style_context().add_class('navigation-sidebar')
+        self.list_view.get_style_context().add_class("navigation-sidebar")
         self.set_child(self.list_view)
-        self.selection.connect('notify::selected-item', self.on_activate)
+        self.selection.connect("notify::selected-item", self.on_activate)
 
     def connect_activate(self, func):
         self.selection.connect(
-            'notify::selected-item',
-            lambda *_:
-                func(self.selection.get_selected_item())
+            "notify::selected-item", lambda *_: func(self.selection.get_selected_item())
         )
 
     def get_selected(self) -> int:
@@ -95,17 +93,13 @@ class ArticlesListView(CommonListScrolledWin):
             return
         feed_item.read = True
 
-    def _on_setup_listitem(
-            self, _: Gtk.ListItemFactory, list_item: Gtk.ListItem
-    ):
+    def _on_setup_listitem(self, _: Gtk.ListItemFactory, list_item: Gtk.ListItem):
         row_w = SidebarRow(self.fetch_image_thread_pool)
         list_item.set_child(row_w)
         # otherwise row gets garbage collected
         list_item.row_w = row_w  # type: ignore
 
-    def _on_bind_listitem(
-            self, _: Gtk.ListItemFactory, list_item: Gtk.ListItem
-    ):
+    def _on_bind_listitem(self, _: Gtk.ListItemFactory, list_item: Gtk.ListItem):
         row_w: SidebarRow = list_item.get_child()  # type: ignore
         feed_item: FeedItem = list_item.get_item()  # type: ignore
         row_w.set_feed_item(feed_item)
@@ -116,24 +110,21 @@ class ArticlesListBox(CommonListScrolledWin):
         super().__init__()
 
         self.listbox = Gtk.ListBox(
-            vexpand=True, selection_mode=Gtk.SelectionMode.SINGLE,
-            activate_on_single_click=True
+            vexpand=True,
+            selection_mode=Gtk.SelectionMode.SINGLE,
+            activate_on_single_click=True,
         )
-        self.listbox.get_style_context().add_class('navigation-sidebar')
+        self.listbox.get_style_context().add_class("navigation-sidebar")
         self.listbox.bind_model(self.articles_store, self._create_row, None)
         self.set_child(self.listbox)
 
     def connect_activate(self, func: Callable[[Optional[FeedItem]], Any]):
         self.listbox.connect(
-            'row-activated',
-            lambda _, row, *__:
-                func(row.get_child().feed_item)
-                if row else func(None)
+            "row-activated",
+            lambda _, row, *__: func(row.get_child().feed_item) if row else func(None),
         )
 
-    def _create_row(
-            self, feed_item: FeedItem, *_
-    ) -> Gtk.Widget:
+    def _create_row(self, feed_item: FeedItem, *_) -> Gtk.Widget:
         row_w = SidebarRow(self.fetch_image_thread_pool)
         row_w.set_feed_item(feed_item)
         return row_w

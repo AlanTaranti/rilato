@@ -11,8 +11,9 @@ def get_feed_link_from_file(feed_path: str) -> Optional[str]:
         sd_feed = SynDomFeed(str(feed_path))
     except Exception:
         import traceback
+
         traceback.print_exc()
-        print(f'Error parsing feed `{feed_path}`')
+        print(f"Error parsing feed `{feed_path}`")
         return None
     res = sd_feed.get_rss_url()
     if res:

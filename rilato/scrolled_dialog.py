@@ -4,9 +4,11 @@ from gi.repository import Gtk, Adw
 
 class ScrolledDialogResponse:
     def __init__(
-            self, name: str, label: str,
-            callback: Optional[Callable] = None,
-            appearance: Optional[Adw.ResponseAppearance] = None,
+        self,
+        name: str,
+        label: str,
+        callback: Optional[Callable] = None,
+        appearance: Optional[Adw.ResponseAppearance] = None,
     ):
         self.name = name
         self.label = label
@@ -16,8 +18,11 @@ class ScrolledDialogResponse:
 
 class ScrolledDialog(Adw.MessageDialog):
     def __init__(
-            self, parent: Gtk.Window, title: str, body: str,
-            responses: List[ScrolledDialogResponse]
+        self,
+        parent: Gtk.Window,
+        title: str,
+        body: str,
+        responses: List[ScrolledDialogResponse],
     ):
         self.__parent = parent
         self.__title = title
@@ -28,7 +33,7 @@ class ScrolledDialog(Adw.MessageDialog):
             transient_for=self.__parent,
             heading=self.__title,
             extra_child=Gtk.ScrolledWindow(
-                css_classes=['card'],
+                css_classes=["card"],
                 hscrollbar_policy=Gtk.PolicyType.NEVER,
                 width_request=270,
                 height_request=270,
@@ -41,9 +46,9 @@ class ScrolledDialog(Adw.MessageDialog):
                     margin_bottom=12,
                     margin_start=12,
                     margin_end=12,
-                    label=self.__body
-                )
-            )
+                    label=self.__body,
+                ),
+            ),
         )
 
         for r in self.__responses:
@@ -51,9 +56,9 @@ class ScrolledDialog(Adw.MessageDialog):
             if r.appearance is not None:
                 self.set_response_appearance(r.name, r.appearance)
 
-        self.connect('response', self.on_response)
+        self.connect("response", self.on_response)
 
-    def on_response(self, dialog: 'ScrolledDialog', res: str):
+    def on_response(self, dialog: "ScrolledDialog", res: str):
         for r in self.__responses:
             if r.name == res:
                 if r.callback is not None:

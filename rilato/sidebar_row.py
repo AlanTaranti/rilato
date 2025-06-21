@@ -12,9 +12,9 @@ from rilato.util.relative_day_formatter import humanize_datetime
 from rilato.accel_manager import add_mouse_button_accel, add_longpress_accel
 
 
-@Gtk.Template(resource_path='/org/gabmus/rilato/ui/sidebar_listbox_row.ui')
+@Gtk.Template(resource_path="/org/gabmus/rilato/ui/sidebar_listbox_row.ui")
 class SidebarRow(Gtk.Box):
-    __gtype_name__ = 'SidebarRow'
+    __gtype_name__ = "SidebarRow"
     title_label: Gtk.Label = Gtk.Template.Child()
     origin_label: Gtk.Label = Gtk.Template.Child()
     icon_container = Gtk.Template.Child()
@@ -33,13 +33,11 @@ class SidebarRow(Gtk.Box):
         self.confman = ConfManager()
 
         self.confman.connect(
-            'rilato_full_article_title_changed',
-            self.on_full_article_title_changed
+            "rilato_full_article_title_changed", self.on_full_article_title_changed
         )
         self.on_full_article_title_changed()
         self.confman.connect(
-            'rilato_full_feed_name_changed',
-            self.on_full_feed_name_changed
+            "rilato_full_feed_name_changed", self.on_full_feed_name_changed
         )
         self.on_full_feed_name_changed()
 
@@ -47,36 +45,32 @@ class SidebarRow(Gtk.Box):
         self.icon_container.append(self.icon)
 
         self.picture_view = Gtk.Picture(
-            overflow=Gtk.Overflow.HIDDEN,
-            halign=Gtk.Align.CENTER, hexpand=True
+            overflow=Gtk.Overflow.HIDDEN, halign=Gtk.Align.CENTER, hexpand=True
         )
-        self.picture_view.get_style_context().add_class('card')
+        self.picture_view.get_style_context().add_class("card")
         self.picture_view_container.append(self.picture_view)
         # picture_view_container is visible=False on init
 
-        self.confman.connect('show_thumbnails_changed', self.set_article_image)
+        self.confman.connect("show_thumbnails_changed", self.set_article_image)
 
         # longpress & right click
-        self.longpress = add_longpress_accel(
-            self, lambda *_: self.popover.popup()
-        )
+        self.longpress = add_longpress_accel(self, lambda *_: self.popover.popup())
         self.rightclick = add_mouse_button_accel(
             self,
-            lambda gesture, *_:
-                self.popover.popup()
-                if gesture.get_current_button() == 3  # 3 is right click
-                else None
+            lambda gesture, *_: self.popover.popup()
+            if gesture.get_current_button() == 3  # 3 is right click
+            else None,
         )
 
         self.action_group = Gio.SimpleActionGroup()
         for act_name, fun in [
-                ('read_unread', self.action_read_unread),
-                ('open_in_browser', self.action_open_in_browser)
+            ("read_unread", self.action_read_unread),
+            ("open_in_browser", self.action_open_in_browser),
         ]:
             act = Gio.SimpleAction.new(act_name, None)
-            act.connect('activate', fun)
+            act.connect("activate", fun)
             self.action_group.add_action(act)
-        self.insert_action_group('row', self.action_group)
+        self.insert_action_group("row", self.action_group)
 
     def set_feed_item(self, feed_item: FeedItem):
         if not feed_item or self.feed_item == feed_item:
@@ -92,19 +86,18 @@ class SidebarRow(Gtk.Box):
         self.feed_item = feed_item
         self.prop_bindings.append(
             self.feed_item.bind_property(
-                'read', self, 'dim', GObject.BindingFlags.DEFAULT
+                "read", self, "dim", GObject.BindingFlags.DEFAULT
             )
         )
         self.dim = self.feed_item.read
         self.signal_ids.append(
-            self.feed_item.connect('changed', self.on_feed_item_changed)
+            self.feed_item.connect("changed", self.on_feed_item_changed)
         )
 
         self.origin_label.set_text(self.feed_item.parent_feed.title)
         self.title_label.set_text(self.feed_item.title)
         self.icon.set_image(
-            self.feed_item.parent_feed.title,
-            self.feed_item.parent_feed.favicon_path
+            self.feed_item.parent_feed.title, self.feed_item.parent_feed.favicon_path
         )
 
         self.set_article_image()
@@ -121,9 +114,7 @@ class SidebarRow(Gtk.Box):
         self.popover.popdown()
         if not self.feed_item:
             return
-        Gio.AppInfo.launch_default_for_uri(
-            self.feed_item.link
-        )
+        Gio.AppInfo.launch_default_for_uri(self.feed_item.link)
 
     def on_feed_item_changed(self, *_):
         if self.feed_item is None:
@@ -155,13 +146,8 @@ class SidebarRow(Gtk.Box):
             if self.feed_item is None:
                 return
             dest = None
-            if (
-                    self.feed_item.identifier in
-                    self.confman.article_thumb_cache.keys()
-            ):
-                dest = self.confman.article_thumb_cache[
-                    self.feed_item.identifier
-                ]
+            if self.feed_item.identifier in self.confman.article_thumb_cache.keys():
+                dest = self.confman.article_thumb_cache[self.feed_item.identifier]
                 if not isfile(dest):
                     download_raw(self.feed_item.image_url, dest)
                 GLib.idle_add(cb, dest if dest and isfile(dest) else None)
@@ -176,14 +162,10 @@ class SidebarRow(Gtk.Box):
                     # yes, the file extension is ignored entirely
                     # this shouldn't matter anyway and pictures get set
                     # correctly
-                    dest = str(THUMBS_CACHE_PATH.joinpath(
-                        shasum(img_url)
-                    ))
+                    dest = str(THUMBS_CACHE_PATH.joinpath(shasum(img_url)))
                     if not isfile(dest):
                         download_raw(img_url, dest)
-                    self.confman.article_thumb_cache[
-                        self.feed_item.identifier
-                    ] = dest
+                    self.confman.article_thumb_cache[self.feed_item.identifier] = dest
                     self.confman.save_article_thumb_cache()
                 except Exception:
                     pass
@@ -191,9 +173,7 @@ class SidebarRow(Gtk.Box):
                 GLib.idle_add(cb, dest)
                 return
             else:
-                self.confman.article_thumb_cache[
-                    self.feed_item.identifier
-                ] = ''
+                self.confman.article_thumb_cache[self.feed_item.identifier] = ""
                 self.confman.save_article_thumb_cache()
             GLib.idle_add(cb, None)
 
@@ -201,13 +181,15 @@ class SidebarRow(Gtk.Box):
 
     def on_full_article_title_changed(self, *_):
         self.title_label.set_ellipsize(
-            Pango.EllipsizeMode.NONE if self.confman.nconf.full_article_title
+            Pango.EllipsizeMode.NONE
+            if self.confman.nconf.full_article_title
             else Pango.EllipsizeMode.END
         )
 
     def on_full_feed_name_changed(self, *_):
         self.origin_label.set_ellipsize(
-            Pango.EllipsizeMode.NONE if self.confman.nconf.full_feed_name
+            Pango.EllipsizeMode.NONE
+            if self.confman.nconf.full_feed_name
             else Pango.EllipsizeMode.END
         )
 
@@ -225,10 +207,10 @@ class SidebarRow(Gtk.Box):
     def dim(self, state: bool):
         self.__dim = state
         for w in (
-                self.title_label,
-                self.icon,
+            self.title_label,
+            self.icon,
         ):
             if state:
-                w.get_style_context().add_class('dim-label')
+                w.get_style_context().add_class("dim-label")
             else:
-                w.get_style_context().remove_class('dim-label')
+                w.get_style_context().remove_class("dim-label")

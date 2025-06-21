@@ -6,9 +6,7 @@ from rilato.feed import Feed
 
 class TagObj(GObject.Object):
     __gsignals__ = {
-        'empty_changed': (
-            GObject.SignalFlags.RUN_FIRST, GObject.TYPE_NONE, ()
-        )
+        "empty_changed": (GObject.SignalFlags.RUN_FIRST, GObject.TYPE_NONE, ())
     }
 
     def __init__(self, name: str):
@@ -28,18 +26,14 @@ class TagObj(GObject.Object):
         prev = self.unread_count
         self.unread_count += v
         if self.__unread_count == 0 and prev > 0:
-            self.emit('empty_changed')
+            self.emit("empty_changed")
         elif self.__unread_count > 0 and prev == 0:
-            self.emit('empty_changed')
+            self.emit("empty_changed")
 
 
 class TagStore(Gtk.FilterListModel):
     __gsignals__ = {
-        'item-removed': (
-            GObject.SignalFlags.RUN_LAST,
-            None,
-            (GObject.TYPE_PYOBJECT,)
-        )
+        "item-removed": (GObject.SignalFlags.RUN_LAST, None, (GObject.TYPE_PYOBJECT,))
     }
 
     def __init__(self):
@@ -48,19 +42,15 @@ class TagStore(Gtk.FilterListModel):
         self.filter = Gtk.CustomFilter()
         self.filter.set_filter_func(self._filter_func)
         self.list_store = Gio.ListStore(item_type=TagObj)
-        self.sort_store = Gtk.SortListModel(
-            model=self.list_store, sorter=self.sorter
-        )
+        self.sort_store = Gtk.SortListModel(model=self.list_store, sorter=self.sorter)
         self.confman = ConfManager()
         self.confman.connect(
-                'rilato_show_empty_feeds_changed',
-                lambda *_: self.invalidate_filter()
+            "rilato_show_empty_feeds_changed", lambda *_: self.invalidate_filter()
         )
         # Hiding read articles can result in empty feeds which should
         # be hidden
         self.confman.connect(
-                'rilato_show_read_changed',
-                lambda *_: self.invalidate_filter()
+            "rilato_show_read_changed", lambda *_: self.invalidate_filter()
         )
         super().__init__(model=self.sort_store, filter=self.filter)
         self.populate()
@@ -70,9 +60,7 @@ class TagStore(Gtk.FilterListModel):
         for tag in self.confman.nconf.tags:
             n_tag = TagObj(tag)
             self.list_store.append(n_tag)
-            n_tag.connect(
-                'empty_changed', lambda *_: self.invalidate_filter()
-            )
+            n_tag.connect("empty_changed", lambda *_: self.invalidate_filter())
 
     def _sort_func(self, t1: TagObj, t2: TagObj, *_) -> int:
         return -1 if t1.name.lower() < t2.name.lower() else 1
@@ -80,9 +68,7 @@ class TagStore(Gtk.FilterListModel):
     def empty(self):
         return self.list_store.remove_all()
 
-    def add_tag(
-            self, n_tag_: Union[TagObj, str], target_feeds: List[Feed] = []
-    ):
+    def add_tag(self, n_tag_: Union[TagObj, str], target_feeds: List[Feed] = []):
         n_tag = TagObj(n_tag_) if isinstance(n_tag_, str) else n_tag_
         existing_tag = self.get_tag(n_tag.name)
         if existing_tag:
@@ -96,15 +82,13 @@ class TagStore(Gtk.FilterListModel):
             if n_tag not in feed.tags:
                 feed.tags.append(n_tag)
                 n_tag.unread_count += feed.unread_count
-        n_tag.connect(
-            'empty_changed', lambda *_: self.invalidate_filter()
-        )
+        n_tag.connect("empty_changed", lambda *_: self.invalidate_filter())
 
         self.confman.add_tag(n_tag.name, target_feed_urls)
 
     def remove_by_index(self, index: int):
         to_rm = self.list_store[index]
-        self.emit('item-removed', to_rm)
+        self.emit("item-removed", to_rm)
         self.list_store.remove(index)
         self.confman.delete_tag(to_rm.name)
 
@@ -115,8 +99,10 @@ class TagStore(Gtk.FilterListModel):
                 return
 
     def _filter_func(self, item: TagObj, *_) -> bool:
-        if not self.confman.nconf.show_empty_feeds and \
-                not self.confman.nconf.show_read_items:
+        if (
+            not self.confman.nconf.show_empty_feeds
+            and not self.confman.nconf.show_read_items
+        ):
             return item.unread_count > 0
         return True
 

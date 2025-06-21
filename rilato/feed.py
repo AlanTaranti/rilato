@@ -9,28 +9,30 @@ from syndom import Feed as SynDomFeed, FeedItem as SynDomFeedItem
 
 
 class Feed(GObject.Object):
-    __gsignals__ = {
-        'empty_changed': (
-            GObject.SignalFlags.RUN_FIRST, None, ()
-        )
-    }
+    __gsignals__ = {"empty_changed": (GObject.SignalFlags.RUN_FIRST, None, ())}
 
-    __title = ''
-    __link = ''
-    __description = ''
-    __image_url = ''
+    __title = ""
+    __link = ""
+    __description = ""
+    __image_url = ""
     __unread_count = 0
-    rss_link = ''
+    rss_link = ""
     tags = list()
     items = dict()
     sd_feed = None
-    favicon_path = ''
+    favicon_path = ""
     init_time = None
 
     def __init__(
-        self, rss_link: str, title: str, link: str, description: str,
-        image_url: Optional[str], favicon_path: Optional[str],
-        sd_feed: SynDomFeed, raw_entries: List[SynDomFeedItem]
+        self,
+        rss_link: str,
+        title: str,
+        link: str,
+        description: str,
+        image_url: Optional[str],
+        favicon_path: Optional[str],
+        sd_feed: SynDomFeed,
+        raw_entries: List[SynDomFeedItem],
     ):
         super().__init__()
         self.confman = ConfManager()
@@ -40,14 +42,26 @@ class Feed(GObject.Object):
         self.tags = list()
         self.items = dict()
         self.update(
-            rss_link, title, link, description, image_url, favicon_path,
-            sd_feed, raw_entries
+            rss_link,
+            title,
+            link,
+            description,
+            image_url,
+            favicon_path,
+            sd_feed,
+            raw_entries,
         )
 
     def update(
-        self, rss_link: str, title: str, link: str, description: str,
-        image_url: Optional[str], favicon_path: Optional[str],
-        sd_feed: SynDomFeed, raw_entries: List[SynDomFeedItem]
+        self,
+        rss_link: str,
+        title: str,
+        link: str,
+        description: str,
+        image_url: Optional[str],
+        favicon_path: Optional[str],
+        sd_feed: SynDomFeed,
+        raw_entries: List[SynDomFeedItem],
     ):
         self.rss_link = rss_link
         self.__title = title
@@ -74,27 +88,28 @@ class Feed(GObject.Object):
             if valid_age and not n_item.read:
                 unread_count += 1
             if not valid_age and n_item.read:
-                read_items: List[str] = \
-                    self.confman.nconf.read_items  # type: ignore
+                read_items: List[str] = self.confman.nconf.read_items  # type: ignore
                 read_items.remove(n_item.identifier)
                 self.confman.nconf.read_items = read_items
 
         if self.rss_link in self.confman.nconf.feeds:  # type: ignore
-            feed_conf = (self.get_conf_dict() or dict())
-            for tag_name in feed_conf.get('tags', []):
+            feed_conf = self.get_conf_dict() or dict()
+            for tag_name in feed_conf.get("tags", []):
                 tag_obj = self.tag_store.get_tag(tag_name)
                 if tag_obj is not None and tag_obj not in self.tags:
                     self.tags.append(tag_obj)
 
         # Set property, trigger signal (avoiding excess signals during init)
         if unread_count != self.__unread_count:
+
             def do():
                 self.unread_count = unread_count
+
             GLib.idle_add(do)
 
     def get_conf_dict(self) -> Optional[dict]:
         return self.confman.nconf.feeds.get(  # type: ignore
-                self.rss_link, None
+            self.rss_link, None
         )
 
     @GObject.Property(type=str)
@@ -126,23 +141,23 @@ class Feed(GObject.Object):
         prev = self.__unread_count
         self.__unread_count = v
         if self.__unread_count == 0 and prev > 0:
-            self.emit('empty_changed')
+            self.emit("empty_changed")
         elif self.__unread_count > 0 and prev == 0:
-            self.emit('empty_changed')
+            self.emit("empty_changed")
 
         change = self.__unread_count - prev
         for tag in self.tags:
             tag.increment_unread_count(change)
 
     def __repr__(self):
-        return f'Feed Object `{self.__title}`; {len(self.items)} items'
+        return f"Feed Object `{self.__title}`; {len(self.items)} items"
 
     def to_dict(self) -> dict:
         return {
-            'title': self.title,
-            'link': self.link,
-            'description': self.description,
-            'image_url': self.image_url,
-            'rss_link': self.rss_link,
-            'favicon_path': self.favicon_path,
+            "title": self.title,
+            "link": self.link,
+            "description": self.description,
+            "image_url": self.image_url,
+            "rss_link": self.rss_link,
+            "favicon_path": self.favicon_path,
         }

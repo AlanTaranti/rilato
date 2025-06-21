@@ -9,15 +9,15 @@ from rilato.webview import RilatoWebView
 
 
 VIEW_MODE_ICONS = {
-    'webview': 'globe-alt-symbolic',
-    'reader': 'ephy-reader-mode-symbolic',
-    'feedcont': 'application-rss+xml-symbolic'
+    "webview": "globe-alt-symbolic",
+    "reader": "ephy-reader-mode-symbolic",
+    "feedcont": "application-rss+xml-symbolic",
 }
 
 
-@Gtk.Template(resource_path='/org/gabmus/rilato/ui/add_feed_popover.ui')
+@Gtk.Template(resource_path="/org/gabmus/rilato/ui/add_feed_popover.ui")
 class AddFeedPopover(Gtk.Popover):
-    __gtype_name__ = 'AddFeedPopover'
+    __gtype_name__ = "AddFeedPopover"
     confirm_btn = Gtk.Template.Child()
     url_entry = Gtk.Template.Child()
     already_subscribed_revealer = Gtk.Template.Child()
@@ -51,16 +51,10 @@ class AddFeedPopover(Gtk.Popover):
             self.already_subscribed_revealer.set_reveal_child(True)
 
 
-@Gtk.Template(resource_path='/org/gabmus/rilato/ui/right_headerbar.ui')
+@Gtk.Template(resource_path="/org/gabmus/rilato/ui/right_headerbar.ui")
 class RightHeaderbar(Gtk.WindowHandle):
-    __gtype_name__ = 'RightHeaderbar'
-    __gsignals__ = {
-        'go_back': (
-            GObject.SignalFlags.RUN_LAST,
-            None,
-            (str,)
-        )
-    }
+    __gtype_name__ = "RightHeaderbar"
+    __gsignals__ = {"go_back": (GObject.SignalFlags.RUN_LAST, None, (str,))}
     right_headerbar = Gtk.Template.Child()
     view_mode_menu_btn = Gtk.Template.Child()
     extra_menu_btn = Gtk.Template.Child()
@@ -79,7 +73,7 @@ class RightHeaderbar(Gtk.WindowHandle):
         self.set_view_mode_icon(self.confman.nconf.default_view)
         self.on_zoom_changed(None, self.confman.nconf.webview_zoom)
 
-    @GObject.Property(type=RilatoWebView, default=None, nick='webview')
+    @GObject.Property(type=RilatoWebView, default=None, nick="webview")
     def webview(self) -> RilatoWebView:  # type: ignore
         return self.__webview
 
@@ -88,8 +82,8 @@ class RightHeaderbar(Gtk.WindowHandle):
         self.__webview = wv
         if wv is None:
             return
-        self.__webview.connect('rilato_webview_load_start', self.on_load_start)
-        self.__webview.connect('zoom_changed', self.on_zoom_changed)
+        self.__webview.connect("rilato_webview_load_start", self.on_load_start)
+        self.__webview.connect("zoom_changed", self.on_zoom_changed)
 
     @Gtk.Template.Callback()
     def on_zoom_in_btn_clicked(self, *__):
@@ -111,15 +105,13 @@ class RightHeaderbar(Gtk.WindowHandle):
 
     @Gtk.Template.Callback()
     def on_back_btn_clicked(self, *__):
-        self.emit('go_back', '')
+        self.emit("go_back", "")
 
     def on_zoom_changed(self, __, n_zoom: float):
-        self.zoom_reset_btn.set_label(f'{round(n_zoom*100)}%')
+        self.zoom_reset_btn.set_label(f"{round(n_zoom * 100)}%")
 
     def set_view_mode_icon(self, mode):
-        self.view_mode_menu_btn.set_icon_name(
-            VIEW_MODE_ICONS[mode]
-        )
+        self.view_mode_menu_btn.set_icon_name(VIEW_MODE_ICONS[mode])
 
     def on_view_mode_change(self, target):
         self.set_view_mode_icon(target)
@@ -131,9 +123,9 @@ class RightHeaderbar(Gtk.WindowHandle):
         self.view_mode_menu_btn.set_sensitive(True)
 
 
-@Gtk.Template(resource_path='/org/gabmus/rilato/ui/left_headerbar.ui')
+@Gtk.Template(resource_path="/org/gabmus/rilato/ui/left_headerbar.ui")
 class LeftHeaderbar(Gtk.WindowHandle):
-    __gtype_name__ = 'LeftHeaderbar'
+    __gtype_name__ = "LeftHeaderbar"
     left_headerbar = Gtk.Template.Child()
     menu_btn = Gtk.Template.Child()
     filter_btn = Gtk.Template.Child()
@@ -151,19 +143,11 @@ class LeftHeaderbar(Gtk.WindowHandle):
         self.add_popover = AddFeedPopover(self.add_btn)
         self.add_btn.set_popover(self.add_popover)
 
-        self.feedman.connect(
-            'feedmanager_refresh_start',
-            self.on_new_feed_add_start
-        )
-        self.feedman.connect(
-            'feedmanager_refresh_end',
-            self.on_new_feed_add_end
-        )
+        self.feedman.connect("feedmanager_refresh_start", self.on_new_feed_add_start)
+        self.feedman.connect("feedmanager_refresh_end", self.on_new_feed_add_end)
         self.on_new_feed_add_start()
 
-    @GObject.Property(
-        type=Gtk.SearchBar, default=None, nick='searchbar'
-    )
+    @GObject.Property(type=Gtk.SearchBar, default=None, nick="searchbar")
     def searchbar(self) -> Gtk.SearchBar:  # type: ignore
         return self.__searchbar
 
@@ -177,7 +161,6 @@ class LeftHeaderbar(Gtk.WindowHandle):
 
     @Gtk.Template.Callback()
     def show_errors_dialog(self, *__):
-
         def on_remove(d: ScrolledDialog, _):
             d.close()
             feeds: Dict[str, dict] = self.confman.nconf.feeds
@@ -193,18 +176,17 @@ class LeftHeaderbar(Gtk.WindowHandle):
 
         dialog = ScrolledDialog(
             self.get_root(),  # type: ignore
-            _(
-                'There were problems with some feeds.'
-                ' Do you want to remove them?'
-            ),
-            escape('\n'.join(self.feedman.errors)),
+            _("There were problems with some feeds. Do you want to remove them?"),
+            escape("\n".join(self.feedman.errors)),
             [
-                ScrolledDialogResponse('keep', _('_Keep'), on_keep),
+                ScrolledDialogResponse("keep", _("_Keep"), on_keep),
                 ScrolledDialogResponse(
-                    'remove', _('_Remove'), on_remove,
-                    Adw.ResponseAppearance.DESTRUCTIVE
-                )
-            ]
+                    "remove",
+                    _("_Remove"),
+                    on_remove,
+                    Adw.ResponseAppearance.DESTRUCTIVE,
+                ),
+            ],
         )
         dialog.present()
 
@@ -215,4 +197,4 @@ class LeftHeaderbar(Gtk.WindowHandle):
     def on_new_feed_add_end(self, *_):
         self.refresh_btn.set_sensitive(True)
         self.add_popover.confirm_btn.set_sensitive(True)
-        self.add_popover.url_entry.set_text('')
+        self.add_popover.url_entry.set_text("")

@@ -2,10 +2,8 @@ from unittest.mock import MagicMock
 from rilato.util.opml_generator import feeds_list_to_opml
 
 
-MOCK_FEEDS = [
-    MagicMock(), MagicMock(), MagicMock()
-]
-EXPECTED_OPML = '''<?xml version="1.0" encoding="UTF-8"?>
+MOCK_FEEDS = [MagicMock(), MagicMock(), MagicMock()]
+EXPECTED_OPML = """<?xml version="1.0" encoding="UTF-8"?>
 <opml version="2.0">
   <head>
     <title>Subscriptions</title>
@@ -22,33 +20,37 @@ category="" />
 xmlUrl="example.org/rss2" htmlUrl="example.org" \
 category='&lt;tag&gt;,&lt;tag2 foo="bar" /&gt;' />
   </body>
-</opml>'''
+</opml>"""
 
 
 def __configure_mock():
-    MOCK_FEEDS[0].configure_mock(**{
-        'title': 'foo bar',
-        'description': 'bar baz',
-        'rss_link': 'http://example.org/rss',
-        'link': 'http://example.org',
-        'get_conf_dict.return_value': {'tags': ['t', 'tt', 'ttt']},
-    })
-    MOCK_FEEDS[1].configure_mock(**{
-        'title': 'foo bar',
-        'description': 'bar baz',
-        'rss_link': 'http://example.org/rss1',
-        'link': 'http://example.org',
-        'get_conf_dict.return_value': {'tags': []},
-    })
-    MOCK_FEEDS[2].configure_mock(**{
-        'title': '<lorem /> ipsum\'s <dolor "sit"',
-        'description': '<foo bar="baz">',
-        'rss_link': 'example.org/rss2',
-        'link': 'example.org',
-        'get_conf_dict.return_value': {
-            'tags': ['<tag>', '<tag2 foo="bar" />']
-        },
-    })
+    MOCK_FEEDS[0].configure_mock(
+        **{
+            "title": "foo bar",
+            "description": "bar baz",
+            "rss_link": "http://example.org/rss",
+            "link": "http://example.org",
+            "get_conf_dict.return_value": {"tags": ["t", "tt", "ttt"]},
+        }
+    )
+    MOCK_FEEDS[1].configure_mock(
+        **{
+            "title": "foo bar",
+            "description": "bar baz",
+            "rss_link": "http://example.org/rss1",
+            "link": "http://example.org",
+            "get_conf_dict.return_value": {"tags": []},
+        }
+    )
+    MOCK_FEEDS[2].configure_mock(
+        **{
+            "title": '<lorem /> ipsum\'s <dolor "sit"',
+            "description": '<foo bar="baz">',
+            "rss_link": "example.org/rss2",
+            "link": "example.org",
+            "get_conf_dict.return_value": {"tags": ["<tag>", '<tag2 foo="bar" />']},
+        }
+    )
 
 
 def test_generate_opml():

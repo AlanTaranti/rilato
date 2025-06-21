@@ -6,11 +6,7 @@ from rilato.feed import Feed
 
 class FeedStore(Gtk.FilterListModel):
     __gsignals__ = {
-        'item-removed': (
-            GObject.SignalFlags.RUN_LAST,
-            None,
-            (GObject.TYPE_PYOBJECT,)
-        )
+        "item-removed": (GObject.SignalFlags.RUN_LAST, None, (GObject.TYPE_PYOBJECT,))
     }
 
     def __init__(self):
@@ -19,19 +15,15 @@ class FeedStore(Gtk.FilterListModel):
         self.filter = Gtk.CustomFilter()
         self.filter.set_filter_func(self._filter_func)
         self.list_store = Gio.ListStore(item_type=Feed)
-        self.sort_store = Gtk.SortListModel(
-            model=self.list_store, sorter=self.sorter
-        )
+        self.sort_store = Gtk.SortListModel(model=self.list_store, sorter=self.sorter)
         self.confman = ConfManager()
         self.confman.connect(
-                'rilato_show_empty_feeds_changed',
-                lambda *_: self.invalidate_filter()
+            "rilato_show_empty_feeds_changed", lambda *_: self.invalidate_filter()
         )
         # Hiding read articles can result in empty feeds which should
         # be hidden
         self.confman.connect(
-                'rilato_show_read_changed',
-                lambda *_: self.invalidate_filter()
+            "rilato_show_read_changed", lambda *_: self.invalidate_filter()
         )
         super().__init__(model=self.sort_store, filter=self.filter)
 
@@ -58,12 +50,10 @@ class FeedStore(Gtk.FilterListModel):
 
     def add_feed(self, n_feed: Feed):
         self.list_store.append(n_feed)
-        n_feed.connect(
-            'empty_changed', lambda *_: self.invalidate_filter()
-        )
+        n_feed.connect("empty_changed", lambda *_: self.invalidate_filter())
 
     def remove_by_index(self, index: int):
-        self.emit('item-removed', self.list_store[index])
+        self.emit("item-removed", self.list_store[index])
         self.list_store.remove(index)
 
     def remove_feed(self, to_rm: Feed):

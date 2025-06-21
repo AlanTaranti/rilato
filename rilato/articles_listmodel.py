@@ -9,7 +9,7 @@ class ArticlesListModel(Gtk.SortListModel):
     def __init__(self):
         self.selected_feeds = []
         self.selected_article = None
-        self.__search_term = ''
+        self.__search_term = ""
 
         # this is a chain: list_store contains the raw data,
         # filter_store filters it and sort_store sorts it, then the listview
@@ -26,14 +26,12 @@ class ArticlesListModel(Gtk.SortListModel):
         super().__init__(model=self.filter_store, sorter=self.sorter)
 
         self.confman.connect(
-            'rilato_show_read_changed', lambda *_: self.invalidate_filter()
+            "rilato_show_read_changed", lambda *_: self.invalidate_filter()
         )
         self.confman.connect(
-            'rilato_new_first_changed', lambda *_: self.invalidate_sort()
+            "rilato_new_first_changed", lambda *_: self.invalidate_sort()
         )
-        self.confman.connect(
-            'rilato_filter_changed', self._change_filter
-        )
+        self.confman.connect("rilato_filter_changed", self._change_filter)
 
     def set_all_read_state(self, state: bool):
         for feed_item in self.list_store:
@@ -51,9 +49,10 @@ class ArticlesListModel(Gtk.SortListModel):
             n_filter = n_filter[0]
             # filter by tag
             self.selected_feeds = [
-                f for f in self.confman.nconf.feeds.keys()
-                if 'tags' in self.confman.nconf.feeds[f].keys() and
-                n_filter in self.confman.nconf.feeds[f]['tags']
+                f
+                for f in self.confman.nconf.feeds.keys()
+                if "tags" in self.confman.nconf.feeds[f].keys()
+                and n_filter in self.confman.nconf.feeds[f]["tags"]
             ]
         else:
             self.selected_feeds = [n_filter.rss_link]
@@ -66,10 +65,7 @@ class ArticlesListModel(Gtk.SortListModel):
     def _filter_func(self, item: FeedItem, *_) -> bool:
         res = self.__filter_by_feed_and_search(item)
         if not self.confman.nconf.show_read_items:
-            res = res and (
-                item == self.selected_article or
-                not item.read
-            )
+            res = res and (item == self.selected_article or not item.read)
         return res
 
     def __filter_by_feed_and_search(self, item: FeedItem) -> bool:
@@ -77,9 +73,7 @@ class ArticlesListModel(Gtk.SortListModel):
         if len(self.selected_feeds) > 0:
             res = item.parent_feed.rss_link in self.selected_feeds
         if self.__search_term:
-            res = res and (
-                self.__search_term in item.title.lower()
-            )
+            res = res and (self.__search_term in item.title.lower())
         return res
 
     def _sort_func(self, item1: FeedItem, item2: FeedItem, *_) -> int:
@@ -88,11 +82,13 @@ class ArticlesListModel(Gtk.SortListModel):
         # equal (unused) -> 0
         if self.confman.nconf.new_first:
             return (
-                -1 if item1.pub_date > item2.pub_date  # type: ignore
+                -1
+                if item1.pub_date > item2.pub_date  # type: ignore
                 else 1
             )
         return (
-            -1 if item1.pub_date < item2.pub_date  # type: ignore
+            -1
+            if item1.pub_date < item2.pub_date  # type: ignore
             else 1
         )
 
@@ -116,7 +112,7 @@ class ArticlesListModel(Gtk.SortListModel):
 
     def all_items_changed(self):
         for item in self.list_store:
-            item.emit('changed', '')
+            item.emit("changed", "")
 
     def remove_items(self, to_remove_l: List[FeedItem]):
         to_rm_ids = [i.identifier for i in to_remove_l]

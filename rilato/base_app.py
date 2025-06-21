@@ -9,13 +9,13 @@ class AppAction:
         RADIO = auto()
 
     def __init__(
-            self,
-            name: str,
-            func: Callable,
-            accel: Optional[str] = None,
-            stateful: bool = False,
-            state_type: Optional[StateType] = None,
-            state_default: Any = None
+        self,
+        name: str,
+        func: Callable,
+        accel: Optional[str] = None,
+        stateful: bool = False,
+        state_type: Optional[StateType] = None,
+        state_default: Any = None,
     ):
         self.name = name
         self.func = func
@@ -24,7 +24,7 @@ class AppAction:
         self.state_type = state_type
         self.state_default = state_default
 
-        assert (not self.stateful or self.state_default is not None)
+        assert not self.stateful or self.state_default is not None
 
     def get_action(self):
         action = None
@@ -34,25 +34,23 @@ class AppAction:
             if self.state_type == AppAction.StateType.BOOL:
                 variant = GLib.Variant.new_boolean(self.state_default)
             elif self.state_type == AppAction.StateType.RADIO:
-                parameter_type = GLib.VariantType.new('s')
-                variant = GLib.Variant('s', self.state_default)
-            action = Gio.SimpleAction.new_stateful(
-                self.name, parameter_type, variant
-            )
+                parameter_type = GLib.VariantType.new("s")
+                variant = GLib.Variant("s", self.state_default)
+            action = Gio.SimpleAction.new_stateful(self.name, parameter_type, variant)
         else:
             action = Gio.SimpleAction.new(self.name, None)
-        action.connect('activate', self.func)
+        action.connect("activate", self.func)
         return action
 
 
 class BaseApp(Adw.Application):
     def __init__(
-            self,
-            app_id: str,
-            app_name: str,
-            app_actions: List[AppAction] = [],
-            flags: Gio.ApplicationFlags = Gio.ApplicationFlags.FLAGS_NONE,
-            css_resource: Optional[str] = None
+        self,
+        app_id: str,
+        app_name: str,
+        app_actions: List[AppAction] = [],
+        flags: Gio.ApplicationFlags = Gio.ApplicationFlags.FLAGS_NONE,
+        css_resource: Optional[str] = None,
     ):
         self.app_actions = app_actions
         self.css_resource = css_resource
@@ -66,7 +64,7 @@ class BaseApp(Adw.Application):
             action = a.get_action()
             self.add_action(action)
             if a.accel is not None:
-                self.set_accels_for_action(f'app.{a.name}', [a.accel])
+                self.set_accels_for_action(f"app.{a.name}", [a.accel])
 
     def load_css(self):
         if self.css_resource is None:
@@ -74,8 +72,7 @@ class BaseApp(Adw.Application):
         provider = Gtk.CssProvider()
         provider.load_from_resource(self.css_resource)
         Gtk.StyleContext.add_provider_for_display(
-            Gdk.Display.get_default(), provider,
-            Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
+            Gdk.Display.get_default(), provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
         )
 
     def do_activate(self):
@@ -87,7 +84,7 @@ class AppShortcut:
         self.keystroke = keystroke
         self.callback = callback
 
-    def bind(self, win: 'BaseWindow'):
+    def bind(self, win: "BaseWindow"):
         _, key, mod = Gtk.accelerator_parse(self.keystroke)
         trigger = Gtk.KeyvalTrigger.new(key, mod)
         cb = Gtk.CallbackAction.new(self.callback)
@@ -107,10 +104,7 @@ class BaseWindow(Adw.ApplicationWindow):
     __dark_mode = False
 
     def __init__(
-            self,
-            app_name: str,
-            icon_name: str,
-            shortcuts: List[AppShortcut] = []
+        self, app_name: str, icon_name: str, shortcuts: List[AppShortcut] = []
     ):
         super().__init__()
         self.set_title(app_name)
@@ -134,6 +128,5 @@ class BaseWindow(Adw.ApplicationWindow):
     def dark_mode(self, nval: bool):
         self.__dark_mode = nval
         Adw.StyleManager.get_default().set_color_scheme(
-            Adw.ColorScheme.FORCE_DARK if nval
-            else Adw.ColorScheme.DEFAULT
+            Adw.ColorScheme.FORCE_DARK if nval else Adw.ColorScheme.DEFAULT
         )

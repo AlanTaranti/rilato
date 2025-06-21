@@ -5,6 +5,7 @@ from rilato.util.get_favicon import get_favicon
 from os.path import isfile
 from rilato.util.paths import THUMBS_CACHE_PATH
 from rilato.util.sha import shasum
+
 # from bs4 import UnicodeDammit  # TODO: reimplement it!
 from syndom import Feed as SynDomFeed, FeedItem as SynDomFeedItem
 
@@ -21,15 +22,15 @@ class FeedParserRes:
         description: Optional[str] = None,
         image_url: Optional[str] = None,
         favicon_path: Optional[str] = None,
-        raw_entries: List[SynDomFeedItem] = []
+        raw_entries: List[SynDomFeedItem] = [],
     ):
         self.is_null = is_null
         self.error = error
         self.sd_feed = sd_feed
-        self.rss_link = rss_link or ''
-        self.title = title or ''
-        self.link = link or ''
-        self.description = description or ''
+        self.rss_link = rss_link or ""
+        self.title = title or ""
+        self.link = link or ""
+        self.description = description or ""
         self.image_url = image_url
         self.favicon_path = favicon_path
         self.raw_entries = raw_entries
@@ -42,24 +43,25 @@ class FeedParserRes:
 
 
 def parse_feed(
-        feedpath: Optional[Path],
-        rss_link_: Optional[str] = None,
-        failed: bool = False,
-        error: Optional[str] = None
+    feedpath: Optional[Path],
+    rss_link_: Optional[str] = None,
+    failed: bool = False,
+    error: Optional[str] = None,
 ) -> FeedParserRes:
     if failed:
         print(error)
-        return FeedParserRes(is_null=True, error=(error or '<NULL ERROR>'))
+        return FeedParserRes(is_null=True, error=(error or "<NULL ERROR>"))
     sd_feed = None
     try:
         sd_feed = SynDomFeed(str(feedpath))
     except Exception:
-        print('Error parsing feed (caught); will try extracting from HTML')
+        print("Error parsing feed (caught); will try extracting from HTML")
     if sd_feed is None:
         return FeedParserRes(
-            is_null=True, error=_(
-                'Errors while parsing feed `{0}`, URL: `{1}`'
-            ).format(feedpath, rss_link_)
+            is_null=True,
+            error=_("Errors while parsing feed `{0}`, URL: `{1}`").format(
+                feedpath, rss_link_
+            ),
         )
     try:
         title = sd_feed.get_title()
@@ -71,57 +73,55 @@ def parse_feed(
     except UnicodeDecodeError:
         return FeedParserRes(
             is_null=True,
-            error=_(
-                'Error decoding unicode data from feed `{0}`, URL: `{1}`'
-            ).format(feedpath, rss_link_)
+            error=_("Error decoding unicode data from feed `{0}`, URL: `{1}`").format(
+                feedpath, rss_link_
+            ),
         )
     except Exception:
         return FeedParserRes(
             is_null=True,
-            error=_(
-                'Error extracting data from feed `{0}`, URL: `{1}`'
-            ).format(feedpath, rss_link_)
+            error=_("Error extracting data from feed `{0}`, URL: `{1}`").format(
+                feedpath, rss_link_
+            ),
         )
     if not title and len(raw_entries) == 0:
         # if these conditions are met, there's reason to believe
         # this is not an rss/atom feed
         return FeedParserRes(
-            is_null=False, error=_(
-                '`{0}` may not be an RSS or Atom feed'
-            ).format(rss_link_)
+            is_null=False,
+            error=_("`{0}` may not be an RSS or Atom feed").format(rss_link_),
         )
     if not title:
         title = rss_link
-    favicon_path: Optional[str] = str(THUMBS_CACHE_PATH.joinpath(
-        shasum(rss_link+'v2')+'.png'
-    ))
+    favicon_path: Optional[str] = str(
+        THUMBS_CACHE_PATH.joinpath(shasum(rss_link + "v2") + ".png")
+    )
     if not isfile(favicon_path):
         if image_url:
             try:
                 get_favicon(image_url, favicon_path, direct=True)
             except Exception:
-                print('Invalid image url for feed `{0}` ({1})'.format(
-                    rss_link, image_url
-                ))
+                print(
+                    "Invalid image url for feed `{0}` ({1})".format(rss_link, image_url)
+                )
                 image_url = None
         if not image_url:
             try:
                 get_favicon(rss_link, favicon_path)
                 if not isfile(favicon_path):
-                    get_favicon(
-                        link or raw_entries[0].uri,
-                        favicon_path
-                    )
+                    get_favicon(link or raw_entries[0].uri, favicon_path)
             except Exception:
-                print(f'No favicon for feed `{rss_link}`')
+                print(f"No favicon for feed `{rss_link}`")
                 favicon_path = None
     return FeedParserRes(
-        is_null=False, error=None, sd_feed=sd_feed,
+        is_null=False,
+        error=None,
+        sd_feed=sd_feed,
         rss_link=rss_link,
         title=title,
         link=link,
         description=description,
         image_url=image_url,
         favicon_path=favicon_path,
-        raw_entries=raw_entries
+        raw_entries=raw_entries,
     )
